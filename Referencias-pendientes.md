@@ -30,14 +30,14 @@ Estado: 🟡 Pendiente · 🔵 Revisado, uso limitado/bajo valor · 🟢 Revisad
 | `prep4eu.com` | 🔴 Revisado (con reservas — fetch directo bloqueado, ToS reconstruido vía buscador, revisar directamente si se convierte en candidato real): indicios de prohibición de copia/redistribución. | 🔴 |
 | `jobtestprep.co.uk/epso-sample-test-free` | 🔴 Revisado: copyright prohíbe expresamente reproducir/redistribuir sin permiso escrito. Muestra 5 preguntas completas con respuesta explicada, de acceso público sin registro — el contenido gratuito más concreto de todo el lote, pero sigue bajo prohibición general de reproducción. | 🔴 |
 | `practice4me.com/epso-test-preparation` | 🔴 Revisado: disclaimer prohíbe copiar/cambiar/vender el contenido. Muestra 5 preguntas completas con respuesta explicada, acceso público sin registro (mismo perfil que JobTestPrep). | 🔴 |
-| `epsotraining.eu` | Tests gratis "ilimitados" según su propia publicidad — sospechoso, comprobar si es cierto o es anzuelo | 🟡 |
-| `epsodrill.com` | Práctica adaptativa, 5 preguntas gratis | 🟡 |
-| `qualitrainer.eu/en/epso-tests` | No explorado | 🟡 |
+| `epsotraining.eu` | 🟡 Técnicamente inaccesible (2026-08-25): el dominio devuelve HTTP 522 (Cloudflare, origen caído/no responde) en dos intentos separados. No se pudo revisar ni ToS ni contenido. Reintentar en una sesión futura antes de descartarlo definitivamente. | 🟡 |
+| `epsodrill.com` | 🔵 Revisado (2026-08-25): sus Terms no contienen ninguna cláusula explícita sobre scraping/copia/redistribución (solo una cláusula genérica de "uso aceptable" contra ingeniería inversa y abuso de API). Ofrece 10 preguntas gratis por sección (Verbal, Numérico, Abstracto, Conocimiento UE, Competencia digital) con explicaciones, sin registro; el resto (1.279 preguntas totales) es de pago (9,99 €/mes o 24,99 € pago único). **Decisión**: aunque no hay prohibición expresa de scraping, la ausencia de prohibición no equivale a una licencia de reutilización — el contenido sigue protegido por copyright por defecto y es su producto comercial principal. Se trata como bajo valor para nuestros fines, no como fuente de preguntas a incorporar. | 🔵 |
+| `qualitrainer.eu/en/epso-tests` | 🔵 Revisado: es una página informativa/afiliada que redirige a paquetes de pago de JobTestPrep; no aloja banco propio de preguntas EPSO. Sin contenido original que extraer. | 🔵 |
 | `psychometriq.com/epso-reasoning-skills-tests` | 🔵 Revisado: mayoritariamente página de venta; solo 5 preguntas de muestra embebidas (secuencias numéricas, series, antónimos, secuencias de figuras, matrices) y un enlace a Google Drive con un test gratuito genérico. Bajo valor. | 🔵 |
-| `orseu-concours.com` | Ya citado en `Referencias.txt`; tiene blog "Free EPSO Test Preparation Resources" que podría listar aún más fuentes gratuitas de terceros — revisar como índice | 🟡 |
-| `postgradsuccess.org` | Recursos EPSO incl. "mini test" gratis y ejemplo de Written Test con respuesta modelo | 🟡 |
-| `eu-testbook.com` | "The Ultimate EU Test Book" — no explorado | 🟡 |
-| `open-exam-prep.com` | Nuevo (hallado 2026-08-25 vía búsqueda de recursos): anuncia "Free EPSO Verbal Reasoning Practice Test 2026: 100 Questions" — no explorado | 🟡 |
+| `orseu-concours.com` | 🔵 Revisado (2026-08-25): su blog "Ressources gratuites de préparation aux tests EPSO" solo enlaza fuentes ya conocidas y oficiales (eu-careers.europa.eu, el demo test oficial de EPSO, quizzes de la UE de learning-corner.learning.europa.eu y europarl.europa.eu, Europass Digital Skills) más un test genérico no específico de EPSO (vskills.in) y vídeos de YouTube. No aporta ningún sitio de terceros nuevo. | 🔵 |
+| `postgradsuccess.org` | 🔵 Revisado (2026-08-25): sin ToS visible. El "mini test" y el ejemplo de Written Test con respuesta modelo mencionados no son en realidad de acceso libre — el portal de entrenamiento real se desbloquea con una palabra clave que solo aparece dentro de su libro de pago ("EPSO Unlocked"); lo único gratis de verdad es una guía PDF en griego y descripciones genéricas de las pruebas. Sin contenido extraíble. | 🔵 |
+| `eu-testbook.com` | 🔵 Revisado (2026-08-25): sitio de venta del libro "The Ultimate EU Test Book" (John Harper Publishing / András Baneth); no tiene preguntas de muestra propias — remite explícitamente a `eutraining.eu` para practicar, sitio ya revisado y marcado 🔴. Sin contenido propio que aportar. | 🔵 |
+| `open-exam-prep.com` | Anuncia "Free EPSO Verbal Reasoning Practice Test 2026: 100 Questions" — intentado revisar (2026-08-25) pero el sitio devolvió HTTP 429 (rate limit) en dos intentos seguidos, incluyendo a una URL de subpágina. No se pudo comprobar ToS ni contenido real. Reintentar más adelante, posiblemente con más espaciado entre peticiones. | 🟡 |
 
 ## C. Publishers de tests psicométricos genéricos (SHL / Kenexa / Cubiks-Talogy) — mismo formato que EPSO, pero contenido genérico no específico de la UE
 
@@ -45,13 +45,15 @@ Estado: 🟡 Pendiente · 🔵 Revisado, uso limitado/bajo valor · 🟢 Revisad
 
 | Sitio | Contenido | Estado |
 |---|---|---|
-| `graduatesfirst.com` | Guías completas Kenexa/Cubiks, ejemplos abstractos | 🟡 |
-| `assessmentday.co.uk` | Tests numéricos gratis (formato SHL) | 🟡 |
-| `practiceaptitudetests.com` | Agregador de Kenexa/Cubiks/Civil Service | 🟡 |
-| `psychometrictests.org` | Ejemplos gratis sin registro para SHL y Kenexa | 🟡 |
-| `careerroo.com` | 351 preguntas Kenexa con respuestas | 🟡 |
-| `lawtests.com` | Preguntas Cubiks | 🟡 |
-| `fintest.io` | Preguntas Cubiks | 🟡 |
+| `graduatesfirst.com` | 🔴 Revisado (2026-08-25): Terms §2.1–2.2 prohíben republicar o reproducir el material del sitio sin permiso previo. Ofrece tests completos "gratis" (numérico, verbal, lógico) pero solo tras registro; sin preguntas Kenexa/Cubiks específicas visibles sin cuenta. | 🔴 |
+| `assessmentday.co.uk` | 🔴 Revisado: Terms §2.2/§3.1 prohíben expresamente reproducir/copiar/distribuir contenido del sitio y limitan el uso a licencia personal intransferible. | 🔴 |
+| `practiceaptitudetests.com` | 🔴 Revisado: mismo bloque legal que psychometrictests.org/careerroo.com/lawtests.com/fintest.io (propiedad de Picked Group Ltd) — prohíbe expresamente ingeniería inversa, copia, distribución y "cualquier reproducción o redistribución de cualquier Producto". | 🔴 |
+| `psychometrictests.org` | 🔴 Revisado: Terms prohíben explícitamente ingeniería inversa, copia, redistribución y "deep-linking"; advierte de "severe civil and criminal penalties" por reproducción no autorizada. | 🔴 |
+| `careerroo.com` | 🔴 Revisado: mismo bloque legal verbatim que psychometrictests.org (misma plataforma/red de marcas) — prohibición expresa de copia/redistribución. | 🔴 |
+| `lawtests.com` | 🔴 Revisado: mismo bloque legal verbatim que psychometrictests.org, con cláusula adicional que prohíbe cualquier uso comercial o de reventa. | 🔴 |
+| `fintest.io` | 🔴 Revisado: mismo bloque legal verbatim que psychometrictests.org (misma red de marcas). | 🔴 |
+
+**Nota (2026-08-25)**: `psychometrictests.org`, `careerroo.com`, `lawtests.com`, `fintest.io` y `practiceaptitudetests.com` comparten el mismo texto legal palabra por palabra — son la misma plataforma/red comercial operando bajo varias marcas (Picked Group Ltd), no sitios independientes. Los 7 sitios de esta categoría quedan cerrados: todos prohíben expresamente la reproducción de su contenido, así que se descartan como fuente de preguntas; solo sirven como referencia de formato ya aprovechada en el rediseño visual de razonamiento abstracto.
 
 ## D. Documentación técnica libre para rellenar los huecos señalados en el banco MCQ de Ciencia de Datos
 
@@ -82,3 +84,5 @@ Estado: 🟡 Pendiente · 🔵 Revisado, uso limitado/bajo valor · 🟢 Revisad
 2. Si el ToS permite reutilización (o el sitio muestra explícitamente preguntas "gratis" sin restricción de scraping — como los propios PDF de EPSO), extraer solo esas preguntas de muestra puntuales, nunca scrapear en bulk salvo que el ToS lo autorice expresamente.
 3. Si el ToS prohíbe scraping (lo más probable en la mayoría de la Categoría B, dado que compiten comercialmente con contenido similar a EPSO), tratar el sitio solo como **índice de otras fuentes** que ellos mismos citan (varios blogs de esta lista literalmente enlazan a más recursos gratuitos) o como inspiración de formato, nunca como fuente de contenido literal.
 4. Ir marcando esta tabla en sucesivas sesiones — no hace falta agotarla toda de una vez.
+
+**Estado de la cola (2026-08-25)**: Categorías B y C ya están cerradas — los 20 sitios se revisaron y ninguno resultó legítimamente aprovechable como fuente de preguntas (todos 🔴 prohibido o 🔵 bajo valor/sin contenido extraíble), salvo dos fallos técnicos puntuales (`epsotraining.eu`, `open-exam-prep.com`) a reintentar más adelante. Lo único que queda genuinamente pendiente en toda la lista es el ítem 🟡 de la Categoría A (`data.europa.eu/en/academy`), que requiere que una persona se inscriba manualmente en el LMS externo — no es algo que se pueda resolver de forma automatizada. Conclusión práctica: la vía de "adoptar preguntas de terceros" está agotada; el contenido de la plataforma seguirá creciendo por transcripción de fuentes propias (libros) y generación asistida propia, no por incorporación de bancos externos.

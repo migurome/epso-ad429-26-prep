@@ -140,10 +140,12 @@ esos dos.
 2. ~~Ampliar los bancos de Infraestructura TIC / Gestión de Proyectos TIC /
    Nubes y Redes~~ — hecho: los tres están ahora en 80 preguntas (10 por
    tema), cerca de la profundidad de las 82 de Ciencia de Datos.
-3. Trabajar la cola de sitios de referencia en `Referencias-pendientes.md`
-   (33 sitios, la mayoría aún 🟡 pendiente) para ir incorporando contenido
-   "poco a poco" — comprobar ToS antes de tocar cualquier sitio de
-   Categoría B/C, siguiendo la regla fija ya documentada ahí.
+3. ~~Trabajar la cola de sitios de referencia en `Referencias-pendientes.md`~~
+   — hecho: las Categorías B y C (20 sitios de terceros) están revisadas y
+   cerradas, todas 🔴 prohibido o 🔵 bajo valor; ninguna aportó contenido
+   integrable. Solo queda pendiente un ítem 🟡 en Categoría A que requiere
+   inscripción manual de una persona en un LMS externo, y dos sitios con
+   fallos técnicos (HTTP 522/429) a reintentar si se retoma la lista.
 4. Considerar code-splitting (`vite build` avisa de un bundle de ~1 MB
    gzip, esperable con ~850 preguntas en un único chunk) si el tiempo de
    carga inicial llega a notarse.
