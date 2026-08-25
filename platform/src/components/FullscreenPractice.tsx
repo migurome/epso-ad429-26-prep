@@ -80,7 +80,7 @@ export function FullscreenPractice({ questions }: FullscreenPracticeProps) {
         {t('question_x_of_y', { x: safeIndex + 1, y: filtered.length })}
       </p>
 
-      <div className="mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm md:p-10">
+      <div className="mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8 md:p-10">
         <QuestionCard
           question={current}
           selectedOptionId={answers[current.id] ?? null}

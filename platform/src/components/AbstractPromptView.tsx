@@ -48,15 +48,17 @@ export function AbstractPromptView({ prompt, large }: AbstractPromptViewProps) {
       )}
 
       {figures.kind === 'matrix' && (
-        <div
-          className="mx-auto mb-4 grid w-fit gap-2 rounded-xl border border-slate-200 bg-slate-50 p-4"
-          style={{ gridTemplateColumns: `repeat(${figures.columns ?? 3}, minmax(0, 1fr))` }}
-        >
-          {figures.panels.map((panel, i) => (
-            <div key={i} className="flex items-center justify-center rounded-lg bg-white p-2 shadow-sm">
-              <FigurePanelView panel={panel} large={large} />
-            </div>
-          ))}
+        <div className="mb-4 overflow-x-auto">
+          <div
+            className="mx-auto grid w-fit gap-2 rounded-xl border border-slate-200 bg-slate-50 p-4"
+            style={{ gridTemplateColumns: `repeat(${figures.columns ?? 3}, minmax(0, 1fr))` }}
+          >
+            {figures.panels.map((panel, i) => (
+              <div key={i} className="flex items-center justify-center rounded-lg bg-white p-2 shadow-sm">
+                <FigurePanelView panel={panel} large={large} />
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

@@ -18,13 +18,13 @@ export function Tabs({ tabs, defaultTabId }: TabsProps) {
 
   return (
     <div>
-      <div className="mb-6 flex gap-1 border-b border-slate-200">
+      <div className="mb-6 flex gap-1 overflow-x-auto border-b border-slate-200">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveId(tab.id)}
             className={clsx(
-              'border-b-2 px-4 py-2.5 text-sm font-medium transition-colors',
+              'shrink-0 whitespace-nowrap border-b-2 px-4 py-2.5 text-sm font-medium transition-colors',
               tab.id === active?.id
                 ? 'border-eu-blue text-eu-blue'
                 : 'border-transparent text-slate-500 hover:text-slate-800',

@@ -81,37 +81,39 @@ export function ProgressPage() {
       {hasActivity && (
         <div className="space-y-6">
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-            <table className="min-w-full text-sm">
-              <thead className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <tr>
-                  <th className="px-4 py-2.5">{t('col_test')}</th>
-                  <th className="px-4 py-2.5">{t('col_attempts')}</th>
-                  <th className="px-4 py-2.5">{t('col_average')}</th>
-                  <th className="px-4 py-2.5">{t('col_best')}</th>
-                  <th className="px-4 py-2.5">{t('col_total_time')}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {rows
-                  .filter((r) => r.attempts.length > 0)
-                  .map((r) => {
-                    const { avg, best, totalTime, count } = summarize(r.attempts, r.maxScore)
-                    return (
-                      <tr key={r.key}>
-                        <td className="px-4 py-2.5 font-medium text-slate-800">{r.label}</td>
-                        <td className="px-4 py-2.5 text-slate-600">{count}</td>
-                        <td className="px-4 py-2.5 text-slate-600">
-                          {avg.toFixed(1)} / {r.maxScore}
-                        </td>
-                        <td className="px-4 py-2.5 text-slate-600">
-                          {best.toFixed(1)} / {r.maxScore}
-                        </td>
-                        <td className="px-4 py-2.5 text-slate-600">{formatClock(totalTime)}</td>
-                      </tr>
-                    )
-                  })}
-              </tbody>
-            </table>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-sm">
+                <thead className="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <tr>
+                    <th className="px-4 py-2.5">{t('col_test')}</th>
+                    <th className="px-4 py-2.5">{t('col_attempts')}</th>
+                    <th className="px-4 py-2.5">{t('col_average')}</th>
+                    <th className="px-4 py-2.5">{t('col_best')}</th>
+                    <th className="px-4 py-2.5">{t('col_total_time')}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {rows
+                    .filter((r) => r.attempts.length > 0)
+                    .map((r) => {
+                      const { avg, best, totalTime, count } = summarize(r.attempts, r.maxScore)
+                      return (
+                        <tr key={r.key}>
+                          <td className="px-4 py-2.5 font-medium text-slate-800">{r.label}</td>
+                          <td className="px-4 py-2.5 text-slate-600">{count}</td>
+                          <td className="px-4 py-2.5 text-slate-600">
+                            {avg.toFixed(1)} / {r.maxScore}
+                          </td>
+                          <td className="px-4 py-2.5 text-slate-600">
+                            {best.toFixed(1)} / {r.maxScore}
+                          </td>
+                          <td className="px-4 py-2.5 text-slate-600">{formatClock(totalTime)}</td>
+                        </tr>
+                      )
+                    })}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {essayAttempts.length > 0 && (

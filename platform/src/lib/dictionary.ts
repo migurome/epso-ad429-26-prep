@@ -13,6 +13,8 @@ export const DICT = {
   nav_resources: { es: 'Recursos', en: 'Resources' },
   nav_progress: { es: 'Progreso', en: 'Progress' },
   sidebar_footer: { es: '{posts} plazas · 4 campos ICT', en: '{posts} posts · 4 ICT fields' },
+  open_menu: { es: 'Abrir menú', en: 'Open menu' },
+  close_menu: { es: 'Cerrar menú', en: 'Close menu' },
 
   // Dashboard
   dashboard_title: { es: 'Panel de preparación', en: 'Preparation dashboard' },
