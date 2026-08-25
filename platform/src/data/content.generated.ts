@@ -42661,13 +42661,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "The contract is awarded based on the best price-quality ratio, weighing criteria linked to the subject matter of the contract — such as technical merit, quality and after-sales service — against price or cost, rather than relying on price as the sole determining factor.",
-          "es": "El contrato se adjudica en función de la mejor relación calidad-precio, ponderando criterios vinculados al objeto del contrato —como el mérito técnico, la calidad y el servicio posventa— frente al precio o coste, en lugar de basarse en el precio como único factor determinante."
+          "en": "The contract is most commonly awarded based on the best price-quality ratio, weighing criteria linked to the subject matter of the contract — such as technical merit, quality and after-sales service — against price or cost; EU law also allows an award based on price or cost alone under a cost-effectiveness approach, but never mandates price as the only method the way Option A describes.",
+          "es": "Lo más habitual es que el contrato se adjudique en función de la mejor relación calidad-precio, ponderando criterios vinculados al objeto del contrato —como el mérito técnico, la calidad y el servicio posventa— frente al precio o coste; el derecho de la UE también permite adjudicar basándose únicamente en el precio o el coste mediante un enfoque de rentabilidad, pero nunca exige el precio como único método posible, a diferencia de lo que afirma la opción A."
         },
         "isCorrect": true,
         "explanation": {
-          "en": "MEAT evaluates tenders on the best price-quality ratio, weighing criteria linked to the contract's subject matter (such as technical merit and quality) against price or cost, rather than mandating that price alone must decide the award — a shift away from lowest-price-only evaluation.",
-          "es": "El criterio MEAT evalúa las ofertas según la mejor relación calidad-precio, ponderando criterios vinculados al objeto del contrato (como el mérito técnico y la calidad) frente al precio o coste, en lugar de exigir que el precio por sí solo determine la adjudicación — un giro respecto a la evaluación basada únicamente en el precio más bajo."
+          "en": "MEAT is most commonly applied through the best price-quality ratio, weighing criteria linked to the contract's subject matter (such as technical merit and quality) against price or cost. EU law also permits an award based on price or cost alone under a cost-effectiveness approach — Option A is wrong not because price-only evaluation is forbidden, but because it falsely claims this is the only method the law allows, with no other approach ever possible.",
+          "es": "El criterio MEAT se aplica más habitualmente mediante la mejor relación calidad-precio, ponderando criterios vinculados al objeto del contrato (como el mérito técnico y la calidad) frente al precio o coste. El derecho de la UE también permite adjudicar basándose únicamente en el precio o el coste mediante un enfoque de rentabilidad — la opción A es incorrecta no porque esté prohibido adjudicar solo por precio, sino porque afirma falsamente que ese es el único método que permite la ley, sin posibilidad de ningún otro enfoque."
         }
       },
       {
@@ -45671,7 +45671,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "It limits the packet's lifetime by having each router that forwards it decrement the field by one; when it reaches zero, the packet is discarded, which prevents packets from looping indefinitely due to routing errors and is what tools such as traceroute exploit to map a path hop by hop.",
-          "es": "Limita la vida útil del paquete haciendo que cada router que lo reenvía decremente el campo en una unidad; cuando llega a cero, el paquete se descarta, lo que evita que los paquetes queden atrapados indefinidamente en bucles de enrutamiento por errores de configuración, y es precisamente lo que aprovechan herramientas como traceroute para trazar una ruta salto a salto."
+          "es": "Limita la vida útil del paquete haciendo que cada router que lo reenvía decremente el campo en una unidad; cuando llega a cero, el paquete se descarta, lo que evita que los paquetes queden atrapados indefinidamente en bucles de enrutamiento por errores de enrutamiento, y es precisamente lo que aprovechan herramientas como traceroute para trazar una ruta salto a salto."
         },
         "isCorrect": true,
         "explanation": {
