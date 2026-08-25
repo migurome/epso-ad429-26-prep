@@ -130,13 +130,20 @@ esos dos.
 
 ## Próximos pasos
 
-1. Revisar manualmente una muestra del contenido generado por IA (los 4
-   bancos field-MCQ, EUFTE, bancos bonus de numérico/abstracto) — no ha
-   sido verificado palabra por palabra como sí lo fue el contenido
-   transcrito de libros reales. Ver también las notas inline en `Docs/3.-
-   Abstract reasoning.md` / su traducción: varios ítems del banco real
-   tienen la respuesta confirmada contra el libro original, pero el
-   mecanismo/patrón exacto de transformación solo se verificó parcialmente.
+1. ~~Revisar manualmente el contenido generado por IA~~ — hecho: los 4
+   bancos field-MCQ completos (incluida la ampliación 41-80 de
+   Infraestructura TIC/Gestión de Proyectos TIC/Nubes y Redes), EUFTE y
+   los bancos bonus de numérico/abstracto pasaron por verificación
+   independiente (re-derivar la respuesta correcta desde cero, sin mirar
+   la marcada, y comparar). Se encontraron y corrigieron ~9 problemas en
+   total (terminología GDPR imprecisa, una inconsistencia de traducción
+   ES, una explicación de contratación pública de la UE que sobrestimaba
+   la norma, ítems de razonamiento abstracto con patrones ambiguos, etc.).
+   Sigue habiendo un matiz sin cerrar del todo: en `Docs/3.- Abstract
+   reasoning.md` / su traducción, varios ítems del banco real tienen la
+   respuesta confirmada contra el libro original, pero el mecanismo/patrón
+   exacto de transformación solo se verificó parcialmente (queda anotado
+   inline en el propio documento, caso por caso).
 2. ~~Ampliar los bancos de Infraestructura TIC / Gestión de Proyectos TIC /
    Nubes y Redes~~ — hecho: los tres están ahora en 80 preguntas (10 por
    tema), cerca de la profundidad de las 82 de Ciencia de Datos.
