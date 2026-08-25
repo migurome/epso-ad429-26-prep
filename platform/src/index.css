@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-eu-blue: #003399;
+  --color-eu-blue-dark: #002266;
+  --color-eu-gold: #ffcc00;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}

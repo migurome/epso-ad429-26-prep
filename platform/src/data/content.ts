@@ -1,0 +1,177 @@
+// Colecciones de contenido real (preguntas, teoría, prompts de ensayo,
+// enlaces de referencia). QUESTIONS, THEORY_DOCS y ESSAY_PROMPTS se generan
+// a partir de Docs/*.md mediante scripts/build_content.py (no editar
+// content.generated.ts a mano — volver a ejecutar el script tras cambiar
+// los Docs). REFERENCE_LINKS se mantiene a mano aquí.
+
+import type { ReferenceLink } from '../types/content'
+
+export { QUESTIONS, THEORY_DOCS, ESSAY_PROMPTS } from './content.generated'
+
+export const REFERENCE_LINKS: ReferenceLink[] = [
+  {
+    id: 'ref-notice',
+    title: 'Convocatoria oficial EPSO/AD/429/26 (4) — DOUE C/2026/02425',
+    url: 'https://eur-lex.europa.eu/eli/C/2026/2425/oj',
+    category: 'Oficial — convocatoria',
+    notes: 'Fuente jurídica. Prevalece sobre cualquier resumen de esta plataforma.',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-notice-html-es',
+    title: 'Convocatoria (texto completo, HTML, ES)',
+    url: 'https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=OJ:C_202602425',
+    category: 'Oficial — convocatoria',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-notice-pdf-es',
+    title: 'Convocatoria (texto completo, PDF, ES)',
+    url: 'https://eur-lex.europa.eu/legal-content/ES/TXT/PDF/?uri=OJ:C_202602425',
+    category: 'Oficial — convocatoria',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-op-publication',
+    title: 'Ficha de publicación (Oficina de Publicaciones de la UE)',
+    url: 'https://op.europa.eu/es/publication-detail/-/publication/05a8b852-48e5-11f1-8095-01aa75ed71a1/language-es',
+    category: 'Oficial — convocatoria',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-job-data-science',
+    title: 'Perfil de puesto: Data Science',
+    url: 'https://eu-careers.europa.eu/en/job-opportunities/data-science',
+    category: 'Oficial — perfil de campo',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-what-know-testing',
+    title: 'Qué debes saber sobre las pruebas EPSO',
+    url: 'https://eu-careers.europa.eu/en/what-know-about-testing',
+    category: 'Oficial — pruebas',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-specialists-ad6-ad9',
+    title: 'Especialistas / Administradores AD6–AD9',
+    url: 'https://eu-careers.europa.eu/en/specialists-administrators-ad6-ad9',
+    category: 'Oficial — pruebas',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-epso-tests',
+    title: 'Catálogo de pruebas EPSO (tipos de test)',
+    url: 'https://eu-careers.europa.eu/en/selection-procedure/epso-tests',
+    category: 'Oficial — pruebas',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-sample-reasoning',
+    title: 'Tests de muestra oficiales — razonamiento',
+    url: 'https://eu-careers.europa.eu/es/sample-tests/reasoning-tests',
+    category: 'Oficial — tests de muestra',
+    notes: 'Verbal, numérico y abstracto en la plataforma oficial (OAT).',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-sample-written',
+    title: 'Test de muestra oficial — prueba escrita (EUFTE)',
+    url: 'https://eu-careers.europa.eu/es/sample-tests/written-test',
+    category: 'Oficial — tests de muestra',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-testrunner-session',
+    title: 'Sesión personal de test runner (TAO)',
+    url: 'https://testrunner-epso-prod.prod.gcp-eu.taocloud.org/',
+    category: 'Oficial — tests de muestra',
+    notes: 'Enlace de sesión personal con token — probablemente caduca; requiere volver a generarlo desde la cuenta EU Login del candidato.',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-eutraining-datascience-mcq',
+    title: 'Recursos para el Field-Related MCQ de Data Science',
+    url: 'https://eutraining.eu/content/epso-data-science-field-related-mcq-resources',
+    category: 'Preparación — terceros',
+    notes: 'Desglose en 8 áreas temáticas usado como base de Docs/4.- Field-Related MCQ - Data Science.md.',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-epsoprep',
+    title: 'EPSOprep',
+    url: 'https://www.epsoprep.com/',
+    category: 'Preparación — terceros',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-epsopractice',
+    title: 'EPSOpractice',
+    url: 'https://epsopractice.eu/es',
+    category: 'Preparación — terceros',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-epsogenius',
+    title: 'EPSOgenius — tests gratuitos',
+    url: 'https://www.epsogenius.com/en/free-epso-test',
+    category: 'Preparación — terceros',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-prep4eu',
+    title: 'Prep4EU',
+    url: 'https://prep4eu.com/',
+    category: 'Preparación — terceros',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-yasemoseuropeos',
+    title: 'Ya Somos Europeos — cursos',
+    url: 'https://yasemoseuropeos.eu/courses-list/',
+    category: 'Preparación — terceros',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-sklearn',
+    title: 'scikit-learn — documentación',
+    url: 'https://scikit-learn.org/stable/',
+    category: 'Técnico — Data Science',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-python-docs',
+    title: 'Python — documentación oficial',
+    url: 'https://docs.python.org/3/',
+    category: 'Técnico — Data Science',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-pandas',
+    title: 'pandas — documentación',
+    url: 'https://pandas.pydata.org/docs/',
+    category: 'Técnico — Data Science',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-numpy',
+    title: 'NumPy — documentación',
+    url: 'https://numpy.org/doc/stable/',
+    category: 'Técnico — Data Science',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-scipy',
+    title: 'SciPy — documentación',
+    url: 'https://docs.scipy.org/doc/scipy/',
+    category: 'Técnico — Data Science',
+    dateAdded: '2026-08-18',
+  },
+  {
+    id: 'ref-cs229',
+    title: 'Stanford CS229 — Machine Learning',
+    url: 'https://cs229.stanford.edu/',
+    category: 'Técnico — Data Science',
+    dateAdded: '2026-08-18',
+  },
+]
