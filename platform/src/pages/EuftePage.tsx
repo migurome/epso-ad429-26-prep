@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 import { ChevronDown, PenLine } from 'lucide-react'
 import clsx from 'clsx'
 import { PageHeader } from '../components/PageHeader'
@@ -10,7 +10,7 @@ import { EssayRunner } from '../components/EssayRunner'
 import { EssayHistory } from '../components/EssayHistory'
 import { TestLocaleSelector } from '../components/TestLocaleSelector'
 import { EUFTE_FORMAT, PHASES } from '../data/competition'
-import { ESSAY_PROMPTS, THEORY_DOCS } from '../data/content'
+import { loadEufteContent } from '../data/contentLoader'
 import { useProgressStore } from '../lib/progressStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
@@ -21,7 +21,7 @@ export function EuftePage() {
   const locale = useLocaleStore((s) => s.locale)
   const testLocale = useTestLocaleStore((s) => s.locale)
   const phase = PHASES.find((p) => p.id === 'eufte')!
-  const theory = THEORY_DOCS.filter((d) => d.phase === 'eufte')
+  const { THEORY_DOCS: theory, ESSAY_PROMPTS: essayPrompts } = use(loadEufteContent())
   const essayAttempts = useProgressStore((s) => s.essayAttempts)
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
@@ -48,15 +48,15 @@ export function EuftePage() {
           },
           {
             id: 'practica',
-            label: `${t('tab_practice_prompts')} (${ESSAY_PROMPTS.length})`,
+            label: `${t('tab_practice_prompts')} (${essayPrompts.length})`,
             content:
-              ESSAY_PROMPTS.length === 0 ? (
+              essayPrompts.length === 0 ? (
                 <EmptyState icon={<PenLine size={28} />} title={t('empty_essays_title')} description={t('empty_essays_description')} />
               ) : (
                 <div>
                   <TestLocaleSelector />
                   <div className="space-y-2">
-                    {ESSAY_PROMPTS.map((prompt) => {
+                    {essayPrompts.map((prompt) => {
                       const isOpen = expandedId === prompt.id
                       return (
                         <div key={prompt.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
@@ -86,7 +86,7 @@ export function EuftePage() {
           {
             id: 'historial',
             label: `${t('tab_history')}${essayAttempts.length > 0 ? ` (${essayAttempts.length})` : ''}`,
-            content: <EssayHistory attempts={essayAttempts} prompts={ESSAY_PROMPTS} />,
+            content: <EssayHistory attempts={essayAttempts} prompts={essayPrompts} />,
           },
         ]}
       />

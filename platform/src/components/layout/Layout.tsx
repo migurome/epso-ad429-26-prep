@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { Sidebar } from './Sidebar'
+import { LoadingFallback } from '../LoadingFallback'
 import { useT } from '../../lib/useT'
 
 export function Layout() {
@@ -34,7 +35,9 @@ export function Layout() {
 
         <main className="flex-1 overflow-y-auto">
           <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 md:px-8 md:py-8">
-            <Outlet />
+            <Suspense fallback={<LoadingFallback />}>
+              <Outlet />
+            </Suspense>
           </div>
         </main>
       </div>

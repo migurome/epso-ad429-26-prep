@@ -31,11 +31,17 @@ src/
   data/
     competition.ts        Datos estructurales de la convocatoria (fases, campos,
                           fechas) — usados para la navegación
-    content.ts            Punto de entrada de contenido: re-exporta QUESTIONS/
-                          THEORY_DOCS/ESSAY_PROMPTS desde content.generated.ts
-                          y mantiene REFERENCE_LINKS a mano
-    content.generated.ts  Generado por scripts/build_content.py a partir de
-                          ../Docs/*.md — NO editar a mano
+    content.ts            Mantiene REFERENCE_LINKS a mano (preguntas/teoría
+                          ya no se re-exportan combinadas desde aquí)
+    content.<nombre>.generated.ts   Un chunk por destreza/campo/EUFTE
+                          (verbal, numerical, abstract, field-data-science,
+                          field-ict-infrastructure, field-ict-project-management,
+                          field-clouds-networks, eufte), generado por
+                          scripts/build_content.py a partir de ../Docs/*.md —
+                          NO editar a mano
+    contentLoader.ts       Carga cada chunk bajo demanda con import()
+                          dinámico + caché de promesas, consumido con
+                          use() de React 19 (ver "Code-splitting" abajo)
   lib/
     progressStore.ts     Store de progreso (zustand + localStorage)
     localeStore.ts        Store de idioma (es/en, zustand + localStorage) +
@@ -61,11 +67,25 @@ src/
 
 scripts/
   build_content.py        Parsea ../Docs/*.md (+ ../Docs/es/*.md para la
-                          teoría en español) y regenera
-                          src/data/content.generated.ts. Volver a ejecutar
-                          (`python scripts/build_content.py`) tras editar
-                          cualquier Docs/*.md o Docs/es/*.md.
+                          teoría en español) y regenera los 8 chunks
+                          src/data/content.<nombre>.generated.ts. Volver a
+                          ejecutar (`python scripts/build_content.py`) tras
+                          editar cualquier Docs/*.md o Docs/es/*.md.
 ```
+
+### Code-splitting del contenido
+
+Cada destreza de razonamiento, campo de MCQ y EUFTE vive en su propio
+chunk (`content.<nombre>.generated.ts`) en vez de un único archivo
+combinado. Las páginas que necesitan ese contenido (`ReasoningSkillPage`,
+`FieldMcqPage`, `EuftePage`) lo cargan con `import()` dinámico a través de
+`src/data/contentLoader.ts` y lo leen con `use()` (React 19), suspendiendo
+bajo el `<Suspense>` que envuelve el `<Outlet/>` en `Layout.tsx` mientras
+el chunk se descarga. Esto mantiene el bundle inicial pequeño (~142 KB
+gzip) en vez de cargar las ~850 preguntas de toda la plataforma de golpe;
+cada chunk de contenido solo se descarga la primera vez que el usuario
+visita esa página en concreto, y queda cacheado por el propio navegador
+después.
 
 ## Idioma (ES/EN)
 
@@ -106,7 +126,8 @@ Plataforma funcional con contenido real: 848 preguntas (200 verbal + 170
 numérico + 156 abstracto + 322 field-MCQ — 82 Ciencia de Datos + 80 cada
 una de Infraestructura TIC / Gestión de Proyectos TIC / Nubes y Redes),
 8 documentos de teoría y 14 prompts de práctica EUFTE, generados desde
-`Docs/*.md` y cargados en `src/data/content.generated.ts`. Los 4 campos
+`Docs/*.md` en 8 chunks `src/data/content.<nombre>.generated.ts` cargados
+bajo demanda (ver "Code-splitting del contenido" más abajo). Los 4 campos
 de especialización tienen ya banco de preguntas propio, con profundidad
 comparable entre ellos.
 
@@ -153,9 +174,13 @@ esos dos.
    integrable. Solo queda pendiente un ítem 🟡 en Categoría A que requiere
    inscripción manual de una persona en un LMS externo, y dos sitios con
    fallos técnicos (HTTP 522/429) a reintentar si se retoma la lista.
-4. Considerar code-splitting (`vite build` avisa de un bundle de ~1 MB
-   gzip, esperable con ~850 preguntas en un único chunk) si el tiempo de
-   carga inicial llega a notarse.
+4. ~~Code-splitting del contenido~~ — hecho: `build_content.py` genera un
+   chunk por destreza/campo/EUFTE (`src/data/content.<nombre>.generated.ts`)
+   en vez de un único `content.generated.ts` combinado; cada página lo
+   carga bajo demanda con `import()` dinámico (`src/data/contentLoader.ts`
+   + `use()` de React 19, con `<Suspense>` en `Layout.tsx`). El chunk
+   inicial baja de ~3,5 MB (995 KB gzip) a 463 KB (142 KB gzip); el resto
+   solo se descarga al visitar esa página en concreto.
 5. Revisar una muestra de las traducciones en `Docs/es/` — generadas por
    agentes de traducción, no verificadas línea a línea por un hablante
    nativo.

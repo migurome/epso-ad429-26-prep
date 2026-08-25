@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { extractPromptFigures, parsePanel } from './abstractFigure'
-import { QUESTIONS } from '../data/content.generated'
+import { QUESTIONS } from '../data/content.abstract.generated'
 import { pick, type Locale } from './localeStore'
 
 // Test de regresión (no exploratorio): si en el futuro se añade contenido de

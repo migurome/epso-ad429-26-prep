@@ -1,3 +1,4 @@
+import { use } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { BookOpen, ClipboardList } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
@@ -9,7 +10,7 @@ import { PracticeBank } from '../components/PracticeBank'
 import { TimedTest } from '../components/TimedTest'
 import { AttemptHistory } from '../components/AttemptHistory'
 import { FIELDS, FIELD_MCQ_FORMAT, USER_FIELD } from '../data/competition'
-import { QUESTIONS, THEORY_DOCS } from '../data/content'
+import { loadFieldContent } from '../data/contentLoader'
 import { useProgressStore } from '../lib/progressStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
@@ -20,15 +21,14 @@ export function FieldMcqPage() {
   const locale = useLocaleStore((s) => s.locale)
   const { fieldId } = useParams<{ fieldId: string }>()
   const field = FIELDS.find((f) => f.id === fieldId)
-  const fieldTyped = field?.id as Field | undefined
 
   const testAttempts = useProgressStore((s) => s.testAttempts)
 
   if (!field) return <Navigate to="/campo" replace />
 
+  const fieldTyped = field.id as Field
+  const { QUESTIONS: questions, THEORY_DOCS: theory } = use(loadFieldContent(fieldTyped))
   const attempts = testAttempts.filter((a) => a.phase === 'field-mcq' && a.field === fieldTyped)
-  const theory = THEORY_DOCS.filter((d) => d.phase === 'field-mcq' && (!fieldTyped || d.id.endsWith(fieldTyped)))
-  const questions = QUESTIONS.filter((q) => q.field === fieldTyped)
 
   return (
     <div>

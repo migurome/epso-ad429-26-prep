@@ -1,3 +1,4 @@
+import { use } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { BookOpen, ClipboardList } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
@@ -10,7 +11,7 @@ import { FullscreenPractice } from '../components/FullscreenPractice'
 import { TimedTest } from '../components/TimedTest'
 import { AttemptHistory } from '../components/AttemptHistory'
 import { REASONING_SKILLS } from '../data/competition'
-import { QUESTIONS, THEORY_DOCS } from '../data/content'
+import { loadReasoningContent } from '../data/contentLoader'
 import { useProgressStore } from '../lib/progressStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
@@ -21,15 +22,14 @@ export function ReasoningSkillPage() {
   const locale = useLocaleStore((s) => s.locale)
   const { skillId } = useParams<{ skillId: string }>()
   const skill = REASONING_SKILLS.find((s) => s.id === skillId)
-  const skillTyped = skill?.id as ReasoningSkill | undefined
 
   const testAttempts = useProgressStore((s) => s.testAttempts)
 
   if (!skill) return <Navigate to="/razonamiento" replace />
 
+  const skillTyped = skill.id as ReasoningSkill
+  const { QUESTIONS: questions, THEORY_DOCS: theory } = use(loadReasoningContent(skillTyped))
   const attempts = testAttempts.filter((a) => a.phase === 'reasoning' && a.skill === skillTyped)
-  const theory = THEORY_DOCS.filter((d) => d.skill === skillTyped)
-  const questions = QUESTIONS.filter((q) => q.skill === skillTyped)
 
   return (
     <div>

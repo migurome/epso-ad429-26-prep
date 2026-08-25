@@ -1,12 +1,11 @@
-// Colecciones de contenido real (preguntas, teoría, prompts de ensayo,
-// enlaces de referencia). QUESTIONS, THEORY_DOCS y ESSAY_PROMPTS se generan
-// a partir de Docs/*.md mediante scripts/build_content.py (no editar
-// content.generated.ts a mano — volver a ejecutar el script tras cambiar
-// los Docs). REFERENCE_LINKS se mantiene a mano aquí.
+// Enlaces de referencia (a mano). Las preguntas/teoría/prompts de ensayo se
+// generan a partir de Docs/*.md mediante scripts/build_content.py, pero ya
+// no se re-exportan combinados desde aquí: cada destreza/campo/EUFTE vive en
+// su propio chunk (content.<nombre>.generated.ts, no editar a mano) cargado
+// bajo demanda por ../data/contentLoader.ts, para que el bundle inicial no
+// tenga que incluir las ~850 preguntas de toda la plataforma de una vez.
 
 import type { ReferenceLink } from '../types/content'
-
-export { QUESTIONS, THEORY_DOCS, ESSAY_PROMPTS } from './content.generated'
 
 export const REFERENCE_LINKS: ReferenceLink[] = [
   {
