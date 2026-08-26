@@ -9,14 +9,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Precious metal trading prices (in euros per 1 kg):\n\n| Metal | 4 July | 5 July | 6 July | 7 July | 8 July |\n|---|---|---|---|---|---|\n| Platinum | 720,421 | 698,645 | 702,345 | 809,623 | 956,879 |\n| Palladium | 321,592 | 301,234 | 410,568 | 451,879 | 543,901 |\n| Gold | 36,421 | 36,432 | 36,440 | 36,554 | 36,600 |\n| Silver | 816,220 | 828,431 | 824,522 | 833,150 | 809,776 |\n\n*If, from 8 July, the trading price of gold increases each day by 0.75%, how much will it be on 13 July?*",
-      "es": "Precios de cotización de metales preciosos (en euros por 1 kg):\n\n| Metal | 4 de julio | 5 de julio | 6 de julio | 7 de julio | 8 de julio |\n|---|---|---|---|---|---|\n| Platino | 720,421 | 698,645 | 702,345 | 809,623 | 956,879 |\n| Paladio | 321,592 | 301,234 | 410,568 | 451,879 | 543,901 |\n| Oro | 36,421 | 36,432 | 36,440 | 36,554 | 36,600 |\n| Plata | 816,220 | 828,431 | 824,522 | 833,150 | 809,776 |\n\n*Si, a partir del 8 de julio, el precio de cotización del oro aumenta cada día un 0.75%, ¿cuánto valdrá el 13 de julio?*"
+      "es": "Precios de cotización de metales preciosos (en euros por 1 kg):\n\n| Metal | 4 de julio | 5 de julio | 6 de julio | 7 de julio | 8 de julio |\n|---|---|---|---|---|---|\n| Platino | 720.421 | 698.645 | 702.345 | 809.623 | 956.879 |\n| Paladio | 321.592 | 301.234 | 410.568 | 451.879 | 543.901 |\n| Oro | 36.421 | 36.432 | 36.440 | 36.554 | 36.600 |\n| Plata | 816.220 | 828.431 | 824.522 | 833.150 | 809.776 |\n\n*Si, a partir del 8 de julio, el precio de cotización del oro aumenta cada día un 0,75 %, ¿cuánto valdrá el 13 de julio?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "37,430",
-          "es": "37,430"
+          "es": "37.430"
         },
         "isCorrect": false
       },
@@ -24,7 +24,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "37,698",
-          "es": "37,698"
+          "es": "37.698"
         },
         "isCorrect": false
       },
@@ -32,7 +32,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "37,710",
-          "es": "37,710"
+          "es": "37.710"
         },
         "isCorrect": false
       },
@@ -40,7 +40,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "37,973",
-          "es": "37,973"
+          "es": "37.973"
         },
         "isCorrect": false
       },
@@ -48,12 +48,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "37,993",
-          "es": "37,993"
+          "es": "37.993"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to apply a 0.75% daily increase to the price of gold on 8 July (36,600), repeated 5 times to reach 13 July.\n\nSolution: Price on 13 July = 36,600 × (1.0075)⁵ ≈ **37,993**.",
-          "es": "Planteamiento y método: Debemos aplicar un aumento diario del 0.75% al precio del oro el 8 de julio (36,600), repetido 5 veces hasta llegar al 13 de julio.\n\nSolución: Precio el 13 de julio = 36,600 × (1.0075)⁵ ≈ **37,993**."
+          "es": "Planteamiento y método: Debemos aplicar un aumento diario del 0,75 % al precio del oro el 8 de julio (36.600), repetido 5 veces hasta llegar al 13 de julio.\n\nSolución: Precio el 13 de julio = 36.600 × (1,0075)⁵ ≈ **37.993**."
         }
       }
     ],
@@ -68,7 +68,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Fuel prices:\n\n| Country | Tax-inclusive price — Petrol (€/litre) | Tax-inclusive price — Diesel (€/litre) | Tax percentage — Petrol | Tax percentage — Diesel |\n|---|---|---|---|---|\n| Buldonia | 1.45 | 1.30 | 88% | 85% |\n| Telonia | 1.52 | 1.36 | 87% | 85% |\n| Poldavia | 1.64 | 1.54 | 90% | 88% |\n| Zogland | 1.52 | 1.45 | 85% | 75% |\n| Levonia | 1.69 | 1.60 | 84% | 90% |\n\n*In which country is the tax-exclusive price of a litre of diesel the highest?*",
-      "es": "Precios de los carburantes:\n\n| País | Precio con impuestos incluidos — Gasolina (€/litro) | Precio con impuestos incluidos — Diésel (€/litro) | Porcentaje de impuestos — Gasolina | Porcentaje de impuestos — Diésel |\n|---|---|---|---|---|\n| Buldonia | 1.45 | 1.30 | 88% | 85% |\n| Telonia | 1.52 | 1.36 | 87% | 85% |\n| Poldavia | 1.64 | 1.54 | 90% | 88% |\n| Zogland | 1.52 | 1.45 | 85% | 75% |\n| Levonia | 1.69 | 1.60 | 84% | 90% |\n\n*¿En qué país es más alto el precio sin impuestos de un litro de diésel?*"
+      "es": "Precios de los carburantes:\n\n| País | Precio con impuestos incluidos — Gasolina (€/litro) | Precio con impuestos incluidos — Diésel (€/litro) | Porcentaje de impuestos — Gasolina | Porcentaje de impuestos — Diésel |\n|---|---|---|---|---|\n| Buldonia | 1,45 | 1,30 | 88 % | 85 % |\n| Telonia | 1,52 | 1,36 | 87 % | 85 % |\n| Poldavia | 1,64 | 1,54 | 90 % | 88 % |\n| Zogland | 1,52 | 1,45 | 85 % | 75 % |\n| Levonia | 1,69 | 1,60 | 84 % | 90 % |\n\n*¿En qué país es más alto el precio sin impuestos de un litro de diésel?*"
     },
     "options": [
       {
@@ -112,7 +112,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: Tax-exclusive price = Tax-inclusive price / (1 + tax rate). We need to calculate this for each country and select the one where the price is highest.\n\nTip! There is no point calculating for Buldonia: the tax-inclusive price of diesel is higher in Telonia than in Buldonia and the tax rate is the same order, so we can skip it and go straight to comparing the other candidates.\n\nSolution: Tax-exclusive price in Telonia: 1.36 / 1.85 = 0.74. Tax-exclusive price in Poldavia: 1.54 / 1.88 = 0.82. Tax-exclusive price in Zogland: 1.45 / 1.75 = 0.83. It is in **Levonia** that the price is highest.",
-          "es": "Planteamiento y método: Precio sin impuestos = Precio con impuestos incluidos / (1 + tipo impositivo). Debemos calcularlo para cada país y elegir aquel en el que el precio sea más alto.\n\nConsejo: No merece la pena calcularlo para Buldonia: el precio con impuestos del diésel es más alto en Telonia que en Buldonia y el tipo impositivo es del mismo orden, así que podemos saltárnoslo e ir directamente a comparar los demás candidatos.\n\nSolución: Precio sin impuestos en Telonia: 1.36 / 1.85 = 0.74. Precio sin impuestos en Poldavia: 1.54 / 1.88 = 0.82. Precio sin impuestos en Zogland: 1.45 / 1.75 = 0.83. Es en **Levonia** donde el precio es más alto."
+          "es": "Planteamiento y método: Precio sin impuestos = Precio con impuestos incluidos / (1 + tipo impositivo). Debemos calcularlo para cada país y elegir aquel en el que el precio sea más alto.\n\nConsejo: No merece la pena calcularlo para Buldonia: el precio con impuestos del diésel es más alto en Telonia que en Buldonia y el tipo impositivo es del mismo orden, así que podemos saltárnoslo e ir directamente a comparar los demás candidatos.\n\nSolución: Precio sin impuestos en Telonia: 1,36 / 1,85 = 0,74. Precio sin impuestos en Poldavia: 1,54 / 1,88 = 0,82. Precio sin impuestos en Zogland: 1,45 / 1,75 = 0,83. Es en **Levonia** donde el precio es más alto."
         }
       }
     ],
@@ -127,14 +127,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of prisoners per 10,000 inhabitants:\n\n| Country | 2005 — Men | 2005 — Women | 2010 — Men | 2010 — Women |\n|---|---|---|---|---|\n| Buldonia | 542 | 104 | 521 | 101 |\n| Venalia | 342 | 64 | 345 | 59 |\n| Muravia | 437 | 88 | 468 | 82 |\n| Telonia | 389 | 43 | 392 | 41 |\n\n*In 2010, there were 475,398 prisoners in Muravia, ie 5% more than in 2005. What was the population of Muravia in 2005?*",
-      "es": "Número de reclusos por 10,000 habitantes:\n\n| País | 2005 — Hombres | 2005 — Mujeres | 2010 — Hombres | 2010 — Mujeres |\n|---|---|---|---|---|\n| Buldonia | 542 | 104 | 521 | 101 |\n| Venalia | 342 | 64 | 345 | 59 |\n| Muravia | 437 | 88 | 468 | 82 |\n| Telonia | 389 | 43 | 392 | 41 |\n\n*En 2010 había 475,398 reclusos en Muravia, es decir, un 5% más que en 2005. ¿Cuál era la población de Muravia en 2005?*"
+      "es": "Número de reclusos por 10.000 habitantes:\n\n| País | 2005 — Hombres | 2005 — Mujeres | 2010 — Hombres | 2010 — Mujeres |\n|---|---|---|---|---|\n| Buldonia | 542 | 104 | 521 | 101 |\n| Venalia | 342 | 64 | 345 | 59 |\n| Muravia | 437 | 88 | 468 | 82 |\n| Telonia | 389 | 43 | 392 | 41 |\n\n*En 2010 había 475.398 reclusos en Muravia, es decir, un 5 % más que en 2005. ¿Cuál era la población de Muravia en 2005?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "8,232,000",
-          "es": "8,232,000"
+          "es": "8.232.000"
         },
         "isCorrect": false
       },
@@ -142,7 +142,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "8,423,440",
-          "es": "8,423,440"
+          "es": "8.423.440"
         },
         "isCorrect": false
       },
@@ -150,19 +150,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "8,624,000",
-          "es": "8,624,000"
+          "es": "8.624.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, starting with the number of prisoners in 2010, we find the number of prisoners in 2005. This is a growth rate problem; next, we use the number of prisoners in 2005 to find the total population. This is a direct proportion problem.\n\nSolution — Stage 1: Number of prisoners in Muravia in 2005: 475,398 / 1.05 = 452,760. Stage 2: Number of prisoners per 10,000 inhabitants in 2005: 437 + 88 = 525. Let P be the population of Muravia in 2005: 525 × P = 452,760 × 10,000. P = 452,760 × 10,000 / 525 = **8,624,000**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, partiendo del número de reclusos en 2010, hallamos el número de reclusos en 2005. Esto es un problema de tasa de crecimiento; a continuación, usamos el número de reclusos en 2005 para hallar la población total. Esto es un problema de proporcionalidad directa.\n\nSolución — Fase 1: Número de reclusos en Muravia en 2005: 475,398 / 1.05 = 452,760. Fase 2: Número de reclusos por 10,000 habitantes en 2005: 437 + 88 = 525. Sea P la población de Muravia en 2005: 525 × P = 452,760 × 10,000. P = 452,760 × 10,000 / 525 = **8,624,000**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, partiendo del número de reclusos en 2010, hallamos el número de reclusos en 2005. Esto es un problema de tasa de crecimiento; a continuación, usamos el número de reclusos en 2005 para hallar la población total. Esto es un problema de proporcionalidad directa.\n\nSolución — Fase 1: Número de reclusos en Muravia en 2005: 475.398 / 1,05 = 452.760. Fase 2: Número de reclusos por 10.000 habitantes en 2005: 437 + 88 = 525. Sea P la población de Muravia en 2005: 525 × P = 452.760 × 10.000. P = 452.760 × 10.000 / 525 = **8.624.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "9,075,780",
-          "es": "9,075,780"
+          "es": "9.075.780"
         },
         "isCorrect": false
       },
@@ -170,7 +170,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "9,507,960",
-          "es": "9,507,960"
+          "es": "9.507.960"
         },
         "isCorrect": false
       }
@@ -186,14 +186,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Crimes and misdemeanours:\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Total crimes and misdemeanours | 18,524 | 18,420 | 18,308 | 18,677 |\n| — of which: homicides | 85 | 80 | 82 | 87 |\n| — of which: attempted homicides | 215 | 240 | 258 | 306 |\n| — of which: assault and battery | 18,054 | 16,420 | 17,070 | 17,241 |\n\n*By what percentage did crimes and misdemeanours other than homicides and attempted homicides increase between 2008 and 2010?*",
-      "es": "Delitos y faltas:\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Total de delitos y faltas | 18,524 | 18,420 | 18,308 | 18,677 |\n| — de los cuales: homicidios | 85 | 80 | 82 | 87 |\n| — de los cuales: tentativas de homicidio | 215 | 240 | 258 | 306 |\n| — de los cuales: agresiones y lesiones | 18,054 | 16,420 | 17,070 | 17,241 |\n\n*¿En qué porcentaje aumentaron los delitos y faltas distintos de los homicidios y las tentativas de homicidio entre 2008 y 2010?*"
+      "es": "Delitos y faltas:\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Total de delitos y faltas | 18.524 | 18.420 | 18.308 | 18.677 |\n| — de los cuales: homicidios | 85 | 80 | 82 | 87 |\n| — de los cuales: tentativas de homicidio | 215 | 240 | 258 | 306 |\n| — de los cuales: agresiones y lesiones | 18.054 | 16.420 | 17.070 | 17.241 |\n\n*¿En qué porcentaje aumentaron los delitos y faltas distintos de los homicidios y las tentativas de homicidio entre 2008 y 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "0.5%",
-          "es": "0.5%"
+          "es": "0,5 %"
         },
         "isCorrect": false
       },
@@ -201,19 +201,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1%",
-          "es": "1%"
+          "es": "1 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of crimes and misdemeanours other than homicides and attempted homicides in 2008 and 2010; next, we calculate the relative variation.\n\nNB! In the table, homicides, attempted homicides and assault and battery do not constitute 100% of crimes and misdemeanours.\n\nSolution: Crimes and misdemeanours other than homicides and attempted homicides in 2008: 18,420 − 80 − 240 = 18,100. Crimes and misdemeanours other than homicides and attempted homicides in 2010: 18,677 − 87 − 306 = 18,284. Stage 2: Relative variation: (18,284 − 18,100) / 18,100 = 0.01 = **1%**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de delitos y faltas distintos de los homicidios y las tentativas de homicidio en 2008 y 2010; a continuación, calculamos la variación relativa.\n\nAtención: En la tabla, los homicidios, las tentativas de homicidio y las agresiones y lesiones no constituyen el 100% de los delitos y faltas.\n\nSolución: Delitos y faltas distintos de los homicidios y las tentativas de homicidio en 2008: 18,420 − 80 − 240 = 18,100. Delitos y faltas distintos de los homicidios y las tentativas de homicidio en 2010: 18,677 − 87 − 306 = 18,284. Fase 2: Variación relativa: (18,284 − 18,100) / 18,100 = 0.01 = **1%**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de delitos y faltas distintos de los homicidios y las tentativas de homicidio en 2008 y 2010; a continuación, calculamos la variación relativa.\n\nAtención: En la tabla, los homicidios, las tentativas de homicidio y las agresiones y lesiones no constituyen el 100 % de los delitos y faltas.\n\nSolución: Delitos y faltas distintos de los homicidios y las tentativas de homicidio en 2008: 18.420 − 80 − 240 = 18.100. Delitos y faltas distintos de los homicidios y las tentativas de homicidio en 2010: 18.677 − 87 − 306 = 18.284. Fase 2: Variación relativa: (18.284 − 18.100) / 18.100 = 0,01 = **1 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "2%",
-          "es": "2%"
+          "es": "2 %"
         },
         "isCorrect": false
       },
@@ -221,7 +221,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "4%",
-          "es": "4%"
+          "es": "4 %"
         },
         "isCorrect": false
       },
@@ -229,7 +229,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "5%",
-          "es": "5%"
+          "es": "5 %"
         },
         "isCorrect": false
       }
@@ -245,7 +245,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Fishing in Zogland (catch in tonnes, shown as a bar chart in the source; approx. values read from the chart's gridlines):\n\n| Year | Cod | Hake | Salmon | Tuna |\n|---|---|---|---|---|\n| 2008 | ~500 | ~1,250 | ~1,000 | ~1,500 |\n| 2009 | ~750 | ~1,000 | ~1,250 | ~1,750 |\n| 2010 | ~1,000 | ~1,500 | ~1,500 | ~2,000 |\n\n*In 2005, the hake catch was 1,400 tonnes, ie 600 tonnes more than the cod catch and 200 tonnes less than the tuna catch. Overall, how did the catches of cod and tuna vary between 2005 and 2010?*",
-      "es": "Pesca en Zogland (capturas en toneladas, mostradas como gráfico de barras en la fuente; valores aprox. leídos en las líneas de cuadrícula del gráfico):\n\n| Año | Bacalao | Merluza | Salmón | Atún |\n|---|---|---|---|---|\n| 2008 | ~500 | ~1,250 | ~1,000 | ~1,500 |\n| 2009 | ~750 | ~1,000 | ~1,250 | ~1,750 |\n| 2010 | ~1,000 | ~1,500 | ~1,500 | ~2,000 |\n\n*En 2005, la captura de merluza fue de 1,400 toneladas, es decir, 600 toneladas más que la captura de bacalao y 200 toneladas menos que la captura de atún. En conjunto, ¿cómo variaron las capturas de bacalao y atún entre 2005 y 2010?*"
+      "es": "Pesca en Zogland (capturas en toneladas, mostradas como gráfico de barras en la fuente; valores aprox. leídos en las líneas de cuadrícula del gráfico):\n\n| Año | Bacalao | Merluza | Salmón | Atún |\n|---|---|---|---|---|\n| 2008 | ~500 | ~1.250 | ~1.000 | ~1.500 |\n| 2009 | ~750 | ~1.000 | ~1.250 | ~1.750 |\n| 2010 | ~1.000 | ~1.500 | ~1.500 | ~2.000 |\n\n*En 2005, la captura de merluza fue de 1.400 toneladas, es decir, 600 toneladas más que la captura de bacalao y 200 toneladas menos que la captura de atún. En conjunto, ¿cómo variaron las capturas de bacalao y atún entre 2005 y 2010?*"
     },
     "options": [
       {
@@ -260,7 +260,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "They increased by 20%.",
-          "es": "Aumentaron un 20%."
+          "es": "Aumentaron un 20 %."
         },
         "isCorrect": false
       },
@@ -268,19 +268,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "They increased by 25%.",
-          "es": "Aumentaron un 25%."
+          "es": "Aumentaron un 25 %."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the catches of tuna and cod in 2005; next, we calculate the catches of tuna and cod in 2010 using the data in the graph; then, we calculate the relative variation between these two years.\n\nSolution — Stage 1: Cod catch in 2005: 1,400 − 600 = 800. Tuna catch in 2005: 1,400 + 200 = 1,600. Cod and tuna catches in 2005: 800 + 1,600 = 2,400. Stage 2: Cod and tuna catches in 2010: 1,000 + 2,000 = 3,000. Stage 3: Relative variation: (3,000 − 2,400) / 2,400 = 0.25 = **+25%**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos las capturas de atún y bacalao en 2005; a continuación, calculamos las capturas de atún y bacalao en 2010 usando los datos del gráfico; después, calculamos la variación relativa entre estos dos años.\n\nSolución — Fase 1: Captura de bacalao en 2005: 1,400 − 600 = 800. Captura de atún en 2005: 1,400 + 200 = 1,600. Capturas de bacalao y atún en 2005: 800 + 1,600 = 2,400. Fase 2: Capturas de bacalao y atún en 2010: 1,000 + 2,000 = 3,000. Fase 3: Variación relativa: (3,000 − 2,400) / 2,400 = 0.25 = **+25%**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos las capturas de atún y bacalao en 2005; a continuación, calculamos las capturas de atún y bacalao en 2010 usando los datos del gráfico; después, calculamos la variación relativa entre estos dos años.\n\nSolución — Fase 1: Captura de bacalao en 2005: 1.400 − 600 = 800. Captura de atún en 2005: 1.400 + 200 = 1.600. Capturas de bacalao y atún en 2005: 800 + 1.600 = 2.400. Fase 2: Capturas de bacalao y atún en 2010: 1.000 + 2.000 = 3.000. Fase 3: Variación relativa: (3.000 − 2.400) / 2.400 = 0,25 = **+25 %**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "They increased by 27%.",
-          "es": "Aumentaron un 27%."
+          "es": "Aumentaron un 27 %."
         },
         "isCorrect": false
       },
@@ -288,7 +288,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "They increased by 33%.",
-          "es": "Aumentaron un 33%."
+          "es": "Aumentaron un 33 %."
         },
         "isCorrect": false
       }
@@ -304,7 +304,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Pear production (in thousands of tonnes):\n\n| Country | Pear production 2009 | Pear production 2010 | Share of pears in total fruit production 2009 | Share of pears in total fruit production 2010 |\n|---|---|---|---|---|\n| Venalia | 420 | 340 | 20% | 22% |\n| Buldonia | 216 | 312 | 16% | 12% |\n| Telonia | 42 | 36 | 4% | 2% |\n| Muravia | 124 | 164 | 6% | 9% |\n\n*What was the average annual fruit production of Buldonia in 2009 and 2010?*",
-      "es": "Producción de peras (en miles de toneladas):\n\n| País | Producción de peras 2009 | Producción de peras 2010 | Cuota de las peras en la producción total de fruta 2009 | Cuota de las peras en la producción total de fruta 2010 |\n|---|---|---|---|---|\n| Venalia | 420 | 340 | 20% | 22% |\n| Buldonia | 216 | 312 | 16% | 12% |\n| Telonia | 42 | 36 | 4% | 2% |\n| Muravia | 124 | 164 | 6% | 9% |\n\n*¿Cuál fue la producción media anual de fruta de Buldonia en 2009 y 2010?*"
+      "es": "Producción de peras (en miles de toneladas):\n\n| País | Producción de peras 2009 | Producción de peras 2010 | Cuota de las peras en la producción total de fruta 2009 | Cuota de las peras en la producción total de fruta 2010 |\n|---|---|---|---|---|\n| Venalia | 420 | 340 | 20 % | 22 % |\n| Buldonia | 216 | 312 | 16 % | 12 % |\n| Telonia | 42 | 36 | 4 % | 2 % |\n| Muravia | 124 | 164 | 6 % | 9 % |\n\n*¿Cuál fue la producción media anual de fruta de Buldonia en 2009 y 2010?*"
     },
     "options": [
       {
@@ -319,19 +319,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,975 tonnes",
-          "es": "1,975 toneladas"
+          "es": "1.975 toneladas"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The aim is to find the average annual fruit production for the period 2009–2010. This is a simple average: we divide the total production by the number of years, ie by 2. Fruit production in 2010 and in 2009 is calculated in the same way. For example: Pear production in 2009 = 16% × fruit production. Therefore: Fruit production in 2009 = pear production / 0.16.\n\nSolution: Fruit production in 2009 = 216 / 0.16 = 1,350. Fruit production in 2010 = 312 / 0.12 = 2,600. Annual average = (1,350 + 2,600) / 2 = **1,975 tonnes**.",
-          "es": "Planteamiento y método: El objetivo es hallar la producción media anual de fruta para el período 2009–2010. Es una media simple: dividimos la producción total entre el número de años, es decir, entre 2. La producción de fruta en 2010 y en 2009 se calcula de la misma manera. Por ejemplo: Producción de peras en 2009 = 16% × producción de fruta. Por tanto: Producción de fruta en 2009 = producción de peras / 0.16.\n\nSolución: Producción de fruta en 2009 = 216 / 0.16 = 1,350. Producción de fruta en 2010 = 312 / 0.12 = 2,600. Media anual = (1,350 + 2,600) / 2 = **1,975 toneladas**."
+          "es": "Planteamiento y método: El objetivo es hallar la producción media anual de fruta para el período 2009–2010. Es una media simple: dividimos la producción total entre el número de años, es decir, entre 2. La producción de fruta en 2010 y en 2009 se calcula de la misma manera. Por ejemplo: Producción de peras en 2009 = 16 % × producción de fruta. Por tanto: Producción de fruta en 2009 = producción de peras / 0,16.\n\nSolución: Producción de fruta en 2009 = 216 / 0,16 = 1.350. Producción de fruta en 2010 = 312 / 0,12 = 2.600. Media anual = (1.350 + 2.600) / 2 = **1.975 toneladas**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "3,771 tonnes",
-          "es": "3,771 toneladas"
+          "es": "3.771 toneladas"
         },
         "isCorrect": false
       },
@@ -339,7 +339,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "7,200 tonnes",
-          "es": "7,200 toneladas"
+          "es": "7.200 toneladas"
         },
         "isCorrect": false
       },
@@ -347,7 +347,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "7,392 tonnes",
-          "es": "7,392 toneladas"
+          "es": "7.392 toneladas"
         },
         "isCorrect": false
       }
@@ -363,14 +363,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Percentage of full-time and part-time workers by age and number of weekly working hours:\n\n| | 15–24 years | 25–49 years | 50 years and over |\n|---|---|---|---|\n| Full-time | 76% | 84% | 80% |\n| Part-time | 24% | 16% | 20% |\n| — of which: Fewer than 15 hours | 8% | 2% | ~4% |\n| — of which: From 15 to 29 hours | 12% | ~8% | ~11%* |\n| — of which: 30 hours or more | 4% | ~6% | ~5%* |\n| Together | 100% | 100% | 100% |\n| Total workers (in thousands) | 2,050 | 16,848 | 6,787 |\n\n*\\*The \"50 years and over\" column of this table is partly obscured by scan ghosting in the source; the figures shown are the clearest available reading and are not required by the answer explanation.*\n\n*Of workers aged under 50 working part-time, what percentage work fewer than 15 hours per week?*",
-      "es": "Porcentaje de trabajadores a tiempo completo y a tiempo parcial por edad y número de horas semanales trabajadas:\n\n| | 15–24 años | 25–49 años | 50 años y más |\n|---|---|---|---|\n| Tiempo completo | 76% | 84% | 80% |\n| Tiempo parcial | 24% | 16% | 20% |\n| — de los cuales: Menos de 15 horas | 8% | 2% | ~4% |\n| — de los cuales: De 15 a 29 horas | 12% | ~8% | ~11%* |\n| — de los cuales: 30 horas o más | 4% | ~6% | ~5%* |\n| Total | 100% | 100% | 100% |\n| Total de trabajadores (en miles) | 2,050 | 16,848 | 6,787 |\n\n*\\*La columna \"50 años y más\" de esta tabla está parcialmente oscurecida por un problema de escaneado en la fuente; las cifras mostradas son la lectura más clara disponible y no son necesarias para la explicación de la respuesta.*\n\n*De los trabajadores menores de 50 años que trabajan a tiempo parcial, ¿qué porcentaje trabaja menos de 15 horas semanales?*"
+      "es": "Porcentaje de trabajadores a tiempo completo y a tiempo parcial por edad y número de horas semanales trabajadas:\n\n| | 15–24 años | 25–49 años | 50 años y más |\n|---|---|---|---|\n| Tiempo completo | 76 % | 84 % | 80 % |\n| Tiempo parcial | 24 % | 16 % | 20 % |\n| — de los cuales: Menos de 15 horas | 8 % | 2 % | ~4 % |\n| — de los cuales: De 15 a 29 horas | 12 % | ~8 % | ~11 %* |\n| — de los cuales: 30 horas o más | 4 % | ~6 % | ~5 %* |\n| Total | 100 % | 100 % | 100 % |\n| Total de trabajadores (en miles) | 2.050 | 16.848 | 6.787 |\n\n*\\*La columna \"50 años y más\" de esta tabla está parcialmente oscurecida por un problema de escaneado en la fuente; las cifras mostradas son la lectura más clara disponible y no son necesarias para la explicación de la respuesta.*\n\n*De los trabajadores menores de 50 años que trabajan a tiempo parcial, ¿qué porcentaje trabaja menos de 15 horas semanales?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "10%",
-          "es": "10%"
+          "es": "10 %"
         },
         "isCorrect": false
       },
@@ -378,19 +378,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "16%",
-          "es": "16%"
+          "es": "16 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: In the category \"part-time/aged under 50\", we have to find the percentage who work fewer than 15 hours per week.\n\nSolution — Stage 1: Number of workers aged under 50 working fewer than 15 hours: (0.02 × 16,848) + (0.08 × 2,050) = 337 + 164 = 501. Stage 2: Number of workers aged under 50 working part-time: (0.16 × 16,848) + (0.24 × 2,050) = 2,696 + 492 = 3,188. Stage 3: Percentage of part-time workers aged under 50 working fewer than 15 hours: 501 / 3,188 = 0.157 ≈ **16%**.",
-          "es": "Planteamiento: En la categoría \"tiempo parcial/menores de 50\", debemos hallar el porcentaje que trabaja menos de 15 horas semanales.\n\nSolución — Fase 1: Número de trabajadores menores de 50 que trabajan menos de 15 horas: (0.02 × 16,848) + (0.08 × 2,050) = 337 + 164 = 501. Fase 2: Número de trabajadores menores de 50 que trabajan a tiempo parcial: (0.16 × 16,848) + (0.24 × 2,050) = 2,696 + 492 = 3,188. Fase 3: Porcentaje de trabajadores a tiempo parcial menores de 50 que trabajan menos de 15 horas: 501 / 3,188 = 0.157 ≈ **16%**."
+          "es": "Planteamiento: En la categoría \"tiempo parcial/menores de 50\", debemos hallar el porcentaje que trabaja menos de 15 horas semanales.\n\nSolución — Fase 1: Número de trabajadores menores de 50 que trabajan menos de 15 horas: (0,02 × 16.848) + (0,08 × 2.050) = 337 + 164 = 501. Fase 2: Número de trabajadores menores de 50 que trabajan a tiempo parcial: (0,16 × 16.848) + (0,24 × 2.050) = 2.696 + 492 = 3.188. Fase 3: Porcentaje de trabajadores a tiempo parcial menores de 50 que trabajan menos de 15 horas: 501 / 3.188 = 0,157 ≈ **16 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "20%",
-          "es": "20%"
+          "es": "20 %"
         },
         "isCorrect": false
       },
@@ -398,7 +398,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "25%",
-          "es": "25%"
+          "es": "25 %"
         },
         "isCorrect": false
       },
@@ -422,14 +422,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Public debt:\n\n| Country | Public debt as share of GDP 2009 | Public debt as share of GDP 2010 | Amount of public debt (€ billion) 2009 | Amount of public debt (€ billion) 2010 |\n|---|---|---|---|---|\n| Poldavia | 68% | 65% | 108.8 | 106.6 |\n| Levonia | 101% | 103% | 412.5 | 415.3 |\n| Telonia | 95% | 98% | 44.6 | 49.5 |\n| Zogland | 50% | 54% | 312.4 | 343.1 |\n\n*How did GDP evolve in Poldavia between 2009 and 2010?*",
-      "es": "Deuda pública:\n\n| País | Deuda pública como porcentaje del PIB 2009 | Deuda pública como porcentaje del PIB 2010 | Importe de la deuda pública (miles de millones de €) 2009 | Importe de la deuda pública (miles de millones de €) 2010 |\n|---|---|---|---|---|\n| Poldavia | 68% | 65% | 108.8 | 106.6 |\n| Levonia | 101% | 103% | 412.5 | 415.3 |\n| Telonia | 95% | 98% | 44.6 | 49.5 |\n| Zogland | 50% | 54% | 312.4 | 343.1 |\n\n*¿Cómo evolucionó el PIB de Poldavia entre 2009 y 2010?*"
+      "es": "Deuda pública:\n\n| País | Deuda pública como porcentaje del PIB 2009 | Deuda pública como porcentaje del PIB 2010 | Importe de la deuda pública (miles de millones de €) 2009 | Importe de la deuda pública (miles de millones de €) 2010 |\n|---|---|---|---|---|\n| Poldavia | 68 % | 65 % | 108,8 | 106,6 |\n| Levonia | 101 % | 103 % | 412,5 | 415,3 |\n| Telonia | 95 % | 98 % | 44,6 | 49,5 |\n| Zogland | 50 % | 54 % | 312,4 | 343,1 |\n\n*¿Cómo evolucionó el PIB de Poldavia entre 2009 y 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It decreased by 2.2 billion euros.",
-          "es": "Disminuyó 2.2 miles de millones de euros."
+          "es": "Disminuyó 2,2 miles de millones de euros."
         },
         "isCorrect": false
       },
@@ -437,7 +437,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "It decreased by 4.7 billion euros.",
-          "es": "Disminuyó 4.7 miles de millones de euros."
+          "es": "Disminuyó 4,7 miles de millones de euros."
         },
         "isCorrect": false
       },
@@ -466,7 +466,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we find the value of Poldavia's GDP in 2009; next, we find the value of Poldavia's GDP in 2010; then, we calculate the variation rate between the two values. Calculation method: the GDP is calculated by formulating an equation that links debt to GDP. For example: Public debt in 2009 = 68% × GDP. Therefore: GDP in 2009 = public debt / 68%.\n\nSolution — Stage 1: GDP in 2009 = 108.8 / 0.68 = 160. Stage 2: GDP in 2010 = 106.6 / 0.65 = 164. Stage 3: Evolution = 164 − 160 = **+4 billion euros**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, hallamos el valor del PIB de Poldavia en 2009; a continuación, hallamos el valor del PIB de Poldavia en 2010; después, calculamos la tasa de variación entre ambos valores. Método de cálculo: el PIB se calcula formulando una ecuación que relaciona la deuda con el PIB. Por ejemplo: Deuda pública en 2009 = 68% × PIB. Por tanto: PIB en 2009 = deuda pública / 68%.\n\nSolución — Fase 1: PIB en 2009 = 108.8 / 0.68 = 160. Fase 2: PIB en 2010 = 106.6 / 0.65 = 164. Fase 3: Evolución = 164 − 160 = **+4 miles de millones de euros**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, hallamos el valor del PIB de Poldavia en 2009; a continuación, hallamos el valor del PIB de Poldavia en 2010; después, calculamos la tasa de variación entre ambos valores. Método de cálculo: el PIB se calcula formulando una ecuación que relaciona la deuda con el PIB. Por ejemplo: Deuda pública en 2009 = 68 % × PIB. Por tanto: PIB en 2009 = deuda pública / 68 %.\n\nSolución — Fase 1: PIB en 2009 = 108,8 / 0,68 = 160. Fase 2: PIB en 2010 = 106,6 / 0,65 = 164. Fase 3: Evolución = 164 − 160 = **+4 miles de millones de euros**."
         }
       }
     ],
@@ -481,14 +481,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Sale of accommodation:\n\n| | New accommodation — Houses | New accommodation — Apartments | Old accommodation — Houses | Old accommodation — Apartments |\n|---|---|---|---|---|\n| 2000 | 102,000 | 234,800 | 222,000 | 356,900 |\n| 2005 | 102,600 | 238,900 | 234,700 | 378,000 |\n| 2010 | 105,800 | 267,000 | 276,900 | 420,900 |\n\n*Between 1995 and 2000, the number of houses sold increased regularly by 2% per year. How many houses were sold in 1995?*",
-      "es": "Venta de viviendas:\n\n| | Vivienda nueva — Casas | Vivienda nueva — Apartamentos | Vivienda usada — Casas | Vivienda usada — Apartamentos |\n|---|---|---|---|---|\n| 2000 | 102,000 | 234,800 | 222,000 | 356,900 |\n| 2005 | 102,600 | 238,900 | 234,700 | 378,000 |\n| 2010 | 105,800 | 267,000 | 276,900 | 420,900 |\n\n*Entre 1995 y 2000, el número de casas vendidas aumentó de forma regular un 2% al año. ¿Cuántas casas se vendieron en 1995?*"
+      "es": "Venta de viviendas:\n\n| | Vivienda nueva — Casas | Vivienda nueva — Apartamentos | Vivienda usada — Casas | Vivienda usada — Apartamentos |\n|---|---|---|---|---|\n| 2000 | 102.000 | 234.800 | 222.000 | 356.900 |\n| 2005 | 102.600 | 238.900 | 234.700 | 378.000 |\n| 2010 | 105.800 | 267.000 | 276.900 | 420.900 |\n\n*Entre 1995 y 2000, el número de casas vendidas aumentó de forma regular un 2 % al año. ¿Cuántas casas se vendieron en 1995?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "291,600",
-          "es": "291,600"
+          "es": "291.600"
         },
         "isCorrect": false
       },
@@ -496,7 +496,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "292,870",
-          "es": "292,870"
+          "es": "292.870"
         },
         "isCorrect": false
       },
@@ -504,19 +504,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "293,457",
-          "es": "293,457"
+          "es": "293.457"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of houses sold (new and old) in 2000; then, we use the variation rates between 1995 and 2000 (5 times a rate of 2%) to find the value in 1995.\n\nSolution — Stage 1: Number of houses sold in 2000: 102,000 + 222,000 = 324,000. Stage 2: Number of houses sold in 1995: 324,000 / (1.02)⁵ = 324,000 / 1.02 / 1.02 / 1.02 / 1.02 / 1.02 ≈ **293,457**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de casas vendidas (nuevas y usadas) en 2000; a continuación, usamos las tasas de variación entre 1995 y 2000 (5 veces una tasa del 2%) para hallar el valor en 1995.\n\nSolución — Fase 1: Número de casas vendidas en 2000: 102,000 + 222,000 = 324,000. Fase 2: Número de casas vendidas en 1995: 324,000 / (1.02)⁵ = 324,000 / 1.02 / 1.02 / 1.02 / 1.02 / 1.02 ≈ **293,457**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de casas vendidas (nuevas y usadas) en 2000; a continuación, usamos las tasas de variación entre 1995 y 2000 (5 veces una tasa del 2 %) para hallar el valor en 1995.\n\nSolución — Fase 1: Número de casas vendidas en 2000: 102.000 + 222.000 = 324.000. Fase 2: Número de casas vendidas en 1995: 324.000 / (1,02)⁵ = 324.000 / 1,02 / 1,02 / 1,02 / 1,02 / 1,02 ≈ **293.457**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "317,520",
-          "es": "317,520"
+          "es": "317.520"
         },
         "isCorrect": false
       },
@@ -524,7 +524,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "330,480",
-          "es": "330,480"
+          "es": "330.480"
         },
         "isCorrect": false
       }
@@ -540,14 +540,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Population of Crovaka on 31 December 2009:\n\n| Born in: | Men | Women |\n|---|---|---|\n| 1910–1919 | 49,500 | 50,500 |\n| 1920–1929 | 62,750 | 70,250 |\n| 1930–1939 | 81,750 | 88,125 |\n| 1940–1949 | 108,500 | 112,750 |\n| 1950–1959 | 125,500 | 128,375 |\n| 1960–1969 | 142,625 | 144,000 |\n| 1970–1979 | 124,250 | 128,500 |\n| 1980–1989 | 134,625 | 136,000 |\n| 1990–1999 | 138,200 | 141,750 |\n| 2000–2009 | 146,000 | 147,750 |\n| **Total population** | **1,180,000** | **1,200,000** |\n\n*On 31 December 2009, what percentage of the population of Crovaka was aged 40 and over?*",
-      "es": "Población de Crovaka a 31 de diciembre de 2009:\n\n| Nacidos en: | Hombres | Mujeres |\n|---|---|---|\n| 1910–1919 | 49,500 | 50,500 |\n| 1920–1929 | 62,750 | 70,250 |\n| 1930–1939 | 81,750 | 88,125 |\n| 1940–1949 | 108,500 | 112,750 |\n| 1950–1959 | 125,500 | 128,375 |\n| 1960–1969 | 142,625 | 144,000 |\n| 1970–1979 | 124,250 | 128,500 |\n| 1980–1989 | 134,625 | 136,000 |\n| 1990–1999 | 138,200 | 141,750 |\n| 2000–2009 | 146,000 | 147,750 |\n| **Población total** | **1,180,000** | **1,200,000** |\n\n*A 31 de diciembre de 2009, ¿qué porcentaje de la población de Crovaka tenía 40 años o más?*"
+      "es": "Población de Crovaka a 31 de diciembre de 2009:\n\n| Nacidos en: | Hombres | Mujeres |\n|---|---|---|\n| 1910–1919 | 49.500 | 50.500 |\n| 1920–1929 | 62.750 | 70.250 |\n| 1930–1939 | 81.750 | 88.125 |\n| 1940–1949 | 108.500 | 112.750 |\n| 1950–1959 | 125.500 | 128.375 |\n| 1960–1969 | 142.625 | 144.000 |\n| 1970–1979 | 124.250 | 128.500 |\n| 1980–1989 | 134.625 | 136.000 |\n| 1990–1999 | 138.200 | 141.750 |\n| 2000–2009 | 146.000 | 147.750 |\n| **Población total** | **1.180.000** | **1.200.000** |\n\n*A 31 de diciembre de 2009, ¿qué porcentaje de la población de Crovaka tenía 40 años o más?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       },
@@ -555,7 +555,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "46%",
-          "es": "46%"
+          "es": "46 %"
         },
         "isCorrect": false
       },
@@ -563,7 +563,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "49%",
-          "es": "49%"
+          "es": "49 %"
         },
         "isCorrect": false
       },
@@ -571,19 +571,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "54%",
-          "es": "54%"
+          "es": "54 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: NB! The population aged 40 and over cannot be calculated directly by adding the number of men and women born before 1970: there may be people born before and after 1970. We need to calculate the difference between the total population and the number of men and women born from 1970 onwards.\n\nSolution: Number of men and women aged under 40 (born 1970 onwards): 124,250 + 134,625 + 138,200 + 146,000 + 128,500 + 136,000 + 141,750 + 147,750 = 1,097,075. Total population: 1,180,000 + 1,200,000 = 2,380,000. Population aged 40 and over: 2,380,000 − 1,097,075 = 1,282,925. Percentage of the population aged 40 and over: 1,282,925 / 2,380,000 = 0.539 ≈ **54%**.",
-          "es": "Planteamiento y método: Atención: la población de 40 años y más no puede calcularse directamente sumando el número de hombres y mujeres nacidos antes de 1970: puede haber personas nacidas antes y después de 1970. Debemos calcular la diferencia entre la población total y el número de hombres y mujeres nacidos a partir de 1970.\n\nSolución: Número de hombres y mujeres menores de 40 años (nacidos a partir de 1970): 124,250 + 134,625 + 138,200 + 146,000 + 128,500 + 136,000 + 141,750 + 147,750 = 1,097,075. Población total: 1,180,000 + 1,200,000 = 2,380,000. Población de 40 años y más: 2,380,000 − 1,097,075 = 1,282,925. Porcentaje de la población de 40 años y más: 1,282,925 / 2,380,000 = 0.539 ≈ **54%**."
+          "es": "Planteamiento y método: Atención: la población de 40 años y más no puede calcularse directamente sumando el número de hombres y mujeres nacidos antes de 1970: puede haber personas nacidas antes y después de 1970. Debemos calcular la diferencia entre la población total y el número de hombres y mujeres nacidos a partir de 1970.\n\nSolución: Número de hombres y mujeres menores de 40 años (nacidos a partir de 1970): 124.250 + 134.625 + 138.200 + 146.000 + 128.500 + 136.000 + 141.750 + 147.750 = 1.097.075. Población total: 1.180.000 + 1.200.000 = 2.380.000. Población de 40 años y más: 2.380.000 − 1.097.075 = 1.282.925. Porcentaje de la población de 40 años y más: 1.282.925 / 2.380.000 = 0,539 ≈ **54 %**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "60%",
-          "es": "60%"
+          "es": "60 %"
         },
         "isCorrect": false
       }
@@ -599,19 +599,19 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "GDP and population of Telonia:\n\n| | 1990 | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|---|\n| GDP (in millions of euros) | 120,320 | 122,400 | 123,610 | 125,460 | 132,430 |\n| Population (x1,000) | 4,680 | 4,800 | 4,930 | 5,040 | 5,120 |\n\n*In Telonia, how did the GDP per inhabitant evolve between 1995 and 2005?*",
-      "es": "PIB y población de Telonia:\n\n| | 1990 | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|---|\n| PIB (en millones de euros) | 120,320 | 122,400 | 123,610 | 125,460 | 132,430 |\n| Población (x1,000) | 4,680 | 4,800 | 4,930 | 5,040 | 5,120 |\n\n*En Telonia, ¿cómo evolucionó el PIB por habitante entre 1995 y 2005?*"
+      "es": "PIB y población de Telonia:\n\n| | 1990 | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|---|\n| PIB (en millones de euros) | 120.320 | 122.400 | 123.610 | 125.460 | 132.430 |\n| Población (x1.000) | 4.680 | 4.800 | 4.930 | 5.040 | 5.120 |\n\n*En Telonia, ¿cómo evolucionó el PIB por habitante entre 1995 y 2005?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It decreased by 2.4%.",
-          "es": "Disminuyó un 2.4%."
+          "es": "Disminuyó un 2,4 %."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate GDP per inhabitant in 1995 and 2005; then, we calculate the relative variation between these two years.\n\nSolution — Stage 1: GDP per inhabitant in 1995 (×1,000): 122,400 / 4,800 = 25.5. GDP per inhabitant in 2005 (×1,000): 125,460 / 5,040 = 24.9. Stage 2: GDP per inhabitant has **decreased**. It is therefore not necessary to calculate the variation rate; answer a) is necessarily the correct answer.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el PIB por habitante en 1995 y 2005; a continuación, calculamos la variación relativa entre estos dos años.\n\nSolución — Fase 1: PIB por habitante en 1995 (×1,000): 122,400 / 4,800 = 25.5. PIB por habitante en 2005 (×1,000): 125,460 / 5,040 = 24.9. Fase 2: El PIB por habitante ha **disminuido**. Por tanto, no es necesario calcular la tasa de variación; la respuesta a) es necesariamente la correcta."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el PIB por habitante en 1995 y 2005; a continuación, calculamos la variación relativa entre estos dos años.\n\nSolución — Fase 1: PIB por habitante en 1995 (×1.000): 122.400 / 4.800 = 25,5. PIB por habitante en 2005 (×1.000): 125.460 / 5.040 = 24,9. Fase 2: El PIB por habitante ha **disminuido**. Por tanto, no es necesario calcular la tasa de variación; la respuesta a) es necesariamente la correcta."
         }
       },
       {
@@ -626,7 +626,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "It increased by 0.5%.",
-          "es": "Aumentó un 0.5%."
+          "es": "Aumentó un 0,5 %."
         },
         "isCorrect": false
       },
@@ -634,7 +634,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "It increased by 2.5%.",
-          "es": "Aumentó un 2.5%."
+          "es": "Aumentó un 2,5 %."
         },
         "isCorrect": false
       },
@@ -642,7 +642,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "It increased by 3%.",
-          "es": "Aumentó un 3%."
+          "es": "Aumentó un 3 %."
         },
         "isCorrect": false
       }
@@ -658,14 +658,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution of military personnel (shown as a stacked bar chart in the source, bands Navy/Airforce/Army, for Poldavia, Telonia, Zogland, Levonia; the explanation reads Poldavia's Army share as 50% of its total armed forces directly off the chart).\n\n*In Levonia, there are 191,820 men and women in the army, ie 46,260 more than in Poldavia. What is the total military personnel of Poldavia's armed forces?*",
-      "es": "Distribución del personal militar (mostrada como gráfico de barras apiladas en la fuente, bandas Armada/Fuerza Aérea/Ejército, para Poldavia, Telonia, Zogland, Levonia; la explicación lee la cuota del Ejército de Poldavia como el 50% de sus fuerzas armadas totales directamente del gráfico).\n\n*En Levonia hay 191,820 hombres y mujeres en el ejército, es decir, 46,260 más que en Poldavia. ¿Cuál es el total del personal militar de las fuerzas armadas de Poldavia?*"
+      "es": "Distribución del personal militar (mostrada como gráfico de barras apiladas en la fuente, bandas Armada/Fuerza Aérea/Ejército, para Poldavia, Telonia, Zogland, Levonia; la explicación lee la cuota del Ejército de Poldavia como el 50 % de sus fuerzas armadas totales directamente del gráfico).\n\n*En Levonia hay 191.820 hombres y mujeres en el ejército, es decir, 46.260 más que en Poldavia. ¿Cuál es el total del personal militar de las fuerzas armadas de Poldavia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "242,600",
-          "es": "242,600"
+          "es": "242.600"
         },
         "isCorrect": false
       },
@@ -673,19 +673,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "291,120",
-          "es": "291,120"
+          "es": "291.120"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: We need to proceed in two stages: first, we find the size of Poldavia's army. We can do this using the information contained in the text at the start of the question; then, we find the total size of Poldavia's armed forces using the graph. According to this, the army accounts for 50% of Poldavia's total armed forces. Therefore: Total armed forces in Poldavia = 2 × size of the army.\n\nSolution — Stage 1: The size of Poldavia's army is deduced from that of Levonia: 191,820 = size of Poldavia's army + 46,260. Therefore: Size of Poldavia's army = 191,820 − 46,260 = 145,560. Stage 2: Total armed forces = 2 × 145,560 = **291,120**.",
-          "es": "Planteamiento: Debemos proceder en dos fases: primero, hallamos el tamaño del ejército de Poldavia. Podemos hacerlo con la información contenida en el texto al inicio de la pregunta; a continuación, hallamos el tamaño total de las fuerzas armadas de Poldavia usando el gráfico. Según este, el ejército representa el 50% del total de las fuerzas armadas de Poldavia. Por tanto: Fuerzas armadas totales en Poldavia = 2 × tamaño del ejército.\n\nSolución — Fase 1: El tamaño del ejército de Poldavia se deduce del de Levonia: 191,820 = tamaño del ejército de Poldavia + 46,260. Por tanto: Tamaño del ejército de Poldavia = 191,820 − 46,260 = 145,560. Fase 2: Fuerzas armadas totales = 2 × 145,560 = **291,120**."
+          "es": "Planteamiento: Debemos proceder en dos fases: primero, hallamos el tamaño del ejército de Poldavia. Podemos hacerlo con la información contenida en el texto al inicio de la pregunta; a continuación, hallamos el tamaño total de las fuerzas armadas de Poldavia usando el gráfico. Según este, el ejército representa el 50 % del total de las fuerzas armadas de Poldavia. Por tanto: Fuerzas armadas totales en Poldavia = 2 × tamaño del ejército.\n\nSolución — Fase 1: El tamaño del ejército de Poldavia se deduce del de Levonia: 191.820 = tamaño del ejército de Poldavia + 46.260. Por tanto: Tamaño del ejército de Poldavia = 191.820 − 46.260 = 145.560. Fase 2: Fuerzas armadas totales = 2 × 145.560 = **291.120**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "396,800",
-          "es": "396,800"
+          "es": "396.800"
         },
         "isCorrect": false
       },
@@ -693,7 +693,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "476,160",
-          "es": "476,160"
+          "es": "476.160"
         },
         "isCorrect": false
       },
@@ -717,7 +717,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Health professionals in Muravia (number per 10,000 inhabitants):\n\n| | 1980 | 1990 | 2000 | 2010 |\n|---|---|---|---|---|\n| Doctors | 37 | 35 | 36 | 38 |\n| Dentists | 9 | 10 | 10 | 12 |\n| Midwives | 5 | 5 | 4 | 3 |\n| Pharmacists | 24 | 25 | 25 | 26 |\n\n*In Telonia, there was one pharmacist for every 250 inhabitants in 1990. What is the difference, as an absolute value, between the number of pharmacists per 1,000 inhabitants in Telonia and the number of pharmacists per 1,000 inhabitants in Muravia in 1990?*",
-      "es": "Profesionales de la salud en Muravia (número por 10,000 habitantes):\n\n| | 1980 | 1990 | 2000 | 2010 |\n|---|---|---|---|---|\n| Médicos | 37 | 35 | 36 | 38 |\n| Dentistas | 9 | 10 | 10 | 12 |\n| Matronas | 5 | 5 | 4 | 3 |\n| Farmacéuticos | 24 | 25 | 25 | 26 |\n\n*En Telonia había un farmacéutico por cada 250 habitantes en 1990. ¿Cuál es la diferencia, en valor absoluto, entre el número de farmacéuticos por 1,000 habitantes en Telonia y el número de farmacéuticos por 1,000 habitantes en Muravia en 1990?*"
+      "es": "Profesionales de la salud en Muravia (número por 10.000 habitantes):\n\n| | 1980 | 1990 | 2000 | 2010 |\n|---|---|---|---|---|\n| Médicos | 37 | 35 | 36 | 38 |\n| Dentistas | 9 | 10 | 10 | 12 |\n| Matronas | 5 | 5 | 4 | 3 |\n| Farmacéuticos | 24 | 25 | 25 | 26 |\n\n*En Telonia había un farmacéutico por cada 250 habitantes en 1990. ¿Cuál es la diferencia, en valor absoluto, entre el número de farmacéuticos por 1.000 habitantes en Telonia y el número de farmacéuticos por 1.000 habitantes en Muravia en 1990?*"
     },
     "options": [
       {
@@ -732,19 +732,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1.5",
-          "es": "1.5"
+          "es": "1,5"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate the number of pharmacists per 1,000 inhabitants in Telonia (from the information in the question) and in Muravia (from the table), then find the absolute difference.\n\nSolution: Number of pharmacists per 1,000 inhabitants in Telonia = 1,000 / 250 = 4. Number of pharmacists per 1,000 inhabitants in Muravia in 1990 = 25 per 10,000 = 2.5 per 1,000. Difference = 4 − 2.5 = **1.5**.",
-          "es": "Planteamiento y método: Debemos calcular el número de farmacéuticos por 1,000 habitantes en Telonia (a partir de la información de la pregunta) y en Muravia (a partir de la tabla), y luego hallar la diferencia absoluta.\n\nSolución: Número de farmacéuticos por 1,000 habitantes en Telonia = 1,000 / 250 = 4. Número de farmacéuticos por 1,000 habitantes en Muravia en 1990 = 25 por 10,000 = 2.5 por 1,000. Diferencia = 4 − 2.5 = **1.5**."
+          "es": "Planteamiento y método: Debemos calcular el número de farmacéuticos por 1.000 habitantes en Telonia (a partir de la información de la pregunta) y en Muravia (a partir de la tabla), y luego hallar la diferencia absoluta.\n\nSolución: Número de farmacéuticos por 1.000 habitantes en Telonia = 1.000 / 250 = 4. Número de farmacéuticos por 1.000 habitantes en Muravia en 1990 = 25 por 10.000 = 2,5 por 1.000. Diferencia = 4 − 2,5 = **1,5**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "2.5",
-          "es": "2.5"
+          "es": "2,5"
         },
         "isCorrect": false
       },
@@ -776,14 +776,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Trips and overnight stays made by inhabitants of Poldavia in 2010 by duration, reason and destination (in millions):\n\n| | Short trip (1–3 nights) — Trips | Short trip (1–3 nights) — Overnight stays | Long trip (4+ nights) — Trips | Long trip (4+ nights) — Overnight stays |\n|---|---|---|---|---|\n| **Professional reasons** | | | | |\n| Poldavia | 14.6 | 24.9 | 6.5 | 47.6 |\n| Abroad | 2.2 | 4.1 | 1.6 | 17.4 |\n| Total | 16.8 | 29.0 | 8.1 | 65.0 |\n| **Personal reasons** | | | | |\n| Poldavia | 102.4 | 187.9 | 78.6 | 774.0 |\n| Abroad | 4.6 | 10.1 | 16.7 | 188.0 |\n| Total | 107.0 | 198.0 | 95.3 | 962.0 |\n\n*On average, how many nights per trip did inhabitants of Poldavia spend abroad?*",
-      "es": "Viajes y pernoctaciones realizados por habitantes de Poldavia en 2010 por duración, motivo y destino (en millones):\n\n| | Viaje corto (1–3 noches) — Viajes | Viaje corto (1–3 noches) — Pernoctaciones | Viaje largo (4+ noches) — Viajes | Viaje largo (4+ noches) — Pernoctaciones |\n|---|---|---|---|---|\n| **Motivos profesionales** | | | | |\n| Poldavia | 14.6 | 24.9 | 6.5 | 47.6 |\n| Extranjero | 2.2 | 4.1 | 1.6 | 17.4 |\n| Total | 16.8 | 29.0 | 8.1 | 65.0 |\n| **Motivos personales** | | | | |\n| Poldavia | 102.4 | 187.9 | 78.6 | 774.0 |\n| Extranjero | 4.6 | 10.1 | 16.7 | 188.0 |\n| Total | 107.0 | 198.0 | 95.3 | 962.0 |\n\n*Por término medio, ¿cuántas noches por viaje pasaron en el extranjero los habitantes de Poldavia?*"
+      "es": "Viajes y pernoctaciones realizados por habitantes de Poldavia en 2010 por duración, motivo y destino (en millones):\n\n| | Viaje corto (1–3 noches) — Viajes | Viaje corto (1–3 noches) — Pernoctaciones | Viaje largo (4+ noches) — Viajes | Viaje largo (4+ noches) — Pernoctaciones |\n|---|---|---|---|---|\n| **Motivos profesionales** | | | | |\n| Poldavia | 14,6 | 24,9 | 6,5 | 47,6 |\n| Extranjero | 2,2 | 4,1 | 1,6 | 17,4 |\n| Total | 16,8 | 29,0 | 8,1 | 65,0 |\n| **Motivos personales** | | | | |\n| Poldavia | 102,4 | 187,9 | 78,6 | 774,0 |\n| Extranjero | 4,6 | 10,1 | 16,7 | 188,0 |\n| Total | 107,0 | 198,0 | 95,3 | 962,0 |\n\n*Por término medio, ¿cuántas noches por viaje pasaron en el extranjero los habitantes de Poldavia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "2.1",
-          "es": "2.1"
+          "es": "2,1"
         },
         "isCorrect": false
       },
@@ -791,7 +791,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "5.1",
-          "es": "5.1"
+          "es": "5,1"
         },
         "isCorrect": false
       },
@@ -799,7 +799,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "5.5",
-          "es": "5.5"
+          "es": "5,5"
         },
         "isCorrect": false
       },
@@ -807,19 +807,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "8.7",
-          "es": "8.7"
+          "es": "8,7"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to add together all the \"Abroad\" trips (short and long) and all the \"Abroad\" overnight stays (short and long), for both professional and personal reasons, then divide overnight stays by trips.\n\nSolution: Total trips abroad = 2.2 + 1.6 + 4.6 + 16.7 = 25.1. Total overnight stays abroad = 4.1 + 17.4 + 10.1 + 188.0 = 219.6. Average number of nights per trip abroad = 219.6 / 25.1 ≈ **8.7**.",
-          "es": "Planteamiento y método: Debemos sumar todos los viajes \"al extranjero\" (cortos y largos) y todas las pernoctaciones \"en el extranjero\" (cortas y largas), tanto por motivos profesionales como personales, y luego dividir las pernoctaciones entre los viajes.\n\nSolución: Total de viajes al extranjero = 2.2 + 1.6 + 4.6 + 16.7 = 25.1. Total de pernoctaciones en el extranjero = 4.1 + 17.4 + 10.1 + 188.0 = 219.6. Número medio de noches por viaje al extranjero = 219.6 / 25.1 ≈ **8.7**."
+          "es": "Planteamiento y método: Debemos sumar todos los viajes \"al extranjero\" (cortos y largos) y todas las pernoctaciones \"en el extranjero\" (cortas y largas), tanto por motivos profesionales como personales, y luego dividir las pernoctaciones entre los viajes.\n\nSolución: Total de viajes al extranjero = 2,2 + 1,6 + 4,6 + 16,7 = 25,1. Total de pernoctaciones en el extranjero = 4,1 + 17,4 + 10,1 + 188,0 = 219,6. Número medio de noches por viaje al extranjero = 219,6 / 25,1 ≈ **8,7**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "11.2",
-          "es": "11.2"
+          "es": "11,2"
         },
         "isCorrect": false
       }
@@ -835,7 +835,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Sports permit holders:\n\n| Sport | Number of permit holders 2008 | Number of permit holders 2010 | Share of female permit holders 2008 | Share of female permit holders 2010 |\n|---|---|---|---|---|\n| Tennis | 76,124 | 84,124 | 40.3% | 41.7% |\n| Horse riding | 35,225 | 34,245 | 31.4% | 31.2% |\n| Swimming | 93,412 | 102,348 | 36.1% | 42.1% |\n| Athletics | 56,529 | 64,508 | 58.6% | 63.3% |\n| Gymnastics | 36,418 | 34,523 | 64.1% | 65.1% |\n\n*In which sport was the number of female permit holders highest in 2010?*",
-      "es": "Titulares de licencias deportivas:\n\n| Deporte | Número de licencias 2008 | Número de licencias 2010 | Cuota de licencias femeninas 2008 | Cuota de licencias femeninas 2010 |\n|---|---|---|---|---|\n| Tenis | 76,124 | 84,124 | 40.3% | 41.7% |\n| Hípica | 35,225 | 34,245 | 31.4% | 31.2% |\n| Natación | 93,412 | 102,348 | 36.1% | 42.1% |\n| Atletismo | 56,529 | 64,508 | 58.6% | 63.3% |\n| Gimnasia | 36,418 | 34,523 | 64.1% | 65.1% |\n\n*¿En qué deporte fue mayor el número de licencias femeninas en 2010?*"
+      "es": "Titulares de licencias deportivas:\n\n| Deporte | Número de licencias 2008 | Número de licencias 2010 | Cuota de licencias femeninas 2008 | Cuota de licencias femeninas 2010 |\n|---|---|---|---|---|\n| Tenis | 76.124 | 84.124 | 40,3 % | 41,7 % |\n| Hípica | 35.225 | 34.245 | 31,4 % | 31,2 % |\n| Natación | 93.412 | 102.348 | 36,1 % | 42,1 % |\n| Atletismo | 56.529 | 64.508 | 58,6 % | 63,3 % |\n| Gimnasia | 36.418 | 34.523 | 64,1 % | 65,1 % |\n\n*¿En qué deporte fue mayor el número de licencias femeninas en 2010?*"
     },
     "options": [
       {
@@ -871,7 +871,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate the number of female permit holders in 2010 for each sport (number of permit holders × share of female permit holders) and find the highest.\n\nSolution: Tennis: 84,124 × 41.7% ≈ 35,080. Horse riding: 34,245 × 31.2% ≈ 10,684. Swimming: 102,348 × 42.1% ≈ 43,089. Athletics: 64,508 × 63.3% ≈ 40,834. Gymnastics: 34,523 × 65.1% ≈ 22,474. The highest number of female permit holders in 2010 is in **swimming**.",
-          "es": "Planteamiento y método: Debemos calcular el número de licencias femeninas en 2010 para cada deporte (número de licencias × cuota de licencias femeninas) y hallar el mayor.\n\nSolución: Tenis: 84,124 × 41.7% ≈ 35,080. Hípica: 34,245 × 31.2% ≈ 10,684. Natación: 102,348 × 42.1% ≈ 43,089. Atletismo: 64,508 × 63.3% ≈ 40,834. Gimnasia: 34,523 × 65.1% ≈ 22,474. El número más alto de licencias femeninas en 2010 está en **natación**."
+          "es": "Planteamiento y método: Debemos calcular el número de licencias femeninas en 2010 para cada deporte (número de licencias × cuota de licencias femeninas) y hallar el mayor.\n\nSolución: Tenis: 84.124 × 41,7 % ≈ 35.080. Hípica: 34.245 × 31,2 % ≈ 10.684. Natación: 102.348 × 42,1 % ≈ 43.089. Atletismo: 64.508 × 63,3 % ≈ 40.834. Gimnasia: 34.523 × 65,1 % ≈ 22.474. El número más alto de licencias femeninas en 2010 está en **natación**."
         }
       },
       {
@@ -894,14 +894,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Foreign trade balance (in millions of euros):\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Goods traded | -39,471 | -53,731 | -41,961 | -41,961 |\n| Services traded | -7,499 | 1,011 | -3,072 | -3,072 |\n\n*The foreign trade balance is the difference between exports and imports. In 2008, exports of goods and services were worth 286,430 million euros. In 2008, what was the ratio between the amount of exports and the amount of imports in the trade in goods and services?*",
-      "es": "Balanza comercial exterior (en millones de euros):\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Comercio de bienes | -39,471 | -53,731 | -41,961 | -41,961 |\n| Comercio de servicios | -7,499 | 1,011 | -3,072 | -3,072 |\n\n*La balanza comercial exterior es la diferencia entre las exportaciones y las importaciones. En 2008, las exportaciones de bienes y servicios tenían un valor de 286,430 millones de euros. En 2008, ¿cuál era la proporción entre el importe de las exportaciones y el importe de las importaciones en el comercio de bienes y servicios?*"
+      "es": "Balanza comercial exterior (en millones de euros):\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Comercio de bienes | -39.471 | -53.731 | -41.961 | -41.961 |\n| Comercio de servicios | -7.499 | 1.011 | -3.072 | -3.072 |\n\n*La balanza comercial exterior es la diferencia entre las exportaciones y las importaciones. En 2008, las exportaciones de bienes y servicios tenían un valor de 286.430 millones de euros. En 2008, ¿cuál era la proporción entre el importe de las exportaciones y el importe de las importaciones en el comercio de bienes y servicios?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "82%",
-          "es": "82%"
+          "es": "82 %"
         },
         "isCorrect": false
       },
@@ -909,19 +909,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "84%",
-          "es": "84%"
+          "es": "84 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The foreign trade balance is the difference between exports and imports: Balance = Exports − Imports. In 2008: Balance = −53,731 + 1,011 = −52,720. We also know that Exports = 286,430. Therefore: Imports = Exports − Balance = 286,430 − (−52,720) = 339,150.\n\nSolution: Ratio between exports and imports = 286,430 / 339,150 ≈ **84%**.",
-          "es": "Planteamiento y método: La balanza comercial exterior es la diferencia entre las exportaciones y las importaciones: Balanza = Exportaciones − Importaciones. En 2008: Balanza = −53,731 + 1,011 = −52,720. Sabemos también que Exportaciones = 286,430. Por tanto: Importaciones = Exportaciones − Balanza = 286,430 − (−52,720) = 339,150.\n\nSolución: Proporción entre exportaciones e importaciones = 286,430 / 339,150 ≈ **84%**."
+          "es": "Planteamiento y método: La balanza comercial exterior es la diferencia entre las exportaciones y las importaciones: Balanza = Exportaciones − Importaciones. En 2008: Balanza = −53.731 + 1.011 = −52.720. Sabemos también que Exportaciones = 286.430. Por tanto: Importaciones = Exportaciones − Balanza = 286.430 − (−52.720) = 339.150.\n\nSolución: Proporción entre exportaciones e importaciones = 286.430 / 339.150 ≈ **84 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "118%",
-          "es": "118%"
+          "es": "118 %"
         },
         "isCorrect": false
       },
@@ -929,7 +929,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "123%",
-          "es": "123%"
+          "es": "123 %"
         },
         "isCorrect": false
       },
@@ -953,14 +953,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of prisoners by age:\n\n| Age | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|\n| Under 16 | 90 | 77 | 57 | 65 |\n| 16 to 18 | 339 | 350 | 324 | 307 |\n| 18 to 21 | 4,661 | 4,894 | 4,886 | 4,883 |\n| 21 to 25 | 10,519 | 10,867 | 11,480 | 11,438 |\n| 25 to under 30 | 11,413 | 12,382 | 13,213 | 13,399 |\n| 30 to under 40 | 15,700 | 16,689 | 17,142 | 17,146 |\n| 40 to under 50 | 10,035 | 10,685 | 11,069 | 10,874 |\n| 50 to under 60 | 5,139 | 5,395 | 5,242 | 5,321 |\n| 60 and over | 2,207 | 2,364 | 2,465 | 2,356 |\n| **Total** | **60,103** | **63,703** | **65,878** | **65,789** |\n\n*In 2010, what was the percentage of prisoners aged at least 18?*",
-      "es": "Número de reclusos por edad:\n\n| Edad | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|\n| Menos de 16 | 90 | 77 | 57 | 65 |\n| 16 a 18 | 339 | 350 | 324 | 307 |\n| 18 a 21 | 4,661 | 4,894 | 4,886 | 4,883 |\n| 21 a 25 | 10,519 | 10,867 | 11,480 | 11,438 |\n| 25 a menos de 30 | 11,413 | 12,382 | 13,213 | 13,399 |\n| 30 a menos de 40 | 15,700 | 16,689 | 17,142 | 17,146 |\n| 40 a menos de 50 | 10,035 | 10,685 | 11,069 | 10,874 |\n| 50 a menos de 60 | 5,139 | 5,395 | 5,242 | 5,321 |\n| 60 y más | 2,207 | 2,364 | 2,465 | 2,356 |\n| **Total** | **60,103** | **63,703** | **65,878** | **65,789** |\n\n*En 2010, ¿qué porcentaje de los reclusos tenía al menos 18 años?*"
+      "es": "Número de reclusos por edad:\n\n| Edad | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|\n| Menos de 16 | 90 | 77 | 57 | 65 |\n| 16 a 18 | 339 | 350 | 324 | 307 |\n| 18 a 21 | 4.661 | 4.894 | 4.886 | 4.883 |\n| 21 a 25 | 10.519 | 10.867 | 11.480 | 11.438 |\n| 25 a menos de 30 | 11.413 | 12.382 | 13.213 | 13.399 |\n| 30 a menos de 40 | 15.700 | 16.689 | 17.142 | 17.146 |\n| 40 a menos de 50 | 10.035 | 10.685 | 11.069 | 10.874 |\n| 50 a menos de 60 | 5.139 | 5.395 | 5.242 | 5.321 |\n| 60 y más | 2.207 | 2.364 | 2.465 | 2.356 |\n| **Total** | **60.103** | **63.703** | **65.878** | **65.789** |\n\n*En 2010, ¿qué porcentaje de los reclusos tenía al menos 18 años?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "92.0%",
-          "es": "92.0%"
+          "es": "92,0 %"
         },
         "isCorrect": false
       },
@@ -968,7 +968,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "94.8%",
-          "es": "94.8%"
+          "es": "94,8 %"
         },
         "isCorrect": false
       },
@@ -976,7 +976,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "96.4%",
-          "es": "96.4%"
+          "es": "96,4 %"
         },
         "isCorrect": false
       },
@@ -984,7 +984,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "97.5%",
-          "es": "97.5%"
+          "es": "97,5 %"
         },
         "isCorrect": false
       },
@@ -992,12 +992,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "99.4%",
-          "es": "99.4%"
+          "es": "99,4 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to find the number of prisoners aged over 18 and calculate the percentage this represents in terms of the total number of prisoners.\n\nTip! The question is a simple one. You must perform as few calculations as possible to save time and so be able to spend longer on the difficult questions. We will therefore choose to calculate the result as follows: Percentage of prisoners aged at least 18 = 100% − percentage of prisoners under the age of 18.\n\nSolution: Percentage of prisoners under the age of 18: (65 + 307) / 65,789 = 0.00565 ≈ 0.6%. Percentage of prisoners aged at least 18 = 100% − 0.6% = **99.4%**.",
-          "es": "Planteamiento y método: Debemos hallar el número de reclusos mayores de 18 años y calcular el porcentaje que representa respecto al número total de reclusos.\n\nConsejo: La pregunta es sencilla. Debes realizar el menor número de cálculos posible para ahorrar tiempo y así poder dedicar más tiempo a las preguntas difíciles. Por ello, elegiremos calcular el resultado de la siguiente manera: Porcentaje de reclusos de al menos 18 años = 100% − porcentaje de reclusos menores de 18 años.\n\nSolución: Porcentaje de reclusos menores de 18 años: (65 + 307) / 65,789 = 0.00565 ≈ 0.6%. Porcentaje de reclusos de al menos 18 años = 100% − 0.6% = **99.4%**."
+          "es": "Planteamiento y método: Debemos hallar el número de reclusos mayores de 18 años y calcular el porcentaje que representa respecto al número total de reclusos.\n\nConsejo: La pregunta es sencilla. Debes realizar el menor número de cálculos posible para ahorrar tiempo y así poder dedicar más tiempo a las preguntas difíciles. Por ello, elegiremos calcular el resultado de la siguiente manera: Porcentaje de reclusos de al menos 18 años = 100 % − porcentaje de reclusos menores de 18 años.\n\nSolución: Porcentaje de reclusos menores de 18 años: (65 + 307) / 65.789 = 0,00565 ≈ 0,6 %. Porcentaje de reclusos de al menos 18 años = 100 % − 0,6 % = **99,4 %**."
         }
       }
     ],
@@ -1012,14 +1012,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Doctors (2009):\n\n| Country | Total number of general practitioners | Total number of specialists | Number of general practitioners per 10,000 inhabitants |\n|---|---|---|---|\n| Buldonia | 64,620 | 16,430 | 24 |\n| Muravia | 90,420 | 21,680 | 32 |\n\n*In 2009, 30% of Muravia's inhabitants were under 20 years of age. In 2009, how many of Muravia's inhabitants were aged 20 and over?*",
-      "es": "Médicos (2009):\n\n| País | Número total de médicos de familia | Número total de especialistas | Número de médicos de familia por 10,000 habitantes |\n|---|---|---|---|\n| Buldonia | 64,620 | 16,430 | 24 |\n| Muravia | 90,420 | 21,680 | 32 |\n\n*En 2009, el 30% de los habitantes de Muravia tenía menos de 20 años. En 2009, ¿cuántos habitantes de Muravia tenían 20 años o más?*"
+      "es": "Médicos (2009):\n\n| País | Número total de médicos de familia | Número total de especialistas | Número de médicos de familia por 10.000 habitantes |\n|---|---|---|---|\n| Buldonia | 64.620 | 16.430 | 24 |\n| Muravia | 90.420 | 21.680 | 32 |\n\n*En 2009, el 30 % de los habitantes de Muravia tenía menos de 20 años. En 2009, ¿cuántos habitantes de Muravia tenían 20 años o más?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "8,077,500",
-          "es": "8,077,500"
+          "es": "8.077.500"
         },
         "isCorrect": false
       },
@@ -1027,7 +1027,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "8,476,875",
-          "es": "8,476,875"
+          "es": "8.476.875"
         },
         "isCorrect": false
       },
@@ -1035,7 +1035,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "18,847,500",
-          "es": "18,847,500"
+          "es": "18.847.500"
         },
         "isCorrect": false
       },
@@ -1043,19 +1043,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "19,779,375",
-          "es": "19,779,375"
+          "es": "19.779.375"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we find the total number of inhabitants in Muravia. This is a direct proportion question: the number of inhabitants is directly proportional to the number of general practitioners; then, we find the number of inhabitants aged 20 and over. We know that 30% of Muravia's inhabitants were under 20 years old. Consequently, 70% were 20 or over.\n\nSolution — Stage 1: Let N be the number of inhabitants in Muravia: N × 32 = 10,000 × 90,420. N = 10,000 × 90,420 / 32 = 28,256,250. Stage 2: Number of inhabitants aged 20 or over: 0.7 × 28,256,250 = **19,779,375**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, hallamos el número total de habitantes de Muravia. Es una pregunta de proporcionalidad directa: el número de habitantes es directamente proporcional al número de médicos de familia; a continuación, hallamos el número de habitantes de 20 años y más. Sabemos que el 30% de los habitantes de Muravia tenía menos de 20 años. En consecuencia, el 70% tenía 20 años o más.\n\nSolución — Fase 1: Sea N el número de habitantes de Muravia: N × 32 = 10,000 × 90,420. N = 10,000 × 90,420 / 32 = 28,256,250. Fase 2: Número de habitantes de 20 años o más: 0.7 × 28,256,250 = **19,779,375**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, hallamos el número total de habitantes de Muravia. Es una pregunta de proporcionalidad directa: el número de habitantes es directamente proporcional al número de médicos de familia; a continuación, hallamos el número de habitantes de 20 años y más. Sabemos que el 30 % de los habitantes de Muravia tenía menos de 20 años. En consecuencia, el 70 % tenía 20 años o más.\n\nSolución — Fase 1: Sea N el número de habitantes de Muravia: N × 32 = 10.000 × 90.420. N = 10.000 × 90.420 / 32 = 28.256.250. Fase 2: Número de habitantes de 20 años o más: 0,7 × 28.256.250 = **19.779.375**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "28,256,250",
-          "es": "28,256,250"
+          "es": "28.256.250"
         },
         "isCorrect": false
       }
@@ -1071,14 +1071,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Evolution in household spending (% variation compared with the same month of the previous year):\n\n| | January 2011 | February 2011 | March 2011 | April 2011 |\n|---|---|---|---|---|\n| Food | -0.5% | -1.1% | +0.2% | -1.5% |\n| Accommodation | +1.3% | +1.0% | -1.2% | -1.9% |\n| Clothing | -0.5% | +0.9% | -0.4% | +0.7% |\n| Energy | +2.2% | +1.9% | +2.7% | +3.3% |\n| Leisure | -0.9% | -0.1% | +0.8% | -0.1% |\n| Total spending | +2.3% | +0.5% | +2.1% | +2.5% |\n\n*In January 2010, households spent 46,840,780 euros on accommodation, ie 70% more than on food. What was household spending on food in January 2011?*",
-      "es": "Evolución del gasto de los hogares (% de variación respecto al mismo mes del año anterior):\n\n| | Enero 2011 | Febrero 2011 | Marzo 2011 | Abril 2011 |\n|---|---|---|---|---|\n| Alimentación | -0.5% | -1.1% | +0.2% | -1.5% |\n| Vivienda | +1.3% | +1.0% | -1.2% | -1.9% |\n| Vestido | -0.5% | +0.9% | -0.4% | +0.7% |\n| Energía | +2.2% | +1.9% | +2.7% | +3.3% |\n| Ocio | -0.9% | -0.1% | +0.8% | -0.1% |\n| Gasto total | +2.3% | +0.5% | +2.1% | +2.5% |\n\n*En enero de 2010, los hogares gastaron 46,840,780 euros en vivienda, es decir, un 70% más que en alimentación. ¿Cuál fue el gasto de los hogares en alimentación en enero de 2011?*"
+      "es": "Evolución del gasto de los hogares (% de variación respecto al mismo mes del año anterior):\n\n| | Enero 2011 | Febrero 2011 | Marzo 2011 | Abril 2011 |\n|---|---|---|---|---|\n| Alimentación | -0,5 % | -1,1 % | +0,2 % | -1,5 % |\n| Vivienda | +1,3 % | +1,0 % | -1,2 % | -1,9 % |\n| Vestido | -0,5 % | +0,9 % | -0,4 % | +0,7 % |\n| Energía | +2,2 % | +1,9 % | +2,7 % | +3,3 % |\n| Ocio | -0,9 % | -0,1 % | +0,8 % | -0,1 % |\n| Gasto total | +2,3 % | +0,5 % | +2,1 % | +2,5 % |\n\n*En enero de 2010, los hogares gastaron 46.840.780 euros en vivienda, es decir, un 70 % más que en alimentación. ¿Cuál fue el gasto de los hogares en alimentación en enero de 2011?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "13,981,973 euros",
-          "es": "13,981,973 euros"
+          "es": "13.981.973 euros"
         },
         "isCorrect": false
       },
@@ -1086,7 +1086,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "26,157,730 euros",
-          "es": "26,157,730 euros"
+          "es": "26.157.730 euros"
         },
         "isCorrect": false
       },
@@ -1094,19 +1094,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "27,415,633 euros",
-          "es": "27,415,633 euros"
+          "es": "27.415.633 euros"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate spending on food in January 2010 from the accommodation figure and the \"70% more\" ratio given in the question; next, we apply the January 2011 variation rate for food (−0.5%) to find spending on food in January 2011.\n\nSolution — Stage 1: Spending on food in January 2010: 46,840,780 / 1.7 = 27,553,400. Stage 2: Spending on food in January 2011: 27,553,400 × (1 − 0.5%) = 27,553,400 × 0.995 ≈ **27,415,633 euros**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el gasto en alimentación en enero de 2010 a partir de la cifra de vivienda y de la proporción \"70% más\" dada en la pregunta; a continuación, aplicamos la tasa de variación de enero de 2011 para la alimentación (−0.5%) para hallar el gasto en alimentación en enero de 2011.\n\nSolución — Fase 1: Gasto en alimentación en enero de 2010: 46,840,780 / 1.7 = 27,553,400. Fase 2: Gasto en alimentación en enero de 2011: 27,553,400 × (1 − 0.5%) = 27,553,400 × 0.995 ≈ **27,415,633 euros**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el gasto en alimentación en enero de 2010 a partir de la cifra de vivienda y de la proporción \"70 % más\" dada en la pregunta; a continuación, aplicamos la tasa de variación de enero de 2011 para la alimentación (−0,5 %) para hallar el gasto en alimentación en enero de 2011.\n\nSolución — Fase 1: Gasto en alimentación en enero de 2010: 46.840.780 / 1,7 = 27.553.400. Fase 2: Gasto en alimentación en enero de 2011: 27.553.400 × (1 − 0,5 %) = 27.553.400 × 0,995 ≈ **27.415.633 euros**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "32,624,603 euros",
-          "es": "32,624,603 euros"
+          "es": "32.624.603 euros"
         },
         "isCorrect": false
       },
@@ -1130,14 +1130,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Education rates for girls and boys in higher education:\n\n| Age | 2008 — Girls | 2008 — Boys | 2010 — Girls | 2010 — Boys |\n|---|---|---|---|---|\n| Aged 18 | 33.2% | 23.0% | 33.6% | 23.7% |\n| Aged 19 | 44.8% | 34.5% | 44.8% | 34.6% |\n| Aged 20 | 45.7% | 36.3% | 45.6% | 36.2% |\n| Aged 21 | 40.6% | 32.4% | 39.4% | 31.5% |\n| Aged 22 | 33.5% | 27.0% | 32.6% | 26.5% |\n| Aged 23 | 24.7% | 20.4% | 23.8% | 19.8% |\n| Aged 24 | 16.9% | 14.1% | 16.5% | 14.1% |\n\n*In 2010, there were 57,839 girls aged 20 in higher education, ie 11,532 more than the number of boys aged 20. In 2010, what was the total number of girls and boys aged 20?*",
-      "es": "Tasas de escolarización de chicas y chicos en educación superior:\n\n| Edad | 2008 — Chicas | 2008 — Chicos | 2010 — Chicas | 2010 — Chicos |\n|---|---|---|---|---|\n| 18 años | 33.2% | 23.0% | 33.6% | 23.7% |\n| 19 años | 44.8% | 34.5% | 44.8% | 34.6% |\n| 20 años | 45.7% | 36.3% | 45.6% | 36.2% |\n| 21 años | 40.6% | 32.4% | 39.4% | 31.5% |\n| 22 años | 33.5% | 27.0% | 32.6% | 26.5% |\n| 23 años | 24.7% | 20.4% | 23.8% | 19.8% |\n| 24 años | 16.9% | 14.1% | 16.5% | 14.1% |\n\n*En 2010 había 57,839 chicas de 20 años en educación superior, es decir, 11,532 más que el número de chicos de 20 años. En 2010, ¿cuál era el número total de chicas y chicos de 20 años?*"
+      "es": "Tasas de escolarización de chicas y chicos en educación superior:\n\n| Edad | 2008 — Chicas | 2008 — Chicos | 2010 — Chicas | 2010 — Chicos |\n|---|---|---|---|---|\n| 18 años | 33,2 % | 23,0 % | 33,6 % | 23,7 % |\n| 19 años | 44,8 % | 34,5 % | 44,8 % | 34,6 % |\n| 20 años | 45,7 % | 36,3 % | 45,6 % | 36,2 % |\n| 21 años | 40,6 % | 32,4 % | 39,4 % | 31,5 % |\n| 22 años | 33,5 % | 27,0 % | 32,6 % | 26,5 % |\n| 23 años | 24,7 % | 20,4 % | 23,8 % | 19,8 % |\n| 24 años | 16,9 % | 14,1 % | 16,5 % | 14,1 % |\n\n*En 2010 había 57.839 chicas de 20 años en educación superior, es decir, 11.532 más que el número de chicos de 20 años. En 2010, ¿cuál era el número total de chicas y chicos de 20 años?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "104,416",
-          "es": "104,416"
+          "es": "104.416"
         },
         "isCorrect": false
       },
@@ -1145,7 +1145,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "151,952",
-          "es": "151,952"
+          "es": "151.952"
         },
         "isCorrect": false
       },
@@ -1153,19 +1153,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "254,760",
-          "es": "254,760"
+          "es": "254.760"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: We need to proceed in two stages: first, we find the number of boys aged 20 in education from the information given in the question: Number of girls in education = 57,839 = number of boys aged 20 in education + 11,532; then, we find the number of boys aged 20 and the number of girls aged 20 (the total populations, not just those in education) using the education rates given in the table. We know that: The number of people in education = the number of people × education rate. Therefore: The number of people = the number of people in education / education rate. Lastly, we add the number of boys and girls aged 20.\n\nSolution — Stage 1: Number of boys aged 20 in education = 57,839 − 11,532 = 46,307. Stage 2: Number of boys aged 20 = 46,307 / 0.362 ≈ 127,920. Number of girls aged 20 = 57,839 / 0.456 ≈ 126,840. Stage 3: Number of girls and boys aged 20 = 126,840 + 127,920 = **254,760**.",
-          "es": "Planteamiento: Debemos proceder en dos fases: primero, hallamos el número de chicos de 20 años en educación a partir de la información dada en la pregunta: Número de chicas en educación = 57,839 = número de chicos de 20 años en educación + 11,532; a continuación, hallamos el número de chicos de 20 años y el número de chicas de 20 años (las poblaciones totales, no solo las que están en educación) usando las tasas de escolarización dadas en la tabla. Sabemos que: El número de personas en educación = el número de personas × tasa de escolarización. Por tanto: El número de personas = el número de personas en educación / tasa de escolarización. Por último, sumamos el número de chicos y chicas de 20 años.\n\nSolución — Fase 1: Número de chicos de 20 años en educación = 57,839 − 11,532 = 46,307. Fase 2: Número de chicos de 20 años = 46,307 / 0.362 ≈ 127,920. Número de chicas de 20 años = 57,839 / 0.456 ≈ 126,840. Fase 3: Número de chicas y chicos de 20 años = 126,840 + 127,920 = **254,760**."
+          "es": "Planteamiento: Debemos proceder en dos fases: primero, hallamos el número de chicos de 20 años en educación a partir de la información dada en la pregunta: Número de chicas en educación = 57.839 = número de chicos de 20 años en educación + 11.532; a continuación, hallamos el número de chicos de 20 años y el número de chicas de 20 años (las poblaciones totales, no solo las que están en educación) usando las tasas de escolarización dadas en la tabla. Sabemos que: El número de personas en educación = el número de personas × tasa de escolarización. Por tanto: El número de personas = el número de personas en educación / tasa de escolarización. Por último, sumamos el número de chicos y chicas de 20 años.\n\nSolución — Fase 1: Número de chicos de 20 años en educación = 57.839 − 11.532 = 46.307. Fase 2: Número de chicos de 20 años = 46.307 / 0,362 ≈ 127.920. Número de chicas de 20 años = 57.839 / 0,456 ≈ 126.840. Fase 3: Número de chicas y chicos de 20 años = 126.840 + 127.920 = **254.760**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "255,296",
-          "es": "255,296"
+          "es": "255.296"
         },
         "isCorrect": false
       },
@@ -1173,7 +1173,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "261,326",
-          "es": "261,326"
+          "es": "261.326"
         },
         "isCorrect": false
       }
@@ -1189,7 +1189,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Cost of living:\n\n| | Poldavia | Levonia | Telonia | Zogland | Muravia |\n|---|---|---|---|---|---|\n| Price of a hamburger (in national currency) | 36 | 16.50 | 8 | 420 | 104 |\n| Price of a hotel room (in national currency) | 1,560 | 700 | 450 | 12,600 | 4,160 |\n| National currency | Poldor | Levo | Telon | Zorti | Mur |\n| Value of a euro in national currency | 24 | 10 | 5 | 300 | 80 |\n\n*In which country is the price of a hamburger in euros the highest?*",
-      "es": "Coste de la vida:\n\n| | Poldavia | Levonia | Telonia | Zogland | Muravia |\n|---|---|---|---|---|---|\n| Precio de una hamburguesa (en moneda nacional) | 36 | 16.50 | 8 | 420 | 104 |\n| Precio de una habitación de hotel (en moneda nacional) | 1,560 | 700 | 450 | 12,600 | 4,160 |\n| Moneda nacional | Poldor | Levo | Telon | Zorti | Mur |\n| Valor de un euro en moneda nacional | 24 | 10 | 5 | 300 | 80 |\n\n*¿En qué país es más alto el precio en euros de una hamburguesa?*"
+      "es": "Coste de la vida:\n\n| | Poldavia | Levonia | Telonia | Zogland | Muravia |\n|---|---|---|---|---|---|\n| Precio de una hamburguesa (en moneda nacional) | 36 | 16,50 | 8 | 420 | 104 |\n| Precio de una habitación de hotel (en moneda nacional) | 1.560 | 700 | 450 | 12.600 | 4.160 |\n| Moneda nacional | Poldor | Levo | Telon | Zorti | Mur |\n| Valor de un euro en moneda nacional | 24 | 10 | 5 | 300 | 80 |\n\n*¿En qué país es más alto el precio en euros de una hamburguesa?*"
     },
     "options": [
       {
@@ -1201,7 +1201,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate the price of a hamburger in euros for each country: price in euros = price in national currency / value of a euro in national currency.\n\nSolution: Levonia: 16.50 / 10 = 1.65. Poldavia: 36 / 24 = 1.5. Telonia: 8 / 5 = 1.6. Zogland: 420 / 300 = 1.4. Muravia: 104 / 80 = 1.3. The price is highest in **Levonia**.",
-          "es": "Planteamiento y método: Debemos calcular el precio de una hamburguesa en euros para cada país: precio en euros = precio en moneda nacional / valor de un euro en moneda nacional.\n\nSolución: Levonia: 16.50 / 10 = 1.65. Poldavia: 36 / 24 = 1.5. Telonia: 8 / 5 = 1.6. Zogland: 420 / 300 = 1.4. Muravia: 104 / 80 = 1.3. El precio es más alto en **Levonia**."
+          "es": "Planteamiento y método: Debemos calcular el precio de una hamburguesa en euros para cada país: precio en euros = precio en moneda nacional / valor de un euro en moneda nacional.\n\nSolución: Levonia: 16,50 / 10 = 1,65. Poldavia: 36 / 24 = 1,5. Telonia: 8 / 5 = 1,6. Zogland: 420 / 300 = 1,4. Muravia: 104 / 80 = 1,3. El precio es más alto en **Levonia**."
         }
       },
       {
@@ -1248,14 +1248,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Accommodation numbers:\n\n| | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Main residences | 20,566 | 20,837 | 21,096 | 21,348 | 21,579 |\n| — of which: individual | 11,153 | 11,084 | 11,289 | 11,370 | 11,420 |\n| — of which: communal | 9,198 | 9,253 | 9,307 | 9,378 | 9,459 |\n| Secondary residences | 2,467 | 2,540 | 2,612 | 2,683 | 2,750 |\n| — of which: individual | 1,561 | 1,539 | 1,572 | 1,601 | 1,625 |\n| — of which: communal | 862 | 901 | 940 | 982 | 1,025 |\n\n*Between 2005 and 2006, the number of individual accommodation units fell by 2.5%, while the number of communal accommodation units increased by 3%. In 2005, what was the difference between the number of individual accommodation units and the number of communal accommodation units?*",
-      "es": "Número de viviendas:\n\n| | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Residencias principales | 20,566 | 20,837 | 21,096 | 21,348 | 21,579 |\n| — de las cuales: individuales | 11,153 | 11,084 | 11,289 | 11,370 | 11,420 |\n| — de las cuales: colectivas | 9,198 | 9,253 | 9,307 | 9,378 | 9,459 |\n| Residencias secundarias | 2,467 | 2,540 | 2,612 | 2,683 | 2,750 |\n| — de las cuales: individuales | 1,561 | 1,539 | 1,572 | 1,601 | 1,625 |\n| — de las cuales: colectivas | 862 | 901 | 940 | 982 | 1,025 |\n\n*Entre 2005 y 2006, el número de viviendas individuales cayó un 2.5%, mientras que el número de viviendas colectivas aumentó un 3%. En 2005, ¿cuál era la diferencia entre el número de viviendas individuales y el número de viviendas colectivas?*"
+      "es": "Número de viviendas:\n\n| | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Residencias principales | 20.566 | 20.837 | 21.096 | 21.348 | 21.579 |\n| — de las cuales: individuales | 11.153 | 11.084 | 11.289 | 11.370 | 11.420 |\n| — de las cuales: colectivas | 9.198 | 9.253 | 9.307 | 9.378 | 9.459 |\n| Residencias secundarias | 2.467 | 2.540 | 2.612 | 2.683 | 2.750 |\n| — de las cuales: individuales | 1.561 | 1.539 | 1.572 | 1.601 | 1.625 |\n| — de las cuales: colectivas | 862 | 901 | 940 | 982 | 1.025 |\n\n*Entre 2005 y 2006, el número de viviendas individuales cayó un 2,5 %, mientras que el número de viviendas colectivas aumentó un 3 %. En 2005, ¿cuál era la diferencia entre el número de viviendas individuales y el número de viviendas colectivas?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,907",
-          "es": "1,907"
+          "es": "1.907"
         },
         "isCorrect": false
       },
@@ -1263,7 +1263,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "2,509",
-          "es": "2,509"
+          "es": "2.509"
         },
         "isCorrect": false
       },
@@ -1271,7 +1271,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2,654",
-          "es": "2,654"
+          "es": "2.654"
         },
         "isCorrect": false
       },
@@ -1279,19 +1279,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "3,273",
-          "es": "3,273"
+          "es": "3.273"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the number of individual accommodation units in 2005 from the 2006 figure and the −2.5% variation rate; next, we calculate the number of communal accommodation units in 2005 from the 2006 figure and the +3% variation rate; lastly, we calculate the difference.\n\nSolution — Stage 1: Individual accommodation units in 2005: 11,153 / (1 − 2.5%) = 11,153 / 0.975 ≈ 11,439.5. Stage 2: Communal accommodation units in 2005: 9,198 / (1 + 3%) = 9,198 / 1.03 ≈ 8,930.1. Stage 3: Difference: 11,439.5 − 8,930.1 ≈ **3,273**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de viviendas individuales en 2005 a partir de la cifra de 2006 y la tasa de variación del −2.5%; a continuación, calculamos el número de viviendas colectivas en 2005 a partir de la cifra de 2006 y la tasa de variación del +3%; por último, calculamos la diferencia.\n\nSolución — Fase 1: Viviendas individuales en 2005: 11,153 / (1 − 2.5%) = 11,153 / 0.975 ≈ 11,439.5. Fase 2: Viviendas colectivas en 2005: 9,198 / (1 + 3%) = 9,198 / 1.03 ≈ 8,930.1. Fase 3: Diferencia: 11,439.5 − 8,930.1 ≈ **3,273**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de viviendas individuales en 2005 a partir de la cifra de 2006 y la tasa de variación del −2,5 %; a continuación, calculamos el número de viviendas colectivas en 2005 a partir de la cifra de 2006 y la tasa de variación del +3 %; por último, calculamos la diferencia.\n\nSolución — Fase 1: Viviendas individuales en 2005: 11.153 / (1 − 2,5 %) = 11.153 / 0,975 ≈ 11.439,5. Fase 2: Viviendas colectivas en 2005: 9.198 / (1 + 3 %) = 9.198 / 1,03 ≈ 8.930,1. Fase 3: Diferencia: 11.439,5 − 8.930,1 ≈ **3.273**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "4,030",
-          "es": "4,030"
+          "es": "4.030"
         },
         "isCorrect": false
       }
@@ -1307,14 +1307,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution of farm holdings by surface area, 2010 (shown as a 100%-stacked bar chart in the source, bands `<5 ha` / `5 ha–<20 ha` / `20 ha–<50 ha` / `>=50 ha`, for Poldavia, Telonia, Levonia, Zogland; the explanation reads Levonia's chart shares directly: `<5 ha` = 45%, `>=50 ha` = 15%).\n\n*In 2010, Poldavia had 72,600 farm holdings of under 5 hectares, ie 12,300 fewer than Levonia. In 2010, how many farm holdings of 50 hectares and over did Levonia have?*",
-      "es": "Distribución de las explotaciones agrícolas por superficie, 2010 (mostrada como gráfico de barras apiladas al 100% en la fuente, bandas `<5 ha` / `5 ha–<20 ha` / `20 ha–<50 ha` / `>=50 ha`, para Poldavia, Telonia, Levonia, Zogland; la explicación lee directamente las cuotas del gráfico para Levonia: `<5 ha` = 45%, `>=50 ha` = 15%).\n\n*En 2010, Poldavia tenía 72,600 explotaciones agrícolas de menos de 5 hectáreas, es decir, 12,300 menos que Levonia. En 2010, ¿cuántas explotaciones agrícolas de 50 hectáreas o más tenía Levonia?*"
+      "es": "Distribución de las explotaciones agrícolas por superficie, 2010 (mostrada como gráfico de barras apiladas al 100 % en la fuente, bandas `<5 ha` / `5 ha–<20 ha` / `20 ha–<50 ha` / `>=50 ha`, para Poldavia, Telonia, Levonia, Zogland; la explicación lee directamente las cuotas del gráfico para Levonia: `<5 ha` = 45 %, `>=50 ha` = 15 %).\n\n*En 2010, Poldavia tenía 72.600 explotaciones agrícolas de menos de 5 hectáreas, es decir, 12.300 menos que Levonia. En 2010, ¿cuántas explotaciones agrícolas de 50 hectáreas o más tenía Levonia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "12,735",
-          "es": "12,735"
+          "es": "12.735"
         },
         "isCorrect": false
       },
@@ -1322,7 +1322,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "20,100",
-          "es": "20,100"
+          "es": "20.100"
         },
         "isCorrect": false
       },
@@ -1330,19 +1330,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "28,300",
-          "es": "28,300"
+          "es": "28.300"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the number of farm holdings under 5 ha in Levonia (using the information in the question); then, we calculate the total number of farm holdings in Levonia (using the information in the graph); lastly, we calculate the number of farm holdings of 50 ha and over in Levonia (using the graph).\n\nSolution — Stage 1: Number of farm holdings of under 5 ha in Levonia = 72,600 + 12,300 = 84,900. Stage 2: Total number of farm holdings in Levonia = 84,900 / 0.45 ≈ 188,666.7. Stage 3: Number of farms of 50 ha and over in Levonia = 188,666.7 × 0.15 = **28,300**.\n\nTip! Looking at the graph, farm holdings of 50 ha and over (15%) are three times fewer than farm holdings under 5 ha (45%). We can therefore avoid Stage 2: Number of farm holdings of 50 ha and over = 84,900 / 3 = 28,300.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de explotaciones agrícolas de menos de 5 ha en Levonia (usando la información de la pregunta); a continuación, calculamos el número total de explotaciones agrícolas en Levonia (usando la información del gráfico); por último, calculamos el número de explotaciones agrícolas de 50 ha y más en Levonia (usando el gráfico).\n\nSolución — Fase 1: Número de explotaciones de menos de 5 ha en Levonia = 72,600 + 12,300 = 84,900. Fase 2: Número total de explotaciones en Levonia = 84,900 / 0.45 ≈ 188,666.7. Fase 3: Número de explotaciones de 50 ha y más en Levonia = 188,666.7 × 0.15 = **28,300**.\n\nConsejo: Observando el gráfico, las explotaciones de 50 ha y más (15%) son tres veces menos numerosas que las explotaciones de menos de 5 ha (45%). Por tanto podemos evitar la Fase 2: Número de explotaciones de 50 ha y más = 84,900 / 3 = 28,300."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de explotaciones agrícolas de menos de 5 ha en Levonia (usando la información de la pregunta); a continuación, calculamos el número total de explotaciones agrícolas en Levonia (usando la información del gráfico); por último, calculamos el número de explotaciones agrícolas de 50 ha y más en Levonia (usando el gráfico).\n\nSolución — Fase 1: Número de explotaciones de menos de 5 ha en Levonia = 72.600 + 12.300 = 84.900. Fase 2: Número total de explotaciones en Levonia = 84.900 / 0,45 ≈ 188.666,7. Fase 3: Número de explotaciones de 50 ha y más en Levonia = 188.666,7 × 0,15 = **28.300**.\n\nConsejo: Observando el gráfico, las explotaciones de 50 ha y más (15 %) son tres veces menos numerosas que las explotaciones de menos de 5 ha (45 %). Por tanto podemos evitar la Fase 2: Número de explotaciones de 50 ha y más = 84.900 / 3 = 28.300."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "60,300",
-          "es": "60,300"
+          "es": "60.300"
         },
         "isCorrect": false
       },
@@ -1445,7 +1445,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: Speed (50km/h) is the distance (50km) divided by time (1 hour). Therefore: Time = Distance / Speed.\n\nSolution — Stage 1: Lance first travels from Denitz to Albana. This means he covers 35km. He then travels from Albana to Boronitz. This means he covers another 90km. Therefore: Total distance = 35 + 90 = 125. Stage 2: Time = 125 / 50 = 2.5 hours; 2.5 hours equals 2h30. Stage 3: Arrival in Boronitz: 16:40 + 2h30 = **19:10**.",
-          "es": "Planteamiento: La velocidad (50 km/h) es la distancia (50 km) dividida entre el tiempo (1 hora). Por tanto: Tiempo = Distancia / Velocidad.\n\nSolución — Fase 1: Lance viaja primero de Denitz a Albana. Con ello recorre 35 km. A continuación viaja de Albana a Boronitz. Con ello recorre otros 90 km. Por tanto: Distancia total = 35 + 90 = 125. Fase 2: Tiempo = 125 / 50 = 2.5 horas; 2.5 horas equivalen a 2h30. Fase 3: Llegada a Boronitz: 16:40 + 2h30 = **19:10**."
+          "es": "Planteamiento: La velocidad (50 km/h) es la distancia (50 km) dividida entre el tiempo (1 hora). Por tanto: Tiempo = Distancia / Velocidad.\n\nSolución — Fase 1: Lance viaja primero de Denitz a Albana. Con ello recorre 35 km. A continuación viaja de Albana a Boronitz. Con ello recorre otros 90 km. Por tanto: Distancia total = 35 + 90 = 125. Fase 2: Tiempo = 125 / 50 = 2,5 horas; 2,5 horas equivalen a 2:30. Fase 3: Llegada a Boronitz: 16:40 + 2:30 = **19:10**."
         }
       },
       {
@@ -1484,14 +1484,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Changes in the number of jobseekers (% variation compared with the same quarter of the previous year):\n\n| | 1st quarter 2010 | 2nd quarter 2010 | 3rd quarter 2010 | 4th quarter 2010 |\n|---|---|---|---|---|\n| Levonia | 1.1% | 0.5% | -0.1% | 0.75% |\n| Poldavia | 1% | -0.75% | -0.5% | 1.25% |\n\n*In the fourth quarter of 2009, the number of jobseekers in Poldavia was 1,264,400. What was the number in the fourth quarter of 2010?*",
-      "es": "Evolución del número de demandantes de empleo (% de variación respecto al mismo trimestre del año anterior):\n\n| | 1er trimestre 2010 | 2º trimestre 2010 | 3er trimestre 2010 | 4º trimestre 2010 |\n|---|---|---|---|---|\n| Levonia | 1.1% | 0.5% | -0.1% | 0.75% |\n| Poldavia | 1% | -0.75% | -0.5% | 1.25% |\n\n*En el cuarto trimestre de 2009, el número de demandantes de empleo en Poldavia era de 1,264,400. ¿Cuál fue el número en el cuarto trimestre de 2010?*"
+      "es": "Evolución del número de demandantes de empleo (% de variación respecto al mismo trimestre del año anterior):\n\n| | 1er trimestre 2010 | 2º trimestre 2010 | 3er trimestre 2010 | 4º trimestre 2010 |\n|---|---|---|---|---|\n| Levonia | 1,1 % | 0,5 % | -0,1 % | 0,75 % |\n| Poldavia | 1 % | -0,75 % | -0,5 % | 1,25 % |\n\n*En el cuarto trimestre de 2009, el número de demandantes de empleo en Poldavia era de 1.264.400. ¿Cuál fue el número en el cuarto trimestre de 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,251,756",
-          "es": "1,251,756"
+          "es": "1.251.756"
         },
         "isCorrect": false
       },
@@ -1499,7 +1499,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,276,893",
-          "es": "1,276,893"
+          "es": "1.276.893"
         },
         "isCorrect": false
       },
@@ -1507,7 +1507,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,277,044",
-          "es": "1,277,044"
+          "es": "1.277.044"
         },
         "isCorrect": false
       },
@@ -1515,12 +1515,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,280,205",
-          "es": "1,280,205"
+          "es": "1.280.205"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The table gives the percentage variation compared with the same quarter of the previous year. Between the 4th quarter of 2009 and the 4th quarter of 2010, the number of jobseekers therefore increased by 1.25% in Poldavia.\n\nSolution: Number of jobseekers in the 4th quarter of 2010: 1,264,400 × (1 + 0.0125) = 1,264,400 × 1.0125 = **1,280,205**.",
-          "es": "Planteamiento: La tabla ofrece el porcentaje de variación respecto al mismo trimestre del año anterior. Entre el 4º trimestre de 2009 y el 4º trimestre de 2010, el número de demandantes de empleo aumentó, por tanto, un 1.25% en Poldavia.\n\nSolución: Número de demandantes de empleo en el 4º trimestre de 2010: 1,264,400 × (1 + 0.0125) = 1,264,400 × 1.0125 = **1,280,205**."
+          "es": "Planteamiento: La tabla ofrece el porcentaje de variación respecto al mismo trimestre del año anterior. Entre el 4º trimestre de 2009 y el 4º trimestre de 2010, el número de demandantes de empleo aumentó, por tanto, un 1,25 % en Poldavia.\n\nSolución: Número de demandantes de empleo en el 4º trimestre de 2010: 1.264.400 × (1 + 0,0125) = 1.264.400 × 1,0125 = **1.280.205**."
         }
       },
       {
@@ -1543,14 +1543,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Employment figures (2010):\n\n| Country | Working population (millions) | Unemployment rate |\n|---|---|---|\n| Venalia | 20 | 6% |\n| Buldonia | 12 | 10% |\n| Galonia | 16 | 8% |\n\n*In 2010, what was the unemployment rate in the three provinces as a whole (Venalia, Buldonia and Galonia)?*",
-      "es": "Datos de empleo (2010):\n\n| País | Población activa (millones) | Tasa de desempleo |\n|---|---|---|\n| Venalia | 20 | 6% |\n| Buldonia | 12 | 10% |\n| Galonia | 16 | 8% |\n\n*En 2010, ¿cuál era la tasa de desempleo conjunta de las tres provincias (Venalia, Buldonia y Galonia)?*"
+      "es": "Datos de empleo (2010):\n\n| País | Población activa (millones) | Tasa de desempleo |\n|---|---|---|\n| Venalia | 20 | 6 % |\n| Buldonia | 12 | 10 % |\n| Galonia | 16 | 8 % |\n\n*En 2010, ¿cuál era la tasa de desempleo conjunta de las tres provincias (Venalia, Buldonia y Galonia)?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "7.2%",
-          "es": "7.2%"
+          "es": "7,2 %"
         },
         "isCorrect": false
       },
@@ -1558,7 +1558,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "7.33%",
-          "es": "7.33%"
+          "es": "7,33 %"
         },
         "isCorrect": false
       },
@@ -1566,19 +1566,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "7.67%",
-          "es": "7.67%"
+          "es": "7,67 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The unemployment rate in the three provinces together is not the simple average of the unemployment rate in each province: the weighting (working population) is not the same. We therefore need to calculate a weighted average.\n\nSolution — Stage 1: Total number of unemployed = (0.06 × 20) + (0.1 × 12) + (0.08 × 16) = 3.68. Stage 2: Overall unemployment rate = 3.68 / (20 + 12 + 16) = 3.68 / 48 = 0.076666 ≈ **7.67%**.",
-          "es": "Planteamiento: La tasa de desempleo conjunta de las tres provincias no es la media simple de la tasa de desempleo de cada provincia: la ponderación (población activa) no es la misma. Por tanto, debemos calcular una media ponderada.\n\nSolución — Fase 1: Número total de desempleados = (0.06 × 20) + (0.1 × 12) + (0.08 × 16) = 3.68. Fase 2: Tasa de desempleo conjunta = 3.68 / (20 + 12 + 16) = 3.68 / 48 = 0.076666 ≈ **7.67%**."
+          "es": "Planteamiento: La tasa de desempleo conjunta de las tres provincias no es la media simple de la tasa de desempleo de cada provincia: la ponderación (población activa) no es la misma. Por tanto, debemos calcular una media ponderada.\n\nSolución — Fase 1: Número total de desempleados = (0,06 × 20) + (0,1 × 12) + (0,08 × 16) = 3,68. Fase 2: Tasa de desempleo conjunta = 3,68 / (20 + 12 + 16) = 3,68 / 48 = 0,076666 ≈ **7,67 %**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "8%",
-          "es": "8%"
+          "es": "8 %"
         },
         "isCorrect": false
       },
@@ -1586,7 +1586,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "8.33%",
-          "es": "8.33%"
+          "es": "8,33 %"
         },
         "isCorrect": false
       }
@@ -1602,14 +1602,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "GDP in Telonia:\n\n| | 1975 | 1985 | 1995 | 2005 |\n|---|---|---|---|---|\n| GDP (in millions of euros) | 43,840 | 47,580 | 48,960 | 50,350 |\n| GDP per inhabitant | 35,200 | 36,600 | 37,800 | 38,000 |\n\n*How did the population of Telonia change between 1985 and 2005?*",
-      "es": "PIB en Telonia:\n\n| | 1975 | 1985 | 1995 | 2005 |\n|---|---|---|---|---|\n| PIB (en millones de euros) | 43,840 | 47,580 | 48,960 | 50,350 |\n| PIB por habitante | 35,200 | 36,600 | 37,800 | 38,000 |\n\n*¿Cómo cambió la población de Telonia entre 1985 y 2005?*"
+      "es": "PIB en Telonia:\n\n| | 1975 | 1985 | 1995 | 2005 |\n|---|---|---|---|---|\n| PIB (en millones de euros) | 43.840 | 47.580 | 48.960 | 50.350 |\n| PIB por habitante | 35.200 | 36.600 | 37.800 | 38.000 |\n\n*¿Cómo cambió la población de Telonia entre 1985 y 2005?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It decreased by 50,000.",
-          "es": "Disminuyó en 50,000."
+          "es": "Disminuyó en 50.000."
         },
         "isCorrect": false
       },
@@ -1617,7 +1617,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "It decreased by 25,000.",
-          "es": "Disminuyó en 25,000."
+          "es": "Disminuyó en 25.000."
         },
         "isCorrect": false
       },
@@ -1625,19 +1625,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "It increased by 25,000.",
-          "es": "Aumentó en 25,000."
+          "es": "Aumentó en 25.000."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The GDP per inhabitant is the GDP divided by the number of inhabitants. Therefore: Population = GDP / GDP per inhabitant.\n\nMethod: We need to proceed in two stages: first, we calculate the population of Telonia in 1985 and 2005; then, we calculate the difference between the population in 2005 and the population in 1985.\n\nSolution — Stage 1: Population of Telonia in 1985 = 47,580 × 1,000,000 / 36,600 = 1,300,000. Population of Telonia in 2005 = 50,350 × 1,000,000 / 38,000 = 1,325,000. Stage 2: Variation: 1,325,000 − 1,300,000 = **+25,000**.",
-          "es": "Planteamiento: El PIB por habitante es el PIB dividido entre el número de habitantes. Por tanto: Población = PIB / PIB por habitante.\n\nMétodo: Debemos proceder en dos fases: primero, calculamos la población de Telonia en 1985 y 2005; a continuación, calculamos la diferencia entre la población en 2005 y la población en 1985.\n\nSolución — Fase 1: Población de Telonia en 1985 = 47,580 × 1,000,000 / 36,600 = 1,300,000. Población de Telonia en 2005 = 50,350 × 1,000,000 / 38,000 = 1,325,000. Fase 2: Variación: 1,325,000 − 1,300,000 = **+25,000**."
+          "es": "Planteamiento: El PIB por habitante es el PIB dividido entre el número de habitantes. Por tanto: Población = PIB / PIB por habitante.\n\nMétodo: Debemos proceder en dos fases: primero, calculamos la población de Telonia en 1985 y 2005; a continuación, calculamos la diferencia entre la población en 2005 y la población en 1985.\n\nSolución — Fase 1: Población de Telonia en 1985 = 47.580 × 1.000.000 / 36.600 = 1.300.000. Población de Telonia en 2005 = 50.350 × 1.000.000 / 38.000 = 1.325.000. Fase 2: Variación: 1.325.000 − 1.300.000 = **+25.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "It increased by 50,000.",
-          "es": "Aumentó en 50,000."
+          "es": "Aumentó en 50.000."
         },
         "isCorrect": false
       },
@@ -1645,7 +1645,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "It increased by 250,000.",
-          "es": "Aumentó en 250,000."
+          "es": "Aumentó en 250.000."
         },
         "isCorrect": false
       }
@@ -1661,14 +1661,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Frequency with which inhabitants of Estunil aged 18 to 65 drive a car (pie chart in the source): Frequently 60%, Occasionally 20%, Never 20%.\n\n*In Estunil, there are 840,000 inhabitants aged 18 to 65 who drive a car occasionally. How many inhabitants of Estunil aged 18 to 65 drive a car?*",
-      "es": "Frecuencia con la que los habitantes de Estunil de 18 a 65 años conducen un coche (gráfico circular en la fuente): Frecuentemente 60%, Ocasionalmente 20%, Nunca 20%.\n\n*En Estunil hay 840,000 habitantes de 18 a 65 años que conducen un coche ocasionalmente. ¿Cuántos habitantes de Estunil de 18 a 65 años conducen un coche?*"
+      "es": "Frecuencia con la que los habitantes de Estunil de 18 a 65 años conducen un coche (gráfico circular en la fuente): Frecuentemente 60 %, Ocasionalmente 20 %, Nunca 20 %.\n\n*En Estunil hay 840.000 habitantes de 18 a 65 años que conducen un coche ocasionalmente. ¿Cuántos habitantes de Estunil de 18 a 65 años conducen un coche?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,344,000",
-          "es": "1,344,000"
+          "es": "1.344.000"
         },
         "isCorrect": false
       },
@@ -1676,7 +1676,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,680,000",
-          "es": "1,680,000"
+          "es": "1.680.000"
         },
         "isCorrect": false
       },
@@ -1684,7 +1684,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2,520,000",
-          "es": "2,520,000"
+          "es": "2.520.000"
         },
         "isCorrect": false
       },
@@ -1692,19 +1692,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "3,360,000",
-          "es": "3,360,000"
+          "es": "3.360.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: According to the graph: 20% of inhabitants never drive a car, therefore 80% do drive one; 20% of inhabitants drive a car occasionally. The number of inhabitants driving a car is therefore four times greater than the number of inhabitants driving a car occasionally.\n\nSolution: Number of inhabitants driving a car = 4 × 840,000 = **3,360,000**.",
-          "es": "Planteamiento y método: Según el gráfico: el 20% de los habitantes nunca conduce un coche, por lo que el 80% sí lo conduce; el 20% de los habitantes conduce un coche ocasionalmente. El número de habitantes que conduce un coche es, por tanto, cuatro veces mayor que el número de habitantes que lo conduce ocasionalmente.\n\nSolución: Número de habitantes que conducen un coche = 4 × 840,000 = **3,360,000**."
+          "es": "Planteamiento y método: Según el gráfico: el 20 % de los habitantes nunca conduce un coche, por lo que el 80 % sí lo conduce; el 20 % de los habitantes conduce un coche ocasionalmente. El número de habitantes que conduce un coche es, por tanto, cuatro veces mayor que el número de habitantes que lo conduce ocasionalmente.\n\nSolución: Número de habitantes que conducen un coche = 4 × 840.000 = **3.360.000**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "4,200,000",
-          "es": "4,200,000"
+          "es": "4.200.000"
         },
         "isCorrect": false
       }
@@ -1756,7 +1756,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The length of the journey is the difference between the arrival time and the departure time. The times must be expressed as times in the same time zone. We can therefore choose to express everything either in local time in Vienna or in local time in Brasilia.\n\nMethod: We need to proceed in two stages: first, we express all the times in the same local time, for example, Vienna local time; then, we calculate the length of the journey.\n\nSolution — Stage 1: When it is 10:00 in Brasilia, it is 15:00 in Vienna, ie 5 hours later. Therefore, when it is 9:50 in Brasilia, it is 14:50 in Vienna. Stage 2: Length of the journey = 14:50 − 19:15 = (24h00 − 19:15) + 14:50 = 4h45 + 14:50 = **19h35**.",
-          "es": "Planteamiento: La duración del viaje es la diferencia entre la hora de llegada y la hora de salida. Las horas deben expresarse en la misma zona horaria. Por tanto, podemos elegir expresar todo en hora local de Viena o en hora local de Brasilia.\n\nMétodo: Debemos proceder en dos fases: primero, expresamos todas las horas en la misma hora local, por ejemplo, la hora local de Viena; a continuación, calculamos la duración del viaje.\n\nSolución — Fase 1: Cuando en Brasilia son las 10:00, en Viena son las 15:00, es decir, 5 horas más tarde. Por tanto, cuando en Brasilia son las 9:50, en Viena son las 14:50. Fase 2: Duración del viaje = 14:50 − 19:15 = (24h00 − 19:15) + 14:50 = 4h45 + 14:50 = **19h35**."
+          "es": "Planteamiento: La duración del viaje es la diferencia entre la hora de llegada y la hora de salida. Las horas deben expresarse en la misma zona horaria. Por tanto, podemos elegir expresar todo en hora local de Viena o en hora local de Brasilia.\n\nMétodo: Debemos proceder en dos fases: primero, expresamos todas las horas en la misma hora local, por ejemplo, la hora local de Viena; a continuación, calculamos la duración del viaje.\n\nSolución — Fase 1: Cuando en Brasilia son las 10:00, en Viena son las 15:00, es decir, 5 horas más tarde. Por tanto, cuando en Brasilia son las 9:50, en Viena son las 14:50. Fase 2: Duración del viaje = 14:50 − 19:15 = (24:00 − 19:15) + 14:50 = 4:45 + 14:50 = **19:35**."
         }
       },
       {
@@ -1779,26 +1779,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Fishing fleet by size of vessel:\n\n| | 2008 | 2010 |\n|---|---|---|\n| Under 12 metres | 3,939 | 3,974 |\n| 12 to under 16 metres | 451 | 438 |\n| 16 to under 25 metres | 602 | 578 |\n| 25 to under 38 metres | 56 | 68 |\n| 38 metres and over | 59 | 59 |\n| **Total** | **5,107** | **5,117** |\n\n*Between 2010 and 2012, it is estimated that there will be a 6% fall in the number of vessels under 16 metres and a 3% rise in the number of vessels 16 metres and over. According to these projections, how will the total number of vessels change between 2010 and 2012?*",
-      "es": "Flota pesquera por tamaño de embarcación:\n\n| | 2008 | 2010 |\n|---|---|---|\n| Menos de 12 metros | 3,939 | 3,974 |\n| 12 a menos de 16 metros | 451 | 438 |\n| 16 a menos de 25 metros | 602 | 578 |\n| 25 a menos de 38 metros | 56 | 68 |\n| 38 metros y más | 59 | 59 |\n| **Total** | **5,107** | **5,117** |\n\n*Entre 2010 y 2012, se estima que habrá una caída del 6% en el número de embarcaciones de menos de 16 metros y un aumento del 3% en el número de embarcaciones de 16 metros o más. Según estas proyecciones, ¿cómo variará el número total de embarcaciones entre 2010 y 2012?*"
+      "es": "Flota pesquera por tamaño de embarcación:\n\n| | 2008 | 2010 |\n|---|---|---|\n| Menos de 12 metros | 3.939 | 3.974 |\n| 12 a menos de 16 metros | 451 | 438 |\n| 16 a menos de 25 metros | 602 | 578 |\n| 25 a menos de 38 metros | 56 | 68 |\n| 38 metros y más | 59 | 59 |\n| **Total** | **5.107** | **5.117** |\n\n*Entre 2010 y 2012, se estima que habrá una caída del 6 % en el número de embarcaciones de menos de 16 metros y un aumento del 3 % en el número de embarcaciones de 16 metros o más. Según estas proyecciones, ¿cómo variará el número total de embarcaciones entre 2010 y 2012?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It should decrease by 4.8%.",
-          "es": "Debería disminuir un 4.8%."
+          "es": "Debería disminuir un 4,8 %."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The total number of vessels in 2010 is given in the table (5,117). We must therefore work out the total number of vessels in 2012 from the two variation rates given in the question: that of the number of vessels under 16 metres long and that of the number of vessels 16 metres long or more.\n\nMethod: We need to proceed in three stages: first, we calculate the number of vessels under 16 metres long and the number of vessels 16 metres long or more in 2010; then, we calculate the number of vessels in 2012 using the variation rates between 2010 and 2012; lastly, we calculate the difference between 2010 and 2012.\n\nSolution — Stage 1: Number of vessels less than 16 metres long in 2010: (3,974 + 438) = 4,412. Number of vessels 16 metres long or more in 2010: (578 + 68 + 59) = 705. Stage 2: Number of vessels less than 16 metres long in 2012: 4,412 × (1 − 6%) = 4,412 × 0.94 ≈ 4,147. Number of vessels 16 metres long or more in 2012: 705 × (1 + 3%) = 705 × 1.03 ≈ 726. Number of vessels in 2012: 4,147 + 726 = 4,873. Stage 3: Evolution in the number of vessels between 2010 and 2012: (4,873 − 5,117) / 5,117 = −0.04768 ≈ **−4.8%**.",
-          "es": "Planteamiento: El número total de embarcaciones en 2010 se indica en la tabla (5,117). Por tanto, debemos hallar el número total de embarcaciones en 2012 a partir de las dos tasas de variación dadas en la pregunta: la del número de embarcaciones de menos de 16 metros y la del número de embarcaciones de 16 metros o más.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos el número de embarcaciones de menos de 16 metros y el número de embarcaciones de 16 metros o más en 2010; a continuación, calculamos el número de embarcaciones en 2012 usando las tasas de variación entre 2010 y 2012; por último, calculamos la diferencia entre 2010 y 2012.\n\nSolución — Fase 1: Número de embarcaciones de menos de 16 metros en 2010: (3,974 + 438) = 4,412. Número de embarcaciones de 16 metros o más en 2010: (578 + 68 + 59) = 705. Fase 2: Número de embarcaciones de menos de 16 metros en 2012: 4,412 × (1 − 6%) = 4,412 × 0.94 ≈ 4,147. Número de embarcaciones de 16 metros o más en 2012: 705 × (1 + 3%) = 705 × 1.03 ≈ 726. Número de embarcaciones en 2012: 4,147 + 726 = 4,873. Fase 3: Evolución del número de embarcaciones entre 2010 y 2012: (4,873 − 5,117) / 5,117 = −0.04768 ≈ **−4.8%**."
+          "es": "Planteamiento: El número total de embarcaciones en 2010 se indica en la tabla (5.117). Por tanto, debemos hallar el número total de embarcaciones en 2012 a partir de las dos tasas de variación dadas en la pregunta: la del número de embarcaciones de menos de 16 metros y la del número de embarcaciones de 16 metros o más.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos el número de embarcaciones de menos de 16 metros y el número de embarcaciones de 16 metros o más en 2010; a continuación, calculamos el número de embarcaciones en 2012 usando las tasas de variación entre 2010 y 2012; por último, calculamos la diferencia entre 2010 y 2012.\n\nSolución — Fase 1: Número de embarcaciones de menos de 16 metros en 2010: (3.974 + 438) = 4.412. Número de embarcaciones de 16 metros o más en 2010: (578 + 68 + 59) = 705. Fase 2: Número de embarcaciones de menos de 16 metros en 2012: 4.412 × (1 − 6 %) = 4.412 × 0,94 ≈ 4.147. Número de embarcaciones de 16 metros o más en 2012: 705 × (1 + 3 %) = 705 × 1,03 ≈ 726. Número de embarcaciones en 2012: 4.147 + 726 = 4.873. Fase 3: Evolución del número de embarcaciones entre 2010 y 2012: (4.873 − 5.117) / 5.117 = −0,04768 ≈ **−4,8 %**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "It should decrease by 3%.",
-          "es": "Debería disminuir un 3%."
+          "es": "Debería disminuir un 3 %."
         },
         "isCorrect": false
       },
@@ -1806,7 +1806,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "It should decrease by 2.6%.",
-          "es": "Debería disminuir un 2.6%."
+          "es": "Debería disminuir un 2,6 %."
         },
         "isCorrect": false
       },
@@ -1814,7 +1814,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "It should increase by 0.8%.",
-          "es": "Debería aumentar un 0.8%."
+          "es": "Debería aumentar un 0,8 %."
         },
         "isCorrect": false
       },
@@ -1838,7 +1838,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Zogland imports and exports (in millions of euros):\n\n| | 2005 | 2006 | 2007 | 2008 | 2009 |\n|---|---|---|---|---|---|\n| Imports | 21,542 | 22,484 | 26,340 | 22,164 | 24,686 |\n| Exports | 23,798 | 24,680 | 24,038 | 24,688 | 26,988 |\n\n*In Zogland, in which year did exports exceed imports by 2,302 million euros?*",
-      "es": "Importaciones y exportaciones de Zogland (en millones de euros):\n\n| | 2005 | 2006 | 2007 | 2008 | 2009 |\n|---|---|---|---|---|---|\n| Importaciones | 21,542 | 22,484 | 26,340 | 22,164 | 24,686 |\n| Exportaciones | 23,798 | 24,680 | 24,038 | 24,688 | 26,988 |\n\n*En Zogland, ¿en qué año las exportaciones superaron a las importaciones en 2,302 millones de euros?*"
+      "es": "Importaciones y exportaciones de Zogland (en millones de euros):\n\n| | 2005 | 2006 | 2007 | 2008 | 2009 |\n|---|---|---|---|---|---|\n| Importaciones | 21.542 | 22.484 | 26.340 | 22.164 | 24.686 |\n| Exportaciones | 23.798 | 24.680 | 24.038 | 24.688 | 26.988 |\n\n*En Zogland, ¿en qué año las exportaciones superaron a las importaciones en 2.302 millones de euros?*"
     },
     "options": [
       {
@@ -1882,7 +1882,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The question is very simple: we need to work out if the difference between exports and imports is 2,302. We can answer this very quickly without using a calculator. We do this by seeing: if the exports are greater than the imports; if the difference between the exports and imports ends in 2. We can do this calculation in our heads, by simply looking at the unit digits.\n\nSolution: **2009** is the only year that satisfies both conditions: 26,988 > 24,686; 26,988 − 24,686 = …8 − …6 = …2.",
-          "es": "Planteamiento y método: La pregunta es muy sencilla: debemos comprobar si la diferencia entre las exportaciones y las importaciones es 2,302. Podemos responder muy rápidamente sin usar calculadora. Lo hacemos comprobando: si las exportaciones son mayores que las importaciones; si la diferencia entre las exportaciones y las importaciones termina en 2. Podemos hacer este cálculo mentalmente, fijándonos solo en las cifras de las unidades.\n\nSolución: **2009** es el único año que cumple ambas condiciones: 26,988 > 24,686; 26,988 − 24,686 = …8 − …6 = …2."
+          "es": "Planteamiento y método: La pregunta es muy sencilla: debemos comprobar si la diferencia entre las exportaciones y las importaciones es 2.302. Podemos responder muy rápidamente sin usar calculadora. Lo hacemos comprobando: si las exportaciones son mayores que las importaciones; si la diferencia entre las exportaciones y las importaciones termina en 2. Podemos hacer este cálculo mentalmente, fijándonos solo en las cifras de las unidades.\n\nSolución: **2009** es el único año que cumple ambas condiciones: 26.988 > 24.686; 26.988 − 24.686 = …8 − …6 = …2."
         }
       }
     ],
@@ -1897,14 +1897,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Dentists (2010):\n\n| | Total number of dentists 2005 | Total number of dentists 2010 | Number of dentists per 100,000 inhabitants 2005 | Number of dentists per 100,000 inhabitants 2010 |\n|---|---|---|---|---|\n| Telonia | 44,400 | 46,800 | 88 | 90 |\n| Zogland | 22,650 | 20,444 | 82 | 80 |\n\n*Between 2000 and 2010, the population of Zogland fell by 5%. What was the population of Zogland in 2000?*",
-      "es": "Dentistas (2010):\n\n| | Número total de dentistas 2005 | Número total de dentistas 2010 | Número de dentistas por 100,000 habitantes 2005 | Número de dentistas por 100,000 habitantes 2010 |\n|---|---|---|---|---|\n| Telonia | 44,400 | 46,800 | 88 | 90 |\n| Zogland | 22,650 | 20,444 | 82 | 80 |\n\n*Entre 2000 y 2010, la población de Zogland cayó un 5%. ¿Cuál era la población de Zogland en 2000?*"
+      "es": "Dentistas (2010):\n\n| | Número total de dentistas 2005 | Número total de dentistas 2010 | Número de dentistas por 100.000 habitantes 2005 | Número de dentistas por 100.000 habitantes 2010 |\n|---|---|---|---|---|\n| Telonia | 44.400 | 46.800 | 88 | 90 |\n| Zogland | 22.650 | 20.444 | 82 | 80 |\n\n*Entre 2000 y 2010, la población de Zogland cayó un 5 %. ¿Cuál era la población de Zogland en 2000?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "24,277,250",
-          "es": "24,277,250"
+          "es": "24.277.250"
         },
         "isCorrect": false
       },
@@ -1912,7 +1912,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "24,338,095",
-          "es": "24,338,095"
+          "es": "24.338.095"
         },
         "isCorrect": false
       },
@@ -1920,7 +1920,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "25,555,000",
-          "es": "25,555,000"
+          "es": "25.555.000"
         },
         "isCorrect": false
       },
@@ -1928,7 +1928,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "26,832,750",
-          "es": "26,832,750"
+          "es": "26.832.750"
         },
         "isCorrect": false
       },
@@ -1936,12 +1936,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "26,900,000",
-          "es": "26,900,000"
+          "es": "26.900.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the population of Zogland in 2010 using the table. This is a direct proportion problem: the number of inhabitants is directly proportional to the number of dentists; next, we calculate the population in 2000 using the variation rate given in the question (5%): Population of Zogland in 2000 = population in 2010 / (1 − 5%).\n\nSolution — Stage 1: Let P be the population of Zogland in 2010: P × 80 = 100,000 × 20,444. P = 100,000 × 20,444 / 80 = 25,555,000. Stage 2: Population of Zogland in 2000 = 25,555,000 / 0.95 = **26,900,000**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la población de Zogland en 2010 usando la tabla. Es un problema de proporcionalidad directa: el número de habitantes es directamente proporcional al número de dentistas; a continuación, calculamos la población en 2000 usando la tasa de variación dada en la pregunta (5%): Población de Zogland en 2000 = población en 2010 / (1 − 5%).\n\nSolución — Fase 1: Sea P la población de Zogland en 2010: P × 80 = 100,000 × 20,444. P = 100,000 × 20,444 / 80 = 25,555,000. Fase 2: Población de Zogland en 2000 = 25,555,000 / 0.95 = **26,900,000**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la población de Zogland en 2010 usando la tabla. Es un problema de proporcionalidad directa: el número de habitantes es directamente proporcional al número de dentistas; a continuación, calculamos la población en 2000 usando la tasa de variación dada en la pregunta (5 %): Población de Zogland en 2000 = población en 2010 / (1 − 5 %).\n\nSolución — Fase 1: Sea P la población de Zogland en 2010: P × 80 = 100.000 × 20.444. P = 100.000 × 20.444 / 80 = 25.555.000. Fase 2: Población de Zogland en 2000 = 25.555.000 / 0,95 = **26.900.000**."
         }
       }
     ],
@@ -1956,14 +1956,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Household multimedia equipment rates (shown as a bar chart in the source, series Estunil and Crovaka, categories Computer/Land line/Mobile phone/Television/DVD reader; the explanation fixes Estunil's Computer share at 20% and DVD reader share at 30% directly off the chart):\n\n| Equipment | Estunil (approx.) | Crovaka (approx.) |\n|---|---|---|\n| Computer | 20% | ~60% |\n| Land line | ~85% | ~90% |\n| Mobile phone | ~90% | ~80% |\n| Television | ~40% | ~90% |\n| DVD reader | 30% | ~70% |\n\n*In Estunil, how many households have both a computer and a DVD reader?*",
-      "es": "Tasas de equipamiento multimedia de los hogares (mostrado como gráfico de barras en la fuente, series Estunil y Crovaka, categorías Ordenador/Línea fija/Teléfono móvil/Televisión/Reproductor de DVD; la explicación fija la cuota de Ordenador de Estunil en el 20% y la de Reproductor de DVD en el 30% directamente del gráfico):\n\n| Equipamiento | Estunil (aprox.) | Crovaka (aprox.) |\n|---|---|---|\n| Ordenador | 20% | ~60% |\n| Línea fija | ~85% | ~90% |\n| Teléfono móvil | ~90% | ~80% |\n| Televisión | ~40% | ~90% |\n| Reproductor de DVD | 30% | ~70% |\n\n*En Estunil, ¿cuántos hogares tienen a la vez ordenador y reproductor de DVD?*"
+      "es": "Tasas de equipamiento multimedia de los hogares (mostrado como gráfico de barras en la fuente, series Estunil y Crovaka, categorías Ordenador/Línea fija/Teléfono móvil/Televisión/Reproductor de DVD; la explicación fija la cuota de Ordenador de Estunil en el 20 % y la de Reproductor de DVD en el 30 % directamente del gráfico):\n\n| Equipamiento | Estunil (aprox.) | Crovaka (aprox.) |\n|---|---|---|\n| Ordenador | 20 % | ~60 % |\n| Línea fija | ~85 % | ~90 % |\n| Teléfono móvil | ~90 % | ~80 % |\n| Televisión | ~40 % | ~90 % |\n| Reproductor de DVD | 30 % | ~70 % |\n\n*En Estunil, ¿cuántos hogares tienen a la vez ordenador y reproductor de DVD?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "Fewer than 20%",
-          "es": "Menos del 20%"
+          "es": "Menos del 20 %"
         },
         "isCorrect": false
       },
@@ -1971,7 +1971,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "20%",
-          "es": "20%"
+          "es": "20 %"
         },
         "isCorrect": false
       },
@@ -1979,7 +1979,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "Between 20% and 30%",
-          "es": "Entre el 20% y el 30%"
+          "es": "Entre el 20 % y el 30 %"
         },
         "isCorrect": false
       },
@@ -1987,7 +1987,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "30%",
-          "es": "30%"
+          "es": "30 %"
         },
         "isCorrect": false
       },
@@ -2000,7 +2000,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: In Estunil, 20% of households have a computer and 30% have a DVD reader. The percentage of households owning both a computer and a DVD reader is therefore between 0% and 20%. It is 20% if all the households equipped with a computer have a DVD reader and 0% if none of the households equipped with a computer has a DVD reader.\n\nMethod: We need to check each possible answer in turn until we find the correct one.\n\nSolution: a) is not correct — the number can be 20%. b) is not correct — the number can be less than 20%. c) is not correct — the number cannot exceed 20%. d) is not correct — the number cannot exceed 20%. **e) is correct** — a), b), c) and d) are not correct.",
-          "es": "Planteamiento: En Estunil, el 20% de los hogares tiene ordenador y el 30% tiene reproductor de DVD. El porcentaje de hogares que tienen a la vez ordenador y reproductor de DVD está, por tanto, entre el 0% y el 20%. Es del 20% si todos los hogares equipados con ordenador tienen también reproductor de DVD, y del 0% si ninguno de los hogares equipados con ordenador tiene reproductor de DVD.\n\nMétodo: Debemos comprobar cada posible respuesta por turno hasta encontrar la correcta.\n\nSolución: a) no es correcta — el número puede ser del 20%. b) no es correcta — el número puede ser inferior al 20%. c) no es correcta — el número no puede superar el 20%. d) no es correcta — el número no puede superar el 20%. **e) es correcta** — a), b), c) y d) no son correctas."
+          "es": "Planteamiento: En Estunil, el 20 % de los hogares tiene ordenador y el 30 % tiene reproductor de DVD. El porcentaje de hogares que tienen a la vez ordenador y reproductor de DVD está, por tanto, entre el 0 % y el 20 %. Es del 20 % si todos los hogares equipados con ordenador tienen también reproductor de DVD, y del 0 % si ninguno de los hogares equipados con ordenador tiene reproductor de DVD.\n\nMétodo: Debemos comprobar cada posible respuesta por turno hasta encontrar la correcta.\n\nSolución: a) no es correcta — el número puede ser del 20 %. b) no es correcta — el número puede ser inferior al 20 %. c) no es correcta — el número no puede superar el 20 %. d) no es correcta — el número no puede superar el 20 %. **e) es correcta** — a), b), c) y d) no son correctas."
         }
       }
     ],
@@ -2015,14 +2015,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Students:\n\n| | Total number of students | Percentage of students with grants | Number of students per 10,000 inhabitants |\n|---|---|---|---|\n| Boronitz | 16,200 | 18% | 200 |\n| Denitz | 15,714 | 24% | 180 |\n\n*The population of Denitz is three quarters the population of Crovaka. How many inhabitants does Crovaka have?*",
-      "es": "Estudiantes:\n\n| | Número total de estudiantes | Porcentaje de estudiantes con beca | Número de estudiantes por 10,000 habitantes |\n|---|---|---|---|\n| Boronitz | 16,200 | 18% | 200 |\n| Denitz | 15,714 | 24% | 180 |\n\n*La población de Denitz es tres cuartas partes de la población de Crovaka. ¿Cuántos habitantes tiene Crovaka?*"
+      "es": "Estudiantes:\n\n| | Número total de estudiantes | Porcentaje de estudiantes con beca | Número de estudiantes por 10.000 habitantes |\n|---|---|---|---|\n| Boronitz | 16.200 | 18 % | 200 |\n| Denitz | 15.714 | 24 % | 180 |\n\n*La población de Denitz es tres cuartas partes de la población de Crovaka. ¿Cuántos habitantes tiene Crovaka?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "654,750",
-          "es": "654,750"
+          "es": "654.750"
         },
         "isCorrect": false
       },
@@ -2030,7 +2030,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,080,000",
-          "es": "1,080,000"
+          "es": "1.080.000"
         },
         "isCorrect": false
       },
@@ -2038,19 +2038,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,164,000",
-          "es": "1,164,000"
+          "es": "1.164.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the population of Denitz using the information in the table. This is a direct proportion problem: the number of inhabitants is directly proportional to the number of students; then, we calculate the population of Crovaka from the population of Denitz: Population of Denitz = 3/4 × Population of Crovaka.\n\nSolution — Stage 1: Let P be the population of Denitz: P × 180 = 10,000 × 15,714. P = 10,000 × 15,714 / 180 = 873,000. Stage 2: Population of Crovaka = 4/3 × 873,000 = **1,164,000**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la población de Denitz usando la información de la tabla. Es un problema de proporcionalidad directa: el número de habitantes es directamente proporcional al número de estudiantes; a continuación, calculamos la población de Crovaka a partir de la población de Denitz: Población de Denitz = 3/4 × Población de Crovaka.\n\nSolución — Fase 1: Sea P la población de Denitz: P × 180 = 10,000 × 15,714. P = 10,000 × 15,714 / 180 = 873,000. Fase 2: Población de Crovaka = 4/3 × 873,000 = **1,164,000**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la población de Denitz usando la información de la tabla. Es un problema de proporcionalidad directa: el número de habitantes es directamente proporcional al número de estudiantes; a continuación, calculamos la población de Crovaka a partir de la población de Denitz: Población de Denitz = 3/4 × Población de Crovaka.\n\nSolución — Fase 1: Sea P la población de Denitz: P × 180 = 10.000 × 15.714. P = 10.000 × 15.714 / 180 = 873.000. Fase 2: Población de Crovaka = 4/3 × 873.000 = **1.164.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "2,121,390",
-          "es": "2,121,390"
+          "es": "2.121.390"
         },
         "isCorrect": false
       },
@@ -2058,7 +2058,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "3,771,360",
-          "es": "3,771,360"
+          "es": "3.771.360"
         },
         "isCorrect": false
       }
@@ -2081,7 +2081,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "46.7 km/h",
-          "es": "46.7 km/h"
+          "es": "46,7 km/h"
         },
         "isCorrect": false
       },
@@ -2094,14 +2094,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: Speed = Distance / Time.\n\nMethod: We need to proceed in three stages: first, we calculate the total distance; then, we calculate the journey time; lastly, we calculate the speed.\n\nSolution — Stage 1: Julia first travels from Boronitz to Denitz. In doing so she travels 60km. She then travels from Denitz to Crovaka. This means she travels a further 120km. Therefore: Distance = 60 + 120 = 180km. Stage 2: Time = 13:05 − 10:50 = 2h15; 2h15 = 2.25 hours. Stage 3: Speed = 180 / 2.25 = **80km/h**.",
-          "es": "Planteamiento: Velocidad = Distancia / Tiempo.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos la distancia total; a continuación, calculamos el tiempo del viaje; por último, calculamos la velocidad.\n\nSolución — Fase 1: Julia viaja primero de Boronitz a Denitz. Con ello recorre 60 km. A continuación viaja de Denitz a Crovaka. Con ello recorre otros 120 km. Por tanto: Distancia = 60 + 120 = 180 km. Fase 2: Tiempo = 13:05 − 10:50 = 2h15; 2h15 = 2.25 horas. Fase 3: Velocidad = 180 / 2.25 = **80 km/h**."
+          "es": "Planteamiento: Velocidad = Distancia / Tiempo.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos la distancia total; a continuación, calculamos el tiempo del viaje; por último, calculamos la velocidad.\n\nSolución — Fase 1: Julia viaja primero de Boronitz a Denitz. Con ello recorre 60 km. A continuación viaja de Denitz a Crovaka. Con ello recorre otros 120 km. Por tanto: Distancia = 60 + 120 = 180 km. Fase 2: Tiempo = 13:05 − 10:50 = 2:15; 2:15 = 2,25 horas. Fase 3: Velocidad = 180 / 2,25 = **80 km/h**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "83.7 km/h",
-          "es": "83.7 km/h"
+          "es": "83,7 km/h"
         },
         "isCorrect": false
       },
@@ -2117,7 +2117,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "104.7 km/h",
-          "es": "104.7 km/h"
+          "es": "104,7 km/h"
         },
         "isCorrect": false
       }
@@ -2133,26 +2133,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Driving test candidates (2010):\n\n| | January | February | March | April |\n|---|---|---|---|---|\n| Total number of candidates | 60,000 | 30,000 | 30,000 | 40,000 |\n| Success rate | 30% | 40% | 32% | 36% |\n\n*What was the success rate of candidates taking the driving test during the first quarter of 2010?*",
-      "es": "Candidatos al examen de conducir (2010):\n\n| | Enero | Febrero | Marzo | Abril |\n|---|---|---|---|---|\n| Número total de candidatos | 60,000 | 30,000 | 30,000 | 40,000 |\n| Tasa de aprobados | 30% | 40% | 32% | 36% |\n\n*¿Cuál fue la tasa de aprobados en el examen de conducir durante el primer trimestre de 2010?*"
+      "es": "Candidatos al examen de conducir (2010):\n\n| | Enero | Febrero | Marzo | Abril |\n|---|---|---|---|---|\n| Número total de candidatos | 60.000 | 30.000 | 30.000 | 40.000 |\n| Tasa de aprobados | 30 % | 40 % | 32 % | 36 % |\n\n*¿Cuál fue la tasa de aprobados en el examen de conducir durante el primer trimestre de 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "33%",
-          "es": "33%"
+          "es": "33 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The success rate in the first quarter of the year is not a simple average of the success rates in January, February and March. The total number of candidates in fact varies from month to month. We can therefore either apply the weighted average formula or work from the definition of the success rate. We have chosen the second, more intuitive option. Success rate in the 1st quarter = number of successful candidates in the 1st quarter / total number of candidates in the 1st quarter.\n\nSolution: Number of successful candidates in the 1st quarter: (0.3 × 60,000) + (0.4 × 30,000) + (0.32 × 30,000) = 39,600. Total number of candidates in the 1st quarter: 60,000 + 30,000 + 30,000 = 120,000. Success rate in the 1st quarter: 39,600 / 120,000 = **33%**.",
-          "es": "Planteamiento y método: La tasa de aprobados del primer trimestre del año no es una media simple de las tasas de aprobados de enero, febrero y marzo. El número total de candidatos varía, de hecho, de un mes a otro. Por tanto, podemos aplicar la fórmula de la media ponderada o partir de la definición de la tasa de aprobados. Hemos elegido la segunda opción, más intuitiva. Tasa de aprobados del 1er trimestre = número de candidatos aprobados en el 1er trimestre / número total de candidatos en el 1er trimestre.\n\nSolución: Número de candidatos aprobados en el 1er trimestre: (0.3 × 60,000) + (0.4 × 30,000) + (0.32 × 30,000) = 39,600. Número total de candidatos en el 1er trimestre: 60,000 + 30,000 + 30,000 = 120,000. Tasa de aprobados en el 1er trimestre: 39,600 / 120,000 = **33%**."
+          "es": "Planteamiento y método: La tasa de aprobados del primer trimestre del año no es una media simple de las tasas de aprobados de enero, febrero y marzo. El número total de candidatos varía, de hecho, de un mes a otro. Por tanto, podemos aplicar la fórmula de la media ponderada o partir de la definición de la tasa de aprobados. Hemos elegido la segunda opción, más intuitiva. Tasa de aprobados del 1er trimestre = número de candidatos aprobados en el 1er trimestre / número total de candidatos en el 1er trimestre.\n\nSolución: Número de candidatos aprobados en el 1er trimestre: (0,3 × 60.000) + (0,4 × 30.000) + (0,32 × 30.000) = 39.600. Número total de candidatos en el 1er trimestre: 60.000 + 30.000 + 30.000 = 120.000. Tasa de aprobados en el 1er trimestre: 39.600 / 120.000 = **33 %**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "33.3%",
-          "es": "33.3%"
+          "es": "33,3 %"
         },
         "isCorrect": false
       },
@@ -2160,7 +2160,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "33.5%",
-          "es": "33.5%"
+          "es": "33,5 %"
         },
         "isCorrect": false
       },
@@ -2168,7 +2168,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "34%",
-          "es": "34%"
+          "es": "34 %"
         },
         "isCorrect": false
       },
@@ -2176,7 +2176,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "36%",
-          "es": "36%"
+          "es": "36 %"
         },
         "isCorrect": false
       }
@@ -2192,14 +2192,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of pharmacies per 100,000 inhabitants, 2010 (shown as a bar chart in the source; approx. values): Venalia ≈ 32; Muravia ≈ 28; Buldonia ≈ 42; Telonia ≈ 27.\n\n*In 2000, there were 375 pharmacies in Muravia, ie 25 more than in 2010. What was the population of Muravia in 2010?*",
-      "es": "Número de farmacias por 100,000 habitantes, 2010 (mostrado como gráfico de barras en la fuente; valores aprox.): Venalia ≈ 32; Muravia ≈ 28; Buldonia ≈ 42; Telonia ≈ 27.\n\n*En 2000 había 375 farmacias en Muravia, es decir, 25 más que en 2010. ¿Cuál era la población de Muravia en 2010?*"
+      "es": "Número de farmacias por 100.000 habitantes, 2010 (mostrado como gráfico de barras en la fuente; valores aprox.): Venalia ≈ 32; Muravia ≈ 28; Buldonia ≈ 42; Telonia ≈ 27.\n\n*En 2000 había 375 farmacias en Muravia, es decir, 25 más que en 2010. ¿Cuál era la población de Muravia en 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,120,000",
-          "es": "1,120,000"
+          "es": "1.120.000"
         },
         "isCorrect": false
       },
@@ -2207,19 +2207,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,250,000",
-          "es": "1,250,000"
+          "es": "1.250.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: This is a direct proportion question: the number of pharmacies is directly proportional to the number of inhabitants.\n\nMethod: We need to proceed in two stages: first, we calculate the number of pharmacies in 2010 from the information given in the question; next, we calculate the population in 2010 from the graph.\n\nSolution — Stage 1: Number of pharmacies in 2010: 375 − 25 = 350. Stage 2: Let P be the population of Muravia in 2010: 350 × 100,000 = P × 28. P = 350 × 100,000 / 28 = **1,250,000**.",
-          "es": "Planteamiento: Es una pregunta de proporcionalidad directa: el número de farmacias es directamente proporcional al número de habitantes.\n\nMétodo: Debemos proceder en dos fases: primero, calculamos el número de farmacias en 2010 a partir de la información dada en la pregunta; a continuación, calculamos la población en 2010 a partir del gráfico.\n\nSolución — Fase 1: Número de farmacias en 2010: 375 − 25 = 350. Fase 2: Sea P la población de Muravia en 2010: 350 × 100,000 = P × 28. P = 350 × 100,000 / 28 = **1,250,000**."
+          "es": "Planteamiento: Es una pregunta de proporcionalidad directa: el número de farmacias es directamente proporcional al número de habitantes.\n\nMétodo: Debemos proceder en dos fases: primero, calculamos el número de farmacias en 2010 a partir de la información dada en la pregunta; a continuación, calculamos la población en 2010 a partir del gráfico.\n\nSolución — Fase 1: Número de farmacias en 2010: 375 − 25 = 350. Fase 2: Sea P la población de Muravia en 2010: 350 × 100.000 = P × 28. P = 350 × 100.000 / 28 = **1.250.000**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "1,428,571",
-          "es": "1,428,571"
+          "es": "1.428.571"
         },
         "isCorrect": false
       },
@@ -2227,7 +2227,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "9,800,000",
-          "es": "9,800,000"
+          "es": "9.800.000"
         },
         "isCorrect": false
       },
@@ -2235,7 +2235,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "11,200,000",
-          "es": "11,200,000"
+          "es": "11.200.000"
         },
         "isCorrect": false
       }
@@ -2258,19 +2258,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "3,137",
-          "es": "3,137"
+          "es": "3.137"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The question is a simple one. We simply need to add the number of children with the names Julia or Michael in 2006 and 2007, ie four numbers. This is a question of speed. To save time, it's best not to use a calculator but to work it out in your head. We can see that the numbers in the five possible answers do not end with the same digit. Therefore, all we need to do is find out what digit the correct answer ends in.\n\nSolution: Number of children named Julia or Michael in 2006 and 2007: 651 + 929 + 793 + 764. Looking at the unit digits: 1 + 9 + 3 + 4 = 17. The number that is the correct answer ends in a 7. Of the 5 possible answers, the only number ending in 7 is **3,137**.",
-          "es": "Planteamiento y método: La pregunta es sencilla. Simplemente debemos sumar el número de niños llamados Julia o Michael en 2006 y 2007, es decir, cuatro cifras. Es una cuestión de rapidez. Para ahorrar tiempo, es mejor no usar calculadora y calcularlo mentalmente. Podemos observar que las cifras de las cinco posibles respuestas no terminan en la misma cifra. Por tanto, solo necesitamos averiguar en qué cifra termina la respuesta correcta.\n\nSolución: Número de niños llamados Julia o Michael en 2006 y 2007: 651 + 929 + 793 + 764. Fijándonos en las cifras de las unidades: 1 + 9 + 3 + 4 = 17. El número que es la respuesta correcta termina en 7. De las 5 posibles respuestas, el único número que termina en 7 es **3,137**."
+          "es": "Planteamiento y método: La pregunta es sencilla. Simplemente debemos sumar el número de niños llamados Julia o Michael en 2006 y 2007, es decir, cuatro cifras. Es una cuestión de rapidez. Para ahorrar tiempo, es mejor no usar calculadora y calcularlo mentalmente. Podemos observar que las cifras de las cinco posibles respuestas no terminan en la misma cifra. Por tanto, solo necesitamos averiguar en qué cifra termina la respuesta correcta.\n\nSolución: Número de niños llamados Julia o Michael en 2006 y 2007: 651 + 929 + 793 + 764. Fijándonos en las cifras de las unidades: 1 + 9 + 3 + 4 = 17. El número que es la respuesta correcta termina en 7. De las 5 posibles respuestas, el único número que termina en 7 es **3.137**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "3,185",
-          "es": "3,185"
+          "es": "3.185"
         },
         "isCorrect": false
       },
@@ -2278,7 +2278,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "3,190",
-          "es": "3,190"
+          "es": "3.190"
         },
         "isCorrect": false
       },
@@ -2286,7 +2286,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "3,203",
-          "es": "3,203"
+          "es": "3.203"
         },
         "isCorrect": false
       },
@@ -2294,7 +2294,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "3,254",
-          "es": "3,254"
+          "es": "3.254"
         },
         "isCorrect": false
       }
@@ -2317,7 +2317,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "1.24",
-          "es": "1.24"
+          "es": "1,24"
         },
         "isCorrect": false
       },
@@ -2325,12 +2325,12 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1.76",
-          "es": "1.76"
+          "es": "1,76"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The length of the fabric can be found by dividing the cost of the fabric by the price per metre. The per-metre price of the fabric is given. The cost of the fabric is obtained from the total cost, the hourly cost and the cost of supplies. According to the table: Total cost = hourly cost + cost of fabric + cost of supplies.\n\nMethod: We need to proceed in four stages. For a jacket at company A: first, we calculate the hourly cost. A jacket costs 12 euros for 60 minutes' labour. Therefore, for 140 minutes labour it costs: 12 euros × (140min / 60min); then, we calculate the cost of supplies: for 100 jackets, the cost is 400 euros; next, we calculate the cost of the fabric: Cost of the fabric = total cost − hourly cost − cost of supplies; lastly, we calculate the length of the fabric: Length of fabric = cost of fabric / price of fabric per metre.\n\nSolution — Stage 1: Hourly cost = 12 × 140 / 60 = 28. Stage 2: Cost of supplies = 400 / 100 = 4. Stage 3: Cost of fabric = 120 − 28 − 4 = 88. Stage 4: Length of fabric = 88 / 50 = **1.76**.",
-          "es": "Planteamiento: La longitud de la tela puede hallarse dividiendo el coste de la tela entre el precio por metro. El precio de la tela por metro se da directamente. El coste de la tela se obtiene a partir del coste total, el coste horario y el coste de los suministros. Según la tabla: Coste total = coste horario + coste de la tela + coste de los suministros.\n\nMétodo: Debemos proceder en cuatro fases. Para una chaqueta en la empresa A: primero, calculamos el coste horario. Una chaqueta cuesta 12 euros por 60 minutos de mano de obra. Por tanto, para 140 minutos de mano de obra cuesta: 12 euros × (140min / 60min); a continuación, calculamos el coste de los suministros: para 100 chaquetas, el coste es de 400 euros; después, calculamos el coste de la tela: Coste de la tela = coste total − coste horario − coste de los suministros; por último, calculamos la longitud de la tela: Longitud de la tela = coste de la tela / precio de la tela por metro.\n\nSolución — Fase 1: Coste horario = 12 × 140 / 60 = 28. Fase 2: Coste de los suministros = 400 / 100 = 4. Fase 3: Coste de la tela = 120 − 28 − 4 = 88. Fase 4: Longitud de la tela = 88 / 50 = **1.76**."
+          "es": "Planteamiento: La longitud de la tela puede hallarse dividiendo el coste de la tela entre el precio por metro. El precio de la tela por metro se da directamente. El coste de la tela se obtiene a partir del coste total, el coste horario y el coste de los suministros. Según la tabla: Coste total = coste horario + coste de la tela + coste de los suministros.\n\nMétodo: Debemos proceder en cuatro fases. Para una chaqueta en la empresa A: primero, calculamos el coste horario. Una chaqueta cuesta 12 euros por 60 minutos de mano de obra. Por tanto, para 140 minutos de mano de obra cuesta: 12 euros × (140min / 60min); a continuación, calculamos el coste de los suministros: para 100 chaquetas, el coste es de 400 euros; después, calculamos el coste de la tela: Coste de la tela = coste total − coste horario − coste de los suministros; por último, calculamos la longitud de la tela: Longitud de la tela = coste de la tela / precio de la tela por metro.\n\nSolución — Fase 1: Coste horario = 12 × 140 / 60 = 28. Fase 2: Coste de los suministros = 400 / 100 = 4. Fase 3: Coste de la tela = 120 − 28 − 4 = 88. Fase 4: Longitud de la tela = 88 / 50 = **1,76**."
         }
       },
       {
@@ -2345,7 +2345,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "2.09",
-          "es": "2.09"
+          "es": "2,09"
         },
         "isCorrect": false
       },
@@ -2353,7 +2353,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "2.20",
-          "es": "2.20"
+          "es": "2,20"
         },
         "isCorrect": false
       }
@@ -2369,14 +2369,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "*The written test for the audit exam comprises a number of topics from which to choose. Of the 600 candidates taking the test, 20% chose topic 1 and 40% chose topic 2. Which of the following statements is correct?*",
-      "es": "*La prueba escrita del examen de auditoría comprende varios temas entre los que elegir. De los 600 candidatos que se presentan a la prueba, el 20% eligió el tema 1 y el 40% eligió el tema 2. ¿Cuál de las siguientes afirmaciones es correcta?*"
+      "es": "*La prueba escrita del examen de auditoría comprende varios temas entre los que elegir. De los 600 candidatos que se presentan a la prueba, el 20 % eligió el tema 1 y el 40 % eligió el tema 2. ¿Cuál de las siguientes afirmaciones es correcta?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "40% of the candidates chose topic 3.",
-          "es": "El 40% de los candidatos eligió el tema 3."
+          "es": "El 40 % de los candidatos eligió el tema 3."
         },
         "isCorrect": false
       },
@@ -2384,7 +2384,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "The number of candidates choosing topic 2 was 20% higher than the number of candidates choosing topic 1.",
-          "es": "El número de candidatos que eligió el tema 2 fue un 20% superior al número de candidatos que eligió el tema 1."
+          "es": "El número de candidatos que eligió el tema 2 fue un 20 % superior al número de candidatos que eligió el tema 1."
         },
         "isCorrect": false
       },
@@ -2397,14 +2397,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The question contains an unknown: the number of topics. We can only say that 40% of the 600 candidates did not choose topic 1 or topic 2 or, equally, that the percentage of candidates who chose topic 3 is 40% or less.\n\nMethod: We need to check each possible answer until we find the correct one.\n\nSolution: a) is not correct — the percentage of candidates who chose topic 3 may be less than 40%. b) is not correct — the number of candidates who chose topic 2 is double that of the number of candidates who chose topic 1. The number of candidates who chose topic 2 therefore exceeds the number of candidates who chose topic 1 by 100%. **c) is correct** — the number of candidates who chose topic 3 is 240 or less (40% × 600). It is therefore less than 250. d) is not correct — the percentage of candidates who chose topic 3 may be 40%. e) is not correct — answer c) is the correct answer.",
-          "es": "Planteamiento: La pregunta contiene una incógnita: el número de temas. Solo podemos afirmar que el 40% de los 600 candidatos no eligió el tema 1 ni el tema 2 o, dicho de otro modo, que el porcentaje de candidatos que eligió el tema 3 es del 40% o inferior.\n\nMétodo: Debemos comprobar cada posible respuesta hasta encontrar la correcta.\n\nSolución: a) no es correcta — el porcentaje de candidatos que eligió el tema 3 puede ser inferior al 40%. b) no es correcta — el número de candidatos que eligió el tema 2 es el doble del número de candidatos que eligió el tema 1. El número de candidatos que eligió el tema 2 supera, por tanto, en un 100% al número de candidatos que eligió el tema 1. **c) es correcta** — el número de candidatos que eligió el tema 3 es 240 o menos (40% × 600). Es, por tanto, inferior a 250. d) no es correcta — el porcentaje de candidatos que eligió el tema 3 puede ser del 40%. e) no es correcta — la respuesta c) es la correcta."
+          "es": "Planteamiento: La pregunta contiene una incógnita: el número de temas. Solo podemos afirmar que el 40 % de los 600 candidatos no eligió el tema 1 ni el tema 2 o, dicho de otro modo, que el porcentaje de candidatos que eligió el tema 3 es del 40 % o inferior.\n\nMétodo: Debemos comprobar cada posible respuesta hasta encontrar la correcta.\n\nSolución: a) no es correcta — el porcentaje de candidatos que eligió el tema 3 puede ser inferior al 40 %. b) no es correcta — el número de candidatos que eligió el tema 2 es el doble del número de candidatos que eligió el tema 1. El número de candidatos que eligió el tema 2 supera, por tanto, en un 100 % al número de candidatos que eligió el tema 1. **c) es correcta** — el número de candidatos que eligió el tema 3 es 240 o menos (40 % × 600). Es, por tanto, inferior a 250. d) no es correcta — el porcentaje de candidatos que eligió el tema 3 puede ser del 40 %. e) no es correcta — la respuesta c) es la correcta."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "Fewer than 40% of candidates chose topic 3.",
-          "es": "Menos del 40% de los candidatos eligió el tema 3."
+          "es": "Menos del 40 % de los candidatos eligió el tema 3."
         },
         "isCorrect": false
       },
@@ -2428,7 +2428,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Wind speed at 2pm:\n\n| | In knots | In km/h | In m/s |\n|---|---|---|---|\n| Albana | 10 | 18.52 | 5.144 |\n| Boronitz | 19.438 | 36 | 10 |\n\n*At 2pm the wind was blowing at 40km/h in Crovaka, at 20 knots in Denitz and 12m/s in Estunil. In which town was the wind strongest at 2pm?*",
-      "es": "Velocidad del viento a las 14:00:\n\n| | En nudos | En km/h | En m/s |\n|---|---|---|---|\n| Albana | 10 | 18.52 | 5.144 |\n| Boronitz | 19.438 | 36 | 10 |\n\n*A las 14:00, el viento soplaba a 40 km/h en Crovaka, a 20 nudos en Denitz y a 12 m/s en Estunil. ¿En qué ciudad era más fuerte el viento a las 14:00?*"
+      "es": "Velocidad del viento a las 14:00:\n\n| | En nudos | En km/h | En m/s |\n|---|---|---|---|\n| Albana | 10 | 18,52 | 5,144 |\n| Boronitz | 19,438 | 36 | 10 |\n\n*A las 14:00, el viento soplaba a 40 km/h en Crovaka, a 20 nudos en Denitz y a 12 m/s en Estunil. ¿En qué ciudad era más fuerte el viento a las 14:00?*"
     },
     "options": [
       {
@@ -2472,7 +2472,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to compare wind speeds using the same unit. The simplest thing is to convert knots and m/s into km/h: 10 knots equals 18.52km/h, 1 knot therefore equals 1.852km/h; 10m/s is equal to 36km/h, 1m/s is therefore equal to 3.6km/h.\n\nSolution: Wind speed in Albana: 18.52km/h. Wind speed in Boronitz: 36km/h. Wind speed in Crovaka: 40km/h. Wind speed in Denitz: 20 × 1.852 = 37.04km/h. Wind speed in Estunil: 12 × 3.6 = 43.2km/h. It is therefore in **Estunil** that the wind is strongest.",
-          "es": "Planteamiento y método: Debemos comparar las velocidades del viento usando la misma unidad. Lo más sencillo es convertir los nudos y los m/s a km/h: 10 nudos equivalen a 18.52 km/h, por lo que 1 nudo equivale a 1.852 km/h; 10 m/s equivalen a 36 km/h, por lo que 1 m/s equivale a 3.6 km/h.\n\nSolución: Velocidad del viento en Albana: 18.52 km/h. Velocidad del viento en Boronitz: 36 km/h. Velocidad del viento en Crovaka: 40 km/h. Velocidad del viento en Denitz: 20 × 1.852 = 37.04 km/h. Velocidad del viento en Estunil: 12 × 3.6 = 43.2 km/h. Es, por tanto, en **Estunil** donde el viento es más fuerte."
+          "es": "Planteamiento y método: Debemos comparar las velocidades del viento usando la misma unidad. Lo más sencillo es convertir los nudos y los m/s a km/h: 10 nudos equivalen a 18,52 km/h, por lo que 1 nudo equivale a 1,852 km/h; 10 m/s equivalen a 36 km/h, por lo que 1 m/s equivale a 3,6 km/h.\n\nSolución: Velocidad del viento en Albana: 18,52 km/h. Velocidad del viento en Boronitz: 36 km/h. Velocidad del viento en Crovaka: 40 km/h. Velocidad del viento en Denitz: 20 × 1,852 = 37,04 km/h. Velocidad del viento en Estunil: 12 × 3,6 = 43,2 km/h. Es, por tanto, en **Estunil** donde el viento es más fuerte."
         }
       }
     ],
@@ -2487,26 +2487,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Cumulative total of unworked days from 1st January 2011:\n\n| 1st February 2011 | 1st March 2011 | 1st April 2011 | 1st May 2011 | 1st June 2011 |\n|---|---|---|---|---|\n| 2,400 | 3,300 | 5,490 | 6,720 | 8,400 |\n\n*What was the average number of unworked days per month during the first quarter of 2011?*",
-      "es": "Total acumulado de días no trabajados desde el 1 de enero de 2011:\n\n| 1 de febrero de 2011 | 1 de marzo de 2011 | 1 de abril de 2011 | 1 de mayo de 2011 | 1 de junio de 2011 |\n|---|---|---|---|---|\n| 2,400 | 3,300 | 5,490 | 6,720 | 8,400 |\n\n*¿Cuál fue el número medio de días no trabajados por mes durante el primer trimestre de 2011?*"
+      "es": "Total acumulado de días no trabajados desde el 1 de enero de 2011:\n\n| 1 de febrero de 2011 | 1 de marzo de 2011 | 1 de abril de 2011 | 1 de mayo de 2011 | 1 de junio de 2011 |\n|---|---|---|---|---|\n| 2.400 | 3.300 | 5.490 | 6.720 | 8.400 |\n\n*¿Cuál fue el número medio de días no trabajados por mes durante el primer trimestre de 2011?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,830",
-          "es": "1,830"
+          "es": "1.830"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: A quarter consists of three months. Therefore: the average number of unworked days per month during the first quarter = total number of unworked days during the first quarter / 3.\n\nNB! The table gives the accumulated total of unworked days since 1st January and not the number of unworked days per month. Thus, 2,400 is the number of unworked days between 1st January and 1st February, in other words, the number of unworked days in January. Likewise, 3,300 is the number of unworked days between 1st January and 1st March, in other words, the number of unworked days in January and February, and so on.\n\nSolution: The number of unworked days during the first quarter is the number of unworked days between 1st January and 1st April, ie 5,490. Average number of unworked days per month: 5,490 / 3 = **1,830**.",
-          "es": "Planteamiento y método: Un trimestre consta de tres meses. Por tanto: el número medio de días no trabajados por mes durante el primer trimestre = número total de días no trabajados durante el primer trimestre / 3.\n\nAtención: La tabla ofrece el total acumulado de días no trabajados desde el 1 de enero, y no el número de días no trabajados por mes. Así, 2,400 es el número de días no trabajados entre el 1 de enero y el 1 de febrero, es decir, el número de días no trabajados en enero. Del mismo modo, 3,300 es el número de días no trabajados entre el 1 de enero y el 1 de marzo, es decir, el número de días no trabajados en enero y febrero, y así sucesivamente.\n\nSolución: El número de días no trabajados durante el primer trimestre es el número de días no trabajados entre el 1 de enero y el 1 de abril, es decir, 5,490. Número medio de días no trabajados por mes: 5,490 / 3 = **1,830**."
+          "es": "Planteamiento y método: Un trimestre consta de tres meses. Por tanto: el número medio de días no trabajados por mes durante el primer trimestre = número total de días no trabajados durante el primer trimestre / 3.\n\nAtención: La tabla ofrece el total acumulado de días no trabajados desde el 1 de enero, y no el número de días no trabajados por mes. Así, 2.400 es el número de días no trabajados entre el 1 de enero y el 1 de febrero, es decir, el número de días no trabajados en enero. Del mismo modo, 3.300 es el número de días no trabajados entre el 1 de enero y el 1 de marzo, es decir, el número de días no trabajados en enero y febrero, y así sucesivamente.\n\nSolución: El número de días no trabajados durante el primer trimestre es el número de días no trabajados entre el 1 de enero y el 1 de abril, es decir, 5.490. Número medio de días no trabajados por mes: 5.490 / 3 = **1.830**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "1,900",
-          "es": "1,900"
+          "es": "1.900"
         },
         "isCorrect": false
       },
@@ -2514,7 +2514,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2,850",
-          "es": "2,850"
+          "es": "2.850"
         },
         "isCorrect": false
       },
@@ -2522,7 +2522,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "3,730",
-          "es": "3,730"
+          "es": "3.730"
         },
         "isCorrect": false
       },
@@ -2546,14 +2546,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Cereal production:\n\n| | Land area — Wheat ('000 ha) | Land area — Rye ('000 ha) | Land area — Oats ('000 ha) | Yield — Wheat (t/ha) | Yield — Rye (t/ha) | Yield — Oats (t/ha) |\n|---|---|---|---|---|---|---|\n| Venalia | 94.8 | 29.6 | 12.8 | 740 | 722 | 450 |\n| Buldonia | 45.3 | 12.8 | 10.4 | 870 | 646 | 480 |\n| Telonia | 24.2 | 10.1 | 14.5 | 760 | 510 | 507 |\n| Muravia | 30.6 | 16.4 | 12.9 | 640 | 454 | 402 |\n\n*As an absolute value, what is the difference between rye production in Venalia and rye production in Muravia?*",
-      "es": "Producción de cereales:\n\n| | Superficie — Trigo (miles de ha) | Superficie — Centeno (miles de ha) | Superficie — Avena (miles de ha) | Rendimiento — Trigo (t/ha) | Rendimiento — Centeno (t/ha) | Rendimiento — Avena (t/ha) |\n|---|---|---|---|---|---|---|\n| Venalia | 94.8 | 29.6 | 12.8 | 740 | 722 | 450 |\n| Buldonia | 45.3 | 12.8 | 10.4 | 870 | 646 | 480 |\n| Telonia | 24.2 | 10.1 | 14.5 | 760 | 510 | 507 |\n| Muravia | 30.6 | 16.4 | 12.9 | 640 | 454 | 402 |\n\n*En valor absoluto, ¿cuál es la diferencia entre la producción de centeno en Venalia y la producción de centeno en Muravia?*"
+      "es": "Producción de cereales:\n\n| | Superficie — Trigo (miles de ha) | Superficie — Centeno (miles de ha) | Superficie — Avena (miles de ha) | Rendimiento — Trigo (t/ha) | Rendimiento — Centeno (t/ha) | Rendimiento — Avena (t/ha) |\n|---|---|---|---|---|---|---|\n| Venalia | 94,8 | 29,6 | 12,8 | 740 | 722 | 450 |\n| Buldonia | 45,3 | 12,8 | 10,4 | 870 | 646 | 480 |\n| Telonia | 24,2 | 10,1 | 14,5 | 760 | 510 | 507 |\n| Muravia | 30,6 | 16,4 | 12,9 | 640 | 454 | 402 |\n\n*En valor absoluto, ¿cuál es la diferencia entre la producción de centeno en Venalia y la producción de centeno en Muravia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "3,291,000 tonnes",
-          "es": "3,291,000 toneladas"
+          "es": "3.291.000 toneladas"
         },
         "isCorrect": false
       },
@@ -2561,7 +2561,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "13,068,000 tonnes",
-          "es": "13,068,000 toneladas"
+          "es": "13.068.000 toneladas"
         },
         "isCorrect": false
       },
@@ -2569,19 +2569,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "13,925,600 tonnes",
-          "es": "13,925,600 toneladas"
+          "es": "13.925.600 toneladas"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate rye production in Venalia and Muravia, then calculate the difference. Production is not given directly. We need to work it out from the yield. Yield is given in tonnes per hectare. It is therefore a question of the ratio between production (in tonnes) and land area (in hectares): Yield = Production / Land area. Therefore: Production = Yield × Land area.\n\nSolution: Rye production in Venalia: 29,600 × 722 = 21,371,200. Rye production in Muravia: 16,400 × 454 = 7,445,600. Difference: **13,925,600 tonnes**.",
-          "es": "Planteamiento y método: Debemos calcular la producción de centeno en Venalia y Muravia, y luego calcular la diferencia. La producción no se da directamente. Debemos deducirla del rendimiento. El rendimiento se expresa en toneladas por hectárea. Es, por tanto, una cuestión de la proporción entre la producción (en toneladas) y la superficie (en hectáreas): Rendimiento = Producción / Superficie. Por tanto: Producción = Rendimiento × Superficie.\n\nSolución: Producción de centeno en Venalia: 29,600 × 722 = 21,371,200. Producción de centeno en Muravia: 16,400 × 454 = 7,445,600. Diferencia: **13,925,600 toneladas**."
+          "es": "Planteamiento y método: Debemos calcular la producción de centeno en Venalia y Muravia, y luego calcular la diferencia. La producción no se da directamente. Debemos deducirla del rendimiento. El rendimiento se expresa en toneladas por hectárea. Es, por tanto, una cuestión de la proporción entre la producción (en toneladas) y la superficie (en hectáreas): Rendimiento = Producción / Superficie. Por tanto: Producción = Rendimiento × Superficie.\n\nSolución: Producción de centeno en Venalia: 29.600 × 722 = 21.371.200. Producción de centeno en Muravia: 16.400 × 454 = 7.445.600. Diferencia: **13.925.600 toneladas**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "28,202,000 tonnes",
-          "es": "28,202,000 toneladas"
+          "es": "28.202.000 toneladas"
         },
         "isCorrect": false
       },
@@ -2589,7 +2589,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "45,540,000 tonnes",
-          "es": "45,540,000 toneladas"
+          "es": "45.540.000 toneladas"
         },
         "isCorrect": false
       }
@@ -2605,14 +2605,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Proportion of household spending on leisure:\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Pets | 0.5% | 0.6% | 0.7% | 0.5% |\n| Games of chance | 1.0% | 1.1% | 1.4% | 1.3% |\n| Tourism-related services | 1.4% | 1.7% | 1.6% | 1.9% |\n| Services not related to tourism | 2.3% | 2.2% | 2.1% | 2.2% |\n| Leisure goods | 4.3% | 4.2% | 4.4% | 4.3% |\n| Leisure as a whole | 9.5% | 9.8% | 10.2% | 10.2% |\n\n*In 2008, households spent 1,420,860 euros on games of chance. In 2008, how many euros did households spend on leisure other than on games of chance?*",
-      "es": "Proporción del gasto de los hogares en ocio:\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Mascotas | 0.5% | 0.6% | 0.7% | 0.5% |\n| Juegos de azar | 1.0% | 1.1% | 1.4% | 1.3% |\n| Servicios relacionados con el turismo | 1.4% | 1.7% | 1.6% | 1.9% |\n| Servicios no relacionados con el turismo | 2.3% | 2.2% | 2.1% | 2.2% |\n| Bienes de ocio | 4.3% | 4.2% | 4.4% | 4.3% |\n| Ocio en su conjunto | 9.5% | 9.8% | 10.2% | 10.2% |\n\n*En 2008, los hogares gastaron 1,420,860 euros en juegos de azar. En 2008, ¿cuántos euros gastaron los hogares en ocio distinto de los juegos de azar?*"
+      "es": "Proporción del gasto de los hogares en ocio:\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Mascotas | 0,5 % | 0,6 % | 0,7 % | 0,5 % |\n| Juegos de azar | 1,0 % | 1,1 % | 1,4 % | 1,3 % |\n| Servicios relacionados con el turismo | 1,4 % | 1,7 % | 1,6 % | 1,9 % |\n| Servicios no relacionados con el turismo | 2,3 % | 2,2 % | 2,1 % | 2,2 % |\n| Bienes de ocio | 4,3 % | 4,2 % | 4,4 % | 4,3 % |\n| Ocio en su conjunto | 9,5 % | 9,8 % | 10,2 % | 10,2 % |\n\n*En 2008, los hogares gastaron 1.420.860 euros en juegos de azar. En 2008, ¿cuántos euros gastaron los hogares en ocio distinto de los juegos de azar?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "9,460,020",
-          "es": "9,460,020"
+          "es": "9.460.020"
         },
         "isCorrect": false
       },
@@ -2620,19 +2620,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "11,237,710",
-          "es": "11,237,710"
+          "es": "11.237.710"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: This is a direct proportion problem: household spending on leisure is directly proportional to the weighting given to leisure in their spending. We know the amount spent on games of chance and the proportion this represents in household spending.\n\nMethod: We need to proceed in two stages: first, using the table, we calculate the proportion given to leisure activities other than games of chance in household spending; then, we calculate total spending on leisure activities other than games of chance.\n\nSolution — Stage 1: Share of leisure activities other than games of chance = share of all leisure activities − share of games of chance = 9.8% − 1.1% = 8.7%. Stage 2: Let L be the amount of household spending on leisure activities other than games of chance: L × 1.1% = 1,420,860 × 8.7%. L = 1,420,860 × 8.7 / 1.1 = **11,237,710**.",
-          "es": "Planteamiento: Es un problema de proporcionalidad directa: el gasto de los hogares en ocio es directamente proporcional a la ponderación que se da al ocio en su gasto. Conocemos el importe gastado en juegos de azar y la proporción que representa en el gasto de los hogares.\n\nMétodo: Debemos proceder en dos fases: primero, usando la tabla, calculamos la proporción que representan las actividades de ocio distintas de los juegos de azar en el gasto de los hogares; a continuación, calculamos el gasto total en actividades de ocio distintas de los juegos de azar.\n\nSolución — Fase 1: Cuota de las actividades de ocio distintas de los juegos de azar = cuota del conjunto del ocio − cuota de los juegos de azar = 9.8% − 1.1% = 8.7%. Fase 2: Sea L el importe del gasto de los hogares en actividades de ocio distintas de los juegos de azar: L × 1.1% = 1,420,860 × 8.7%. L = 1,420,860 × 8.7 / 1.1 = **11,237,710**."
+          "es": "Planteamiento: Es un problema de proporcionalidad directa: el gasto de los hogares en ocio es directamente proporcional a la ponderación que se da al ocio en su gasto. Conocemos el importe gastado en juegos de azar y la proporción que representa en el gasto de los hogares.\n\nMétodo: Debemos proceder en dos fases: primero, usando la tabla, calculamos la proporción que representan las actividades de ocio distintas de los juegos de azar en el gasto de los hogares; a continuación, calculamos el gasto total en actividades de ocio distintas de los juegos de azar.\n\nSolución — Fase 1: Cuota de las actividades de ocio distintas de los juegos de azar = cuota del conjunto del ocio − cuota de los juegos de azar = 9,8 % − 1,1 % = 8,7 %. Fase 2: Sea L el importe del gasto de los hogares en actividades de ocio distintas de los juegos de azar: L × 1,1 % = 1.420.860 × 8,7 %. L = 1.420.860 × 8,7 / 1,1 = **11.237.710**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "12,658,571",
-          "es": "12,658,571"
+          "es": "12.658.571"
         },
         "isCorrect": false
       },
@@ -2640,7 +2640,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "15,948,428",
-          "es": "15,948,428"
+          "es": "15.948.428"
         },
         "isCorrect": false
       },
@@ -2664,14 +2664,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Scale of travel expense reimbursement applicable to motorcycles (in euros per kilometre; d = distance covered):\n\n| Cylinder rating | d ≤ 20 km | 20 km < d ≤ 50 km | d > 50 km |\n|---|---|---|---|\n| Under 80 cm³ | d × 1.10 | (d × 1.12) + 5.2 | d × 1.15 |\n| 80 to 200 cm³ | d × 1.15 | (d × 1.18) + 5.4 | d × 1.20 |\n| Over 200 cm³ | d × 1.20 | (d × 1.22) + 5.6 | d × 1.25 |\n\n*Jane and Johnny own a 250 cm³ and a 125 cm³ motorcycle respectively. Jane made a 20 km journey and Johnny made a journey of over 50 km. If Johnny received a reimbursement three times greater than Jane, what distance did Johnny travel?*",
-      "es": "Baremo de reembolso de gastos de desplazamiento aplicable a las motocicletas (en euros por kilómetro; d = distancia recorrida):\n\n| Cilindrada | d ≤ 20 km | 20 km < d ≤ 50 km | d > 50 km |\n|---|---|---|---|\n| Menos de 80 cm³ | d × 1.10 | (d × 1.12) + 5.2 | d × 1.15 |\n| De 80 a 200 cm³ | d × 1.15 | (d × 1.18) + 5.4 | d × 1.20 |\n| Más de 200 cm³ | d × 1.20 | (d × 1.22) + 5.6 | d × 1.25 |\n\n*Jane y Johnny tienen una motocicleta de 250 cm³ y otra de 125 cm³ respectivamente. Jane hizo un trayecto de 20 km y Johnny hizo un trayecto de más de 50 km. Si a Johnny le reembolsaron tres veces más que a Jane, ¿qué distancia recorrió Johnny?*"
+      "es": "Baremo de reembolso de gastos de desplazamiento aplicable a las motocicletas (en euros por kilómetro; d = distancia recorrida):\n\n| Cilindrada | d ≤ 20 km | 20 km < d ≤ 50 km | d > 50 km |\n|---|---|---|---|\n| Menos de 80 cm³ | d × 1,10 | (d × 1,12) + 5,2 | d × 1,15 |\n| De 80 a 200 cm³ | d × 1,15 | (d × 1,18) + 5,4 | d × 1,20 |\n| Más de 200 cm³ | d × 1,20 | (d × 1,22) + 5,6 | d × 1,25 |\n\n*Jane y Johnny tienen una motocicleta de 250 cm³ y otra de 125 cm³ respectivamente. Jane hizo un trayecto de 20 km y Johnny hizo un trayecto de más de 50 km. Si a Johnny le reembolsaron tres veces más que a Jane, ¿qué distancia recorrió Johnny?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "57.5 km",
-          "es": "57.5 km"
+          "es": "57,5 km"
         },
         "isCorrect": false
       },
@@ -2684,14 +2684,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: To find the correct answer, the logical route is as follows: first, we find out how much Jane is reimbursed; from this, we calculate how much Johnny is reimbursed; and from this we work out the distance travelled. The problem is that we don't have any money information. We therefore have to take another route.\n\nMethod: We need to start with the reimbursement information for Jane and Johnny given in the table: Jane has a motorcycle of over 200cm³. She travels a distance of not more than 20km. Her reimbursement is therefore worked out using the formula: d × 1.20. Johnny has a motorcycle of between 80 and 200cm³. He covers a distance of over 50km. His reimbursement is therefore worked out using the formula: d × 1.20.\n\nSolution: The reimbursements Jane and Johnny receive are calculated in the same way. They are directly proportional to the distance covered. As Johnny receives a reimbursement three times greater than Jane, he covers three times as many kilometres as Jane, ie: 3 × 20 = **60 km**.",
-          "es": "Planteamiento: Para hallar la respuesta correcta, el camino lógico es el siguiente: primero, hallamos cuánto le reembolsan a Jane; a partir de ahí, calculamos cuánto le reembolsan a Johnny; y a partir de ahí calculamos la distancia recorrida. El problema es que no disponemos de información monetaria. Debemos, por tanto, tomar otro camino.\n\nMétodo: Debemos partir de la información de reembolso de Jane y Johnny dada en la tabla: Jane tiene una motocicleta de más de 200 cm³. Recorre una distancia no superior a 20 km. Su reembolso se calcula, por tanto, con la fórmula: d × 1.20. Johnny tiene una motocicleta de entre 80 y 200 cm³. Recorre una distancia superior a 50 km. Su reembolso se calcula, por tanto, con la fórmula: d × 1.20.\n\nSolución: Los reembolsos que reciben Jane y Johnny se calculan de la misma manera. Son directamente proporcionales a la distancia recorrida. Como a Johnny le reembolsan tres veces más que a Jane, recorre tres veces más kilómetros que Jane, es decir: 3 × 20 = **60 km**."
+          "es": "Planteamiento: Para hallar la respuesta correcta, el camino lógico es el siguiente: primero, hallamos cuánto le reembolsan a Jane; a partir de ahí, calculamos cuánto le reembolsan a Johnny; y a partir de ahí calculamos la distancia recorrida. El problema es que no disponemos de información monetaria. Debemos, por tanto, tomar otro camino.\n\nMétodo: Debemos partir de la información de reembolso de Jane y Johnny dada en la tabla: Jane tiene una motocicleta de más de 200 cm³. Recorre una distancia no superior a 20 km. Su reembolso se calcula, por tanto, con la fórmula: d × 1,20. Johnny tiene una motocicleta de entre 80 y 200 cm³. Recorre una distancia superior a 50 km. Su reembolso se calcula, por tanto, con la fórmula: d × 1,20.\n\nSolución: Los reembolsos que reciben Jane y Johnny se calculan de la misma manera. Son directamente proporcionales a la distancia recorrida. Como a Johnny le reembolsan tres veces más que a Jane, recorre tres veces más kilómetros que Jane, es decir: 3 × 20 = **60 km**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "69.6 km",
-          "es": "69.6 km"
+          "es": "69,6 km"
         },
         "isCorrect": false
       },
@@ -2723,26 +2723,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Imports from Telonia (% variation compared with the same quarter of the previous year):\n\n| 1st quarter 2011 | 2nd quarter 2011 | 3rd quarter 2011 | 4th quarter 2011 |\n|---|---|---|---|\n| 1% | 0% | 1% | -1% |\n\n*In the 4th quarter of 2010, imports from Telonia were worth 400 million euros. How much were they worth in the 4th quarter of 2011?*",
-      "es": "Importaciones desde Telonia (% de variación respecto al mismo trimestre del año anterior):\n\n| 1er trimestre 2011 | 2º trimestre 2011 | 3er trimestre 2011 | 4º trimestre 2011 |\n|---|---|---|---|\n| 1% | 0% | 1% | -1% |\n\n*En el 4º trimestre de 2010, las importaciones desde Telonia tenían un valor de 400 millones de euros. ¿Cuál era su valor en el 4º trimestre de 2011?*"
+      "es": "Importaciones desde Telonia (% de variación respecto al mismo trimestre del año anterior):\n\n| 1er trimestre 2011 | 2º trimestre 2011 | 3er trimestre 2011 | 4º trimestre 2011 |\n|---|---|---|---|\n| 1 % | 0 % | 1 % | -1 % |\n\n*En el 4º trimestre de 2010, las importaciones desde Telonia tenían un valor de 400 millones de euros. ¿Cuál era su valor en el 4º trimestre de 2011?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "396,000,000 euros",
-          "es": "396,000,000 euros"
+          "es": "396.000.000 euros"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The table gives the percentage variation compared with the same quarter of the previous year. Between the 4th quarter of 2010 and the 4th quarter of 2011, imports therefore fell by 1%.\n\nSolution: 400,000,000 − (1% × 400,000,000) = 400,000,000 × (1 − 0.01) = **396,000,000 euros**.",
-          "es": "Planteamiento y método: La tabla ofrece el porcentaje de variación respecto al mismo trimestre del año anterior. Entre el 4º trimestre de 2010 y el 4º trimestre de 2011, las importaciones cayeron, por tanto, un 1%.\n\nSolución: 400,000,000 − (1% × 400,000,000) = 400,000,000 × (1 − 0.01) = **396,000,000 euros**."
+          "es": "Planteamiento y método: La tabla ofrece el porcentaje de variación respecto al mismo trimestre del año anterior. Entre el 4º trimestre de 2010 y el 4º trimestre de 2011, las importaciones cayeron, por tanto, un 1 %.\n\nSolución: 400.000.000 − (1 % × 400.000.000) = 400.000.000 × (1 − 0,01) = **396.000.000 euros**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "400,000,000 euros",
-          "es": "400,000,000 euros"
+          "es": "400.000.000 euros"
         },
         "isCorrect": false
       },
@@ -2750,7 +2750,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "403,959,600 euros",
-          "es": "403,959,600 euros"
+          "es": "403.959.600 euros"
         },
         "isCorrect": false
       },
@@ -2758,7 +2758,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "408,040,000 euros",
-          "es": "408,040,000 euros"
+          "es": "408.040.000 euros"
         },
         "isCorrect": false
       },
@@ -2841,14 +2841,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution of citrus production (shown as a 100%-stacked bar chart in the source, bands Oranges/Lemons/Clementines et mandarins/Grapefruit, for Venalia, Telonia, Galonia, Buldonia; the explanation reads Galonia's Orange share directly off the chart as 60%, and Venalia's Lemon share as 20%).\n\n*Venalia produces three times more oranges than Galonia. If Galonia produces 24,400 tonnes of citrus fruit, how many tonnes of lemons are produced in Venalia?*",
-      "es": "Distribución de la producción de cítricos (mostrada como gráfico de barras apiladas al 100% en la fuente, bandas Naranjas/Limones/Clementinas y mandarinas/Pomelos, para Venalia, Telonia, Galonia, Buldonia; la explicación lee la cuota de Naranjas de Galonia directamente del gráfico como el 60%, y la cuota de Limones de Venalia como el 20%).\n\n*Venalia produce tres veces más naranjas que Galonia. Si Galonia produce 24,400 toneladas de cítricos, ¿cuántas toneladas de limones se producen en Venalia?*"
+      "es": "Distribución de la producción de cítricos (mostrada como gráfico de barras apiladas al 100 % en la fuente, bandas Naranjas/Limones/Clementinas y mandarinas/Pomelos, para Venalia, Telonia, Galonia, Buldonia; la explicación lee la cuota de Naranjas de Galonia directamente del gráfico como el 60 %, y la cuota de Limones de Venalia como el 20 %).\n\n*Venalia produce tres veces más naranjas que Galonia. Si Galonia produce 24.400 toneladas de cítricos, ¿cuántas toneladas de limones se producen en Venalia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "4,880",
-          "es": "4,880"
+          "es": "4.880"
         },
         "isCorrect": false
       },
@@ -2856,7 +2856,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "9,760",
-          "es": "9,760"
+          "es": "9.760"
         },
         "isCorrect": false
       },
@@ -2864,7 +2864,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "14,640",
-          "es": "14,640"
+          "es": "14.640"
         },
         "isCorrect": false
       },
@@ -2872,12 +2872,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "21,960",
-          "es": "21,960"
+          "es": "21.960"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate orange production in Galonia. According to the graph: Orange production in Galonia = 60% × citrus production in Galonia; next, we calculate orange production in Venalia. According to the first sentence: Orange production in Venalia = 3 × orange production in Galonia; lastly, we calculate lemon production in Venalia. According to the graph, we know that lemon production (20%) is equivalent to half of orange production (40%). Therefore: Lemon production = orange production / 2.\n\nSolution — Stage 1: Orange production in Galonia = 0.6 × 24,400 = 14,640. Stage 2: Orange production in Venalia = 3 × 14,640 = 43,920. Stage 3: Lemon production in Venalia = 43,920 / 2 = **21,960**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos la producción de naranjas en Galonia. Según el gráfico: Producción de naranjas en Galonia = 60% × producción de cítricos en Galonia; a continuación, calculamos la producción de naranjas en Venalia. Según la primera frase: Producción de naranjas en Venalia = 3 × producción de naranjas en Galonia; por último, calculamos la producción de limones en Venalia. Según el gráfico, sabemos que la producción de limones (20%) equivale a la mitad de la producción de naranjas (40%). Por tanto: Producción de limones = producción de naranjas / 2.\n\nSolución — Fase 1: Producción de naranjas en Galonia = 0.6 × 24,400 = 14,640. Fase 2: Producción de naranjas en Venalia = 3 × 14,640 = 43,920. Fase 3: Producción de limones en Venalia = 43,920 / 2 = **21,960**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos la producción de naranjas en Galonia. Según el gráfico: Producción de naranjas en Galonia = 60 % × producción de cítricos en Galonia; a continuación, calculamos la producción de naranjas en Venalia. Según la primera frase: Producción de naranjas en Venalia = 3 × producción de naranjas en Galonia; por último, calculamos la producción de limones en Venalia. Según el gráfico, sabemos que la producción de limones (20 %) equivale a la mitad de la producción de naranjas (40 %). Por tanto: Producción de limones = producción de naranjas / 2.\n\nSolución — Fase 1: Producción de naranjas en Galonia = 0,6 × 24.400 = 14.640. Fase 2: Producción de naranjas en Venalia = 3 × 14.640 = 43.920. Fase 3: Producción de limones en Venalia = 43.920 / 2 = **21.960**."
         }
       },
       {
@@ -2928,7 +2928,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: Sarah is faster than John. The 30-question test will therefore be finished when John has answered his 15 questions.\n\nMethod: We need to calculate the time John takes to answer 15 questions and add this time to 9:30.\n\nSolution: John takes 20 minutes to answer 10 questions. Therefore he takes 30 minutes to answer 15 questions. The time at which the test will be finished is therefore: 9:30 + 0h30 = **10:00**.",
-          "es": "Planteamiento: Sarah es más rápida que John. El test de 30 preguntas terminará, por tanto, cuando John haya respondido a sus 15 preguntas.\n\nMétodo: Debemos calcular el tiempo que tarda John en responder a 15 preguntas y sumar ese tiempo a las 9:30.\n\nSolución: John tarda 20 minutos en responder a 10 preguntas. Por tanto, tarda 30 minutos en responder a 15 preguntas. La hora a la que terminará el test es, por tanto: 9:30 + 0h30 = **10:00**."
+          "es": "Planteamiento: Sarah es más rápida que John. El test de 30 preguntas terminará, por tanto, cuando John haya respondido a sus 15 preguntas.\n\nMétodo: Debemos calcular el tiempo que tarda John en responder a 15 preguntas y sumar ese tiempo a las 9:30.\n\nSolución: John tarda 20 minutos en responder a 10 preguntas. Por tanto, tarda 30 minutos en responder a 15 preguntas. La hora a la que terminará el test es, por tanto: 9:30 + 0:30 = **10:00**."
         }
       },
       {
@@ -2959,7 +2959,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Agricultural Area in Use (AAU):\n\n| | AAU 2000 (thousands of ha) | AAU 2010 (thousands of ha) | % of AAU devoted to organic farming 2000 | % of AAU devoted to organic farming 2010 |\n|---|---|---|---|---|\n| Zone A | 141,306 | 149,832 | 12% | 16% |\n| — of which: Poldavia | 29,874 | 32,620 | 14% | 15% |\n| — of which: Telonia | 16,783 | 18,481 | 15% | 18% |\n| — of which: Zogland | 42,421 | 43,542 | 11% | 15% |\n| — of which: Levonia | 20,872 | 21,642 | 17% | 20% |\n\n*In 2010, the average AAU of countries in Zone A was 12,486,000 hectares. In 2010, how many countries were there in Zone A?*",
-      "es": "Superficie Agrícola Útil (SAU):\n\n| | SAU 2000 (miles de ha) | SAU 2010 (miles de ha) | % de SAU dedicada a la agricultura ecológica 2000 | % de SAU dedicada a la agricultura ecológica 2010 |\n|---|---|---|---|---|\n| Zona A | 141,306 | 149,832 | 12% | 16% |\n| — de la cual: Poldavia | 29,874 | 32,620 | 14% | 15% |\n| — de la cual: Telonia | 16,783 | 18,481 | 15% | 18% |\n| — de la cual: Zogland | 42,421 | 43,542 | 11% | 15% |\n| — de la cual: Levonia | 20,872 | 21,642 | 17% | 20% |\n\n*En 2010, la SAU media de los países de la Zona A era de 12,486,000 hectáreas. En 2010, ¿cuántos países había en la Zona A?*"
+      "es": "Superficie Agrícola Útil (SAU):\n\n| | SAU 2000 (miles de ha) | SAU 2010 (miles de ha) | % de SAU dedicada a la agricultura ecológica 2000 | % de SAU dedicada a la agricultura ecológica 2010 |\n|---|---|---|---|---|\n| Zona A | 141.306 | 149.832 | 12 % | 16 % |\n| — de la cual: Poldavia | 29.874 | 32.620 | 14 % | 15 % |\n| — de la cual: Telonia | 16.783 | 18.481 | 15 % | 18 % |\n| — de la cual: Zogland | 42.421 | 43.542 | 11 % | 15 % |\n| — de la cual: Levonia | 20.872 | 21.642 | 17 % | 20 % |\n\n*En 2010, la SAU media de los países de la Zona A era de 12.486.000 hectáreas. En 2010, ¿cuántos países había en la Zona A?*"
     },
     "options": [
       {
@@ -3003,7 +3003,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The number of countries in Zone A is obtained from the average AAU and the total AAU of the countries in Zone A: Average AAU in Zone A = total AAU in Zone A / Number of countries in Zone A. Calculations are made using the data for 2010.\n\nSolution: Number of countries in Zone A = total AAU of Zone A / average AAU of Zone A = 149,832 × 1,000 / 12,486,000 = 149,832 / 12,486 = **12**.",
-          "es": "Planteamiento y método: El número de países de la Zona A se obtiene a partir de la SAU media y la SAU total de los países de la Zona A: SAU media de la Zona A = SAU total de la Zona A / Número de países de la Zona A. Los cálculos se hacen con los datos de 2010.\n\nSolución: Número de países de la Zona A = SAU total de la Zona A / SAU media de la Zona A = 149,832 × 1,000 / 12,486,000 = 149,832 / 12,486 = **12**."
+          "es": "Planteamiento y método: El número de países de la Zona A se obtiene a partir de la SAU media y la SAU total de los países de la Zona A: SAU media de la Zona A = SAU total de la Zona A / Número de países de la Zona A. Los cálculos se hacen con los datos de 2010.\n\nSolución: Número de países de la Zona A = SAU total de la Zona A / SAU media de la Zona A = 149.832 × 1.000 / 12.486.000 = 149.832 / 12.486 = **12**."
         }
       }
     ],
@@ -3018,14 +3018,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Average house prices (in euros):\n\n| | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| New houses | 184,600 | 186,200 | 196,400 | 204,600 | 208,300 |\n| Old houses | 136,900 | 138,200 | 142,400 | 145,800 | 152,800 |\n\n*If, between 2007 and 2009, the price of new houses increased in the same proportion as the price of old houses, what was the approximate difference between the price of new houses and the price of old houses in 2009?*",
-      "es": "Precio medio de la vivienda (en euros):\n\n| | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Vivienda nueva | 184,600 | 186,200 | 196,400 | 204,600 | 208,300 |\n| Vivienda usada | 136,900 | 138,200 | 142,400 | 145,800 | 152,800 |\n\n*Si, entre 2007 y 2009, el precio de la vivienda nueva aumentó en la misma proporción que el precio de la vivienda usada, ¿cuál fue aproximadamente la diferencia entre el precio de la vivienda nueva y el precio de la vivienda usada en 2009?*"
+      "es": "Precio medio de la vivienda (en euros):\n\n| | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Vivienda nueva | 184.600 | 186.200 | 196.400 | 204.600 | 208.300 |\n| Vivienda usada | 136.900 | 138.200 | 142.400 | 145.800 | 152.800 |\n\n*Si, entre 2007 y 2009, el precio de la vivienda nueva aumentó en la misma proporción que el precio de la vivienda usada, ¿cuál fue aproximadamente la diferencia entre el precio de la vivienda nueva y el precio de la vivienda usada en 2009?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "48,640 euros",
-          "es": "48,640 euros"
+          "es": "48.640 euros"
         },
         "isCorrect": false
       },
@@ -3033,19 +3033,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "50,640 euros",
-          "es": "50,640 euros"
+          "es": "50.640 euros"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the relative increase in the price of old houses between 2007 and 2009; then, we apply this relative increase to the price of new houses in 2007 to find the theoretical price in 2009; lastly, we calculate the difference between the theoretical price of new houses and the price of old houses in 2009.\n\nSolution — Stage 1: Relative increase in the price of old houses between 2007 and 2009: (145,800 − 138,200) / 138,200 ≈ 0.055. Stage 2: Theoretical price of new houses in 2009: 186,200 × (1 + 0.055) = 196,441. Stage 3: Difference = 196,441 − 145,800 = 50,641 ≈ **50,640** (by not rounding the variation rate up to 5.5%, we get 50,640 straight away).",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el aumento relativo del precio de la vivienda usada entre 2007 y 2009; a continuación, aplicamos este aumento relativo al precio de la vivienda nueva en 2007 para hallar el precio teórico en 2009; por último, calculamos la diferencia entre el precio teórico de la vivienda nueva y el precio de la vivienda usada en 2009.\n\nSolución — Fase 1: Aumento relativo del precio de la vivienda usada entre 2007 y 2009: (145,800 − 138,200) / 138,200 ≈ 0.055. Fase 2: Precio teórico de la vivienda nueva en 2009: 186,200 × (1 + 0.055) = 196,441. Fase 3: Diferencia = 196,441 − 145,800 = 50,641 ≈ **50,640** (si no redondeamos la tasa de variación al 5.5%, obtenemos directamente 50,640)."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el aumento relativo del precio de la vivienda usada entre 2007 y 2009; a continuación, aplicamos este aumento relativo al precio de la vivienda nueva en 2007 para hallar el precio teórico en 2009; por último, calculamos la diferencia entre el precio teórico de la vivienda nueva y el precio de la vivienda usada en 2009.\n\nSolución — Fase 1: Aumento relativo del precio de la vivienda usada entre 2007 y 2009: (145.800 − 138.200) / 138.200 ≈ 0,055. Fase 2: Precio teórico de la vivienda nueva en 2009: 186.200 × (1 + 0,055) = 196.441. Fase 3: Diferencia = 196.441 − 145.800 = 50.641 ≈ **50.640** (si no redondeamos la tasa de variación al 5,5 %, obtenemos directamente 50.640)."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "55,730 euros",
-          "es": "55,730 euros"
+          "es": "55.730 euros"
         },
         "isCorrect": false
       },
@@ -3053,7 +3053,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "58,800 euros",
-          "es": "58,800 euros"
+          "es": "58.800 euros"
         },
         "isCorrect": false
       },
@@ -3061,7 +3061,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "62,030 euros",
-          "es": "62,030 euros"
+          "es": "62.030 euros"
         },
         "isCorrect": false
       }
@@ -3077,26 +3077,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Cereal production (in thousands of tonnes, shown as a bar chart in the source, series Wheat/Barley/Oats/Maize, years 1995/2000/2005/2010; approx. values):\n\n| Year | Wheat | Barley | Oats | Maize |\n|---|---|---|---|---|\n| 1995 | ~140 | ~90 | ~50 | ~80 |\n| 2000 | ~120 | ~100 | ~40 | ~80 |\n| 2005 | ~130 | ~50 | ~30 | ~10 |\n| 2010 | ~120 | ~90 | ~60 | ~80 |\n\n*In 2000, the total production of cereals other than wheat was 440,000 tonnes. In 2000, what was the percentage of maize in total cereal production?*",
-      "es": "Producción de cereales (en miles de toneladas, mostrada como gráfico de barras en la fuente, series Trigo/Cebada/Avena/Maíz, años 1995/2000/2005/2010; valores aprox.):\n\n| Año | Trigo | Cebada | Avena | Maíz |\n|---|---|---|---|---|\n| 1995 | ~140 | ~90 | ~50 | ~80 |\n| 2000 | ~120 | ~100 | ~40 | ~80 |\n| 2005 | ~130 | ~50 | ~30 | ~10 |\n| 2010 | ~120 | ~90 | ~60 | ~80 |\n\n*En 2000, la producción total de cereales distintos del trigo fue de 440,000 toneladas. En 2000, ¿qué porcentaje representaba el maíz en la producción total de cereales?*"
+      "es": "Producción de cereales (en miles de toneladas, mostrada como gráfico de barras en la fuente, series Trigo/Cebada/Avena/Maíz, años 1995/2000/2005/2010; valores aprox.):\n\n| Año | Trigo | Cebada | Avena | Maíz |\n|---|---|---|---|---|\n| 1995 | ~140 | ~90 | ~50 | ~80 |\n| 2000 | ~120 | ~100 | ~40 | ~80 |\n| 2005 | ~130 | ~50 | ~30 | ~10 |\n| 2010 | ~120 | ~90 | ~60 | ~80 |\n\n*En 2000, la producción total de cereales distintos del trigo fue de 440.000 toneladas. En 2000, ¿qué porcentaje representaba el maíz en la producción total de cereales?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "14.3%",
-          "es": "14.3%"
+          "es": "14,3 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to start with what we know: total production of cereals other than wheat (440,000). We then proceed in two stages: first, we calculate total cereal production in 2000 using the graph and the information provided in the question: Total cereal production = Total production of cereals other than wheat + wheat production; then, we calculate the ratio between the production of maize and total cereal production in 2000.\n\nSolution — Stage 1: Total cereal production in 2000 = 440,000 + 120,000 = 560,000. Stage 2: Share of maize production in total cereal production in 2000: 80,000 / 560,000 ≈ 0.143 = **14.3%**.",
-          "es": "Planteamiento y método: Debemos partir de lo que sabemos: la producción total de cereales distintos del trigo (440,000). A continuación, procedemos en dos fases: primero, calculamos la producción total de cereales en 2000 usando el gráfico y la información dada en la pregunta: Producción total de cereales = Producción total de cereales distintos del trigo + producción de trigo; a continuación, calculamos la proporción entre la producción de maíz y la producción total de cereales en 2000.\n\nSolución — Fase 1: Producción total de cereales en 2000 = 440,000 + 120,000 = 560,000. Fase 2: Cuota del maíz en la producción total de cereales en 2000: 80,000 / 560,000 ≈ 0.143 = **14.3%**."
+          "es": "Planteamiento y método: Debemos partir de lo que sabemos: la producción total de cereales distintos del trigo (440.000). A continuación, procedemos en dos fases: primero, calculamos la producción total de cereales en 2000 usando el gráfico y la información dada en la pregunta: Producción total de cereales = Producción total de cereales distintos del trigo + producción de trigo; a continuación, calculamos la proporción entre la producción de maíz y la producción total de cereales en 2000.\n\nSolución — Fase 1: Producción total de cereales en 2000 = 440.000 + 120.000 = 560.000. Fase 2: Cuota del maíz en la producción total de cereales en 2000: 80.000 / 560.000 ≈ 0,143 = **14,3 %**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "18.2%",
-          "es": "18.2%"
+          "es": "18,2 %"
         },
         "isCorrect": false
       },
@@ -3104,7 +3104,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "21.4%",
-          "es": "21.4%"
+          "es": "21,4 %"
         },
         "isCorrect": false
       },
@@ -3112,7 +3112,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "22.2%",
-          "es": "22.2%"
+          "es": "22,2 %"
         },
         "isCorrect": false
       },
@@ -3120,7 +3120,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "27.3%",
-          "es": "27.3%"
+          "es": "27,3 %"
         },
         "isCorrect": false
       }
@@ -3136,14 +3136,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Average number of animals per farm (2010):\n\n| Country | Cattle | Pigs | Poultry |\n|---|---|---|---|\n| Poldavia | 54 | 80 | 760 |\n| Telonia | 40 | 42 | 340 |\n| Zogland | 12 | 35 | 284 |\n| Muravia | 45 | 90 | 860 |\n\n*In 2000, there were 24,000 pig farms in Telonia. Between 2000 and 2010, the number of pigs increased by 212,000, while the number of farms decreased by 10%. How many pigs were there in Telonia in 2000?*",
-      "es": "Número medio de animales por explotación (2010):\n\n| País | Bovino | Porcino | Aves de corral |\n|---|---|---|---|\n| Poldavia | 54 | 80 | 760 |\n| Telonia | 40 | 42 | 340 |\n| Zogland | 12 | 35 | 284 |\n| Muravia | 45 | 90 | 860 |\n\n*En 2000 había 24,000 explotaciones porcinas en Telonia. Entre 2000 y 2010, el número de cerdos aumentó en 212,000, mientras que el número de explotaciones disminuyó un 10%. ¿Cuántos cerdos había en Telonia en 2000?*"
+      "es": "Número medio de animales por explotación (2010):\n\n| País | Bovino | Porcino | Aves de corral |\n|---|---|---|---|\n| Poldavia | 54 | 80 | 760 |\n| Telonia | 40 | 42 | 340 |\n| Zogland | 12 | 35 | 284 |\n| Muravia | 45 | 90 | 860 |\n\n*En 2000 había 24.000 explotaciones porcinas en Telonia. Entre 2000 y 2010, el número de cerdos aumentó en 212.000, mientras que el número de explotaciones disminuyó un 10 %. ¿Cuántos cerdos había en Telonia en 2000?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "652,000",
-          "es": "652,000"
+          "es": "652.000"
         },
         "isCorrect": false
       },
@@ -3151,19 +3151,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "695,200",
-          "es": "695,200"
+          "es": "695.200"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to find out the number of pigs in Telonia in 2000. To do this, we must proceed stage by stage, starting with what we know: the number of farms in 2000 (24,000). We then proceed as follows: first, we calculate the number of farms in 2010 using the information given in the question; then, we calculate the number of pigs in 2010 using the data in the table: Number of pigs = number of pigs per farm × number of farms; lastly, we calculate the number of pigs in 2000 using the information given in the question.\n\nSolution — Stage 1: Number of farms in 2010 = 24,000 × (1 − 10%) = 24,000 × 0.9 = 21,600. Stage 2: Number of pigs in 2010 = 21,600 × 42 = 907,200. Stage 3: Number of pigs in 2000 = 907,200 − 212,000 = **695,200**.",
-          "es": "Planteamiento y método: Debemos hallar el número de cerdos en Telonia en 2000. Para ello, hay que proceder fase por fase, partiendo de lo que sabemos: el número de explotaciones en 2000 (24,000). A continuación, procedemos así: primero, calculamos el número de explotaciones en 2010 usando la información dada en la pregunta; a continuación, calculamos el número de cerdos en 2010 usando los datos de la tabla: Número de cerdos = número de cerdos por explotación × número de explotaciones; por último, calculamos el número de cerdos en 2000 usando la información dada en la pregunta.\n\nSolución — Fase 1: Número de explotaciones en 2010 = 24,000 × (1 − 10%) = 24,000 × 0.9 = 21,600. Fase 2: Número de cerdos en 2010 = 21,600 × 42 = 907,200. Fase 3: Número de cerdos en 2000 = 907,200 − 212,000 = **695,200**."
+          "es": "Planteamiento y método: Debemos hallar el número de cerdos en Telonia en 2000. Para ello, hay que proceder fase por fase, partiendo de lo que sabemos: el número de explotaciones en 2000 (24.000). A continuación, procedemos así: primero, calculamos el número de explotaciones en 2010 usando la información dada en la pregunta; a continuación, calculamos el número de cerdos en 2010 usando los datos de la tabla: Número de cerdos = número de cerdos por explotación × número de explotaciones; por último, calculamos el número de cerdos en 2000 usando la información dada en la pregunta.\n\nSolución — Fase 1: Número de explotaciones en 2010 = 24.000 × (1 − 10 %) = 24.000 × 0,9 = 21.600. Fase 2: Número de cerdos en 2010 = 21.600 × 42 = 907.200. Fase 3: Número de cerdos en 2000 = 907.200 − 212.000 = **695.200**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "796,000",
-          "es": "796,000"
+          "es": "796.000"
         },
         "isCorrect": false
       },
@@ -3171,7 +3171,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,119,200",
-          "es": "1,119,200"
+          "es": "1.119.200"
         },
         "isCorrect": false
       },
@@ -3179,7 +3179,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "1,220,000",
-          "es": "1,220,000"
+          "es": "1.220.000"
         },
         "isCorrect": false
       }
@@ -3195,14 +3195,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Ore production (% variation):\n\n| | Compared with previous quarter — Q1 2010 | Q2 2010 | Q3 2010 | Q4 2010 | Compared with same quarter previous year — Q1 2011 | Q2 2011 | Q3 2011 | Q4 2011 |\n|---|---|---|---|---|---|---|---|---|\n| Copper | -0.4% | 1.2% | 2.1% | 3.5% | 0.5% | 3.6% | 4.9% | 6.5% |\n| Iron | 2.1% | 0.4% | -1.1% | 5.2% | 1.4% | -2.7% | 2.5% | 6.7% |\n| Zinc | 4.2% | 6.7% | -3.4% | -2.1% | 2.9% | 5.8% | 3.2% | 5.2% |\n| Cobalt | 5.4% | -2.2% | 1.8% | 1.4% | 3.1% | 2.9% | 6.5% | 6.4% |\n\n*In the 2nd quarter of 2011, iron production was 1,216,000 tonnes. How much iron was produced in the 3rd quarter of 2010?*",
-      "es": "Producción de mineral (% de variación):\n\n| | Respecto al trimestre anterior — T1 2010 | T2 2010 | T3 2010 | T4 2010 | Respecto al mismo trimestre del año anterior — T1 2011 | T2 2011 | T3 2011 | T4 2011 |\n|---|---|---|---|---|---|---|---|---|\n| Cobre | -0.4% | 1.2% | 2.1% | 3.5% | 0.5% | 3.6% | 4.9% | 6.5% |\n| Hierro | 2.1% | 0.4% | -1.1% | 5.2% | 1.4% | -2.7% | 2.5% | 6.7% |\n| Zinc | 4.2% | 6.7% | -3.4% | -2.1% | 2.9% | 5.8% | 3.2% | 5.2% |\n| Cobalto | 5.4% | -2.2% | 1.8% | 1.4% | 3.1% | 2.9% | 6.5% | 6.4% |\n\n*En el 2º trimestre de 2011, la producción de hierro fue de 1,216,000 toneladas. ¿Cuánto hierro se produjo en el 3er trimestre de 2010?*"
+      "es": "Producción de mineral (% de variación):\n\n| | Respecto al trimestre anterior — T1 2010 | T2 2010 | T3 2010 | T4 2010 | Respecto al mismo trimestre del año anterior — T1 2011 | T2 2011 | T3 2011 | T4 2011 |\n|---|---|---|---|---|---|---|---|---|\n| Cobre | -0,4 % | 1,2 % | 2,1 % | 3,5 % | 0,5 % | 3,6 % | 4,9 % | 6,5 % |\n| Hierro | 2,1 % | 0,4 % | -1,1 % | 5,2 % | 1,4 % | -2,7 % | 2,5 % | 6,7 % |\n| Zinc | 4,2 % | 6,7 % | -3,4 % | -2,1 % | 2,9 % | 5,8 % | 3,2 % | 5,2 % |\n| Cobalto | 5,4 % | -2,2 % | 1,8 % | 1,4 % | 3,1 % | 2,9 % | 6,5 % | 6,4 % |\n\n*En el 2º trimestre de 2011, la producción de hierro fue de 1.216.000 toneladas. ¿Cuánto hierro se produjo en el 3er trimestre de 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,198,462",
-          "es": "1,198,462"
+          "es": "1.198.462"
         },
         "isCorrect": false
       },
@@ -3210,7 +3210,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,202,624",
-          "es": "1,202,624"
+          "es": "1.202.624"
         },
         "isCorrect": false
       },
@@ -3218,7 +3218,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,235,095",
-          "es": "1,235,095"
+          "es": "1.235.095"
         },
         "isCorrect": false
       },
@@ -3226,19 +3226,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,235,996",
-          "es": "1,235,996"
+          "es": "1.235.996"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to start with iron production in the 2nd quarter of 2011 and proceed in two stages: first, we calculate production in the 2nd quarter of 2010 using the right-hand side of the table; between the 2nd quarter of 2010 and the 2nd quarter of 2011, iron production fell by 2.7%; next, we calculate production in the 3rd quarter of 2010: between the 2nd quarter and 3rd quarter of 2010, iron production fell by 1.1%.\n\nSolution — Stage 1: Iron production in the 2nd quarter of 2010: 1,216,000 / (1 − 2.7%) = 1,216,000 / 0.973 ≈ 1,249,743. Stage 2: Iron production in the 3rd quarter of 2010: 1,249,743 × (1 − 1.1%) = 1,249,743 × 0.989 ≈ **1,235,996**.",
-          "es": "Planteamiento y método: Debemos partir de la producción de hierro en el 2º trimestre de 2011 y proceder en dos fases: primero, calculamos la producción en el 2º trimestre de 2010 usando la parte derecha de la tabla; entre el 2º trimestre de 2010 y el 2º trimestre de 2011, la producción de hierro cayó un 2.7%; a continuación, calculamos la producción en el 3er trimestre de 2010: entre el 2º trimestre y el 3er trimestre de 2010, la producción de hierro cayó un 1.1%.\n\nSolución — Fase 1: Producción de hierro en el 2º trimestre de 2010: 1,216,000 / (1 − 2.7%) = 1,216,000 / 0.973 ≈ 1,249,743. Fase 2: Producción de hierro en el 3er trimestre de 2010: 1,249,743 × (1 − 1.1%) = 1,249,743 × 0.989 ≈ **1,235,996**."
+          "es": "Planteamiento y método: Debemos partir de la producción de hierro en el 2º trimestre de 2011 y proceder en dos fases: primero, calculamos la producción en el 2º trimestre de 2010 usando la parte derecha de la tabla; entre el 2º trimestre de 2010 y el 2º trimestre de 2011, la producción de hierro cayó un 2,7 %; a continuación, calculamos la producción en el 3er trimestre de 2010: entre el 2º trimestre y el 3er trimestre de 2010, la producción de hierro cayó un 1,1 %.\n\nSolución — Fase 1: Producción de hierro en el 2º trimestre de 2010: 1.216.000 / (1 − 2,7 %) = 1.216.000 / 0,973 ≈ 1.249.743. Fase 2: Producción de hierro en el 3er trimestre de 2010: 1.249.743 × (1 − 1,1 %) = 1.249.743 × 0,989 ≈ **1.235.996**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "1,241,414",
-          "es": "1,241,414"
+          "es": "1.241.414"
         },
         "isCorrect": false
       }
@@ -3254,14 +3254,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Cobalt production costs in 2011:\n\n| Country | Extraction cost per 100 kg (euros) | Refinement cost per 1,000 kg (euros) |\n|---|---|---|\n| Zogland | 90 | 110 |\n| Telonia | 130 | 160 |\n| Levonia | 80 | 120 |\n| Poldavia | 210 | 150 |\n\n*In 2011, Telonia produced 285,600 tonnes of cobalt, ie 24,800 tonnes less than Levonia. If one tonne equals 1,000 kg, what was the cost of production (extraction and refinement costs) in euros of cobalt in Levonia in 2011?*",
-      "es": "Costes de producción del cobalto en 2011:\n\n| País | Coste de extracción por 100 kg (euros) | Coste de refinado por 1,000 kg (euros) |\n|---|---|---|\n| Zogland | 90 | 110 |\n| Telonia | 130 | 160 |\n| Levonia | 80 | 120 |\n| Poldavia | 210 | 150 |\n\n*En 2011, Telonia produjo 285,600 toneladas de cobalto, es decir, 24,800 toneladas menos que Levonia. Si una tonelada equivale a 1,000 kg, ¿cuál fue el coste de producción (extracción y refinado) en euros del cobalto en Levonia en 2011?*"
+      "es": "Costes de producción del cobalto en 2011:\n\n| País | Coste de extracción por 100 kg (euros) | Coste de refinado por 1.000 kg (euros) |\n|---|---|---|\n| Zogland | 90 | 110 |\n| Telonia | 130 | 160 |\n| Levonia | 80 | 120 |\n| Poldavia | 210 | 150 |\n\n*En 2011, Telonia produjo 285.600 toneladas de cobalto, es decir, 24.800 toneladas menos que Levonia. Si una tonelada equivale a 1.000 kg, ¿cuál fue el coste de producción (extracción y refinado) en euros del cobalto en Levonia en 2011?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "52,160,000",
-          "es": "52,160,000"
+          "es": "52.160.000"
         },
         "isCorrect": false
       },
@@ -3269,7 +3269,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "57,120,000",
-          "es": "57,120,000"
+          "es": "57.120.000"
         },
         "isCorrect": false
       },
@@ -3277,7 +3277,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "62,080,000",
-          "es": "62,080,000"
+          "es": "62.080.000"
         },
         "isCorrect": false
       },
@@ -3285,7 +3285,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "239,936,000",
-          "es": "239,936,000"
+          "es": "239.936.000"
         },
         "isCorrect": false
       },
@@ -3293,12 +3293,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "285,568,000",
-          "es": "285,568,000"
+          "es": "285.568.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We are looking for the production costs of cobalt in Levonia. To find this, we need to proceed stage by stage starting with what we know: production in Telonia (285,600). We then proceed as follows: first, we calculate production in Levonia using the information given in the question; then, we calculate the production costs in Levonia using the data in the table.\n\nNB! The extraction and refinement costs are not expressed in the same units. It is best to express everything in tonnes. Thus, Production costs = (extraction cost for 1 tonne + refinement cost for 1 tonne) × production in tonnes. For Levonia: Extraction cost for 1 tonne = 80 × 10 = 800. Refinement cost for 1 tonne = 120.\n\nSolution — Stage 1: Production in Levonia = 285,600 + 24,800 = 310,400. Stage 2: Production costs in Levonia = (800 + 120) × 310,400 = **285,568,000**.",
-          "es": "Planteamiento y método: Buscamos los costes de producción del cobalto en Levonia. Para hallarlos, debemos proceder fase por fase partiendo de lo que sabemos: la producción en Telonia (285,600). A continuación, procedemos así: primero, calculamos la producción en Levonia usando la información dada en la pregunta; a continuación, calculamos los costes de producción en Levonia usando los datos de la tabla.\n\nAtención: Los costes de extracción y de refinado no se expresan en las mismas unidades. Lo mejor es expresar todo en toneladas. Así, Costes de producción = (coste de extracción de 1 tonelada + coste de refinado de 1 tonelada) × producción en toneladas. Para Levonia: Coste de extracción de 1 tonelada = 80 × 10 = 800. Coste de refinado de 1 tonelada = 120.\n\nSolución — Fase 1: Producción en Levonia = 285,600 + 24,800 = 310,400. Fase 2: Costes de producción en Levonia = (800 + 120) × 310,400 = **285,568,000**."
+          "es": "Planteamiento y método: Buscamos los costes de producción del cobalto en Levonia. Para hallarlos, debemos proceder fase por fase partiendo de lo que sabemos: la producción en Telonia (285.600). A continuación, procedemos así: primero, calculamos la producción en Levonia usando la información dada en la pregunta; a continuación, calculamos los costes de producción en Levonia usando los datos de la tabla.\n\nAtención: Los costes de extracción y de refinado no se expresan en las mismas unidades. Lo mejor es expresar todo en toneladas. Así, Costes de producción = (coste de extracción de 1 tonelada + coste de refinado de 1 tonelada) × producción en toneladas. Para Levonia: Coste de extracción de 1 tonelada = 80 × 10 = 800. Coste de refinado de 1 tonelada = 120.\n\nSolución — Fase 1: Producción en Levonia = 285.600 + 24.800 = 310.400. Fase 2: Costes de producción en Levonia = (800 + 120) × 310.400 = **285.568.000**."
         }
       }
     ],
@@ -3313,7 +3313,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "*Anna bought a lottery ticket. The number is 536 8912 4569 7842 2538. Winnings on this lottery are calculated by applying the following rules in turn:*\n*- Rule 1: if the sum of the first four digits is greater than the sum of the last four digits by more than 20%, the win is 400 euros.*\n*- Rule 2: if the number contains at least three identical digits, the win is increased by 10%.*\n*- Rule 3: if the number made by the last four digits is divisible by three, the win is reduced by 10%.*\n*- Rule 4: if the number includes as many even digits as odd digits, the win is doubled.*\n*How much did Anna win on the lottery?*",
-      "es": "*Anna compró un boleto de lotería. El número es 536 8912 4569 7842 2538. Los premios de esta lotería se calculan aplicando las siguientes reglas, sucesivamente:*\n*- Regla 1: si la suma de las cuatro primeras cifras es superior en más de un 20% a la suma de las cuatro últimas cifras, el premio es de 400 euros.*\n*- Regla 2: si el número contiene al menos tres cifras idénticas, el premio aumenta un 10%.*\n*- Regla 3: si el número formado por las cuatro últimas cifras es divisible entre tres, el premio se reduce un 10%.*\n*- Regla 4: si el número incluye tantas cifras pares como impares, el premio se duplica.*\n*¿Cuánto ganó Anna en la lotería?*"
+      "es": "*Anna compró un boleto de lotería. El número es 536 8912 4569 7842 2538. Los premios de esta lotería se calculan aplicando las siguientes reglas, sucesivamente:*\n*- Regla 1: si la suma de las cuatro primeras cifras es superior en más de un 20 % a la suma de las cuatro últimas cifras, el premio es de 400 euros.*\n*- Regla 2: si el número contiene al menos tres cifras idénticas, el premio aumenta un 10 %.*\n*- Regla 3: si el número formado por las cuatro últimas cifras es divisible entre tres, el premio se reduce un 10 %.*\n*- Regla 4: si el número incluye tantas cifras pares como impares, el premio se duplica.*\n*¿Cuánto ganó Anna en la lotería?*"
     },
     "options": [
       {
@@ -3333,7 +3333,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to start with the number 536 8912 4569 7842 2538 and apply the four rules in turn.\n\nSolution — Rule 1: Sum of the first four digits = 5 + 3 + 6 + 8 = 22. Sum of the last four digits = 2 + 5 + 3 + 8 = 18. 18 + (20% × 18) = 18 × 1.2 = 21.6. 22 > 21.6. The initial win is therefore 400 euros.\n\nNB! It is pointless to perform these calculations if Rule 1 is not satisfied — the win would be nil. Yet, looking at the possible answers, all the wins are positive, so Rule 1 is satisfied.\n\nRule 2: The figure 2 appears 3 times. The win is therefore increased by 10%. Win = 400 + (10% × 400) = 400 × 1.1 = 440.\n\nRule 3: 2,538 / 3 = 846. 2,538 is divisible by 3. The win is therefore reduced by 10%. Win = 440 − (10% × 440) = 440 × 0.9 = 396.\n\nNB! We can check that 2,538 is divisible by 3 without using a calculator: a number is divisible by 3 if the sum of its digits is divisible by 3. 2 + 5 + 3 + 8 = 18. 18 is divisible by 3 (3 × 6 = 18).\n\nRule 4: We can, of course, count the number of odd and even digits. However, there are two other, much faster methods. We can see that the number is made up of a set of three digits and four sets of four digits. The total number of digits is therefore an odd number. As odd numbers are not divisible by 2, there can't be as many even digits as odd digits. If Rule 4 were satisfied, the final win would be 2 × 396. However, looking at the possible answers, none of the numbers matches this win.\n\nThe win is therefore not doubled. It remains at **396 euros**.",
-          "es": "Planteamiento y método: Debemos partir del número 536 8912 4569 7842 2538 y aplicar las cuatro reglas sucesivamente.\n\nSolución — Regla 1: Suma de las cuatro primeras cifras = 5 + 3 + 6 + 8 = 22. Suma de las cuatro últimas cifras = 2 + 5 + 3 + 8 = 18. 18 + (20% × 18) = 18 × 1.2 = 21.6. 22 > 21.6. El premio inicial es, por tanto, de 400 euros.\n\nAtención: No tiene sentido realizar estos cálculos si la Regla 1 no se cumple, ya que el premio sería nulo. Sin embargo, observando las posibles respuestas, todos los premios son positivos, así que la Regla 1 se cumple.\n\nRegla 2: La cifra 2 aparece 3 veces. El premio aumenta, por tanto, un 10%. Premio = 400 + (10% × 400) = 400 × 1.1 = 440.\n\nRegla 3: 2,538 / 3 = 846. 2,538 es divisible entre 3. El premio se reduce, por tanto, un 10%. Premio = 440 − (10% × 440) = 440 × 0.9 = 396.\n\nAtención: Podemos comprobar que 2,538 es divisible entre 3 sin usar calculadora: un número es divisible entre 3 si la suma de sus cifras es divisible entre 3. 2 + 5 + 3 + 8 = 18. 18 es divisible entre 3 (3 × 6 = 18).\n\nRegla 4: Podemos, por supuesto, contar el número de cifras pares e impares. Sin embargo, hay otros dos métodos mucho más rápidos. Podemos observar que el número está formado por un conjunto de tres cifras y cuatro conjuntos de cuatro cifras. El número total de cifras es, por tanto, impar. Como los números impares no son divisibles entre 2, no puede haber tantas cifras pares como impares. Si la Regla 4 se cumpliera, el premio final sería 2 × 396. Sin embargo, observando las posibles respuestas, ningún número coincide con ese premio.\n\nEl premio, por tanto, no se duplica. Permanece en **396 euros**."
+          "es": "Planteamiento y método: Debemos partir del número 536 8912 4569 7842 2538 y aplicar las cuatro reglas sucesivamente.\n\nSolución — Regla 1: Suma de las cuatro primeras cifras = 5 + 3 + 6 + 8 = 22. Suma de las cuatro últimas cifras = 2 + 5 + 3 + 8 = 18. 18 + (20 % × 18) = 18 × 1,2 = 21,6. 22 > 21,6. El premio inicial es, por tanto, de 400 euros.\n\nAtención: No tiene sentido realizar estos cálculos si la Regla 1 no se cumple, ya que el premio sería nulo. Sin embargo, observando las posibles respuestas, todos los premios son positivos, así que la Regla 1 se cumple.\n\nRegla 2: La cifra 2 aparece 3 veces. El premio aumenta, por tanto, un 10 %. Premio = 400 + (10 % × 400) = 400 × 1,1 = 440.\n\nRegla 3: 2.538 / 3 = 846. 2.538 es divisible entre 3. El premio se reduce, por tanto, un 10 %. Premio = 440 − (10 % × 440) = 440 × 0,9 = 396.\n\nAtención: Podemos comprobar que 2.538 es divisible entre 3 sin usar calculadora: un número es divisible entre 3 si la suma de sus cifras es divisible entre 3. 2 + 5 + 3 + 8 = 18. 18 es divisible entre 3 (3 × 6 = 18).\n\nRegla 4: Podemos, por supuesto, contar el número de cifras pares e impares. Sin embargo, hay otros dos métodos mucho más rápidos. Podemos observar que el número está formado por un conjunto de tres cifras y cuatro conjuntos de cuatro cifras. El número total de cifras es, por tanto, impar. Como los números impares no son divisibles entre 2, no puede haber tantas cifras pares como impares. Si la Regla 4 se cumpliera, el premio final sería 2 × 396. Sin embargo, observando las posibles respuestas, ningún número coincide con ese premio.\n\nEl premio, por tanto, no se duplica. Permanece en **396 euros**."
         }
       },
       {
@@ -3372,14 +3372,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Job distribution (shown as a 100%-stacked bar chart in the source, bands Agriculture/Industry/Services, for Poldavia, Levonia, Telonia, Zogland; the explanation reads Zogland's shares approximately off the chart as Industry ≈ 70%, Services ≈ 10%).\n\n*In Zogland, 24,378,000 people have jobs. In this country, by how many does the number of jobs in industry exceed the number of jobs in the services sector?*",
-      "es": "Distribución del empleo (mostrada como gráfico de barras apiladas al 100% en la fuente, bandas Agricultura/Industria/Servicios, para Poldavia, Levonia, Telonia, Zogland; la explicación lee las cuotas de Zogland aproximadamente del gráfico como Industria ≈ 70%, Servicios ≈ 10%).\n\n*En Zogland, 24,378,000 personas tienen empleo. En este país, ¿en cuánto supera el número de empleos en la industria al número de empleos en el sector servicios?*"
+      "es": "Distribución del empleo (mostrada como gráfico de barras apiladas al 100 % en la fuente, bandas Agricultura/Industria/Servicios, para Poldavia, Levonia, Telonia, Zogland; la explicación lee las cuotas de Zogland aproximadamente del gráfico como Industria ≈ 70 %, Servicios ≈ 10 %).\n\n*En Zogland, 24.378.000 personas tienen empleo. En este país, ¿en cuánto supera el número de empleos en la industria al número de empleos en el sector servicios?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,144,260",
-          "es": "1,144,260"
+          "es": "1.144.260"
         },
         "isCorrect": false
       },
@@ -3387,7 +3387,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "4,872,540",
-          "es": "4,872,540"
+          "es": "4.872.540"
         },
         "isCorrect": false
       },
@@ -3395,7 +3395,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "10,842,370",
-          "es": "10,842,370"
+          "es": "10.842.370"
         },
         "isCorrect": false
       },
@@ -3403,19 +3403,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "14,870,580",
-          "es": "14,870,580"
+          "es": "14.870.580"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate: the number of jobs in industry − the number of jobs in the services sector. We calculate this from the total number of jobs (24,378,000), from the percentage of jobs in industry and from the percentage of jobs in the services sector. These percentages are given in the graph. However, we can't read them very accurately. We have to use approximate values but this does not matter greatly as the numbers in the five possible answers are very different from one another. Thus: Percentage of jobs in industry ≈ 70%. Percentage of jobs in the services sector ≈ 10%. Total number of jobs ≈ 25,000,000. We can therefore do these calculations without using a calculator.\n\nSolution: Number of jobs in industry − number of jobs in the services sector ≈ (25,000,000 × 0.7) − (25,000,000 × 0.1) = 25,000,000 × 0.6 = 15,000,000. The number closest to 15,000,000 is **14,870,580**.",
-          "es": "Planteamiento y método: Debemos calcular: el número de empleos en la industria − el número de empleos en el sector servicios. Lo calculamos a partir del número total de empleos (24,378,000), del porcentaje de empleos en la industria y del porcentaje de empleos en el sector servicios. Estos porcentajes se dan en el gráfico. Sin embargo, no podemos leerlos con mucha precisión. Debemos usar valores aproximados, pero esto no importa demasiado, ya que las cifras de las cinco posibles respuestas son muy distintas entre sí. Así: Porcentaje de empleos en la industria ≈ 70%. Porcentaje de empleos en el sector servicios ≈ 10%. Número total de empleos ≈ 25,000,000. Por tanto, podemos hacer estos cálculos sin usar calculadora.\n\nSolución: Número de empleos en la industria − número de empleos en el sector servicios ≈ (25,000,000 × 0.7) − (25,000,000 × 0.1) = 25,000,000 × 0.6 = 15,000,000. El número más cercano a 15,000,000 es **14,870,580**."
+          "es": "Planteamiento y método: Debemos calcular: el número de empleos en la industria − el número de empleos en el sector servicios. Lo calculamos a partir del número total de empleos (24.378.000), del porcentaje de empleos en la industria y del porcentaje de empleos en el sector servicios. Estos porcentajes se dan en el gráfico. Sin embargo, no podemos leerlos con mucha precisión. Debemos usar valores aproximados, pero esto no importa demasiado, ya que las cifras de las cinco posibles respuestas son muy distintas entre sí. Así: Porcentaje de empleos en la industria ≈ 70 %. Porcentaje de empleos en el sector servicios ≈ 10 %. Número total de empleos ≈ 25.000.000. Por tanto, podemos hacer estos cálculos sin usar calculadora.\n\nSolución: Número de empleos en la industria − número de empleos en el sector servicios ≈ (25.000.000 × 0,7) − (25.000.000 × 0,1) = 25.000.000 × 0,6 = 15.000.000. El número más cercano a 15.000.000 es **14.870.580**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "19,780,410",
-          "es": "19,780,410"
+          "es": "19.780.410"
         },
         "isCorrect": false
       }
@@ -3431,26 +3431,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Demographic data (2011):\n\n| Country | Number of births per 1,000 inhabitants | Number of deaths per 1,000 inhabitants | Total land area (km²) | Number of inhabitants per km² |\n|---|---|---|---|---|\n| Poldavia | 12 | 10 | 1,124,600 | 72 |\n| Telonia | 24 | 18 | 624,500 | 95 |\n| Zogland | 18 | 20 | 124,600 | 102 |\n| Buldonia | 30 | 22 | 453,800 | 64 |\n\n*In 2011, 164,240 more births were registered in Telonia than in 2010. What was the number of births in Telonia in 2010?*",
-      "es": "Datos demográficos (2011):\n\n| País | Número de nacimientos por 1,000 habitantes | Número de defunciones por 1,000 habitantes | Superficie total (km²) | Número de habitantes por km² |\n|---|---|---|---|---|\n| Poldavia | 12 | 10 | 1,124,600 | 72 |\n| Telonia | 24 | 18 | 624,500 | 95 |\n| Zogland | 18 | 20 | 124,600 | 102 |\n| Buldonia | 30 | 22 | 453,800 | 64 |\n\n*En 2011 se registraron 164,240 nacimientos más en Telonia que en 2010. ¿Cuál fue el número de nacimientos en Telonia en 2010?*"
+      "es": "Datos demográficos (2011):\n\n| País | Número de nacimientos por 1.000 habitantes | Número de defunciones por 1.000 habitantes | Superficie total (km²) | Número de habitantes por km² |\n|---|---|---|---|---|\n| Poldavia | 12 | 10 | 1.124.600 | 72 |\n| Telonia | 24 | 18 | 624.500 | 95 |\n| Zogland | 18 | 20 | 124.600 | 102 |\n| Buldonia | 30 | 22 | 453.800 | 64 |\n\n*En 2011 se registraron 164.240 nacimientos más en Telonia que en 2010. ¿Cuál fue el número de nacimientos en Telonia en 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,259,620",
-          "es": "1,259,620"
+          "es": "1.259.620"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We are looking for the number of births in Telonia in 2010. To find this, we need to proceed in three stages: first, we calculate the number of inhabitants in Telonia in 2011 from the total land area and the number of inhabitants per km²: Total number of inhabitants = number of inhabitants per km² × total land area; next, we calculate the number of births in Telonia in 2011 from the number of births per 1,000 inhabitants. This is a direct proportion problem; lastly, we calculate the number of births in Telonia in 2010 from the information given in the question.\n\nSolution — Stage 1: Number of inhabitants in Telonia in 2011 = 95 × 624,500 = 59,327,500. Stage 2: Number of births in Telonia in 2011 = 59,327,500 × 24 / 1,000 = 1,423,860. Stage 3: Number of births in Telonia in 2010 = 1,423,860 − 164,240 = **1,259,620**.",
-          "es": "Planteamiento y método: Buscamos el número de nacimientos en Telonia en 2010. Para hallarlo, debemos proceder en tres fases: primero, calculamos el número de habitantes de Telonia en 2011 a partir de la superficie total y el número de habitantes por km²: Número total de habitantes = número de habitantes por km² × superficie total; a continuación, calculamos el número de nacimientos en Telonia en 2011 a partir del número de nacimientos por 1,000 habitantes. Es un problema de proporcionalidad directa; por último, calculamos el número de nacimientos en Telonia en 2010 a partir de la información dada en la pregunta.\n\nSolución — Fase 1: Número de habitantes de Telonia en 2011 = 95 × 624,500 = 59,327,500. Fase 2: Número de nacimientos en Telonia en 2011 = 59,327,500 × 24 / 1,000 = 1,423,860. Fase 3: Número de nacimientos en Telonia en 2010 = 1,423,860 − 164,240 = **1,259,620**."
+          "es": "Planteamiento y método: Buscamos el número de nacimientos en Telonia en 2010. Para hallarlo, debemos proceder en tres fases: primero, calculamos el número de habitantes de Telonia en 2011 a partir de la superficie total y el número de habitantes por km²: Número total de habitantes = número de habitantes por km² × superficie total; a continuación, calculamos el número de nacimientos en Telonia en 2011 a partir del número de nacimientos por 1.000 habitantes. Es un problema de proporcionalidad directa; por último, calculamos el número de nacimientos en Telonia en 2010 a partir de la información dada en la pregunta.\n\nSolución — Fase 1: Número de habitantes de Telonia en 2011 = 95 × 624.500 = 59.327.500. Fase 2: Número de nacimientos en Telonia en 2011 = 59.327.500 × 24 / 1.000 = 1.423.860. Fase 3: Número de nacimientos en Telonia en 2010 = 1.423.860 − 164.240 = **1.259.620**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "1,423,860",
-          "es": "1,423,860"
+          "es": "1.423.860"
         },
         "isCorrect": false
       },
@@ -3458,7 +3458,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,588,100",
-          "es": "1,588,100"
+          "es": "1.588.100"
         },
         "isCorrect": false
       },
@@ -3466,7 +3466,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,642,400",
-          "es": "1,642,400"
+          "es": "1.642.400"
         },
         "isCorrect": false
       },
@@ -3490,7 +3490,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Average price of a hamburger:\n\n| Country | Tax-inclusive price (euros) | VAT rate on the tax-exclusive price |\n|---|---|---|\n| Levonia | 3.20 | 5.5% |\n| Poldavia | 2.80 | 10% |\n| Muravia | 2.65 | 7% |\n| Buldonia | 2.65 | 7% |\n| Venalia | 3.50 | 21% |\n\n*(The tax-inclusive price is the tax-exclusive price with the VAT added.) In which country is the average tax-exclusive price of a hamburger highest?*",
-      "es": "Precio medio de una hamburguesa:\n\n| País | Precio con impuestos incluidos (euros) | Tipo de IVA sobre el precio sin impuestos |\n|---|---|---|\n| Levonia | 3.20 | 5.5% |\n| Poldavia | 2.80 | 10% |\n| Muravia | 2.65 | 7% |\n| Buldonia | 2.65 | 7% |\n| Venalia | 3.50 | 21% |\n\n*(El precio con impuestos incluidos es el precio sin impuestos más el IVA añadido.) ¿En qué país es más alto el precio medio sin impuestos de una hamburguesa?*"
+      "es": "Precio medio de una hamburguesa:\n\n| País | Precio con impuestos incluidos (euros) | Tipo de IVA sobre el precio sin impuestos |\n|---|---|---|\n| Levonia | 3,20 | 5,5 % |\n| Poldavia | 2,80 | 10 % |\n| Muravia | 2,65 | 7 % |\n| Buldonia | 2,65 | 7 % |\n| Venalia | 3,50 | 21 % |\n\n*(El precio con impuestos incluidos es el precio sin impuestos más el IVA añadido.) ¿En qué país es más alto el precio medio sin impuestos de una hamburguesa?*"
     },
     "options": [
       {
@@ -3510,7 +3510,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: Tax-inclusive price = Tax-exclusive price + (VAT rate × Tax-exclusive price) = Tax-exclusive price × (1 + VAT rate). Therefore: Tax-exclusive price = Tax-inclusive price / (1 + VAT rate). We need to calculate the tax-exclusive price for each of the countries and select the country where the price is highest.\n\nTip! We don't need to calculate for Muravia and Buldonia. The tax-exclusive price is in fact the same in both countries and there can only be one correct answer per question.\n\nSolution: Tax-exclusive price in Levonia = 3.2 / 1.055 ≈ 3.03. Tax-exclusive price in Poldavia = 2.8 / 1.1 ≈ 2.55. Tax-exclusive price in Venalia = 3.5 / 1.21 ≈ 2.89. It is therefore in **Levonia** that the tax-exclusive price is highest.",
-          "es": "Planteamiento y método: Precio con impuestos incluidos = Precio sin impuestos + (tipo de IVA × precio sin impuestos) = Precio sin impuestos × (1 + tipo de IVA). Por tanto: Precio sin impuestos = Precio con impuestos incluidos / (1 + tipo de IVA). Debemos calcular el precio sin impuestos para cada uno de los países y elegir el país donde el precio sea más alto.\n\nConsejo: No necesitamos calcularlo para Muravia y Buldonia. El precio sin impuestos es, de hecho, el mismo en ambos países, y solo puede haber una respuesta correcta por pregunta.\n\nSolución: Precio sin impuestos en Levonia = 3.2 / 1.055 ≈ 3.03. Precio sin impuestos en Poldavia = 2.8 / 1.1 ≈ 2.55. Precio sin impuestos en Venalia = 3.5 / 1.21 ≈ 2.89. Es, por tanto, en **Levonia** donde el precio sin impuestos es más alto."
+          "es": "Planteamiento y método: Precio con impuestos incluidos = Precio sin impuestos + (tipo de IVA × precio sin impuestos) = Precio sin impuestos × (1 + tipo de IVA). Por tanto: Precio sin impuestos = Precio con impuestos incluidos / (1 + tipo de IVA). Debemos calcular el precio sin impuestos para cada uno de los países y elegir el país donde el precio sea más alto.\n\nConsejo: No necesitamos calcularlo para Muravia y Buldonia. El precio sin impuestos es, de hecho, el mismo en ambos países, y solo puede haber una respuesta correcta por pregunta.\n\nSolución: Precio sin impuestos en Levonia = 3,2 / 1,055 ≈ 3,03. Precio sin impuestos en Poldavia = 2,8 / 1,1 ≈ 2,55. Precio sin impuestos en Venalia = 3,5 / 1,21 ≈ 2,89. Es, por tanto, en **Levonia** donde el precio sin impuestos es más alto."
         }
       },
       {
@@ -3549,14 +3549,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Evolution in the number of doctors, by country:\n\n| Country | General practitioners 2005 | General practitioners 2010 | Specialists 2005 | Specialists 2010 | Total population 2005 (thousands) |\n|---|---|---|---|---|---|\n| Poldavia | 124,030 | 125,650 | 75,890 | 75,900 | 48,920 |\n| Levonia | 64,540 | 65,320 | 35,410 | 34,210 | 21,540 |\n| Telonia | 148,600 | 158,420 | 104,800 | 111,220 | 63,350 |\n| Zogland | 86,420 | 88,450 | 24,570 | 26,850 | 18,980 |\n| Muravia | 54,310 | 55,400 | 31,450 | 32,330 | 21,010 |\n\n*In Telonia, the total number of doctors per 10,000 inhabitants increased by 5% between 2005 and 2010. What was the population of Telonia in 2010?*",
-      "es": "Evolución del número de médicos, por país:\n\n| País | Médicos de familia 2005 | Médicos de familia 2010 | Especialistas 2005 | Especialistas 2010 | Población total 2005 (miles) |\n|---|---|---|---|---|---|\n| Poldavia | 124,030 | 125,650 | 75,890 | 75,900 | 48,920 |\n| Levonia | 64,540 | 65,320 | 35,410 | 34,210 | 21,540 |\n| Telonia | 148,600 | 158,420 | 104,800 | 111,220 | 63,350 |\n| Zogland | 86,420 | 88,450 | 24,570 | 26,850 | 18,980 |\n| Muravia | 54,310 | 55,400 | 31,450 | 32,330 | 21,010 |\n\n*En Telonia, el número total de médicos por 10,000 habitantes aumentó un 5% entre 2005 y 2010. ¿Cuál era la población de Telonia en 2010?*"
+      "es": "Evolución del número de médicos, por país:\n\n| País | Médicos de familia 2005 | Médicos de familia 2010 | Especialistas 2005 | Especialistas 2010 | Población total 2005 (miles) |\n|---|---|---|---|---|---|\n| Poldavia | 124.030 | 125.650 | 75.890 | 75.900 | 48.920 |\n| Levonia | 64.540 | 65.320 | 35.410 | 34.210 | 21.540 |\n| Telonia | 148.600 | 158.420 | 104.800 | 111.220 | 63.350 |\n| Zogland | 86.420 | 88.450 | 24.570 | 26.850 | 18.980 |\n| Muravia | 54.310 | 55.400 | 31.450 | 32.330 | 21.010 |\n\n*En Telonia, el número total de médicos por 10.000 habitantes aumentó un 5 % entre 2005 y 2010. ¿Cuál era la población de Telonia en 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "63,725,000",
-          "es": "63,725,000"
+          "es": "63.725.000"
         },
         "isCorrect": false
       },
@@ -3564,7 +3564,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "64,000,000",
-          "es": "64,000,000"
+          "es": "64.000.000"
         },
         "isCorrect": false
       },
@@ -3572,19 +3572,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "64,200,000",
-          "es": "64,200,000"
+          "es": "64.200.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the number of doctors per 10,000 inhabitants in 2005 using the data given in the table; then, we calculate the number of doctors per 10,000 inhabitants in 2010 given that this has increased by 5% between 2005 and 2010; lastly, we calculate the population of Telonia in 2010. This is a direct proportion problem.\n\nSolution — Stage 1: Total number of doctors in Telonia in 2005 (GPs + specialists): 148,600 + 104,800 = 253,400. Let N be the total number of doctors per 10,000 inhabitants in 2005: N × 63,350,000 = 253,400 × 10,000. N = 253,400 × 10,000 / 63,350,000 = 40. Stage 2: Total number of doctors per 10,000 inhabitants in 2010: 40 × 1.05 = 42. Stage 3: Total number of doctors in 2010: 158,420 + 111,220 = 269,640. Let P be the total population in 2010: 42 × P = 269,640 × 10,000. P = 269,640 × 10,000 / 42 = **64,200,000**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de médicos por 10,000 habitantes en 2005 usando los datos de la tabla; a continuación, calculamos el número de médicos por 10,000 habitantes en 2010, dado que este aumentó un 5% entre 2005 y 2010; por último, calculamos la población de Telonia en 2010. Es un problema de proporcionalidad directa.\n\nSolución — Fase 1: Número total de médicos en Telonia en 2005 (médicos de familia + especialistas): 148,600 + 104,800 = 253,400. Sea N el número total de médicos por 10,000 habitantes en 2005: N × 63,350,000 = 253,400 × 10,000. N = 253,400 × 10,000 / 63,350,000 = 40. Fase 2: Número total de médicos por 10,000 habitantes en 2010: 40 × 1.05 = 42. Fase 3: Número total de médicos en 2010: 158,420 + 111,220 = 269,640. Sea P la población total en 2010: 42 × P = 269,640 × 10,000. P = 269,640 × 10,000 / 42 = **64,200,000**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de médicos por 10.000 habitantes en 2005 usando los datos de la tabla; a continuación, calculamos el número de médicos por 10.000 habitantes en 2010, dado que este aumentó un 5 % entre 2005 y 2010; por último, calculamos la población de Telonia en 2010. Es un problema de proporcionalidad directa.\n\nSolución — Fase 1: Número total de médicos en Telonia en 2005 (médicos de familia + especialistas): 148.600 + 104.800 = 253.400. Sea N el número total de médicos por 10.000 habitantes en 2005: N × 63.350.000 = 253.400 × 10.000. N = 253.400 × 10.000 / 63.350.000 = 40. Fase 2: Número total de médicos por 10.000 habitantes en 2010: 40 × 1,05 = 42. Fase 3: Número total de médicos en 2010: 158.420 + 111.220 = 269.640. Sea P la población total en 2010: 42 × P = 269.640 × 10.000. P = 269.640 × 10.000 / 42 = **64.200.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "64,523,430",
-          "es": "64,523,430"
+          "es": "64.523.430"
         },
         "isCorrect": false
       },
@@ -3592,7 +3592,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "66,517,500",
-          "es": "66,517,500"
+          "es": "66.517.500"
         },
         "isCorrect": false
       }
@@ -3608,14 +3608,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Electricity production:\n\n| Year | Nuclear | Renewable | Fossil fuel | Electricity production (MW) |\n|---|---|---|---|---|\n| 1990 | 42% | 20% | 38% | 25,640 |\n| 1995 | 46% | 24% | 30% | 28,540 |\n| 2000 | 48% | 26% | 26% | 31,890 |\n| 2005 | 47% | 28% | 25% | 35,670 |\n\n*In 1995, 5% of electricity production from renewable sources came from biomass. That year, how many MW of electricity production from renewable sources did not come from biomass?*",
-      "es": "Producción de electricidad:\n\n| Año | Nuclear | Renovable | Combustible fósil | Producción de electricidad (MW) |\n|---|---|---|---|---|\n| 1990 | 42% | 20% | 38% | 25,640 |\n| 1995 | 46% | 24% | 30% | 28,540 |\n| 2000 | 48% | 26% | 26% | 31,890 |\n| 2005 | 47% | 28% | 25% | 35,670 |\n\n*En 1995, el 5% de la producción de electricidad de fuentes renovables procedía de la biomasa. Ese año, ¿cuántos MW de producción de electricidad de fuentes renovables no procedían de la biomasa?*"
+      "es": "Producción de electricidad:\n\n| Año | Nuclear | Renovable | Combustible fósil | Producción de electricidad (MW) |\n|---|---|---|---|---|\n| 1990 | 42 % | 20 % | 38 % | 25.640 |\n| 1995 | 46 % | 24 % | 30 % | 28.540 |\n| 2000 | 48 % | 26 % | 26 % | 31.890 |\n| 2005 | 47 % | 28 % | 25 % | 35.670 |\n\n*En 1995, el 5 % de la producción de electricidad de fuentes renovables procedía de la biomasa. Ese año, ¿cuántos MW de producción de electricidad de fuentes renovables no procedían de la biomasa?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "342.5",
-          "es": "342.5"
+          "es": "342,5"
         },
         "isCorrect": false
       },
@@ -3623,7 +3623,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,427",
-          "es": "1,427"
+          "es": "1.427"
         },
         "isCorrect": false
       },
@@ -3631,7 +3631,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "5,422.6",
-          "es": "5,422.6"
+          "es": "5.422,6"
         },
         "isCorrect": false
       },
@@ -3639,19 +3639,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "6,507.1",
-          "es": "6,507.1"
+          "es": "6.507,1"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: 5% of electricity from renewable sources comes from biomass. Consequently, 95% does not come from biomass. According to the table, electricity production from renewable sources in 1995 accounts for 24% of total electricity production. Electricity production from renewable sources not coming from biomass therefore accounts for 95% of 24% of total electricity production.\n\nSolution: Electricity production from renewable sources not coming from biomass in 1995: 0.95 × 0.24 × 28,540 = **6,507.1**.",
-          "es": "Planteamiento y método: El 5% de la electricidad de fuentes renovables procede de la biomasa. En consecuencia, el 95% no procede de la biomasa. Según la tabla, la producción de electricidad de fuentes renovables en 1995 representa el 24% de la producción total de electricidad. La producción de electricidad de fuentes renovables que no procede de la biomasa representa, por tanto, el 95% del 24% de la producción total de electricidad.\n\nSolución: Producción de electricidad de fuentes renovables que no procede de la biomasa en 1995: 0.95 × 0.24 × 28,540 = **6,507.1**."
+          "es": "Planteamiento y método: El 5 % de la electricidad de fuentes renovables procede de la biomasa. En consecuencia, el 95 % no procede de la biomasa. Según la tabla, la producción de electricidad de fuentes renovables en 1995 representa el 24 % de la producción total de electricidad. La producción de electricidad de fuentes renovables que no procede de la biomasa representa, por tanto, el 95 % del 24 % de la producción total de electricidad.\n\nSolución: Producción de electricidad de fuentes renovables que no procede de la biomasa en 1995: 0,95 × 0,24 × 28.540 = **6.507,1**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "6,849.6",
-          "es": "6,849.6"
+          "es": "6.849,6"
         },
         "isCorrect": false
       }
@@ -3667,7 +3667,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of people in work, by age group, in millions (shown as a line chart in the source; approx. values read from the chart):\n\n| Year | Under 25 | 25 to 34 | 35 to 55 | Over 55 |\n|---|---|---|---|---|\n| 1985 | ~1.2 | ~3.8 | ~4.4 | ~2.5 |\n| 1990 | ~1.5 | ~3.5 | ~4.2 | ~2.1 |\n| 1995 | ~1.5 | ~3.6 | ~4.4 | ~2.6 |\n| 2000 | ~1.6 | ~3.4 | ~4.6 | ~2.6 |\n| 2005 | ~1.4 | ~3.7 | ~4.8 | ~2.1 |\n| 2010 | ~1.4 | ~3.9 | ~5.0 | ~2.2 |\n\n*During which period was the increase in the number of people in work aged 35 and over greatest?*",
-      "es": "Número de personas con empleo, por grupo de edad, en millones (mostrado como gráfico de líneas en la fuente; valores aprox. leídos del gráfico):\n\n| Año | Menos de 25 | 25 a 34 | 35 a 55 | Más de 55 |\n|---|---|---|---|---|\n| 1985 | ~1.2 | ~3.8 | ~4.4 | ~2.5 |\n| 1990 | ~1.5 | ~3.5 | ~4.2 | ~2.1 |\n| 1995 | ~1.5 | ~3.6 | ~4.4 | ~2.6 |\n| 2000 | ~1.6 | ~3.4 | ~4.6 | ~2.6 |\n| 2005 | ~1.4 | ~3.7 | ~4.8 | ~2.1 |\n| 2010 | ~1.4 | ~3.9 | ~5.0 | ~2.2 |\n\n*¿Durante qué período fue mayor el aumento del número de personas con empleo de 35 años y más?*"
+      "es": "Número de personas con empleo, por grupo de edad, en millones (mostrado como gráfico de líneas en la fuente; valores aprox. leídos del gráfico):\n\n| Año | Menos de 25 | 25 a 34 | 35 a 55 | Más de 55 |\n|---|---|---|---|---|\n| 1985 | ~1,2 | ~3,8 | ~4,4 | ~2,5 |\n| 1990 | ~1,5 | ~3,5 | ~4,2 | ~2,1 |\n| 1995 | ~1,5 | ~3,6 | ~4,4 | ~2,6 |\n| 2000 | ~1,6 | ~3,4 | ~4,6 | ~2,6 |\n| 2005 | ~1,4 | ~3,7 | ~4,8 | ~2,1 |\n| 2010 | ~1,4 | ~3,9 | ~5,0 | ~2,2 |\n\n*¿Durante qué período fue mayor el aumento del número de personas con empleo de 35 años y más?*"
     },
     "options": [
       {
@@ -3726,14 +3726,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Population:\n\n| Country | < 25 years old | 25–60 years old | > 60 years old | Total population |\n|---|---|---|---|---|\n| Albana | 32% | 50% | 18% | 1,420,940 |\n| Boronitz | 31% | 49% | 20% | 2,420,920 |\n| Crovaka | 18% | 46% | 36% | 842,910 |\n| Denitz | 25% | 55% | 20% | 1,248,520 |\n\n*In Denitz, the size of the population aged between 60 and 65 is twice that of the population aged 66 to 70, which, in turn, is twice that of the population aged over 70. How many of Denitz's inhabitants are aged 60 to 65?*",
-      "es": "Población:\n\n| País | < 25 años | 25–60 años | > 60 años | Población total |\n|---|---|---|---|---|\n| Albana | 32% | 50% | 18% | 1,420,940 |\n| Boronitz | 31% | 49% | 20% | 2,420,920 |\n| Crovaka | 18% | 46% | 36% | 842,910 |\n| Denitz | 25% | 55% | 20% | 1,248,520 |\n\n*En Denitz, el tamaño de la población de 60 a 65 años es el doble del de la población de 66 a 70 años, que, a su vez, es el doble del de la población de más de 70 años. ¿Cuántos habitantes de Denitz tienen entre 60 y 65 años?*"
+      "es": "Población:\n\n| País | < 25 años | 25–60 años | > 60 años | Población total |\n|---|---|---|---|---|\n| Albana | 32 % | 50 % | 18 % | 1.420.940 |\n| Boronitz | 31 % | 49 % | 20 % | 2.420.920 |\n| Crovaka | 18 % | 46 % | 36 % | 842.910 |\n| Denitz | 25 % | 55 % | 20 % | 1.248.520 |\n\n*En Denitz, el tamaño de la población de 60 a 65 años es el doble del de la población de 66 a 70 años, que, a su vez, es el doble del de la población de más de 70 años. ¿Cuántos habitantes de Denitz tienen entre 60 y 65 años?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "35,672",
-          "es": "35,672"
+          "es": "35.672"
         },
         "isCorrect": false
       },
@@ -3741,7 +3741,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "62,426",
-          "es": "62,426"
+          "es": "62.426"
         },
         "isCorrect": false
       },
@@ -3749,7 +3749,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "83,235",
-          "es": "83,235"
+          "es": "83.235"
         },
         "isCorrect": false
       },
@@ -3757,7 +3757,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "124,852",
-          "es": "124,852"
+          "es": "124.852"
         },
         "isCorrect": false
       },
@@ -3765,12 +3765,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "142,688",
-          "es": "142,688"
+          "es": "142.688"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of inhabitants of Denitz aged over 60, using the data given in the table; next, we calculate the number of inhabitants of Denitz aged 60 to 65, using the information given in the question. We can calculate the number of inhabitants aged 60 to 65 in two ways: by solving a number of equations (method 1); by taking an example (method 2).\n\nMethod 1: Let P be the population of Denitz aged 60 to 65. The population aged 66 to 70 = 0.5 × P. The population aged over 70 = 0.5 × 0.5 × P. Therefore: the population aged over 60 = P + (0.5 × P) + (0.5 × 0.5 × P) = 1.75 × P.\n\nMethod 2: Let's suppose that the number of inhabitants aged over 70 is 1. The number of inhabitants aged 66 to 70 = 2. The number of inhabitants aged 60 to 65 = 4. Out of 7 inhabitants aged over 60, 4 are aged 60 to 65. Therefore: the population aged 60 to 65 = P = 4/7 × Population aged over 60.\n\nSolution — Stage 1: Population of Denitz aged over 60: 1,248,520 × 0.2 = 249,704. Stage 2: Using method 1: P = 249,704 / 1.75 = **142,688**. Using method 2: P = (4/7) × 249,704 = **142,688**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de habitantes de Denitz mayores de 60 años, usando los datos de la tabla; a continuación, calculamos el número de habitantes de Denitz de 60 a 65 años, usando la información dada en la pregunta. Podemos calcular el número de habitantes de 60 a 65 años de dos maneras: resolviendo un conjunto de ecuaciones (método 1); tomando un ejemplo (método 2).\n\nMétodo 1: Sea P la población de Denitz de 60 a 65 años. La población de 66 a 70 años = 0.5 × P. La población de más de 70 años = 0.5 × 0.5 × P. Por tanto: la población de más de 60 años = P + (0.5 × P) + (0.5 × 0.5 × P) = 1.75 × P.\n\nMétodo 2: Supongamos que el número de habitantes de más de 70 años es 1. El número de habitantes de 66 a 70 años = 2. El número de habitantes de 60 a 65 años = 4. De cada 7 habitantes de más de 60 años, 4 tienen de 60 a 65 años. Por tanto: la población de 60 a 65 años = P = 4/7 × Población de más de 60 años.\n\nSolución — Fase 1: Población de Denitz mayor de 60 años: 1,248,520 × 0.2 = 249,704. Fase 2: Usando el método 1: P = 249,704 / 1.75 = **142,688**. Usando el método 2: P = (4/7) × 249,704 = **142,688**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de habitantes de Denitz mayores de 60 años, usando los datos de la tabla; a continuación, calculamos el número de habitantes de Denitz de 60 a 65 años, usando la información dada en la pregunta. Podemos calcular el número de habitantes de 60 a 65 años de dos maneras: resolviendo un conjunto de ecuaciones (método 1); tomando un ejemplo (método 2).\n\nMétodo 1: Sea P la población de Denitz de 60 a 65 años. La población de 66 a 70 años = 0,5 × P. La población de más de 70 años = 0,5 × 0,5 × P. Por tanto: la población de más de 60 años = P + (0,5 × P) + (0,5 × 0,5 × P) = 1,75 × P.\n\nMétodo 2: Supongamos que el número de habitantes de más de 70 años es 1. El número de habitantes de 66 a 70 años = 2. El número de habitantes de 60 a 65 años = 4. De cada 7 habitantes de más de 60 años, 4 tienen de 60 a 65 años. Por tanto: la población de 60 a 65 años = P = 4/7 × Población de más de 60 años.\n\nSolución — Fase 1: Población de Denitz mayor de 60 años: 1.248.520 × 0,2 = 249.704. Fase 2: Usando el método 1: P = 249.704 / 1,75 = **142.688**. Usando el método 2: P = (4/7) × 249.704 = **142.688**."
         }
       }
     ],
@@ -3785,14 +3785,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Orange and lemon production (in tonnes):\n\n| Country | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Venalia | 720,421 | 698,645 | 702,345 | 809,623 | 956,879 |\n| Buldonia | 321,592 | 301,234 | 410,568 | 451,879 | 543,901 |\n| Telonia | 216,765 | 218,900 | 287,543 | 321,654 | 308,432 |\n| Galonia | 816,220 | 828,431 | 824,522 | 833,150 | 809,776 |\n| Muravia | 224,777 | 243,421 | 207,654 | 199,874 | 200,121 |\n\n*In 2007, Telonia produced four times as many oranges as lemons. The same year, the country exported half its orange production and three quarters of its lemon production. What percentage of its total orange and lemon production did Telonia export in 2007?*",
-      "es": "Producción de naranjas y limones (en toneladas):\n\n| País | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Venalia | 720,421 | 698,645 | 702,345 | 809,623 | 956,879 |\n| Buldonia | 321,592 | 301,234 | 410,568 | 451,879 | 543,901 |\n| Telonia | 216,765 | 218,900 | 287,543 | 321,654 | 308,432 |\n| Galonia | 816,220 | 828,431 | 824,522 | 833,150 | 809,776 |\n| Muravia | 224,777 | 243,421 | 207,654 | 199,874 | 200,121 |\n\n*En 2007, Telonia produjo cuatro veces más naranjas que limones. Ese mismo año, el país exportó la mitad de su producción de naranjas y tres cuartas partes de su producción de limones. ¿Qué porcentaje de su producción total de naranjas y limones exportó Telonia en 2007?*"
+      "es": "Producción de naranjas y limones (en toneladas):\n\n| País | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Venalia | 720.421 | 698.645 | 702.345 | 809.623 | 956.879 |\n| Buldonia | 321.592 | 301.234 | 410.568 | 451.879 | 543.901 |\n| Telonia | 216.765 | 218.900 | 287.543 | 321.654 | 308.432 |\n| Galonia | 816.220 | 828.431 | 824.522 | 833.150 | 809.776 |\n| Muravia | 224.777 | 243.421 | 207.654 | 199.874 | 200.121 |\n\n*En 2007, Telonia produjo cuatro veces más naranjas que limones. Ese mismo año, el país exportó la mitad de su producción de naranjas y tres cuartas partes de su producción de limones. ¿Qué porcentaje de su producción total de naranjas y limones exportó Telonia en 2007?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "50%",
-          "es": "50%"
+          "es": "50 %"
         },
         "isCorrect": false
       },
@@ -3800,19 +3800,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "55%",
-          "es": "55%"
+          "es": "55 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: This is a direct proportion problem that can be solved without using the data in the table, which enables us to save time.\n\nSolution 1 (without using the table): Telonia produces four times as many oranges as lemons. This means that if Telonia produces 1 tonne of lemons, it produces 4 tonnes of oranges. Oranges and lemons therefore account respectively for 4/5 and 1/5 of total orange and lemon production. We can write this out in the form of equations: Orange production: 4/5 × Y; Lemon production: 1/5 × Y; Orange exports: 1/2 × Orange production = 1/2 × 4/5 × Y = 0.4 × Y; Lemon exports: 3/4 × Lemon production = 3/4 × 1/5 × Y = 0.15 × Y; Orange and lemon exports: (0.4 × Y) + (0.15 × Y) = 0.55 × Y = 55% × Y.\n\nTelonia therefore exported **55%** of its total orange and lemon production.",
-          "es": "Planteamiento y método: Es un problema de proporcionalidad directa que puede resolverse sin usar los datos de la tabla, lo que permite ahorrar tiempo.\n\nSolución 1 (sin usar la tabla): Telonia produce cuatro veces más naranjas que limones. Esto significa que si Telonia produce 1 tonelada de limones, produce 4 toneladas de naranjas. Las naranjas y los limones representan, por tanto, 4/5 y 1/5 respectivamente de la producción total de naranjas y limones. Podemos expresarlo en forma de ecuaciones: Producción de naranjas: 4/5 × Y; Producción de limones: 1/5 × Y; Exportaciones de naranjas: 1/2 × Producción de naranjas = 1/2 × 4/5 × Y = 0.4 × Y; Exportaciones de limones: 3/4 × Producción de limones = 3/4 × 1/5 × Y = 0.15 × Y; Exportaciones de naranjas y limones: (0.4 × Y) + (0.15 × Y) = 0.55 × Y = 55% × Y.\n\nTelonia exportó, por tanto, el **55%** de su producción total de naranjas y limones."
+          "es": "Planteamiento y método: Es un problema de proporcionalidad directa que puede resolverse sin usar los datos de la tabla, lo que permite ahorrar tiempo.\n\nSolución 1 (sin usar la tabla): Telonia produce cuatro veces más naranjas que limones. Esto significa que si Telonia produce 1 tonelada de limones, produce 4 toneladas de naranjas. Las naranjas y los limones representan, por tanto, 4/5 y 1/5 respectivamente de la producción total de naranjas y limones. Podemos expresarlo en forma de ecuaciones: Producción de naranjas: 4/5 × Y; Producción de limones: 1/5 × Y; Exportaciones de naranjas: 1/2 × Producción de naranjas = 1/2 × 4/5 × Y = 0,4 × Y; Exportaciones de limones: 3/4 × Producción de limones = 3/4 × 1/5 × Y = 0,15 × Y; Exportaciones de naranjas y limones: (0,4 × Y) + (0,15 × Y) = 0,55 × Y = 55 % × Y.\n\nTelonia exportó, por tanto, el **55 %** de su producción total de naranjas y limones."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "56.25%",
-          "es": "56.25%"
+          "es": "56,25 %"
         },
         "isCorrect": false
       },
@@ -3820,7 +3820,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "62.5%",
-          "es": "62.5%"
+          "es": "62,5 %"
         },
         "isCorrect": false
       },
@@ -3828,7 +3828,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "70%",
-          "es": "70%"
+          "es": "70 %"
         },
         "isCorrect": false
       }
@@ -3844,14 +3844,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Homicides (2010):\n\n| Country | Number | Index (base 100 = 2000) |\n|---|---|---|\n| Albana | 58 | 88 |\n| Boronitz | 87 | 108 |\n| Crovaka | 61 | 95 |\n| Denitz | 58 | 102 |\n| Estunil | 32 | 80 |\n\n*In Estunil, there were 2.5 homicides per 100,000 inhabitants in 2000. What was the population of Estunil in 2000?*",
-      "es": "Homicidios (2010):\n\n| País | Número | Índice (base 100 = 2000) |\n|---|---|---|\n| Albana | 58 | 88 |\n| Boronitz | 87 | 108 |\n| Crovaka | 61 | 95 |\n| Denitz | 58 | 102 |\n| Estunil | 32 | 80 |\n\n*En Estunil hubo 2.5 homicidios por 100,000 habitantes en 2000. ¿Cuál era la población de Estunil en 2000?*"
+      "es": "Homicidios (2010):\n\n| País | Número | Índice (base 100 = 2000) |\n|---|---|---|\n| Albana | 58 | 88 |\n| Boronitz | 87 | 108 |\n| Crovaka | 61 | 95 |\n| Denitz | 58 | 102 |\n| Estunil | 32 | 80 |\n\n*En Estunil hubo 2,5 homicidios por 100.000 habitantes en 2000. ¿Cuál era la población de Estunil en 2000?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "640,000",
-          "es": "640,000"
+          "es": "640.000"
         },
         "isCorrect": false
       },
@@ -3859,7 +3859,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "409,600",
-          "es": "409,600"
+          "es": "409.600"
         },
         "isCorrect": false
       },
@@ -3867,7 +3867,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,024,000",
-          "es": "1,024,000"
+          "es": "1.024.000"
         },
         "isCorrect": false
       },
@@ -3875,7 +3875,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,280,000",
-          "es": "1,280,000"
+          "es": "1.280.000"
         },
         "isCorrect": false
       },
@@ -3883,12 +3883,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "1,600,000",
-          "es": "1,600,000"
+          "es": "1.600.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The table gives the number of homicides in 2010 and the evolution in the number of homicides between 2000 and 2010. This evolution is given in indices. Base 100 = 2000 means that the number of homicides in 2000 is equivalent to 100. Thus, if the number of homicides in Estunil was 100 in 2000, it was 80 in 2010.\n\nMethod: We need to proceed in two stages: first, we calculate the number of homicides in 2000 from the data given in the table; then, we calculate the total number of inhabitants in 2000 using the information given in the question. This is a direct proportion problem.\n\nSolution — Stage 1: Let H be the number of homicides in Estunil in 2000: H × 80 = 32 × 100. H = 3,200 / 80 = 40. Stage 2: Let P be the population of Estunil in 2000: 2.5 × P = 40 × 100,000. P = 4,000,000 / 2.5 = **1,600,000**.",
-          "es": "Planteamiento: La tabla ofrece el número de homicidios en 2010 y la evolución del número de homicidios entre 2000 y 2010. Esta evolución se expresa en índices. Base 100 = 2000 significa que el número de homicidios en 2000 equivale a 100. Así, si el número de homicidios en Estunil fue 100 en 2000, fue 80 en 2010.\n\nMétodo: Debemos proceder en dos fases: primero, calculamos el número de homicidios en 2000 a partir de los datos de la tabla; a continuación, calculamos el número total de habitantes en 2000 usando la información dada en la pregunta. Es un problema de proporcionalidad directa.\n\nSolución — Fase 1: Sea H el número de homicidios en Estunil en 2000: H × 80 = 32 × 100. H = 3,200 / 80 = 40. Fase 2: Sea P la población de Estunil en 2000: 2.5 × P = 40 × 100,000. P = 4,000,000 / 2.5 = **1,600,000**."
+          "es": "Planteamiento: La tabla ofrece el número de homicidios en 2010 y la evolución del número de homicidios entre 2000 y 2010. Esta evolución se expresa en índices. Base 100 = 2000 significa que el número de homicidios en 2000 equivale a 100. Así, si el número de homicidios en Estunil fue 100 en 2000, fue 80 en 2010.\n\nMétodo: Debemos proceder en dos fases: primero, calculamos el número de homicidios en 2000 a partir de los datos de la tabla; a continuación, calculamos el número total de habitantes en 2000 usando la información dada en la pregunta. Es un problema de proporcionalidad directa.\n\nSolución — Fase 1: Sea H el número de homicidios en Estunil en 2000: H × 80 = 32 × 100. H = 3.200 / 80 = 40. Fase 2: Sea P la población de Estunil en 2000: 2,5 × P = 40 × 100.000. P = 4.000.000 / 2,5 = **1.600.000**."
         }
       }
     ],
@@ -3903,14 +3903,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of cinema-goers:\n\n| Country | 2009 | 2010 |\n|---|---|---|\n| Poldavia | 75,428,497 | 90,423,450 |\n| Telonia | 4,542,210 | 6,743,216 |\n| Levonia | 58,370,640 | 64,426,080 |\n| Zogland | 9,876,219 | 11,345,870 |\n\n*In 2010, each of Levonia's inhabitants went to the cinema an average of 24 times, ie four extra times compared to 2000 when Levonia had 124,610 fewer inhabitants. What was the population of Levonia in 2000?*",
-      "es": "Número de espectadores de cine:\n\n| País | 2009 | 2010 |\n|---|---|---|\n| Poldavia | 75,428,497 | 90,423,450 |\n| Telonia | 4,542,210 | 6,743,216 |\n| Levonia | 58,370,640 | 64,426,080 |\n| Zogland | 9,876,219 | 11,345,870 |\n\n*En 2010, cada habitante de Levonia fue al cine una media de 24 veces, es decir, cuatro veces más que en 2000, cuando Levonia tenía 124,610 habitantes menos. ¿Cuál era la población de Levonia en 2000?*"
+      "es": "Número de espectadores de cine:\n\n| País | 2009 | 2010 |\n|---|---|---|\n| Poldavia | 75.428.497 | 90.423.450 |\n| Telonia | 4.542.210 | 6.743.216 |\n| Levonia | 58.370.640 | 64.426.080 |\n| Zogland | 9.876.219 | 11.345.870 |\n\n*En 2010, cada habitante de Levonia fue al cine una media de 24 veces, es decir, cuatro veces más que en 2000, cuando Levonia tenía 124.610 habitantes menos. ¿Cuál era la población de Levonia en 2000?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "2,176,321",
-          "es": "2,176,321"
+          "es": "2.176.321"
         },
         "isCorrect": false
       },
@@ -3918,7 +3918,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "2,307,500",
-          "es": "2,307,500"
+          "es": "2.307.500"
         },
         "isCorrect": false
       },
@@ -3926,7 +3926,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2,793,922",
-          "es": "2,793,922"
+          "es": "2.793.922"
         },
         "isCorrect": false
       },
@@ -3934,19 +3934,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "2,559,810",
-          "es": "2,559,810"
+          "es": "2.559.810"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the population of Levonia in 2010. We work this out by dividing the number of cinema goers by the average number of times each cinema goer visits the cinema; next, we calculate the population in 2000 from the difference between the number of inhabitants in 2000 and the number of inhabitants in 2010.\n\nSolution — Stage 1: Number of inhabitants in Levonia in 2010: 64,426,080 / 24 = 2,684,420. Stage 2: Number of inhabitants in 2000: 2,684,420 − 124,610 = **2,559,810**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la población de Levonia en 2010. Lo hacemos dividiendo el número de espectadores de cine entre el número medio de veces que cada espectador va al cine; a continuación, calculamos la población en 2000 a partir de la diferencia entre el número de habitantes en 2000 y el número de habitantes en 2010.\n\nSolución — Fase 1: Número de habitantes de Levonia en 2010: 64,426,080 / 24 = 2,684,420. Fase 2: Número de habitantes en 2000: 2,684,420 − 124,610 = **2,559,810**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la población de Levonia en 2010. Lo hacemos dividiendo el número de espectadores de cine entre el número medio de veces que cada espectador va al cine; a continuación, calculamos la población en 2000 a partir de la diferencia entre el número de habitantes en 2000 y el número de habitantes en 2010.\n\nSolución — Fase 1: Número de habitantes de Levonia en 2010: 64.426.080 / 24 = 2.684.420. Fase 2: Número de habitantes en 2000: 2.684.420 − 124.610 = **2.559.810**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "3,096,694",
-          "es": "3,096,694"
+          "es": "3.096.694"
         },
         "isCorrect": false
       }
@@ -3962,14 +3962,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Poldavia Central Bank interest rates (shown as a line chart in the source; April and May are the two values the explanation reads off the chart and uses directly):\n\n| Month | Rate |\n|---|---|\n| January | ~4.2% |\n| February | ~3.5% |\n| March | ~4.6% |\n| April | 4.8% |\n| May | 3.6% |\n\n*If, between May and June, the Poldavia Central Bank interest rate falls by the same percentage as between April and May, what will be the rate in June?*",
-      "es": "Tipos de interés del Banco Central de Poldavia (mostrado como gráfico de líneas en la fuente; abril y mayo son los dos valores que la explicación lee del gráfico y utiliza directamente):\n\n| Mes | Tipo |\n|---|---|\n| Enero | ~4.2% |\n| Febrero | ~3.5% |\n| Marzo | ~4.6% |\n| Abril | 4.8% |\n| Mayo | 3.6% |\n\n*Si, entre mayo y junio, el tipo de interés del Banco Central de Poldavia cae en el mismo porcentaje que entre abril y mayo, ¿cuál será el tipo en junio?*"
+      "es": "Tipos de interés del Banco Central de Poldavia (mostrado como gráfico de líneas en la fuente; abril y mayo son los dos valores que la explicación lee del gráfico y utiliza directamente):\n\n| Mes | Tipo |\n|---|---|\n| Enero | ~4,2 % |\n| Febrero | ~3,5 % |\n| Marzo | ~4,6 % |\n| Abril | 4,8 % |\n| Mayo | 3,6 % |\n\n*Si, entre mayo y junio, el tipo de interés del Banco Central de Poldavia cae en el mismo porcentaje que entre abril y mayo, ¿cuál será el tipo en junio?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "2.4%",
-          "es": "2.4%"
+          "es": "2,4 %"
         },
         "isCorrect": false
       },
@@ -3977,7 +3977,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "2.5%",
-          "es": "2.5%"
+          "es": "2,5 %"
         },
         "isCorrect": false
       },
@@ -3985,7 +3985,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2.6%",
-          "es": "2.6%"
+          "es": "2,6 %"
         },
         "isCorrect": false
       },
@@ -3993,19 +3993,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "2.7%",
-          "es": "2.7%"
+          "es": "2,7 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the relative variation of the interest rate between April and May; then, we apply this variation to the interest rate in May. The interest rates are given on the graph: 4.8% in April and 3.6% in May.\n\nSolution — Stage 1: Relative variation in the interest rate: (3.6% − 4.8%) / 4.8% = −1.2 / 4.8 = **−25%**. Stage 2: Interest rate in June: 3.6% × 0.75 = **2.7%**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la variación relativa del tipo de interés entre abril y mayo; a continuación, aplicamos esta variación al tipo de interés de mayo. Los tipos de interés se dan en el gráfico: 4.8% en abril y 3.6% en mayo.\n\nSolución — Fase 1: Variación relativa del tipo de interés: (3.6% − 4.8%) / 4.8% = −1.2 / 4.8 = **−25%**. Fase 2: Tipo de interés en junio: 3.6% × 0.75 = **2.7%**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la variación relativa del tipo de interés entre abril y mayo; a continuación, aplicamos esta variación al tipo de interés de mayo. Los tipos de interés se dan en el gráfico: 4,8 % en abril y 3,6 % en mayo.\n\nSolución — Fase 1: Variación relativa del tipo de interés: (3,6 % − 4,8 %) / 4,8 % = −1,2 / 4,8 = **−25 %**. Fase 2: Tipo de interés en junio: 3,6 % × 0,75 = **2,7 %**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "2.8%",
-          "es": "2.8%"
+          "es": "2,8 %"
         },
         "isCorrect": false
       }
@@ -4021,14 +4021,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Average age of car industry workers:\n\n| | Average age — Men | Average age — Women | Percentage of women |\n|---|---|---|---|\n| Managers | 55 | 45 | 30% |\n| Non-managerial | 44 | 38 | 50% |\n\n*In the car industry, there are 1.5 times more non-managerial workers than managers. What is the average age of workers in this industry?*",
-      "es": "Edad media de los trabajadores de la industria del automóvil:\n\n| | Edad media — Hombres | Edad media — Mujeres | Porcentaje de mujeres |\n|---|---|---|---|\n| Directivos | 55 | 45 | 30% |\n| No directivos | 44 | 38 | 50% |\n\n*En la industria del automóvil hay 1.5 veces más trabajadores no directivos que directivos. ¿Cuál es la edad media de los trabajadores de esta industria?*"
+      "es": "Edad media de los trabajadores de la industria del automóvil:\n\n| | Edad media — Hombres | Edad media — Mujeres | Porcentaje de mujeres |\n|---|---|---|---|\n| Directivos | 55 | 45 | 30 % |\n| No directivos | 44 | 38 | 50 % |\n\n*En la industria del automóvil hay 1,5 veces más trabajadores no directivos que directivos. ¿Cuál es la edad media de los trabajadores de esta industria?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "44.5 years old",
-          "es": "44.5 años"
+          "es": "44,5 años"
         },
         "isCorrect": false
       },
@@ -4036,7 +4036,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "45.2 years old",
-          "es": "45.2 años"
+          "es": "45,2 años"
         },
         "isCorrect": false
       },
@@ -4044,19 +4044,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "45.4 years old",
-          "es": "45.4 años"
+          "es": "45,4 años"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: We need to proceed in three stages: first, we calculate the average age of managerial workers. As the number of women is not the same as the number of men, this is a weighted average; then, we calculate the average age of non-managerial workers. As the number of women is the same as the number of men, this is a simple average; lastly, we calculate the average age of all the employees. This is a weighted average. \"There are 1.5 times more non-managerial workers than managers\" means that for every 10 managers there are 15 non-managerial workers.\n\nSolution: Average age of managers = (0.7 × 55) + (0.3 × 45) = 38.5 + 13.5 = 52. Average age of non-managerial workers = (0.5 × 44) + (0.5 × 38) = 22 + 19 = 41. Taking managers = 10 and non-managerial workers = 15 as weights: Average age of all workers = ((10 × 52) + (15 × 41)) / (10 + 15) = (520 + 615) / 25 = 1,135 / 25 = **45.4 years old**.",
-          "es": "Planteamiento: Debemos proceder en tres fases: primero, calculamos la edad media de los directivos. Como el número de mujeres no es igual al número de hombres, es una media ponderada; a continuación, calculamos la edad media de los no directivos. Como el número de mujeres es igual al número de hombres, es una media simple; por último, calculamos la edad media de todos los empleados. Es una media ponderada. \"Hay 1.5 veces más trabajadores no directivos que directivos\" significa que por cada 10 directivos hay 15 no directivos.\n\nSolución: Edad media de los directivos = (0.7 × 55) + (0.3 × 45) = 38.5 + 13.5 = 52. Edad media de los no directivos = (0.5 × 44) + (0.5 × 38) = 22 + 19 = 41. Tomando directivos = 10 y no directivos = 15 como ponderaciones: Edad media de todos los trabajadores = ((10 × 52) + (15 × 41)) / (10 + 15) = (520 + 615) / 25 = 1,135 / 25 = **45.4 años**."
+          "es": "Planteamiento: Debemos proceder en tres fases: primero, calculamos la edad media de los directivos. Como el número de mujeres no es igual al número de hombres, es una media ponderada; a continuación, calculamos la edad media de los no directivos. Como el número de mujeres es igual al número de hombres, es una media simple; por último, calculamos la edad media de todos los empleados. Es una media ponderada. \"Hay 1,5 veces más trabajadores no directivos que directivos\" significa que por cada 10 directivos hay 15 no directivos.\n\nSolución: Edad media de los directivos = (0,7 × 55) + (0,3 × 45) = 38,5 + 13,5 = 52. Edad media de los no directivos = (0,5 × 44) + (0,5 × 38) = 22 + 19 = 41. Tomando directivos = 10 y no directivos = 15 como ponderaciones: Edad media de todos los trabajadores = ((10 × 52) + (15 × 41)) / (10 + 15) = (520 + 615) / 25 = 1.135 / 25 = **45,4 años**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "46.5 years old",
-          "es": "46.5 años"
+          "es": "46,5 años"
         },
         "isCorrect": false
       },
@@ -4064,7 +4064,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "47.6 years old",
-          "es": "47.6 años"
+          "es": "47,6 años"
         },
         "isCorrect": false
       }
@@ -4080,14 +4080,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of diabetics per 10,000 inhabitants:\n\n| Country | Type 1, 2000 | Type 2, 2000 | Type 1, 2010 | Type 2, 2010 |\n|---|---|---|---|---|\n| Venalia | 24 | 428 | 28 | 474 |\n| Muravia | 12 | 269 | 14 | 292 |\n| Telonia | 60 | 743 | 58 | 762 |\n| Buldonia | 50 | 625 | 54 | 729 |\n\n*In 2000, there were 36,480 inhabitants in Buldonia with type 1 diabetes, ie 5% fewer than in 2010. In 2010, how many of Buldonia's inhabitants had type 2 diabetes?*",
-      "es": "Número de diabéticos por 10,000 habitantes:\n\n| País | Tipo 1, 2000 | Tipo 2, 2000 | Tipo 1, 2010 | Tipo 2, 2010 |\n|---|---|---|---|---|\n| Venalia | 24 | 428 | 28 | 474 |\n| Muravia | 12 | 269 | 14 | 292 |\n| Telonia | 60 | 743 | 58 | 762 |\n| Buldonia | 50 | 625 | 54 | 729 |\n\n*En 2000 había 36,480 habitantes de Buldonia con diabetes tipo 1, es decir, un 5% menos que en 2010. En 2010, ¿cuántos habitantes de Buldonia tenían diabetes tipo 2?*"
+      "es": "Número de diabéticos por 10.000 habitantes:\n\n| País | Tipo 1, 2000 | Tipo 2, 2000 | Tipo 1, 2010 | Tipo 2, 2010 |\n|---|---|---|---|---|\n| Venalia | 24 | 428 | 28 | 474 |\n| Muravia | 12 | 269 | 14 | 292 |\n| Telonia | 60 | 743 | 58 | 762 |\n| Buldonia | 50 | 625 | 54 | 729 |\n\n*En 2000 había 36.480 habitantes de Buldonia con diabetes tipo 1, es decir, un 5 % menos que en 2010. En 2010, ¿cuántos habitantes de Buldonia tenían diabetes tipo 2?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "433,200",
-          "es": "433,200"
+          "es": "433.200"
         },
         "isCorrect": false
       },
@@ -4095,7 +4095,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "472,473",
-          "es": "472,473"
+          "es": "472.473"
         },
         "isCorrect": false
       },
@@ -4103,7 +4103,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "478,800",
-          "es": "478,800"
+          "es": "478.800"
         },
         "isCorrect": false
       },
@@ -4111,12 +4111,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "518,400",
-          "es": "518,400"
+          "es": "518.400"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of Buldonia inhabitants with type 1 diabetes in 2010 from the 2000 figure and the 5%-fewer relationship given in the question; then, we use the table's Type 1 / Type 2 rates for 2010 to convert that figure into the number with type 2 diabetes.\n\nSolution — Stage 1: 36,480 = number in 2010 × (1 − 5%), so number of type 1 diabetics in 2010 = 36,480 / 0.95 = 38,400. Stage 2: Using the table's 2010 ratio of Type 1 (54) to Type 2 (729) per 10,000 inhabitants for Buldonia: number of type 2 diabetics in 2010 = 38,400 × (729 / 54) = **518,400**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de habitantes de Buldonia con diabetes tipo 1 en 2010 a partir de la cifra de 2000 y la relación \"5% menos\" dada en la pregunta; a continuación, usamos las tasas de la tabla de Tipo 1 / Tipo 2 de 2010 para convertir esa cifra en el número de personas con diabetes tipo 2.\n\nSolución — Fase 1: 36,480 = número en 2010 × (1 − 5%), por lo que el número de diabéticos tipo 1 en 2010 = 36,480 / 0.95 = 38,400. Fase 2: Usando la proporción de la tabla de 2010 entre Tipo 1 (54) y Tipo 2 (729) por 10,000 habitantes en Buldonia: número de diabéticos tipo 2 en 2010 = 38,400 × (729 / 54) = **518,400**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de habitantes de Buldonia con diabetes tipo 1 en 2010 a partir de la cifra de 2000 y la relación \"5 % menos\" dada en la pregunta; a continuación, usamos las tasas de la tabla de Tipo 1 / Tipo 2 de 2010 para convertir esa cifra en el número de personas con diabetes tipo 2.\n\nSolución — Fase 1: 36.480 = número en 2010 × (1 − 5 %), por lo que el número de diabéticos tipo 1 en 2010 = 36.480 / 0,95 = 38.400. Fase 2: Usando la proporción de la tabla de 2010 entre Tipo 1 (54) y Tipo 2 (729) por 10.000 habitantes en Buldonia: número de diabéticos tipo 2 en 2010 = 38.400 × (729 / 54) = **518.400**."
         }
       },
       {
@@ -4139,14 +4139,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Percentage of part-time workers by sector:\n\n| Sector | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|\n| Food & agriculture | 18% | 19% | 20% | 18% |\n| Textiles | 20% | 21% | 15% | 11% |\n| Chemical | 9% | 10% | 12% | 14% |\n| Metal | 15% | 19% | 17% | 12% |\n\n*In 2005, the chemical sector employed 423,225 full-time workers, ie 25% more than the food & agriculture sector. In 2005, how many part-time workers were there in the food & agriculture sector?*",
-      "es": "Porcentaje de trabajadores a tiempo parcial por sector:\n\n| Sector | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|\n| Alimentación y agricultura | 18% | 19% | 20% | 18% |\n| Textil | 20% | 21% | 15% | 11% |\n| Química | 9% | 10% | 12% | 14% |\n| Metal | 15% | 19% | 17% | 12% |\n\n*En 2005, el sector químico empleaba a 423,225 trabajadores a tiempo completo, es decir, un 25% más que el sector de alimentación y agricultura. En 2005, ¿cuántos trabajadores a tiempo parcial había en el sector de alimentación y agricultura?*"
+      "es": "Porcentaje de trabajadores a tiempo parcial por sector:\n\n| Sector | 1995 | 2000 | 2005 | 2010 |\n|---|---|---|---|---|\n| Alimentación y agricultura | 18 % | 19 % | 20 % | 18 % |\n| Textil | 20 % | 21 % | 15 % | 11 % |\n| Química | 9 % | 10 % | 12 % | 14 % |\n| Metal | 15 % | 19 % | 17 % | 12 % |\n\n*En 2005, el sector químico empleaba a 423.225 trabajadores a tiempo completo, es decir, un 25 % más que el sector de alimentación y agricultura. En 2005, ¿cuántos trabajadores a tiempo parcial había en el sector de alimentación y agricultura?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "50,787",
-          "es": "50,787"
+          "es": "50.787"
         },
         "isCorrect": false
       },
@@ -4154,7 +4154,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "67,716",
-          "es": "67,716"
+          "es": "67.716"
         },
         "isCorrect": false
       },
@@ -4162,19 +4162,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "84,645",
-          "es": "84,645"
+          "es": "84.645"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of full-time workers in the food and agriculture sector from the information given in the question; then, we calculate the number of part-time workers in the food and agriculture sector from the data given in the table. There are two ways of performing the second stage: either by solving a direct proportion problem (direct method); or by first calculating the total number of workers (indirect method).\n\nSolution — Stage 1: Number of full-time workers in the chemical industry = 423,225 = 1.25 × number of full-time workers in the food and agriculture sector. Number of full-time workers in the food and agriculture sector = 423,225 / 1.25 = 338,580. Stage 2 (direct method): In the food and agriculture sector, 20% of the workers are part-time, therefore 80% of the workers are full-time. The number of part-time workers is therefore four times lower than the number of full-time workers. Number of part-time workers = 338,580 / 4 = **84,645**. Stage 2 (indirect method): Total number of workers = 338,580 / 0.8 = 423,225. Total number of part-time workers = 423,225 × 0.2 = **84,645**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de trabajadores a tiempo completo del sector de alimentación y agricultura a partir de la información dada en la pregunta; a continuación, calculamos el número de trabajadores a tiempo parcial del sector de alimentación y agricultura a partir de los datos de la tabla. Hay dos maneras de realizar la segunda fase: resolviendo un problema de proporcionalidad directa (método directo); o calculando primero el número total de trabajadores (método indirecto).\n\nSolución — Fase 1: Número de trabajadores a tiempo completo en la industria química = 423,225 = 1.25 × número de trabajadores a tiempo completo en el sector de alimentación y agricultura. Número de trabajadores a tiempo completo en el sector de alimentación y agricultura = 423,225 / 1.25 = 338,580. Fase 2 (método directo): En el sector de alimentación y agricultura, el 20% de los trabajadores trabaja a tiempo parcial, por lo que el 80% trabaja a tiempo completo. El número de trabajadores a tiempo parcial es, por tanto, cuatro veces menor que el número de trabajadores a tiempo completo. Número de trabajadores a tiempo parcial = 338,580 / 4 = **84,645**. Fase 2 (método indirecto): Número total de trabajadores = 338,580 / 0.8 = 423,225. Número total de trabajadores a tiempo parcial = 423,225 × 0.2 = **84,645**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de trabajadores a tiempo completo del sector de alimentación y agricultura a partir de la información dada en la pregunta; a continuación, calculamos el número de trabajadores a tiempo parcial del sector de alimentación y agricultura a partir de los datos de la tabla. Hay dos maneras de realizar la segunda fase: resolviendo un problema de proporcionalidad directa (método directo); o calculando primero el número total de trabajadores (método indirecto).\n\nSolución — Fase 1: Número de trabajadores a tiempo completo en la industria química = 423.225 = 1,25 × número de trabajadores a tiempo completo en el sector de alimentación y agricultura. Número de trabajadores a tiempo completo en el sector de alimentación y agricultura = 423.225 / 1,25 = 338.580. Fase 2 (método directo): En el sector de alimentación y agricultura, el 20 % de los trabajadores trabaja a tiempo parcial, por lo que el 80 % trabaja a tiempo completo. El número de trabajadores a tiempo parcial es, por tanto, cuatro veces menor que el número de trabajadores a tiempo completo. Número de trabajadores a tiempo parcial = 338.580 / 4 = **84.645**. Fase 2 (método indirecto): Número total de trabajadores = 338.580 / 0,8 = 423.225. Número total de trabajadores a tiempo parcial = 423.225 × 0,2 = **84.645**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "105,806",
-          "es": "105,806"
+          "es": "105.806"
         },
         "isCorrect": false
       },
@@ -4182,7 +4182,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "270,864",
-          "es": "270,864"
+          "es": "270.864"
         },
         "isCorrect": false
       }
@@ -4198,14 +4198,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution of families by number of children — Poldavia and Levonia (shown as a stacked bar chart in the source, categories \"No children / 1 child / 2 children / 3 children or more\"; the two figures the explanation relies on are printed clearly on the chart: in Poldavia, families with 2 children = 20% and total families with children = 80%; in Levonia, families without children = 40% and with children = 60%).\n\n*The number of families with children in Levonia is 20% higher than the number of families with children in Poldavia. If there are 840,000 families with 2 children in Poldavia, how many families in Levonia do not have children?*",
-      "es": "Distribución de las familias por número de hijos — Poldavia y Levonia (mostrada como gráfico de barras apiladas en la fuente, categorías \"Sin hijos / 1 hijo / 2 hijos / 3 hijos o más\"; las dos cifras en las que se basa la explicación están impresas con claridad en el gráfico: en Poldavia, familias con 2 hijos = 20% y total de familias con hijos = 80%; en Levonia, familias sin hijos = 40% y con hijos = 60%).\n\n*El número de familias con hijos en Levonia es un 20% superior al número de familias con hijos en Poldavia. Si hay 840,000 familias con 2 hijos en Poldavia, ¿cuántas familias en Levonia no tienen hijos?*"
+      "es": "Distribución de las familias por número de hijos — Poldavia y Levonia (mostrada como gráfico de barras apiladas en la fuente, categorías \"Sin hijos / 1 hijo / 2 hijos / 3 hijos o más\"; las dos cifras en las que se basa la explicación están impresas con claridad en el gráfico: en Poldavia, familias con 2 hijos = 20 % y total de familias con hijos = 80 %; en Levonia, familias sin hijos = 40 % y con hijos = 60 %).\n\n*El número de familias con hijos en Levonia es un 20 % superior al número de familias con hijos en Poldavia. Si hay 840.000 familias con 2 hijos en Poldavia, ¿cuántas familias en Levonia no tienen hijos?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,008,000",
-          "es": "1,008,000"
+          "es": "1.008.000"
         },
         "isCorrect": false
       },
@@ -4213,7 +4213,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,344,000",
-          "es": "1,344,000"
+          "es": "1.344.000"
         },
         "isCorrect": false
       },
@@ -4221,7 +4221,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,612,800",
-          "es": "1,612,800"
+          "es": "1.612.800"
         },
         "isCorrect": false
       },
@@ -4229,12 +4229,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "2,688,000",
-          "es": "2,688,000"
+          "es": "2.688.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the number of families with children in Poldavia; then, we calculate the number of families with children in Levonia; lastly, we calculate the number of families in Levonia without children.\n\nSolution — Stage 1: According to the graph, the percentage of families with children (80%) is four times higher than the percentage of families with 2 children (20%). Therefore: Number of families in Poldavia with children = 4 × number of families with 2 children = 4 × 840,000 = 3,360,000. Stage 2: According to the information in the question: the number of families in Levonia with children = the number of families in Poldavia with children + 20%. Therefore: the number of families in Levonia with children = 1.2 × 3,360,000 = 4,032,000. Stage 3: According to the graph, the percentage of families without any children (40%) is 1.5 times lower than the percentage of families with children (60%). Therefore: the number of families in Levonia without children = number of families with children / 1.5 = 4,032,000 / 1.5 = **2,688,000**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de familias con hijos en Poldavia; a continuación, calculamos el número de familias con hijos en Levonia; por último, calculamos el número de familias en Levonia sin hijos.\n\nSolución — Fase 1: Según el gráfico, el porcentaje de familias con hijos (80%) es cuatro veces mayor que el porcentaje de familias con 2 hijos (20%). Por tanto: Número de familias en Poldavia con hijos = 4 × número de familias con 2 hijos = 4 × 840,000 = 3,360,000. Fase 2: Según la información de la pregunta: el número de familias en Levonia con hijos = el número de familias en Poldavia con hijos + 20%. Por tanto: el número de familias en Levonia con hijos = 1.2 × 3,360,000 = 4,032,000. Fase 3: Según el gráfico, el porcentaje de familias sin hijos (40%) es 1.5 veces menor que el porcentaje de familias con hijos (60%). Por tanto: el número de familias en Levonia sin hijos = número de familias con hijos / 1.5 = 4,032,000 / 1.5 = **2,688,000**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el número de familias con hijos en Poldavia; a continuación, calculamos el número de familias con hijos en Levonia; por último, calculamos el número de familias en Levonia sin hijos.\n\nSolución — Fase 1: Según el gráfico, el porcentaje de familias con hijos (80 %) es cuatro veces mayor que el porcentaje de familias con 2 hijos (20 %). Por tanto: Número de familias en Poldavia con hijos = 4 × número de familias con 2 hijos = 4 × 840.000 = 3.360.000. Fase 2: Según la información de la pregunta: el número de familias en Levonia con hijos = el número de familias en Poldavia con hijos + 20 %. Por tanto: el número de familias en Levonia con hijos = 1,2 × 3.360.000 = 4.032.000. Fase 3: Según el gráfico, el porcentaje de familias sin hijos (40 %) es 1,5 veces menor que el porcentaje de familias con hijos (60 %). Por tanto: el número de familias en Levonia sin hijos = número de familias con hijos / 1,5 = 4.032.000 / 1,5 = **2.688.000**."
         }
       },
       {
@@ -4257,14 +4257,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "*Igor buys 60 litres of diesel and Grichka buys 50 litres of unleaded petrol. The price of a litre of diesel is 15% less than the price of a litre of unleaded petrol. If Igor pays 88.74 euros for 60 litres of diesel, what is the price in euros of a litre of unleaded petrol?*",
-      "es": "*Igor compra 60 litros de diésel y Grichka compra 50 litros de gasolina sin plomo. El precio de un litro de diésel es un 15% inferior al precio de un litro de gasolina sin plomo. Si Igor paga 88.74 euros por 60 litros de diésel, ¿cuál es el precio en euros de un litro de gasolina sin plomo?*"
+      "es": "*Igor compra 60 litros de diésel y Grichka compra 50 litros de gasolina sin plomo. El precio de un litro de diésel es un 15 % inferior al precio de un litro de gasolina sin plomo. Si Igor paga 88,74 euros por 60 litros de diésel, ¿cuál es el precio en euros de un litro de gasolina sin plomo?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1.48",
-          "es": "1.48"
+          "es": "1,48"
         },
         "isCorrect": false
       },
@@ -4272,7 +4272,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1.51",
-          "es": "1.51"
+          "es": "1,51"
         },
         "isCorrect": false
       },
@@ -4280,7 +4280,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1.70",
-          "es": "1.70"
+          "es": "1,70"
         },
         "isCorrect": false
       },
@@ -4288,19 +4288,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1.74",
-          "es": "1.74"
+          "es": "1,74"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the price of a litre of diesel; then, we calculate the price of a litre of unleaded petrol. According to the information in the question: the price of a litre of diesel = the price of a litre of petrol − (15% × price of a litre of petrol) = 0.85 × price of a litre of petrol.\n\nSolution — Stage 1: Price of a litre of diesel: 88.74 / 60 = 1.48. Stage 2: Price of a litre of diesel = 1.48 = 0.85 × the price of a litre of petrol. The price of a litre of petrol = 1.48 / 0.85 = **1.74**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el precio de un litro de diésel; a continuación, calculamos el precio de un litro de gasolina sin plomo. Según la información de la pregunta: el precio de un litro de diésel = el precio de un litro de gasolina − (15% × precio de un litro de gasolina) = 0.85 × precio de un litro de gasolina.\n\nSolución — Fase 1: Precio de un litro de diésel: 88.74 / 60 = 1.48. Fase 2: Precio de un litro de diésel = 1.48 = 0.85 × el precio de un litro de gasolina. El precio de un litro de gasolina = 1.48 / 0.85 = **1.74**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el precio de un litro de diésel; a continuación, calculamos el precio de un litro de gasolina sin plomo. Según la información de la pregunta: el precio de un litro de diésel = el precio de un litro de gasolina − (15 % × precio de un litro de gasolina) = 0,85 × precio de un litro de gasolina.\n\nSolución — Fase 1: Precio de un litro de diésel: 88,74 / 60 = 1,48. Fase 2: Precio de un litro de diésel = 1,48 = 0,85 × el precio de un litro de gasolina. El precio de un litro de gasolina = 1,48 / 0,85 = **1,74**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "2.04",
-          "es": "2.04"
+          "es": "2,04"
         },
         "isCorrect": false
       }
@@ -4316,14 +4316,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of road traffic accident victims:\n\n| Country | Variation 2000–2005 | Variation 2005–2010 | Target 2000–2020 |\n|---|---|---|---|\n| Poldavia | −1% | −2% | −5% |\n| Levonia | 3% | 2% | −10% |\n| Telonia | 5% | −2% | −5% |\n| Zogland | −1% | 1% | −8% |\n\n*In 2000, there were 79,200 road traffic accident victims in Poldavia, ie 10% more than in Telonia. In Telonia, by how many must the number of road traffic accident victims be reduced between 2010 and 2020 to reach the 2020 target?*",
-      "es": "Número de víctimas de accidentes de tráfico:\n\n| País | Variación 2000–2005 | Variación 2005–2010 | Objetivo 2000–2020 |\n|---|---|---|---|\n| Poldavia | −1% | −2% | −5% |\n| Levonia | 3% | 2% | −10% |\n| Telonia | 5% | −2% | −5% |\n| Zogland | −1% | 1% | −8% |\n\n*En 2000 hubo 79,200 víctimas de accidentes de tráfico en Poldavia, es decir, un 10% más que en Telonia. En Telonia, ¿en cuánto debe reducirse el número de víctimas de accidentes de tráfico entre 2010 y 2020 para alcanzar el objetivo de 2020?*"
+      "es": "Número de víctimas de accidentes de tráfico:\n\n| País | Variación 2000–2005 | Variación 2005–2010 | Objetivo 2000–2020 |\n|---|---|---|---|\n| Poldavia | −1 % | −2 % | −5 % |\n| Levonia | 3 % | 2 % | −10 % |\n| Telonia | 5 % | −2 % | −5 % |\n| Zogland | −1 % | 1 % | −8 % |\n\n*En 2000 hubo 79.200 víctimas de accidentes de tráfico en Poldavia, es decir, un 10 % más que en Telonia. En Telonia, ¿en cuánto debe reducirse el número de víctimas de accidentes de tráfico entre 2010 y 2020 para alcanzar el objetivo de 2020?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "5,361",
-          "es": "5,361"
+          "es": "5.361"
         },
         "isCorrect": false
       },
@@ -4331,19 +4331,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "5,688",
-          "es": "5,688"
+          "es": "5.688"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in four stages: first, we calculate the number of road accident victims in Telonia in 2000 from the information given in the question; then, we calculate the number of victims in 2010 using the variation rates given in the table (between 2000 and 2010, the number of victims increases by 5% then decreases by 2%); next, we calculate the 2020 target using again the data in the table (between 2000 and 2020, the number of victims will have to decrease by 5%); lastly, we calculate the planned variation in the number of victims between 2010 and 2020.\n\nSolution — Stage 1: According to the information in the question: the number of victims in Poldavia = 79,200 = 1.1 × number of victims in Telonia. Therefore: the number of victims in Telonia in 2000 = 79,200 / 1.1 = 72,000. Stage 2: The number of victims in Telonia in 2010: 72,000 × (1 + 5%) × (1 − 2%) = 72,000 × 1.05 × 0.98 = 74,088. Stage 3: 2020 target: 72,000 × (1 − 5%) = 72,000 × 0.95 = 68,400. Stage 4: Planned variation between 2010 and 2020: 68,400 − 74,088 = **−5,688**.",
-          "es": "Planteamiento y método: Debemos proceder en cuatro fases: primero, calculamos el número de víctimas de accidentes de tráfico en Telonia en 2000 a partir de la información dada en la pregunta; a continuación, calculamos el número de víctimas en 2010 usando las tasas de variación dadas en la tabla (entre 2000 y 2010, el número de víctimas aumenta un 5% y luego disminuye un 2%); después, calculamos el objetivo de 2020 usando de nuevo los datos de la tabla (entre 2000 y 2020, el número de víctimas deberá disminuir un 5%); por último, calculamos la variación prevista del número de víctimas entre 2010 y 2020.\n\nSolución — Fase 1: Según la información de la pregunta: el número de víctimas en Poldavia = 79,200 = 1.1 × número de víctimas en Telonia. Por tanto: el número de víctimas en Telonia en 2000 = 79,200 / 1.1 = 72,000. Fase 2: El número de víctimas en Telonia en 2010: 72,000 × (1 + 5%) × (1 − 2%) = 72,000 × 1.05 × 0.98 = 74,088. Fase 3: Objetivo de 2020: 72,000 × (1 − 5%) = 72,000 × 0.95 = 68,400. Fase 4: Variación prevista entre 2010 y 2020: 68,400 − 74,088 = **−5,688**."
+          "es": "Planteamiento y método: Debemos proceder en cuatro fases: primero, calculamos el número de víctimas de accidentes de tráfico en Telonia en 2000 a partir de la información dada en la pregunta; a continuación, calculamos el número de víctimas en 2010 usando las tasas de variación dadas en la tabla (entre 2000 y 2010, el número de víctimas aumenta un 5 % y luego disminuye un 2 %); después, calculamos el objetivo de 2020 usando de nuevo los datos de la tabla (entre 2000 y 2020, el número de víctimas deberá disminuir un 5 %); por último, calculamos la variación prevista del número de víctimas entre 2010 y 2020.\n\nSolución — Fase 1: Según la información de la pregunta: el número de víctimas en Poldavia = 79.200 = 1,1 × número de víctimas en Telonia. Por tanto: el número de víctimas en Telonia en 2000 = 79.200 / 1,1 = 72.000. Fase 2: El número de víctimas en Telonia en 2010: 72.000 × (1 + 5 %) × (1 − 2 %) = 72.000 × 1,05 × 0,98 = 74.088. Fase 3: Objetivo de 2020: 72.000 × (1 − 5 %) = 72.000 × 0,95 = 68.400. Fase 4: Variación prevista entre 2010 y 2020: 68.400 − 74.088 = **−5.688**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "5,702",
-          "es": "5,702"
+          "es": "5.702"
         },
         "isCorrect": false
       },
@@ -4351,7 +4351,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "5,760",
-          "es": "5,760"
+          "es": "5.760"
         },
         "isCorrect": false
       },
@@ -4359,7 +4359,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "6,985",
-          "es": "6,985"
+          "es": "6.985"
         },
         "isCorrect": false
       }
@@ -4375,14 +4375,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of accidents at work:\n\n| Sector | Total number of work accidents | Number of work accidents per 10,000 workers |\n|---|---|---|\n| Agriculture | 5,536 | 410 |\n| Manufacturing | 54,955 | 645 |\n| Transport | 42,160 | 125 |\n| Commerce | 5,369 | 65 |\n\n*Between them, the commerce sector and the business services sector employ 2,432,000 workers. How many workers are employed in the business services sector?*",
-      "es": "Número de accidentes de trabajo:\n\n| Sector | Número total de accidentes de trabajo | Número de accidentes de trabajo por 10,000 trabajadores |\n|---|---|---|\n| Agricultura | 5,536 | 410 |\n| Manufactura | 54,955 | 645 |\n| Transporte | 42,160 | 125 |\n| Comercio | 5,369 | 65 |\n\n*Entre el sector del comercio y el sector de los servicios empresariales emplean a 2,432,000 trabajadores. ¿Cuántos trabajadores emplea el sector de los servicios empresariales?*"
+      "es": "Número de accidentes de trabajo:\n\n| Sector | Número total de accidentes de trabajo | Número de accidentes de trabajo por 10.000 trabajadores |\n|---|---|---|\n| Agricultura | 5.536 | 410 |\n| Manufactura | 54.955 | 645 |\n| Transporte | 42.160 | 125 |\n| Comercio | 5.369 | 65 |\n\n*Entre el sector del comercio y el sector de los servicios empresariales emplean a 2.432.000 trabajadores. ¿Cuántos trabajadores emplea el sector de los servicios empresariales?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "826,000",
-          "es": "826,000"
+          "es": "826.000"
         },
         "isCorrect": false
       },
@@ -4390,7 +4390,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,216,000",
-          "es": "1,216,000"
+          "es": "1.216.000"
         },
         "isCorrect": false
       },
@@ -4398,19 +4398,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,606,000",
-          "es": "1,606,000"
+          "es": "1.606.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of people working in commerce from the data given in the table (this is a direct proportion problem); then, we calculate the number of workers in the business services sector from the information given in the question.\n\nSolution — Stage 1: Let N be the number of people working in commerce: N / 10,000 = 5,369 / 65 (cross-multiplying the total work-accidents figure and the rate per 10,000 workers). N × 65 = 10,000 × 5,369. N = 10,000 × 5,369 / 65 = 826,000. Stage 2: According to the information in the question: the number of people working in commerce + the number of people working in the business services sector = 2,432,000. Therefore: the number of people working in the business services sector = 2,432,000 − 826,000 = **1,606,000**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de personas que trabajan en el comercio a partir de los datos de la tabla (es un problema de proporcionalidad directa); a continuación, calculamos el número de trabajadores del sector de los servicios empresariales a partir de la información dada en la pregunta.\n\nSolución — Fase 1: Sea N el número de personas que trabajan en el comercio: N / 10,000 = 5,369 / 65 (multiplicando en cruz la cifra total de accidentes de trabajo y la tasa por 10,000 trabajadores). N × 65 = 10,000 × 5,369. N = 10,000 × 5,369 / 65 = 826,000. Fase 2: Según la información de la pregunta: el número de personas que trabajan en el comercio + el número de personas que trabajan en el sector de los servicios empresariales = 2,432,000. Por tanto: el número de personas que trabajan en el sector de los servicios empresariales = 2,432,000 − 826,000 = **1,606,000**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de personas que trabajan en el comercio a partir de los datos de la tabla (es un problema de proporcionalidad directa); a continuación, calculamos el número de trabajadores del sector de los servicios empresariales a partir de la información dada en la pregunta.\n\nSolución — Fase 1: Sea N el número de personas que trabajan en el comercio: N / 10.000 = 5.369 / 65 (multiplicando en cruz la cifra total de accidentes de trabajo y la tasa por 10.000 trabajadores). N × 65 = 10.000 × 5.369. N = 10.000 × 5.369 / 65 = 826.000. Fase 2: Según la información de la pregunta: el número de personas que trabajan en el comercio + el número de personas que trabajan en el sector de los servicios empresariales = 2.432.000. Por tanto: el número de personas que trabajan en el sector de los servicios empresariales = 2.432.000 − 826.000 = **1.606.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "2,083,015",
-          "es": "2,083,015"
+          "es": "2.083.015"
         },
         "isCorrect": false
       },
@@ -4434,14 +4434,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Proportion of women in certain sectors (shown as a bar chart in the source; approx. values):\n\n| Country | Health | Education | Finance |\n|---|---|---|---|\n| Poldavia | ~70% | ~60% | ~40% |\n| Telonia | ~70% | ~50% | ~40% |\n| Levonia | 60% | ~70% | ~30% |\n| Zogland | ~50% | ~50% | ~20% |\n\n*In Levonia, the number of women working in the health sector exceeds the number of men by 21,680. How many women work in the health sector in Levonia?*",
-      "es": "Proporción de mujeres en determinados sectores (mostrado como gráfico de barras en la fuente; valores aprox.):\n\n| País | Salud | Educación | Finanzas |\n|---|---|---|---|\n| Poldavia | ~70% | ~60% | ~40% |\n| Telonia | ~70% | ~50% | ~40% |\n| Levonia | 60% | ~70% | ~30% |\n| Zogland | ~50% | ~50% | ~20% |\n\n*En Levonia, el número de mujeres que trabajan en el sector de la salud supera al número de hombres en 21,680. ¿Cuántas mujeres trabajan en el sector de la salud en Levonia?*"
+      "es": "Proporción de mujeres en determinados sectores (mostrado como gráfico de barras en la fuente; valores aprox.):\n\n| País | Salud | Educación | Finanzas |\n|---|---|---|---|\n| Poldavia | ~70 % | ~60 % | ~40 % |\n| Telonia | ~70 % | ~50 % | ~40 % |\n| Levonia | 60 % | ~70 % | ~30 % |\n| Zogland | ~50 % | ~50 % | ~20 % |\n\n*En Levonia, el número de mujeres que trabajan en el sector de la salud supera al número de hombres en 21.680. ¿Cuántas mujeres trabajan en el sector de la salud en Levonia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "32,520",
-          "es": "32,520"
+          "es": "32.520"
         },
         "isCorrect": false
       },
@@ -4449,7 +4449,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "43,360",
-          "es": "43,360"
+          "es": "43.360"
         },
         "isCorrect": false
       },
@@ -4457,19 +4457,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "65,040",
-          "es": "65,040"
+          "es": "65.040"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The graph allows us to work out the ratio between the number of men and the number of women. We can see that in Levonia, the health sector employs 60% women and therefore 40% men. The ratio of men to women is therefore 40/60, ie 2/3. We also know the difference between the number of women and the number of men: it is 21,680. This gives us a system of two equations with two unknowns: the number of men (M) and the number of women (W). W = M + 21,680 (equation 1). M / W = 2 / 3 (equation 2).\n\nSolution: We can start with equation 2: M / W = 2/3, so M = W × 2/3. In equation 1, we then replace M with (W × 2/3): W = (2/3 × W) + 21,680. W − (2/3 × W) = 21,680. 1/3 × W = 21,680. W = 21,680 × 3 = **65,040**.",
-          "es": "Planteamiento y método: El gráfico nos permite calcular la proporción entre el número de hombres y el número de mujeres. Podemos observar que, en Levonia, el sector de la salud emplea a un 60% de mujeres y, por tanto, a un 40% de hombres. La proporción entre hombres y mujeres es, por tanto, 40/60, es decir, 2/3. También conocemos la diferencia entre el número de mujeres y el número de hombres: es 21,680. Esto nos da un sistema de dos ecuaciones con dos incógnitas: el número de hombres (H) y el número de mujeres (M). M = H + 21,680 (ecuación 1). H / M = 2 / 3 (ecuación 2).\n\nSolución: Podemos partir de la ecuación 2: H / M = 2/3, por lo que H = M × 2/3. En la ecuación 1, sustituimos entonces H por (M × 2/3): M = (2/3 × M) + 21,680. M − (2/3 × M) = 21,680. 1/3 × M = 21,680. M = 21,680 × 3 = **65,040**."
+          "es": "Planteamiento y método: El gráfico nos permite calcular la proporción entre el número de hombres y el número de mujeres. Podemos observar que, en Levonia, el sector de la salud emplea a un 60 % de mujeres y, por tanto, a un 40 % de hombres. La proporción entre hombres y mujeres es, por tanto, 40/60, es decir, 2/3. También conocemos la diferencia entre el número de mujeres y el número de hombres: es 21.680. Esto nos da un sistema de dos ecuaciones con dos incógnitas: el número de hombres (H) y el número de mujeres (M). M = H + 21.680 (ecuación 1). H / M = 2 / 3 (ecuación 2).\n\nSolución: Podemos partir de la ecuación 2: H / M = 2/3, por lo que H = M × 2/3. En la ecuación 1, sustituimos entonces H por (M × 2/3): M = (2/3 × M) + 21.680. M − (2/3 × M) = 21.680. 1/3 × M = 21.680. M = 21.680 × 3 = **65.040**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "72,260",
-          "es": "72,260"
+          "es": "72.260"
         },
         "isCorrect": false
       },
@@ -4493,7 +4493,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "*1,240 candidates answered a numerical reasoning MCQ test comprising 10 questions. 496 candidates answered the first question correctly, while 930 candidates did not answer the second question correctly. What can we tell about the number of candidates who responded correctly to the first two questions?*",
-      "es": "*1,240 candidatos respondieron a un test MCQ de razonamiento numérico con 10 preguntas. 496 candidatos respondieron correctamente a la primera pregunta, mientras que 930 candidatos no respondieron correctamente a la segunda pregunta. ¿Qué podemos afirmar sobre el número de candidatos que respondieron correctamente a las dos primeras preguntas?*"
+      "es": "*1.240 candidatos respondieron a un test MCQ de razonamiento numérico con 10 preguntas. 496 candidatos respondieron correctamente a la primera pregunta, mientras que 930 candidatos no respondieron correctamente a la segunda pregunta. ¿Qué podemos afirmar sobre el número de candidatos que respondieron correctamente a las dos primeras preguntas?*"
     },
     "options": [
       {
@@ -4505,7 +4505,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: 496 candidates answered question 1 correctly and 310 (1,240 − 930) answered question 2 correctly. The number of candidates who answered the first two questions correctly is therefore no greater than 310.\n\nSolution: The number of candidates who answered the first two questions correctly is 310 or less. It is therefore **less than 400**.\n\nNote: Answer a) may appear surprising. Indeed, the number of candidates who answered the first two questions is 310 or less. This is in fact a question of verbal logic. Answer a) is not the best possible answer. However, unlike the other four possible answers, it is not false.",
-          "es": "Planteamiento y método: 496 candidatos respondieron correctamente a la pregunta 1 y 310 (1,240 − 930) respondieron correctamente a la pregunta 2. El número de candidatos que respondieron correctamente a las dos primeras preguntas no puede, por tanto, ser mayor de 310.\n\nSolución: El número de candidatos que respondieron correctamente a las dos primeras preguntas es 310 o menos. Es, por tanto, **inferior a 400**.\n\nNota: La respuesta a) puede parecer sorprendente. En efecto, el número de candidatos que respondieron a las dos primeras preguntas es 310 o menos. En realidad, se trata de una cuestión de lógica verbal. La respuesta a) no es la mejor respuesta posible. Sin embargo, a diferencia de las otras cuatro posibles respuestas, no es falsa."
+          "es": "Planteamiento y método: 496 candidatos respondieron correctamente a la pregunta 1 y 310 (1.240 − 930) respondieron correctamente a la pregunta 2. El número de candidatos que respondieron correctamente a las dos primeras preguntas no puede, por tanto, ser mayor de 310.\n\nSolución: El número de candidatos que respondieron correctamente a las dos primeras preguntas es 310 o menos. Es, por tanto, **inferior a 400**.\n\nNota: La respuesta a) puede parecer sorprendente. En efecto, el número de candidatos que respondieron a las dos primeras preguntas es 310 o menos. En realidad, se trata de una cuestión de lógica verbal. La respuesta a) no es la mejor respuesta posible. Sin embargo, a diferencia de las otras cuatro posibles respuestas, no es falsa."
         }
       },
       {
@@ -4552,14 +4552,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Energy consumption:\n\n| Country | Consumption in TOE, 2010 | Variation 2005–2006 | Variation 2006–2007 | Variation 2005–2010 |\n|---|---|---|---|---|\n| Poldavia | 19,480,028 | 1.5% | 2.2% | 5.4% |\n| Levonia | 32,435,645 | 2.1% | 1.8% | 6.2% |\n| Telonia | 8,543,210 | 0.5% | 0.1% | 1.3% |\n| Zogland | 9,654,276 | 1.1% | 1.2% | 4.9% |\n\n*What was the TOE energy consumption of Poldavia in 2007?*",
-      "es": "Consumo de energía:\n\n| País | Consumo en TEP, 2010 | Variación 2005–2006 | Variación 2006–2007 | Variación 2005–2010 |\n|---|---|---|---|---|\n| Poldavia | 19,480,028 | 1.5% | 2.2% | 5.4% |\n| Levonia | 32,435,645 | 2.1% | 1.8% | 6.2% |\n| Telonia | 8,543,210 | 0.5% | 0.1% | 1.3% |\n| Zogland | 9,654,276 | 1.1% | 1.2% | 4.9% |\n\n*¿Cuál fue el consumo de energía en TEP de Poldavia en 2007?*"
+      "es": "Consumo de energía:\n\n| País | Consumo en TEP, 2010 | Variación 2005–2006 | Variación 2006–2007 | Variación 2005–2010 |\n|---|---|---|---|---|\n| Poldavia | 19.480.028 | 1,5 % | 2,2 % | 5,4 % |\n| Levonia | 32.435.645 | 2,1 % | 1,8 % | 6,2 % |\n| Telonia | 8.543.210 | 0,5 % | 0,1 % | 1,3 % |\n| Zogland | 9.654.276 | 1,1 % | 1,2 % | 4,9 % |\n\n*¿Cuál fue el consumo de energía en TEP de Poldavia en 2007?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "18,759,230",
-          "es": "18,759,230"
+          "es": "18.759.230"
         },
         "isCorrect": false
       },
@@ -4567,7 +4567,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "18,888,604",
-          "es": "18,888,604"
+          "es": "18.888.604"
         },
         "isCorrect": false
       },
@@ -4575,7 +4575,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "19,116,028",
-          "es": "19,116,028"
+          "es": "19.116.028"
         },
         "isCorrect": false
       },
@@ -4583,19 +4583,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "19,171,933",
-          "es": "19,171,933"
+          "es": "19.171.933"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate consumption in 2005 from consumption in 2010 and the variation rate between 2005 and 2010; next, we calculate consumption in 2007 by applying the variation rates between 2005 and 2006 and between 2006 and 2007.\n\nSolution — Stage 1: Consumption in Poldavia in 2005: 19,480,028 / 1.054 = 18,482,000. Stage 2: Consumption in Poldavia in 2007: 18,482,000 × 1.015 × 1.022 = **19,171,933**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el consumo en 2005 a partir del consumo en 2010 y la tasa de variación entre 2005 y 2010; a continuación, calculamos el consumo en 2007 aplicando las tasas de variación entre 2005 y 2006 y entre 2006 y 2007.\n\nSolución — Fase 1: Consumo en Poldavia en 2005: 19,480,028 / 1.054 = 18,482,000. Fase 2: Consumo en Poldavia en 2007: 18,482,000 × 1.015 × 1.022 = **19,171,933**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el consumo en 2005 a partir del consumo en 2010 y la tasa de variación entre 2005 y 2010; a continuación, calculamos el consumo en 2007 aplicando las tasas de variación entre 2005 y 2006 y entre 2006 y 2007.\n\nSolución — Fase 1: Consumo en Poldavia en 2005: 19.480.028 / 1,054 = 18.482.000. Fase 2: Consumo en Poldavia en 2007: 18.482.000 × 1,015 × 1,022 = **19.171.933**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "20,207,217",
-          "es": "20,207,217"
+          "es": "20.207.217"
         },
         "isCorrect": false
       }
@@ -4611,14 +4611,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Alcohol-related road accidents:\n\n| Year | Percentage of alcohol-related road accidents | Number of alcohol-related road accidents |\n|---|---|---|\n| 2000 | 36% | 6,428 |\n| 2005 | 30% | 4,926 |\n| 2010 | 33% | 5,080 |\n\n*In 2005, the ratio of the number of alcohol-related road accidents to the number of speeding-related road accidents was 3 to 5. In 2005, how many road accidents were related neither to alcohol nor to speeding?*",
-      "es": "Accidentes de tráfico relacionados con el alcohol:\n\n| Año | Porcentaje de accidentes de tráfico relacionados con el alcohol | Número de accidentes de tráfico relacionados con el alcohol |\n|---|---|---|\n| 2000 | 36% | 6,428 |\n| 2005 | 30% | 4,926 |\n| 2010 | 33% | 5,080 |\n\n*En 2005, la proporción entre el número de accidentes de tráfico relacionados con el alcohol y el número de accidentes de tráfico relacionados con el exceso de velocidad era de 3 a 5. En 2005, ¿cuántos accidentes de tráfico no estaban relacionados ni con el alcohol ni con el exceso de velocidad?*"
+      "es": "Accidentes de tráfico relacionados con el alcohol:\n\n| Año | Porcentaje de accidentes de tráfico relacionados con el alcohol | Número de accidentes de tráfico relacionados con el alcohol |\n|---|---|---|\n| 2000 | 36 % | 6.428 |\n| 2005 | 30 % | 4.926 |\n| 2010 | 33 % | 5.080 |\n\n*En 2005, la proporción entre el número de accidentes de tráfico relacionados con el alcohol y el número de accidentes de tráfico relacionados con el exceso de velocidad era de 3 a 5. En 2005, ¿cuántos accidentes de tráfico no estaban relacionados ni con el alcohol ni con el exceso de velocidad?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "2,463",
-          "es": "2,463"
+          "es": "2.463"
         },
         "isCorrect": false
       },
@@ -4626,19 +4626,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "3,284",
-          "es": "3,284"
+          "es": "3.284"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We start with what we know: the number of alcohol-related road accidents in 2005 (4,926). We then proceed in three stages: first, we calculate the number of speeding-related accidents using the ratio given in the information in the question: number of alcohol-related accidents / number of speeding-related accidents = 3/5; then, we calculate the total number of accidents using the data in the table: 30% × total number of accidents = 4,926; lastly, we calculate the difference between the total number of accidents and the number of accidents related to alcohol and speeding.\n\nSolution — Stage 1: Number of accidents related to speed = 5/3 × number of accidents related to alcohol = 5/3 × 4,926 = 8,210. Stage 2: Total number of accidents = 4,926 / 0.3 = 16,420. Stage 3: Number of accidents not related to alcohol or to speed = 16,420 − 4,926 − 8,210 = **3,284**.",
-          "es": "Planteamiento y método: Partimos de lo que sabemos: el número de accidentes de tráfico relacionados con el alcohol en 2005 (4,926). A continuación, procedemos en tres fases: primero, calculamos el número de accidentes relacionados con el exceso de velocidad usando la proporción dada en la información de la pregunta: número de accidentes relacionados con el alcohol / número de accidentes relacionados con el exceso de velocidad = 3/5; a continuación, calculamos el número total de accidentes usando los datos de la tabla: 30% × número total de accidentes = 4,926; por último, calculamos la diferencia entre el número total de accidentes y el número de accidentes relacionados con el alcohol y el exceso de velocidad.\n\nSolución — Fase 1: Número de accidentes relacionados con la velocidad = 5/3 × número de accidentes relacionados con el alcohol = 5/3 × 4,926 = 8,210. Fase 2: Número total de accidentes = 4,926 / 0.3 = 16,420. Fase 3: Número de accidentes no relacionados con el alcohol ni con la velocidad = 16,420 − 4,926 − 8,210 = **3,284**."
+          "es": "Planteamiento y método: Partimos de lo que sabemos: el número de accidentes de tráfico relacionados con el alcohol en 2005 (4.926). A continuación, procedemos en tres fases: primero, calculamos el número de accidentes relacionados con el exceso de velocidad usando la proporción dada en la información de la pregunta: número de accidentes relacionados con el alcohol / número de accidentes relacionados con el exceso de velocidad = 3/5; a continuación, calculamos el número total de accidentes usando los datos de la tabla: 30 % × número total de accidentes = 4.926; por último, calculamos la diferencia entre el número total de accidentes y el número de accidentes relacionados con el alcohol y el exceso de velocidad.\n\nSolución — Fase 1: Número de accidentes relacionados con la velocidad = 5/3 × número de accidentes relacionados con el alcohol = 5/3 × 4.926 = 8.210. Fase 2: Número total de accidentes = 4.926 / 0,3 = 16.420. Fase 3: Número de accidentes no relacionados con el alcohol ni con la velocidad = 16.420 − 4.926 − 8.210 = **3.284**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "8,210",
-          "es": "8,210"
+          "es": "8.210"
         },
         "isCorrect": false
       },
@@ -4646,7 +4646,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "11,494",
-          "es": "11,494"
+          "es": "11.494"
         },
         "isCorrect": false
       },
@@ -4654,7 +4654,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "13,136",
-          "es": "13,136"
+          "es": "13.136"
         },
         "isCorrect": false
       }
@@ -4670,7 +4670,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Apartment rental:\n\n| Town | Apartments < 30m² | Apartments 30–50m² | Apartments > 50m² | Rental cost (€ per m²) |\n|---|---|---|---|---|\n| Albana | 1,094 | 2,087 | 1,890 | 27 |\n| Boronitz | 860 | 1,240 | 420 | 20 |\n| Crovaka | 439 | 2,894 | 542 | 32 |\n| Denitz | 987 | 1,093 | 749 | 35 |\n\n*Paola and Mario each rent an apartment, one in Denitz and one in Boronitz respectively. Mario pays a rental of 840 euros and the floor area of his apartment is three fifths the size of the floor area of Paola's apartment. How many euros is the rental for Paola's apartment?*",
-      "es": "Alquiler de apartamentos:\n\n| Ciudad | Apartamentos < 30m² | Apartamentos 30–50m² | Apartamentos > 50m² | Coste del alquiler (€ por m²) |\n|---|---|---|---|---|\n| Albana | 1,094 | 2,087 | 1,890 | 27 |\n| Boronitz | 860 | 1,240 | 420 | 20 |\n| Crovaka | 439 | 2,894 | 542 | 32 |\n| Denitz | 987 | 1,093 | 749 | 35 |\n\n*Paola y Mario alquilan cada uno un apartamento, uno en Denitz y otro en Boronitz respectivamente. Mario paga un alquiler de 840 euros y la superficie de su apartamento es tres quintas partes de la superficie del apartamento de Paola. ¿Cuántos euros es el alquiler del apartamento de Paola?*"
+      "es": "Alquiler de apartamentos:\n\n| Ciudad | Apartamentos < 30m² | Apartamentos 30–50m² | Apartamentos > 50m² | Coste del alquiler (€ por m²) |\n|---|---|---|---|---|\n| Albana | 1.094 | 2.087 | 1.890 | 27 |\n| Boronitz | 860 | 1.240 | 420 | 20 |\n| Crovaka | 439 | 2.894 | 542 | 32 |\n| Denitz | 987 | 1.093 | 749 | 35 |\n\n*Paola y Mario alquilan cada uno un apartamento, uno en Denitz y otro en Boronitz respectivamente. Mario paga un alquiler de 840 euros y la superficie de su apartamento es tres quintas partes de la superficie del apartamento de Paola. ¿Cuántos euros es el alquiler del apartamento de Paola?*"
     },
     "options": [
       {
@@ -4693,7 +4693,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,400",
-          "es": "1,400"
+          "es": "1.400"
         },
         "isCorrect": false
       },
@@ -4701,7 +4701,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,470",
-          "es": "1,470"
+          "es": "1.470"
         },
         "isCorrect": false
       },
@@ -4709,12 +4709,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "2,450",
-          "es": "2,450"
+          "es": "2.450"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We can answer this question in two ways: either by proceeding stage by stage (method 1); or by starting with the ratio of the rental of the two apartments (method 2).\n\nMethod 1: We start with what we know: the rental of Mario's apartment (840 euros). We then proceed in three stages: first, we calculate the floor area of Mario's apartment: Floor area of Mario's apartment = rental / rental cost per m² in Boronitz; then, we calculate the floor area of Paola's apartment using the ratio given in the information in the question: the floor area of Mario's apartment = 3/5 × the floor area of Paola's apartment; lastly, we calculate the rental of Paola's apartment: rental of Paola's apartment = floor area × rental cost per m² in Denitz.\n\nSolution 1 — Stage 1: Floor area of Mario's apartment: 840 / 20 = 42. Stage 2: Floor area of Paola's apartment = 5/3 × floor area of Mario's apartment = 5/3 × 42 = 70. Stage 3: Rental of Paola's apartment = 70 × 35 = **2,450**.\n\nMethod 2: Rental of Paola's apartment / rental of Mario's apartment = (floor area of Paola's apartment × rental cost per m² in Denitz) / (floor area of Mario's apartment × rental cost per m² in Boronitz). Therefore: Rental of Paola's apartment = rental of Mario's apartment × (floor area of Paola's apartment / floor area of Mario's apartment) × (rental cost per m² in Denitz / rental cost per m² in Boronitz).\n\nSolution 2: Rental of Paola's apartment = 840 × 5/3 × 35/20 = **2,450**.",
-          "es": "Planteamiento y método: Podemos responder a esta pregunta de dos maneras: procediendo fase por fase (método 1); o partiendo de la proporción entre los alquileres de los dos apartamentos (método 2).\n\nMétodo 1: Partimos de lo que sabemos: el alquiler del apartamento de Mario (840 euros). A continuación, procedemos en tres fases: primero, calculamos la superficie del apartamento de Mario: Superficie del apartamento de Mario = alquiler / coste de alquiler por m² en Boronitz; a continuación, calculamos la superficie del apartamento de Paola usando la proporción dada en la información de la pregunta: la superficie del apartamento de Mario = 3/5 × la superficie del apartamento de Paola; por último, calculamos el alquiler del apartamento de Paola: alquiler del apartamento de Paola = superficie × coste de alquiler por m² en Denitz.\n\nSolución 1 — Fase 1: Superficie del apartamento de Mario: 840 / 20 = 42. Fase 2: Superficie del apartamento de Paola = 5/3 × superficie del apartamento de Mario = 5/3 × 42 = 70. Fase 3: Alquiler del apartamento de Paola = 70 × 35 = **2,450**.\n\nMétodo 2: Alquiler del apartamento de Paola / alquiler del apartamento de Mario = (superficie del apartamento de Paola × coste de alquiler por m² en Denitz) / (superficie del apartamento de Mario × coste de alquiler por m² en Boronitz). Por tanto: Alquiler del apartamento de Paola = alquiler del apartamento de Mario × (superficie del apartamento de Paola / superficie del apartamento de Mario) × (coste de alquiler por m² en Denitz / coste de alquiler por m² en Boronitz).\n\nSolución 2: Alquiler del apartamento de Paola = 840 × 5/3 × 35/20 = **2,450**."
+          "es": "Planteamiento y método: Podemos responder a esta pregunta de dos maneras: procediendo fase por fase (método 1); o partiendo de la proporción entre los alquileres de los dos apartamentos (método 2).\n\nMétodo 1: Partimos de lo que sabemos: el alquiler del apartamento de Mario (840 euros). A continuación, procedemos en tres fases: primero, calculamos la superficie del apartamento de Mario: Superficie del apartamento de Mario = alquiler / coste de alquiler por m² en Boronitz; a continuación, calculamos la superficie del apartamento de Paola usando la proporción dada en la información de la pregunta: la superficie del apartamento de Mario = 3/5 × la superficie del apartamento de Paola; por último, calculamos el alquiler del apartamento de Paola: alquiler del apartamento de Paola = superficie × coste de alquiler por m² en Denitz.\n\nSolución 1 — Fase 1: Superficie del apartamento de Mario: 840 / 20 = 42. Fase 2: Superficie del apartamento de Paola = 5/3 × superficie del apartamento de Mario = 5/3 × 42 = 70. Fase 3: Alquiler del apartamento de Paola = 70 × 35 = **2.450**.\n\nMétodo 2: Alquiler del apartamento de Paola / alquiler del apartamento de Mario = (superficie del apartamento de Paola × coste de alquiler por m² en Denitz) / (superficie del apartamento de Mario × coste de alquiler por m² en Boronitz). Por tanto: Alquiler del apartamento de Paola = alquiler del apartamento de Mario × (superficie del apartamento de Paola / superficie del apartamento de Mario) × (coste de alquiler por m² en Denitz / coste de alquiler por m² en Boronitz).\n\nSolución 2: Alquiler del apartamento de Paola = 840 × 5/3 × 35/20 = **2.450**."
         }
       }
     ],
@@ -4729,14 +4729,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Evaluation of the economics competition:\n\n| Test | Weighting | Minimum required |\n|---|---|---|\n| Microeconomics | 30% | 50% |\n| International economics | 50% | No minimum required |\n| Public finance | 20% | 60% |\n| All tests | 100% | 60% |\n\n*If a candidate gets 60% correct answers to the microeconomics test and 50% correct answers to the international economics test, what is the minimum percentage of correct answers he must get in the public finance test to achieve the minimum required over all three tests?*",
-      "es": "Evaluación del concurso de economía:\n\n| Prueba | Ponderación | Mínimo requerido |\n|---|---|---|\n| Microeconomía | 30% | 50% |\n| Economía internacional | 50% | Sin mínimo requerido |\n| Hacienda pública | 20% | 60% |\n| Todas las pruebas | 100% | 60% |\n\n*Si un candidato obtiene un 60% de respuestas correctas en la prueba de microeconomía y un 50% de respuestas correctas en la prueba de economía internacional, ¿cuál es el porcentaje mínimo de respuestas correctas que debe obtener en la prueba de hacienda pública para alcanzar el mínimo requerido en las tres pruebas?*"
+      "es": "Evaluación del concurso de economía:\n\n| Prueba | Ponderación | Mínimo requerido |\n|---|---|---|\n| Microeconomía | 30 % | 50 % |\n| Economía internacional | 50 % | Sin mínimo requerido |\n| Hacienda pública | 20 % | 60 % |\n| Todas las pruebas | 100 % | 60 % |\n\n*Si un candidato obtiene un 60 % de respuestas correctas en la prueba de microeconomía y un 50 % de respuestas correctas en la prueba de economía internacional, ¿cuál es el porcentaje mínimo de respuestas correctas que debe obtener en la prueba de hacienda pública para alcanzar el mínimo requerido en las tres pruebas?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "55%",
-          "es": "55%"
+          "es": "55 %"
         },
         "isCorrect": false
       },
@@ -4744,7 +4744,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "65%",
-          "es": "65%"
+          "es": "65 %"
         },
         "isCorrect": false
       },
@@ -4752,7 +4752,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "75%",
-          "es": "75%"
+          "es": "75 %"
         },
         "isCorrect": false
       },
@@ -4760,7 +4760,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "80%",
-          "es": "80%"
+          "es": "80 %"
         },
         "isCorrect": false
       },
@@ -4768,12 +4768,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "85%",
-          "es": "85%"
+          "es": "85 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: To simplify matters, let's suppose that the tests in microeconomics, international economics and public finance contain 30, 50 and 20 questions respectively. The candidate must therefore obtain at least 60 correct answers over the three tests as a whole. We then proceed in two stages: first, we calculate the number of correct answers obtained in the microeconomics test and the international economics test; then, we calculate the minimum percentage of correct answers needed in the public finance test.\n\nSolution — Stage 1: Number of correct answers in the microeconomics test: 60% × 30 = 18. Number of correct answers in the international economics test: 50% × 50 = 25. Stage 2: Minimum number of correct answers needed in the public finance test: 60 − 18 − 25 = 17. Minimum percentage of correct answers in the public finance test: 17 / 20 = **85%**.",
-          "es": "Planteamiento y método: Para simplificar, supongamos que las pruebas de microeconomía, economía internacional y hacienda pública contienen 30, 50 y 20 preguntas respectivamente. El candidato debe, por tanto, obtener al menos 60 respuestas correctas en el conjunto de las tres pruebas. A continuación, procedemos en dos fases: primero, calculamos el número de respuestas correctas obtenidas en la prueba de microeconomía y en la prueba de economía internacional; a continuación, calculamos el porcentaje mínimo de respuestas correctas necesario en la prueba de hacienda pública.\n\nSolución — Fase 1: Número de respuestas correctas en la prueba de microeconomía: 60% × 30 = 18. Número de respuestas correctas en la prueba de economía internacional: 50% × 50 = 25. Fase 2: Número mínimo de respuestas correctas necesario en la prueba de hacienda pública: 60 − 18 − 25 = 17. Porcentaje mínimo de respuestas correctas en la prueba de hacienda pública: 17 / 20 = **85%**."
+          "es": "Planteamiento y método: Para simplificar, supongamos que las pruebas de microeconomía, economía internacional y hacienda pública contienen 30, 50 y 20 preguntas respectivamente. El candidato debe, por tanto, obtener al menos 60 respuestas correctas en el conjunto de las tres pruebas. A continuación, procedemos en dos fases: primero, calculamos el número de respuestas correctas obtenidas en la prueba de microeconomía y en la prueba de economía internacional; a continuación, calculamos el porcentaje mínimo de respuestas correctas necesario en la prueba de hacienda pública.\n\nSolución — Fase 1: Número de respuestas correctas en la prueba de microeconomía: 60 % × 30 = 18. Número de respuestas correctas en la prueba de economía internacional: 50 % × 50 = 25. Fase 2: Número mínimo de respuestas correctas necesario en la prueba de hacienda pública: 60 − 18 − 25 = 17. Porcentaje mínimo de respuestas correctas en la prueba de hacienda pública: 17 / 20 = **85 %**."
         }
       }
     ],
@@ -4788,14 +4788,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Citrus fruit production in Buldonia:\n\n| Fruit | 2009 production ('000 tonnes) | 2010 production ('000 tonnes) | % of total citrus production, 2009 | % of total citrus production, 2010 |\n|---|---|---|---|---|\n| Oranges | 1,176 | 1,148 | 42% | 40% |\n| Clementines | 504 | 689 | 18% | 24% |\n| Lemons | 840 | 890 | 30% | 31% |\n\n*In Buldonia, by what percentage did total citrus production increase between 2009 and 2010?*",
-      "es": "Producción de cítricos en Buldonia:\n\n| Fruta | Producción 2009 (miles de toneladas) | Producción 2010 (miles de toneladas) | % de la producción total de cítricos, 2009 | % de la producción total de cítricos, 2010 |\n|---|---|---|---|---|\n| Naranjas | 1,176 | 1,148 | 42% | 40% |\n| Clementinas | 504 | 689 | 18% | 24% |\n| Limones | 840 | 890 | 30% | 31% |\n\n*En Buldonia, ¿en qué porcentaje aumentó la producción total de cítricos entre 2009 y 2010?*"
+      "es": "Producción de cítricos en Buldonia:\n\n| Fruta | Producción 2009 (miles de toneladas) | Producción 2010 (miles de toneladas) | % de la producción total de cítricos, 2009 | % de la producción total de cítricos, 2010 |\n|---|---|---|---|---|\n| Naranjas | 1.176 | 1.148 | 42 % | 40 % |\n| Clementinas | 504 | 689 | 18 % | 24 % |\n| Limones | 840 | 890 | 30 % | 31 % |\n\n*En Buldonia, ¿en qué porcentaje aumentó la producción total de cítricos entre 2009 y 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1.2%",
-          "es": "1.2%"
+          "es": "1,2 %"
         },
         "isCorrect": false
       },
@@ -4803,19 +4803,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "2.5%",
-          "es": "2.5%"
+          "es": "2,5 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate total citrus production in 2009 and 2010; then, we calculate the relative variation between these two years.\n\nNB! We can't calculate total citrus production by adding together the production of oranges, clementines and lemons. If we add the percentages in the last column, we can see that it does not total 100%. We therefore need to calculate total citrus production from the production of one citrus fruit and its share in total citrus fruit production. For example: Orange production in 2009 = 42% × total production in 2009. Therefore: Total production in 2009 = Orange production in 2009 / 0.42.\n\nSolution — Stage 1: Total production in 2009 = 1,176 / 0.42 = 2,800. Total production in 2010 = 1,148 / 0.4 = 2,870. Stage 2: Relative variation: (2,870 − 2,800) / 2,800 = **2.5%**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la producción total de cítricos en 2009 y 2010; a continuación, calculamos la variación relativa entre estos dos años.\n\nAtención: No podemos calcular la producción total de cítricos sumando la producción de naranjas, clementinas y limones. Si sumamos los porcentajes de la última columna, veremos que no suman el 100%. Por tanto, debemos calcular la producción total de cítricos a partir de la producción de una fruta cítrica y su cuota en la producción total de cítricos. Por ejemplo: Producción de naranjas en 2009 = 42% × producción total en 2009. Por tanto: Producción total en 2009 = producción de naranjas en 2009 / 0.42.\n\nSolución — Fase 1: Producción total en 2009 = 1,176 / 0.42 = 2,800. Producción total en 2010 = 1,148 / 0.4 = 2,870. Fase 2: Variación relativa: (2,870 − 2,800) / 2,800 = **2.5%**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la producción total de cítricos en 2009 y 2010; a continuación, calculamos la variación relativa entre estos dos años.\n\nAtención: No podemos calcular la producción total de cítricos sumando la producción de naranjas, clementinas y limones. Si sumamos los porcentajes de la última columna, veremos que no suman el 100 %. Por tanto, debemos calcular la producción total de cítricos a partir de la producción de una fruta cítrica y su cuota en la producción total de cítricos. Por ejemplo: Producción de naranjas en 2009 = 42 % × producción total en 2009. Por tanto: Producción total en 2009 = producción de naranjas en 2009 / 0,42.\n\nSolución — Fase 1: Producción total en 2009 = 1.176 / 0,42 = 2.800. Producción total en 2010 = 1.148 / 0,4 = 2.870. Fase 2: Variación relativa: (2.870 − 2.800) / 2.800 = **2,5 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "5.6%",
-          "es": "5.6%"
+          "es": "5,6 %"
         },
         "isCorrect": false
       },
@@ -4823,7 +4823,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "7.5%",
-          "es": "7.5%"
+          "es": "7,5 %"
         },
         "isCorrect": false
       },
@@ -4831,7 +4831,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "8.2%",
-          "es": "8.2%"
+          "es": "8,2 %"
         },
         "isCorrect": false
       }
@@ -4847,14 +4847,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Cereal production in Poldavia (thousands of tonnes):\n\n| Cereal | 2006 | 2007 | 2008 | 2009 |\n|---|---|---|---|---|\n| Wheat | 5,809 | 4,982 | 5,737 | 5,333 |\n| Barley | 1,089 | 987 | 1,234 | 910 |\n| Oats | 428 | 391 | 508 | 472 |\n| Maize | 6,109 | 7,367 | 6,491 | 7,990 |\n\n*In 2010, Poldavia exported 4,981,500 tonnes of wheat, ie 2.5% more than in 2008. In 2008, what percentage of Poldavia's wheat production was sold on its internal market?*",
-      "es": "Producción de cereales en Poldavia (miles de toneladas):\n\n| Cereal | 2006 | 2007 | 2008 | 2009 |\n|---|---|---|---|---|\n| Trigo | 5,809 | 4,982 | 5,737 | 5,333 |\n| Cebada | 1,089 | 987 | 1,234 | 910 |\n| Avena | 428 | 391 | 508 | 472 |\n| Maíz | 6,109 | 7,367 | 6,491 | 7,990 |\n\n*En 2010, Poldavia exportó 4,981,500 toneladas de trigo, es decir, un 2.5% más que en 2008. En 2008, ¿qué porcentaje de la producción de trigo de Poldavia se vendió en su mercado interno?*"
+      "es": "Producción de cereales en Poldavia (miles de toneladas):\n\n| Cereal | 2006 | 2007 | 2008 | 2009 |\n|---|---|---|---|---|\n| Trigo | 5.809 | 4.982 | 5.737 | 5.333 |\n| Cebada | 1.089 | 987 | 1.234 | 910 |\n| Avena | 428 | 391 | 508 | 472 |\n| Maíz | 6.109 | 7.367 | 6.491 | 7.990 |\n\n*En 2010, Poldavia exportó 4.981.500 toneladas de trigo, es decir, un 2,5 % más que en 2008. En 2008, ¿qué porcentaje de la producción de trigo de Poldavia se vendió en su mercado interno?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "10%",
-          "es": "10%"
+          "es": "10 %"
         },
         "isCorrect": false
       },
@@ -4862,19 +4862,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "15%",
-          "es": "15%"
+          "es": "15 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The production sold on the internal market is the difference between total production and the production exported. Total wheat production in 2008 is given in the table. The production of wheat exported in 2008 can be deduced from the first part of the question: between 2008 and 2010, the production exported increased by 2.5%, rising to 4,981,500 tonnes in 2010.\n\nMethod: We need to proceed in three stages for the year 2008: first, we calculate the wheat production exported; then, we calculate the wheat production sold on the internal market; lastly, we calculate the share of wheat production sold on the internal market.\n\nSolution — Stage 1: Wheat production exported in 2008: 4,981,500 / 1.025 = 4,860,000. Stage 2: Wheat production sold on the internal market in 2008: 5,737,000 − 4,860,000 = 877,000. Stage 3: Share of wheat production sold on the internal market in 2008: 877,000 / 5,737,000 ≈ **15%**.",
-          "es": "Planteamiento: La producción vendida en el mercado interno es la diferencia entre la producción total y la producción exportada. La producción total de trigo en 2008 se indica en la tabla. La producción de trigo exportada en 2008 puede deducirse de la primera parte de la pregunta: entre 2008 y 2010, la producción exportada aumentó un 2.5%, alcanzando 4,981,500 toneladas en 2010.\n\nMétodo: Debemos proceder en tres fases para el año 2008: primero, calculamos la producción de trigo exportada; a continuación, calculamos la producción de trigo vendida en el mercado interno; por último, calculamos la cuota de la producción de trigo vendida en el mercado interno.\n\nSolución — Fase 1: Producción de trigo exportada en 2008: 4,981,500 / 1.025 = 4,860,000. Fase 2: Producción de trigo vendida en el mercado interno en 2008: 5,737,000 − 4,860,000 = 877,000. Fase 3: Cuota de la producción de trigo vendida en el mercado interno en 2008: 877,000 / 5,737,000 ≈ **15%**."
+          "es": "Planteamiento: La producción vendida en el mercado interno es la diferencia entre la producción total y la producción exportada. La producción total de trigo en 2008 se indica en la tabla. La producción de trigo exportada en 2008 puede deducirse de la primera parte de la pregunta: entre 2008 y 2010, la producción exportada aumentó un 2,5 %, alcanzando 4.981.500 toneladas en 2010.\n\nMétodo: Debemos proceder en tres fases para el año 2008: primero, calculamos la producción de trigo exportada; a continuación, calculamos la producción de trigo vendida en el mercado interno; por último, calculamos la cuota de la producción de trigo vendida en el mercado interno.\n\nSolución — Fase 1: Producción de trigo exportada en 2008: 4.981.500 / 1,025 = 4.860.000. Fase 2: Producción de trigo vendida en el mercado interno en 2008: 5.737.000 − 4.860.000 = 877.000. Fase 3: Cuota de la producción de trigo vendida en el mercado interno en 2008: 877.000 / 5.737.000 ≈ **15 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "75%",
-          "es": "75%"
+          "es": "75 %"
         },
         "isCorrect": false
       },
@@ -4882,7 +4882,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "85%",
-          "es": "85%"
+          "es": "85 %"
         },
         "isCorrect": false
       },
@@ -4890,7 +4890,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "90%",
-          "es": "90%"
+          "es": "90 %"
         },
         "isCorrect": false
       }
@@ -4906,7 +4906,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Rate of household equipment ownership — mobile phone, microcomputer, internet (shown as a line chart in the source; the 2008 point is printed as 80% mobile phone / 50% microcomputer, the value the explanation uses; other years are approx.):\n\n| Year | Mobile phone | Microcomputer | Internet |\n|---|---|---|---|\n| 2004 | ~65% | ~40% | ~25% |\n| 2006 | ~75% | ~45% | ~30% |\n| 2008 | 80% | 50% | ~35% |\n| 2010 | ~90% | ~75% | ~50% |\n\n*In 2008, there were 2,480,600 households. What was the minimum number of households that had both a mobile phone and a microcomputer in 2008?*",
-      "es": "Tasa de equipamiento de los hogares — teléfono móvil, microordenador, internet (mostrado como gráfico de líneas en la fuente; el punto de 2008 aparece impreso como 80% teléfono móvil / 50% microordenador, el valor que utiliza la explicación; los demás años son aprox.):\n\n| Año | Teléfono móvil | Microordenador | Internet |\n|---|---|---|---|\n| 2004 | ~65% | ~40% | ~25% |\n| 2006 | ~75% | ~45% | ~30% |\n| 2008 | 80% | 50% | ~35% |\n| 2010 | ~90% | ~75% | ~50% |\n\n*En 2008 había 2,480,600 hogares. ¿Cuál era el número mínimo de hogares que tenían a la vez teléfono móvil y microordenador en 2008?*"
+      "es": "Tasa de equipamiento de los hogares — teléfono móvil, microordenador, internet (mostrado como gráfico de líneas en la fuente; el punto de 2008 aparece impreso como 80 % teléfono móvil / 50 % microordenador, el valor que utiliza la explicación; los demás años son aprox.):\n\n| Año | Teléfono móvil | Microordenador | Internet |\n|---|---|---|---|\n| 2004 | ~65 % | ~40 % | ~25 % |\n| 2006 | ~75 % | ~45 % | ~30 % |\n| 2008 | 80 % | 50 % | ~35 % |\n| 2010 | ~90 % | ~75 % | ~50 % |\n\n*En 2008 había 2.480.600 hogares. ¿Cuál era el número mínimo de hogares que tenían a la vez teléfono móvil y microordenador en 2008?*"
     },
     "options": [
       {
@@ -4921,7 +4921,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "496,120",
-          "es": "496,120"
+          "es": "496.120"
         },
         "isCorrect": false
       },
@@ -4929,19 +4929,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "744,180",
-          "es": "744,180"
+          "es": "744.180"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: In 2008, 80% of households owned a mobile phone and 50% of households owned a microcomputer. Let's suppose that there are 100 households. Of these 100 households, 50 have a microcomputer and 20 don't have a mobile phone. It is possible that some of the households with a microcomputer don't have a mobile phone. Of the 50 households with a microcomputer, there cannot be more than 20 households that don't have a mobile phone. At least 30 of the 50 households with a microcomputer therefore have a mobile phone. Consequently, out of 100 households, at least 30 have both a mobile phone and a microcomputer. The minimum percentage of households owning both a mobile phone and a microcomputer is therefore 30%.\n\nSolution: Minimum number of households with both a mobile phone and a microcomputer: 30% × 2,480,600 = **744,180**.",
-          "es": "Planteamiento y método: En 2008, el 80% de los hogares tenía teléfono móvil y el 50% tenía microordenador. Supongamos que hay 100 hogares. De estos 100 hogares, 50 tienen microordenador y 20 no tienen teléfono móvil. Es posible que algunos de los hogares con microordenador no tengan teléfono móvil. De los 50 hogares con microordenador, no puede haber más de 20 hogares sin teléfono móvil. Al menos 30 de los 50 hogares con microordenador tienen, por tanto, teléfono móvil. En consecuencia, de cada 100 hogares, al menos 30 tienen a la vez teléfono móvil y microordenador. El porcentaje mínimo de hogares que tienen a la vez teléfono móvil y microordenador es, por tanto, del 30%.\n\nSolución: Número mínimo de hogares con teléfono móvil y microordenador a la vez: 30% × 2,480,600 = **744,180**."
+          "es": "Planteamiento y método: En 2008, el 80 % de los hogares tenía teléfono móvil y el 50 % tenía microordenador. Supongamos que hay 100 hogares. De estos 100 hogares, 50 tienen microordenador y 20 no tienen teléfono móvil. Es posible que algunos de los hogares con microordenador no tengan teléfono móvil. De los 50 hogares con microordenador, no puede haber más de 20 hogares sin teléfono móvil. Al menos 30 de los 50 hogares con microordenador tienen, por tanto, teléfono móvil. En consecuencia, de cada 100 hogares, al menos 30 tienen a la vez teléfono móvil y microordenador. El porcentaje mínimo de hogares que tienen a la vez teléfono móvil y microordenador es, por tanto, del 30 %.\n\nSolución: Número mínimo de hogares con teléfono móvil y microordenador a la vez: 30 % × 2.480.600 = **744.180**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "1,118,520",
-          "es": "1,118,520"
+          "es": "1.118.520"
         },
         "isCorrect": false
       },
@@ -4949,7 +4949,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "1,860,450",
-          "es": "1,860,450"
+          "es": "1.860.450"
         },
         "isCorrect": false
       }
@@ -4965,14 +4965,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Evolution in the number of unemployed (% variation compared with the previous month):\n\n| Country | January 2010 | February 2010 | March 2010 | April 2010 |\n|---|---|---|---|---|\n| Levonia | −3% | 0% | 0% | 1% |\n| Telonia | −2% | 1% | 2% | 2% |\n| Zogland | −1% | 5% | 3% | 1% |\n| Poldavia | −2% | 1% | 0% | 1% |\n\n*In Zogland, there were 1,168,398 unemployed in February 2010. How many unemployed were there in Zogland in December 2009?*",
-      "es": "Evolución del número de desempleados (% de variación respecto al mes anterior):\n\n| País | Enero 2010 | Febrero 2010 | Marzo 2010 | Abril 2010 |\n|---|---|---|---|---|\n| Levonia | −3% | 0% | 0% | 1% |\n| Telonia | −2% | 1% | 2% | 2% |\n| Zogland | −1% | 5% | 3% | 1% |\n| Poldavia | −2% | 1% | 0% | 1% |\n\n*En Zogland había 1,168,398 desempleados en febrero de 2010. ¿Cuántos desempleados había en Zogland en diciembre de 2009?*"
+      "es": "Evolución del número de desempleados (% de variación respecto al mes anterior):\n\n| País | Enero 2010 | Febrero 2010 | Marzo 2010 | Abril 2010 |\n|---|---|---|---|---|\n| Levonia | −3 % | 0 % | 0 % | 1 % |\n| Telonia | −2 % | 1 % | 2 % | 2 % |\n| Zogland | −1 % | 5 % | 3 % | 1 % |\n| Poldavia | −2 % | 1 % | 0 % | 1 % |\n\n*En Zogland había 1.168.398 desempleados en febrero de 2010. ¿Cuántos desempleados había en Zogland en diciembre de 2009?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,121,078",
-          "es": "1,121,078"
+          "es": "1.121.078"
         },
         "isCorrect": false
       },
@@ -4980,7 +4980,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,121,662",
-          "es": "1,121,662"
+          "es": "1.121.662"
         },
         "isCorrect": false
       },
@@ -4988,19 +4988,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,124,000",
-          "es": "1,124,000"
+          "es": "1.124.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: We start with the number of unemployed in Zogland in February 2010 (1,168,398). We then proceed in two stages: first, we calculate the number of unemployed in January; then, we calculate the number of unemployed in December. We make these calculations using the variation rates in the table: between December 2009 and February 2010, the number of unemployed in Zogland fell by 1% then increased by 5%.\n\nSolution — Stage 1: Number of unemployed in January: 1,168,398 / 1.05 = 1,112,760. Stage 2: Number of unemployed in December: 1,112,760 / 0.99 = **1,124,000**.",
-          "es": "Planteamiento: Partimos del número de desempleados en Zogland en febrero de 2010 (1,168,398). A continuación, procedemos en dos fases: primero, calculamos el número de desempleados en enero; a continuación, calculamos el número de desempleados en diciembre. Hacemos estos cálculos usando las tasas de variación de la tabla: entre diciembre de 2009 y febrero de 2010, el número de desempleados en Zogland cayó un 1% y luego aumentó un 5%.\n\nSolución — Fase 1: Número de desempleados en enero: 1,168,398 / 1.05 = 1,112,760. Fase 2: Número de desempleados en diciembre: 1,112,760 / 0.99 = **1,124,000**."
+          "es": "Planteamiento: Partimos del número de desempleados en Zogland en febrero de 2010 (1.168.398). A continuación, procedemos en dos fases: primero, calculamos el número de desempleados en enero; a continuación, calculamos el número de desempleados en diciembre. Hacemos estos cálculos usando las tasas de variación de la tabla: entre diciembre de 2009 y febrero de 2010, el número de desempleados en Zogland cayó un 1 % y luego aumentó un 5 %.\n\nSolución — Fase 1: Número de desempleados en enero: 1.168.398 / 1,05 = 1.112.760. Fase 2: Número de desempleados en diciembre: 1.112.760 / 0,99 = **1.124.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "1,145,030",
-          "es": "1,145,030"
+          "es": "1.145.030"
         },
         "isCorrect": false
       },
@@ -5024,26 +5024,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution by age of number of unemployed — Zogland, Telonia, Levonia, Poldavia (shown as a stacked bar chart in the source, bands \"Aged under 25 / 25 to 55 / Over 55\"; the explanation reads Levonia's chart ratio of under-25 to over-55 unemployed as 30% to 40%).\n\n*Telonia has three times fewer unemployed under the age of 25 than Levonia. If Levonia has 420,000 unemployed over the age of 55, how many unemployed does Telonia have over the age of 55?*",
-      "es": "Distribución por edad del número de desempleados — Zogland, Telonia, Levonia, Poldavia (mostrada como gráfico de barras apiladas en la fuente, bandas \"Menos de 25 años / 25 a 55 años / Más de 55 años\"; la explicación lee la proporción del gráfico de Levonia entre desempleados menores de 25 y mayores de 55 como 30% frente a 40%).\n\n*Telonia tiene tres veces menos desempleados menores de 25 años que Levonia. Si Levonia tiene 420,000 desempleados mayores de 55 años, ¿cuántos desempleados mayores de 55 años tiene Telonia?*"
+      "es": "Distribución por edad del número de desempleados — Zogland, Telonia, Levonia, Poldavia (mostrada como gráfico de barras apiladas en la fuente, bandas \"Menos de 25 años / 25 a 55 años / Más de 55 años\"; la explicación lee la proporción del gráfico de Levonia entre desempleados menores de 25 y mayores de 55 como 30 % frente a 40 %).\n\n*Telonia tiene tres veces menos desempleados menores de 25 años que Levonia. Si Levonia tiene 420.000 desempleados mayores de 55 años, ¿cuántos desempleados mayores de 55 años tiene Telonia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "168,000",
-          "es": "168,000"
+          "es": "168.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We must start with what we know: the number of unemployed aged over 55 in Levonia (420,000). We can then either work directly from the ratio between the number of unemployed aged under 25 and the number of unemployed aged over 55 (method 1); or, work from the total number of unemployed (method 2).\n\nMethod 1: We proceed in three stages: first, we calculate the number of unemployed under the age of 25 in Levonia from the data given in the graph: Unemployed under the age of 25 / unemployed over the age of 55 = 30/40; then, we calculate the number of unemployed under the age of 25 in Telonia from the information given in the question: Unemployed under the age of 25 in Telonia = unemployed under the age of 25 in Levonia / 3; lastly, we calculate the number of unemployed over the age of 55 in Telonia from the data given in the graph: Unemployed over the age of 55 / unemployed under the age of 25 = 40/25.\n\nSolution 1 — Stage 1: Number of unemployed under the age of 25 in Levonia = 420,000 × 30 / 40 = 315,000. Stage 2: Number of unemployed under the age of 25 in Telonia = 315,000 / 3 = 105,000. Stage 3: Number of unemployed over the age of 55 in Telonia = 105,000 × 40 / 25 = **168,000**.\n\nMethod 2: We proceed in five stages: first, we calculate the total number of unemployed in Levonia from the data given in the graph: Unemployed over the age of 55 = 40% × total number of unemployed; then, we calculate the number of unemployed under the age of 25 in Levonia from the data given in the graph: Unemployed under the age of 25 = 30% × total number of unemployed; next, we calculate the number of unemployed under the age of 25 in Telonia from the information given in the question: Unemployed under the age of 25 in Telonia = unemployed under the age of 25 in Levonia / 3; then, we calculate the total number of unemployed in Telonia from the data given in the graph: Unemployed under the age of 25 = 25% × total number of unemployed; lastly, we calculate the number of unemployed over the age of 55 in Telonia from the data given in the graph: Unemployed over the age of 55 = 40% × total number of unemployed.\n\nSolution 2 — Stage 1: Total number of unemployed in Levonia = 420,000 / 0.4 = 1,050,000. Stage 2: Total number of unemployed under the age of 25 in Levonia = 0.3 × 1,050,000 = 315,000. Stage 3: Number of unemployed under the age of 25 in Telonia = 315,000 / 3 = 105,000. Stage 4: Total number of unemployed in Telonia = 105,000 / 0.25 = 420,000. Stage 5: Number of unemployed over the age of 55 in Telonia = 0.4 × 420,000 = **168,000**.",
-          "es": "Planteamiento y método: Debemos partir de lo que sabemos: el número de desempleados mayores de 55 años en Levonia (420,000). A continuación, podemos trabajar directamente a partir de la proporción entre el número de desempleados menores de 25 años y el número de desempleados mayores de 55 años (método 1); o partir del número total de desempleados (método 2).\n\nMétodo 1: Procedemos en tres fases: primero, calculamos el número de desempleados menores de 25 años en Levonia a partir de los datos del gráfico: Desempleados menores de 25 años / desempleados mayores de 55 años = 30/40; a continuación, calculamos el número de desempleados menores de 25 años en Telonia a partir de la información dada en la pregunta: Desempleados menores de 25 años en Telonia = desempleados menores de 25 años en Levonia / 3; por último, calculamos el número de desempleados mayores de 55 años en Telonia a partir de los datos del gráfico: Desempleados mayores de 55 años / desempleados menores de 25 años = 40/25.\n\nSolución 1 — Fase 1: Número de desempleados menores de 25 años en Levonia = 420,000 × 30 / 40 = 315,000. Fase 2: Número de desempleados menores de 25 años en Telonia = 315,000 / 3 = 105,000. Fase 3: Número de desempleados mayores de 55 años en Telonia = 105,000 × 40 / 25 = **168,000**.\n\nMétodo 2: Procedemos en cinco fases: primero, calculamos el número total de desempleados en Levonia a partir de los datos del gráfico: Desempleados mayores de 55 años = 40% × número total de desempleados; a continuación, calculamos el número de desempleados menores de 25 años en Levonia a partir de los datos del gráfico: Desempleados menores de 25 años = 30% × número total de desempleados; después, calculamos el número de desempleados menores de 25 años en Telonia a partir de la información dada en la pregunta: Desempleados menores de 25 años en Telonia = desempleados menores de 25 años en Levonia / 3; a continuación, calculamos el número total de desempleados en Telonia a partir de los datos del gráfico: Desempleados menores de 25 años = 25% × número total de desempleados; por último, calculamos el número de desempleados mayores de 55 años en Telonia a partir de los datos del gráfico: Desempleados mayores de 55 años = 40% × número total de desempleados.\n\nSolución 2 — Fase 1: Número total de desempleados en Levonia = 420,000 / 0.4 = 1,050,000. Fase 2: Número total de desempleados menores de 25 años en Levonia = 0.3 × 1,050,000 = 315,000. Fase 3: Número de desempleados menores de 25 años en Telonia = 315,000 / 3 = 105,000. Fase 4: Número total de desempleados en Telonia = 105,000 / 0.25 = 420,000. Fase 5: Número de desempleados mayores de 55 años en Telonia = 0.4 × 420,000 = **168,000**."
+          "es": "Planteamiento y método: Debemos partir de lo que sabemos: el número de desempleados mayores de 55 años en Levonia (420.000). A continuación, podemos trabajar directamente a partir de la proporción entre el número de desempleados menores de 25 años y el número de desempleados mayores de 55 años (método 1); o partir del número total de desempleados (método 2).\n\nMétodo 1: Procedemos en tres fases: primero, calculamos el número de desempleados menores de 25 años en Levonia a partir de los datos del gráfico: Desempleados menores de 25 años / desempleados mayores de 55 años = 30/40; a continuación, calculamos el número de desempleados menores de 25 años en Telonia a partir de la información dada en la pregunta: Desempleados menores de 25 años en Telonia = desempleados menores de 25 años en Levonia / 3; por último, calculamos el número de desempleados mayores de 55 años en Telonia a partir de los datos del gráfico: Desempleados mayores de 55 años / desempleados menores de 25 años = 40/25.\n\nSolución 1 — Fase 1: Número de desempleados menores de 25 años en Levonia = 420.000 × 30 / 40 = 315.000. Fase 2: Número de desempleados menores de 25 años en Telonia = 315.000 / 3 = 105.000. Fase 3: Número de desempleados mayores de 55 años en Telonia = 105.000 × 40 / 25 = **168.000**.\n\nMétodo 2: Procedemos en cinco fases: primero, calculamos el número total de desempleados en Levonia a partir de los datos del gráfico: Desempleados mayores de 55 años = 40 % × número total de desempleados; a continuación, calculamos el número de desempleados menores de 25 años en Levonia a partir de los datos del gráfico: Desempleados menores de 25 años = 30 % × número total de desempleados; después, calculamos el número de desempleados menores de 25 años en Telonia a partir de la información dada en la pregunta: Desempleados menores de 25 años en Telonia = desempleados menores de 25 años en Levonia / 3; a continuación, calculamos el número total de desempleados en Telonia a partir de los datos del gráfico: Desempleados menores de 25 años = 25 % × número total de desempleados; por último, calculamos el número de desempleados mayores de 55 años en Telonia a partir de los datos del gráfico: Desempleados mayores de 55 años = 40 % × número total de desempleados.\n\nSolución 2 — Fase 1: Número total de desempleados en Levonia = 420.000 / 0,4 = 1.050.000. Fase 2: Número total de desempleados menores de 25 años en Levonia = 0,3 × 1.050.000 = 315.000. Fase 3: Número de desempleados menores de 25 años en Telonia = 315.000 / 3 = 105.000. Fase 4: Número total de desempleados en Telonia = 105.000 / 0,25 = 420.000. Fase 5: Número de desempleados mayores de 55 años en Telonia = 0,4 × 420.000 = **168.000**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "186,667",
-          "es": "186,667"
+          "es": "186.667"
         },
         "isCorrect": false
       },
@@ -5051,7 +5051,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "201,600",
-          "es": "201,600"
+          "es": "201.600"
         },
         "isCorrect": false
       },
@@ -5059,7 +5059,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "787,500",
-          "es": "787,500"
+          "es": "787.500"
         },
         "isCorrect": false
       },
@@ -5098,12 +5098,12 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "15.3°C",
-          "es": "15.3°C"
+          "es": "15,3°C"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The graph gives the average temperature in Denitz during the first quarter of the year. The information in the question gives the changes in temperature in the first three months. We can write this information in equation form. Let J, F and M be the temperatures in Denitz during January, February and March. The average temperature during the first quarter is 14°C: (J + F + M) / 3 = 14 (1). The temperature in March exceeds the average temperature during the two previous months by 2°C: (J + F) / 2 = M − 2 (2). The temperature in January is 2°C lower than the temperature in February: J = F − 2 (3). We can then either solve this set of 3 equations with 3 unknowns or proceed by trial and error: we start with an assumption and see whether it is compatible with the first two equations.\n\nSolution 1: The value of M is obtained from the first two equations: J + F + M = 3 × 14 = 42 (1). J + F = 2 × (M − 2) = (2 × M) − 4 (2). By replacing (J + F) with ((2 × M) − 4) in equation (1), we get: (2 × M) − 4 + M = 42. Therefore: 3 × M = 42 + 4 = 46. M = 46 / 3 = **15.3°C**.\n\nSolution 2: a) is not correct — if M = 14, then: (J + F) / 2 = 12 (equation 2), J + F = 24, (J + F + M) / 3 = (24 + 14) / 3 = 38 / 3 ≈ 12.7. This is in contradiction with equation (1). b) is correct — if M = 15.3, then: (J + F) / 2 = 13.3 (equation 2), J + F = 26.6, (J + F + M) / 3 = (26.6 + 15.3) / 3 = 41.9 / 3 ≈ 14. Equation (1) is satisfied. Answer b) is therefore the correct answer. There is no point in checking the following answers.",
-          "es": "Planteamiento y método: El gráfico ofrece la temperatura media en Denitz durante el primer trimestre del año. La información de la pregunta ofrece las variaciones de temperatura en los tres primeros meses. Podemos expresar esta información en forma de ecuación. Sean E, F y M las temperaturas en Denitz durante enero, febrero y marzo. La temperatura media durante el primer trimestre es de 14°C: (E + F + M) / 3 = 14 (1). La temperatura de marzo supera en 2°C la temperatura media de los dos meses anteriores: (E + F) / 2 = M − 2 (2). La temperatura de enero es 2°C inferior a la temperatura de febrero: E = F − 2 (3). Podemos entonces resolver este sistema de 3 ecuaciones con 3 incógnitas o proceder por ensayo y error: partimos de una hipótesis y comprobamos si es compatible con las dos primeras ecuaciones.\n\nSolución 1: El valor de M se obtiene a partir de las dos primeras ecuaciones: E + F + M = 3 × 14 = 42 (1). E + F = 2 × (M − 2) = (2 × M) − 4 (2). Sustituyendo (E + F) por ((2 × M) − 4) en la ecuación (1), obtenemos: (2 × M) − 4 + M = 42. Por tanto: 3 × M = 42 + 4 = 46. M = 46 / 3 = **15.3°C**.\n\nSolución 2: a) no es correcta — si M = 14, entonces: (E + F) / 2 = 12 (ecuación 2), E + F = 24, (E + F + M) / 3 = (24 + 14) / 3 = 38 / 3 ≈ 12.7. Esto contradice la ecuación (1). b) es correcta — si M = 15.3, entonces: (E + F) / 2 = 13.3 (ecuación 2), E + F = 26.6, (E + F + M) / 3 = (26.6 + 15.3) / 3 = 41.9 / 3 ≈ 14. La ecuación (1) se cumple. La respuesta b) es, por tanto, la correcta. No es necesario comprobar las respuestas siguientes."
+          "es": "Planteamiento y método: El gráfico ofrece la temperatura media en Denitz durante el primer trimestre del año. La información de la pregunta ofrece las variaciones de temperatura en los tres primeros meses. Podemos expresar esta información en forma de ecuación. Sean E, F y M las temperaturas en Denitz durante enero, febrero y marzo. La temperatura media durante el primer trimestre es de 14°C: (E + F + M) / 3 = 14 (1). La temperatura de marzo supera en 2°C la temperatura media de los dos meses anteriores: (E + F) / 2 = M − 2 (2). La temperatura de enero es 2°C inferior a la temperatura de febrero: E = F − 2 (3). Podemos entonces resolver este sistema de 3 ecuaciones con 3 incógnitas o proceder por ensayo y error: partimos de una hipótesis y comprobamos si es compatible con las dos primeras ecuaciones.\n\nSolución 1: El valor de M se obtiene a partir de las dos primeras ecuaciones: E + F + M = 3 × 14 = 42 (1). E + F = 2 × (M − 2) = (2 × M) − 4 (2). Sustituyendo (E + F) por ((2 × M) − 4) en la ecuación (1), obtenemos: (2 × M) − 4 + M = 42. Por tanto: 3 × M = 42 + 4 = 46. M = 46 / 3 = **15,3°C**.\n\nSolución 2: a) no es correcta — si M = 14, entonces: (E + F) / 2 = 12 (ecuación 2), E + F = 24, (E + F + M) / 3 = (24 + 14) / 3 = 38 / 3 ≈ 12,7. Esto contradice la ecuación (1). b) es correcta — si M = 15,3, entonces: (E + F) / 2 = 13,3 (ecuación 2), E + F = 26,6, (E + F + M) / 3 = (26,6 + 15,3) / 3 = 41,9 / 3 ≈ 14. La ecuación (1) se cumple. La respuesta b) es, por tanto, la correcta. No es necesario comprobar las respuestas siguientes."
         }
       },
       {
@@ -5118,7 +5118,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "17.3°C",
-          "es": "17.3°C"
+          "es": "17,3°C"
         },
         "isCorrect": false
       },
@@ -5142,7 +5142,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Energy independence rates in Poldavia:\n\n| Energy type | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Coal | 1.9% | 1.6% | 1.8% | 1.6% |\n| Oil | 0.9% | 0.8% | 1.0% | 0.9% |\n| Gas | 2.2% | 2.1% | 2.4% | 2.3% |\n| Nuclear | 0.5% | 0.6% | 0.4% | 0.4% |\n| Renewable energy | 1.1% | 1.0% | 1.0% | 1.1% |\n\n*In what type of energy did energy independence see the highest relative growth between 2008 and 2009?*",
-      "es": "Tasas de independencia energética en Poldavia:\n\n| Tipo de energía | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Carbón | 1.9% | 1.6% | 1.8% | 1.6% |\n| Petróleo | 0.9% | 0.8% | 1.0% | 0.9% |\n| Gas | 2.2% | 2.1% | 2.4% | 2.3% |\n| Nuclear | 0.5% | 0.6% | 0.4% | 0.4% |\n| Energía renovable | 1.1% | 1.0% | 1.0% | 1.1% |\n\n*¿En qué tipo de energía la independencia energética registró el mayor crecimiento relativo entre 2008 y 2009?*"
+      "es": "Tasas de independencia energética en Poldavia:\n\n| Tipo de energía | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Carbón | 1,9 % | 1,6 % | 1,8 % | 1,6 % |\n| Petróleo | 0,9 % | 0,8 % | 1,0 % | 0,9 % |\n| Gas | 2,2 % | 2,1 % | 2,4 % | 2,3 % |\n| Nuclear | 0,5 % | 0,6 % | 0,4 % | 0,4 % |\n| Energía renovable | 1,1 % | 1,0 % | 1,0 % | 1,1 % |\n\n*¿En qué tipo de energía la independencia energética registró el mayor crecimiento relativo entre 2008 y 2009?*"
     },
     "options": [
       {
@@ -5162,7 +5162,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate the relative variation between the rate in 2008 and the rate in 2009, ie: Relative variation = (Rate in 2009 − Rate in 2008) / Rate in 2008. As we are looking for the strongest relative growth, there is no point in doing this calculation for: coal: the difference between the rate in 2008 and the rate in 2009 is the same for coal and for oil; on the other hand, the rate in 2008 is lower for oil; the ratio (rate in 2009 − rate in 2008) / rate in 2008 will therefore be higher for oil; nuclear: the rate decreases; renewable energy: the rate doesn't vary. Therefore, we simply need to compare the relative variations for oil and gas.\n\nSolution: Variation for oil: (1 − 0.8) / 0.8 = 0.25 = 25%. Variation for gas: (2.4 − 2.1) / 2.1 = 0.14 = 14%. It is therefore the rate of **oil** independence that has shown the highest growth.",
-          "es": "Planteamiento y método: Debemos calcular la variación relativa entre la tasa de 2008 y la tasa de 2009, es decir: Variación relativa = (Tasa en 2009 − Tasa en 2008) / Tasa en 2008. Como buscamos el mayor crecimiento relativo, no tiene sentido hacer este cálculo para: carbón: la diferencia entre la tasa de 2008 y la de 2009 es la misma para el carbón y para el petróleo; en cambio, la tasa de 2008 es más baja para el petróleo; la proporción (tasa de 2009 − tasa de 2008) / tasa de 2008 será, por tanto, mayor para el petróleo; nuclear: la tasa disminuye; energía renovable: la tasa no varía. Por tanto, solo necesitamos comparar las variaciones relativas del petróleo y el gas.\n\nSolución: Variación del petróleo: (1 − 0.8) / 0.8 = 0.25 = 25%. Variación del gas: (2.4 − 2.1) / 2.1 = 0.14 = 14%. Es, por tanto, la tasa de independencia del **petróleo** la que muestra el mayor crecimiento."
+          "es": "Planteamiento y método: Debemos calcular la variación relativa entre la tasa de 2008 y la tasa de 2009, es decir: Variación relativa = (Tasa en 2009 − Tasa en 2008) / Tasa en 2008. Como buscamos el mayor crecimiento relativo, no tiene sentido hacer este cálculo para: carbón: la diferencia entre la tasa de 2008 y la de 2009 es la misma para el carbón y para el petróleo; en cambio, la tasa de 2008 es más baja para el petróleo; la proporción (tasa de 2009 − tasa de 2008) / tasa de 2008 será, por tanto, mayor para el petróleo; nuclear: la tasa disminuye; energía renovable: la tasa no varía. Por tanto, solo necesitamos comparar las variaciones relativas del petróleo y el gas.\n\nSolución: Variación del petróleo: (1 − 0,8) / 0,8 = 0,25 = 25 %. Variación del gas: (2,4 − 2,1) / 2,1 = 0,14 = 14 %. Es, por tanto, la tasa de independencia del **petróleo** la que muestra el mayor crecimiento."
         }
       },
       {
@@ -5201,26 +5201,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of alcohol-related road accidents caused by drivers under 25 (shown as a line chart in the source):\n\n| Year | Number |\n|---|---|\n| 2006 | 23,000 |\n| 2007 | 24,000 |\n| 2008 | 22,500 |\n| 2009 | 23,000 |\n| 2010 | 21,000 |\n\n*In 2007, 2/3 of road accidents were alcohol-related and 2/5 of alcohol-related road accidents were caused by drivers over the age of 25. In 2007, how many road accidents were not alcohol-related?*",
-      "es": "Número de accidentes de tráfico relacionados con el alcohol causados por conductores menores de 25 años (mostrado como gráfico de líneas en la fuente):\n\n| Año | Número |\n|---|---|\n| 2006 | 23,000 |\n| 2007 | 24,000 |\n| 2008 | 22,500 |\n| 2009 | 23,000 |\n| 2010 | 21,000 |\n\n*En 2007, 2/3 de los accidentes de tráfico estaban relacionados con el alcohol y 2/5 de los accidentes de tráfico relacionados con el alcohol fueron causados por conductores mayores de 25 años. En 2007, ¿cuántos accidentes de tráfico no estaban relacionados con el alcohol?*"
+      "es": "Número de accidentes de tráfico relacionados con el alcohol causados por conductores menores de 25 años (mostrado como gráfico de líneas en la fuente):\n\n| Año | Número |\n|---|---|\n| 2006 | 23.000 |\n| 2007 | 24.000 |\n| 2008 | 22.500 |\n| 2009 | 23.000 |\n| 2010 | 21.000 |\n\n*En 2007, 2/3 de los accidentes de tráfico estaban relacionados con el alcohol y 2/5 de los accidentes de tráfico relacionados con el alcohol fueron causados por conductores mayores de 25 años. En 2007, ¿cuántos accidentes de tráfico no estaban relacionados con el alcohol?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "20,000",
-          "es": "20,000"
+          "es": "20.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to start with what we know: the number of alcohol-related road accidents caused by drivers under the age of 25 in 2007 (24,000). We then proceed in three stages: first, we calculate the number of alcohol-related road accidents; then, we calculate the total number of road accidents; lastly, we calculate the difference between the total number of road accidents and the number of alcohol-related road accidents.\n\nSolution — Stage 1: 2/5 of alcohol-related road accidents are caused by drivers over the age of 25. Therefore, 3/5 are caused by drivers under the age of 25. Therefore: 3/5 × alcohol-related road accidents = 24,000. Therefore: Alcohol-related road accidents = 24,000 × 5/3 = 40,000. Stage 2: Alcohol-related road accidents = 2/3 × road accidents. Therefore: Road accidents = 3/2 × 40,000 = 60,000. Stage 3: Road accidents not related to alcohol = 60,000 − 40,000 = **20,000**.",
-          "es": "Planteamiento y método: Debemos partir de lo que sabemos: el número de accidentes de tráfico relacionados con el alcohol causados por conductores menores de 25 años en 2007 (24,000). A continuación, procedemos en tres fases: primero, calculamos el número de accidentes de tráfico relacionados con el alcohol; a continuación, calculamos el número total de accidentes de tráfico; por último, calculamos la diferencia entre el número total de accidentes de tráfico y el número de accidentes relacionados con el alcohol.\n\nSolución — Fase 1: 2/5 de los accidentes de tráfico relacionados con el alcohol son causados por conductores mayores de 25 años. Por tanto, 3/5 son causados por conductores menores de 25 años. Por tanto: 3/5 × accidentes de tráfico relacionados con el alcohol = 24,000. Por tanto: Accidentes de tráfico relacionados con el alcohol = 24,000 × 5/3 = 40,000. Fase 2: Accidentes de tráfico relacionados con el alcohol = 2/3 × accidentes de tráfico. Por tanto: Accidentes de tráfico = 3/2 × 40,000 = 60,000. Fase 3: Accidentes de tráfico no relacionados con el alcohol = 60,000 − 40,000 = **20,000**."
+          "es": "Planteamiento y método: Debemos partir de lo que sabemos: el número de accidentes de tráfico relacionados con el alcohol causados por conductores menores de 25 años en 2007 (24.000). A continuación, procedemos en tres fases: primero, calculamos el número de accidentes de tráfico relacionados con el alcohol; a continuación, calculamos el número total de accidentes de tráfico; por último, calculamos la diferencia entre el número total de accidentes de tráfico y el número de accidentes relacionados con el alcohol.\n\nSolución — Fase 1: 2/5 de los accidentes de tráfico relacionados con el alcohol son causados por conductores mayores de 25 años. Por tanto, 3/5 son causados por conductores menores de 25 años. Por tanto: 3/5 × accidentes de tráfico relacionados con el alcohol = 24.000. Por tanto: Accidentes de tráfico relacionados con el alcohol = 24.000 × 5/3 = 40.000. Fase 2: Accidentes de tráfico relacionados con el alcohol = 2/3 × accidentes de tráfico. Por tanto: Accidentes de tráfico = 3/2 × 40.000 = 60.000. Fase 3: Accidentes de tráfico no relacionados con el alcohol = 60.000 − 40.000 = **20.000**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "24,000",
-          "es": "24,000"
+          "es": "24.000"
         },
         "isCorrect": false
       },
@@ -5228,7 +5228,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "30,000",
-          "es": "30,000"
+          "es": "30.000"
         },
         "isCorrect": false
       },
@@ -5236,7 +5236,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "40,000",
-          "es": "40,000"
+          "es": "40.000"
         },
         "isCorrect": false
       },
@@ -5244,7 +5244,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "60,000",
-          "es": "60,000"
+          "es": "60.000"
         },
         "isCorrect": false
       }
@@ -5267,7 +5267,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "1h20",
-          "es": "1h20"
+          "es": "1:20"
         },
         "isCorrect": false
       },
@@ -5275,7 +5275,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1h40",
-          "es": "1h40"
+          "es": "1:40"
         },
         "isCorrect": false
       },
@@ -5283,19 +5283,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2h00",
-          "es": "2h00"
+          "es": "2:00"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We begin by calculating the area that Stanley and Vera can paint in an hour. We then divide the total area (170m²) by this area to get the length of time.\n\nSolution — Stage 1: Stanley takes 3 hours to paint 120m². Therefore, in 1 hour he paints 40m². Stage 2: Vera takes 20 minutes less, ie 2 hours 40 minutes to paint 120m². 2h40 = 2.67 hours. Therefore, in 1 hour Vera paints: 120 / 2.67 = 45m². Stage 3: Therefore, in 1 hour Stanley and Vera together paint: 40 + 45 = 85m². Stage 4: Time taken by Stanley and Vera to paint 170m² together: 170 / 85 = **2h00**.",
-          "es": "Planteamiento y método: Empezamos calculando la superficie que Stanley y Vera pueden pintar en una hora. A continuación, dividimos la superficie total (170m²) entre esta superficie para obtener el tiempo.\n\nSolución — Fase 1: Stanley tarda 3 horas en pintar 120m². Por tanto, en 1 hora pinta 40m². Fase 2: Vera tarda 20 minutos menos, es decir, 2 horas 40 minutos en pintar 120m². 2h40 = 2.67 horas. Por tanto, en 1 hora Vera pinta: 120 / 2.67 = 45m². Fase 3: Por tanto, en 1 hora Stanley y Vera juntos pintan: 40 + 45 = 85m². Fase 4: Tiempo que tardan Stanley y Vera en pintar juntos 170m²: 170 / 85 = **2h00**."
+          "es": "Planteamiento y método: Empezamos calculando la superficie que Stanley y Vera pueden pintar en una hora. A continuación, dividimos la superficie total (170m²) entre esta superficie para obtener el tiempo.\n\nSolución — Fase 1: Stanley tarda 3 horas en pintar 120m². Por tanto, en 1 hora pinta 40m². Fase 2: Vera tarda 20 minutos menos, es decir, 2 horas 40 minutos en pintar 120m². 2:40 = 2,67 horas. Por tanto, en 1 hora Vera pinta: 120 / 2,67 = 45m². Fase 3: Por tanto, en 1 hora Stanley y Vera juntos pintan: 40 + 45 = 85m². Fase 4: Tiempo que tardan Stanley y Vera en pintar juntos 170m²: 170 / 85 = **2:00**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "3h30",
-          "es": "3h30"
+          "es": "3:30"
         },
         "isCorrect": false
       },
@@ -5303,7 +5303,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "4h00",
-          "es": "4h00"
+          "es": "4:00"
         },
         "isCorrect": false
       }
@@ -5319,14 +5319,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Poverty rates by age and gender (in %):\n\n| Age | Men 2000 | Women 2000 | Men 2010 | Women 2010 |\n|---|---|---|---|---|\n| Under 18 | 9.3 | 9.8 | 9.7 | 10.1 |\n| 18 to 29 | 12.5 | 10.5 | 13.7 | 12.4 |\n| 30 to 49 | 7.6 | 6.6 | 7.9 | 7.0 |\n| 50 to 59 | 6.2 | 6.0 | 6.1 | 5.8 |\n| 60 to 74 | 3.5 | 3.2 | 3.2 | 3.1 |\n| 75 and over | 5.4 | 2.6 | 5.7 | 2.8 |\n\n*In 2000, the number of women under the age of 30 exceeded the number of women under the age of 18 by 40%. At that time, there were 62,720 women under 18 below the poverty line. In 2000, how many women were there aged 18 to 29?*",
-      "es": "Tasas de pobreza por edad y sexo (en %):\n\n| Edad | Hombres 2000 | Mujeres 2000 | Hombres 2010 | Mujeres 2010 |\n|---|---|---|---|---|\n| Menos de 18 | 9.3 | 9.8 | 9.7 | 10.1 |\n| 18 a 29 | 12.5 | 10.5 | 13.7 | 12.4 |\n| 30 a 49 | 7.6 | 6.6 | 7.9 | 7.0 |\n| 50 a 59 | 6.2 | 6.0 | 6.1 | 5.8 |\n| 60 a 74 | 3.5 | 3.2 | 3.2 | 3.1 |\n| 75 y más | 5.4 | 2.6 | 5.7 | 2.8 |\n\n*En 2000, el número de mujeres menores de 30 años superaba en un 40% al número de mujeres menores de 18 años. En ese momento había 62,720 mujeres menores de 18 años por debajo del umbral de pobreza. En 2000, ¿cuántas mujeres había de 18 a 29 años?*"
+      "es": "Tasas de pobreza por edad y sexo (en %):\n\n| Edad | Hombres 2000 | Mujeres 2000 | Hombres 2010 | Mujeres 2010 |\n|---|---|---|---|---|\n| Menos de 18 | 9,3 | 9,8 | 9,7 | 10,1 |\n| 18 a 29 | 12,5 | 10,5 | 13,7 | 12,4 |\n| 30 a 49 | 7,6 | 6,6 | 7,9 | 7,0 |\n| 50 a 59 | 6,2 | 6,0 | 6,1 | 5,8 |\n| 60 a 74 | 3,5 | 3,2 | 3,2 | 3,1 |\n| 75 y más | 5,4 | 2,6 | 5,7 | 2,8 |\n\n*En 2000, el número de mujeres menores de 30 años superaba en un 40 % al número de mujeres menores de 18 años. En ese momento había 62.720 mujeres menores de 18 años por debajo del umbral de pobreza. En 2000, ¿cuántas mujeres había de 18 a 29 años?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "156,800",
-          "es": "156,800"
+          "es": "156.800"
         },
         "isCorrect": false
       },
@@ -5334,19 +5334,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "256,000",
-          "es": "256,000"
+          "es": "256.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: For the year 2000, we need to calculate: The number of women aged 18 to 29 = number of women under the age of 30 − number of women under the age of 18.\n\nMethod: We need to proceed in three stages: first, we calculate the number of women under the age of 18 from the information given in the table and the question: 62,720 = 9.8% × women under the age of 18; then, we calculate the number of women under the age of 30 from the information given in the question: Women under the age of 30 = 1.4 × women under the age of 18; lastly, we calculate the difference between the number of women under the age of 30 and the number of women under the age of 18.\n\nSolution — Stage 1: Women under the age of 18: 62,720 / 0.098 = 640,000. Stage 2: Women under the age of 30: 1.4 × 640,000 = 896,000. Stage 3: Women aged 18 to 29: 896,000 − 640,000 = **256,000**.",
-          "es": "Planteamiento: Para el año 2000, debemos calcular: El número de mujeres de 18 a 29 años = número de mujeres menores de 30 años − número de mujeres menores de 18 años.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos el número de mujeres menores de 18 años a partir de la información dada en la tabla y en la pregunta: 62,720 = 9.8% × mujeres menores de 18 años; a continuación, calculamos el número de mujeres menores de 30 años a partir de la información dada en la pregunta: Mujeres menores de 30 años = 1.4 × mujeres menores de 18 años; por último, calculamos la diferencia entre el número de mujeres menores de 30 años y el número de mujeres menores de 18 años.\n\nSolución — Fase 1: Mujeres menores de 18 años: 62,720 / 0.098 = 640,000. Fase 2: Mujeres menores de 30 años: 1.4 × 640,000 = 896,000. Fase 3: Mujeres de 18 a 29 años: 896,000 − 640,000 = **256,000**."
+          "es": "Planteamiento: Para el año 2000, debemos calcular: El número de mujeres de 18 a 29 años = número de mujeres menores de 30 años − número de mujeres menores de 18 años.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos el número de mujeres menores de 18 años a partir de la información dada en la tabla y en la pregunta: 62.720 = 9,8 % × mujeres menores de 18 años; a continuación, calculamos el número de mujeres menores de 30 años a partir de la información dada en la pregunta: Mujeres menores de 30 años = 1,4 × mujeres menores de 18 años; por último, calculamos la diferencia entre el número de mujeres menores de 30 años y el número de mujeres menores de 18 años.\n\nSolución — Fase 1: Mujeres menores de 18 años: 62.720 / 0,098 = 640.000. Fase 2: Mujeres menores de 30 años: 1,4 × 640.000 = 896.000. Fase 3: Mujeres de 18 a 29 años: 896.000 − 640.000 = **256.000**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "384,000",
-          "es": "384,000"
+          "es": "384.000"
         },
         "isCorrect": false
       },
@@ -5354,7 +5354,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "896,000",
-          "es": "896,000"
+          "es": "896.000"
         },
         "isCorrect": false
       },
@@ -5378,19 +5378,19 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Percentage of minors in criminality and delinquency:\n\n| Category | 1980 | 1990 | 2000 | 2010 |\n|---|---|---|---|---|\n| Theft | 34.1% | 33.3% | 34.4% | 33.8% |\n| Crimes and offences against the person | 7.2% | 10.0% | 11.8% | 12.7% |\n| — of which: assault and battery | 9.1% | 12.2% | 14.4% | 14.6% |\n| — of which: threats and extortion | 12.0% | 14.5% | 16.9% | 18.6% |\n| — of which: rape | 14.2% | 15.2% | 16.2% | 17.2% |\n| Other violations | 17.4% | 16.8% | 15.7% | 15.2% |\n\n*What can we tell about the percentage of minors involved in crimes and offences against the person, excluding assault and battery?*",
-      "es": "Porcentaje de menores en la criminalidad y la delincuencia:\n\n| Categoría | 1980 | 1990 | 2000 | 2010 |\n|---|---|---|---|---|\n| Robo | 34.1% | 33.3% | 34.4% | 33.8% |\n| Delitos y faltas contra las personas | 7.2% | 10.0% | 11.8% | 12.7% |\n| — de los cuales: agresiones y lesiones | 9.1% | 12.2% | 14.4% | 14.6% |\n| — de los cuales: amenazas y extorsión | 12.0% | 14.5% | 16.9% | 18.6% |\n| — de los cuales: violación | 14.2% | 15.2% | 16.2% | 17.2% |\n| Otras infracciones | 17.4% | 16.8% | 15.7% | 15.2% |\n\n*¿Qué podemos afirmar sobre el porcentaje de menores implicados en delitos y faltas contra las personas, excluyendo las agresiones y lesiones?*"
+      "es": "Porcentaje de menores en la criminalidad y la delincuencia:\n\n| Categoría | 1980 | 1990 | 2000 | 2010 |\n|---|---|---|---|---|\n| Robo | 34,1 % | 33,3 % | 34,4 % | 33,8 % |\n| Delitos y faltas contra las personas | 7,2 % | 10,0 % | 11,8 % | 12,7 % |\n| — de los cuales: agresiones y lesiones | 9,1 % | 12,2 % | 14,4 % | 14,6 % |\n| — de los cuales: amenazas y extorsión | 12,0 % | 14,5 % | 16,9 % | 18,6 % |\n| — de los cuales: violación | 14,2 % | 15,2 % | 16,2 % | 17,2 % |\n| Otras infracciones | 17,4 % | 16,8 % | 15,7 % | 15,2 % |\n\n*¿Qué podemos afirmar sobre el porcentaje de menores implicados en delitos y faltas contra las personas, excluyendo las agresiones y lesiones?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It was less than 10% in 1980 and 1990.",
-          "es": "Fue inferior al 10% en 1980 y 1990."
+          "es": "Fue inferior al 10 % en 1980 y 1990."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The percentage of minors involved in crimes and offences against the person is the weighted average of two percentages: on the one hand, the percentage of minors involved in assault and battery and, on the other hand, the percentage of minors involved in crimes and offences against the person excluding assault and battery.\n\nMethod: In the table, we need to: start with the line \"assault and battery\"; compare this with the line \"crimes and offences against the person\". We then check each possible answer in turn until we find the correct one.\n\nSolution — Answer a) is correct: In 1980, the percentage of minors involved in assault and battery (9.1%) is greater than the percentage of minors involved in crimes and offences against the person (7.2%). The percentage of minors involved in crimes and offences against the person excluding assault and battery is therefore less than 7.2% and therefore **less than 10%**. The same is true for 1990.\n\nNote: As answer a) is correct, there is no point in checking the other possible answers. The following explanations are given only for training purposes. Answer b) is not correct: in 1980, the percentage excluding assault and battery is less than 7.2%; in 2010, it is less than 12.7%, but not necessarily less than 7.2%. Answer c) is not correct: it is impossible to tell whether the percentage excluding assault and battery increased or decreased between 1990 and 2000. Answer d) is not correct: in 1980, the percentage excluding assault and battery is less than 7.2%. Answer e) is not correct.",
-          "es": "Planteamiento: El porcentaje de menores implicados en delitos y faltas contra las personas es la media ponderada de dos porcentajes: por un lado, el porcentaje de menores implicados en agresiones y lesiones y, por otro, el porcentaje de menores implicados en delitos y faltas contra las personas excluyendo las agresiones y lesiones.\n\nMétodo: En la tabla, debemos: partir de la línea \"agresiones y lesiones\"; compararla con la línea \"delitos y faltas contra las personas\". A continuación, comprobamos cada posible respuesta por turno hasta encontrar la correcta.\n\nSolución — La respuesta a) es correcta: En 1980, el porcentaje de menores implicados en agresiones y lesiones (9.1%) es superior al porcentaje de menores implicados en delitos y faltas contra las personas (7.2%). El porcentaje de menores implicados en delitos y faltas contra las personas excluyendo las agresiones y lesiones es, por tanto, inferior al 7.2% y, por tanto, **inferior al 10%**. Lo mismo ocurre en 1990.\n\nNota: Como la respuesta a) es correcta, no es necesario comprobar las demás posibles respuestas. Las siguientes explicaciones se ofrecen únicamente con fines de entrenamiento. La respuesta b) no es correcta: en 1980, el porcentaje excluyendo las agresiones y lesiones es inferior al 7.2%; en 2010, es inferior al 12.7%, pero no necesariamente inferior al 7.2%. La respuesta c) no es correcta: es imposible saber si el porcentaje excluyendo las agresiones y lesiones aumentó o disminuyó entre 1990 y 2000. La respuesta d) no es correcta: en 1980, el porcentaje excluyendo las agresiones y lesiones es inferior al 7.2%. La respuesta e) no es correcta."
+          "es": "Planteamiento: El porcentaje de menores implicados en delitos y faltas contra las personas es la media ponderada de dos porcentajes: por un lado, el porcentaje de menores implicados en agresiones y lesiones y, por otro, el porcentaje de menores implicados en delitos y faltas contra las personas excluyendo las agresiones y lesiones.\n\nMétodo: En la tabla, debemos: partir de la línea \"agresiones y lesiones\"; compararla con la línea \"delitos y faltas contra las personas\". A continuación, comprobamos cada posible respuesta por turno hasta encontrar la correcta.\n\nSolución — La respuesta a) es correcta: En 1980, el porcentaje de menores implicados en agresiones y lesiones (9,1 %) es superior al porcentaje de menores implicados en delitos y faltas contra las personas (7,2 %). El porcentaje de menores implicados en delitos y faltas contra las personas excluyendo las agresiones y lesiones es, por tanto, inferior al 7,2 % y, por tanto, **inferior al 10 %**. Lo mismo ocurre en 1990.\n\nNota: Como la respuesta a) es correcta, no es necesario comprobar las demás posibles respuestas. Las siguientes explicaciones se ofrecen únicamente con fines de entrenamiento. La respuesta b) no es correcta: en 1980, el porcentaje excluyendo las agresiones y lesiones es inferior al 7,2 %; en 2010, es inferior al 12,7 %, pero no necesariamente inferior al 7,2 %. La respuesta c) no es correcta: es imposible saber si el porcentaje excluyendo las agresiones y lesiones aumentó o disminuyó entre 1990 y 2000. La respuesta d) no es correcta: en 1980, el porcentaje excluyendo las agresiones y lesiones es inferior al 7,2 %. La respuesta e) no es correcta."
         }
       },
       {
@@ -5413,7 +5413,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "It was 13.1% in 1980.",
-          "es": "Fue del 13.1% en 1980."
+          "es": "Fue del 13,1 % en 1980."
         },
         "isCorrect": false
       },
@@ -5437,14 +5437,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution of accommodation by size and occupation status (as a % of the total number of accommodation units):\n\n| | 1 room | 2 rooms | 3 rooms | 4 rooms | More than 4 rooms |\n|---|---|---|---|---|---|\n| Owner | 1.9% | 5.1% | 10.6% | 17.3% | 12.1% |\n| Tenant | 10.2% | 14.3% | 15.0% | 9.8% | 3.7% |\n\n*The number of accommodation units occupied by owners is 596,148. What is the number of accommodation units with more than 2 rooms occupied by tenants?*",
-      "es": "Distribución de las viviendas por tamaño y régimen de ocupación (como % del número total de viviendas):\n\n| | 1 habitación | 2 habitaciones | 3 habitaciones | 4 habitaciones | Más de 4 habitaciones |\n|---|---|---|---|---|---|\n| Propietario | 1.9% | 5.1% | 10.6% | 17.3% | 12.1% |\n| Inquilino | 10.2% | 14.3% | 15.0% | 9.8% | 3.7% |\n\n*El número de viviendas ocupadas por propietarios es de 596,148. ¿Cuál es el número de viviendas de más de 2 habitaciones ocupadas por inquilinos?*"
+      "es": "Distribución de las viviendas por tamaño y régimen de ocupación (como % del número total de viviendas):\n\n| | 1 habitación | 2 habitaciones | 3 habitaciones | 4 habitaciones | Más de 4 habitaciones |\n|---|---|---|---|---|---|\n| Propietario | 1,9 % | 5,1 % | 10,6 % | 17,3 % | 12,1 % |\n| Inquilino | 10,2 % | 14,3 % | 15,0 % | 9,8 % | 3,7 % |\n\n*El número de viviendas ocupadas por propietarios es de 596.148. ¿Cuál es el número de viviendas de más de 2 habitaciones ocupadas por inquilinos?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "169,902",
-          "es": "169,902"
+          "es": "169.902"
         },
         "isCorrect": false
       },
@@ -5452,7 +5452,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "238,459",
-          "es": "238,459"
+          "es": "238.459"
         },
         "isCorrect": false
       },
@@ -5460,7 +5460,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "320,570",
-          "es": "320,570"
+          "es": "320.570"
         },
         "isCorrect": false
       },
@@ -5468,12 +5468,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "361,494",
-          "es": "361,494"
+          "es": "361.494"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question: The table gives the distribution of all types of accommodation by size and occupation type. The total of all the cells equals 100%. We can therefore establish a link between the amount of accommodation that is owner occupied and the amount of accommodation occupied by tenants.\n\nMethod: We need to proceed in three stages: first, we calculate the percentage of accommodation that is owner occupied; then, we calculate the total amount of accommodation; lastly, we calculate the amount of accommodation with more than 2 rooms occupied by tenants.\n\nSolution — Stage 1: Share of accommodation that is owner occupied (as a %) = 1.9 + 5.1 + 10.6 + 17.3 + 12.1 = 47. Stage 2: Total amount of accommodation = 596,148 / 0.47 = 1,268,400. Stage 3: Amount of accommodation with more than 2 rooms occupied by tenants: (15% + 9.8% + 3.7%) × 1,268,400 = 0.285 × 1,268,400 = **361,494**.",
-          "es": "Planteamiento: La tabla ofrece la distribución de todos los tipos de vivienda por tamaño y régimen de ocupación. El total de todas las celdas es igual al 100%. Podemos, por tanto, establecer una relación entre la cantidad de vivienda ocupada por propietarios y la cantidad de vivienda ocupada por inquilinos.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos el porcentaje de vivienda ocupada por propietarios; a continuación, calculamos la cantidad total de vivienda; por último, calculamos la cantidad de vivienda de más de 2 habitaciones ocupada por inquilinos.\n\nSolución — Fase 1: Cuota de vivienda ocupada por propietarios (en %) = 1.9 + 5.1 + 10.6 + 17.3 + 12.1 = 47. Fase 2: Cantidad total de vivienda = 596,148 / 0.47 = 1,268,400. Fase 3: Cantidad de vivienda de más de 2 habitaciones ocupada por inquilinos: (15% + 9.8% + 3.7%) × 1,268,400 = 0.285 × 1,268,400 = **361,494**."
+          "es": "Planteamiento: La tabla ofrece la distribución de todos los tipos de vivienda por tamaño y régimen de ocupación. El total de todas las celdas es igual al 100 %. Podemos, por tanto, establecer una relación entre la cantidad de vivienda ocupada por propietarios y la cantidad de vivienda ocupada por inquilinos.\n\nMétodo: Debemos proceder en tres fases: primero, calculamos el porcentaje de vivienda ocupada por propietarios; a continuación, calculamos la cantidad total de vivienda; por último, calculamos la cantidad de vivienda de más de 2 habitaciones ocupada por inquilinos.\n\nSolución — Fase 1: Cuota de vivienda ocupada por propietarios (en %) = 1,9 + 5,1 + 10,6 + 17,3 + 12,1 = 47. Fase 2: Cantidad total de vivienda = 596.148 / 0,47 = 1.268.400. Fase 3: Cantidad de vivienda de más de 2 habitaciones ocupada por inquilinos: (15 % + 9,8 % + 3,7 %) × 1.268.400 = 0,285 × 1.268.400 = **361.494**."
         }
       },
       {
@@ -5496,14 +5496,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Household spending on culture and entertainment:\n\n| Category | 2009 (as a %) | 2010 (as a %) | 2010 (€ million) |\n|---|---|---|---|\n| Television | 20.7 | 21.2 | 10,775 |\n| Magazines and periodicals | 12.8 | 14.5 | 7,366 |\n| Shows | 7.4 | 5.9 | 3,008 |\n| Books | 22.1 | 26.5 | 13,472 |\n| Videos | 23.4 | 21.1 | 10,715 |\n| Cinema | 4.6 | 3.3 | 1,678 |\n| Other | 8.8 | 7.5 | 3,786 |\n| Total spending | 100 | 100 | 50,800 |\n\n*Household spending on magazines and periodicals increased by 621 million euros between 2009 and 2010. How did household spending on culture and entertainment change between 2009 and 2010?*",
-      "es": "Gasto de los hogares en cultura y ocio:\n\n| Categoría | 2009 (en %) | 2010 (en %) | 2010 (millones de €) |\n|---|---|---|---|\n| Televisión | 20.7 | 21.2 | 10,775 |\n| Revistas y publicaciones periódicas | 12.8 | 14.5 | 7,366 |\n| Espectáculos | 7.4 | 5.9 | 3,008 |\n| Libros | 22.1 | 26.5 | 13,472 |\n| Vídeos | 23.4 | 21.1 | 10,715 |\n| Cine | 4.6 | 3.3 | 1,678 |\n| Otros | 8.8 | 7.5 | 3,786 |\n| Gasto total | 100 | 100 | 50,800 |\n\n*El gasto de los hogares en revistas y publicaciones periódicas aumentó en 621 millones de euros entre 2009 y 2010. ¿Cómo cambió el gasto de los hogares en cultura y ocio entre 2009 y 2010?*"
+      "es": "Gasto de los hogares en cultura y ocio:\n\n| Categoría | 2009 (en %) | 2010 (en %) | 2010 (millones de €) |\n|---|---|---|---|\n| Televisión | 20,7 | 21,2 | 10.775 |\n| Revistas y publicaciones periódicas | 12,8 | 14,5 | 7.366 |\n| Espectáculos | 7,4 | 5,9 | 3.008 |\n| Libros | 22,1 | 26,5 | 13.472 |\n| Vídeos | 23,4 | 21,1 | 10.715 |\n| Cine | 4,6 | 3,3 | 1.678 |\n| Otros | 8,8 | 7,5 | 3.786 |\n| Gasto total | 100 | 100 | 50.800 |\n\n*El gasto de los hogares en revistas y publicaciones periódicas aumentó en 621 millones de euros entre 2009 y 2010. ¿Cómo cambió el gasto de los hogares en cultura y ocio entre 2009 y 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It fell by 1.2%.",
-          "es": "Cayó un 1.2%."
+          "es": "Cayó un 1,2 %."
         },
         "isCorrect": false
       },
@@ -5511,19 +5511,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "It fell by 3.6%.",
-          "es": "Cayó un 3.6%."
+          "es": "Cayó un 3,6 %."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate spending on magazines and periodicals in 2009 from the information given in the table and the question; next, we calculate spending on culture and entertainment in 2009 from the data given in the table: Spending on magazines and periodicals = 12.8% of spending on culture and entertainment; lastly, we calculate the relative evolution in spending on culture and entertainment.\n\nSolution — Stage 1: Spending on magazines and periodicals in 2009: 7,366 − 621 = 6,745. Stage 2: Spending on culture and entertainment in 2009: 6,745 / 0.128 = 52,695. Stage 3: Relative variation: (50,800 − 52,695) / 52,695 = **−3.6%**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el gasto en revistas y publicaciones periódicas en 2009 a partir de la información dada en la tabla y en la pregunta; a continuación, calculamos el gasto en cultura y ocio en 2009 a partir de los datos de la tabla: Gasto en revistas y publicaciones periódicas = 12.8% del gasto en cultura y ocio; por último, calculamos la evolución relativa del gasto en cultura y ocio.\n\nSolución — Fase 1: Gasto en revistas y publicaciones periódicas en 2009: 7,366 − 621 = 6,745. Fase 2: Gasto en cultura y ocio en 2009: 6,745 / 0.128 = 52,695. Fase 3: Variación relativa: (50,800 − 52,695) / 52,695 = **−3.6%**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos el gasto en revistas y publicaciones periódicas en 2009 a partir de la información dada en la tabla y en la pregunta; a continuación, calculamos el gasto en cultura y ocio en 2009 a partir de los datos de la tabla: Gasto en revistas y publicaciones periódicas = 12,8 % del gasto en cultura y ocio; por último, calculamos la evolución relativa del gasto en cultura y ocio.\n\nSolución — Fase 1: Gasto en revistas y publicaciones periódicas en 2009: 7.366 − 621 = 6.745. Fase 2: Gasto en cultura y ocio en 2009: 6.745 / 0,128 = 52.695. Fase 3: Variación relativa: (50.800 − 52.695) / 52.695 = **−3,6 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "It rose by 3.7%.",
-          "es": "Subió un 3.7%."
+          "es": "Subió un 3,7 %."
         },
         "isCorrect": false
       },
@@ -5531,7 +5531,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "It rose by 8.4%.",
-          "es": "Subió un 8.4%."
+          "es": "Subió un 8,4 %."
         },
         "isCorrect": false
       },
@@ -5539,7 +5539,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "It rose by 9.2%.",
-          "es": "Subió un 9.2%."
+          "es": "Subió un 9,2 %."
         },
         "isCorrect": false
       }
@@ -5555,14 +5555,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Survival rate of businesses created during the first half of 2008 (shown as a bar chart in the source, sectors Hotels and catering / Transport / Commerce / Construction / Manufacturing, bands \"After 1 year\" and \"After 3 years\"; the explanation reads two figures directly off the chart for transport: 90% of transport businesses had survived after 1 year, and 75% after 3 years).\n\n*In the first half of 2011, there were 162,900 transport businesses. 15% of these were created during the first half of 2008. How many transport businesses created during the first half of 2008 had disappeared after a year?*",
-      "es": "Tasa de supervivencia de las empresas creadas durante el primer semestre de 2008 (mostrada como gráfico de barras en la fuente, sectores Hostelería y restauración / Transporte / Comercio / Construcción / Manufactura, bandas \"Al cabo de 1 año\" y \"Al cabo de 3 años\"; la explicación lee dos cifras directamente del gráfico para el transporte: el 90% de las empresas de transporte habían sobrevivido al cabo de 1 año, y el 75% al cabo de 3 años).\n\n*En el primer semestre de 2011 había 162,900 empresas de transporte. El 15% de ellas se habían creado durante el primer semestre de 2008. ¿Cuántas empresas de transporte creadas durante el primer semestre de 2008 habían desaparecido al cabo de un año?*"
+      "es": "Tasa de supervivencia de las empresas creadas durante el primer semestre de 2008 (mostrada como gráfico de barras en la fuente, sectores Hostelería y restauración / Transporte / Comercio / Construcción / Manufactura, bandas \"Al cabo de 1 año\" y \"Al cabo de 3 años\"; la explicación lee dos cifras directamente del gráfico para el transporte: el 90 % de las empresas de transporte habían sobrevivido al cabo de 1 año, y el 75 % al cabo de 3 años).\n\n*En el primer semestre de 2011 había 162.900 empresas de transporte. El 15 % de ellas se habían creado durante el primer semestre de 2008. ¿Cuántas empresas de transporte creadas durante el primer semestre de 2008 habían desaparecido al cabo de un año?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "2,444",
-          "es": "2,444"
+          "es": "2.444"
         },
         "isCorrect": false
       },
@@ -5570,19 +5570,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "3,258",
-          "es": "3,258"
+          "es": "3.258"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The number of business start-ups created during the first half of 2008 and that had disappeared after a year can be found by multiplying the number of business start-ups created during the first half of 2008 by the rate of disappearance. The rate of disappearance can be deduced from the graph. In transport, 90% of businesses had survived after a year. 10% had therefore disappeared after a year. We still have to find the number of transport businesses created in the first half of 2008. According to the graph, 75% of them had survived after 3 years. In the first half of 2011, those which had survived after 3 years accounted for 15% of the 162,900 transport businesses. Let N be the number of transport businesses created in the first half of 2008. The equation to solve is as follows: 75% × N = 15% × 162,900.\n\nSolution — Stage 1: Number of transport businesses created in the first half of 2008: N = 0.15 × 162,900 / 0.75 = 32,580. Stage 2: Number of businesses created in the first half of 2008 and which had disappeared after a year: 10% × 32,580 = **3,258**.",
-          "es": "Planteamiento y método: El número de empresas creadas durante el primer semestre de 2008 que habían desaparecido al cabo de un año puede hallarse multiplicando el número de empresas creadas durante el primer semestre de 2008 por la tasa de desaparición. La tasa de desaparición puede deducirse del gráfico. En el transporte, el 90% de las empresas habían sobrevivido al cabo de un año. El 10% había, por tanto, desaparecido al cabo de un año. Aún nos falta hallar el número de empresas de transporte creadas en el primer semestre de 2008. Según el gráfico, el 75% de ellas habían sobrevivido al cabo de 3 años. En el primer semestre de 2011, las que habían sobrevivido al cabo de 3 años representaban el 15% de las 162,900 empresas de transporte. Sea N el número de empresas de transporte creadas en el primer semestre de 2008. La ecuación a resolver es la siguiente: 75% × N = 15% × 162,900.\n\nSolución — Fase 1: Número de empresas de transporte creadas en el primer semestre de 2008: N = 0.15 × 162,900 / 0.75 = 32,580. Fase 2: Número de empresas creadas en el primer semestre de 2008 y que habían desaparecido al cabo de un año: 10% × 32,580 = **3,258**."
+          "es": "Planteamiento y método: El número de empresas creadas durante el primer semestre de 2008 que habían desaparecido al cabo de un año puede hallarse multiplicando el número de empresas creadas durante el primer semestre de 2008 por la tasa de desaparición. La tasa de desaparición puede deducirse del gráfico. En el transporte, el 90 % de las empresas habían sobrevivido al cabo de un año. El 10 % había, por tanto, desaparecido al cabo de un año. Aún nos falta hallar el número de empresas de transporte creadas en el primer semestre de 2008. Según el gráfico, el 75 % de ellas habían sobrevivido al cabo de 3 años. En el primer semestre de 2011, las que habían sobrevivido al cabo de 3 años representaban el 15 % de las 162.900 empresas de transporte. Sea N el número de empresas de transporte creadas en el primer semestre de 2008. La ecuación a resolver es la siguiente: 75 % × N = 15 % × 162.900.\n\nSolución — Fase 1: Número de empresas de transporte creadas en el primer semestre de 2008: N = 0,15 × 162.900 / 0,75 = 32.580. Fase 2: Número de empresas creadas en el primer semestre de 2008 y que habían desaparecido al cabo de un año: 10 % × 32.580 = **3.258**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "3,665",
-          "es": "3,665"
+          "es": "3.665"
         },
         "isCorrect": false
       },
@@ -5590,7 +5590,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "18,326",
-          "es": "18,326"
+          "es": "18.326"
         },
         "isCorrect": false
       },
@@ -5598,7 +5598,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "21,992",
-          "es": "21,992"
+          "es": "21.992"
         },
         "isCorrect": false
       }
@@ -5614,14 +5614,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Business start-ups by entrepreneur's situation prior to start-up:\n\n| Situation | 1995 | 2000 | 2005 | Number of start-ups in 2005 |\n|---|---|---|---|---|\n| In work | 52.4% | 50.1% | 50.8% | 427,736 |\n| Unemployed for less than a year | 18.6% | 19.9% | 21.0% | 176,820 |\n| Unemployed for more than a year | 16.4% | 18.5% | 18.2% | 153,244 |\n| Not in work | 12.6% | 11.5% | 10.0% | 84,200 |\n| Total | 100.0% | 100.0% | 100.0% | 842,000 |\n\n*The percentage of business start-ups by the unemployed increased in the same proportion between 2005 and 2010 as it did between 1995 and 2005. If the total number of start-ups increased by 2% between 2005 and 2010, how many business start-ups were there by the unemployed in 2010?*",
-      "es": "Creación de empresas según la situación del emprendedor antes de la creación:\n\n| Situación | 1995 | 2000 | 2005 | Número de creaciones en 2005 |\n|---|---|---|---|---|\n| En activo | 52.4% | 50.1% | 50.8% | 427,736 |\n| Desempleado desde hace menos de un año | 18.6% | 19.9% | 21.0% | 176,820 |\n| Desempleado desde hace más de un año | 16.4% | 18.5% | 18.2% | 153,244 |\n| Sin actividad | 12.6% | 11.5% | 10.0% | 84,200 |\n| Total | 100.0% | 100.0% | 100.0% | 842,000 |\n\n*El porcentaje de empresas creadas por desempleados aumentó entre 2005 y 2010 en la misma proporción que entre 1995 y 2005. Si el número total de creaciones de empresas aumentó un 2% entre 2005 y 2010, ¿cuántas empresas creadas por desempleados hubo en 2010?*"
+      "es": "Creación de empresas según la situación del emprendedor antes de la creación:\n\n| Situación | 1995 | 2000 | 2005 | Número de creaciones en 2005 |\n|---|---|---|---|---|\n| En activo | 52,4 % | 50,1 % | 50,8 % | 427.736 |\n| Desempleado desde hace menos de un año | 18,6 % | 19,9 % | 21,0 % | 176.820 |\n| Desempleado desde hace más de un año | 16,4 % | 18,5 % | 18,2 % | 153.244 |\n| Sin actividad | 12,6 % | 11,5 % | 10,0 % | 84.200 |\n| Total | 100,0 % | 100,0 % | 100,0 % | 842.000 |\n\n*El porcentaje de empresas creadas por desempleados aumentó entre 2005 y 2010 en la misma proporción que entre 1995 y 2005. Si el número total de creaciones de empresas aumentó un 2 % entre 2005 y 2010, ¿cuántas empresas creadas por desempleados hubo en 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "341,286",
-          "es": "341,286"
+          "es": "341.286"
         },
         "isCorrect": false
       },
@@ -5629,7 +5629,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "343,927",
-          "es": "343,927"
+          "es": "343.927"
         },
         "isCorrect": false
       },
@@ -5637,7 +5637,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "369,672",
-          "es": "369,672"
+          "es": "369.672"
         },
         "isCorrect": false
       },
@@ -5645,7 +5645,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "372,737",
-          "es": "372,737"
+          "es": "372.737"
         },
         "isCorrect": false
       },
@@ -5653,12 +5653,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "377,065",
-          "es": "377,065"
+          "es": "377.065"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The percentage of business start-ups by the unemployed in 1995 = 18.6% + 16.4% = 35.0%. In 2005 = 21.0% + 18.2% = 39.2%. The increase between 1995 and 2005 is therefore in the ratio 39.2/35.0. The same proportional increase is applied between 2005 and 2010, and the 2010 total is 2% higher than the 2005 total of 842,000.\n\nSolution: Percentage of start-ups by the unemployed in 2010 = 39.2% × (39.2/35.0) ≈ 43.9%. Total start-ups in 2010 = 842,000 × 1.02 = 858,840. Start-ups by the unemployed in 2010 = 858,840 × 43.9% ≈ **377,065**.",
-          "es": "Planteamiento y método: El porcentaje de creación de empresas por desempleados en 1995 = 18.6% + 16.4% = 35.0%. En 2005 = 21.0% + 18.2% = 39.2%. El aumento entre 1995 y 2005 está, por tanto, en la proporción 39.2/35.0. Se aplica el mismo aumento proporcional entre 2005 y 2010, y el total de 2010 es un 2% superior al total de 2005, que era 842,000.\n\nSolución: Porcentaje de creaciones por desempleados en 2010 = 39.2% × (39.2/35.0) ≈ 43.9%. Total de creaciones en 2010 = 842,000 × 1.02 = 858,840. Creaciones por desempleados en 2010 = 858,840 × 43.9% ≈ **377,065**."
+          "es": "Planteamiento y método: El porcentaje de creación de empresas por desempleados en 1995 = 18,6 % + 16,4 % = 35,0 %. En 2005 = 21,0 % + 18,2 % = 39,2 %. El aumento entre 1995 y 2005 está, por tanto, en la proporción 39,2/35,0. Se aplica el mismo aumento proporcional entre 2005 y 2010, y el total de 2010 es un 2 % superior al total de 2005, que era 842.000.\n\nSolución: Porcentaje de creaciones por desempleados en 2010 = 39,2 % × (39,2/35,0) ≈ 43,9 %. Total de creaciones en 2010 = 842.000 × 1,02 = 858.840. Creaciones por desempleados en 2010 = 858.840 × 43,9 % ≈ **377.065**."
         }
       }
     ],
@@ -5673,14 +5673,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Percentage of prisoners given a sentence of more than 5 years, by nationality:\n\n| Nationality | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Poldavian | 3.4% | 2.8% | 3.1% | 3.2% | 2.8% |\n| Foreign | 2.9% | 3.2% | 3.3% | 4.2% | 3.4% |\n| Together | 3.2% | 2.9% | 3.1% | 3.3% | 2.9% |\n\n*In 2009, there were a total of 16,695 prisoners, of whom 15,030 were Poldavian. In 2009, what was the percentage ratio between the number of foreign prisoners and the number of Poldavian prisoners serving a sentence of more than 5 years?*",
-      "es": "Porcentaje de reclusos condenados a una pena de más de 5 años, por nacionalidad:\n\n| Nacionalidad | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Poldavia | 3.4% | 2.8% | 3.1% | 3.2% | 2.8% |\n| Extranjera | 2.9% | 3.2% | 3.3% | 4.2% | 3.4% |\n| Conjunto | 3.2% | 2.9% | 3.1% | 3.3% | 2.9% |\n\n*En 2009 había un total de 16,695 reclusos, de los cuales 15,030 eran de Poldavia. En 2009, ¿cuál era la proporción porcentual entre el número de reclusos extranjeros y el número de reclusos de Poldavia que cumplían una pena de más de 5 años?*"
+      "es": "Porcentaje de reclusos condenados a una pena de más de 5 años, por nacionalidad:\n\n| Nacionalidad | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|\n| Poldavia | 3,4 % | 2,8 % | 3,1 % | 3,2 % | 2,8 % |\n| Extranjera | 2,9 % | 3,2 % | 3,3 % | 4,2 % | 3,4 % |\n| Conjunto | 3,2 % | 2,9 % | 3,1 % | 3,3 % | 2,9 % |\n\n*En 2009 había un total de 16.695 reclusos, de los cuales 15.030 eran de Poldavia. En 2009, ¿cuál era la proporción porcentual entre el número de reclusos extranjeros y el número de reclusos de Poldavia que cumplían una pena de más de 5 años?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "6.8%",
-          "es": "6.8%"
+          "es": "6,8 %"
         },
         "isCorrect": false
       },
@@ -5688,7 +5688,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "9.8%",
-          "es": "9.8%"
+          "es": "9,8 %"
         },
         "isCorrect": false
       },
@@ -5696,7 +5696,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "11.1%",
-          "es": "11.1%"
+          "es": "11,1 %"
         },
         "isCorrect": false
       },
@@ -5704,7 +5704,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "12.5%",
-          "es": "12.5%"
+          "es": "12,5 %"
         },
         "isCorrect": false
       },
@@ -5712,12 +5712,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "14.6%",
-          "es": "14.6%"
+          "es": "14,6 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: In 2009, there were a total of 16,695 prisoners, of whom 15,030 were Poldavian; therefore 16,695 − 15,030 = 1,665 were foreign. We apply the 2009 percentage-sentenced-over-5-years rates from the table to each group.\n\nSolution: Foreign prisoners serving more than 5 years = 1,665 × 4.2% ≈ 69.9. Poldavian prisoners serving more than 5 years = 15,030 × 3.2% ≈ 480.96. Percentage ratio = 69.9 / 480.96 ≈ **14.6%**.",
-          "es": "Planteamiento y método: En 2009 había un total de 16,695 reclusos, de los cuales 15,030 eran de Poldavia; por tanto, 16,695 − 15,030 = 1,665 eran extranjeros. Aplicamos a cada grupo las tasas de 2009 de porcentaje condenado a más de 5 años dadas en la tabla.\n\nSolución: Reclusos extranjeros que cumplen más de 5 años = 1,665 × 4.2% ≈ 69.9. Reclusos de Poldavia que cumplen más de 5 años = 15,030 × 3.2% ≈ 480.96. Proporción porcentual = 69.9 / 480.96 ≈ **14.6%**."
+          "es": "Planteamiento y método: En 2009 había un total de 16.695 reclusos, de los cuales 15.030 eran de Poldavia; por tanto, 16.695 − 15.030 = 1.665 eran extranjeros. Aplicamos a cada grupo las tasas de 2009 de porcentaje condenado a más de 5 años dadas en la tabla.\n\nSolución: Reclusos extranjeros que cumplen más de 5 años = 1.665 × 4,2 % ≈ 69,9. Reclusos de Poldavia que cumplen más de 5 años = 15.030 × 3,2 % ≈ 480,96. Proporción porcentual = 69,9 / 480,96 ≈ **14,6 %**."
         }
       }
     ],
@@ -5732,7 +5732,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of hours of sunshine:\n\n| Country | February | March | April | May | June |\n|---|---|---|---|---|---|\n| Boronitz | 67 | 80 | 124 | 158 | 184 |\n| Estunil | 85 | 116 | 143 | 147 | 191 |\n\n*In Estunil, the number of hours of sunshine rose by 85% between the first and second quarters of the year. How many hours of sunshine did Estunil have in January?*",
-      "es": "Número de horas de sol:\n\n| País | Febrero | Marzo | Abril | Mayo | Junio |\n|---|---|---|---|---|---|\n| Boronitz | 67 | 80 | 124 | 158 | 184 |\n| Estunil | 85 | 116 | 143 | 147 | 191 |\n\n*En Estunil, el número de horas de sol aumentó un 85% entre el primer y el segundo trimestre del año. ¿Cuántas horas de sol tuvo Estunil en enero?*"
+      "es": "Número de horas de sol:\n\n| País | Febrero | Marzo | Abril | Mayo | Junio |\n|---|---|---|---|---|---|\n| Boronitz | 67 | 80 | 124 | 158 | 184 |\n| Estunil | 85 | 116 | 143 | 147 | 191 |\n\n*En Estunil, el número de horas de sol aumentó un 85 % entre el primer y el segundo trimestre del año. ¿Cuántas horas de sol tuvo Estunil en enero?*"
     },
     "options": [
       {
@@ -5760,7 +5760,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: In Estunil, the number of hours of sunshine rose by 85% between the first quarter (January–March) and the second quarter (April–June) of the year.\n\nSolution: First-quarter total (Jan + Feb + Mar) = January + 85 + 116. Second-quarter total (Apr + May + Jun) = 143 + 147 + 191 = 481. Since the second quarter is 85% higher than the first: First quarter = 481 / 1.85 ≈ 260. January = 260 − 85 − 116 = **59**.",
-          "es": "Planteamiento y método: En Estunil, el número de horas de sol aumentó un 85% entre el primer trimestre (enero–marzo) y el segundo trimestre (abril–junio) del año.\n\nSolución: Total del primer trimestre (Ene + Feb + Mar) = enero + 85 + 116. Total del segundo trimestre (Abr + May + Jun) = 143 + 147 + 191 = 481. Dado que el segundo trimestre es un 85% superior al primero: Primer trimestre = 481 / 1.85 ≈ 260. Enero = 260 − 85 − 116 = **59**."
+          "es": "Planteamiento y método: En Estunil, el número de horas de sol aumentó un 85 % entre el primer trimestre (enero–marzo) y el segundo trimestre (abril–junio) del año.\n\nSolución: Total del primer trimestre (Ene + Feb + Mar) = enero + 85 + 116. Total del segundo trimestre (Abr + May + Jun) = 143 + 147 + 191 = 481. Dado que el segundo trimestre es un 85 % superior al primero: Primer trimestre = 481 / 1,85 ≈ 260. Enero = 260 − 85 − 116 = **59**."
         }
       },
       {
@@ -5791,14 +5791,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Book production (in thousands):\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Total titles published | 39.1 | 51.8 | 75.4 | 76.2 |\n| — of which new titles | 20.3 | 25.8 | 37.3 | 38.3 |\n| — of which reprints | 18.8 | 26.0 | 38.1 | 37.9 |\n| Total copies produced | 386,200 | 422,900 | 655,200 | 711,500 |\n| — of which new titles | 212,300 | 243,000 | 390,400 | 447,800 |\n| — of which reprints | 173,900 | 179,900 | 264,800 | 263,900 |\n\n*In 2015, the total number of titles published should increase by 5% compared with 2010, and each new title should have a print run of 11,000 copies. According to these forecasts, how many thousands of copies of new titles should be produced in 2015?*",
-      "es": "Producción de libros (en miles):\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Total de títulos publicados | 39.1 | 51.8 | 75.4 | 76.2 |\n| — de los cuales: títulos nuevos | 20.3 | 25.8 | 37.3 | 38.3 |\n| — de los cuales: reimpresiones | 18.8 | 26.0 | 38.1 | 37.9 |\n| Total de ejemplares producidos | 386,200 | 422,900 | 655,200 | 711,500 |\n| — de los cuales: títulos nuevos | 212,300 | 243,000 | 390,400 | 447,800 |\n| — de los cuales: reimpresiones | 173,900 | 179,900 | 264,800 | 263,900 |\n\n*En 2015, el número total de títulos publicados debería aumentar un 5% respecto a 2010, y cada título nuevo debería tener una tirada de 11,000 ejemplares. Según estas previsiones, ¿cuántos miles de ejemplares de títulos nuevos deberían producirse en 2015?*"
+      "es": "Producción de libros (en miles):\n\n| | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|\n| Total de títulos publicados | 39,1 | 51,8 | 75,4 | 76,2 |\n| — de los cuales: títulos nuevos | 20,3 | 25,8 | 37,3 | 38,3 |\n| — de los cuales: reimpresiones | 18,8 | 26,0 | 38,1 | 37,9 |\n| Total de ejemplares producidos | 386.200 | 422.900 | 655.200 | 711.500 |\n| — de los cuales: títulos nuevos | 212.300 | 243.000 | 390.400 | 447.800 |\n| — de los cuales: reimpresiones | 173.900 | 179.900 | 264.800 | 263.900 |\n\n*En 2015, el número total de títulos publicados debería aumentar un 5 % respecto a 2010, y cada título nuevo debería tener una tirada de 11.000 ejemplares. Según estas previsiones, ¿cuántos miles de ejemplares de títulos nuevos deberían producirse en 2015?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "402,150",
-          "es": "402,150"
+          "es": "402.150"
         },
         "isCorrect": false
       },
@@ -5806,7 +5806,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "442,365",
-          "es": "442,365"
+          "es": "442.365"
         },
         "isCorrect": false
       },
@@ -5814,7 +5814,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "470,190",
-          "es": "470,190"
+          "es": "470.190"
         },
         "isCorrect": false
       },
@@ -5822,7 +5822,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "880,110",
-          "es": "880,110"
+          "es": "880.110"
         },
         "isCorrect": false
       },
@@ -5835,7 +5835,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate, in 2015: The number of copies of new titles produced = the number of new titles published × number of copies produced per title published. We know the number of new titles published in 2010, but not its variation rate between 2010 and 2015. The 5% variation rate in fact applies to the increase in the total number of titles published and not the new titles published. Therefore we cannot calculate the number of new titles published in 2015.\n\nSolution: **Impossible to tell.**",
-          "es": "Planteamiento y método: Debemos calcular, en 2015: El número de ejemplares de títulos nuevos producidos = número de títulos nuevos publicados × número de ejemplares producidos por título publicado. Conocemos el número de títulos nuevos publicados en 2010, pero no su tasa de variación entre 2010 y 2015. La tasa de variación del 5% se aplica, de hecho, al aumento del número total de títulos publicados, y no a los títulos nuevos publicados. Por tanto, no podemos calcular el número de títulos nuevos publicados en 2015.\n\nSolución: **Imposible saberlo.**"
+          "es": "Planteamiento y método: Debemos calcular, en 2015: El número de ejemplares de títulos nuevos producidos = número de títulos nuevos publicados × número de ejemplares producidos por título publicado. Conocemos el número de títulos nuevos publicados en 2010, pero no su tasa de variación entre 2010 y 2015. La tasa de variación del 5 % se aplica, de hecho, al aumento del número total de títulos publicados, y no a los títulos nuevos publicados. Por tanto, no podemos calcular el número de títulos nuevos publicados en 2015.\n\nSolución: **Imposible saberlo.**"
         }
       }
     ],
@@ -5850,7 +5850,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of overnight stays in 2-star hotels in 2010, in thousands (shown as a bar chart in the source): Albana ≈ 160; Boronitz ≈ 140; Crovaka ≈ 125; Denitz ≈ 170.\n\n*In 2010, there were 250 hotels in Crovaka. At that time the number of overnight stays in 2-star hotels accounted for 20% of the total number of overnight stays. What was the average number of overnight stays per hotel in Crovaka in 2010?*",
-      "es": "Número de pernoctaciones en hoteles de 2 estrellas en 2010, en miles (mostrado como gráfico de barras en la fuente): Albana ≈ 160; Boronitz ≈ 140; Crovaka ≈ 125; Denitz ≈ 170.\n\n*En 2010 había 250 hoteles en Crovaka. En ese momento, el número de pernoctaciones en hoteles de 2 estrellas representaba el 20% del número total de pernoctaciones. ¿Cuál fue el número medio de pernoctaciones por hotel en Crovaka en 2010?*"
+      "es": "Número de pernoctaciones en hoteles de 2 estrellas en 2010, en miles (mostrado como gráfico de barras en la fuente): Albana ≈ 160; Boronitz ≈ 140; Crovaka ≈ 125; Denitz ≈ 170.\n\n*En 2010 había 250 hoteles en Crovaka. En ese momento, el número de pernoctaciones en hoteles de 2 estrellas representaba el 20 % del número total de pernoctaciones. ¿Cuál fue el número medio de pernoctaciones por hotel en Crovaka en 2010?*"
     },
     "options": [
       {
@@ -5873,19 +5873,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2,500",
-          "es": "2,500"
+          "es": "2.500"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The average number of overnight hotel stays = total number of overnight hotel stays / number of hotels. The number of hotels is given. The total number of overnight stays is deduced from the number of overnight stays in 2-star hotels. In Crovaka: The number of overnight stays in 2-star hotels = 0.2 × total number of overnight hotel stays.\n\nSolution: Total number of overnight stays in 2-star hotels / 0.2 = 125,000 / 0.2 = 625,000. Average number of overnight hotel stays = 625,000 / 250 = **2,500**.",
-          "es": "Planteamiento y método: El número medio de pernoctaciones hoteleras = número total de pernoctaciones hoteleras / número de hoteles. El número de hoteles se da directamente. El número total de pernoctaciones se deduce del número de pernoctaciones en hoteles de 2 estrellas. En Crovaka: El número de pernoctaciones en hoteles de 2 estrellas = 0.2 × número total de pernoctaciones hoteleras.\n\nSolución: Número total de pernoctaciones en hoteles de 2 estrellas / 0.2 = 125,000 / 0.2 = 625,000. Número medio de pernoctaciones hoteleras = 625,000 / 250 = **2,500**."
+          "es": "Planteamiento y método: El número medio de pernoctaciones hoteleras = número total de pernoctaciones hoteleras / número de hoteles. El número de hoteles se da directamente. El número total de pernoctaciones se deduce del número de pernoctaciones en hoteles de 2 estrellas. En Crovaka: El número de pernoctaciones en hoteles de 2 estrellas = 0,2 × número total de pernoctaciones hoteleras.\n\nSolución: Número total de pernoctaciones en hoteles de 2 estrellas / 0,2 = 125.000 / 0,2 = 625.000. Número medio de pernoctaciones hoteleras = 625.000 / 250 = **2.500**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "5,000",
-          "es": "5,000"
+          "es": "5.000"
         },
         "isCorrect": false
       },
@@ -5893,7 +5893,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "7,500",
-          "es": "7,500"
+          "es": "7.500"
         },
         "isCorrect": false
       }
@@ -5909,14 +5909,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Research and development spending (2009):\n\n| Country | R&D spending (€ million) | Percentage of R&D spending financed by the public sector | R&D spending (% of GDP) |\n|---|---|---|---|\n| Levonia | 399 | 42.5% | 0.95% |\n| Poldavia | 420 | 38.5% | 1.05% |\n\n*In 2008, Levonia's GDP was 41,520 million euros. How did Levonia's GDP change between 2008 and 2009?*",
-      "es": "Gasto en investigación y desarrollo (2009):\n\n| País | Gasto en I+D (millones de €) | Porcentaje del gasto en I+D financiado por el sector público | Gasto en I+D (% del PIB) |\n|---|---|---|---|\n| Levonia | 399 | 42.5% | 0.95% |\n| Poldavia | 420 | 38.5% | 1.05% |\n\n*En 2008, el PIB de Levonia era de 41,520 millones de euros. ¿Cómo cambió el PIB de Levonia entre 2008 y 2009?*"
+      "es": "Gasto en investigación y desarrollo (2009):\n\n| País | Gasto en I+D (millones de €) | Porcentaje del gasto en I+D financiado por el sector público | Gasto en I+D (% del PIB) |\n|---|---|---|---|\n| Levonia | 399 | 42,5 % | 0,95 % |\n| Poldavia | 420 | 38,5 % | 1,05 % |\n\n*En 2008, el PIB de Levonia era de 41.520 millones de euros. ¿Cómo cambió el PIB de Levonia entre 2008 y 2009?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It fell by 1,520 million euros.",
-          "es": "Cayó 1,520 millones de euros."
+          "es": "Cayó 1.520 millones de euros."
         },
         "isCorrect": false
       },
@@ -5945,14 +5945,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate Levonia's GDP in 2009 from the data given in the table: Spending on R&D in 2009 = 0.95% × GDP in 2009; then, we calculate the variation in GDP between 2008 and 2009.\n\nSolution — Stage 1: GDP in 2009 = 399 / 0.0095 = 42,000. Stage 2: Variation between 2008 and 2009 = 42,000 − 41,520 = **+480 million euros**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el PIB de Levonia en 2009 a partir de los datos de la tabla: Gasto en I+D en 2009 = 0.95% × PIB en 2009; a continuación, calculamos la variación del PIB entre 2008 y 2009.\n\nSolución — Fase 1: PIB en 2009 = 399 / 0.0095 = 42,000. Fase 2: Variación entre 2008 y 2009 = 42,000 − 41,520 = **+480 millones de euros**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el PIB de Levonia en 2009 a partir de los datos de la tabla: Gasto en I+D en 2009 = 0,95 % × PIB en 2009; a continuación, calculamos la variación del PIB entre 2008 y 2009.\n\nSolución — Fase 1: PIB en 2009 = 399 / 0,0095 = 42.000. Fase 2: Variación entre 2008 y 2009 = 42.000 − 41.520 = **+480 millones de euros**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "It rose by 2,580 million euros.",
-          "es": "Subió 2,580 millones de euros."
+          "es": "Subió 2.580 millones de euros."
         },
         "isCorrect": false
       }
@@ -5968,14 +5968,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Fuel price changes (% variation compared with the previous month):\n\n| Fuel | January | February | March |\n|---|---|---|---|\n| Diesel | 1.2% | 2.2% | −1.5% |\n| Super unleaded 95 | 0.5% | 4.5% | −2% |\n| Super unleaded 98 | 0.4% | 5.5% | −2% |\n\n*In January, Anna filled up with super unleaded 95 for 80 euros. In March, a litre of super unleaded 98 was 10% more expensive than a litre of super unleaded 95. How much did Anna pay for a fill-up of super unleaded 98 in March?*",
-      "es": "Variación del precio de los carburantes (% de variación respecto al mes anterior):\n\n| Carburante | Enero | Febrero | Marzo |\n|---|---|---|---|\n| Diésel | 1.2% | 2.2% | −1.5% |\n| Súper sin plomo 95 | 0.5% | 4.5% | −2% |\n| Súper sin plomo 98 | 0.4% | 5.5% | −2% |\n\n*En enero, Anna llenó el depósito con súper sin plomo 95 por 80 euros. En marzo, un litro de súper sin plomo 98 costaba un 10% más que un litro de súper sin plomo 95. ¿Cuánto pagó Anna por un depósito lleno de súper sin plomo 98 en marzo?*"
+      "es": "Variación del precio de los carburantes (% de variación respecto al mes anterior):\n\n| Carburante | Enero | Febrero | Marzo |\n|---|---|---|---|\n| Diésel | 1,2 % | 2,2 % | −1,5 % |\n| Súper sin plomo 95 | 0,5 % | 4,5 % | −2 % |\n| Súper sin plomo 98 | 0,4 % | 5,5 % | −2 % |\n\n*En enero, Anna llenó el depósito con súper sin plomo 95 por 80 euros. En marzo, un litro de súper sin plomo 98 costaba un 10 % más que un litro de súper sin plomo 95. ¿Cuánto pagó Anna por un depósito lleno de súper sin plomo 98 en marzo?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "81.93 euros",
-          "es": "81.93 euros"
+          "es": "81,93 euros"
         },
         "isCorrect": false
       },
@@ -5983,7 +5983,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "82.00 euros",
-          "es": "82.00 euros"
+          "es": "82,00 euros"
         },
         "isCorrect": false
       },
@@ -5991,19 +5991,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "90.12 euros",
-          "es": "90.12 euros"
+          "es": "90,12 euros"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We start with what we know: the price of filling up with super unleaded 95 in January. We then proceed in two stages: first, we calculate the price of filling up with super unleaded 95 from the variation rates between January and February (4.5%) and between February and March (−2%); then, we calculate the price of filling up with super unleaded 98 from the information given in the question: Price of a full tank of super unleaded 98 = price of a full tank of super unleaded 95 + 10%.\n\nSolution — Stage 1: Price of a full tank of super unleaded 95 in March: 80 × 1.045 × 0.98 = 81.93. Stage 2: Price of a full tank of super unleaded 98 in March: 81.93 × 1.1 = **90.12 euros**.",
-          "es": "Planteamiento y método: Partimos de lo que sabemos: el precio de un depósito de súper sin plomo 95 en enero. A continuación, procedemos en dos fases: primero, calculamos el precio de un depósito de súper sin plomo 95 a partir de las tasas de variación entre enero y febrero (4.5%) y entre febrero y marzo (−2%); a continuación, calculamos el precio de un depósito de súper sin plomo 98 a partir de la información dada en la pregunta: Precio de un depósito lleno de súper sin plomo 98 = precio de un depósito lleno de súper sin plomo 95 + 10%.\n\nSolución — Fase 1: Precio de un depósito lleno de súper sin plomo 95 en marzo: 80 × 1.045 × 0.98 = 81.93. Fase 2: Precio de un depósito lleno de súper sin plomo 98 en marzo: 81.93 × 1.1 = **90.12 euros**."
+          "es": "Planteamiento y método: Partimos de lo que sabemos: el precio de un depósito de súper sin plomo 95 en enero. A continuación, procedemos en dos fases: primero, calculamos el precio de un depósito de súper sin plomo 95 a partir de las tasas de variación entre enero y febrero (4,5 %) y entre febrero y marzo (−2 %); a continuación, calculamos el precio de un depósito de súper sin plomo 98 a partir de la información dada en la pregunta: Precio de un depósito lleno de súper sin plomo 98 = precio de un depósito lleno de súper sin plomo 95 + 10 %.\n\nSolución — Fase 1: Precio de un depósito lleno de súper sin plomo 95 en marzo: 80 × 1,045 × 0,98 = 81,93. Fase 2: Precio de un depósito lleno de súper sin plomo 98 en marzo: 81,93 × 1,1 = **90,12 euros**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "90.20 euros",
-          "es": "90.20 euros"
+          "es": "90,20 euros"
         },
         "isCorrect": false
       },
@@ -6011,7 +6011,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "90.57 euros",
-          "es": "90.57 euros"
+          "es": "90,57 euros"
         },
         "isCorrect": false
       }
@@ -6027,14 +6027,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Number of driving test candidates (shown as a bar chart in the source): Denitz ≈ 6,300; Crovaka ≈ 7,900; Boronitz = 8,400; Albana ≈ 6,400.\n\n*In Boronitz, the ratio of candidates who passed the driving test to those who failed is two to three. In Boronitz, how many candidates passed the driving test?*",
-      "es": "Número de candidatos al examen de conducir (mostrado como gráfico de barras en la fuente): Denitz ≈ 6,300; Crovaka ≈ 7,900; Boronitz = 8,400; Albana ≈ 6,400.\n\n*En Boronitz, la proporción entre los candidatos que aprobaron el examen de conducir y los que suspendieron es de dos a tres. En Boronitz, ¿cuántos candidatos aprobaron el examen de conducir?*"
+      "es": "Número de candidatos al examen de conducir (mostrado como gráfico de barras en la fuente): Denitz ≈ 6.300; Crovaka ≈ 7.900; Boronitz = 8.400; Albana ≈ 6.400.\n\n*En Boronitz, la proporción entre los candidatos que aprobaron el examen de conducir y los que suspendieron es de dos a tres. En Boronitz, ¿cuántos candidatos aprobaron el examen de conducir?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "2,160",
-          "es": "2,160"
+          "es": "2.160"
         },
         "isCorrect": false
       },
@@ -6042,7 +6042,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "2,800",
-          "es": "2,800"
+          "es": "2.800"
         },
         "isCorrect": false
       },
@@ -6050,7 +6050,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "3,280",
-          "es": "3,280"
+          "es": "3.280"
         },
         "isCorrect": false
       },
@@ -6058,19 +6058,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "3,360",
-          "es": "3,360"
+          "es": "3.360"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate: The number of successful candidates = number of candidates × success rate. The ratio between the number of successful candidates and the number of candidates who failed is 2 to 3. This means that out of every 5 candidates, 2 were successful. The success rate is therefore 2/5.\n\nSolution: Number of successful candidates = 8,400 × 2/5 = **3,360**.",
-          "es": "Planteamiento y método: Debemos calcular: El número de candidatos aprobados = número de candidatos × tasa de aprobados. La proporción entre el número de candidatos aprobados y el número de candidatos suspendidos es de 2 a 3. Esto significa que de cada 5 candidatos, 2 aprobaron. La tasa de aprobados es, por tanto, 2/5.\n\nSolución: Número de candidatos aprobados = 8,400 × 2/5 = **3,360**."
+          "es": "Planteamiento y método: Debemos calcular: El número de candidatos aprobados = número de candidatos × tasa de aprobados. La proporción entre el número de candidatos aprobados y el número de candidatos suspendidos es de 2 a 3. Esto significa que de cada 5 candidatos, 2 aprobaron. La tasa de aprobados es, por tanto, 2/5.\n\nSolución: Número de candidatos aprobados = 8.400 × 2/5 = **3.360**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "5,600",
-          "es": "5,600"
+          "es": "5.600"
         },
         "isCorrect": false
       }
@@ -6086,14 +6086,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "CO₂ emissions by industry sector:\n\n| Sector | Emissions 2005 (tonnes) | Emissions 2006 (tonnes) | Variation 2004–2005 | Variation 2004–2008 |\n|---|---|---|---|---|\n| Energy production | 2,564,190 | 2,540,984 | +1.5% | +0.4% |\n| Transport | 1,259,292 | 1,240,728 | +2% | −5% |\n| Manufacturing and construction | 643,890 | 645,128 | +1% | +2% |\n| Other | 438,992 | 403,785 | −2.4% | −4.4% |\n\n*How many tonnes of CO₂ emissions were produced by the transport industry in 2008?*",
-      "es": "Emisiones de CO₂ por sector industrial:\n\n| Sector | Emisiones 2005 (toneladas) | Emisiones 2006 (toneladas) | Variación 2004–2005 | Variación 2004–2008 |\n|---|---|---|---|---|\n| Producción de energía | 2,564,190 | 2,540,984 | +1.5% | +0.4% |\n| Transporte | 1,259,292 | 1,240,728 | +2% | −5% |\n| Manufactura y construcción | 643,890 | 645,128 | +1% | +2% |\n| Otros | 438,992 | 403,785 | −2.4% | −4.4% |\n\n*¿Cuántas toneladas de emisiones de CO₂ produjo la industria del transporte en 2008?*"
+      "es": "Emisiones de CO₂ por sector industrial:\n\n| Sector | Emisiones 2005 (toneladas) | Emisiones 2006 (toneladas) | Variación 2004–2005 | Variación 2004–2008 |\n|---|---|---|---|---|\n| Producción de energía | 2.564.190 | 2.540.984 | +1,5 % | +0,4 % |\n| Transporte | 1.259.292 | 1.240.728 | +2 % | −5 % |\n| Manufactura y construcción | 643.890 | 645.128 | +1 % | +2 % |\n| Otros | 438.992 | 403.785 | −2,4 % | −4,4 % |\n\n*¿Cuántas toneladas de emisiones de CO₂ produjo la industria del transporte en 2008?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,155,580",
-          "es": "1,155,580"
+          "es": "1.155.580"
         },
         "isCorrect": false
       },
@@ -6101,7 +6101,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,172,400",
-          "es": "1,172,400"
+          "es": "1.172.400"
         },
         "isCorrect": false
       },
@@ -6109,19 +6109,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,172,870",
-          "es": "1,172,870"
+          "es": "1.172.870"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate CO₂ emissions from transport in 2004 from CO₂ emissions in 2005 and the variation rate between 2004 and 2005; then, we calculate CO₂ emissions from transport in 2008 by applying the variation rate between 2004 and 2008.\n\nSolution — Stage 1: CO₂ emissions from transport in 2004: 1,259,292 / 1.02 = 1,234,600. Stage 2: CO₂ emissions from transport in 2008: 1,234,600 × 0.95 = **1,172,870**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos las emisiones de CO₂ del transporte en 2004 a partir de las emisiones de 2005 y la tasa de variación entre 2004 y 2005; a continuación, calculamos las emisiones de CO₂ del transporte en 2008 aplicando la tasa de variación entre 2004 y 2008.\n\nSolución — Fase 1: Emisiones de CO₂ del transporte en 2004: 1,259,292 / 1.02 = 1,234,600. Fase 2: Emisiones de CO₂ del transporte en 2008: 1,234,600 × 0.95 = **1,172,870**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos las emisiones de CO₂ del transporte en 2004 a partir de las emisiones de 2005 y la tasa de variación entre 2004 y 2005; a continuación, calculamos las emisiones de CO₂ del transporte en 2008 aplicando la tasa de variación entre 2004 y 2008.\n\nSolución — Fase 1: Emisiones de CO₂ del transporte en 2004: 1.259.292 / 1,02 = 1.234.600. Fase 2: Emisiones de CO₂ del transporte en 2008: 1.234.600 × 0,95 = **1.172.870**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "1,203,506",
-          "es": "1,203,506"
+          "es": "1.203.506"
         },
         "isCorrect": false
       },
@@ -6129,7 +6129,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "1,221,513",
-          "es": "1,221,513"
+          "es": "1.221.513"
         },
         "isCorrect": false
       }
@@ -6145,7 +6145,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Average height of children aged 8 to 12:\n\n| Age | Average height, girls (cm) | Average height, boys (cm) | Percentage of boys |\n|---|---|---|---|\n| Age 8 | 130 | 135 | 60% |\n| Age 9 | 137 | 139 | 50% |\n| Age 10 | 144 | 143 | 55% |\n| Age 11 | 149 | 149 | 45% |\n| Age 12 | 156 | 155 | 50% |\n\n*There are two children aged 8 for every three children aged 9. What is the average height of children aged 8 to 9?*",
-      "es": "Estatura media de los niños de 8 a 12 años:\n\n| Edad | Estatura media, niñas (cm) | Estatura media, niños (cm) | Porcentaje de niños |\n|---|---|---|---|\n| 8 años | 130 | 135 | 60% |\n| 9 años | 137 | 139 | 50% |\n| 10 años | 144 | 143 | 55% |\n| 11 años | 149 | 149 | 45% |\n| 12 años | 156 | 155 | 50% |\n\n*Hay dos niños de 8 años por cada tres niños de 9 años. ¿Cuál es la estatura media de los niños de 8 a 9 años?*"
+      "es": "Estatura media de los niños de 8 a 12 años:\n\n| Edad | Estatura media, niñas (cm) | Estatura media, niños (cm) | Porcentaje de niños |\n|---|---|---|---|\n| 8 años | 130 | 135 | 60 % |\n| 9 años | 137 | 139 | 50 % |\n| 10 años | 144 | 143 | 55 % |\n| 11 años | 149 | 149 | 45 % |\n| 12 años | 156 | 155 | 50 % |\n\n*Hay dos niños de 8 años por cada tres niños de 9 años. ¿Cuál es la estatura media de los niños de 8 a 9 años?*"
     },
     "options": [
       {
@@ -6160,7 +6160,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "135.25 cm",
-          "es": "135.25 cm"
+          "es": "135,25 cm"
         },
         "isCorrect": false
       },
@@ -6168,7 +6168,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "135.6 cm",
-          "es": "135.6 cm"
+          "es": "135,6 cm"
         },
         "isCorrect": false
       },
@@ -6176,7 +6176,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "135.8 cm",
-          "es": "135.8 cm"
+          "es": "135,8 cm"
         },
         "isCorrect": false
       },
@@ -6189,7 +6189,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the average height of children aged 8. As the number of girls differs from the number of boys, this is a weighted average; then, we calculate the average height of children aged 9. As the number of girls is the same as the number of boys, this is a simple average; lastly, we calculate the average height of children aged 8 and 9. The number of children aged 8 differs from the number of children aged 9, so this is a weighted average. Out of 5 children, 2 children are 8 years old and 3 children are 9 years old. The weightings applied to children aged 8 and 9 are therefore 2/5 and 3/5 respectively.\n\nSolution — Stage 1: Average height of children aged 8: (0.4 × 130) + (0.6 × 135) = 133. Stage 2: Average height of children aged 9: (137 + 139) / 2 = 138. Stage 3: Average height of children aged 8 and 9: (2/5 × 133) + (3/5 × 138) = **136cm**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos la estatura media de los niños de 8 años. Como el número de niñas difiere del número de niños, es una media ponderada; a continuación, calculamos la estatura media de los niños de 9 años. Como el número de niñas es igual al número de niños, es una media simple; por último, calculamos la estatura media de los niños de 8 y 9 años. El número de niños de 8 años difiere del número de niños de 9 años, así que es una media ponderada. De cada 5 niños, 2 tienen 8 años y 3 tienen 9 años. Las ponderaciones aplicadas a los niños de 8 y 9 años son, por tanto, 2/5 y 3/5 respectivamente.\n\nSolución — Fase 1: Estatura media de los niños de 8 años: (0.4 × 130) + (0.6 × 135) = 133. Fase 2: Estatura media de los niños de 9 años: (137 + 139) / 2 = 138. Fase 3: Estatura media de los niños de 8 y 9 años: (2/5 × 133) + (3/5 × 138) = **136 cm**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos la estatura media de los niños de 8 años. Como el número de niñas difiere del número de niños, es una media ponderada; a continuación, calculamos la estatura media de los niños de 9 años. Como el número de niñas es igual al número de niños, es una media simple; por último, calculamos la estatura media de los niños de 8 y 9 años. El número de niños de 8 años difiere del número de niños de 9 años, así que es una media ponderada. De cada 5 niños, 2 tienen 8 años y 3 tienen 9 años. Las ponderaciones aplicadas a los niños de 8 y 9 años son, por tanto, 2/5 y 3/5 respectivamente.\n\nSolución — Fase 1: Estatura media de los niños de 8 años: (0,4 × 130) + (0,6 × 135) = 133. Fase 2: Estatura media de los niños de 9 años: (137 + 139) / 2 = 138. Fase 3: Estatura media de los niños de 8 y 9 años: (2/5 × 133) + (3/5 × 138) = **136 cm**."
         }
       }
     ],
@@ -6204,14 +6204,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Renewable energy distribution (shown as a stacked bar chart in the source, countries Zogland, Poldavia, Levonia, Telonia, bands Hydroelectric / Solar / Geothermal / Wind; the explanation reads Poldavia's solar share as 40% of its renewable energy production).\n\n*Poldavia produces four times more solar energy than Levonia. If Poldavia produces 2,200,000 TOE of energy in the form of renewable energy, how much renewable energy is produced in Levonia?*",
-      "es": "Distribución de la energía renovable (mostrada como gráfico de barras apiladas en la fuente, países Zogland, Poldavia, Levonia, Telonia, bandas Hidroeléctrica / Solar / Geotérmica / Eólica; la explicación lee la cuota solar de Poldavia como el 40% de su producción de energía renovable).\n\n*Poldavia produce cuatro veces más energía solar que Levonia. Si Poldavia produce 2,200,000 TEP de energía en forma de energía renovable, ¿cuánta energía renovable se produce en Levonia?*"
+      "es": "Distribución de la energía renovable (mostrada como gráfico de barras apiladas en la fuente, países Zogland, Poldavia, Levonia, Telonia, bandas Hidroeléctrica / Solar / Geotérmica / Eólica; la explicación lee la cuota solar de Poldavia como el 40 % de su producción de energía renovable).\n\n*Poldavia produce cuatro veces más energía solar que Levonia. Si Poldavia produce 2.200.000 TEP de energía en forma de energía renovable, ¿cuánta energía renovable se produce en Levonia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "110,000 TOE",
-          "es": "110,000 TEP"
+          "es": "110.000 TEP"
         },
         "isCorrect": false
       },
@@ -6219,19 +6219,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "440,000 TOE",
-          "es": "440,000 TEP"
+          "es": "440.000 TEP"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to start with what we know: renewable energy production in Poldavia (2,200,000 TOE). We then proceed in three stages: first, we calculate solar energy production in Poldavia using the graph: it accounts for 40% of renewable energy production; then, we calculate solar energy production in Levonia using the information given in the question: it is four times lower than in Poldavia; lastly, we calculate renewable energy production in Levonia using the graph: solar energy production accounts for 50% of renewable energy production; renewable energy production therefore accounts for double the production of solar energy.\n\nSolution — Stage 1: Solar energy in Poldavia: 0.4 × 2,200,000 = 880,000. Stage 2: Solar energy in Levonia: 880,000 / 4 = 220,000. Stage 3: Renewable energy in Levonia: 2 × 220,000 = **440,000 TOE**.",
-          "es": "Planteamiento y método: Debemos partir de lo que sabemos: la producción de energía renovable en Poldavia (2,200,000 TEP). A continuación, procedemos en tres fases: primero, calculamos la producción de energía solar en Poldavia usando el gráfico: representa el 40% de la producción de energía renovable; a continuación, calculamos la producción de energía solar en Levonia usando la información dada en la pregunta: es cuatro veces menor que en Poldavia; por último, calculamos la producción de energía renovable en Levonia usando el gráfico: la producción de energía solar representa el 50% de la producción de energía renovable; la producción de energía renovable representa, por tanto, el doble de la producción de energía solar.\n\nSolución — Fase 1: Energía solar en Poldavia: 0.4 × 2,200,000 = 880,000. Fase 2: Energía solar en Levonia: 880,000 / 4 = 220,000. Fase 3: Energía renovable en Levonia: 2 × 220,000 = **440,000 TEP**."
+          "es": "Planteamiento y método: Debemos partir de lo que sabemos: la producción de energía renovable en Poldavia (2.200.000 TEP). A continuación, procedemos en tres fases: primero, calculamos la producción de energía solar en Poldavia usando el gráfico: representa el 40 % de la producción de energía renovable; a continuación, calculamos la producción de energía solar en Levonia usando la información dada en la pregunta: es cuatro veces menor que en Poldavia; por último, calculamos la producción de energía renovable en Levonia usando el gráfico: la producción de energía solar representa el 50 % de la producción de energía renovable; la producción de energía renovable representa, por tanto, el doble de la producción de energía solar.\n\nSolución — Fase 1: Energía solar en Poldavia: 0,4 × 2.200.000 = 880.000. Fase 2: Energía solar en Levonia: 880.000 / 4 = 220.000. Fase 3: Energía renovable en Levonia: 2 × 220.000 = **440.000 TEP**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "550,000 TOE",
-          "es": "550,000 TEP"
+          "es": "550.000 TEP"
         },
         "isCorrect": false
       },
@@ -6239,7 +6239,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "880,000 TOE",
-          "es": "880,000 TEP"
+          "es": "880.000 TEP"
         },
         "isCorrect": false
       },
@@ -6263,14 +6263,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Unemployment rate in Zogland:\n\n| Year | 2004 | 2005 | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|---|---|\n| Rate | 7.9% | 8.2% | 8% | 7.6% | 8.1% | 8.5% | 10.2% |\n\n*By what percentage did the unemployment rate in Zogland fall between 2006 and 2007?*",
-      "es": "Tasa de desempleo en Zogland:\n\n| Año | 2004 | 2005 | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|---|---|\n| Tasa | 7.9% | 8.2% | 8% | 7.6% | 8.1% | 8.5% | 10.2% |\n\n*¿En qué porcentaje cayó la tasa de desempleo en Zogland entre 2006 y 2007?*"
+      "es": "Tasa de desempleo en Zogland:\n\n| Año | 2004 | 2005 | 2006 | 2007 | 2008 | 2009 | 2010 |\n|---|---|---|---|---|---|---|---|\n| Tasa | 7,9 % | 8,2 % | 8 % | 7,6 % | 8,1 % | 8,5 % | 10,2 % |\n\n*¿En qué porcentaje cayó la tasa de desempleo en Zogland entre 2006 y 2007?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "0.4%",
-          "es": "0.4%"
+          "es": "0,4 %"
         },
         "isCorrect": false
       },
@@ -6278,7 +6278,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "0.6%",
-          "es": "0.6%"
+          "es": "0,6 %"
         },
         "isCorrect": false
       },
@@ -6286,7 +6286,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "4%",
-          "es": "4%"
+          "es": "4 %"
         },
         "isCorrect": false
       },
@@ -6294,19 +6294,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "5%",
-          "es": "5%"
+          "es": "5 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We are asked by what percentage the unemployment rate has decreased. We therefore need to calculate a relative variation and not an absolute variation.\n\nSolution: Relative variation of the unemployment rate: (7.6 − 8) / 8 = −0.05 = −5%. The unemployment rate has decreased by **5%**.",
-          "es": "Planteamiento y método: Nos preguntan en qué porcentaje ha disminuido la tasa de desempleo. Por tanto, debemos calcular una variación relativa y no una variación absoluta.\n\nSolución: Variación relativa de la tasa de desempleo: (7.6 − 8) / 8 = −0.05 = −5%. La tasa de desempleo ha disminuido un **5%**."
+          "es": "Planteamiento y método: Nos preguntan en qué porcentaje ha disminuido la tasa de desempleo. Por tanto, debemos calcular una variación relativa y no una variación absoluta.\n\nSolución: Variación relativa de la tasa de desempleo: (7,6 − 8) / 8 = −0,05 = −5 %. La tasa de desempleo ha disminuido un **5 %**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "5.26%",
-          "es": "5.26%"
+          "es": "5,26 %"
         },
         "isCorrect": false
       }
@@ -6322,7 +6322,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Competitive exam results:\n\n| Competitive exam | Percentage of candidates who passed the written test | Number of candidates who passed the oral test |\n|---|---|---|\n| Statistics | 50% | 80 |\n| Economics | 50% | 120 |\n| Law | 60% | 260 |\n\n*In Economics, only the candidates who passed the written test took the oral test. In the oral test, the ratio between the number of candidates who passed and the number of candidates who failed was two to three. How many candidates took the written test in Economics?*",
-      "es": "Resultados de un concurso-oposición:\n\n| Concurso-oposición | Porcentaje de candidatos que aprobaron la prueba escrita | Número de candidatos que aprobaron la prueba oral |\n|---|---|---|\n| Estadística | 50% | 80 |\n| Economía | 50% | 120 |\n| Derecho | 60% | 260 |\n\n*En Economía, solo los candidatos que aprobaron la prueba escrita se presentaron a la prueba oral. En la prueba oral, la proporción entre el número de candidatos que aprobaron y el número de candidatos que suspendieron fue de dos a tres. ¿Cuántos candidatos se presentaron a la prueba escrita en Economía?*"
+      "es": "Resultados de un concurso-oposición:\n\n| Concurso-oposición | Porcentaje de candidatos que aprobaron la prueba escrita | Número de candidatos que aprobaron la prueba oral |\n|---|---|---|\n| Estadística | 50 % | 80 |\n| Economía | 50 % | 120 |\n| Derecho | 60 % | 260 |\n\n*En Economía, solo los candidatos que aprobaron la prueba escrita se presentaron a la prueba oral. En la prueba oral, la proporción entre el número de candidatos que aprobaron y el número de candidatos que suspendieron fue de dos a tres. ¿Cuántos candidatos se presentaron a la prueba escrita en Economía?*"
     },
     "options": [
       {
@@ -6366,7 +6366,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: In the oral test, the ratio of successful to unsuccessful candidates is two to three. This means that out of every 5 candidates, 2 were successful. The success rate for the oral test is therefore 2/5 or 40%. As we know the number of candidates who were successful in the oral test and the success rates of the written and oral tests, we can then work out in turn the number of candidates taking the written test and the number taking the oral test.\n\nSolution — Stage 1: Number of successful candidates in the oral test = 40% × number of candidates taking the oral test = 120. Number of candidates taking the oral test = 120 / 0.4 = 300. Stage 2: Only the candidates who are successful in the written test take the oral test. Therefore: 50% × number of candidates taking the written test = 300. Number of candidates taking the written test = 300 / 0.5 = **600**.",
-          "es": "Planteamiento y método: En la prueba oral, la proporción entre candidatos aprobados y suspendidos es de dos a tres. Esto significa que de cada 5 candidatos, 2 aprobaron. La tasa de aprobados de la prueba oral es, por tanto, 2/5, es decir, el 40%. Como conocemos el número de candidatos que aprobaron la prueba oral y las tasas de aprobados de las pruebas escrita y oral, podemos calcular sucesivamente el número de candidatos que se presentaron a la prueba escrita y el número que se presentó a la prueba oral.\n\nSolución — Fase 1: Número de candidatos aprobados en la prueba oral = 40% × número de candidatos que se presentaron a la prueba oral = 120. Número de candidatos que se presentaron a la prueba oral = 120 / 0.4 = 300. Fase 2: Solo los candidatos que aprobaron la prueba escrita se presentan a la prueba oral. Por tanto: 50% × número de candidatos que se presentaron a la prueba escrita = 300. Número de candidatos que se presentaron a la prueba escrita = 300 / 0.5 = **600**."
+          "es": "Planteamiento y método: En la prueba oral, la proporción entre candidatos aprobados y suspendidos es de dos a tres. Esto significa que de cada 5 candidatos, 2 aprobaron. La tasa de aprobados de la prueba oral es, por tanto, 2/5, es decir, el 40 %. Como conocemos el número de candidatos que aprobaron la prueba oral y las tasas de aprobados de las pruebas escrita y oral, podemos calcular sucesivamente el número de candidatos que se presentaron a la prueba escrita y el número que se presentó a la prueba oral.\n\nSolución — Fase 1: Número de candidatos aprobados en la prueba oral = 40 % × número de candidatos que se presentaron a la prueba oral = 120. Número de candidatos que se presentaron a la prueba oral = 120 / 0,4 = 300. Fase 2: Solo los candidatos que aprobaron la prueba escrita se presentan a la prueba oral. Por tanto: 50 % × número de candidatos que se presentaron a la prueba escrita = 300. Número de candidatos que se presentaron a la prueba escrita = 300 / 0,5 = **600**."
         }
       }
     ],
@@ -6381,7 +6381,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Population distribution by blood group (shown as two pie charts in the source):\n\n| Blood group | Rhesus + | Rhesus − |\n|---|---|---|\n| O | 42% | 38% |\n| A | 44% | 46% |\n| B | 11% | 10% |\n| AB | 4% | 7% |\n\n*Out of every 7 people belonging to blood group O, 6 belong to the blood group O+. If 23,370 people belong to blood group O+, how many people belong to blood group B−?*",
-      "es": "Distribución de la población por grupo sanguíneo (mostrada como dos gráficos circulares en la fuente):\n\n| Grupo sanguíneo | Rh + | Rh − |\n|---|---|---|\n| O | 42% | 38% |\n| A | 44% | 46% |\n| B | 11% | 10% |\n| AB | 4% | 7% |\n\n*De cada 7 personas que pertenecen al grupo sanguíneo O, 6 pertenecen al grupo sanguíneo O+. Si 23,370 personas pertenecen al grupo sanguíneo O+, ¿cuántas personas pertenecen al grupo sanguíneo B−?*"
+      "es": "Distribución de la población por grupo sanguíneo (mostrada como dos gráficos circulares en la fuente):\n\n| Grupo sanguíneo | Rh + | Rh − |\n|---|---|---|\n| O | 42 % | 38 % |\n| A | 44 % | 46 % |\n| B | 11 % | 10 % |\n| AB | 4 % | 7 % |\n\n*De cada 7 personas que pertenecen al grupo sanguíneo O, 6 pertenecen al grupo sanguíneo O+. Si 23.370 personas pertenecen al grupo sanguíneo O+, ¿cuántas personas pertenecen al grupo sanguíneo B−?*"
     },
     "options": [
       {
@@ -6396,19 +6396,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,025",
-          "es": "1,025"
+          "es": "1.025"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we calculate the number of people in group O− using the information given in the question. This is a direct proportion problem. If 6 people are group O+, 1 person is group O−, ie 6 times fewer; then, we calculate the number of people in group B− by using the graph. This is again a direct proportion problem. If 38 people are group O−, 10 people are group B−, ie 3.8 times fewer.\n\nSolution — Stage 1: Number of people in group O− = 23,370 / 6 = 3,895. Stage 2: Number of people in group B− = 3,895 / 3.8 = **1,025**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de personas del grupo O− usando la información dada en la pregunta. Es un problema de proporcionalidad directa. Si 6 personas son del grupo O+, 1 persona es del grupo O−, es decir, 6 veces menos; a continuación, calculamos el número de personas del grupo B− usando el gráfico. Es de nuevo un problema de proporcionalidad directa. Si 38 personas son del grupo O−, 10 personas son del grupo B−, es decir, 3.8 veces menos.\n\nSolución — Fase 1: Número de personas del grupo O− = 23,370 / 6 = 3,895. Fase 2: Número de personas del grupo B− = 3,895 / 3.8 = **1,025**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos el número de personas del grupo O− usando la información dada en la pregunta. Es un problema de proporcionalidad directa. Si 6 personas son del grupo O+, 1 persona es del grupo O−, es decir, 6 veces menos; a continuación, calculamos el número de personas del grupo B− usando el gráfico. Es de nuevo un problema de proporcionalidad directa. Si 38 personas son del grupo O−, 10 personas son del grupo B−, es decir, 3,8 veces menos.\n\nSolución — Fase 1: Número de personas del grupo O− = 23.370 / 6 = 3.895. Fase 2: Número de personas del grupo B− = 3.895 / 3,8 = **1.025**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "5,271",
-          "es": "5,271"
+          "es": "5.271"
         },
         "isCorrect": false
       },
@@ -6416,7 +6416,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "6,121",
-          "es": "6,121"
+          "es": "6.121"
         },
         "isCorrect": false
       },
@@ -6440,7 +6440,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Foreign trade:\n\n| Country | Imports 2009 (€ billion) | Imports 2010 (€ billion) | Exports 2009 (€ billion) | Exports 2010 (€ billion) | Foreign balance % of GDP 2009 | Foreign balance % of GDP 2010 |\n|---|---|---|---|---|---|---|\n| Muravia | 43 | 41 | 34 | 30 | −3.8% | −4.1% |\n| Buldonia | 102 | 112 | 114 | 120 | +2.4% | +2.7% |\n| Venalia | 349 | 365 | 318 | 395 | −2.5% | +1.5% |\n| Telonia | 121 | 123 | 120 | 124 | −0.2% | +0.1% |\n\n*If foreign trade balance is the difference between exports and imports, what was Venalia's GDP in 2009?*",
-      "es": "Comercio exterior:\n\n| País | Importaciones 2009 (miles de millones de €) | Importaciones 2010 (miles de millones de €) | Exportaciones 2009 (miles de millones de €) | Exportaciones 2010 (miles de millones de €) | Balanza exterior % del PIB 2009 | Balanza exterior % del PIB 2010 |\n|---|---|---|---|---|---|---|\n| Muravia | 43 | 41 | 34 | 30 | −3.8% | −4.1% |\n| Buldonia | 102 | 112 | 114 | 120 | +2.4% | +2.7% |\n| Venalia | 349 | 365 | 318 | 395 | −2.5% | +1.5% |\n| Telonia | 121 | 123 | 120 | 124 | −0.2% | +0.1% |\n\n*Si la balanza comercial exterior es la diferencia entre las exportaciones y las importaciones, ¿cuál era el PIB de Venalia en 2009?*"
+      "es": "Comercio exterior:\n\n| País | Importaciones 2009 (miles de millones de €) | Importaciones 2010 (miles de millones de €) | Exportaciones 2009 (miles de millones de €) | Exportaciones 2010 (miles de millones de €) | Balanza exterior % del PIB 2009 | Balanza exterior % del PIB 2010 |\n|---|---|---|---|---|---|---|\n| Muravia | 43 | 41 | 34 | 30 | −3,8 % | −4,1 % |\n| Buldonia | 102 | 112 | 114 | 120 | +2,4 % | +2,7 % |\n| Venalia | 349 | 365 | 318 | 395 | −2,5 % | +1,5 % |\n| Telonia | 121 | 123 | 120 | 124 | −0,2 % | +0,1 % |\n\n*Si la balanza comercial exterior es la diferencia entre las exportaciones y las importaciones, ¿cuál era el PIB de Venalia en 2009?*"
     },
     "options": [
       {
@@ -6463,19 +6463,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,240 billion euros",
-          "es": "1,240 miles de millones de euros"
+          "es": "1.240 miles de millones de euros"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages: first, we work out Venalia's foreign balance in 2009 by calculating the difference between its exports and its imports; then, we calculate its GDP.\n\nSolution — Stage 1: Foreign balance = 318 − 349 = −31. Stage 2: Foreign balance = −2.5% × GDP. GDP = foreign balance / −2.5% = −31 / −0.025 = **1,240 billion euros**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la balanza exterior de Venalia en 2009 calculando la diferencia entre sus exportaciones y sus importaciones; a continuación, calculamos su PIB.\n\nSolución — Fase 1: Balanza exterior = 318 − 349 = −31. Fase 2: Balanza exterior = −2.5% × PIB. PIB = balanza exterior / −2.5% = −31 / −0.025 = **1,240 miles de millones de euros**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases: primero, calculamos la balanza exterior de Venalia en 2009 calculando la diferencia entre sus exportaciones y sus importaciones; a continuación, calculamos su PIB.\n\nSolución — Fase 1: Balanza exterior = 318 − 349 = −31. Fase 2: Balanza exterior = −2,5 % × PIB. PIB = balanza exterior / −2,5 % = −31 / −0,025 = **1.240 miles de millones de euros**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "1,750 billion euros",
-          "es": "1,750 miles de millones de euros"
+          "es": "1.750 miles de millones de euros"
         },
         "isCorrect": false
       },
@@ -6483,7 +6483,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "2,000 billion euros",
-          "es": "2,000 miles de millones de euros"
+          "es": "2.000 miles de millones de euros"
         },
         "isCorrect": false
       }
@@ -6499,7 +6499,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Farmers:\n\n| Country | Number of farmers | Aged under 35 | Aged 35 to 55 | Aged over 55 | Percentage of women |\n|---|---|---|---|---|---|\n| Poldavia | 1,432 | 20% | 38% | 42% | 40% |\n| Telonia | 8,975 | 8% | 27% | 65% | 25% |\n| Zogland | 2,950 | 13% | 39% | 48% | 30% |\n| Levonia | 4,032 | 4% | 38% | 58% | 20% |\n\n*In Zogland, 40% of women farmers are over the age of 55. In Zogland, how many farmers over the age of 55 are men?*",
-      "es": "Agricultores:\n\n| País | Número de agricultores | Menores de 35 años | De 35 a 55 años | Mayores de 55 años | Porcentaje de mujeres |\n|---|---|---|---|---|---|\n| Poldavia | 1,432 | 20% | 38% | 42% | 40% |\n| Telonia | 8,975 | 8% | 27% | 65% | 25% |\n| Zogland | 2,950 | 13% | 39% | 48% | 30% |\n| Levonia | 4,032 | 4% | 38% | 58% | 20% |\n\n*En Zogland, el 40% de las mujeres agricultoras tiene más de 55 años. En Zogland, ¿cuántos agricultores mayores de 55 años son hombres?*"
+      "es": "Agricultores:\n\n| País | Número de agricultores | Menores de 35 años | De 35 a 55 años | Mayores de 55 años | Porcentaje de mujeres |\n|---|---|---|---|---|---|\n| Poldavia | 1.432 | 20 % | 38 % | 42 % | 40 % |\n| Telonia | 8.975 | 8 % | 27 % | 65 % | 25 % |\n| Zogland | 2.950 | 13 % | 39 % | 48 % | 30 % |\n| Levonia | 4.032 | 4 % | 38 % | 58 % | 20 % |\n\n*En Zogland, el 40 % de las mujeres agricultoras tiene más de 55 años. En Zogland, ¿cuántos agricultores mayores de 55 años son hombres?*"
     },
     "options": [
       {
@@ -6530,19 +6530,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,062",
-          "es": "1,062"
+          "es": "1.062"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: Number of men farmers over the age of 55 = number of farmers over the age of 55 − the number of women farmers over the age of 55. We calculate this for Zogland in three stages: first, we calculate the number of farmers over the age of 55 from the data given in the table; then, we calculate the number of women farmers over the age of 55 from the information in the question and in the table; lastly, we calculate the difference.\n\nSolution — Stage 1: Number of farmers over 55 years old = 0.48 × 2,950 = 1,416. Stage 2: Number of women farmers over 55 years old = 0.4 × 0.3 × 2,950 = 354. Stage 3: Number of men farmers over 55 years old = 1,416 − 354 = **1,062**.",
-          "es": "Planteamiento y método: Número de hombres agricultores mayores de 55 años = número de agricultores mayores de 55 años − número de mujeres agricultoras mayores de 55 años. Lo calculamos para Zogland en tres fases: primero, calculamos el número de agricultores mayores de 55 años a partir de los datos de la tabla; a continuación, calculamos el número de mujeres agricultoras mayores de 55 años a partir de la información de la pregunta y de la tabla; por último, calculamos la diferencia.\n\nSolución — Fase 1: Número de agricultores mayores de 55 años = 0.48 × 2,950 = 1,416. Fase 2: Número de mujeres agricultoras mayores de 55 años = 0.4 × 0.3 × 2,950 = 354. Fase 3: Número de hombres agricultores mayores de 55 años = 1,416 − 354 = **1,062**."
+          "es": "Planteamiento y método: Número de hombres agricultores mayores de 55 años = número de agricultores mayores de 55 años − número de mujeres agricultoras mayores de 55 años. Lo calculamos para Zogland en tres fases: primero, calculamos el número de agricultores mayores de 55 años a partir de los datos de la tabla; a continuación, calculamos el número de mujeres agricultoras mayores de 55 años a partir de la información de la pregunta y de la tabla; por último, calculamos la diferencia.\n\nSolución — Fase 1: Número de agricultores mayores de 55 años = 0,48 × 2.950 = 1.416. Fase 2: Número de mujeres agricultoras mayores de 55 años = 0,4 × 0,3 × 2.950 = 354. Fase 3: Número de hombres agricultores mayores de 55 años = 1.416 − 354 = **1.062**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "1,534",
-          "es": "1,534"
+          "es": "1.534"
         },
         "isCorrect": false
       }
@@ -6558,14 +6558,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Hotel stays in January 2012 (counted over 31 days):\n\n| | Zogland | Poldavia | Levonia | Telonia |\n|---|---|---|---|---|\n| Number of hotels | 3,420 | 12,280 | 16,440 | 8,960 |\n| Total capacity (thousands of beds) | 72 | 145 | 284 | 102 |\n| Bed occupation rate | 84% | 75% | 68% | 84% |\n| Number of people spending at least one night in a hotel | 788,640 | 1,123,750 | 1,420,620 | 1,062,130 |\n\n*In Poldavia, what was the average length of stay of people spending at least one night in a hotel in January 2012?*",
-      "es": "Estancias en hoteles en enero de 2012 (contabilizadas en 31 días):\n\n| | Zogland | Poldavia | Levonia | Telonia |\n|---|---|---|---|---|\n| Número de hoteles | 3,420 | 12,280 | 16,440 | 8,960 |\n| Capacidad total (miles de camas) | 72 | 145 | 284 | 102 |\n| Tasa de ocupación de camas | 84% | 75% | 68% | 84% |\n| Número de personas que pasaron al menos una noche en un hotel | 788,640 | 1,123,750 | 1,420,620 | 1,062,130 |\n\n*En Poldavia, ¿cuál fue la duración media de la estancia de las personas que pasaron al menos una noche en un hotel en enero de 2012?*"
+      "es": "Estancias en hoteles en enero de 2012 (contabilizadas en 31 días):\n\n| | Zogland | Poldavia | Levonia | Telonia |\n|---|---|---|---|---|\n| Número de hoteles | 3.420 | 12.280 | 16.440 | 8.960 |\n| Capacidad total (miles de camas) | 72 | 145 | 284 | 102 |\n| Tasa de ocupación de camas | 84 % | 75 % | 68 % | 84 % |\n| Número de personas que pasaron al menos una noche en un hotel | 788.640 | 1.123.750 | 1.420.620 | 1.062.130 |\n\n*En Poldavia, ¿cuál fue la duración media de la estancia de las personas que pasaron al menos una noche en un hotel en enero de 2012?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1.5 nights",
-          "es": "1.5 noches"
+          "es": "1,5 noches"
         },
         "isCorrect": false
       },
@@ -6581,7 +6581,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2.4 nights",
-          "es": "2.4 noches"
+          "es": "2,4 noches"
         },
         "isCorrect": false
       },
@@ -6594,14 +6594,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: Average length of stay = total number of nights / number of people spending at least one night in a hotel. We calculate this for Poldavia in two stages: first, we calculate the total number of overnight stays counted over 31 days: Total number of overnight stays = number of beds × 31 days × bed occupation rate; then, we calculate the ratio between the total number of overnight stays and the number of people who have spent at least one night in a hotel.\n\nSolution — Stage 1: Total number of overnight stays = 145,000 × 31 × 0.75 = 3,371,250. Stage 2: Average duration of stay = 3,371,250 / 1,123,750 = **3 nights**.",
-          "es": "Planteamiento y método: Duración media de la estancia = número total de noches / número de personas que pasaron al menos una noche en un hotel. Lo calculamos para Poldavia en dos fases: primero, calculamos el número total de pernoctaciones contabilizadas en 31 días: Número total de pernoctaciones = número de camas × 31 días × tasa de ocupación de camas; a continuación, calculamos la proporción entre el número total de pernoctaciones y el número de personas que pasaron al menos una noche en un hotel.\n\nSolución — Fase 1: Número total de pernoctaciones = 145,000 × 31 × 0.75 = 3,371,250. Fase 2: Duración media de la estancia = 3,371,250 / 1,123,750 = **3 noches**."
+          "es": "Planteamiento y método: Duración media de la estancia = número total de noches / número de personas que pasaron al menos una noche en un hotel. Lo calculamos para Poldavia en dos fases: primero, calculamos el número total de pernoctaciones contabilizadas en 31 días: Número total de pernoctaciones = número de camas × 31 días × tasa de ocupación de camas; a continuación, calculamos la proporción entre el número total de pernoctaciones y el número de personas que pasaron al menos una noche en un hotel.\n\nSolución — Fase 1: Número total de pernoctaciones = 145.000 × 31 × 0,75 = 3.371.250. Fase 2: Duración media de la estancia = 3.371.250 / 1.123.750 = **3 noches**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "3.6 nights",
-          "es": "3.6 noches"
+          "es": "3,6 noches"
         },
         "isCorrect": false
       }
@@ -6617,14 +6617,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Pets:\n\n| Country | Number of inhabitants | Dogs (per 1,000 inhabitants) | Cats (per 1,000 inhabitants) | Birds (per 1,000 inhabitants) | Fish (per 1,000 inhabitants) |\n|---|---|---|---|---|---|\n| Poldavia | 21,542,900 | 1,020 | 860 | 1,540 | 18,730 |\n| Levonia | 12,542,800 | 420 | 790 | 2,640 | 21,990 |\n| Zogland | 2,472,600 | 940 | 1,080 | 2,460 | 12,640 |\n| Telonia | 6,423,000 | 880 | 1,240 | 1,330 | 10,210 |\n\n*70% of Zogland's inhabitants do not own cats. How many cats on average do Zogland's other inhabitants own?*",
-      "es": "Mascotas:\n\n| País | Número de habitantes | Perros (por 1,000 habitantes) | Gatos (por 1,000 habitantes) | Aves (por 1,000 habitantes) | Peces (por 1,000 habitantes) |\n|---|---|---|---|---|---|\n| Poldavia | 21,542,900 | 1,020 | 860 | 1,540 | 18,730 |\n| Levonia | 12,542,800 | 420 | 790 | 2,640 | 21,990 |\n| Zogland | 2,472,600 | 940 | 1,080 | 2,460 | 12,640 |\n| Telonia | 6,423,000 | 880 | 1,240 | 1,330 | 10,210 |\n\n*El 70% de los habitantes de Zogland no tiene gatos. ¿Cuántos gatos posee, por término medio, el resto de los habitantes de Zogland?*"
+      "es": "Mascotas:\n\n| País | Número de habitantes | Perros (por 1.000 habitantes) | Gatos (por 1.000 habitantes) | Aves (por 1.000 habitantes) | Peces (por 1.000 habitantes) |\n|---|---|---|---|---|---|\n| Poldavia | 21.542.900 | 1.020 | 860 | 1.540 | 18.730 |\n| Levonia | 12.542.800 | 420 | 790 | 2.640 | 21.990 |\n| Zogland | 2.472.600 | 940 | 1.080 | 2.460 | 12.640 |\n| Telonia | 6.423.000 | 880 | 1.240 | 1.330 | 10.210 |\n\n*El 70 % de los habitantes de Zogland no tiene gatos. ¿Cuántos gatos posee, por término medio, el resto de los habitantes de Zogland?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1.1",
-          "es": "1.1"
+          "es": "1,1"
         },
         "isCorrect": false
       },
@@ -6632,7 +6632,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "2.8",
-          "es": "2.8"
+          "es": "2,8"
         },
         "isCorrect": false
       },
@@ -6640,19 +6640,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "3.6",
-          "es": "3.6"
+          "es": "3,6"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate the average number of cats owned by the 30% of Zogland's inhabitants who own one or more cats. We calculate this for Zogland in three stages: first, we calculate the number of inhabitants with one or more cats; then, we calculate the total number of cats. This is a direct proportion problem; lastly, we calculate the ratio between the total number of cats and the number of inhabitants owning one or more cats.\n\nSolution — Stage 1: Number of inhabitants owning one or more cats = 0.3 × 2,472,600 = 741,780. Stage 2: Total number of cats = 1,080 × 2,472,600 / 1,000 = 2,670,408. Stage 3: Average number of cats = 2,670,408 / 741,780 = **3.6**.",
-          "es": "Planteamiento y método: Debemos calcular el número medio de gatos que poseen el 30% de los habitantes de Zogland que tienen uno o más gatos. Lo calculamos para Zogland en tres fases: primero, calculamos el número de habitantes con uno o más gatos; a continuación, calculamos el número total de gatos. Es un problema de proporcionalidad directa; por último, calculamos la proporción entre el número total de gatos y el número de habitantes que poseen uno o más gatos.\n\nSolución — Fase 1: Número de habitantes que poseen uno o más gatos = 0.3 × 2,472,600 = 741,780. Fase 2: Número total de gatos = 1,080 × 2,472,600 / 1,000 = 2,670,408. Fase 3: Número medio de gatos = 2,670,408 / 741,780 = **3.6**."
+          "es": "Planteamiento y método: Debemos calcular el número medio de gatos que poseen el 30 % de los habitantes de Zogland que tienen uno o más gatos. Lo calculamos para Zogland en tres fases: primero, calculamos el número de habitantes con uno o más gatos; a continuación, calculamos el número total de gatos. Es un problema de proporcionalidad directa; por último, calculamos la proporción entre el número total de gatos y el número de habitantes que poseen uno o más gatos.\n\nSolución — Fase 1: Número de habitantes que poseen uno o más gatos = 0,3 × 2.472.600 = 741.780. Fase 2: Número total de gatos = 1.080 × 2.472.600 / 1.000 = 2.670.408. Fase 3: Número medio de gatos = 2.670.408 / 741.780 = **3,6**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "4.2",
-          "es": "4.2"
+          "es": "4,2"
         },
         "isCorrect": false
       },
@@ -6660,7 +6660,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "5.4",
-          "es": "5.4"
+          "es": "5,4"
         },
         "isCorrect": false
       }
@@ -6676,26 +6676,26 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Distribution of alcohol consumption — categories Beer / Wine / Other (shown as a stacked bar chart in the source, years 1980/1990/2000/2010; the explanation fixes the two figures it needs directly off the chart: in 1990, wine = 40% and beer = 50% of total alcohol consumption; in 2010, wine = 40% and beer = 50%(±) of the reduced base — see the worked method).\n\n*If, between 1990 and 2010, wine consumption remained constant, what can we say about beer consumption during this period?*",
-      "es": "Distribución del consumo de alcohol — categorías Cerveza / Vino / Otros (mostrada como gráfico de barras apiladas en la fuente, años 1980/1990/2000/2010; la explicación fija las dos cifras que necesita directamente del gráfico: en 1990, vino = 40% y cerveza = 50% del consumo total de alcohol; en 2010, vino = 40% y cerveza = 50%(±) de la base reducida — véase el método resuelto).\n\n*Si, entre 1990 y 2010, el consumo de vino se mantuvo constante, ¿qué podemos afirmar sobre el consumo de cerveza durante este período?*"
+      "es": "Distribución del consumo de alcohol — categorías Cerveza / Vino / Otros (mostrada como gráfico de barras apiladas en la fuente, años 1980/1990/2000/2010; la explicación fija las dos cifras que necesita directamente del gráfico: en 1990, vino = 40 % y cerveza = 50 % del consumo total de alcohol; en 2010, vino = 40 % y cerveza = 50 %(±) de la base reducida — véase el método resuelto).\n\n*Si, entre 1990 y 2010, el consumo de vino se mantuvo constante, ¿qué podemos afirmar sobre el consumo de cerveza durante este período?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "It decreased by 36%.",
-          "es": "Disminuyó un 36%."
+          "es": "Disminuyó un 36 %."
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The question does not give the wine and beer consumption in 1990 and 2010. To calculate how beer consumption has changed between these two years, the simplest thing is therefore to start from an example. Let's suppose, for instance, that total alcohol consumption stands at 100 in 1990. We then calculate in turn: beer and wine consumption in 1990 using the data given in the graph; wine consumption in 2010: this is the same as in 1990; beer consumption in 2010 using the data given in the graph. This is a direct proportion problem; the relative variation in beer consumption between 1990 and 2010.\n\nSolution — Stages 1 and 2: Wine consumption in 1990 = 40% × 100 = 40. Beer consumption in 1990 = 50% × 100 = 50. Wine consumption in 2010 = 50% of total alcohol consumption in 2010 = 40. Stage 3: Let B be beer consumption in 2010: B / 40 = 40% / 50%, ie B × 50% = 40 × 40%. B = 40 × 40% / 50% = 32. Stage 4: Variation in beer consumption between 1990 and 2010: (32 − 50) / 50 = −0.36 = **−36%**.",
-          "es": "Planteamiento y método: La pregunta no da el consumo de vino y cerveza en 1990 y 2010. Para calcular cómo ha cambiado el consumo de cerveza entre estos dos años, lo más sencillo es, por tanto, partir de un ejemplo. Supongamos, por ejemplo, que el consumo total de alcohol es 100 en 1990. A continuación, calculamos sucesivamente: el consumo de cerveza y vino en 1990 usando los datos del gráfico; el consumo de vino en 2010: es el mismo que en 1990; el consumo de cerveza en 2010 usando los datos del gráfico. Es un problema de proporcionalidad directa; la variación relativa del consumo de cerveza entre 1990 y 2010.\n\nSolución — Fases 1 y 2: Consumo de vino en 1990 = 40% × 100 = 40. Consumo de cerveza en 1990 = 50% × 100 = 50. Consumo de vino en 2010 = 50% del consumo total de alcohol en 2010 = 40. Fase 3: Sea C el consumo de cerveza en 2010: C / 40 = 40% / 50%, es decir, C × 50% = 40 × 40%. C = 40 × 40% / 50% = 32. Fase 4: Variación del consumo de cerveza entre 1990 y 2010: (32 − 50) / 50 = −0.36 = **−36%**."
+          "es": "Planteamiento y método: La pregunta no da el consumo de vino y cerveza en 1990 y 2010. Para calcular cómo ha cambiado el consumo de cerveza entre estos dos años, lo más sencillo es, por tanto, partir de un ejemplo. Supongamos, por ejemplo, que el consumo total de alcohol es 100 en 1990. A continuación, calculamos sucesivamente: el consumo de cerveza y vino en 1990 usando los datos del gráfico; el consumo de vino en 2010: es el mismo que en 1990; el consumo de cerveza en 2010 usando los datos del gráfico. Es un problema de proporcionalidad directa; la variación relativa del consumo de cerveza entre 1990 y 2010.\n\nSolución — Fases 1 y 2: Consumo de vino en 1990 = 40 % × 100 = 40. Consumo de cerveza en 1990 = 50 % × 100 = 50. Consumo de vino en 2010 = 50 % del consumo total de alcohol en 2010 = 40. Fase 3: Sea C el consumo de cerveza en 2010: C / 40 = 40 % / 50 %, es decir, C × 50 % = 40 × 40 %. C = 40 × 40 % / 50 % = 32. Fase 4: Variación del consumo de cerveza entre 1990 y 2010: (32 − 50) / 50 = −0,36 = **−36 %**."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "It decreased by 20%.",
-          "es": "Disminuyó un 20%."
+          "es": "Disminuyó un 20 %."
         },
         "isCorrect": false
       },
@@ -6703,7 +6703,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "It decreased by 10%.",
-          "es": "Disminuyó un 10%."
+          "es": "Disminuyó un 10 %."
         },
         "isCorrect": false
       },
@@ -6719,7 +6719,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "It increased by 10%.",
-          "es": "Aumentó un 10%."
+          "es": "Aumentó un 10 %."
         },
         "isCorrect": false
       }
@@ -6735,14 +6735,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Electricity production by type of power station:\n\n| Country | Traditional — number of power stations | Traditional — electricity produced (MWh) | Nuclear — number of power stations | Nuclear — electricity produced (MWh) |\n|---|---|---|---|---|\n| Zogland | 80 | 2,042,000 | 5 | 76,072,000 |\n| Telonia | 175 | 3,480,000 | 8 | 124,875,000 |\n| Venalia | 160 | 2,860,000 | 2 | 34,543,000 |\n| Muravia | 52 | 1,643,000 | 0 | 0 |\n\n*In Venalia, a traditional power station produces on average 30% more electricity than a traditional power station in Levonia. If Levonia has three times as many traditional power stations as Venalia, how much electricity is produced by Levonia's traditional power stations?*",
-      "es": "Producción de electricidad por tipo de central:\n\n| País | Tradicional — número de centrales | Tradicional — electricidad producida (MWh) | Nuclear — número de centrales | Nuclear — electricidad producida (MWh) |\n|---|---|---|---|---|\n| Zogland | 80 | 2,042,000 | 5 | 76,072,000 |\n| Telonia | 175 | 3,480,000 | 8 | 124,875,000 |\n| Venalia | 160 | 2,860,000 | 2 | 34,543,000 |\n| Muravia | 52 | 1,643,000 | 0 | 0 |\n\n*En Venalia, una central tradicional produce, por término medio, un 30% más de electricidad que una central tradicional en Levonia. Si Levonia tiene tres veces más centrales tradicionales que Venalia, ¿cuánta electricidad producen las centrales tradicionales de Levonia?*"
+      "es": "Producción de electricidad por tipo de central:\n\n| País | Tradicional — número de centrales | Tradicional — electricidad producida (MWh) | Nuclear — número de centrales | Nuclear — electricidad producida (MWh) |\n|---|---|---|---|---|\n| Zogland | 80 | 2.042.000 | 5 | 76.072.000 |\n| Telonia | 175 | 3.480.000 | 8 | 124.875.000 |\n| Venalia | 160 | 2.860.000 | 2 | 34.543.000 |\n| Muravia | 52 | 1.643.000 | 0 | 0 |\n\n*En Venalia, una central tradicional produce, por término medio, un 30 % más de electricidad que una central tradicional en Levonia. Si Levonia tiene tres veces más centrales tradicionales que Venalia, ¿cuánta electricidad producen las centrales tradicionales de Levonia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "6,006,000",
-          "es": "6,006,000"
+          "es": "6.006.000"
         },
         "isCorrect": false
       },
@@ -6750,7 +6750,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "6,060,000",
-          "es": "6,060,000"
+          "es": "6.060.000"
         },
         "isCorrect": false
       },
@@ -6758,19 +6758,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "6,600,000",
-          "es": "6,600,000"
+          "es": "6.600.000"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in four stages: first, we calculate the average electricity production of a traditional power station in Venalia using the data given in the table; then, we calculate the average electricity production of a traditional power station in Levonia from the information given in the question: Average production in Venalia = Average production in Levonia × 1.3; next, we calculate the number of traditional power stations in Levonia: this is three times the number of traditional power stations in Venalia; lastly, we multiply the average electricity production of a traditional power station by the number of traditional power stations.\n\nSolution — Stage 1: Average production in Venalia = 2,860,000 / 160 = 17,875. Stage 2: Average production in Levonia = Average production in Venalia / 1.3 = 17,875 / 1.3 = 13,750. Stage 3: Number of traditional power stations in Levonia = 3 × 160 = 480. Stage 4: Electricity production by traditional power stations in Levonia = 480 × 13,750 = **6,600,000**.",
-          "es": "Planteamiento y método: Debemos proceder en cuatro fases: primero, calculamos la producción media de electricidad de una central tradicional en Venalia usando los datos de la tabla; a continuación, calculamos la producción media de electricidad de una central tradicional en Levonia a partir de la información dada en la pregunta: Producción media en Venalia = Producción media en Levonia × 1.3; después, calculamos el número de centrales tradicionales en Levonia: es el triple del número de centrales tradicionales en Venalia; por último, multiplicamos la producción media de electricidad de una central tradicional por el número de centrales tradicionales.\n\nSolución — Fase 1: Producción media en Venalia = 2,860,000 / 160 = 17,875. Fase 2: Producción media en Levonia = Producción media en Venalia / 1.3 = 17,875 / 1.3 = 13,750. Fase 3: Número de centrales tradicionales en Levonia = 3 × 160 = 480. Fase 4: Producción de electricidad de las centrales tradicionales en Levonia = 480 × 13,750 = **6,600,000**."
+          "es": "Planteamiento y método: Debemos proceder en cuatro fases: primero, calculamos la producción media de electricidad de una central tradicional en Venalia usando los datos de la tabla; a continuación, calculamos la producción media de electricidad de una central tradicional en Levonia a partir de la información dada en la pregunta: Producción media en Venalia = Producción media en Levonia × 1,3; después, calculamos el número de centrales tradicionales en Levonia: es el triple del número de centrales tradicionales en Venalia; por último, multiplicamos la producción media de electricidad de una central tradicional por el número de centrales tradicionales.\n\nSolución — Fase 1: Producción media en Venalia = 2.860.000 / 160 = 17.875. Fase 2: Producción media en Levonia = Producción media en Venalia / 1,3 = 17.875 / 1,3 = 13.750. Fase 3: Número de centrales tradicionales en Levonia = 3 × 160 = 480. Fase 4: Producción de electricidad de las centrales tradicionales en Levonia = 480 × 13.750 = **6.600.000**."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "11,154,000",
-          "es": "11,154,000"
+          "es": "11.154.000"
         },
         "isCorrect": false
       },
@@ -6794,14 +6794,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Average retirement age in the metal industry:\n\n| Category | Men, 2000 | Women, 2000 | Men, 2010 | Women, 2010 |\n|---|---|---|---|---|\n| Manual workers | 61 | 59 | 60 | 58 |\n| White collar workers | 62 | 60 | 63 | 60 |\n| Managers | 63 | 62 | 65 | 65 |\n\n*In 2010, 20% of men working in the metal industry were in management. At that time, the average retirement age for men working in this sector was 61.6. In 2010, what percentage of the men working in the metal industry were manual workers?*",
-      "es": "Edad media de jubilación en la industria del metal:\n\n| Categoría | Hombres, 2000 | Mujeres, 2000 | Hombres, 2010 | Mujeres, 2010 |\n|---|---|---|---|---|\n| Trabajadores manuales | 61 | 59 | 60 | 58 |\n| Empleados administrativos | 62 | 60 | 63 | 60 |\n| Directivos | 63 | 62 | 65 | 65 |\n\n*En 2010, el 20% de los hombres que trabajaban en la industria del metal eran directivos. En ese momento, la edad media de jubilación de los hombres de este sector era de 61.6. En 2010, ¿qué porcentaje de los hombres que trabajaban en la industria del metal eran trabajadores manuales?*"
+      "es": "Edad media de jubilación en la industria del metal:\n\n| Categoría | Hombres, 2000 | Mujeres, 2000 | Hombres, 2010 | Mujeres, 2010 |\n|---|---|---|---|---|\n| Trabajadores manuales | 61 | 59 | 60 | 58 |\n| Empleados administrativos | 62 | 60 | 63 | 60 |\n| Directivos | 63 | 62 | 65 | 65 |\n\n*En 2010, el 20 % de los hombres que trabajaban en la industria del metal eran directivos. En ese momento, la edad media de jubilación de los hombres de este sector era de 61,6. En 2010, ¿qué porcentaje de los hombres que trabajaban en la industria del metal eran trabajadores manuales?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "25%",
-          "es": "25%"
+          "es": "25 %"
         },
         "isCorrect": false
       },
@@ -6809,7 +6809,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       },
@@ -6817,7 +6817,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "50%",
-          "es": "50%"
+          "es": "50 %"
         },
         "isCorrect": false
       },
@@ -6825,19 +6825,19 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "60%",
-          "es": "60%"
+          "es": "60 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: The average retirement age of men in 2010 (61.6 years) is a weighted average. According to the table: 61.6 = (percentage of manual workers × 60) + (percentage of white collar workers × 63) + (percentage of managers × 65). We know the percentage of managers (20%). However, we don't know either the percentage of manual workers or the percentage of white collar workers. All we can say is that: The percentage of manual workers + the percentage of white collar workers = 80%. Let P be the percentage of manual workers we want to find. We can therefore deduce: Percentage of white collar workers = (0.8 − P). To find the value of P, we must solve the following equation: 61.6 = (P × 60) + ((0.8 − P) × 63) + (0.2 × 65).\n\nSolution: (P × 60) + 50.4 − (P × 63) + 13 = 61.6. P × (60 − 63) = 61.6 − 50.4 − 13. −3 × P = −1.8. P = 1.8 / 3 = 0.6 = **60%**.",
-          "es": "Planteamiento y método: La edad media de jubilación de los hombres en 2010 (61.6 años) es una media ponderada. Según la tabla: 61.6 = (porcentaje de trabajadores manuales × 60) + (porcentaje de empleados administrativos × 63) + (porcentaje de directivos × 65). Conocemos el porcentaje de directivos (20%). Sin embargo, no conocemos ni el porcentaje de trabajadores manuales ni el de empleados administrativos. Solo podemos afirmar que: El porcentaje de trabajadores manuales + el porcentaje de empleados administrativos = 80%. Sea P el porcentaje de trabajadores manuales que buscamos. Podemos, por tanto, deducir: Porcentaje de empleados administrativos = (0.8 − P). Para hallar el valor de P, debemos resolver la siguiente ecuación: 61.6 = (P × 60) + ((0.8 − P) × 63) + (0.2 × 65).\n\nSolución: (P × 60) + 50.4 − (P × 63) + 13 = 61.6. P × (60 − 63) = 61.6 − 50.4 − 13. −3 × P = −1.8. P = 1.8 / 3 = 0.6 = **60%**."
+          "es": "Planteamiento y método: La edad media de jubilación de los hombres en 2010 (61,6 años) es una media ponderada. Según la tabla: 61,6 = (porcentaje de trabajadores manuales × 60) + (porcentaje de empleados administrativos × 63) + (porcentaje de directivos × 65). Conocemos el porcentaje de directivos (20 %). Sin embargo, no conocemos ni el porcentaje de trabajadores manuales ni el de empleados administrativos. Solo podemos afirmar que: El porcentaje de trabajadores manuales + el porcentaje de empleados administrativos = 80 %. Sea P el porcentaje de trabajadores manuales que buscamos. Podemos, por tanto, deducir: Porcentaje de empleados administrativos = (0,8 − P). Para hallar el valor de P, debemos resolver la siguiente ecuación: 61,6 = (P × 60) + ((0,8 − P) × 63) + (0,2 × 65).\n\nSolución: (P × 60) + 50,4 − (P × 63) + 13 = 61,6. P × (60 − 63) = 61,6 − 50,4 − 13. −3 × P = −1,8. P = 1,8 / 3 = 0,6 = **60 %**."
         }
       },
       {
         "id": "E",
         "text": {
           "en": "75%",
-          "es": "75%"
+          "es": "75 %"
         },
         "isCorrect": false
       }
@@ -6853,14 +6853,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Goods transport (thousands of tonnes per kilometre):\n\n| Country | Goods transport 2000 | Goods transport 2010 | Transport by road 2010 | Transport by rail 2010 |\n|---|---|---|---|---|\n| Venalia | 102,400 | 124,700 | 54,600 | 32,300 |\n| Telonia | 998,000 | 1,280,000 | 459,000 | 321,000 |\n| Zogland | 654,900 | 764,200 | 452,800 | 231,900 |\n| Muravia | 800,000 | 920,000 | 368,000 | 257,600 |\n\n*In the year 2000 in Muravia, 45% of goods were transported by road and 25% by rail. By what percentage did the share of goods transported by rail increase in Muravia between 2000 and 2010?*",
-      "es": "Transporte de mercancías (miles de toneladas por kilómetro):\n\n| País | Transporte de mercancías 2000 | Transporte de mercancías 2010 | Transporte por carretera 2010 | Transporte por ferrocarril 2010 |\n|---|---|---|---|---|\n| Venalia | 102,400 | 124,700 | 54,600 | 32,300 |\n| Telonia | 998,000 | 1,280,000 | 459,000 | 321,000 |\n| Zogland | 654,900 | 764,200 | 452,800 | 231,900 |\n| Muravia | 800,000 | 920,000 | 368,000 | 257,600 |\n\n*En el año 2000, en Muravia, el 45% de las mercancías se transportaban por carretera y el 25% por ferrocarril. ¿En qué porcentaje aumentó la cuota de mercancías transportadas por ferrocarril en Muravia entre 2000 y 2010?*"
+      "es": "Transporte de mercancías (miles de toneladas por kilómetro):\n\n| País | Transporte de mercancías 2000 | Transporte de mercancías 2010 | Transporte por carretera 2010 | Transporte por ferrocarril 2010 |\n|---|---|---|---|---|\n| Venalia | 102.400 | 124.700 | 54.600 | 32.300 |\n| Telonia | 998.000 | 1.280.000 | 459.000 | 321.000 |\n| Zogland | 654.900 | 764.200 | 452.800 | 231.900 |\n| Muravia | 800.000 | 920.000 | 368.000 | 257.600 |\n\n*En el año 2000, en Muravia, el 45 % de las mercancías se transportaban por carretera y el 25 % por ferrocarril. ¿En qué porcentaje aumentó la cuota de mercancías transportadas por ferrocarril en Muravia entre 2000 y 2010?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "3%",
-          "es": "3%"
+          "es": "3 %"
         },
         "isCorrect": false
       },
@@ -6868,19 +6868,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "12%",
-          "es": "12%"
+          "es": "12 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in two stages with the data for Muravia: first, we calculate the proportion of goods transported by rail in 2010 using the data in the table; then, we calculate the relative variation in the proportion of goods transported by rail between 2000 and 2010.\n\nSolution — Stage 1: Proportion of goods transported by rail in 2010 = 257,600 / 920,000 = 28%. Stage 2: Variation in the proportion between 2000 and 2010 = (28% − 25%) / 25% = **12%**.",
-          "es": "Planteamiento y método: Debemos proceder en dos fases con los datos de Muravia: primero, calculamos la proporción de mercancías transportadas por ferrocarril en 2010 usando los datos de la tabla; a continuación, calculamos la variación relativa de la proporción de mercancías transportadas por ferrocarril entre 2000 y 2010.\n\nSolución — Fase 1: Proporción de mercancías transportadas por ferrocarril en 2010 = 257,600 / 920,000 = 28%. Fase 2: Variación de la proporción entre 2000 y 2010 = (28% − 25%) / 25% = **12%**."
+          "es": "Planteamiento y método: Debemos proceder en dos fases con los datos de Muravia: primero, calculamos la proporción de mercancías transportadas por ferrocarril en 2010 usando los datos de la tabla; a continuación, calculamos la variación relativa de la proporción de mercancías transportadas por ferrocarril entre 2000 y 2010.\n\nSolución — Fase 1: Proporción de mercancías transportadas por ferrocarril en 2010 = 257.600 / 920.000 = 28 %. Fase 2: Variación de la proporción entre 2000 y 2010 = (28 % − 25 %) / 25 % = **12 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "15%",
-          "es": "15%"
+          "es": "15 %"
         },
         "isCorrect": false
       },
@@ -6888,7 +6888,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "20%",
-          "es": "20%"
+          "es": "20 %"
         },
         "isCorrect": false
       },
@@ -6896,7 +6896,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "28%",
-          "es": "28%"
+          "es": "28 %"
         },
         "isCorrect": false
       }
@@ -6912,14 +6912,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Statistical data (2011):\n\n| Country | GDP per inhabitant (euros) | GDP (€ thousand) | Working population | Percentage of the population of working age |\n|---|---|---|---|---|\n| Poldavia | 34,820 | 603,876,000 | 12,624,642 | 78% |\n| Telonia | 48,640 | 411,494,400 | 4,994,784 | 72% |\n| Levonia | 34,890 | 208,906,100 | 3,245,980 | 80% |\n| Muravia | 64,900 | 108,020,400 | 904,684 | 71% |\n\n*The activity rate is the ratio between the working population and the population of working age. In 2011, what was the activity rate in Telonia?*",
-      "es": "Datos estadísticos (2011):\n\n| País | PIB por habitante (euros) | PIB (miles de €) | Población activa | Porcentaje de población en edad de trabajar |\n|---|---|---|---|---|\n| Poldavia | 34,820 | 603,876,000 | 12,624,642 | 78% |\n| Telonia | 48,640 | 411,494,400 | 4,994,784 | 72% |\n| Levonia | 34,890 | 208,906,100 | 3,245,980 | 80% |\n| Muravia | 64,900 | 108,020,400 | 904,684 | 71% |\n\n*La tasa de actividad es la proporción entre la población activa y la población en edad de trabajar. En 2011, ¿cuál era la tasa de actividad en Telonia?*"
+      "es": "Datos estadísticos (2011):\n\n| País | PIB por habitante (euros) | PIB (miles de €) | Población activa | Porcentaje de población en edad de trabajar |\n|---|---|---|---|---|\n| Poldavia | 34.820 | 603.876.000 | 12.624.642 | 78 % |\n| Telonia | 48.640 | 411.494.400 | 4.994.784 | 72 % |\n| Levonia | 34.890 | 208.906.100 | 3.245.980 | 80 % |\n| Muravia | 64.900 | 108.020.400 | 904.684 | 71 % |\n\n*La tasa de actividad es la proporción entre la población activa y la población en edad de trabajar. En 2011, ¿cuál era la tasa de actividad en Telonia?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "50%",
-          "es": "50%"
+          "es": "50 %"
         },
         "isCorrect": false
       },
@@ -6927,7 +6927,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "59%",
-          "es": "59%"
+          "es": "59 %"
         },
         "isCorrect": false
       },
@@ -6935,7 +6935,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "67%",
-          "es": "67%"
+          "es": "67 %"
         },
         "isCorrect": false
       },
@@ -6943,7 +6943,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "72%",
-          "es": "72%"
+          "es": "72 %"
         },
         "isCorrect": false
       },
@@ -6951,12 +6951,12 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "82%",
-          "es": "82%"
+          "es": "82 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to proceed in three stages: first, we calculate the population of Telonia from the GDP and the GDP per inhabitant: GDP per inhabitant = GDP / number of inhabitants; then, we calculate the population of working age; lastly, we divide the working population by the population of working age.\n\nSolution — Stage 1: Total population = GDP / GDP per inhabitant = 411,494,400,000 / 48,640 = 8,460,000. Stage 2: Population of working age = 8,460,000 × 0.72 = 6,091,200. Stage 3: Activity rate = 4,994,784 / 6,091,200 = 0.82 = **82%**.",
-          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos la población de Telonia a partir del PIB y el PIB por habitante: PIB por habitante = PIB / número de habitantes; a continuación, calculamos la población en edad de trabajar; por último, dividimos la población activa entre la población en edad de trabajar.\n\nSolución — Fase 1: Población total = PIB / PIB por habitante = 411,494,400,000 / 48,640 = 8,460,000. Fase 2: Población en edad de trabajar = 8,460,000 × 0.72 = 6,091,200. Fase 3: Tasa de actividad = 4,994,784 / 6,091,200 = 0.82 = **82%**."
+          "es": "Planteamiento y método: Debemos proceder en tres fases: primero, calculamos la población de Telonia a partir del PIB y el PIB por habitante: PIB por habitante = PIB / número de habitantes; a continuación, calculamos la población en edad de trabajar; por último, dividimos la población activa entre la población en edad de trabajar.\n\nSolución — Fase 1: Población total = PIB / PIB por habitante = 411.494.400.000 / 48.640 = 8.460.000. Fase 2: Población en edad de trabajar = 8.460.000 × 0,72 = 6.091.200. Fase 3: Tasa de actividad = 4.994.784 / 6.091.200 = 0,82 = **82 %**."
         }
       }
     ],
@@ -6971,7 +6971,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Rate of household electrodomestic goods (2011):\n\n| Town | Refrigerator | Dishwasher | Microwave | Freezer |\n|---|---|---|---|---|\n| Albana | 100% | 65% | 46% | 100% |\n| Boronitz | 95% | 95% | 32% | 70% |\n| Crovaka | 96% | 100% | 74% | 72% |\n| Denitz | 98% | 60% | 56% | 40% |\n| Estunil | 80% | 70% | 24% | 50% |\n\n*In which town is the percentage of households with both a dishwasher and a freezer highest?*",
-      "es": "Tasa de electrodomésticos en los hogares (2011):\n\n| Ciudad | Frigorífico | Lavavajillas | Microondas | Congelador |\n|---|---|---|---|---|\n| Albana | 100% | 65% | 46% | 100% |\n| Boronitz | 95% | 95% | 32% | 70% |\n| Crovaka | 96% | 100% | 74% | 72% |\n| Denitz | 98% | 60% | 56% | 40% |\n| Estunil | 80% | 70% | 24% | 50% |\n\n*¿En qué ciudad es más alto el porcentaje de hogares que tienen a la vez lavavajillas y congelador?*"
+      "es": "Tasa de electrodomésticos en los hogares (2011):\n\n| Ciudad | Frigorífico | Lavavajillas | Microondas | Congelador |\n|---|---|---|---|---|\n| Albana | 100 % | 65 % | 46 % | 100 % |\n| Boronitz | 95 % | 95 % | 32 % | 70 % |\n| Crovaka | 96 % | 100 % | 74 % | 72 % |\n| Denitz | 98 % | 60 % | 56 % | 40 % |\n| Estunil | 80 % | 70 % | 24 % | 50 % |\n\n*¿En qué ciudad es más alto el porcentaje de hogares que tienen a la vez lavavajillas y congelador?*"
     },
     "options": [
       {
@@ -6999,7 +6999,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: In the table, we need to compare the percentage of households who own a dishwasher with the percentage of households who own a freezer. We then apply the following rule: the percentage of households owning both items of equipment is at most equal to the smallest of the two percentages.\n\nSolution: Let P be the percentage of households owning both a dishwasher and a freezer. In Albana, P = 65%. In Boronitz, P ≤ 70%. In Crovaka, P = 72%. In Denitz, P ≤ 40%. In Estunil, P ≤ 50%. It is therefore in **Crovaka** that the percentage of households owning both a dishwasher and a freezer is highest.",
-          "es": "Planteamiento y método: En la tabla, debemos comparar el porcentaje de hogares que tienen lavavajillas con el porcentaje de hogares que tienen congelador. Aplicamos entonces la siguiente regla: el porcentaje de hogares que tienen ambos aparatos es, como máximo, igual al menor de los dos porcentajes.\n\nSolución: Sea P el porcentaje de hogares que tienen a la vez lavavajillas y congelador. En Albana, P = 65%. En Boronitz, P ≤ 70%. En Crovaka, P = 72%. En Denitz, P ≤ 40%. En Estunil, P ≤ 50%. Es, por tanto, en **Crovaka** donde el porcentaje de hogares que tienen a la vez lavavajillas y congelador es más alto."
+          "es": "Planteamiento y método: En la tabla, debemos comparar el porcentaje de hogares que tienen lavavajillas con el porcentaje de hogares que tienen congelador. Aplicamos entonces la siguiente regla: el porcentaje de hogares que tienen ambos aparatos es, como máximo, igual al menor de los dos porcentajes.\n\nSolución: Sea P el porcentaje de hogares que tienen a la vez lavavajillas y congelador. En Albana, P = 65 %. En Boronitz, P ≤ 70 %. En Crovaka, P = 72 %. En Denitz, P ≤ 40 %. En Estunil, P ≤ 50 %. Es, por tanto, en **Crovaka** donde el porcentaje de hogares que tienen a la vez lavavajillas y congelador es más alto."
         }
       },
       {
@@ -7030,14 +7030,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Results of the first round of elections (shown as a pie chart in the source):\n\n| Party | Share of first-round vote |\n|---|---|\n| Party A | 35% |\n| Party B | 30% |\n| Party C | 20% |\n| Party D | 15% |\n\n*In the first round, one elector in six did not vote. According to a poll, all electors who voted for party A or for party B will vote for the same party in the second round. Of the electors who voted for party C, 15% will vote for party A, 35% for party B and 50% will not vote. Of the electors who voted for party D, 40% will vote for party A, 20% for party B and 40% will not vote. Of those who did not vote in the first round, 15% will vote for party A, 10% for party B and 75% will not vote. According to this poll, which party should win the second round and with what score?*",
-      "es": "Resultados de la primera vuelta de las elecciones (mostrados como gráfico circular en la fuente):\n\n| Partido | Cuota de voto en la primera vuelta |\n|---|---|\n| Partido A | 35% |\n| Partido B | 30% |\n| Partido C | 20% |\n| Partido D | 15% |\n\n*En la primera vuelta, uno de cada seis electores no votó. Según una encuesta, todos los electores que votaron al partido A o al partido B votarán al mismo partido en la segunda vuelta. De los electores que votaron al partido C, el 15% votará al partido A, el 35% al partido B y el 50% no votará. De los electores que votaron al partido D, el 40% votará al partido A, el 20% al partido B y el 40% no votará. De quienes no votaron en la primera vuelta, el 15% votará al partido A, el 10% al partido B y el 75% no votará. Según esta encuesta, ¿qué partido debería ganar la segunda vuelta y con qué resultado?*"
+      "es": "Resultados de la primera vuelta de las elecciones (mostrados como gráfico circular en la fuente):\n\n| Partido | Cuota de voto en la primera vuelta |\n|---|---|\n| Partido A | 35 % |\n| Partido B | 30 % |\n| Partido C | 20 % |\n| Partido D | 15 % |\n\n*En la primera vuelta, uno de cada seis electores no votó. Según una encuesta, todos los electores que votaron al partido A o al partido B votarán al mismo partido en la segunda vuelta. De los electores que votaron al partido C, el 15 % votará al partido A, el 35 % al partido B y el 50 % no votará. De los electores que votaron al partido D, el 40 % votará al partido A, el 20 % al partido B y el 40 % no votará. De quienes no votaron en la primera vuelta, el 15 % votará al partido A, el 10 % al partido B y el 75 % no votará. Según esta encuesta, ¿qué partido debería ganar la segunda vuelta y con qué resultado?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "Party A with 58%",
-          "es": "Partido A con 58%"
+          "es": "Partido A con 58 %"
         },
         "isCorrect": false
       },
@@ -7045,19 +7045,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "Party A with 53%",
-          "es": "Partido A con 53%"
+          "es": "Partido A con 53 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Understanding the question and method: We need to calculate party A's score and party B's score in the second round. By definition: A party's score = number of people voting for this party / total number of voters. We don't know either the number of voters in the first round or the number of voters in the second round. The simplest thing is therefore to take an example. Let us suppose, for instance, that there are 100 voters in the first round. According to the graph, the results of the first round are therefore as follows: Party A = 35 voters; Party B = 30 voters; Party C = 20 voters; Party D = 15 voters.\n\nWe then proceed in three stages: first, we calculate the number of people who didn't vote. According to the information in the statement, 1 elector in 6 didn't vote. This means that for every 5 voters, there was one who didn't vote, ie 5 times fewer; next, we calculate the number of people voting for party A and the number of people voting for party B in the second round, using the information given in the statement; lastly, we calculate the score of the party receiving the most votes.\n\nSolution — Stage 1: Number of people not voting = 100 / 5 = 20. Stage 2: Number of people voting for party A = 35 + (0.15 × 20) + (0.4 × 15) + (0.15 × 20) = 47. Number of people voting for party B = 30 + (0.35 × 20) + (0.2 × 15) + (0.1 × 20) = 42. Stage 3: Party A's score = 47 / (47 + 42) ≈ 0.53 = **53%** — ie **Party A with 53%**.",
-          "es": "Planteamiento y método: Debemos calcular el resultado del partido A y el resultado del partido B en la segunda vuelta. Por definición: El resultado de un partido = número de personas que votan a ese partido / número total de votantes. No conocemos ni el número de votantes en la primera vuelta ni el número de votantes en la segunda vuelta. Lo más sencillo es, por tanto, tomar un ejemplo. Supongamos, por ejemplo, que hay 100 votantes en la primera vuelta. Según el gráfico, los resultados de la primera vuelta son, por tanto, los siguientes: Partido A = 35 votantes; Partido B = 30 votantes; Partido C = 20 votantes; Partido D = 15 votantes.\n\nA continuación, procedemos en tres fases: primero, calculamos el número de personas que no votaron. Según la información del enunciado, 1 elector de cada 6 no votó. Esto significa que por cada 5 votantes hubo uno que no votó, es decir, 5 veces menos; a continuación, calculamos el número de personas que votan al partido A y el número de personas que votan al partido B en la segunda vuelta, usando la información dada en el enunciado; por último, calculamos el resultado del partido que recibe más votos.\n\nSolución — Fase 1: Número de personas que no votan = 100 / 5 = 20. Fase 2: Número de personas que votan al partido A = 35 + (0.15 × 20) + (0.4 × 15) + (0.15 × 20) = 47. Número de personas que votan al partido B = 30 + (0.35 × 20) + (0.2 × 15) + (0.1 × 20) = 42. Fase 3: Resultado del partido A = 47 / (47 + 42) ≈ 0.53 = **53%** — es decir, **Partido A con 53%**."
+          "es": "Planteamiento y método: Debemos calcular el resultado del partido A y el resultado del partido B en la segunda vuelta. Por definición: El resultado de un partido = número de personas que votan a ese partido / número total de votantes. No conocemos ni el número de votantes en la primera vuelta ni el número de votantes en la segunda vuelta. Lo más sencillo es, por tanto, tomar un ejemplo. Supongamos, por ejemplo, que hay 100 votantes en la primera vuelta. Según el gráfico, los resultados de la primera vuelta son, por tanto, los siguientes: Partido A = 35 votantes; Partido B = 30 votantes; Partido C = 20 votantes; Partido D = 15 votantes.\n\nA continuación, procedemos en tres fases: primero, calculamos el número de personas que no votaron. Según la información del enunciado, 1 elector de cada 6 no votó. Esto significa que por cada 5 votantes hubo uno que no votó, es decir, 5 veces menos; a continuación, calculamos el número de personas que votan al partido A y el número de personas que votan al partido B en la segunda vuelta, usando la información dada en el enunciado; por último, calculamos el resultado del partido que recibe más votos.\n\nSolución — Fase 1: Número de personas que no votan = 100 / 5 = 20. Fase 2: Número de personas que votan al partido A = 35 + (0,15 × 20) + (0,4 × 15) + (0,15 × 20) = 47. Número de personas que votan al partido B = 30 + (0,35 × 20) + (0,2 × 15) + (0,1 × 20) = 42. Fase 3: Resultado del partido A = 47 / (47 + 42) ≈ 0,53 = **53 %** — es decir, **Partido A con 53 %**."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "Party B with 55%",
-          "es": "Partido B con 55%"
+          "es": "Partido B con 55 %"
         },
         "isCorrect": false
       },
@@ -7065,7 +7065,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "Party B with 53%",
-          "es": "Partido B con 53%"
+          "es": "Partido B con 53 %"
         },
         "isCorrect": false
       },
@@ -7073,7 +7073,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "Party B with 51%",
-          "es": "Partido B con 51%"
+          "es": "Partido B con 51 %"
         },
         "isCorrect": false
       }
@@ -7089,14 +7089,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "An EU agency's recruitment competition received the following numbers of applications over five years.\n\n| Year | Applications received |\n|---|---|\n| 2021 | 3,200 |\n| 2022 | 3,600 |\n| 2023 | 4,000 |\n| 2024 | 4,400 |\n| 2025 | 4,800 |\n\n*How many more applications were received in 2025 than in 2021?*",
-      "es": "Una convocatoria de selección de un organismo de la UE recibió el siguiente número de solicitudes a lo largo de cinco años.\n\n| Año | Solicitudes recibidas |\n|---|---|\n| 2021 | 3,200 |\n| 2022 | 3,600 |\n| 2023 | 4,000 |\n| 2024 | 4,400 |\n| 2025 | 4,800 |\n\n*¿Cuántas solicitudes más se recibieron en 2025 que en 2021?*"
+      "es": "Una convocatoria de selección de un organismo de la UE recibió el siguiente número de solicitudes a lo largo de cinco años.\n\n| Año | Solicitudes recibidas |\n|---|---|\n| 2021 | 3.200 |\n| 2022 | 3.600 |\n| 2023 | 4.000 |\n| 2024 | 4.400 |\n| 2025 | 4.800 |\n\n*¿Cuántas solicitudes más se recibieron en 2025 que en 2021?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "1,400",
-          "es": "1,400"
+          "es": "1.400"
         },
         "isCorrect": false
       },
@@ -7104,19 +7104,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "1,600",
-          "es": "1,600"
+          "es": "1.600"
         },
         "isCorrect": true,
         "explanation": {
           "en": "2025 − 2021 = 4,800 − 3,200 = 1,600 applications.",
-          "es": "2025 − 2021 = 4,800 − 3,200 = 1,600 solicitudes."
+          "es": "2025 − 2021 = 4.800 − 3.200 = 1.600 solicitudes."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "1,800",
-          "es": "1,800"
+          "es": "1.800"
         },
         "isCorrect": false
       },
@@ -7124,7 +7124,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "2,000",
-          "es": "2,000"
+          "es": "2.000"
         },
         "isCorrect": false
       }
@@ -7146,19 +7146,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "25%",
-          "es": "25%"
+          "es": "25 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "IT staff as a share of the total: 50 ÷ 200 = 0.25 = 25%.",
-          "es": "El personal de TI como proporción del total: 50 ÷ 200 = 0.25 = 25%."
+          "es": "El personal de TI como proporción del total: 50 ÷ 200 = 0,25 = 25 %."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "30%",
-          "es": "30%"
+          "es": "30 %"
         },
         "isCorrect": false
       },
@@ -7166,7 +7166,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "33%",
-          "es": "33%"
+          "es": "33 %"
         },
         "isCorrect": false
       },
@@ -7174,7 +7174,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       }
@@ -7246,7 +7246,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "20%",
-          "es": "20%"
+          "es": "20 %"
         },
         "isCorrect": false
       },
@@ -7254,7 +7254,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "28%",
-          "es": "28%"
+          "es": "28 %"
         },
         "isCorrect": false
       },
@@ -7262,19 +7262,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "33%",
-          "es": "33%"
+          "es": "33 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Agriculture's share of the €300 million total: 100 ÷ 300 = 0.333 = 33% (to the nearest whole per cent).",
-          "es": "La proporción de Agricultura sobre el total de €300 millones: 100 ÷ 300 = 0.333 = 33% (redondeado al punto porcentual entero más cercano)."
+          "es": "La proporción de Agricultura sobre el total de 300 € millones: 100 ÷ 300 = 0,333 = 33 % (redondeado al punto porcentual entero más cercano)."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       }
@@ -7339,7 +7339,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A currency exchange office applies a fixed rate of 1 GBP = 1.16 EUR.\n\n*How many euros does a customer receive in exchange for 250 GBP?*",
-      "es": "Una oficina de cambio de divisas aplica un tipo de cambio fijo de 1 GBP = 1.16 EUR.\n\n*¿Cuántos euros recibe un cliente a cambio de 250 GBP?*"
+      "es": "Una oficina de cambio de divisas aplica un tipo de cambio fijo de 1 GBP = 1,16 EUR.\n\n*¿Cuántos euros recibe un cliente a cambio de 250 GBP?*"
     },
     "options": [
       {
@@ -7375,7 +7375,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "250 × 1.16 = 290 EUR.",
-          "es": "250 × 1.16 = 290 EUR."
+          "es": "250 × 1,16 = 290 EUR."
         }
       }
     ],
@@ -7396,7 +7396,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "30%",
-          "es": "30%"
+          "es": "30 %"
         },
         "isCorrect": false
       },
@@ -7404,19 +7404,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "37.5%",
-          "es": "37.5%"
+          "es": "37,5 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Total population = 8 + 12 + 5 + 15 = 40 million. Nordland's share: 15 ÷ 40 = 0.375 = 37.5%.",
-          "es": "Población total = 8 + 12 + 5 + 15 = 40 millones. Proporción de Nordland: 15 ÷ 40 = 0.375 = 37.5%."
+          "es": "Población total = 8 + 12 + 5 + 15 = 40 millones. Proporción de Nordland: 15 ÷ 40 = 0,375 = 37,5 %."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       },
@@ -7424,7 +7424,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "45%",
-          "es": "45%"
+          "es": "45 %"
         },
         "isCorrect": false
       }
@@ -7446,7 +7446,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "€100,000",
-          "es": "€100,000"
+          "es": "100.000 €"
         },
         "isCorrect": false
       },
@@ -7454,7 +7454,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "€120,000",
-          "es": "€120,000"
+          "es": "120.000 €"
         },
         "isCorrect": false
       },
@@ -7462,19 +7462,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "€150,000",
-          "es": "€150,000"
+          "es": "150.000 €"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Increase = 650 − 500 = 150 (in € '000) = €150,000.",
-          "es": "Aumento = 650 − 500 = 150 (en miles de €) = €150,000."
+          "es": "Aumento = 650 − 500 = 150 (en miles de €) = 150.000 €."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "€180,000",
-          "es": "€180,000"
+          "es": "180.000 €"
         },
         "isCorrect": false
       }
@@ -7489,7 +7489,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "An EU-funded student exchange programme enrolled students from four countries in 2025.\n\n| Country | Students enrolled |\n|---|---|\n| Country A | 300 |\n| Country B | 450 |\n| Country C | 250 |\n| Country D | 500 |\n\n*The total number of students enrolled across all four countries is 1,500. Which country accounts for exactly one third of this total?*",
-      "es": "Un programa de intercambio de estudiantes financiado por la UE matriculó a estudiantes de cuatro países en 2025.\n\n| País | Estudiantes matriculados |\n|---|---|\n| País A | 300 |\n| País B | 450 |\n| País C | 250 |\n| País D | 500 |\n\n*El número total de estudiantes matriculados en los cuatro países es 1,500. ¿Qué país representa exactamente un tercio de ese total?*"
+      "es": "Un programa de intercambio de estudiantes financiado por la UE matriculó a estudiantes de cuatro países en 2025.\n\n| País | Estudiantes matriculados |\n|---|---|\n| País A | 300 |\n| País B | 450 |\n| País C | 250 |\n| País D | 500 |\n\n*El número total de estudiantes matriculados en los cuatro países es 1.500. ¿Qué país representa exactamente un tercio de ese total?*"
     },
     "options": [
       {
@@ -7525,7 +7525,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "One third of 1,500 is 500. Country D enrolled exactly 500 students, i.e. 500 ÷ 1,500 = 33.3% = one third.",
-          "es": "Un tercio de 1,500 es 500. El País D matriculó exactamente a 500 estudiantes, es decir, 500 ÷ 1,500 = 33.3% = un tercio."
+          "es": "Un tercio de 1.500 es 500. El País D matriculó exactamente a 500 estudiantes, es decir, 500 ÷ 1.500 = 33,3 % = un tercio."
         }
       }
     ],
@@ -7539,7 +7539,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "The number of employees teleworking at least one day per week at a large organisation grew as follows.\n\n| Year | Teleworking employees |\n|---|---|\n| 2022 | 1,000 |\n| 2023 | 1,300 |\n| 2024 | 1,600 |\n| 2025 | 1,900 |\n\n*By how many did the number of teleworking employees increase, on average, per year between 2022 and 2025?*",
-      "es": "El número de empleados que teletrabajan al menos un día por semana en una gran organización creció de la siguiente manera.\n\n| Año | Empleados en teletrabajo |\n|---|---|\n| 2022 | 1,000 |\n| 2023 | 1,300 |\n| 2024 | 1,600 |\n| 2025 | 1,900 |\n\n*¿En cuánto aumentó, de media, cada año el número de empleados en teletrabajo entre 2022 y 2025?*"
+      "es": "El número de empleados que teletrabajan al menos un día por semana en una gran organización creció de la siguiente manera.\n\n| Año | Empleados en teletrabajo |\n|---|---|\n| 2022 | 1.000 |\n| 2023 | 1.300 |\n| 2024 | 1.600 |\n| 2025 | 1.900 |\n\n*¿En cuánto aumentó, de media, cada año el número de empleados en teletrabajo entre 2022 y 2025?*"
     },
     "options": [
       {
@@ -7559,7 +7559,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Total increase from 2022 to 2025: 1,900 − 1,000 = 900, spread over 3 year-to-year intervals (2022→23, 23→24, 24→25): 900 ÷ 3 = 300 per year.",
-          "es": "Aumento total de 2022 a 2025: 1,900 − 1,000 = 900, repartido entre 3 intervalos interanuales (2022→23, 23→24, 24→25): 900 ÷ 3 = 300 al año."
+          "es": "Aumento total de 2022 a 2025: 1.900 − 1.000 = 900, repartido entre 3 intervalos interanuales (2022→23, 23→24, 24→25): 900 ÷ 3 = 300 al año."
         }
       },
       {
@@ -7596,19 +7596,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "30%",
-          "es": "30%"
+          "es": "30 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "(325 − 250) ÷ 250 = 75 ÷ 250 = 0.30 = 30%.",
-          "es": "(325 − 250) ÷ 250 = 75 ÷ 250 = 0.30 = 30%."
+          "es": "(325 − 250) ÷ 250 = 75 ÷ 250 = 0,30 = 30 %."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "35%",
-          "es": "35%"
+          "es": "35 %"
         },
         "isCorrect": false
       },
@@ -7616,7 +7616,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       },
@@ -7624,7 +7624,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "45%",
-          "es": "45%"
+          "es": "45 %"
         },
         "isCorrect": false
       }
@@ -7667,7 +7667,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Manufacturing: (460−400)÷400 = 60÷400 = 15%. Software: (325−250)÷250 = 30%. Pharmaceuticals: (165−150)÷150 = 15÷150 = 10%. The smallest increase is Pharmaceuticals, at 10%.",
-          "es": "Fabricación: (460−400)÷400 = 60÷400 = 15%. Software: (325−250)÷250 = 30%. Farmacéutica: (165−150)÷150 = 15÷150 = 10%. El menor incremento corresponde a Farmacéutica, con un 10%."
+          "es": "Fabricación: (460−400)÷400 = 60÷400 = 15 %. Software: (325−250)÷250 = 30 %. Farmacéutica: (165−150)÷150 = 15÷150 = 10 %. El menor incremento corresponde a Farmacéutica, con un 10 %."
         }
       },
       {
@@ -7739,7 +7739,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A train operator publishes the following route data.\n\n| Route | Distance (km) | Time (hours) |\n|---|---|---|\n| A–B | 210 | 1.5 |\n| B–C | 280 | 2 |\n| C–D | 150 | 1 |\n\n*What is the average speed on route B–C, in km/h?*",
-      "es": "Un operador ferroviario publica los siguientes datos de rutas.\n\n| Ruta | Distancia (km) | Tiempo (horas) |\n|---|---|---|\n| A–B | 210 | 1.5 |\n| B–C | 280 | 2 |\n| C–D | 150 | 1 |\n\n*¿Cuál es la velocidad media en la ruta B–C, en km/h?*"
+      "es": "Un operador ferroviario publica los siguientes datos de rutas.\n\n| Ruta | Distancia (km) | Tiempo (horas) |\n|---|---|---|\n| A–B | 210 | 1,5 |\n| B–C | 280 | 2 |\n| C–D | 150 | 1 |\n\n*¿Cuál es la velocidad media en la ruta B–C, en km/h?*"
     },
     "options": [
       {
@@ -7801,7 +7801,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Total distance = 210 + 280 + 150 = 640 km. Total time = 1.5 + 2 + 1 = 4.5 hours. Average speed = 640 ÷ 4.5 = 142.2 km/h ≈ 142 km/h. (Note: this is the distance-weighted average, not the simple average of the three individual speeds — those are 140, 140 and 150 km/h respectively, which would wrongly suggest a higher figure.)",
-          "es": "Distancia total = 210 + 280 + 150 = 640 km. Tiempo total = 1.5 + 2 + 1 = 4.5 horas. Velocidad media = 640 ÷ 4.5 = 142.2 km/h ≈ 142 km/h. (Nota: esta es la media ponderada por distancia, no la media simple de las tres velocidades individuales — que son 140, 140 y 150 km/h respectivamente —, la cual sugeriría erróneamente una cifra más alta.)"
+          "es": "Distancia total = 210 + 280 + 150 = 640 km. Tiempo total = 1,5 + 2 + 1 = 4,5 horas. Velocidad media = 640 ÷ 4,5 = 142,2 km/h ≈ 142 km/h. (Nota: esta es la media ponderada por distancia, no la media simple de las tres velocidades individuales — que son 140, 140 y 150 km/h respectivamente —, la cual sugeriría erróneamente una cifra más alta.)"
         }
       },
       {
@@ -7839,7 +7839,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "An exchange desk lists the following fixed rates: 1 EUR = 1.08 USD = 0.86 GBP = 4.30 PLN.\n\n*A purchase costs 500 PLN. What is this amount in EUR, to the nearest euro?*",
-      "es": "Un mostrador de cambio de divisas ofrece los siguientes tipos fijos: 1 EUR = 1.08 USD = 0.86 GBP = 4.30 PLN.\n\n*Una compra cuesta 500 PLN. ¿A cuánto equivale esta cantidad en EUR, redondeado al euro más cercano?*"
+      "es": "Un mostrador de cambio de divisas ofrece los siguientes tipos fijos: 1 EUR = 1,08 USD = 0,86 GBP = 4,30 PLN.\n\n*Una compra cuesta 500 PLN. ¿A cuánto equivale esta cantidad en EUR, redondeado al euro más cercano?*"
     },
     "options": [
       {
@@ -7859,7 +7859,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "500 PLN ÷ 4.30 PLN/EUR = 116.3 ≈ 116 EUR.",
-          "es": "500 PLN ÷ 4.30 PLN/EUR = 116.3 ≈ 116 EUR."
+          "es": "500 PLN ÷ 4,30 PLN/EUR = 116,3 ≈ 116 EUR."
         }
       },
       {
@@ -7889,14 +7889,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Visitor numbers at three EU institution open-house events are shown below.\n\n| Event | 2023 | 2024 | 2025 |\n|---|---|---|---|\n| Parliament | 12,000 | 13,200 | 14,520 |\n| Commission | 9,000 | 9,900 | 10,890 |\n| Court | 5,000 | 5,300 | 5,459 |\n\n*Assuming Parliament visitor numbers continue to grow at the same percentage rate as they did between 2024 and 2025, how many visitors are expected in 2026?*",
-      "es": "El número de visitantes en tres jornadas de puertas abiertas de instituciones de la UE se muestra a continuación.\n\n| Evento | 2023 | 2024 | 2025 |\n|---|---|---|---|\n| Parlamento | 12,000 | 13,200 | 14,520 |\n| Comisión | 9,000 | 9,900 | 10,890 |\n| Tribunal | 5,000 | 5,300 | 5,459 |\n\n*Suponiendo que el número de visitantes del Parlamento siga creciendo al mismo ritmo porcentual que entre 2024 y 2025, ¿cuántos visitantes se esperan en 2026?*"
+      "es": "El número de visitantes en tres jornadas de puertas abiertas de instituciones de la UE se muestra a continuación.\n\n| Evento | 2023 | 2024 | 2025 |\n|---|---|---|---|\n| Parlamento | 12.000 | 13.200 | 14.520 |\n| Comisión | 9.000 | 9.900 | 10.890 |\n| Tribunal | 5.000 | 5.300 | 5.459 |\n\n*Suponiendo que el número de visitantes del Parlamento siga creciendo al mismo ritmo porcentual que entre 2024 y 2025, ¿cuántos visitantes se esperan en 2026?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "15,400",
-          "es": "15,400"
+          "es": "15.400"
         },
         "isCorrect": false
       },
@@ -7904,7 +7904,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "15,680",
-          "es": "15,680"
+          "es": "15.680"
         },
         "isCorrect": false
       },
@@ -7912,19 +7912,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "15,972",
-          "es": "15,972"
+          "es": "15.972"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Growth rate 2024→2025: 14,520 ÷ 13,200 = 1.10, i.e. 10% growth. Applying the same 10% growth to 2025's figure: 14,520 × 1.10 = 15,972.",
-          "es": "Tasa de crecimiento 2024→2025: 14,520 ÷ 13,200 = 1.10, es decir, un crecimiento del 10%. Aplicando ese mismo 10% de crecimiento a la cifra de 2025: 14,520 × 1.10 = 15,972."
+          "es": "Tasa de crecimiento 2024→2025: 14.520 ÷ 13.200 = 1,10, es decir, un crecimiento del 10 %. Aplicando ese mismo 10 % de crecimiento a la cifra de 2025: 14.520 × 1,10 = 15.972."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "16,250",
-          "es": "16,250"
+          "es": "16.250"
         },
         "isCorrect": false
       }
@@ -7946,19 +7946,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "6%",
-          "es": "6%"
+          "es": "6 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "(5,300 − 5,000) ÷ 5,000 = 300 ÷ 5,000 = 0.06 = 6%.",
-          "es": "(5,300 − 5,000) ÷ 5,000 = 300 ÷ 5,000 = 0.06 = 6%."
+          "es": "(5.300 − 5.000) ÷ 5.000 = 300 ÷ 5.000 = 0,06 = 6 %."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "8%",
-          "es": "8%"
+          "es": "8 %"
         },
         "isCorrect": false
       },
@@ -7966,7 +7966,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "10%",
-          "es": "10%"
+          "es": "10 %"
         },
         "isCorrect": false
       },
@@ -7974,7 +7974,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "12%",
-          "es": "12%"
+          "es": "12 %"
         },
         "isCorrect": false
       }
@@ -7996,7 +7996,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "6,250",
-          "es": "6,250"
+          "es": "6.250"
         },
         "isCorrect": false
       },
@@ -8004,7 +8004,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "6,330",
-          "es": "6,330"
+          "es": "6.330"
         },
         "isCorrect": false
       },
@@ -8012,7 +8012,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "7,305",
-          "es": "7,305"
+          "es": "7.305"
         },
         "isCorrect": false
       },
@@ -8025,7 +8025,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Cannot say. The table only allows you to compute growth rates for two specific past intervals (6% for 2023–24, then a different rate of roughly 3% for 2024–25) — the rate is not constant, and the table gives no information at all about the years 2026–2030. Projecting five years beyond the last data point without a demonstrated constant trend is unwarranted extrapolation, not calculation; none of the numeric options can be justified from the data given.",
-          "es": "No se puede determinar. La tabla solo permite calcular tasas de crecimiento para dos intervalos pasados concretos (6% para 2023–24, y luego una tasa distinta de aproximadamente 3% para 2024–25) — la tasa no es constante, y la tabla no ofrece ninguna información sobre los años 2026–2030. Proyectar cinco años más allá del último dato disponible sin una tendencia constante demostrada es una extrapolación injustificada, no un cálculo; ninguna de las opciones numéricas puede justificarse a partir de los datos facilitados."
+          "es": "No se puede determinar. La tabla solo permite calcular tasas de crecimiento para dos intervalos pasados concretos (6 % para 2023–24, y luego una tasa distinta de aproximadamente 3 % para 2024–25) — la tasa no es constante, y la tabla no ofrece ninguna información sobre los años 2026–2030. Proyectar cinco años más allá del último dato disponible sin una tendencia constante demostrada es una extrapolación injustificada, no un cálculo; ninguna de las opciones numéricas puede justificarse a partir de los datos facilitados."
         }
       }
     ],
@@ -8046,7 +8046,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "35.0",
-          "es": "35.0"
+          "es": "35,0"
         },
         "isCorrect": false
       },
@@ -8054,19 +8054,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "36.4",
-          "es": "36.4"
+          "es": "36,4"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Weighted average = (40×36 + 60×40 + 20×44 + 80×32) ÷ 200 = (1,440 + 2,400 + 880 + 2,560) ÷ 200 = 7,280 ÷ 200 = 36.4 hours. (The simple, unweighted average of the four category figures — (36+40+44+32)÷4 = 38.0 — ignores that the categories have different numbers of employees and is therefore wrong; it appears as option D.)",
-          "es": "Media ponderada = (40×36 + 60×40 + 20×44 + 80×32) ÷ 200 = (1,440 + 2,400 + 880 + 2,560) ÷ 200 = 7,280 ÷ 200 = 36.4 horas. (La media simple, sin ponderar, de las cuatro cifras de categoría — (36+40+44+32)÷4 = 38.0 — ignora que las categorías tienen distinto número de empleados y, por tanto, es incorrecta; aparece como opción D.)"
+          "es": "Media ponderada = (40×36 + 60×40 + 20×44 + 80×32) ÷ 200 = (1.440 + 2.400 + 880 + 2.560) ÷ 200 = 7.280 ÷ 200 = 36,4 horas. (La media simple, sin ponderar, de las cuatro cifras de categoría — (36+40+44+32)÷4 = 38,0 — ignora que las categorías tienen distinto número de empleados y, por tanto, es incorrecta; aparece como opción D.)"
         }
       },
       {
         "id": "C",
         "text": {
           "en": "37.0",
-          "es": "37.0"
+          "es": "37,0"
         },
         "isCorrect": false
       },
@@ -8074,7 +8074,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "38.0",
-          "es": "38.0"
+          "es": "38,0"
         },
         "isCorrect": false
       }
@@ -8089,7 +8089,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "The unemployment rate in a region over five years is shown below.\n\n| Year | Unemployment rate |\n|---|---|\n| 2021 | 8.0% |\n| 2022 | 7.5% |\n| 2023 | 7.0% |\n| 2024 | 9.0% |\n| 2025 | 9.5% |\n\n*What was the change in the unemployment rate between 2023 and 2024, expressed in percentage points?*",
-      "es": "A continuación se muestra la tasa de desempleo de una región a lo largo de cinco años.\n\n| Año | Tasa de desempleo |\n|---|---|\n| 2021 | 8.0% |\n| 2022 | 7.5% |\n| 2023 | 7.0% |\n| 2024 | 9.0% |\n| 2025 | 9.5% |\n\n*¿Cuál fue la variación de la tasa de desempleo entre 2023 y 2024, expresada en puntos porcentuales?*"
+      "es": "A continuación se muestra la tasa de desempleo de una región a lo largo de cinco años.\n\n| Año | Tasa de desempleo |\n|---|---|\n| 2021 | 8,0 % |\n| 2022 | 7,5 % |\n| 2023 | 7,0 % |\n| 2024 | 9,0 % |\n| 2025 | 9,5 % |\n\n*¿Cuál fue la variación de la tasa de desempleo entre 2023 y 2024, expresada en puntos porcentuales?*"
     },
     "options": [
       {
@@ -8104,19 +8104,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "+2.0 percentage points",
-          "es": "+2.0 puntos porcentuales"
+          "es": "+2,0 puntos porcentuales"
         },
         "isCorrect": true,
         "explanation": {
           "en": "9.0% − 7.0% = 2.0 percentage points. (Option C, 28.6, is the *relative* percentage increase, not the change in percentage points — see Question 22.)",
-          "es": "9.0% − 7.0% = 2.0 puntos porcentuales. (La opción C, 28.6, es el incremento porcentual *relativo*, no la variación en puntos porcentuales — véase la pregunta 22.)"
+          "es": "9,0 % − 7,0 % = 2,0 puntos porcentuales. (La opción C, 28,6, es el incremento porcentual *relativo*, no la variación en puntos porcentuales — véase la pregunta 22.)"
         }
       },
       {
         "id": "C",
         "text": {
           "en": "+28.6 percentage points",
-          "es": "+28.6 puntos porcentuales"
+          "es": "+28,6 puntos porcentuales"
         },
         "isCorrect": false
       },
@@ -8124,7 +8124,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "−2.0 percentage points",
-          "es": "−2.0 puntos porcentuales"
+          "es": "−2,0 puntos porcentuales"
         },
         "isCorrect": false
       }
@@ -8146,7 +8146,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "2%",
-          "es": "2%"
+          "es": "2 %"
         },
         "isCorrect": false
       },
@@ -8154,7 +8154,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "20%",
-          "es": "20%"
+          "es": "20 %"
         },
         "isCorrect": false
       },
@@ -8162,7 +8162,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "2.86%",
-          "es": "2.86%"
+          "es": "2,86 %"
         },
         "isCorrect": false
       },
@@ -8170,12 +8170,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "28.6%",
-          "es": "28.6%"
+          "es": "28,6 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Relative increase = (9.0 − 7.0) ÷ 7.0 = 2.0 ÷ 7.0 = 0.286 = 28.6%. (Option B, 20%, comes from mistakenly dividing by 10 instead of 7; option A/C confuse this relative measure with the percentage-point difference calculated in Question 21.)",
-          "es": "Incremento relativo = (9.0 − 7.0) ÷ 7.0 = 2.0 ÷ 7.0 = 0.286 = 28.6%. (La opción B, 20%, resulta de dividir erróneamente entre 10 en lugar de entre 7; las opciones A/C confunden esta medida relativa con la diferencia en puntos porcentuales calculada en la pregunta 21.)"
+          "es": "Incremento relativo = (9,0 − 7,0) ÷ 7,0 = 2,0 ÷ 7,0 = 0,286 = 28,6 %. (La opción B, 20 %, resulta de dividir erróneamente entre 10 en lugar de entre 7; las opciones A/C confunden esta medida relativa con la diferencia en puntos porcentuales calculada en la pregunta 21.)"
         }
       }
     ],
@@ -8189,7 +8189,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "An EU-funded training programme recorded the following cumulative (running total) participant registrations.\n\n| Month | Cumulative registrations |\n|---|---|\n| January | 200 |\n| February | 450 |\n| March | 800 |\n| April | 1,000 |\n\n*How many new participants registered specifically during March?*",
-      "es": "Un programa de formación financiado por la UE registró las siguientes inscripciones acumuladas (total corriente) de participantes.\n\n| Mes | Inscripciones acumuladas |\n|---|---|\n| Enero | 200 |\n| Febrero | 450 |\n| Marzo | 800 |\n| Abril | 1,000 |\n\n*¿Cuántos participantes nuevos se inscribieron concretamente durante marzo?*"
+      "es": "Un programa de formación financiado por la UE registró las siguientes inscripciones acumuladas (total corriente) de participantes.\n\n| Mes | Inscripciones acumuladas |\n|---|---|\n| Enero | 200 |\n| Febrero | 450 |\n| Marzo | 800 |\n| Abril | 1.000 |\n\n*¿Cuántos participantes nuevos se inscribieron concretamente durante marzo?*"
     },
     "options": [
       {
@@ -8267,14 +8267,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "New registrations in April = 1,000 − 800 = 200.",
-          "es": "Inscripciones nuevas en abril = 1,000 − 800 = 200."
+          "es": "Inscripciones nuevas en abril = 1.000 − 800 = 200."
         }
       },
       {
         "id": "D",
         "text": {
           "en": "1,000",
-          "es": "1,000"
+          "es": "1.000"
         },
         "isCorrect": false
       }
@@ -8296,7 +8296,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "3%",
-          "es": "3%"
+          "es": "3 %"
         },
         "isCorrect": false
       },
@@ -8304,19 +8304,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "5.5%",
-          "es": "5.5%"
+          "es": "5,5 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Fall from 109 to 103: (109 − 103) ÷ 109 = 6 ÷ 109 = 0.055 = 5.5% (to one decimal place).",
-          "es": "Descenso de 109 a 103: (109 − 103) ÷ 109 = 6 ÷ 109 = 0.055 = 5.5% (redondeado a un decimal)."
+          "es": "Descenso de 109 a 103: (109 − 103) ÷ 109 = 6 ÷ 109 = 0,055 = 5,5 % (redondeado a un decimal)."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "6%",
-          "es": "6%"
+          "es": "6 %"
         },
         "isCorrect": false
       },
@@ -8324,7 +8324,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "6.5%",
-          "es": "6.5%"
+          "es": "6,5 %"
         },
         "isCorrect": false
       }
@@ -8346,19 +8346,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "+8%",
-          "es": "+8%"
+          "es": "+8 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Because 2020 is the base year (index = 100), the index value in any later year directly reads as the percentage change from the base. 2024's index of 108 therefore represents a +8% change since 2020.",
-          "es": "Puesto que 2020 es el año base (índice = 100), el valor del índice en cualquier año posterior se lee directamente como la variación porcentual respecto a la base. El índice de 108 en 2024 representa, por tanto, una variación de +8% desde 2020."
+          "es": "Puesto que 2020 es el año base (índice = 100), el valor del índice en cualquier año posterior se lee directamente como la variación porcentual respecto a la base. El índice de 108 en 2024 representa, por tanto, una variación de +8 % desde 2020."
         }
       },
       {
         "id": "B",
         "text": {
           "en": "+4%",
-          "es": "+4%"
+          "es": "+4 %"
         },
         "isCorrect": false
       },
@@ -8366,7 +8366,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "+108%",
-          "es": "+108%"
+          "es": "+108 %"
         },
         "isCorrect": false
       },
@@ -8396,19 +8396,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "+€5 million",
-          "es": "+€5 millones"
+          "es": "+5 € millones"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Net balance = 50 + (−20) + (−35) + 10 = 5, i.e. a net surplus of +€5 million. (Option D, +€115 million, comes from wrongly adding all four figures as if they were positive: 50+20+35+10 = 115, ignoring the deficit years' negative sign.)",
-          "es": "Balanza neta = 50 + (−20) + (−35) + 10 = 5, es decir, un superávit neto de +€5 millones. (La opción D, +€115 millones, resulta de sumar erróneamente las cuatro cifras como si todas fueran positivas: 50+20+35+10 = 115, ignorando el signo negativo de los años deficitarios.)"
+          "es": "Balanza neta = 50 + (−20) + (−35) + 10 = 5, es decir, un superávit neto de +5 € millones. (La opción D, +115 € millones, resulta de sumar erróneamente las cuatro cifras como si todas fueran positivas: 50+20+35+10 = 115, ignorando el signo negativo de los años deficitarios.)"
         }
       },
       {
         "id": "B",
         "text": {
           "en": "−€5 million",
-          "es": "−€5 millones"
+          "es": "−5 € millones"
         },
         "isCorrect": false
       },
@@ -8416,7 +8416,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "+€35 million",
-          "es": "+€35 millones"
+          "es": "+35 € millones"
         },
         "isCorrect": false
       },
@@ -8424,7 +8424,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "+€115 million",
-          "es": "+€115 millones"
+          "es": "+115 € millones"
         },
         "isCorrect": false
       }
@@ -8439,7 +8439,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Exports by product category (€ million) for two years are shown below.\n\n| Category | 2024 | 2025 |\n|---|---|---|\n| Machinery | 120 | 150 |\n| Chemicals | 80 | 76 |\n| Food products | 60 | 90 |\n| Textiles | 40 | 34 |\n\n*Which category's exports fell by exactly 5% between 2024 and 2025?*",
-      "es": "Las exportaciones por categoría de producto (millones de €) de dos años se muestran a continuación.\n\n| Categoría | 2024 | 2025 |\n|---|---|---|\n| Maquinaria | 120 | 150 |\n| Productos químicos | 80 | 76 |\n| Productos alimenticios | 60 | 90 |\n| Textiles | 40 | 34 |\n\n*¿En qué categoría las exportaciones descendieron exactamente un 5% entre 2024 y 2025?*"
+      "es": "Las exportaciones por categoría de producto (millones de €) de dos años se muestran a continuación.\n\n| Categoría | 2024 | 2025 |\n|---|---|---|\n| Maquinaria | 120 | 150 |\n| Productos químicos | 80 | 76 |\n| Productos alimenticios | 60 | 90 |\n| Textiles | 40 | 34 |\n\n*¿En qué categoría las exportaciones descendieron exactamente un 5 % entre 2024 y 2025?*"
     },
     "options": [
       {
@@ -8459,7 +8459,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Chemicals: (80 − 76) ÷ 80 = 4 ÷ 80 = 0.05 = exactly 5%. (Textiles fell by (40−34)÷40 = 15%, a bigger fall, not 5%; Machinery and Food products both increased, not decreased.)",
-          "es": "Productos químicos: (80 − 76) ÷ 80 = 4 ÷ 80 = 0.05 = exactamente 5%. (Textiles descendió (40−34)÷40 = 15%, un descenso mayor, no del 5%; Maquinaria y Productos alimenticios aumentaron, no descendieron.)"
+          "es": "Productos químicos: (80 − 76) ÷ 80 = 4 ÷ 80 = 0,05 = exactamente 5 %. (Textiles descendió (40−34)÷40 = 15 %, un descenso mayor, no del 5 %; Maquinaria y Productos alimenticios aumentaron, no descendieron.)"
         }
       },
       {
@@ -8496,7 +8496,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "+10%",
-          "es": "+10%"
+          "es": "+10 %"
         },
         "isCorrect": false
       },
@@ -8504,7 +8504,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "+13%",
-          "es": "+13%"
+          "es": "+13 %"
         },
         "isCorrect": false
       },
@@ -8512,7 +8512,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "+15%",
-          "es": "+15%"
+          "es": "+15 %"
         },
         "isCorrect": false
       },
@@ -8520,12 +8520,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "+16.7%",
-          "es": "+16.7%"
+          "es": "+16,7 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "2024 total = 120+80+60+40 = 300. 2025 total = 150+76+90+34 = 350. Change = (350−300) ÷ 300 = 50 ÷ 300 = 0.167 = 16.7%.",
-          "es": "Total en 2024 = 120+80+60+40 = 300. Total en 2025 = 150+76+90+34 = 350. Variación = (350−300) ÷ 300 = 50 ÷ 300 = 0.167 = 16.7%."
+          "es": "Total en 2024 = 120+80+60+40 = 300. Total en 2025 = 150+76+90+34 = 350. Variación = (350−300) ÷ 300 = 50 ÷ 300 = 0,167 = 16,7 %."
         }
       }
     ],
@@ -8539,7 +8539,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A survey of commuting methods among residents of a city aged 55 and over found the following breakdown, expressed as a percentage of survey respondents in that age group.\n\n| Commuting method | Share of respondents aged 55+ |\n|---|---|\n| Car | 50% |\n| Public transport | 30% |\n| Bicycle | 5% |\n| Walking | 15% |\n\n*How many respondents aged 55+ commute by bicycle?*",
-      "es": "Una encuesta sobre medios de desplazamiento entre residentes de una ciudad de 55 años o más reveló el siguiente desglose, expresado como porcentaje de los encuestados de ese grupo de edad.\n\n| Medio de desplazamiento | Proporción de encuestados de 55 años o más |\n|---|---|\n| Coche | 50% |\n| Transporte público | 30% |\n| Bicicleta | 5% |\n| A pie | 15% |\n\n*¿Cuántos encuestados de 55 años o más se desplazan en bicicleta?*"
+      "es": "Una encuesta sobre medios de desplazamiento entre residentes de una ciudad de 55 años o más reveló el siguiente desglose, expresado como porcentaje de los encuestados de ese grupo de edad.\n\n| Medio de desplazamiento | Proporción de encuestados de 55 años o más |\n|---|---|\n| Coche | 50 % |\n| Transporte público | 30 % |\n| Bicicleta | 5 % |\n| A pie | 15 % |\n\n*¿Cuántos encuestados de 55 años o más se desplazan en bicicleta?*"
     },
     "options": [
       {
@@ -8589,7 +8589,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Four fictional regions report the following population and land area figures.\n\n| Region | Population ('000) | Area (km²) |\n|---|---|---|\n| Alpland | 1,200 | 400 |\n| Rivermouth | 900 | 360 |\n| Highfield | 600 | 500 |\n| Coastport | 1,500 | 250 |\n\n*Which region has the highest population density (inhabitants per km²)?*",
-      "es": "Cuatro regiones ficticias presentan las siguientes cifras de población y superficie.\n\n| Región | Población (miles) | Superficie (km²) |\n|---|---|---|\n| Alpland | 1,200 | 400 |\n| Rivermouth | 900 | 360 |\n| Highfield | 600 | 500 |\n| Coastport | 1,500 | 250 |\n\n*¿Qué región tiene la mayor densidad de población (habitantes por km²)?*"
+      "es": "Cuatro regiones ficticias presentan las siguientes cifras de población y superficie.\n\n| Región | Población (miles) | Superficie (km²) |\n|---|---|---|\n| Alpland | 1.200 | 400 |\n| Rivermouth | 900 | 360 |\n| Highfield | 600 | 500 |\n| Coastport | 1.500 | 250 |\n\n*¿Qué región tiene la mayor densidad de población (habitantes por km²)?*"
     },
     "options": [
       {
@@ -8625,7 +8625,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Density = population ÷ area. Alpland: 1,200,000 ÷ 400 = 3,000/km². Rivermouth: 900,000 ÷ 360 = 2,500/km². Highfield: 600,000 ÷ 500 = 1,200/km². Coastport: 1,500,000 ÷ 250 = 6,000/km² — the highest of the four.",
-          "es": "Densidad = población ÷ superficie. Alpland: 1,200,000 ÷ 400 = 3,000/km². Rivermouth: 900,000 ÷ 360 = 2,500/km². Highfield: 600,000 ÷ 500 = 1,200/km². Coastport: 1,500,000 ÷ 250 = 6,000/km² — la más alta de las cuatro."
+          "es": "Densidad = población ÷ superficie. Alpland: 1.200.000 ÷ 400 = 3.000/km². Rivermouth: 900.000 ÷ 360 = 2.500/km². Highfield: 600.000 ÷ 500 = 1.200/km². Coastport: 1.500.000 ÷ 250 = 6.000/km² — la más alta de las cuatro."
         }
       }
     ],
@@ -8646,7 +8646,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "2,500 per km²",
-          "es": "2,500 por km²"
+          "es": "2.500 por km²"
         },
         "isCorrect": false
       },
@@ -8654,7 +8654,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "3,600 per km²",
-          "es": "3,600 por km²"
+          "es": "3.600 por km²"
         },
         "isCorrect": false
       },
@@ -8667,14 +8667,14 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Cannot say. The table gives population and area for each region as a whole; it provides no breakdown between an \"urban centre\" and its surrounding area, so no urban-specific density can be computed from it. (Option A, 2,500/km², is simply Rivermouth's region-wide density from Question 31, not a figure for its urban centre.)",
-          "es": "No se puede determinar. La tabla ofrece la población y la superficie de cada región en su conjunto; no proporciona ningún desglose entre un «núcleo urbano» y su entorno, por lo que no se puede calcular a partir de ella una densidad específica del núcleo urbano. (La opción A, 2,500/km², es simplemente la densidad de toda la región de Rivermouth calculada en la pregunta 31, no una cifra referida a su núcleo urbano.)"
+          "es": "No se puede determinar. La tabla ofrece la población y la superficie de cada región en su conjunto; no proporciona ningún desglose entre un «núcleo urbano» y su entorno, por lo que no se puede calcular a partir de ella una densidad específica del núcleo urbano. (La opción A, 2.500/km², es simplemente la densidad de toda la región de Rivermouth calculada en la pregunta 31, no una cifra referida a su núcleo urbano.)"
         }
       },
       {
         "id": "D",
         "text": {
           "en": "4,000 per km²",
-          "es": "4,000 por km²"
+          "es": "4.000 por km²"
         },
         "isCorrect": false
       }
@@ -8689,14 +8689,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A company's headcount and total annual salary cost by office are shown below.\n\n| Office | Headcount | Total annual salary cost |\n|---|---|---|\n| Brussels | 50 | €3,000,000 |\n| Luxembourg | 30 | €2,100,000 |\n| Frankfurt | 20 | €1,600,000 |\n\n*What is the average salary per employee in the Luxembourg office?*",
-      "es": "La plantilla y el coste salarial anual total por oficina de una empresa se muestran a continuación.\n\n| Oficina | Plantilla | Coste salarial anual total |\n|---|---|---|\n| Bruselas | 50 | €3,000,000 |\n| Luxemburgo | 30 | €2,100,000 |\n| Fráncfort | 20 | €1,600,000 |\n\n*¿Cuál es el salario medio por empleado en la oficina de Luxemburgo?*"
+      "es": "La plantilla y el coste salarial anual total por oficina de una empresa se muestran a continuación.\n\n| Oficina | Plantilla | Coste salarial anual total |\n|---|---|---|\n| Bruselas | 50 | 3.000.000 € |\n| Luxemburgo | 30 | 2.100.000 € |\n| Fráncfort | 20 | 1.600.000 € |\n\n*¿Cuál es el salario medio por empleado en la oficina de Luxemburgo?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "€60,000",
-          "es": "€60,000"
+          "es": "60.000 €"
         },
         "isCorrect": false
       },
@@ -8704,19 +8704,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "€70,000",
-          "es": "€70,000"
+          "es": "70.000 €"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Average salary in Luxembourg = €2,100,000 ÷ 30 = €70,000.",
-          "es": "Salario medio en Luxemburgo = €2,100,000 ÷ 30 = €70,000."
+          "es": "Salario medio en Luxemburgo = 2.100.000 € ÷ 30 = 70.000 €."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "€75,000",
-          "es": "€75,000"
+          "es": "75.000 €"
         },
         "isCorrect": false
       },
@@ -8724,7 +8724,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "€80,000",
-          "es": "€80,000"
+          "es": "80.000 €"
         },
         "isCorrect": false
       }
@@ -8746,7 +8746,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "€60,000",
-          "es": "€60,000"
+          "es": "60.000 €"
         },
         "isCorrect": false
       },
@@ -8754,7 +8754,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "€64,000",
-          "es": "€64,000"
+          "es": "64.000 €"
         },
         "isCorrect": false
       },
@@ -8762,19 +8762,19 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "€67,000",
-          "es": "€67,000"
+          "es": "67.000 €"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Combined average salary = total salary cost ÷ total headcount = (3,000,000 + 2,100,000 + 1,600,000) ÷ (50 + 30 + 20) = 6,700,000 ÷ 100 = €67,000. (Option D, €70,000, is the simple, unweighted average of the three offices' individual per-employee rates — €60,000, €70,000 and €80,000 — which ignores that Brussels has far more staff than Frankfurt and so should count for more in the overall average.)",
-          "es": "Salario medio conjunto = coste salarial total ÷ plantilla total = (3,000,000 + 2,100,000 + 1,600,000) ÷ (50 + 30 + 20) = 6,700,000 ÷ 100 = €67,000. (La opción D, €70,000, es la media simple, sin ponderar, de los salarios por empleado de las tres oficinas — €60,000, €70,000 y €80,000 —, que ignora que Bruselas tiene mucho más personal que Fráncfort y, por tanto, debería pesar más en la media global.)"
+          "es": "Salario medio conjunto = coste salarial total ÷ plantilla total = (3.000.000 + 2.100.000 + 1.600.000) ÷ (50 + 30 + 20) = 6.700.000 ÷ 100 = 67.000 €. (La opción D, 70.000 €, es la media simple, sin ponderar, de los salarios por empleado de las tres oficinas — 60.000 €, 70.000 € y 80.000 € —, que ignora que Bruselas tiene mucho más personal que Fráncfort y, por tanto, debería pesar más en la media global.)"
         }
       },
       {
         "id": "D",
         "text": {
           "en": "€70,000",
-          "es": "€70,000"
+          "es": "70.000 €"
         },
         "isCorrect": false
       }
@@ -8804,12 +8804,12 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "266.2",
-          "es": "266.2"
+          "es": "266,2"
         },
         "isCorrect": true,
         "explanation": {
           "en": "The growth rate is constant at 10% in both intervals: 220 ÷ 200 = 1.10, and 242 ÷ 220 = 1.10. Applying the same confirmed 10% rate for 2026: 242 × 1.10 = 266.2. (This extrapolation is legitimate — unlike Question 19 — because the constant rate is demonstrated across two consecutive intervals in the data itself, not merely assumed.)",
-          "es": "La tasa de crecimiento es constante, del 10%, en ambos intervalos: 220 ÷ 200 = 1.10, y 242 ÷ 220 = 1.10. Aplicando esa misma tasa confirmada del 10% para 2026: 242 × 1.10 = 266.2. (Esta extrapolación es legítima — a diferencia de la pregunta 19 — porque la tasa constante queda demostrada en dos intervalos consecutivos dentro de los propios datos, no simplemente asumida.)"
+          "es": "La tasa de crecimiento es constante, del 10 %, en ambos intervalos: 220 ÷ 200 = 1,10, y 242 ÷ 220 = 1,10. Aplicando esa misma tasa confirmada del 10 % para 2026: 242 × 1,10 = 266,2. (Esta extrapolación es legítima — a diferencia de la pregunta 19 — porque la tasa constante queda demostrada en dos intervalos consecutivos dentro de los propios datos, no simplemente asumida.)"
         }
       },
       {
@@ -8839,7 +8839,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Graduate numbers and employment rates within six months of graduation, for 2025, are shown below.\n\n| Field | Graduates | Employed within 6 months |\n|---|---|---|\n| Engineering | 1,000 | 90% |\n| Law | 200 | 70% |\n| Medicine | 200 | 95% |\n\n*How many Engineering graduates were employed within six months?*",
-      "es": "El número de titulados y las tasas de empleo a los seis meses de graduarse, para 2025, se muestran a continuación.\n\n| Ámbito | Titulados | Empleados a los 6 meses |\n|---|---|---|\n| Ingeniería | 1,000 | 90% |\n| Derecho | 200 | 70% |\n| Medicina | 200 | 95% |\n\n*¿Cuántos titulados en Ingeniería estaban empleados a los seis meses?*"
+      "es": "El número de titulados y las tasas de empleo a los seis meses de graduarse, para 2025, se muestran a continuación.\n\n| Ámbito | Titulados | Empleados a los 6 meses |\n|---|---|---|\n| Ingeniería | 1.000 | 90 % |\n| Derecho | 200 | 70 % |\n| Medicina | 200 | 95 % |\n\n*¿Cuántos titulados en Ingeniería estaban empleados a los seis meses?*"
     },
     "options": [
       {
@@ -8851,7 +8851,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "1,000 × 90% = 1,000 × 0.90 = 900 graduates. (Option B, 950, comes from wrongly applying Medicine's 95% rate to the Engineering cohort; option D, 1,260, comes from applying the 90% rate to the total number of graduates across all three fields, 1,400, instead of to Engineering alone.)",
-          "es": "1,000 × 90% = 1,000 × 0.90 = 900 titulados. (La opción B, 950, resulta de aplicar erróneamente la tasa del 95% de Medicina al grupo de Ingeniería; la opción D, 1,260, resulta de aplicar la tasa del 90% al número total de titulados de los tres ámbitos, 1,400, en lugar de aplicarla solo a Ingeniería.)"
+          "es": "1.000 × 90 % = 1.000 × 0,90 = 900 titulados. (La opción B, 950, resulta de aplicar erróneamente la tasa del 95 % de Medicina al grupo de Ingeniería; la opción D, 1.260, resulta de aplicar la tasa del 90 % al número total de titulados de los tres ámbitos, 1.400, en lugar de aplicarla solo a Ingeniería.)"
         }
       },
       {
@@ -8866,7 +8866,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "1,000",
-          "es": "1,000"
+          "es": "1.000"
         },
         "isCorrect": false
       },
@@ -8874,7 +8874,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "1,260",
-          "es": "1,260"
+          "es": "1.260"
         },
         "isCorrect": false
       }
@@ -8896,7 +8896,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "82.0%",
-          "es": "82.0%"
+          "es": "82,0 %"
         },
         "isCorrect": false
       },
@@ -8904,7 +8904,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "85.0%",
-          "es": "85.0%"
+          "es": "85,0 %"
         },
         "isCorrect": false
       },
@@ -8912,7 +8912,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "86.4%",
-          "es": "86.4%"
+          "es": "86,4 %"
         },
         "isCorrect": false
       },
@@ -8920,12 +8920,12 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "87.9%",
-          "es": "87.9%"
+          "es": "87,9 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "Number employed: Engineering 1,000×0.90 = 900; Law 200×0.70 = 140; Medicine 200×0.95 = 190. Total employed = 900+140+190 = 1,230. Total graduates = 1,000+200+200 = 1,400. Overall rate = 1,230 ÷ 1,400 = 0.879 = 87.9%. (Option B, 85.0%, is the simple average of the three percentage rates — (90+70+95)÷3 — which wrongly treats each field as equally sized when Engineering in fact accounts for most of the graduates and should be weighted accordingly.)",
-          "es": "Número de empleados: Ingeniería 1,000×0.90 = 900; Derecho 200×0.70 = 140; Medicina 200×0.95 = 190. Total empleados = 900+140+190 = 1,230. Total titulados = 1,000+200+200 = 1,400. Tasa global = 1,230 ÷ 1,400 = 0.879 = 87.9%. (La opción B, 85.0%, es la media simple de las tres tasas porcentuales — (90+70+95)÷3 —, que trata erróneamente cada ámbito como si tuviera el mismo tamaño, cuando en realidad Ingeniería concentra la mayoría de los titulados y debería ponderarse en consecuencia.)"
+          "es": "Número de empleados: Ingeniería 1.000×0,90 = 900; Derecho 200×0,70 = 140; Medicina 200×0,95 = 190. Total empleados = 900+140+190 = 1.230. Total titulados = 1.000+200+200 = 1.400. Tasa global = 1.230 ÷ 1.400 = 0,879 = 87,9 %. (La opción B, 85,0 %, es la media simple de las tres tasas porcentuales — (90+70+95)÷3 —, que trata erróneamente cada ámbito como si tuviera el mismo tamaño, cuando en realidad Ingeniería concentra la mayoría de los titulados y debería ponderarse en consecuencia.)"
         }
       }
     ],
@@ -8939,7 +8939,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "An emissions reduction plan sets the following sector targets, measured against a 2015 baseline.\n\n| Sector | 2015 emissions (Mt CO₂) | 2025 emissions (Mt CO₂) | Target reduction by 2030 (from 2015) |\n|---|---|---|---|\n| Energy | 400 | 320 | −40% |\n| Transport | 250 | 240 | −30% |\n| Industry | 300 | 270 | −35% |\n\n*What emissions level (in Mt CO₂) must the Energy sector reach by 2030 to meet its target?*",
-      "es": "Un plan de reducción de emisiones establece los siguientes objetivos sectoriales, medidos frente a un año base de 2015.\n\n| Sector | Emisiones en 2015 (Mt CO₂) | Emisiones en 2025 (Mt CO₂) | Objetivo de reducción para 2030 (respecto a 2015) |\n|---|---|---|---|\n| Energía | 400 | 320 | −40% |\n| Transporte | 250 | 240 | −30% |\n| Industria | 300 | 270 | −35% |\n\n*¿Qué nivel de emisiones (en Mt CO₂) debe alcanzar el sector Energía en 2030 para cumplir su objetivo?*"
+      "es": "Un plan de reducción de emisiones establece los siguientes objetivos sectoriales, medidos frente a un año base de 2015.\n\n| Sector | Emisiones en 2015 (Mt CO₂) | Emisiones en 2025 (Mt CO₂) | Objetivo de reducción para 2030 (respecto a 2015) |\n|---|---|---|---|\n| Energía | 400 | 320 | −40 % |\n| Transporte | 250 | 240 | −30 % |\n| Industria | 300 | 270 | −35 % |\n\n*¿Qué nivel de emisiones (en Mt CO₂) debe alcanzar el sector Energía en 2030 para cumplir su objetivo?*"
     },
     "options": [
       {
@@ -8967,7 +8967,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": true,
         "explanation": {
           "en": "Target level = 2015 baseline × (1 − 40%) = 400 × 0.60 = 240 Mt CO₂.",
-          "es": "Nivel objetivo = línea base de 2015 × (1 − 40%) = 400 × 0.60 = 240 Mt CO₂."
+          "es": "Nivel objetivo = línea base de 2015 × (1 − 40 %) = 400 × 0,60 = 240 Mt CO₂."
         }
       },
       {
@@ -8996,19 +8996,19 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "4%",
-          "es": "4%"
+          "es": "4 %"
         },
         "isCorrect": true,
         "explanation": {
           "en": "(250 − 240) ÷ 250 = 10 ÷ 250 = 0.04 = 4%. (Option C, 30%, and option D, 40%, are the *target* reduction percentages for Transport and Energy respectively — not the actual change that occurred between 2015 and 2025.)",
-          "es": "(250 − 240) ÷ 250 = 10 ÷ 250 = 0.04 = 4%. (Las opciones C, 30%, y D, 40%, son los porcentajes de reducción *objetivo* para Transporte y Energía respectivamente — no la variación real que se produjo entre 2015 y 2025.)"
+          "es": "(250 − 240) ÷ 250 = 10 ÷ 250 = 0,04 = 4 %. (Las opciones C, 30 %, y D, 40 %, son los porcentajes de reducción *objetivo* para Transporte y Energía respectivamente — no la variación real que se produjo entre 2015 y 2025.)"
         }
       },
       {
         "id": "B",
         "text": {
           "en": "10%",
-          "es": "10%"
+          "es": "10 %"
         },
         "isCorrect": false
       },
@@ -9016,7 +9016,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "30%",
-          "es": "30%"
+          "es": "30 %"
         },
         "isCorrect": false
       },
@@ -9024,7 +9024,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "40%",
-          "es": "40%"
+          "es": "40 %"
         },
         "isCorrect": false
       }
@@ -9039,14 +9039,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A household's purchases of three goods in 2024 and 2025 are shown below.\n\n| Good | 2024 price | 2024 quantity | 2025 price | 2025 quantity |\n|---|---|---|---|---|\n| Bread | €2.00 | 100 | €2.20 | 100 |\n| Milk | €1.00 | 150 | €1.10 | 140 |\n| Cheese | €8.00 | 20 | €8.80 | 25 |\n\n*What was the household's total spending on this basket of goods in 2025?*",
-      "es": "Las compras de tres bienes de un hogar en 2024 y 2025 se muestran a continuación.\n\n| Bien | Precio en 2024 | Cantidad en 2024 | Precio en 2025 | Cantidad en 2025 |\n|---|---|---|---|---|\n| Pan | €2.00 | 100 | €2.20 | 100 |\n| Leche | €1.00 | 150 | €1.10 | 140 |\n| Queso | €8.00 | 20 | €8.80 | 25 |\n\n*¿Cuál fue el gasto total del hogar en esta cesta de bienes en 2025?*"
+      "es": "Las compras de tres bienes de un hogar en 2024 y 2025 se muestran a continuación.\n\n| Bien | Precio en 2024 | Cantidad en 2024 | Precio en 2025 | Cantidad en 2025 |\n|---|---|---|---|---|\n| Pan | 2,00 € | 100 | 2,20 € | 100 |\n| Leche | 1,00 € | 150 | 1,10 € | 140 |\n| Queso | 8,00 € | 20 | 8,80 € | 25 |\n\n*¿Cuál fue el gasto total del hogar en esta cesta de bienes en 2025?*"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "€564",
-          "es": "€564"
+          "es": "564 €"
         },
         "isCorrect": false
       },
@@ -9054,19 +9054,19 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "€594",
-          "es": "€594"
+          "es": "594 €"
         },
         "isCorrect": true,
         "explanation": {
           "en": "2025 spending: Bread 100×€2.20 = €220; Milk 140×€1.10 = €154; Cheese 25×€8.80 = €220. Total = 220+154+220 = €594.",
-          "es": "Gasto en 2025: Pan 100×€2.20 = €220; Leche 140×€1.10 = €154; Queso 25×€8.80 = €220. Total = 220+154+220 = €594."
+          "es": "Gasto en 2025: Pan 100×2,20 € = 220 €; Leche 140×1,10 € = 154 €; Queso 25×8,80 € = 220 €. Total = 220+154+220 = 594 €."
         }
       },
       {
         "id": "C",
         "text": {
           "en": "€604",
-          "es": "€604"
+          "es": "604 €"
         },
         "isCorrect": false
       },
@@ -9074,7 +9074,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "€614",
-          "es": "€614"
+          "es": "614 €"
         },
         "isCorrect": false
       }
@@ -9657,7 +9657,7 @@ export const THEORY_DOCS: TheoryDoc[] = [
     },
     "summaryMd": {
       "en": "Numerical reasoning is the second pillar of the EPSO reasoning battery, alongside Verbal and Abstract Reasoning. Where verbal reasoning tests whether you can extract logically supported conclusions from a passage of text, numerical reasoning tests whether you can do the same thing with a table or chart of figures. The underlying skill EPSO is probing is identical in spirit: can you work only with the information actually given to you, resist the pull of assumptions and \"common sense\" shortcuts, and arrive at one demonstrably correct answer under time pressure? The material is different, but the discipline required is the same one you built in the Verbal Reasoning chapter.\n\n## What the test actually measures\n\nFor the AD7 ICT competition (EPSO/AD/429/26), Numerical Reasoning consists of **10 questions to be answered in 20 minutes**. It is scored on a scale of **0 to 10**, and — importantly — it is **not passed or failed on its own**: your Numerical Reasoning score is added to your Abstract Reasoning score, and the two together must clear a **combined pass mark of 10 out of 20**. This means a weak numerical result can still be compensated by a strong abstract-reasoning result, and vice versa, but you should not rely on that cushion — treat both tests as if each had to be passed independently.\n\nEPSO's own description of the test is: *\"assesses your ability to think logically and interpret numerical data.\"* Notice what this does **not** say: it does not say \"assesses your arithmetic\" or \"assesses your knowledge of statistics.\" The emphasis is on interpretation and logic applied to numbers, not on mathematical sophistication. Every question you will face uses only arithmetic you learned at school — addition, subtraction, multiplication, division, percentages, simple ratios. What makes the test hard is reading the data correctly and avoiding the traps built into the answer options, not the underlying maths.\n\n**A note on calculators.** Correction based on first-hand EPSO CBT preparation material (Ya Semos Europeos, the Spanish EPSO-prep community referenced in `Referencias.txt`): the test platform *does* provide an on-screen calculator, and you get up to 15 minutes before the timed test begins to familiarise yourself with it — use every minute of that window, since fumbling with an unfamiliar on-screen keypad under time pressure costs real points. The trap is not the absence of a calculator; it is candidates who reach for it too early. As the Spanish manual puts it bluntly: *\"la calculadora es tu enemiga\"* if you turn to it before you have actually worked out what to calculate — it is your friend only once you have correctly identified the data and the path to the answer, and you are simply executing the final arithmetic. Estimation and simplification remain essential regardless: they are how you plan the calculation, sanity-check the calculator's output against a ballpark figure (catching mis-keyed entries), and pre-filter the answer options before you touch a single key. The last section of this chapter is devoted to exactly that discipline.\n\n**A note on item format.** This chapter now contains two practice sources, and they intentionally use different option counts — don't be thrown by the inconsistency. The primary practice bank (Chapter 3 below) is a **faithful transcription of a real, professionally published EPSO-style numerical reasoning book** (\"Numerical Reasoning MCQ for European institution competitions\", Hetru & Bizeur, ORSEU), which uses **five lettered options (A–E)** throughout, including \"impossible to tell\" as a routine fifth option — this is the authentic format and the one you should calibrate against. The supplementary AI-generated mock tests further down (clearly labelled) were drafted before this real book was located and use four options (A–D); they are still useful for extra reps, but treat the five-option ORSEU-style format as the one that matches the real exam. Either way, questions sometimes include an \"impossible to tell\" / \"Cannot say\" option, for the same reason that option exists in Verbal Reasoning: EPSO numerical items can give you a table from which a specific figure genuinely cannot be computed, and recognising *that* — rather than guessing — is part of the skill being assessed.\n\n## A sample item\n\nBefore diving into theory, look at one worked example. This is representative of the kind of item, and level of difficulty, you can expect.\n\n> **Visa applications processed by an EU consulate, by month, 2025**\n>\n> | Month | Applications processed |\n> |---|---|\n> | January | 800 |\n> | February | 850 |\n> | March | 900 |\n> | April | 1,000 |\n>\n> *What was the percentage increase in the number of applications processed between February and April?*\n>\n> A. 15.0%\n> B. 17.6%\n> C. 20.0%\n> D. 25.0%\n\nLet's work through each option, because the reasoning matters more than the answer itself.\n\n- **A. 15.0%** — This is what you get if you take the increase (1,000 − 850 = 150) and divide it by the *wrong* base, April's figure of 1,000, instead of February's: 150 ÷ 1,000 = 15.0%. This is the single most common numerical-reasoning error: using the later, larger figure as the denominator instead of the earlier, starting figure. Percentage change is always calculated relative to the *starting* point.\n- **B. 17.6%** — Correct. The increase is 1,000 − 850 = 150. Relative to the February base: 150 ÷ 850 = 0.1765 = 17.6%.\n- **C. 20.0%** — A plausible-looking round number with no real basis in the data — the kind of option that only tempts a candidate who is estimating without actually calculating.\n- **D. 25.0%** — This is what you get if you read the wrong pair of months: comparing January to April instead of February to April gives (1,000 − 800) ÷ 800 = 25.0%. This tests whether you read the question — \"between February and April\" — carefully, rather than defaulting to the first and last rows of the table.\n\nThe correct answer is **B**. Four options, three of them built from genuine, specific misreadings of the data — this is exactly the architecture you will meet forty times in the practice section below. Let's now unpack, systematically, how EPSO builds items like this one and how you should approach them.\n\n## How EPSO builds numerical reasoning items\n\nEvery numerical reasoning item starts from a small, self-contained data set — usually a table, sometimes a description of a chart rendered as a table for text purposes — followed by one question and four answer options. The data is deliberately compact: EPSO is not testing whether you can navigate a large spreadsheet, but whether you can extract and manipulate a handful of figures correctly and quickly. Typical data domains include population and demographic statistics, trade and economic figures, budget and expenditure breakdowns, EU institution or agency statistics (staff numbers, visitor figures, application volumes), and generic business data (sales, costs, headcounts). The topic is window-dressing; the underlying operations are always drawn from a fairly small toolkit. Knowing that toolkit in advance is one of the biggest advantages you can give yourself.\n\n**Percentages.** The bread and butter of the test. You will be asked for a percentage of a total (what share of the whole does this row represent?), a percentage increase or decrease between two figures, or to reconstruct a value from a percentage (if this is 20% of the total, what is the total?). The one rule that matters more than any other: a percentage change is always computed relative to the *starting* value, never the ending value, and never some other row you happen to be looking at.\n\n**Ratios and proportions.** You may be asked to identify a ratio between two figures (e.g. \"in which department is the ratio of male to female staff exactly 3:1?\") or to scale a quantity up or down proportionally. Ratios simplify: always reduce them to their lowest terms before comparing, since 45:15 is far easier to recognise as 3:1 than to compare in its unreduced form.\n\n**Rates of change.** Growth or decline expressed per period — per year, per quarter, per month. These questions often build on a percentage-change calculation but embed it in a time series, asking you to compare the *rate* of change across two different periods or two different categories, not just a single change.\n\n**Averages.** Both simple (unweighted) averages and weighted averages appear. A simple average treats every figure in a list equally; a weighted average accounts for the fact that some figures represent more \"mass\" than others (more employees, more respondents, more transactions). Confusing the two is one of EPSO's favourite traps, discussed in detail below.\n\n**Extrapolation and interpolation.** Interpolation means estimating a value that lies *between* two data points you already have — this is generally safe, provided the underlying trend is reasonably steady. Extrapolation means projecting a value *beyond* the range of the data you have been given — into a future year, for instance. This is far riskier and is often the basis of a deliberate trap, discussed below.\n\n**Unit conversion.** Currency conversion, converting between thousands and millions, between percentages and percentage points, between totals and per-capita or per-unit figures. These are rarely difficult in themselves, but a single missed conversion invalidates an otherwise correct calculation, so they are a favourite way of building a distractor.\n\n## The traps EPSO uses\n\nJust as the Verbal Reasoning chapter catalogued the recurring tricks behind \"true,\" \"false\" and \"cannot say\" statements, numerical reasoning items are built around a small, recurring set of traps. Once you can name them, you will start spotting them in real time.\n\n### Percentage points versus percentages\n\nThis is the single most important distinction in the entire test, and EPSO returns to it constantly. If a rate moves from 7.0% to 9.0%, it has increased by **2 percentage points** — a statement about the simple arithmetic difference between the two figures. But the **percentage (relative) increase** is (9.0 − 7.0) ÷ 7.0 = 28.6%. Both statements are true, but they answer different questions, and an item will frequently offer both figures as answer options to see which one you actually calculated. Always check exactly which of the two the question is asking for — the word \"points\" is the giveaway that you should simply subtract, while \"percentage increase\" or \"percentage change\" (without \"points\") means you should divide the difference by the original value.\n\n### Cumulative versus non-cumulative figures\n\nSome tables give you *running totals* — e.g. participants registered \"as of\" the end of each month — rather than the number of new entries in each period. If a table shows 450 cumulative registrations by the end of February and 800 by the end of March, the number of **new** registrations *in* March is 800 − 450 = 350, not 800. EPSO exploits this by including the raw cumulative figure as a tempting (but wrong) answer option.\n\n### Reading the wrong axis, column or year\n\nThe simplest possible trap, and still one of the most effective under time pressure: the table has several rows and columns, and the wrong-answer options are simply the results of reading the correct operation against the wrong row, the wrong column, or the wrong year. This is precisely why skimming the question *before* the data (see the suggested method below) matters — it tells you exactly which cell of the table you actually need.\n\n### Unwarranted extrapolation beyond the data\n\nIf a table shows growth for 2023, 2024 and 2025, you can sometimes legitimately estimate 2026 — but only if the question tells you to assume the trend continues, or if the data itself demonstrates a genuinely constant rate across more than one interval. Projecting five years into the future from three data points, or assuming a trend continues when the question gives you no basis for that assumption, is not calculation — it is speculation, and EPSO items are designed to catch candidates who do it anyway. Compare this deliberately with legitimate interpolation or a properly instructed projection: the practice items below include examples of both the legitimate and illegitimate versions side by side so you can feel the difference.\n\n### \"Cannot say\" — when the data simply isn't there\n\nExactly as in Verbal Reasoning, \"cannot say\" is not a synonym for \"I don't know\" or \"this is hard\" — it is the objectively correct answer whenever the table genuinely does not contain the information needed to compute what is being asked, no matter how tempting it is to estimate or assume. A table that gives you percentages but never states the underlying total number of respondents cannot tell you an absolute count — only a further percentage or ratio derived from the same base. A table covering three years cannot, on its own, tell you a value from a year outside that range unless you are explicitly told the trend is constant. If you find yourself reaching for outside knowledge or an assumption not stated in the table to answer a question, stop: the answer is very likely \"cannot say.\"\n\n## A suggested method\n\n1. **Read the question before the data.** Numerical items reward a targeted read far more than verbal items do, because a table typically contains more figures than any single question needs. Knowing exactly what you are looking for — a specific cell, a specific comparison, a specific operation — before you scan the table saves real time.\n2. **Extract only the numbers you need.** Resist the urge to \"understand\" the whole table. Identify the two or three cells relevant to the question, note them down if useful, and ignore the rest.\n3. **Estimate before you calculate exactly.** A rough mental estimate (see the next section) will usually let you eliminate two of the four options immediately, narrowing a precise calculation to a choice between two plausible figures — much faster than computing all four options from scratch.\n4. **Double-check your units.** Is the table in thousands or millions? Percent or percentage points? The local currency or euros? A perfect calculation performed on the wrong unit produces a wrong — but entirely plausible-looking — answer, which is exactly why unit traps are so effective.\n5. **Confirm you answered the question actually asked.** Re-read the question one final time before selecting an option: it is common to correctly calculate an intermediate figure (say, a percentage point difference) and then select the option matching the *other* quantity (the relative percentage) purely out of habit.\n\n## Estimation, the winning method, and other EPSO-specific tips\n\nEven with an on-screen calculator available, mental estimation is not an optional shortcut — it is what lets you plan the calculation, choose the right numbers to key in, and sanity-check the result, all in far less time than calculating first and thinking later. A few techniques are worth deliberately practising until they become automatic:\n\n- **Round to convenient numbers, then correct.** To estimate 850 × 1.176, round to 850 × 1.2 ≈ 1,020, then adjust down slightly. This is almost always fast enough to eliminate wrong options even before your exact calculation is finished.\n- **Know your benchmark percentages.** 10% of a number is found by moving the decimal point one place; 5% is half of that; 1% is a further tenth; 25% is a quarter (divide by 4); 50% is a half; 20% is a fifth. Any percentage can be built quickly by combining these benchmarks — e.g. 35% = 25% + 10%, or 17.5% = 10% + 5% + 2.5%.\n- **Turn awkward percentages into fractions.** 33.3% is almost exactly one third; 12.5% is one eighth; 16.7% is one sixth; 37.5% is three eighths. Recognising these equivalences is often faster than long division.\n- **Simplify ratios immediately.** Reduce fractions like 45:15 to 3:1, or 24:16 to 3:2, before comparing them — comparing simplified ratios is far less error-prone than comparing raw figures.\n- **Compare two fractions without fully dividing either one.** To tell which of A/B and C/D is bigger, cross-multiply instead: compare A×D against B×C directly. Whichever product is larger tells you which fraction is larger, without ever computing a decimal. This is faster and, unlike a rough decimal estimate, exact.\n- **Watch for constructed rates (\"density\" questions).** A recurring EPSO trap is a question that doesn't hand you a ratio directly, but asks you to build one from two figures with different units — grams of salt per litre of water, inhabitants per hectare, hospital beds per 100,000 people, EU officials per million citizens. Before dividing anything, write down explicitly what's on top and what's on the bottom of the rate you're building; it is very easy to invert it under time pressure and land on a \"plausible\" wrong option built for exactly that mistake.\n- **Know your divisibility rules** — they let you rule out options instantly instead of doing long division: a number is divisible by 2 if it ends in 0/2/4/6/8; by 5 if it ends in 0 or 5; by 10 if it ends in 0; by 3 if its digit sum is divisible by 3; by 9 if its digit sum is divisible by 9.\n- **Estimate first, then verify only the top two candidates.** Once your rough estimate rules out most of the options, invest your remaining time in a precise calculation to distinguish only between the two or three survivors.\n\n**A winning method, question by question** (adapted from Ya Semos Europeos' own step-by-step approach, which is worth internalising as a fixed habit):\n\n1. Read the question itself before diving into the table — know what you're looking for before you start looking.\n2. Reason about what is actually being asked. Have you correctly identified the quantity the question wants? Re-read it if there's any doubt.\n3. Identify which data you actually need, and check the units carefully — a frequent trap is giving you data in one unit (or currency) while the question expects the answer in another.\n4. Plan the calculation path before touching any numbers: which operations, in which order, and can you skip a step by working with the numbers more cleverly?\n5. Calculate — this is the point at which you actually use the on-screen calculator, not before.\n6. Check that your result matches one of the given options. If it doesn't, the fault is either in your reasoning (step 2–4) or your calculation (step 5) — trace back through both rather than guessing.\n7. **Enforce a hard per-question time budget.** If you've spent something like 90 seconds and still haven't matched an option, mark your best guess, flag the question, and move on — you can return to it later if time allows, but one stubborn question is not worth sacrificing three easier ones later in the test.\n\n- **Practise on paper, under a clock.** The next chapter transcribes a full real practice book in twelve ten-question tests (120 questions) so you can rehearse under genuine exam-style items; a supplementary bank of 40 AI-generated questions follows afterward for extra reps. Time yourself at 20 minutes per block of 10, matching the real exam's pace, under the same conditions you will face on exam day.\n\nWith the theory in hand, it is time to put it into practice.",
-      "es": "El razonamiento numérico es el segundo pilar de la batería de razonamiento de EPSO, junto con el razonamiento verbal y el abstracto. Mientras que el razonamiento verbal comprueba si eres capaz de extraer conclusiones lógicamente respaldadas a partir de un pasaje de texto, el razonamiento numérico comprueba si eres capaz de hacer lo mismo con una tabla o un gráfico de cifras. La destreza subyacente que EPSO explora es idéntica en esencia: ¿eres capaz de trabajar únicamente con la información que se te proporciona, resistir la tentación de hacer suposiciones y atajos de \"sentido común\", y llegar a una única respuesta demostrablemente correcta bajo presión de tiempo? El material es distinto, pero la disciplina exigida es la misma que desarrollaste en el capítulo de Razonamiento verbal.\n\n## Qué mide realmente la prueba\n\nPara el concurso AD7 ICT (EPSO/AD/429/26), el Razonamiento numérico consta de **10 preguntas que deben responderse en 20 minutos**. Se puntúa en una escala de **0 a 10** y — esto es importante — **no se aprueba ni se suspende de forma independiente**: tu puntuación de Razonamiento numérico se suma a la de Razonamiento abstracto, y ambas juntas deben superar una **nota de corte combinada de 10 sobre 20**. Esto significa que un resultado flojo en numérico puede compensarse con un buen resultado en abstracto, y viceversa, pero no conviene confiar en ese colchón: trata ambas pruebas como si cada una tuviera que aprobarse por separado.\n\nLa propia definición de EPSO de esta prueba es: *\"evalúa tu capacidad de pensar de forma lógica e interpretar datos numéricos.\"* Fíjate en lo que **no** dice: no dice \"evalúa tu aritmética\" ni \"evalúa tus conocimientos de estadística\". El énfasis está en la interpretación y la lógica aplicadas a los números, no en la sofisticación matemática. Todas las preguntas que vas a encontrar utilizan únicamente la aritmética que aprendiste en el colegio: sumas, restas, multiplicaciones, divisiones, porcentajes, proporciones simples. Lo que hace difícil la prueba es leer correctamente los datos y evitar las trampas incorporadas en las opciones de respuesta, no las matemáticas en sí.\n\n**Una nota sobre las calculadoras.** Corrección basada en material de preparación de primera mano para el CBT de EPSO (Ya Semos Europeos, la comunidad hispanohablante de preparación EPSO citada en `Referencias.txt`): la plataforma de examen *sí* proporciona una calculadora en pantalla, y dispones de hasta 15 minutos antes de que comience la prueba cronometrada para familiarizarte con ella — aprovecha cada minuto de ese margen, ya que pelearte con un teclado en pantalla desconocido bajo presión de tiempo cuesta puntos reales. La trampa no es la ausencia de calculadora; son los candidatos que recurren a ella demasiado pronto. Como dice sin rodeos el manual español: *\"la calculadora es tu enemiga\"* si acudes a ella antes de haber averiguado realmente qué hay que calcular — es tu amiga solo una vez que has identificado correctamente los datos y el camino hacia la respuesta, y simplemente estás ejecutando la aritmética final. La estimación y la simplificación siguen siendo imprescindibles en cualquier caso: son las que te permiten planificar el cálculo, comprobar que el resultado de la calculadora tiene sentido frente a una cifra aproximada (detectando errores al teclear) y filtrar de antemano las opciones de respuesta antes de tocar una sola tecla. El último apartado de este capítulo está dedicado precisamente a esa disciplina.\n\n**Una nota sobre el formato de los ítems.** Este capítulo contiene ahora dos fuentes de práctica, y utilizan deliberadamente un número distinto de opciones — no te desconcierte la inconsistencia. El banco de práctica principal (Capítulo 3, más adelante) es una **transcripción fiel de un libro real, publicado profesionalmente, de razonamiento numérico al estilo EPSO** (\"Numerical Reasoning MCQ for European institution competitions\", Hetru & Bizeur, ORSEU), que utiliza en todo momento **cinco opciones con letra (A-E)**, incluyendo \"imposible saberlo\" como quinta opción habitual — este es el formato auténtico y el que debes tomar como referencia. Los tests simulados adicionales generados por IA que aparecen más adelante (claramente identificados como tales) se redactaron antes de localizar este libro real y utilizan cuatro opciones (A-D); siguen siendo útiles para repeticiones adicionales, pero considera el formato de cinco opciones al estilo ORSEU como el que coincide con el examen real. En cualquier caso, las preguntas a veces incluyen una opción de \"imposible saberlo\" / \"No se puede determinar\", por la misma razón que esa opción existe en Razonamiento verbal: los ítems numéricos de EPSO pueden darte una tabla a partir de la cual una cifra concreta realmente no se puede calcular, y reconocer *eso* — en lugar de adivinar — forma parte de la destreza que se evalúa.\n\n## Un ejemplo resuelto\n\nAntes de entrar en la teoría, observa un ejemplo resuelto. Es representativo del tipo de ítem, y del nivel de dificultad, que puedes esperar.\n\n> **Visa applications processed by an EU consulate, by month, 2025**\n>\n> | Month | Applications processed |\n> |---|---|\n> | January | 800 |\n> | February | 850 |\n> | March | 900 |\n> | April | 1,000 |\n>\n> *What was the percentage increase in the number of applications processed between February and April?*\n>\n> A. 15.0%\n> B. 17.6%\n> C. 20.0%\n> D. 25.0%\n\nRepasemos cada opción, porque el razonamiento importa más que la respuesta en sí misma.\n\n- **A. 15.0%** — Esto es lo que se obtiene si se toma el incremento (1,000 − 850 = 150) y se divide por la base *equivocada*, la cifra de abril de 1,000, en lugar de la de febrero: 150 ÷ 1,000 = 15.0%. Este es, con diferencia, el error más común en razonamiento numérico: usar como denominador la cifra posterior y mayor en lugar de la cifra inicial de partida. La variación porcentual siempre se calcula en relación con el punto de *partida*.\n- **B. 17.6%** — Correcta. El incremento es 1,000 − 850 = 150. En relación con la base de febrero: 150 ÷ 850 = 0.1765 = 17.6%.\n- **C. 20.0%** — Un número redondo de aspecto plausible pero sin base real en los datos — el tipo de opción que solo tienta a un candidato que estima sin llegar a calcular.\n- **D. 25.0%** — Esto es lo que se obtiene si se lee el par de meses equivocado: comparar enero con abril en lugar de febrero con abril da (1,000 − 800) ÷ 800 = 25.0%. Esto comprueba si has leído con atención la pregunta — \"between February and April\" — en lugar de recurrir por defecto a la primera y la última fila de la tabla.\n\nLa respuesta correcta es **B**. Cuatro opciones, tres de ellas construidas a partir de lecturas erróneas genuinas y específicas de los datos — esta es exactamente la arquitectura que te encontrarás cuarenta veces en la sección de práctica más adelante. Vamos ahora a desgranar, de forma sistemática, cómo construye EPSO ítems como este y cómo debes abordarlos.\n\n## Cómo construye EPSO los ítems de razonamiento numérico\n\nTodo ítem de razonamiento numérico parte de un conjunto de datos pequeño y autocontenido — normalmente una tabla, a veces la descripción de un gráfico convertida en tabla a efectos del texto — seguido de una pregunta y cuatro opciones de respuesta. Los datos son deliberadamente reducidos: EPSO no está comprobando si sabes navegar por una hoja de cálculo extensa, sino si eres capaz de extraer y manejar un puñado de cifras de forma correcta y rápida. Los ámbitos de datos habituales incluyen estadísticas de población y demografía, cifras de comercio y economía, desgloses de presupuesto y gasto, estadísticas de instituciones o agencias de la UE (número de personal, cifras de visitantes, volúmenes de solicitudes) y datos empresariales genéricos (ventas, costes, plantillas). El tema es solo decorado; las operaciones subyacentes proceden siempre de un repertorio bastante reducido. Conocer ese repertorio de antemano es una de las mayores ventajas que puedes darte.\n\n**Porcentajes.** El pan de cada día de la prueba. Te pedirán el porcentaje de un total (¿qué parte del conjunto representa esta fila?), un incremento o descenso porcentual entre dos cifras, o reconstruir un valor a partir de un porcentaje (si esto es el 20% del total, ¿cuál es el total?). La regla que más importa, por encima de cualquier otra: una variación porcentual siempre se calcula en relación con el valor de *partida*, nunca con el valor final, y nunca con otra fila cualquiera que estés mirando en ese momento.\n\n**Proporciones y razones.** Puede que te pidan identificar una razón entre dos cifras (p. ej., \"¿en qué departamento la proporción entre personal masculino y femenino es exactamente 3:1?\") o escalar una cantidad proporcionalmente hacia arriba o hacia abajo. Las razones se simplifican: redúcelas siempre a su expresión mínima antes de compararlas, ya que 45:15 es mucho más fácil de reconocer como 3:1 que de comparar en su forma sin reducir.\n\n**Tasas de variación.** Crecimiento o descenso expresado por periodo — por año, por trimestre, por mes. Estas preguntas suelen basarse en un cálculo de variación porcentual, pero lo insertan en una serie temporal, pidiéndote comparar la *tasa* de variación entre dos periodos distintos o dos categorías distintas, no solo una variación aislada.\n\n**Medias.** Aparecen tanto medias simples (sin ponderar) como medias ponderadas. Una media simple trata por igual todas las cifras de una lista; una media ponderada tiene en cuenta que algunas cifras representan más \"peso\" que otras (más empleados, más encuestados, más transacciones). Confundir ambas es una de las trampas favoritas de EPSO, que se analiza en detalle más adelante.\n\n**Extrapolación e interpolación.** Interpolar significa estimar un valor que se sitúa *entre* dos puntos de datos que ya tienes — esto es, en general, seguro, siempre que la tendencia subyacente sea razonablemente estable. Extrapolar significa proyectar un valor *más allá* del rango de datos que se te ha proporcionado — hacia un año futuro, por ejemplo. Esto es mucho más arriesgado y suele ser la base de una trampa deliberada, que se analiza más adelante.\n\n**Conversión de unidades.** Conversión de divisas, conversión entre miles y millones, entre porcentajes y puntos porcentuales, entre totales y cifras per cápita o por unidad. Rara vez son difíciles en sí mismas, pero una sola conversión omitida invalida un cálculo por lo demás correcto, por lo que son una forma predilecta de construir un distractor.\n\n## Las trampas que utiliza EPSO\n\nIgual que el capítulo de Razonamiento verbal catalogó los trucos recurrentes detrás de los enunciados \"verdadero\", \"falso\" y \"no se puede determinar\", los ítems de razonamiento numérico se construyen en torno a un pequeño conjunto de trampas recurrentes. En cuanto sepas ponerles nombre, empezarás a detectarlas en tiempo real.\n\n### Puntos porcentuales frente a porcentajes\n\nEsta es, con diferencia, la distinción más importante de toda la prueba, y EPSO vuelve a ella constantemente. Si una tasa pasa del 7,0% al 9,0%, ha aumentado **2 puntos porcentuales** — una afirmación sobre la simple diferencia aritmética entre ambas cifras. Pero el **incremento porcentual (relativo)** es (9,0 − 7,0) ÷ 7,0 = 28,6%. Ambas afirmaciones son ciertas, pero responden a preguntas distintas, y un ítem ofrecerá con frecuencia ambas cifras como opciones de respuesta para ver cuál calculaste realmente. Comprueba siempre con exactitud cuál de las dos te está pidiendo la pregunta: la palabra \"puntos\" es la señal de que basta con restar, mientras que \"incremento porcentual\" o \"variación porcentual\" (sin \"puntos\") significa que debes dividir la diferencia entre el valor original.\n\n### Cifras acumuladas frente a cifras no acumuladas\n\nAlgunas tablas te dan *totales acumulados* — por ejemplo, participantes registrados \"a fecha de\" final de cada mes — en lugar del número de altas nuevas en cada periodo. Si una tabla muestra 450 inscripciones acumuladas a finales de febrero y 800 a finales de marzo, el número de inscripciones **nuevas** *en* marzo es 800 − 450 = 350, no 800. EPSO explota esto incluyendo la cifra acumulada bruta como una opción de respuesta tentadora (pero incorrecta).\n\n### Leer el eje, la columna o el año equivocados\n\nLa trampa más sencilla posible, y aun así una de las más efectivas bajo presión de tiempo: la tabla tiene varias filas y columnas, y las opciones incorrectas son simplemente el resultado de aplicar la operación correcta sobre la fila equivocada, la columna equivocada o el año equivocado. Precisamente por eso importa leer primero la pregunta *antes* que los datos (ver el método sugerido más abajo): te indica exactamente qué celda de la tabla necesitas de verdad.\n\n### Extrapolación injustificada más allá de los datos\n\nSi una tabla muestra el crecimiento de 2023, 2024 y 2025, a veces se puede estimar legítimamente 2026 — pero solo si la pregunta te indica que asumas que la tendencia continúa, o si los propios datos demuestran una tasa genuinamente constante a lo largo de más de un intervalo. Proyectar cinco años hacia el futuro a partir de tres puntos de datos, o asumir que una tendencia continúa cuando la pregunta no te da ninguna base para esa suposición, no es cálculo: es especulación, y los ítems de EPSO están diseñados para atrapar a los candidatos que lo hacen de todos modos. Compara esto deliberadamente con una interpolación legítima o una proyección debidamente indicada: los ítems de práctica más adelante incluyen ejemplos de ambas versiones, la legítima y la ilegítima, uno junto al otro, para que notes la diferencia.\n\n### \"No se puede determinar\": cuando el dato sencillamente no está\n\nExactamente igual que en Razonamiento verbal, \"no se puede determinar\" no es sinónimo de \"no lo sé\" o \"esto es difícil\" — es la respuesta objetivamente correcta siempre que la tabla realmente no contenga la información necesaria para calcular lo que se pregunta, por muy tentador que resulte estimar o suponer. Una tabla que te da porcentajes pero nunca indica el número total de encuestados subyacente no puede decirte una cifra absoluta — solo otro porcentaje o razón derivados de esa misma base. Una tabla que cubre tres años no puede, por sí sola, decirte un valor de un año fuera de ese rango a menos que se te indique explícitamente que la tendencia es constante. Si te encuentras recurriendo a conocimiento externo o a una suposición no indicada en la tabla para responder a una pregunta, detente: la respuesta es, con mucha probabilidad, \"no se puede determinar\".\n\n## Un método sugerido\n\n1. **Lee la pregunta antes que los datos.** Los ítems numéricos premian una lectura dirigida mucho más que los verbales, porque una tabla normalmente contiene más cifras de las que necesita cualquier pregunta concreta. Saber exactamente qué estás buscando — una celda concreta, una comparación concreta, una operación concreta — antes de escanear la tabla ahorra tiempo real.\n2. **Extrae solo los números que necesitas.** Resiste la tentación de \"entender\" toda la tabla. Identifica las dos o tres celdas relevantes para la pregunta, anótalas si te resulta útil, e ignora el resto.\n3. **Estima antes de calcular con exactitud.** Una estimación mental aproximada (ver el siguiente apartado) normalmente te permitirá eliminar de inmediato dos de las cuatro opciones, reduciendo el cálculo preciso a una elección entre dos cifras plausibles — mucho más rápido que calcular las cuatro opciones desde cero.\n4. **Verifica bien las unidades.** ¿La tabla está en miles o en millones? ¿En porcentaje o en puntos porcentuales? ¿En la moneda local o en euros? Un cálculo perfecto realizado sobre la unidad equivocada produce una respuesta incorrecta — pero de aspecto totalmente plausible —, que es precisamente por lo que las trampas de unidades son tan eficaces.\n5. **Confirma que has respondido a la pregunta realmente formulada.** Vuelve a leer la pregunta una última vez antes de seleccionar una opción: es habitual calcular correctamente una cifra intermedia (por ejemplo, una diferencia en puntos porcentuales) y después seleccionar, por pura costumbre, la opción que corresponde a la *otra* magnitud (el porcentaje relativo).\n\n## Estimación, el método ganador y otros consejos específicos de EPSO\n\nAunque dispongas de una calculadora en pantalla, la estimación mental no es un atajo opcional: es lo que te permite planificar el cálculo, elegir los números correctos que introducir y comprobar que el resultado tiene sentido, todo ello en mucho menos tiempo que calcular primero y pensar después. Merece la pena practicar deliberadamente algunas técnicas hasta que se vuelvan automáticas:\n\n- **Redondea a números convenientes y luego corrige.** Para estimar 850 × 1,176, redondea a 850 × 1,2 ≈ 1.020, y luego ajusta ligeramente a la baja. Esto suele ser lo bastante rápido como para eliminar opciones incorrectas incluso antes de terminar el cálculo exacto.\n- **Domina los porcentajes de referencia.** El 10% de un número se obtiene desplazando la coma decimal un lugar; el 5% es la mitad de eso; el 1% es una décima parte más; el 25% es un cuarto (dividir entre 4); el 50% es la mitad; el 20% es un quinto. Cualquier porcentaje se puede construir rápidamente combinando estas referencias — p. ej., 35% = 25% + 10%, o 17,5% = 10% + 5% + 2,5%.\n- **Convierte los porcentajes incómodos en fracciones.** El 33,3% es casi exactamente un tercio; el 12,5% es un octavo; el 16,7% es un sexto; el 37,5% son tres octavos. Reconocer estas equivalencias suele ser más rápido que hacer una división larga.\n- **Simplifica las razones de inmediato.** Reduce fracciones como 45:15 a 3:1, o 24:16 a 3:2, antes de compararlas — comparar razones simplificadas es mucho menos propenso a errores que comparar las cifras en bruto.\n- **Compara dos fracciones sin dividir ninguna por completo.** Para saber cuál de A/B y C/D es mayor, multiplica en cruz en su lugar: compara directamente A×D frente a B×C. El producto que sea mayor te indica qué fracción es mayor, sin necesidad de calcular nunca un decimal. Esto es más rápido y, a diferencia de una estimación decimal aproximada, exacto.\n- **Presta atención a las tasas construidas (preguntas de \"densidad\").** Una trampa recurrente de EPSO es una pregunta que no te da una razón directamente, sino que te pide construirla a partir de dos cifras con unidades distintas — gramos de sal por litro de agua, habitantes por hectárea, camas hospitalarias por 100.000 habitantes, funcionarios de la UE por millón de ciudadanos. Antes de dividir nada, anota explícitamente qué va arriba y qué va abajo en la tasa que estás construyendo; es muy fácil invertirla bajo presión de tiempo y caer en una opción incorrecta \"plausible\" construida precisamente para ese error.\n- **Domina las reglas de divisibilidad** — te permiten descartar opciones al instante en lugar de hacer una división larga: un número es divisible por 2 si termina en 0/2/4/6/8; por 5 si termina en 0 o 5; por 10 si termina en 0; por 3 si la suma de sus dígitos es divisible entre 3; por 9 si la suma de sus dígitos es divisible entre 9.\n- **Estima primero y verifica después solo a los dos principales candidatos.** En cuanto tu estimación aproximada descarte la mayoría de las opciones, invierte el tiempo que te queda en un cálculo preciso para distinguir solo entre las dos o tres opciones supervivientes.\n\n**Un método ganador, pregunta por pregunta** (adaptado del propio método paso a paso de Ya Semos Europeos, que merece la pena interiorizar como hábito fijo):\n\n1. Lee primero la propia pregunta antes de sumergirte en la tabla: sabe qué estás buscando antes de empezar a buscar.\n2. Razona sobre qué se te está pidiendo realmente. ¿Has identificado correctamente la magnitud que pide la pregunta? Vuelve a leerla si tienes alguna duda.\n3. Identifica qué datos necesitas realmente y comprueba las unidades con cuidado — una trampa frecuente consiste en darte los datos en una unidad (o moneda) mientras la pregunta espera la respuesta en otra.\n4. Planifica el camino de cálculo antes de tocar ningún número: qué operaciones, en qué orden, y si puedes ahorrarte un paso trabajando con los números de forma más inteligente.\n5. Calcula: este es el momento en el que realmente utilizas la calculadora en pantalla, no antes.\n6. Comprueba que tu resultado coincide con una de las opciones dadas. Si no coincide, el fallo está o bien en tu razonamiento (pasos 2 a 4) o bien en tu cálculo (paso 5) — repasa ambos en lugar de adivinar.\n7. **Impón un límite de tiempo estricto por pregunta.** Si has invertido unos 90 segundos y todavía no has encontrado una opción coincidente, marca tu mejor suposición, señala la pregunta y avanza — puedes volver a ella más tarde si el tiempo lo permite, pero una pregunta obstinada no vale el sacrificio de tres preguntas más fáciles más adelante en la prueba.\n\n- **Practica sobre papel, contrarreloj.** El siguiente capítulo transcribe un libro de práctica real completo en doce tests de diez preguntas (120 preguntas) para que puedas ensayar con ítems de estilo auténtico del examen; a continuación se añade un banco complementario de 40 preguntas generadas por IA para repeticiones adicionales. Cronométrate a 20 minutos por bloque de 10, igualando el ritmo del examen real, en las mismas condiciones que afrontarás el día del examen.\n\nCon la teoría ya asimilada, es hora de ponerla en práctica."
+      "es": "El razonamiento numérico es el segundo pilar de la batería de razonamiento de EPSO, junto con el razonamiento verbal y el abstracto. Mientras que el razonamiento verbal comprueba si eres capaz de extraer conclusiones lógicamente respaldadas a partir de un pasaje de texto, el razonamiento numérico comprueba si eres capaz de hacer lo mismo con una tabla o un gráfico de cifras. La destreza subyacente que EPSO explora es idéntica en esencia: ¿eres capaz de trabajar únicamente con la información que se te proporciona, resistir la tentación de hacer suposiciones y atajos de \"sentido común\", y llegar a una única respuesta demostrablemente correcta bajo presión de tiempo? El material es distinto, pero la disciplina exigida es la misma que desarrollaste en el capítulo de Razonamiento verbal.\n\n## Qué mide realmente la prueba\n\nPara el concurso AD7 ICT (EPSO/AD/429/26), el Razonamiento numérico consta de **10 preguntas que deben responderse en 20 minutos**. Se puntúa en una escala de **0 a 10** y — esto es importante — **no se aprueba ni se suspende de forma independiente**: tu puntuación de Razonamiento numérico se suma a la de Razonamiento abstracto, y ambas juntas deben superar una **nota de corte combinada de 10 sobre 20**. Esto significa que un resultado flojo en numérico puede compensarse con un buen resultado en abstracto, y viceversa, pero no conviene confiar en ese colchón: trata ambas pruebas como si cada una tuviera que aprobarse por separado.\n\nLa propia definición de EPSO de esta prueba es: *\"evalúa tu capacidad de pensar de forma lógica e interpretar datos numéricos.\"* Fíjate en lo que **no** dice: no dice \"evalúa tu aritmética\" ni \"evalúa tus conocimientos de estadística\". El énfasis está en la interpretación y la lógica aplicadas a los números, no en la sofisticación matemática. Todas las preguntas que vas a encontrar utilizan únicamente la aritmética que aprendiste en el colegio: sumas, restas, multiplicaciones, divisiones, porcentajes, proporciones simples. Lo que hace difícil la prueba es leer correctamente los datos y evitar las trampas incorporadas en las opciones de respuesta, no las matemáticas en sí.\n\n**Una nota sobre las calculadoras.** Corrección basada en material de preparación de primera mano para el CBT de EPSO (Ya Semos Europeos, la comunidad hispanohablante de preparación EPSO citada en `Referencias.txt`): la plataforma de examen *sí* proporciona una calculadora en pantalla, y dispones de hasta 15 minutos antes de que comience la prueba cronometrada para familiarizarte con ella — aprovecha cada minuto de ese margen, ya que pelearte con un teclado en pantalla desconocido bajo presión de tiempo cuesta puntos reales. La trampa no es la ausencia de calculadora; son los candidatos que recurren a ella demasiado pronto. Como dice sin rodeos el manual español: *\"la calculadora es tu enemiga\"* si acudes a ella antes de haber averiguado realmente qué hay que calcular — es tu amiga solo una vez que has identificado correctamente los datos y el camino hacia la respuesta, y simplemente estás ejecutando la aritmética final. La estimación y la simplificación siguen siendo imprescindibles en cualquier caso: son las que te permiten planificar el cálculo, comprobar que el resultado de la calculadora tiene sentido frente a una cifra aproximada (detectando errores al teclear) y filtrar de antemano las opciones de respuesta antes de tocar una sola tecla. El último apartado de este capítulo está dedicado precisamente a esa disciplina.\n\n**Una nota sobre el formato de los ítems.** Este capítulo contiene ahora dos fuentes de práctica, y utilizan deliberadamente un número distinto de opciones — no te desconcierte la inconsistencia. El banco de práctica principal (Capítulo 3, más adelante) es una **transcripción fiel de un libro real, publicado profesionalmente, de razonamiento numérico al estilo EPSO** (\"Numerical Reasoning MCQ for European institution competitions\", Hetru & Bizeur, ORSEU), que utiliza en todo momento **cinco opciones con letra (A-E)**, incluyendo \"imposible saberlo\" como quinta opción habitual — este es el formato auténtico y el que debes tomar como referencia. Los tests simulados adicionales generados por IA que aparecen más adelante (claramente identificados como tales) se redactaron antes de localizar este libro real y utilizan cuatro opciones (A-D); siguen siendo útiles para repeticiones adicionales, pero considera el formato de cinco opciones al estilo ORSEU como el que coincide con el examen real. En cualquier caso, las preguntas a veces incluyen una opción de \"imposible saberlo\" / \"No se puede determinar\", por la misma razón que esa opción existe en Razonamiento verbal: los ítems numéricos de EPSO pueden darte una tabla a partir de la cual una cifra concreta realmente no se puede calcular, y reconocer *eso* — en lugar de adivinar — forma parte de la destreza que se evalúa.\n\n## Un ejemplo resuelto\n\nAntes de entrar en la teoría, observa un ejemplo resuelto. Es representativo del tipo de ítem, y del nivel de dificultad, que puedes esperar.\n\n> **Visa applications processed by an EU consulate, by month, 2025**\n>\n> | Month | Applications processed |\n> |---|---|\n> | January | 800 |\n> | February | 850 |\n> | March | 900 |\n> | April | 1,000 |\n>\n> *What was the percentage increase in the number of applications processed between February and April?*\n>\n> A. 15.0%\n> B. 17.6%\n> C. 20.0%\n> D. 25.0%\n\nRepasemos cada opción, porque el razonamiento importa más que la respuesta en sí misma.\n\n- **A. 15.0%** — Esto es lo que se obtiene si se toma el incremento (1,000 − 850 = 150) y se divide por la base *equivocada*, la cifra de abril de 1,000, en lugar de la de febrero: 150 ÷ 1,000 = 15.0%. Este es, con diferencia, el error más común en razonamiento numérico: usar como denominador la cifra posterior y mayor en lugar de la cifra inicial de partida. La variación porcentual siempre se calcula en relación con el punto de *partida*.\n- **B. 17.6%** — Correcta. El incremento es 1,000 − 850 = 150. En relación con la base de febrero: 150 ÷ 850 = 0.1765 = 17.6%.\n- **C. 20.0%** — Un número redondo de aspecto plausible pero sin base real en los datos — el tipo de opción que solo tienta a un candidato que estima sin llegar a calcular.\n- **D. 25.0%** — Esto es lo que se obtiene si se lee el par de meses equivocado: comparar enero con abril en lugar de febrero con abril da (1,000 − 800) ÷ 800 = 25.0%. Esto comprueba si has leído con atención la pregunta — \"between February and April\" — en lugar de recurrir por defecto a la primera y la última fila de la tabla.\n\nLa respuesta correcta es **B**. Cuatro opciones, tres de ellas construidas a partir de lecturas erróneas genuinas y específicas de los datos — esta es exactamente la arquitectura que te encontrarás cuarenta veces en la sección de práctica más adelante. Vamos ahora a desgranar, de forma sistemática, cómo construye EPSO ítems como este y cómo debes abordarlos.\n\n## Cómo construye EPSO los ítems de razonamiento numérico\n\nTodo ítem de razonamiento numérico parte de un conjunto de datos pequeño y autocontenido — normalmente una tabla, a veces la descripción de un gráfico convertida en tabla a efectos del texto — seguido de una pregunta y cuatro opciones de respuesta. Los datos son deliberadamente reducidos: EPSO no está comprobando si sabes navegar por una hoja de cálculo extensa, sino si eres capaz de extraer y manejar un puñado de cifras de forma correcta y rápida. Los ámbitos de datos habituales incluyen estadísticas de población y demografía, cifras de comercio y economía, desgloses de presupuesto y gasto, estadísticas de instituciones o agencias de la UE (número de personal, cifras de visitantes, volúmenes de solicitudes) y datos empresariales genéricos (ventas, costes, plantillas). El tema es solo decorado; las operaciones subyacentes proceden siempre de un repertorio bastante reducido. Conocer ese repertorio de antemano es una de las mayores ventajas que puedes darte.\n\n**Porcentajes.** El pan de cada día de la prueba. Te pedirán el porcentaje de un total (¿qué parte del conjunto representa esta fila?), un incremento o descenso porcentual entre dos cifras, o reconstruir un valor a partir de un porcentaje (si esto es el 20% del total, ¿cuál es el total?). La regla que más importa, por encima de cualquier otra: una variación porcentual siempre se calcula en relación con el valor de *partida*, nunca con el valor final, y nunca con otra fila cualquiera que estés mirando en ese momento.\n\n**Proporciones y razones.** Puede que te pidan identificar una razón entre dos cifras (p. ej., «¿en qué departamento la razón entre personal masculino y femenino es exactamente 3:1?») o escalar una cantidad proporcionalmente hacia arriba o hacia abajo. Las razones se simplifican: redúcelas siempre a su expresión mínima antes de compararlas, ya que 45:15 es mucho más fácil de reconocer como 3:1 que de comparar en su forma sin reducir.\n\n**Tasas de variación.** Crecimiento o descenso expresado por periodo — por año, por trimestre, por mes. Estas preguntas suelen basarse en un cálculo de variación porcentual, pero lo insertan en una serie temporal, pidiéndote comparar la *tasa* de variación entre dos periodos distintos o dos categorías distintas, no solo una variación aislada.\n\n**Medias.** Aparecen tanto medias simples (sin ponderar) como medias ponderadas. Una media simple trata por igual todas las cifras de una lista; una media ponderada tiene en cuenta que algunas cifras representan más \"peso\" que otras (más empleados, más encuestados, más transacciones). Confundir ambas es una de las trampas favoritas de EPSO, que se analiza en detalle más adelante.\n\n**Extrapolación e interpolación.** Interpolar significa estimar un valor que se sitúa *entre* dos puntos de datos que ya tienes — esto es, en general, seguro, siempre que la tendencia subyacente sea razonablemente estable. Extrapolar significa proyectar un valor *más allá* del rango de datos que se te ha proporcionado — hacia un año futuro, por ejemplo. Esto es mucho más arriesgado y suele ser la base de una trampa deliberada, que se analiza más adelante.\n\n**Conversión de unidades.** Conversión de divisas, conversión entre miles y millones, entre porcentajes y puntos porcentuales, entre totales y cifras per cápita o por unidad. Rara vez son difíciles en sí mismas, pero una sola conversión omitida invalida un cálculo por lo demás correcto, por lo que son una forma predilecta de construir un distractor.\n\n## Las trampas que utiliza EPSO\n\nIgual que el capítulo de Razonamiento verbal catalogó los trucos recurrentes detrás de los enunciados \"verdadero\", \"falso\" y \"no se puede determinar\", los ítems de razonamiento numérico se construyen en torno a un pequeño conjunto de trampas recurrentes. En cuanto sepas ponerles nombre, empezarás a detectarlas en tiempo real.\n\n### Puntos porcentuales frente a porcentajes\n\nEsta es, con diferencia, la distinción más importante de toda la prueba, y EPSO vuelve a ella constantemente. Si una tasa pasa del 7,0% al 9,0%, ha aumentado **2 puntos porcentuales** — una afirmación sobre la simple diferencia aritmética entre ambas cifras. Pero el **incremento porcentual (relativo)** es (9,0 − 7,0) ÷ 7,0 = 28,6%. Ambas afirmaciones son ciertas, pero responden a preguntas distintas, y un ítem ofrecerá con frecuencia ambas cifras como opciones de respuesta para ver cuál calculaste realmente. Comprueba siempre con exactitud cuál de las dos te está pidiendo la pregunta: la palabra \"puntos\" es la señal de que basta con restar, mientras que \"incremento porcentual\" o \"variación porcentual\" (sin \"puntos\") significa que debes dividir la diferencia entre el valor original.\n\n### Cifras acumuladas frente a cifras no acumuladas\n\nAlgunas tablas te dan *totales acumulados* — por ejemplo, participantes registrados \"a fecha de\" final de cada mes — en lugar del número de altas nuevas en cada periodo. Si una tabla muestra 450 inscripciones acumuladas a finales de febrero y 800 a finales de marzo, el número de inscripciones **nuevas** *en* marzo es 800 − 450 = 350, no 800. EPSO explota esto incluyendo la cifra acumulada bruta como una opción de respuesta tentadora (pero incorrecta).\n\n### Leer el eje, la columna o el año equivocados\n\nLa trampa más sencilla posible, y aun así una de las más efectivas bajo presión de tiempo: la tabla tiene varias filas y columnas, y las opciones incorrectas son simplemente el resultado de aplicar la operación correcta sobre la fila equivocada, la columna equivocada o el año equivocado. Precisamente por eso importa leer primero la pregunta *antes* que los datos (ver el método sugerido más abajo): te indica exactamente qué celda de la tabla necesitas de verdad.\n\n### Extrapolación injustificada más allá de los datos\n\nSi una tabla muestra el crecimiento de 2023, 2024 y 2025, a veces se puede estimar legítimamente 2026 — pero solo si la pregunta te indica que asumas que la tendencia continúa, o si los propios datos demuestran una tasa genuinamente constante a lo largo de más de un intervalo. Proyectar cinco años hacia el futuro a partir de tres puntos de datos, o asumir que una tendencia continúa cuando la pregunta no te da ninguna base para esa suposición, no es cálculo: es especulación, y los ítems de EPSO están diseñados para atrapar a los candidatos que lo hacen de todos modos. Compara esto deliberadamente con una interpolación legítima o una proyección debidamente indicada: los ítems de práctica más adelante incluyen ejemplos de ambas versiones, la legítima y la ilegítima, uno junto al otro, para que notes la diferencia.\n\n### \"No se puede determinar\": cuando el dato sencillamente no está\n\nExactamente igual que en Razonamiento verbal, \"no se puede determinar\" no es sinónimo de \"no lo sé\" o \"esto es difícil\" — es la respuesta objetivamente correcta siempre que la tabla realmente no contenga la información necesaria para calcular lo que se pregunta, por muy tentador que resulte estimar o suponer. Una tabla que te da porcentajes pero nunca indica el número total de encuestados subyacente no puede decirte una cifra absoluta — solo otro porcentaje o razón derivados de esa misma base. Una tabla que cubre tres años no puede, por sí sola, decirte un valor de un año fuera de ese rango a menos que se te indique explícitamente que la tendencia es constante. Si te encuentras recurriendo a conocimiento externo o a una suposición no indicada en la tabla para responder a una pregunta, detente: la respuesta es, con mucha probabilidad, \"no se puede determinar\".\n\n## Un método sugerido\n\n1. **Lee la pregunta antes que los datos.** Los ítems numéricos premian una lectura dirigida mucho más que los verbales, porque una tabla normalmente contiene más cifras de las que necesita cualquier pregunta concreta. Saber exactamente qué estás buscando — una celda concreta, una comparación concreta, una operación concreta — antes de escanear la tabla ahorra tiempo real.\n2. **Extrae solo los números que necesitas.** Resiste la tentación de \"entender\" toda la tabla. Identifica las dos o tres celdas relevantes para la pregunta, anótalas si te resulta útil, e ignora el resto.\n3. **Estima antes de calcular con exactitud.** Una estimación mental aproximada (ver el siguiente apartado) normalmente te permitirá eliminar de inmediato dos de las cuatro opciones, reduciendo el cálculo preciso a una elección entre dos cifras plausibles — mucho más rápido que calcular las cuatro opciones desde cero.\n4. **Verifica bien las unidades.** ¿La tabla está en miles o en millones? ¿En porcentaje o en puntos porcentuales? ¿En la moneda local o en euros? Un cálculo perfecto realizado sobre la unidad equivocada produce una respuesta incorrecta — pero de aspecto totalmente plausible —, que es precisamente por lo que las trampas de unidades son tan eficaces.\n5. **Confirma que has respondido a la pregunta realmente formulada.** Vuelve a leer la pregunta una última vez antes de seleccionar una opción: es habitual calcular correctamente una cifra intermedia (por ejemplo, una diferencia en puntos porcentuales) y después seleccionar, por pura costumbre, la opción que corresponde a la *otra* magnitud (el porcentaje relativo).\n\n## Estimación, el método ganador y otros consejos específicos de EPSO\n\nAunque dispongas de una calculadora en pantalla, la estimación mental no es un atajo opcional: es lo que te permite planificar el cálculo, elegir los números correctos que introducir y comprobar que el resultado tiene sentido, todo ello en mucho menos tiempo que calcular primero y pensar después. Merece la pena practicar deliberadamente algunas técnicas hasta que se vuelvan automáticas:\n\n- **Redondea a números convenientes y luego corrige.** Para estimar 850 × 1,176, redondea a 850 × 1,2 ≈ 1.020, y luego ajusta ligeramente a la baja. Esto suele ser lo bastante rápido como para eliminar opciones incorrectas incluso antes de terminar el cálculo exacto.\n- **Domina los porcentajes de referencia.** El 10% de un número se obtiene desplazando la coma decimal un lugar; el 5% es la mitad de eso; el 1% es una décima parte más; el 25% es un cuarto (dividir entre 4); el 50% es la mitad; el 20% es un quinto. Cualquier porcentaje se puede construir rápidamente combinando estas referencias — p. ej., 35% = 25% + 10%, o 17,5% = 10% + 5% + 2,5%.\n- **Convierte los porcentajes incómodos en fracciones.** El 33,3% es casi exactamente un tercio; el 12,5% es un octavo; el 16,7% es un sexto; el 37,5% son tres octavos. Reconocer estas equivalencias suele ser más rápido que hacer una división larga.\n- **Simplifica las razones de inmediato.** Reduce fracciones como 45:15 a 3:1, o 24:16 a 3:2, antes de compararlas — comparar razones simplificadas es mucho menos propenso a errores que comparar las cifras en bruto.\n- **Compara dos fracciones sin dividir ninguna por completo.** Para saber cuál de A/B y C/D es mayor, multiplica en cruz en su lugar: compara directamente A×D frente a B×C. El producto que sea mayor te indica qué fracción es mayor, sin necesidad de calcular nunca un decimal. Esto es más rápido y, a diferencia de una estimación decimal aproximada, exacto.\n- **Presta atención a las tasas construidas (preguntas de \"densidad\").** Una trampa recurrente de EPSO es una pregunta que no te da una razón directamente, sino que te pide construirla a partir de dos cifras con unidades distintas — gramos de sal por litro de agua, habitantes por hectárea, camas hospitalarias por 100.000 habitantes, funcionarios de la UE por millón de ciudadanos. Antes de dividir nada, anota explícitamente qué va arriba y qué va abajo en la tasa que estás construyendo; es muy fácil invertirla bajo presión de tiempo y caer en una opción incorrecta \"plausible\" construida precisamente para ese error.\n- **Domina las reglas de divisibilidad** — te permiten descartar opciones al instante en lugar de hacer una división larga: un número es divisible por 2 si termina en 0/2/4/6/8; por 5 si termina en 0 o 5; por 10 si termina en 0; por 3 si la suma de sus dígitos es divisible entre 3; por 9 si la suma de sus dígitos es divisible entre 9.\n- **Estima primero y verifica después solo a los dos principales candidatos.** En cuanto tu estimación aproximada descarte la mayoría de las opciones, invierte el tiempo que te queda en un cálculo preciso para distinguir solo entre las dos o tres opciones supervivientes.\n\n**Un método ganador, pregunta por pregunta** (adaptado del propio método paso a paso de Ya Semos Europeos, que merece la pena interiorizar como hábito fijo):\n\n1. Lee primero la propia pregunta antes de sumergirte en la tabla: sabe qué estás buscando antes de empezar a buscar.\n2. Razona sobre qué se te está pidiendo realmente. ¿Has identificado correctamente la magnitud que pide la pregunta? Vuelve a leerla si tienes alguna duda.\n3. Identifica qué datos necesitas realmente y comprueba las unidades con cuidado — una trampa frecuente consiste en darte los datos en una unidad (o moneda) mientras la pregunta espera la respuesta en otra.\n4. Planifica el camino de cálculo antes de tocar ningún número: qué operaciones, en qué orden, y si puedes ahorrarte un paso trabajando con los números de forma más inteligente.\n5. Calcula: este es el momento en el que realmente utilizas la calculadora en pantalla, no antes.\n6. Comprueba que tu resultado coincide con una de las opciones dadas. Si no coincide, el fallo está o bien en tu razonamiento (pasos 2 a 4) o bien en tu cálculo (paso 5) — repasa ambos en lugar de adivinar.\n7. **Impón un límite de tiempo estricto por pregunta.** Si has invertido unos 90 segundos y todavía no has encontrado una opción coincidente, marca tu mejor suposición, señala la pregunta y avanza — puedes volver a ella más tarde si el tiempo lo permite, pero una pregunta obstinada no vale el sacrificio de tres preguntas más fáciles más adelante en la prueba.\n\n- **Practica sobre papel, contrarreloj.** El siguiente capítulo transcribe un libro de práctica real completo en doce tests de diez preguntas (120 preguntas) para que puedas ensayar con ítems de estilo auténtico del examen; a continuación se añade un banco complementario de 40 preguntas generadas por IA para repeticiones adicionales. Cronométrate a 20 minutos por bloque de 10, igualando el ritmo del examen real, en las mismas condiciones que afrontarás el día del examen.\n\nCon la teoría ya asimilada, es hora de ponerla en práctica."
     },
     "sourceFile": "2.- Numerical reasoning.md"
   }
