@@ -181,9 +181,15 @@ esos dos.
    + `use()` de React 19, con `<Suspense>` en `Layout.tsx`). El chunk
    inicial baja de ~3,5 MB (995 KB gzip) a 463 KB (142 KB gzip); el resto
    solo se descarga al visitar esa página en concreto.
-5. Revisar una muestra de las traducciones en `Docs/es/` — generadas por
-   agentes de traducción, no verificadas línea a línea por un hablante
-   nativo.
+5. ~~Revisar las traducciones en `Docs/es/`~~ — hecho: pasada de
+   corrección en español natural (no de corrección factual, ya hecha
+   antes) sobre los 8 bloques de contenido. Se corrigieron ~35
+   problemas concretos: registro tú/usted unificado en razonamiento
+   abstracto, el verbo inventado "ciclar" sustituido en ~88 sitios,
+   formato numérico anglosajón localizado en ~2.300 cifras del banco
+   de numérico, "contrato marco" → "acuerdo marco" (término correcto
+   de contratación pública UE), y varios calcos/anglicismos e
+   incoherencias de terminología puntuales por área.
 6. `npm run lint` (oxlint) falla actualmente en este entorno Windows por
    una directiva de Control de aplicaciones que bloquea su binario nativo
    (`@oxlint/binding-win32-x64-msvc`) — no relacionado con el contenido;
