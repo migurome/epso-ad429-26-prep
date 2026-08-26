@@ -190,7 +190,9 @@ esos dos.
    de numérico, "contrato marco" → "acuerdo marco" (término correcto
    de contratación pública UE), y varios calcos/anglicismos e
    incoherencias de terminología puntuales por área.
-6. `npm run lint` (oxlint) falla actualmente en este entorno Windows por
-   una directiva de Control de aplicaciones que bloquea su binario nativo
-   (`@oxlint/binding-win32-x64-msvc`) — no relacionado con el contenido;
-   `tsc -b` sigue validando tipos mientras tanto.
+6. ~~`npm run lint` (oxlint) bloqueado por una directiva de Control de
+   aplicaciones de Windows~~ — resuelto por sí solo: el binario nativo
+   (`@oxlint/binding-win32-x64-msvc`) ya se ejecuta sin problemas en
+   este entorno (verificado con un fichero de prueba con errores
+   deliberados, que oxlint detectó correctamente). `npm run lint`
+   sobre todo `src/` (55 ficheros) no reporta ningún problema.
