@@ -189,10 +189,29 @@ export function parsePanel(raw: string): FigurePanel {
 
   const captions: string[] = []
   let rest = trimmed
+  const extraArrowDegs: number[] = []
 
-  // 1. Extraer corchetes [...] como caption (descripciones complejas del banco real)
+  // 1. Extraer corchetes [...] como caption (descripciones complejas del banco
+  //    real). Si el texto entre corchetes incluye una flecha de compás
+  //    Unicode suelta (p. ej. "[línea ↘]"), se extrae como flecha decorativa
+  //    en vez de dejarla en el caption: el navegador renderiza esos glifos
+  //    como emoji de color, que desentonan con el resto de iconos en blanco
+  //    y negro dibujados a mano.
   rest = rest.replace(/\[([^\]]*)\]/g, (_, inner: string) => {
-    captions.push(inner.trim())
+    let text = inner
+    for (const [ch, deg] of Object.entries(COMPASS_MAP)) {
+      while (text.includes(ch)) {
+        extraArrowDegs.push(deg)
+        text = text.replace(ch, '')
+      }
+    }
+    text = text
+      .replace(/\(\s*\)/g, '')
+      .replace(/\s*,\s*,/g, ',')
+      .replace(/^[\s,]+|[\s,]+$/g, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim()
+    if (text) captions.push(text)
     return ''
   })
 
@@ -202,7 +221,6 @@ export function parsePanel(raw: string): FigurePanel {
   let position: Position | undefined
   let rotationDeg = 0
   let fillOverride: FillKind | undefined
-  const extraArrowDegs: number[] = []
 
   // Cada grupo puede combinar varios atributos separados por coma, p. ej.
   // "(white, LARGE, 1st)": se evalúa cada parte por separado en vez de exigir
