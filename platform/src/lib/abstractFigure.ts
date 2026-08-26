@@ -145,12 +145,26 @@ interface ParenAttr {
   extraArrowDeg?: number
 }
 
+// Palabras sueltas para el relleno, usadas en el banco real como alternativa
+// a los símbolos Unicode con relleno explícito (p. ej. "●(black)" en vez de
+// "⬤"). "shaded" se trata como sinónimo de "grey" (ambos se ven como el
+// mismo gris intermedio en el icono).
+const FILL_WORDS: Record<string, FillKind> = {
+  filled: 'filled',
+  black: 'filled',
+  empty: 'empty',
+  white: 'empty',
+  outline: 'empty',
+  shaded: 'grey',
+}
+
 function parseParenAttr(attr: string): ParenAttr | null {
   const clean = attr.trim().toLowerCase()
   if ((SIZES as string[]).includes(clean)) return { size: clean as SizeKind }
   if ((POSITIONS as string[]).includes(clean)) return { position: clean as Position }
   if (clean === 'grey') return { fill: 'grey' }
   if (clean === 'hatched') return { fill: 'hatched' }
+  if (clean in FILL_WORDS) return { fill: FILL_WORDS[clean] }
   const rotMatch = clean.match(/^rotated (\d+)°?\s*(clockwise|counter-clockwise|anticlockwise)$/)
   if (rotMatch) {
     const deg = Number(rotMatch[1])
@@ -190,25 +204,48 @@ export function parsePanel(raw: string): FigurePanel {
   let fillOverride: FillKind | undefined
   const extraArrowDegs: number[] = []
 
+  // Cada grupo puede combinar varios atributos separados por coma, p. ej.
+  // "(white, LARGE, 1st)": se evalúa cada parte por separado en vez de exigir
+  // que el grupo entero coincida con un único atributo reconocido, para no
+  // perder "large" solo porque venga acompañado de "1st" (sin reconocer).
   rest = rest.replace(/\(([^)]*)\)/g, (_, inner: string) => {
-    const parsed = parseParenAttr(inner)
-    if (parsed) {
-      if (parsed.size) size = parsed.size
-      if (parsed.position) position = parsed.position
-      if (parsed.rotationDeg != null) rotationDeg = parsed.rotationDeg
-      if (parsed.fill) fillOverride = parsed.fill
-      if (parsed.extraArrowDeg != null) extraArrowDegs.push(parsed.extraArrowDeg)
-    } else if (inner.trim()) {
-      captions.push(inner.trim())
+    const leftover: string[] = []
+    for (const part of inner.split(',')) {
+      if (!part.trim()) continue
+      const parsed = parseParenAttr(part)
+      if (parsed) {
+        if (parsed.size) size = parsed.size
+        if (parsed.position) position = parsed.position
+        if (parsed.rotationDeg != null) rotationDeg = parsed.rotationDeg
+        if (parsed.fill) fillOverride = parsed.fill
+        if (parsed.extraArrowDeg != null) extraArrowDegs.push(parsed.extraArrowDeg)
+      } else {
+        leftover.push(part.trim())
+      }
     }
+    if (leftover.length > 0) captions.push(leftover.join(', '))
     return ''
   })
 
   // 3. Lo que queda son símbolos Unicode (posiblemente varios, p. ej. "●●●").
+  //    Los caracteres no reconocidos se agrupan en palabras (no letra a
+  //    letra) antes de mandarlos a caption, para no trocear conectores como
+  //    "with"/"con" en tokens sueltos ("w i t h").
   const shapes: ShapeSpec[] = []
+  let unrecognizedRun = ''
+  const flushRun = () => {
+    if (unrecognizedRun) {
+      captions.push(unrecognizedRun)
+      unrecognizedRun = ''
+    }
+  }
   for (const ch of rest) {
-    if (/\s/.test(ch) || ch === '/' || ch === '+' || ch === '=') continue
+    if (/\s/.test(ch) || ch === '/' || ch === '+' || ch === '=') {
+      flushRun()
+      continue
+    }
     if (ch in TRIANGLE_MAP) {
+      flushRun()
       const t = TRIANGLE_MAP[ch]
       shapes.push({
         shape: 'triangle',
@@ -217,6 +254,7 @@ export function parsePanel(raw: string): FigurePanel {
         size: size ?? 'medium',
       })
     } else if (ch in SHAPE_MAP) {
+      flushRun()
       const s = SHAPE_MAP[ch]
       shapes.push({
         shape: s.shape,
@@ -225,6 +263,7 @@ export function parsePanel(raw: string): FigurePanel {
         size: size ?? 'medium',
       })
     } else if (ch in COMPASS_MAP) {
+      flushRun()
       shapes.push({
         shape: 'arrow',
         fill: 'filled',
@@ -233,9 +272,10 @@ export function parsePanel(raw: string): FigurePanel {
       })
     } else {
       // carácter no reconocido (letra, dígito, puntuación residual…): a caption
-      captions.push(ch)
+      unrecognizedRun += ch
     }
   }
+  flushRun()
 
   // Flechas decorativas "(arrow ↗)": se dibujan como formas pequeñas propias,
   // nunca como el glifo Unicode crudo (que el navegador renderiza como un
@@ -253,6 +293,25 @@ export function parsePanel(raw: string): FigurePanel {
     isBlank: false,
     raw: trimmed,
   }
+}
+
+/** Firma de lo que `FigurePanelView` dibuja realmente para un panel (formas +
+ * posición en la rejilla), ignorando el caption de texto. Dos opciones de una
+ * misma pregunta con la misma firma producirían el mismo icono aunque su
+ * texto de origen sea distinto — típicamente porque describen una diferencia
+ * (p. ej. "tip left" vs "tip right", "top-half" vs "bottom-half") que el
+ * parser no modela como atributo de figura. El llamador debe usar esto para
+ * evitar mostrar dos opciones distintas con el icono idéntico. */
+export function panelSignature(panel: FigurePanel): string {
+  // Dentro de un marco de posición, FigurePanelView siempre dibuja los
+  // iconos a tamaño 'small' (para que quepan en su celda de la rejilla 3×3),
+  // ignorando el tamaño declarado en el texto — la firma tiene que reflejar
+  // eso o dos paneles que solo difieren en tamaño parecerían distintos aun
+  // dibujándose exactamente igual dentro de un marco.
+  const shapes = panel.shapes
+    .map((s) => `${s.shape}|${s.fill}|${panel.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}`)
+    .join(',')
+  return `${panel.position ?? ''}::${shapes}`
 }
 
 /** Parsea una tabla Markdown de matriz (3×3, sin cabecera con contenido) en

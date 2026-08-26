@@ -64,6 +64,33 @@ export function FigurePanelView({ panel, large, sizeOverride }: FigurePanelViewP
     return s
   }
 
+  if (panel.position) {
+    // Dentro de la rejilla 3×3, el icono tiene que caber en UNA celda
+    // (~1/3 del marco) para que la posición se distinga a simple vista. Con
+    // el tamaño normal del icono (pensado para un panel sin marco) el icono
+    // es más grande que la celda entera y desborda sobre las vecinas,
+    // haciendo que dos posiciones distintas (p. ej. "mid-left" vs
+    // "top-centre") se vean casi iguales. Se usa el tamaño 'small' fijo
+    // para el icono aquí, sea cual sea el tamaño declarado en el texto.
+    const framedIcons = (
+      <div className="flex flex-wrap items-center justify-center gap-0.5">
+        {panel.shapes.map((s, i) => (
+          <ShapeIcon key={i} spec={{ ...s, size: 'small' }} />
+        ))}
+      </div>
+    )
+    return (
+      <div className="flex flex-col items-center gap-1.5">
+        <PositionFrame position={panel.position} size={sizeOverride ?? (large ? 'large' : 'medium')}>
+          {framedIcons}
+        </PositionFrame>
+        {panel.caption && (
+          <span className="max-w-[7rem] text-center text-[10px] leading-tight text-slate-400">{panel.caption}</span>
+        )}
+      </div>
+    )
+  }
+
   const icons = (
     <div className="flex flex-wrap items-center justify-center gap-1">
       {panel.shapes.map((s, i) => (
@@ -74,13 +101,7 @@ export function FigurePanelView({ panel, large, sizeOverride }: FigurePanelViewP
 
   return (
     <div className="flex flex-col items-center gap-1.5">
-      {panel.position ? (
-        <PositionFrame position={panel.position} size={sizeOverride ?? (large ? 'large' : 'medium')}>
-          {icons}
-        </PositionFrame>
-      ) : (
-        icons
-      )}
+      {icons}
       {panel.caption && (
         <span className="max-w-[7rem] text-center text-[10px] leading-tight text-slate-400">{panel.caption}</span>
       )}

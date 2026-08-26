@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { Markdown } from './Markdown'
 import { AbstractPromptView } from './AbstractPromptView'
 import { FigurePanelView } from './FigurePanelView'
-import { parsePanel } from '../lib/abstractFigure'
+import { parsePanel, panelSignature } from '../lib/abstractFigure'
 import { pick } from '../lib/localeStore'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
 import { useT } from '../lib/useT'
@@ -31,6 +31,20 @@ export function QuestionCard({
   const large = size === 'large'
   const isAbstract = question.skill === 'abstract'
   const prompt = pick(testLocale, question.prompt)
+  // Si dos opciones producirían el mismo icono (el parser de texto->figura no
+  // modela todos los matices que usa el banco real, p. ej. "tip left" vs
+  // "tip right"), mostrar iconos sería engañoso: parecerían la misma
+  // respuesta pero una se marca correcta y la otra no. En ese caso se
+  // muestran todas las opciones de la pregunta como texto en su lugar.
+  const optionPanelsForCollisionCheck = isAbstract
+    ? question.options.map((opt) => parsePanel(pick(testLocale, opt.text)))
+    : null
+  const hasIconCollision =
+    optionPanelsForCollisionCheck?.some((panel, i) => {
+      if (panel.shapes.length === 0) return false
+      const sig = panelSignature(panel)
+      return optionPanelsForCollisionCheck.some((other, j) => j !== i && other.shapes.length > 0 && panelSignature(other) === sig)
+    }) ?? false
   return (
     <div>
       {index != null && (
@@ -47,16 +61,21 @@ export function QuestionCard({
           {prompt}
         </Markdown>
       )}
-      <div className={clsx(large ? 'space-y-3' : 'space-y-2', isAbstract && 'flex flex-wrap justify-center gap-3 space-y-0')}>
-        {question.options.map((opt) => {
+      <div
+        className={clsx(
+          large ? 'space-y-3' : 'space-y-2',
+          isAbstract && !hasIconCollision && 'flex flex-wrap justify-center gap-3 space-y-0',
+        )}
+      >
+        {question.options.map((opt, i) => {
           const optText = pick(testLocale, opt.text)
           const optExplanation = opt.explanation ? pick(testLocale, opt.explanation) : undefined
           const isSelected = selectedOptionId === opt.id
           const showCorrect = revealed && opt.isCorrect
           const showWrong = revealed && isSelected && !opt.isCorrect
           const showExplanation = revealed && (isSelected || opt.isCorrect) && optExplanation
-          const optionPanel = isAbstract ? parsePanel(optText) : null
-          const asCard = isAbstract && optionPanel && optionPanel.shapes.length > 0
+          const optionPanel = optionPanelsForCollisionCheck ? optionPanelsForCollisionCheck[i] : null
+          const asCard = !hasIconCollision && isAbstract && optionPanel && optionPanel.shapes.length > 0
 
           const stateClasses = clsx(
             !revealed && isSelected && 'border-eu-blue bg-eu-blue/5',

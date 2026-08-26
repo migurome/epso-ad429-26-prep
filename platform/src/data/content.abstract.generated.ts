@@ -5405,7 +5405,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "arrow + ○▲(triangle only, small) / bottom cluster mixed",
-          "es": "flecha + ○▲(triángulo solo, pequeño) / grupo inferior mezclado"
+          "es": "flecha + ○▲(triángulo solo, small) / grupo inferior mezclado"
         },
         "isCorrect": false
       },
