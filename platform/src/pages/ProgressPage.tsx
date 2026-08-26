@@ -5,7 +5,7 @@ import { formatClock } from '../lib/time'
 import { useProgressStore } from '../lib/progressStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
-import { EUFTE_FORMAT, FIELD_MCQ_FORMAT, REASONING_SKILLS } from '../data/competition'
+import { EUFTE_FORMAT, FIELDS, FIELD_MCQ_FORMAT, REASONING_SKILLS } from '../data/competition'
 import type { TestAttempt } from '../types/content'
 
 interface Row {
@@ -42,12 +42,12 @@ export function ProgressPage() {
       attempts: testAttempts.filter((a) => a.phase === 'reasoning' && a.skill === s.id),
       maxScore: s.format.maxScore,
     })),
-    {
-      key: 'field-mcq',
-      label: t('nav_field_mcq'),
-      attempts: testAttempts.filter((a) => a.phase === 'field-mcq'),
+    ...FIELDS.map((f) => ({
+      key: `field-mcq-${f.id}`,
+      label: pick(locale, f.label),
+      attempts: testAttempts.filter((a) => a.phase === 'field-mcq' && a.field === f.id),
       maxScore: FIELD_MCQ_FORMAT.maxScore,
-    },
+    })),
   ]
 
   return (

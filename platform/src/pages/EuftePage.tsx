@@ -24,6 +24,22 @@ export function EuftePage() {
   const { THEORY_DOCS: theory, ESSAY_PROMPTS: essayPrompts } = use(loadEufteContent())
   const essayAttempts = useProgressStore((s) => s.essayAttempts)
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  // Una vez que un prompt se ha abierto, su EssayRunner se mantiene montado
+  // (solo oculto con CSS al colapsar el acordeón) en lugar de desmontarse —
+  // desmontarlo perdía el borrador en curso, el cronómetro y las notas de
+  // autorrevisión sin previo aviso si el usuario cerraba el acordeón sin
+  // guardar antes.
+  const [openedIds, setOpenedIds] = useState<Set<string>>(new Set())
+
+  function toggle(id: string) {
+    setExpandedId((current) => {
+      const next = current === id ? null : id
+      if (next) {
+        setOpenedIds((prev) => (prev.has(next) ? prev : new Set(prev).add(next)))
+      }
+      return next
+    })
+  }
 
   return (
     <div>
@@ -58,11 +74,12 @@ export function EuftePage() {
                   <div className="space-y-2">
                     {essayPrompts.map((prompt) => {
                       const isOpen = expandedId === prompt.id
+                      const hasBeenOpened = openedIds.has(prompt.id)
                       return (
                         <div key={prompt.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
                           <button
                             type="button"
-                            onClick={() => setExpandedId(isOpen ? null : prompt.id)}
+                            onClick={() => toggle(prompt.id)}
                             className="flex w-full items-center gap-3 px-4 py-3 text-left"
                           >
                             <span className="flex-1 text-sm font-medium text-slate-700">{pick(testLocale, prompt.title)}</span>
@@ -71,8 +88,8 @@ export function EuftePage() {
                               className={clsx('shrink-0 text-slate-400 transition-transform', isOpen && 'rotate-180')}
                             />
                           </button>
-                          {isOpen && (
-                            <div className="border-t border-slate-100 px-4 py-4">
+                          {hasBeenOpened && (
+                            <div className={clsx('border-t border-slate-100 px-4 py-4', !isOpen && 'hidden')}>
                               <EssayRunner prompt={prompt} />
                             </div>
                           )}
