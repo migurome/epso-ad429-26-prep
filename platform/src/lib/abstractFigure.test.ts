@@ -38,8 +38,7 @@ describe('parsePanel', () => {
 
   it('parses position attribute', () => {
     const p = parsePanel('●(top-left)')
-    expect(p.position).toBe('top-left')
-    expect(p.shapes[0]).toMatchObject({ shape: 'circle', fill: 'filled' })
+    expect(p.shapes[0]).toMatchObject({ shape: 'circle', fill: 'filled', position: 'top-left' })
   })
 
   it('parses size attribute', () => {
@@ -158,7 +157,7 @@ describe('extractPromptFigures', () => {
   it('extracts a positioned sequence', () => {
     const result = extractPromptFigures('●(top-left) ●(top-centre) ●(top-right) ●(mid-right) ?')
     expect(result?.kind).toBe('sequence')
-    expect(result?.panels[0].position).toBe('top-left')
+    expect(result?.panels[0].shapes[0].position).toBe('top-left')
     expect(result?.panels).toHaveLength(5)
   })
 

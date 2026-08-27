@@ -658,14 +658,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Top-right corner alternates ◗(small black semicircle) / ♡(heart outline); a circle below cycles through size (whole → ¾ → ½ → ¼, repeating) and through fill (striped → grey → clear, repeating).\n\n◗ + [¼ circle, striped] · ♡ + [whole circle, grey, quartered by cross-lines] · ◗ + [¾ circle, clear/outline] · ♡ + [½ circle, striped] · ◗ + [¼ circle, grey] · ?",
-      "es": "La esquina superior derecha alterna ◗(small black semicircle) / ♡(heart outline); un círculo debajo pasa cíclicamente por el tamaño (entero → ¾ → ½ → ¼, en repetición) y por el relleno (rayado → gris → transparente, en repetición).\n\n◗ + [círculo ¼, rayado] · ♡ + [círculo entero, gris, dividido en cuartos por líneas cruzadas] · ◗ + [círculo ¾, transparente/contorno] · ♡ + [círculo ½, rayado] · ◗ + [círculo ¼, gris] · ?"
+      "es": "La esquina superior derecha alterna ◗(small black semicircle) / ♡(heart outline); un círculo debajo pasa cíclicamente por el tamaño (entero → ¾ → ½ → ¼, en repetición) y por el relleno (rayado → gris → transparente, en repetición).\n\n◗ + [¼ circle, striped] · ♡ + [whole circle, grey, quartered by cross-lines] · ◗ + [¾ circle, clear/outline] · ♡ + [½ circle, striped] · ◗ + [¼ circle, grey] · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "♡ + [whole circle, hatched all over]",
-          "es": "♡ + [círculo entero, rayado por completo]"
+          "es": "♡ + [whole circle, hatched all over]"
         },
         "isCorrect": false
       },
@@ -673,7 +673,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "♡ + [whole circle, clear, quartered by cross-lines]",
-          "es": "♡ + [círculo entero, transparente, dividido en cuartos por líneas cruzadas]"
+          "es": "♡ + [whole circle, clear, quartered by cross-lines]"
         },
         "isCorrect": true,
         "explanation": {
@@ -685,7 +685,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "◗ + [¼ circle, clear]",
-          "es": "◗ + [círculo ¼, transparente]"
+          "es": "◗ + [¼ circle, clear]"
         },
         "isCorrect": false
       },
@@ -693,7 +693,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "◗ + [whole circle, clear, quartered by cross-lines]",
-          "es": "◗ + [círculo entero, transparente, dividido en cuartos por líneas cruzadas]"
+          "es": "◗ + [whole circle, clear, quartered by cross-lines]"
         },
         "isCorrect": false
       },

@@ -8,7 +8,7 @@ export type ShapeKind =
   | 'circle' | 'triangle' | 'square' | 'star' | 'diamond' | 'heart' | 'arrow'
   | 'pentagon' | 'hexagon' | 'rectangle'
   | 'smiley-happy' | 'smiley-sad' | 'smiley-neutral'
-  | 'quarter-circle' | 'half-circle'
+  | 'quarter-circle' | 'half-circle' | 'three-quarter-circle' | 'circle-quartered'
   | 'circled-plus' | 'circled-x' | 'circled-minus'
   | 'sun' | 'cloud' | 'snowflake' | 'lightning' | 'four-point-star' | 'moon'
 export type FillKind = 'filled' | 'empty' | 'grey' | 'hatched'
@@ -23,11 +23,15 @@ export interface ShapeSpec {
   fill: FillKind
   rotationDeg: number
   size: SizeKind
+  /** Posición de ESTA forma dentro de la rejilla 3×3 del panel (independiente
+   * de las demás formas del mismo panel) — p. ej. "hexágono arriba-izquierda
+   * + círculo abajo-izquierda" son dos formas con posiciones distintas
+   * dentro del mismo panel, no un grupo que se mueve en bloque. */
+  position?: Position
 }
 
 export interface FigurePanel {
   shapes: ShapeSpec[]
-  position?: Position
   caption?: string
   isBlank: boolean
   raw: string
@@ -65,6 +69,12 @@ const SHAPE_MAP: Record<string, { shape: ShapeKind; fill: FillKind }> = {
   '◔': { shape: 'quarter-circle', fill: 'filled' },
   '◐': { shape: 'half-circle', fill: 'filled' },
   '◗': { shape: 'half-circle', fill: 'filled' },
+  // Círculo completo dividido en 4 por dos diámetros perpendiculares (un
+  // "pastel" de 4 porciones iguales, no un aspa corta como '⊕'). No hay un
+  // carácter Unicode estándar para esto en el banco real, así que se usa
+  // '◍' (bullseye) como notación propia consistente con el resto de glifos
+  // arbitrarios de este parser.
+  '◍': { shape: 'circle-quartered', fill: 'empty' },
   '⊕': { shape: 'circled-plus', fill: 'empty' },
   '✕': { shape: 'circled-x', fill: 'empty' },
   '⊗': { shape: 'circled-x', fill: 'empty' },
@@ -244,6 +254,53 @@ function parseParenAttr(attr: string): ParenAttr | null {
   return null
 }
 
+// Mapea la fracción en prosa ("whole"/"¾"/"half"/"¼"...) al ShapeKind que
+// dibuja esa porción de círculo. Ver `parseCircleFractionBracket`.
+const CIRCLE_FRACTION_SHAPES: Record<string, ShapeKind> = {
+  whole: 'circle',
+  'three-quarter': 'three-quarter-circle',
+  'three-quarters': 'three-quarter-circle',
+  '3/4': 'three-quarter-circle',
+  '¾': 'three-quarter-circle',
+  half: 'half-circle',
+  '1/2': 'half-circle',
+  '½': 'half-circle',
+  quarter: 'quarter-circle',
+  '1/4': 'quarter-circle',
+  '¼': 'quarter-circle',
+}
+
+/** Reconoce la notación en prosa "[whole/¾/½/¼ circle, <relleno>, quartered
+ * by cross-lines]" que el banco real usa dentro de corchetes para preguntas
+ * de "fracción de círculo" (en vez de un glifo Unicode único, porque no
+ * existe un carácter para "círculo completo dividido en 4 por una cruz").
+ * Devuelve null si el texto no empieza con este patrón, para que el
+ * llamador siga con el tratamiento genérico de corchetes. */
+function parseCircleFractionBracket(text: string): { spec: ShapeSpec; leftover: string[] } | null {
+  const m = text.trim().match(/^(whole|three-quarters?|3\/4|¾|half|1\/2|½|quarter|1\/4|¼)\s+circle\b\s*,?\s*(.*)$/i)
+  if (!m) return null
+  let shape = CIRCLE_FRACTION_SHAPES[m[1].toLowerCase()]
+  if (!shape) return null
+  let fill: FillKind = 'empty'
+  const leftover: string[] = []
+  const rest = m[2].replace(/\ball over\b/gi, '').replace(/\//g, ',')
+  for (const part of rest.split(',')) {
+    const clean = part.trim()
+    if (!clean) continue
+    if (/^quartered\b/i.test(clean)) {
+      shape = 'circle-quartered'
+      continue
+    }
+    const parsed = parseParenAttr(clean)
+    if (parsed?.fill) {
+      fill = parsed.fill
+    } else {
+      leftover.push(clean)
+    }
+  }
+  return { spec: { shape, fill, rotationDeg: 0, size: 'medium' }, leftover }
+}
+
 /** Parsea UN panel (un token separado por splitPanels) en una FigurePanel.
  *
  * Recorre el texto en una sola pasada, carácter a carácter: cada símbolo
@@ -261,8 +318,6 @@ export function parsePanel(raw: string): FigurePanel {
 
   const shapes: ShapeSpec[] = []
   const captions: string[] = []
-  let position: Position | undefined
-  let positionConflict = false
   let unrecognizedRun = ''
   const flushRun = () => {
     // Conectores puramente gramaticales entre dos símbolos ("△ with □",
@@ -285,11 +340,13 @@ export function parsePanel(raw: string): FigurePanel {
 
   /** Aplica los atributos reconocidos de un grupo "(...)" a las formas
    * creadas desde el último grupo aplicado (`attached` limita eso a solo la
-   * última forma, cuando el paréntesis viene pegado a un símbolo). Los
-   * atributos sin ninguna forma a la que aplicarse (p. ej. un paréntesis al
-   * principio del texto) se conservan como caption en vez de perderse.
-   * `position` es la excepción: se queda a nivel de panel entero, porque
-   * coloca el grupo de iconos completo dentro de la rejilla 3×3. */
+   * última forma, cuando el paréntesis viene pegado a un símbolo). La
+   * posición es un atributo de forma más (cada forma del panel puede tener
+   * la suya propia — "hexágono arriba-izquierda + círculo abajo-izquierda"
+   * son dos formas con posiciones distintas dentro del mismo panel, no un
+   * grupo que se mueve en bloque). Los atributos sin ninguna forma a la que
+   * aplicarse (p. ej. un paréntesis al principio del texto) se conservan
+   * como caption en vez de perderse. */
   function applyParenGroup(inner: string, attached: boolean) {
     const rangeStart = attached ? shapes.length - 1 : attributedUpTo
     const targets = shapes.slice(Math.max(rangeStart, 0))
@@ -301,21 +358,6 @@ export function parsePanel(raw: string): FigurePanel {
         leftover.push(part.trim())
         continue
       }
-      if (parsed.position) {
-        if (position != null && parsed.position !== position) {
-          // Dos formas del mismo panel con esquinas DISTINTAS ("hexágono
-          // arriba-izquierda" + "círculo abajo-izquierda") no son "todo el
-          // grupo va en una celda de la rejilla" (el único caso que el
-          // marco de posición sabe dibujar): son una composición libre de
-          // varias formas. En ese caso se abandona el marco compartido —
-          // forzarlas en una sola celda las superpondría de forma
-          // incorrecta — y la esquina en conflicto se deja como texto.
-          positionConflict = true
-          leftover.push(part.trim())
-        } else {
-          position = parsed.position
-        }
-      }
       if (parsed.extraArrowDeg != null) {
         shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: parsed.extraArrowDeg, size: 'small' })
       }
@@ -324,11 +366,12 @@ export function parsePanel(raw: string): FigurePanel {
           if (parsed.size) target.size = parsed.size
           if (parsed.fill) target.fill = parsed.fill
           if (parsed.rotationDeg != null) target.rotationDeg = parsed.rotationDeg
+          if (parsed.position) target.position = parsed.position
         }
-      } else if (!parsed.position && parsed.extraArrowDeg == null) {
-        // Atributo de forma (tamaño/relleno/rotación) sin ninguna forma
-        // previa a la que aplicarse (p. ej. un paréntesis inicial): no se
-        // puede dibujar, así que se conserva como texto en vez de perderse.
+      } else if (parsed.extraArrowDeg == null) {
+        // Atributo de forma (tamaño/relleno/rotación/posición) sin ninguna
+        // forma previa a la que aplicarse (p. ej. un paréntesis inicial): no
+        // se puede dibujar, así que se conserva como texto en vez de perderse.
         leftover.push(part.trim())
       }
     }
@@ -347,6 +390,12 @@ export function parsePanel(raw: string): FigurePanel {
         shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: deg, size: 'small' })
         text = text.replace(ch, '')
       }
+    }
+    const circleFraction = parseCircleFractionBracket(text)
+    if (circleFraction) {
+      shapes.push(circleFraction.spec)
+      if (circleFraction.leftover.length > 0) captions.push(circleFraction.leftover.join(', '))
+      return
     }
     text = text
       .replace(/\(\s*\)/g, '')
@@ -420,30 +469,28 @@ export function parsePanel(raw: string): FigurePanel {
 
   return {
     shapes,
-    position: positionConflict ? undefined : position,
     caption: shapes.length > 0 ? caption : caption ?? trimmed,
     isBlank: false,
     raw: trimmed,
   }
 }
 
-/** Firma de lo que `FigurePanelView` dibuja realmente para un panel (formas +
- * posición en la rejilla), ignorando el caption de texto. Dos opciones de una
- * misma pregunta con la misma firma producirían el mismo icono aunque su
- * texto de origen sea distinto — típicamente porque describen una diferencia
- * (p. ej. "tip left" vs "tip right", "top-half" vs "bottom-half") que el
- * parser no modela como atributo de figura. El llamador debe usar esto para
- * evitar mostrar dos opciones distintas con el icono idéntico. */
+/** Firma de lo que `FigurePanelView` dibuja realmente para un panel (formas,
+ * con su relleno/tamaño/rotación/posición), ignorando el caption de texto.
+ * Dos opciones de una misma pregunta con la misma firma producirían el
+ * mismo icono aunque su texto de origen sea distinto — típicamente porque
+ * describen una diferencia (p. ej. "tip left" vs "tip right") que el parser
+ * no modela como atributo de figura. El llamador debe usar esto para evitar
+ * mostrar dos opciones distintas con el icono idéntico. */
 export function panelSignature(panel: FigurePanel): string {
   // Dentro de un marco de posición, FigurePanelView siempre dibuja los
   // iconos a tamaño 'small' (para que quepan en su celda de la rejilla 3×3),
   // ignorando el tamaño declarado en el texto — la firma tiene que reflejar
   // eso o dos paneles que solo difieren en tamaño parecerían distintos aun
   // dibujándose exactamente igual dentro de un marco.
-  const shapes = panel.shapes
-    .map((s) => `${s.shape}|${s.fill}|${panel.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}`)
+  return panel.shapes
+    .map((s) => `${s.position ?? ''}|${s.shape}|${s.fill}|${s.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}`)
     .join(',')
-  return `${panel.position ?? ''}::${shapes}`
 }
 
 /** Parsea una tabla Markdown de matriz (3×3, sin cabecera con contenido) en

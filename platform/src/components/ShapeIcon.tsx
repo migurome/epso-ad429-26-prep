@@ -92,8 +92,25 @@ export function ShapeIcon({ spec, className }: ShapeIconProps) {
     case 'quarter-circle':
       shapeEl = <path d="M50,50 L50,8 A42,42 0 0 1 92,50 Z" {...commonProps} />
       break
+    case 'three-quarter-circle':
+      // El círculo completo menos la misma cuña que falta en 'quarter-circle'
+      // (forma de "Pac-Man"): mismo arco, dando la vuelta larga.
+      shapeEl = <path d="M50,50 L92,50 A42,42 0 1 1 50,8 Z" {...commonProps} />
+      break
     case 'half-circle':
       shapeEl = <path d="M50,8 A42,42 0 0 1 50,92 Z" {...commonProps} />
+      break
+    case 'circle-quartered':
+      // Círculo completo dividido en 4 secciones iguales por dos diámetros
+      // perpendiculares (a diferencia de 'circled-plus', cuya cruz es corta
+      // y decorativa, no llega al borde del círculo).
+      shapeEl = (
+        <g>
+          <circle cx={50} cy={50} r={32} {...commonProps} />
+          <line x1={50} y1={18} x2={50} y2={82} stroke={INK} strokeWidth={4} />
+          <line x1={18} y1={50} x2={82} y2={50} stroke={INK} strokeWidth={4} />
+        </g>
+      )
       break
     case 'circled-plus':
       shapeEl = (
