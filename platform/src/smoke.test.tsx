@@ -33,10 +33,16 @@ async function renderSuspended(ui: React.ReactNode) {
 }
 
 async function waitForRealContent(container: HTMLElement) {
-  await waitFor(() => {
-    expect(container.textContent).toBeTruthy()
-    expect(container.textContent).not.toContain(FALLBACK)
-  })
+  // El chunk de verbal (~1 MB) puede tardar más que el timeout por defecto
+  // de waitFor (1000ms) en máquinas cargadas; 5s da margen sin retrasar
+  // demasiado un fallo genuino.
+  await waitFor(
+    () => {
+      expect(container.textContent).toBeTruthy()
+      expect(container.textContent).not.toContain(FALLBACK)
+    },
+    { timeout: 5000 },
+  )
 }
 
 describe('pages render without crashing', () => {

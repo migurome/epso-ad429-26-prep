@@ -102,6 +102,38 @@ const POSITIONS: Position[] = [
   'bottom-left', 'bottom-centre', 'bottom-right',
 ]
 
+// Sinónimos en prosa de las 9 posiciones de la rejilla, muy usados en el
+// banco real ("upper-left"/"lower-right"...) en vez de "top-left"/
+// "bottom-right". El sufijo " corner" ("top-left corner") se recorta antes
+// de comparar, ver `normalisePositionWord`.
+const POSITION_WORDS: Record<string, Position> = {
+  'upper-left': 'top-left',
+  'upper-right': 'top-right',
+  'upper-mid': 'top-centre',
+  'upper-middle': 'top-centre',
+  'upper-centre': 'top-centre',
+  'upper-center': 'top-centre',
+  'top-center': 'top-centre',
+  'lower-left': 'bottom-left',
+  'lower-right': 'bottom-right',
+  'lower-mid': 'bottom-centre',
+  'lower-middle': 'bottom-centre',
+  'lower-centre': 'bottom-centre',
+  'lower-center': 'bottom-centre',
+  'bottom-center': 'bottom-centre',
+  'mid-centre': 'centre',
+  'mid-center': 'centre',
+  'middle': 'centre',
+  'center': 'centre',
+}
+
+function normalisePositionWord(clean: string): Position | null {
+  const stripped = clean.replace(/ corner$/, '')
+  if ((POSITIONS as string[]).includes(stripped)) return stripped as Position
+  if (stripped in POSITION_WORDS) return POSITION_WORDS[stripped]
+  return null
+}
+
 const SIZES: SizeKind[] = ['small', 'medium', 'large', 'extra-large']
 
 function tokenize(text: string, isSeparator: (ch: string) => boolean): string[] {
@@ -148,20 +180,48 @@ interface ParenAttr {
 // Palabras sueltas para el relleno, usadas en el banco real como alternativa
 // a los símbolos Unicode con relleno explícito (p. ej. "●(black)" en vez de
 // "⬤"). "shaded" se trata como sinónimo de "grey" (ambos se ven como el
-// mismo gris intermedio en el icono).
+// mismo gris intermedio en el icono); "striped" es el término alternativo
+// que usa el propio libro real para "hatched" (ver teoría: "hatched/striped
+// fill"); "clear" es sinónimo de "empty" (contorno sin rellenar).
 const FILL_WORDS: Record<string, FillKind> = {
   filled: 'filled',
   black: 'filled',
   empty: 'empty',
   white: 'empty',
   outline: 'empty',
+  clear: 'empty',
   shaded: 'grey',
+  striped: 'hatched',
 }
+
+// Sinónimos en prosa de los tamaños de SIZES ("small tal cual" ya está
+// cubierto por SIZES); "larger"/"smaller" son relativos, pero en este banco
+// siempre se usan para contrastar con el tamaño medio por defecto de las
+// demás formas del panel, así que se tratan como 'large'/'small' absolutos.
+const SIZE_WORDS: Record<string, SizeKind> = {
+  big: 'large',
+  larger: 'large',
+  smaller: 'small',
+  tiny: 'small',
+}
+
+// Conectores gramaticales entre dos símbolos ("△(big) with ■(small)",
+// "△(big) con ■(small)") sin ningún contenido visual propio.
+const CONNECTOR_WORDS = new Set(['with', 'and', 'con', 'y'])
+
+// Dirección en la que apunta la "punta" de una figura (normalmente un
+// triángulo): mismo convenio de rotación que TRIANGLE_MAP (0° = apunta
+// arriba). "tip left/right/up/down" y "pointing left/right/up/down" son las
+// dos formas en que el banco real describe esto en prosa en vez de usar
+// directamente el símbolo ya rotado (▲▶▼◀).
+const TIP_ROTATION: Record<string, number> = { up: 0, right: 90, down: 180, left: 270 }
 
 function parseParenAttr(attr: string): ParenAttr | null {
   const clean = attr.trim().toLowerCase()
   if ((SIZES as string[]).includes(clean)) return { size: clean as SizeKind }
-  if ((POSITIONS as string[]).includes(clean)) return { position: clean as Position }
+  if (clean in SIZE_WORDS) return { size: SIZE_WORDS[clean] }
+  const position = normalisePositionWord(clean)
+  if (position) return { position }
   if (clean === 'grey') return { fill: 'grey' }
   if (clean === 'hatched') return { fill: 'hatched' }
   if (clean in FILL_WORDS) return { fill: FILL_WORDS[clean] }
@@ -170,6 +230,10 @@ function parseParenAttr(attr: string): ParenAttr | null {
     const deg = Number(rotMatch[1])
     const ccw = rotMatch[2] !== 'clockwise'
     return { rotationDeg: ccw ? -deg : deg }
+  }
+  const tipMatch = clean.match(/^(?:tip|pointing) (up|right|down|left)$/)
+  if (tipMatch) {
+    return { rotationDeg: TIP_ROTATION[tipMatch[1]] }
   }
   // "(arrow ↘)" — una pequeña flecha decorativa asociada al símbolo principal
   // (usada en el banco real para indicar dirección de movimiento del panel).
@@ -180,28 +244,107 @@ function parseParenAttr(attr: string): ParenAttr | null {
   return null
 }
 
-/** Parsea UN panel (un token separado por splitPanels) en una FigurePanel. */
+/** Parsea UN panel (un token separado por splitPanels) en una FigurePanel.
+ *
+ * Recorre el texto en una sola pasada, carácter a carácter: cada símbolo
+ * Unicode reconocido crea una nueva forma, y un grupo entre paréntesis que
+ * viene justo después ("SÍMBOLO(attr1, attr2)") se aplica SOLO a esa forma,
+ * no a todo el panel. Esto importa porque el banco real describe paneles con
+ * varios símbolos, cada uno con sus propios atributos — p. ej.
+ * "◆(medium) ●(small) △(white,small)" son tres formas distintas, no una
+ * mezcla de los atributos del último paréntesis aplicados a las tres. */
 export function parsePanel(raw: string): FigurePanel {
   const trimmed = raw.trim()
   if (trimmed === '?') {
     return { shapes: [], isBlank: true, raw: trimmed }
   }
 
+  const shapes: ShapeSpec[] = []
   const captions: string[] = []
-  let rest = trimmed
-  const extraArrowDegs: number[] = []
+  let position: Position | undefined
+  let positionConflict = false
+  let unrecognizedRun = ''
+  const flushRun = () => {
+    // Conectores puramente gramaticales entre dos símbolos ("△ with □",
+    // "△ con □") no aportan ninguna descripción visual — mostrarlos como
+    // caption es solo ruido bajo el icono, no información.
+    if (unrecognizedRun && !CONNECTOR_WORDS.has(unrecognizedRun.toLowerCase())) {
+      captions.push(unrecognizedRun)
+    }
+    unrecognizedRun = ''
+  }
 
-  // 1. Extraer corchetes [...] como caption (descripciones complejas del banco
-  //    real). Si el texto entre corchetes incluye una flecha de compás
-  //    Unicode suelta (p. ej. "[línea ↘]"), se extrae como flecha decorativa
-  //    en vez de dejarla en el caption: el navegador renderiza esos glifos
-  //    como emoji de color, que desentonan con el resto de iconos en blanco
-  //    y negro dibujados a mano.
-  rest = rest.replace(/\[([^\]]*)\]/g, (_, inner: string) => {
+  // Índice (en `shapes`) hasta el que ya se han aplicado atributos de algún
+  // grupo "(...)" anterior. Un grupo pegado a un símbolo ("●(small)") solo
+  // afecta a esa última forma; un grupo suelto tras un espacio
+  // ("◆◆◆ (large)") se entiende como "todas las formas repetidas desde la
+  // última vez que se aplicó un grupo", para cubrir el estilo del banco real
+  // donde un tamaño/relleno compartido se declara una sola vez al final de
+  // una tanda de símbolos idénticos.
+  let attributedUpTo = 0
+
+  /** Aplica los atributos reconocidos de un grupo "(...)" a las formas
+   * creadas desde el último grupo aplicado (`attached` limita eso a solo la
+   * última forma, cuando el paréntesis viene pegado a un símbolo). Los
+   * atributos sin ninguna forma a la que aplicarse (p. ej. un paréntesis al
+   * principio del texto) se conservan como caption en vez de perderse.
+   * `position` es la excepción: se queda a nivel de panel entero, porque
+   * coloca el grupo de iconos completo dentro de la rejilla 3×3. */
+  function applyParenGroup(inner: string, attached: boolean) {
+    const rangeStart = attached ? shapes.length - 1 : attributedUpTo
+    const targets = shapes.slice(Math.max(rangeStart, 0))
+    const leftover: string[] = []
+    for (const part of inner.split(',')) {
+      if (!part.trim()) continue
+      const parsed = parseParenAttr(part)
+      if (!parsed) {
+        leftover.push(part.trim())
+        continue
+      }
+      if (parsed.position) {
+        if (position != null && parsed.position !== position) {
+          // Dos formas del mismo panel con esquinas DISTINTAS ("hexágono
+          // arriba-izquierda" + "círculo abajo-izquierda") no son "todo el
+          // grupo va en una celda de la rejilla" (el único caso que el
+          // marco de posición sabe dibujar): son una composición libre de
+          // varias formas. En ese caso se abandona el marco compartido —
+          // forzarlas en una sola celda las superpondría de forma
+          // incorrecta — y la esquina en conflicto se deja como texto.
+          positionConflict = true
+          leftover.push(part.trim())
+        } else {
+          position = parsed.position
+        }
+      }
+      if (parsed.extraArrowDeg != null) {
+        shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: parsed.extraArrowDeg, size: 'small' })
+      }
+      if (targets.length > 0) {
+        for (const target of targets) {
+          if (parsed.size) target.size = parsed.size
+          if (parsed.fill) target.fill = parsed.fill
+          if (parsed.rotationDeg != null) target.rotationDeg = parsed.rotationDeg
+        }
+      } else if (!parsed.position && parsed.extraArrowDeg == null) {
+        // Atributo de forma (tamaño/relleno/rotación) sin ninguna forma
+        // previa a la que aplicarse (p. ej. un paréntesis inicial): no se
+        // puede dibujar, así que se conserva como texto en vez de perderse.
+        leftover.push(part.trim())
+      }
+    }
+    if (leftover.length > 0) captions.push(leftover.join(', '))
+    attributedUpTo = shapes.length
+  }
+
+  /** Extrae flechas de compás sueltas de un corchete "[...]" (p. ej.
+   * "[línea ↘]") como flechas decorativas propias en vez de dejar el glifo
+   * Unicode crudo en el caption — el navegador lo pintaría como un emoji de
+   * color que desentona con el resto de iconos en blanco y negro. */
+  function applyBracketContent(inner: string) {
     let text = inner
     for (const [ch, deg] of Object.entries(COMPASS_MAP)) {
       while (text.includes(ch)) {
-        extraArrowDegs.push(deg)
+        shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: deg, size: 'small' })
         text = text.replace(ch, '')
       }
     }
@@ -212,101 +355,72 @@ export function parsePanel(raw: string): FigurePanel {
       .replace(/\s{2,}/g, ' ')
       .trim()
     if (text) captions.push(text)
-    return ''
-  })
-
-  // 2. Extraer paréntesis (...) — algunos son atributos reconocidos, el resto
-  //    (p. ej. "(arrow ↘)", "(left)") se guarda como caption libre.
-  let size: SizeKind | undefined
-  let position: Position | undefined
-  let rotationDeg = 0
-  let fillOverride: FillKind | undefined
-
-  // Cada grupo puede combinar varios atributos separados por coma, p. ej.
-  // "(white, LARGE, 1st)": se evalúa cada parte por separado en vez de exigir
-  // que el grupo entero coincida con un único atributo reconocido, para no
-  // perder "large" solo porque venga acompañado de "1st" (sin reconocer).
-  rest = rest.replace(/\(([^)]*)\)/g, (_, inner: string) => {
-    const leftover: string[] = []
-    for (const part of inner.split(',')) {
-      if (!part.trim()) continue
-      const parsed = parseParenAttr(part)
-      if (parsed) {
-        if (parsed.size) size = parsed.size
-        if (parsed.position) position = parsed.position
-        if (parsed.rotationDeg != null) rotationDeg = parsed.rotationDeg
-        if (parsed.fill) fillOverride = parsed.fill
-        if (parsed.extraArrowDeg != null) extraArrowDegs.push(parsed.extraArrowDeg)
-      } else {
-        leftover.push(part.trim())
-      }
-    }
-    if (leftover.length > 0) captions.push(leftover.join(', '))
-    return ''
-  })
-
-  // 3. Lo que queda son símbolos Unicode (posiblemente varios, p. ej. "●●●").
-  //    Los caracteres no reconocidos se agrupan en palabras (no letra a
-  //    letra) antes de mandarlos a caption, para no trocear conectores como
-  //    "with"/"con" en tokens sueltos ("w i t h").
-  const shapes: ShapeSpec[] = []
-  let unrecognizedRun = ''
-  const flushRun = () => {
-    if (unrecognizedRun) {
-      captions.push(unrecognizedRun)
-      unrecognizedRun = ''
-    }
   }
-  for (const ch of rest) {
+
+  const chars = [...trimmed]
+  let i = 0
+  while (i < chars.length) {
+    const ch = chars[i]
+    if (ch === '[') {
+      const end = chars.indexOf(']', i + 1)
+      if (end === -1) {
+        unrecognizedRun += ch
+        i++
+        continue
+      }
+      flushRun()
+      applyBracketContent(chars.slice(i + 1, end).join(''))
+      i = end + 1
+      continue
+    }
+    if (ch === '(') {
+      const end = chars.indexOf(')', i + 1)
+      if (end === -1) {
+        unrecognizedRun += ch
+        i++
+        continue
+      }
+      // Pegado a un símbolo ("●(small)") vs. suelto tras un espacio
+      // ("◆◆◆ (large)") — ver el comentario de `applyParenGroup`. Se exige
+      // que el carácter anterior sea justo un símbolo de figura (no
+      // cualquier no-espacio) para no enganchar por error un paréntesis a
+      // una forma antigua cuando lo que precede es texto no reconocido.
+      const prevCh = i > 0 ? chars[i - 1] : ''
+      const attached = prevCh in TRIANGLE_MAP || prevCh in SHAPE_MAP || prevCh in COMPASS_MAP
+      flushRun()
+      applyParenGroup(chars.slice(i + 1, end).join(''), attached)
+      i = end + 1
+      continue
+    }
     if (/\s/.test(ch) || ch === '/' || ch === '+' || ch === '=') {
       flushRun()
+      i++
       continue
     }
     if (ch in TRIANGLE_MAP) {
       flushRun()
       const t = TRIANGLE_MAP[ch]
-      shapes.push({
-        shape: 'triangle',
-        fill: fillOverride ?? t.fill,
-        rotationDeg: rotationDeg || t.rotationDeg,
-        size: size ?? 'medium',
-      })
+      shapes.push({ shape: 'triangle', fill: t.fill, rotationDeg: t.rotationDeg, size: 'medium' })
     } else if (ch in SHAPE_MAP) {
       flushRun()
       const s = SHAPE_MAP[ch]
-      shapes.push({
-        shape: s.shape,
-        fill: fillOverride ?? s.fill,
-        rotationDeg,
-        size: size ?? 'medium',
-      })
+      shapes.push({ shape: s.shape, fill: s.fill, rotationDeg: 0, size: 'medium' })
     } else if (ch in COMPASS_MAP) {
       flushRun()
-      shapes.push({
-        shape: 'arrow',
-        fill: 'filled',
-        rotationDeg: rotationDeg || COMPASS_MAP[ch],
-        size: size ?? 'medium',
-      })
+      shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: COMPASS_MAP[ch], size: 'medium' })
     } else {
       // carácter no reconocido (letra, dígito, puntuación residual…): a caption
       unrecognizedRun += ch
     }
+    i++
   }
   flushRun()
-
-  // Flechas decorativas "(arrow ↗)": se dibujan como formas pequeñas propias,
-  // nunca como el glifo Unicode crudo (que el navegador renderiza como un
-  // emoji de color inconsistente con el resto de la figura).
-  for (const deg of extraArrowDegs) {
-    shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: deg, size: 'small' })
-  }
 
   const caption = captions.join(' ').replace(/\s+/g, ' ').trim() || undefined
 
   return {
     shapes,
-    position,
+    position: positionConflict ? undefined : position,
     caption: shapes.length > 0 ? caption : caption ?? trimmed,
     isBlank: false,
     raw: trimmed,

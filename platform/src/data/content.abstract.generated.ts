@@ -1506,8 +1506,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "[grid: marker top-right, hexagon lower-left, stars top row — matches rotation+jump+retreat rule]",
-          "es": "[cuadrícula: marcador arriba a la derecha, hexágono abajo a la izquierda, estrellas en la fila superior — conforme a la regla de rotación+salto+retroceso]"
+          "en": "[grid: marker top-right, hexagon lower-left, stars top row]",
+          "es": "[cuadrícula: marcador arriba a la derecha, hexágono abajo a la izquierda, estrellas en la fila superior]"
         },
         "isCorrect": true,
         "explanation": {
@@ -2906,8 +2906,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "[line above] ⬢(shaded) ⬠ □ / ⬠(below) — matches continuation",
-          "es": "[línea arriba] ⬢(shaded) ⬠ □ / ⬠(below) — coincide con la continuación"
+          "en": "[line above] ⬢(shaded) ⬠ □ / ⬠(below)",
+          "es": "[línea arriba] ⬢(shaded) ⬠ □ / ⬠(below)"
         },
         "isCorrect": true,
         "explanation": {
@@ -3445,8 +3445,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "★[3 dots] + ⬟(filled,bottom-left) — matches continuation",
-          "es": "★[3 puntos] + ⬟(filled,bottom-left) — coincide con la continuación"
+          "en": "★[3 dots] + ⬟(filled,bottom-left)",
+          "es": "★[3 puntos] + ⬟(filled,bottom-left)"
         },
         "isCorrect": true,
         "explanation": {

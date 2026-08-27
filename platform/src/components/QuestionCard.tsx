@@ -31,20 +31,36 @@ export function QuestionCard({
   const large = size === 'large'
   const isAbstract = question.skill === 'abstract'
   const prompt = pick(testLocale, question.prompt)
-  // Si dos opciones producirían el mismo icono (el parser de texto->figura no
-  // modela todos los matices que usa el banco real, p. ej. "tip left" vs
-  // "tip right"), mostrar iconos sería engañoso: parecerían la misma
-  // respuesta pero una se marca correcta y la otra no. En ese caso se
-  // muestran todas las opciones de la pregunta como texto en su lugar.
+  // Si la opción CORRECTA produciría el mismo icono Y el mismo caption que
+  // una incorrecta (el parser de texto->figura no modela todos los matices
+  // que usa el banco real, p. ej. "tip left" vs "tip right"), mostrar
+  // iconos sería engañoso: parecerían la misma respuesta pero una se marca
+  // correcta y la otra no. En ese caso se muestran todas las opciones de la
+  // pregunta como texto. Si el icono es genérico pero el caption sí
+  // distingue las opciones (p. ej. "fase correcta" vs "fase desfasada un
+  // paso"), no hace falta el texto completo — el caption ya es la
+  // distinción legible. Dos opciones INCORRECTAS con el mismo icono tampoco
+  // son un problema — en las preguntas "cuatro de estas cinco comparten una
+  // regla, una no" es justamente el diseño que los distractores compartan
+  // aspecto y solo la respuesta se salga del patrón (o al revés).
   const optionPanelsForCollisionCheck = isAbstract
     ? question.options.map((opt) => parsePanel(pick(testLocale, opt.text)))
     : null
-  const hasIconCollision =
-    optionPanelsForCollisionCheck?.some((panel, i) => {
-      if (panel.shapes.length === 0) return false
-      const sig = panelSignature(panel)
-      return optionPanelsForCollisionCheck.some((other, j) => j !== i && other.shapes.length > 0 && panelSignature(other) === sig)
-    }) ?? false
+  const hasIconCollision = (() => {
+    if (!optionPanelsForCollisionCheck) return false
+    const correctIndex = question.options.findIndex((opt) => opt.isCorrect)
+    const correctPanel = correctIndex >= 0 ? optionPanelsForCollisionCheck[correctIndex] : undefined
+    if (!correctPanel || correctPanel.shapes.length === 0) return false
+    const correctSig = panelSignature(correctPanel)
+    const correctCaption = correctPanel.caption ?? ''
+    return optionPanelsForCollisionCheck.some(
+      (panel, i) =>
+        i !== correctIndex &&
+        panel.shapes.length > 0 &&
+        panelSignature(panel) === correctSig &&
+        (panel.caption ?? '') === correctCaption,
+    )
+  })()
   return (
     <div>
       {index != null && (
