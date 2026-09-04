@@ -2,7 +2,7 @@
 // Las colecciones de contenido (preguntas, teoría, referencias) se rellenarán
 // en la fase de recopilación de datos; estos tipos definen su forma final.
 
-export type PhaseId = 'reasoning' | 'field-mcq' | 'eufte'
+export type PhaseId = 'reasoning' | 'field-mcq' | 'eufte' | 'test-day'
 
 export type ReasoningSkill = 'verbal' | 'numerical' | 'abstract'
 

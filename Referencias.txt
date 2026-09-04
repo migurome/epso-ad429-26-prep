@@ -20,3 +20,16 @@ https://numpy.org/doc/stable/
 https://docs.scipy.org/doc/scipy/
 https://cs229.stanford.edu/
 https://eur-lex.europa.eu/eli/C/2026/2425/oj?locale
+
+# Docs/6.- Preparing for Test Day.md — condiciones del examen remoto
+https://eu-careers.europa.eu/en/remotely-proctored-testing
+https://eu-careers.europa.eu/index.php/en/dos-donts-epso-testing
+https://eu-careers.europa.eu/system/files/2024-02/230322%20EPSO%20info%20note%20on%20core%20IT%20requirements%20for%20online%20tests%20Ares(2023)2121379.pdf
+https://edps.europa.eu/data-protection/our-work/publications/investigations/2024-11-27-edps-reprimands-epso-its-discontinued-remotely-proctored-testing-cases-2023-0477-2023-0555-and-2023-0966
+https://eno.ombudsman.europa.eu/home/news/archives-2025/maincontent/eo-positive-follow-up-by-epso-to.html
+https://eutraining.eu/content/epso-tests-tao-platform-part-1-reasoning-skills-tools
+https://eucampus.com/en/tao-epso-platform/
+https://eutraining.eu/content/usage-calculator-during-numerical-reasoning-tests
+https://www.passepso.com/blog/epso-computer-based-test-cbt-tips-2026/
+https://www.epsogenius.com/en/blog/epso-test-centre-exam-day
+https://yasemoseuropeos.com/wp-content/uploads/2024/05/2024-05-yse-dudas-mas-comunes-oposiciones_es-webinar.pdf

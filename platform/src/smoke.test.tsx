@@ -15,6 +15,7 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { ReasoningSkillPage } from './pages/ReasoningSkillPage'
 import { FieldMcqPage } from './pages/FieldMcqPage'
 import { EuftePage } from './pages/EuftePage'
+import { TestDayPage } from './pages/TestDayPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { useLocaleStore } from './lib/localeStore'
 
@@ -94,6 +95,15 @@ describe('pages render without crashing', () => {
     const { container } = await renderSuspended(
       <MemoryRouter initialEntries={['/eufte']}>
         <EuftePage />
+      </MemoryRouter>,
+    )
+    await waitForRealContent(container)
+  })
+
+  it('test day', async () => {
+    const { container } = await renderSuspended(
+      <MemoryRouter initialEntries={['/dia-del-examen']}>
+        <TestDayPage />
       </MemoryRouter>,
     )
     await waitForRealContent(container)

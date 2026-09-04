@@ -10,6 +10,7 @@ export const DICT = {
   nav_reasoning: { es: 'Razonamiento', en: 'Reasoning' },
   nav_field_mcq: { es: 'Field-Related MCQ', en: 'Field-Related MCQ' },
   nav_eufte: { es: 'EUFTE', en: 'EUFTE' },
+  nav_test_day: { es: 'Día del examen', en: 'Test day' },
   nav_resources: { es: 'Recursos', en: 'Resources' },
   nav_progress: { es: 'Progreso', en: 'Progress' },
   sidebar_footer: { es: '{posts} plazas · 4 campos ICT', en: '{posts} posts · 4 ICT fields' },
@@ -168,6 +169,14 @@ export const DICT = {
   eufte_progress_summary: {
     es: '{n} redacción{plural} guardada{plural} · tiempo total {t} · presupuesto {m} min por redacción',
     en: '{n} essay{plural} saved · total time {t} · budget {m} min per essay',
+  },
+
+  // TestDayPage
+  test_day_eyebrow: { es: 'Logística', en: 'Logistics' },
+  test_day_title: { es: 'Preparación para el día del examen', en: 'Preparing for test day' },
+  test_day_description: {
+    es: 'Cómo es el examen remoto en casa: requisitos técnicos, qué puedes tener contigo, la calculadora en pantalla y trucos de otros candidatos.',
+    en: 'What the remote at-home exam is like: technical requirements, what you can have with you, the on-screen calculator, and tips from other candidates.',
   },
 
   // ResourcesPage

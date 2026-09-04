@@ -33,12 +33,12 @@ src/
                           fechas) — usados para la navegación
     content.ts            Mantiene REFERENCE_LINKS a mano (preguntas/teoría
                           ya no se re-exportan combinadas desde aquí)
-    content.<nombre>.generated.ts   Un chunk por destreza/campo/EUFTE
-                          (verbal, numerical, abstract, field-data-science,
-                          field-ict-infrastructure, field-ict-project-management,
-                          field-clouds-networks, eufte), generado por
-                          scripts/build_content.py a partir de ../Docs/*.md —
-                          NO editar a mano
+    content.<nombre>.generated.ts   Un chunk por destreza/campo/EUFTE/día
+                          del examen (verbal, numerical, abstract,
+                          field-data-science, field-ict-infrastructure,
+                          field-ict-project-management, field-clouds-networks,
+                          eufte, test-day), generado por scripts/build_content.py
+                          a partir de ../Docs/*.md — NO editar a mano
     contentLoader.ts       Carga cada chunk bajo demanda con import()
                           dinámico + caché de promesas, consumido con
                           use() de React 19 (ver "Code-splitting" abajo)
@@ -62,12 +62,13 @@ src/
     ReasoningOverview.tsx / ReasoningSkillPage.tsx   (Fase 1: verbal/numérico/abstracto)
     FieldMcqOverview.tsx / FieldMcqPage.tsx           (Fase 2: MCQ de campo)
     EuftePage.tsx                                     (Fase 3: redacción EUFTE)
+    TestDayPage.tsx                                   (logística del examen remoto)
     ResourcesPage.tsx                                 (convocatoria + referencias)
     ProgressPage.tsx                                  (estadísticas)
 
 scripts/
   build_content.py        Parsea ../Docs/*.md (+ ../Docs/es/*.md para la
-                          teoría en español) y regenera los 8 chunks
+                          teoría en español) y regenera los 9 chunks
                           src/data/content.<nombre>.generated.ts. Volver a
                           ejecutar (`python scripts/build_content.py`) tras
                           editar cualquier Docs/*.md o Docs/es/*.md.
@@ -89,7 +90,7 @@ después.
 
 ## Idioma (ES/EN)
 
-La interfaz, los 8 documentos de teoría, los bancos de preguntas y los 14
+La interfaz, los 9 documentos de teoría, los bancos de preguntas y los 14
 prompts EUFTE están disponibles en español e inglés. Hay dos selectores
 independientes: el idioma de la interfaz (barra lateral) y el idioma del
 contenido del examen (`TestLocaleSelector`, dentro de cada pestaña de
@@ -125,11 +126,11 @@ completando con las fuentes oficiales):
 Plataforma funcional con contenido real: 848 preguntas (200 verbal + 170
 numérico + 156 abstracto + 322 field-MCQ — 82 Ciencia de Datos + 80 cada
 una de Infraestructura TIC / Gestión de Proyectos TIC / Nubes y Redes),
-8 documentos de teoría y 14 prompts de práctica EUFTE, generados desde
-`Docs/*.md` en 8 chunks `src/data/content.<nombre>.generated.ts` cargados
-bajo demanda (ver "Code-splitting del contenido" más abajo). Los 4 campos
-de especialización tienen ya banco de preguntas propio, con profundidad
-comparable entre ellos.
+9 documentos de teoría (incluida la logística del examen remoto) y 14
+prompts de práctica EUFTE, generados desde `Docs/*.md` en 9 chunks
+`src/data/content.<nombre>.generated.ts` cargados bajo demanda (ver
+"Code-splitting del contenido" más abajo). Los 4 campos de especialización
+tienen ya banco de preguntas propio, con profundidad comparable entre ellos.
 
 Cada prueba de razonamiento y el field-MCQ tienen: pestaña de teoría
 (Markdown), banco de práctica sin cronometrar con corrección explicada

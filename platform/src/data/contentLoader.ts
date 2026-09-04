@@ -48,3 +48,7 @@ export function loadFieldContent(field: Field) {
 export function loadEufteContent() {
   return cached('eufte', () => import('./content.eufte.generated'))
 }
+
+export function loadTestDayContent() {
+  return cached('test-day', () => import('./content.test-day.generated'))
+}

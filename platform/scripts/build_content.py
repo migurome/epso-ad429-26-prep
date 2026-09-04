@@ -488,6 +488,26 @@ def build_eufte():
     return essays, [theory]
 
 
+def build_test_day():
+    """Capítulo 6: logística del día del examen — puro contenido de teoría,
+    sin banco de preguntas ni prompts, así que no hay nada que dividir: todo
+    el cuerpo del capítulo es el theory doc."""
+    text = read("6.- Preparing for Test Day.md")
+    chapters = split_toplevel_chapters(text)
+    en_title, en_body = chapters[0]
+
+    es_title, es_body = es_theory_chapter("6.- Preparación para el día del examen.md")
+
+    theory = {
+        'id': 'theory-test-day',
+        'phase': 'test-day',
+        'title': {'en': en_title, 'es': es_title},
+        'summaryMd': {'en': en_body, 'es': es_body},
+        'sourceFile': '6.- Preparing for Test Day.md',
+    }
+    return [theory]
+
+
 def emit_chunk(filename, *, questions=None, theory=None, essays=None):
     """Writes one content.<name>.generated.ts chunk. Every chunk exports the
     same three names (QUESTIONS/THEORY_DOCS/ESSAY_PROMPTS, empty where not
@@ -555,8 +575,14 @@ def main():
     all_theory += theory
     total_theory += len(theory)
 
+    theory = build_test_day()
+    print(f"build_test_day: {len(theory)} theory doc(s)")
+    emit_chunk('content.test-day.generated.ts', theory=theory)
+    all_theory += theory
+    total_theory += len(theory)
+
     print(f"\nTOTAL: {total_q} questions, {total_theory} theory docs, {len(all_essays)} essay prompts")
-    print(f"Wrote 8 chunk files to {GEN_DIR}")
+    print(f"Wrote 9 chunk files to {GEN_DIR}")
 
     debug_dir = Path(__file__).resolve().parent / "_debug"
     debug_dir.mkdir(exist_ok=True)

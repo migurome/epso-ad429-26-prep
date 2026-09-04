@@ -5,6 +5,7 @@ import {
   BrainCircuit,
   ListChecks,
   PenLine,
+  Video,
   Link2,
   BarChart3,
   X,
@@ -28,6 +29,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     { to: '/razonamiento', label: t('nav_reasoning'), icon: BrainCircuit },
     { to: '/campo', label: t('nav_field_mcq'), icon: ListChecks },
     { to: '/eufte', label: t('nav_eufte'), icon: PenLine },
+    { to: '/dia-del-examen', label: t('nav_test_day'), icon: Video },
     { to: '/recursos', label: t('nav_resources'), icon: Link2 },
     { to: '/progreso', label: t('nav_progress'), icon: BarChart3 },
   ]

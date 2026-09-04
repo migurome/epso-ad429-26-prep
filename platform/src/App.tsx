@@ -6,6 +6,7 @@ import { ReasoningSkillPage } from './pages/ReasoningSkillPage'
 import { FieldMcqOverview } from './pages/FieldMcqOverview'
 import { FieldMcqPage } from './pages/FieldMcqPage'
 import { EuftePage } from './pages/EuftePage'
+import { TestDayPage } from './pages/TestDayPage'
 import { ResourcesPage } from './pages/ResourcesPage'
 import { ProgressPage } from './pages/ProgressPage'
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/campo" element={<FieldMcqOverview />} />
           <Route path="/campo/:fieldId" element={<FieldMcqPage />} />
           <Route path="/eufte" element={<EuftePage />} />
+          <Route path="/dia-del-examen" element={<TestDayPage />} />
           <Route path="/recursos" element={<ResourcesPage />} />
           <Route path="/progreso" element={<ProgressPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
