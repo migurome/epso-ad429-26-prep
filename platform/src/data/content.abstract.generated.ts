@@ -229,7 +229,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "○(white, no adjacent arrow) + arrow ↑(top-left corner, far from circle)",
-          "es": "○(white, no adjacent arrow) + arrow ↑(top-left corner, far from circle)"
+          "es": "○(white, sin flecha al lado) + arrow ↑(top-left corner, lejos del círculo)"
         },
         "isCorrect": false
       }
@@ -406,7 +406,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "[slope white] ☺ ▶ (separate, not on slope)",
-          "es": "[pendiente blanca] ☺ ▶ (separate, not on slope)"
+          "es": "[pendiente blanca] ☺ ▶ (suelta, no sobre la pendiente)"
         },
         "isCorrect": false
       }
@@ -614,7 +614,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "■(black, distractor shape) 2 candles ○○○",
-          "es": "■(black, distractor shape) 2 velas ○○○"
+          "es": "■(black, figura distractora) 2 velas ○○○"
         },
         "isCorrect": false
       },
@@ -701,7 +701,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "♡ (circle missing entirely)",
-          "es": "♡ (circle missing entirely)"
+          "es": "♡ (falta el círculo por completo)"
         },
         "isCorrect": false
       }
@@ -732,7 +732,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "●●●● + ♡[● ▷ ✚ ●] (4 shapes)",
-          "es": "●●●● + ♡[● ▷ ✚ ●] (4 shapes)"
+          "es": "●●●● + ♡[● ▷ ✚ ●] (4 figuras)"
         },
         "isCorrect": false
       },
@@ -740,7 +740,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "● + ♡[● ▷] (2 shapes)",
-          "es": "● + ♡[● ▷] (2 shapes)"
+          "es": "● + ♡[● ▷] (2 figuras)"
         },
         "isCorrect": false
       },
@@ -776,14 +776,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A fixed black square marks \"12 o'clock\"; a clock-hand rotates 90° clockwise each panel; a cluster of centre shapes has a total side-count that climbs 6, 8, 10, 12, 14…, and gains one extra shape every time the hand points at the black square (straight up).\n\nhand ← + ⬡(hexagon,6 sides,1 shape) · hand ↑(at marker) + ◆◆(two 4-sided shapes,8 sides total) · hand → + ⬠⬠(two pentagons,10 sides) · hand ↓ + ⬡⬡(two hexagons,12 sides) · hand ← + [two 7-sided shapes,14 sides] · ?",
-      "es": "Un cuadrado negro fijo marca las «12 en punto»; una manecilla de reloj rota 90° en sentido horario en cada panel; un grupo de figuras centrales tiene un número total de lados que asciende 6, 8, 10, 12, 14…, y gana una figura adicional cada vez que la manecilla apunta al cuadrado negro (recta hacia arriba).\n\nhand ← + ⬡(hexagon,6 sides,1 shape) · hand ↑(at marker) + ◆◆(two 4-sided shapes,8 sides total) · hand → + ⬠⬠(two pentagons,10 sides) · hand ↓ + ⬡⬡(two hexagons,12 sides) · hand ← + [dos figuras de 7 lados, 14 lados] · ?"
+      "es": "Un cuadrado negro fijo marca las «12 en punto»; una manecilla de reloj rota 90° en sentido horario en cada panel; un grupo de figuras centrales tiene un número total de lados que asciende 6, 8, 10, 12, 14…, y gana una figura adicional cada vez que la manecilla apunta al cuadrado negro (recta hacia arriba).\n\nhand ← + ⬡(hexagon,6 sides,1 shape) · manecilla ↑(en el marcador) + ◆◆(two 4-sided shapes,8 sides total) · hand → + ⬠⬠(two pentagons,10 sides) · hand ↓ + ⬡⬡(two hexagons,12 sides) · hand ← + [dos figuras de 7 lados, 14 lados] · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "hand ↑ + [two 8-sided shapes] (only 2 shapes)",
-          "es": "hand ↑ + [dos figuras de 8 lados] (only 2 shapes)"
+          "es": "manecilla ↑ + [dos figuras de 8 lados] (solo 2 figuras)"
         },
         "isCorrect": false
       },
@@ -791,7 +791,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "hand ↓↑ (malformed) + [3 diamonds+square]",
-          "es": "hand ↓↑ (malformed) + [3 rombos+cuadrado]"
+          "es": "manecilla ↓↑ (malformada) + [3 rombos+cuadrado]"
         },
         "isCorrect": false
       },
@@ -807,7 +807,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "hand ↑(at marker) + ⬠⬠⬠(three pentagons)",
-          "es": "hand ↑(at marker) + ⬠⬠⬠(three pentagons)"
+          "es": "manecilla ↑(en el marcador) + ⬠⬠⬠(tres pentágonos)"
         },
         "isCorrect": true,
         "explanation": {
@@ -819,7 +819,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "hand ↑ + [two large shapes only, no count increase]",
-          "es": "hand ↑ + [solo dos figuras grandes, sin aumento de cantidad]"
+          "es": "manecilla ↑ + [solo dos figuras grandes, sin aumento de cantidad]"
         },
         "isCorrect": false
       }
@@ -1019,7 +1019,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "↑ + ⬠-on-⬠(stacked) + ⇐",
-          "es": "↑ + ⬠-on-⬠(stacked) + ⇐"
+          "es": "↑ + ⬠-sobre-⬠(apilados) + ⇐"
         },
         "isCorrect": false
       },
@@ -1035,7 +1035,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "↓ + ⬠-on-⬠(stacked, 10, even) + ⇐",
-          "es": "↓ + ⬠-on-⬠(stacked, 10, even) + ⇐"
+          "es": "↓ + ⬠-sobre-⬠(apilados, 10, par) + ⇐"
         },
         "isCorrect": true,
         "explanation": {
@@ -1055,7 +1055,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "↓ + ⬠-on-⬠(stacked) + ⇒",
-          "es": "↓ + ⬠-on-⬠(stacked) + ⇒"
+          "es": "↓ + ⬠-sobre-⬠(apilados) + ⇒"
         },
         "isCorrect": false
       }
@@ -1145,7 +1145,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "[roof: hexagon,6 sides] door=⬟(pentagon,black,5 sides)",
-          "es": "[tejado: hexágono,6 lados] puerta=⬟(pentagon,black,5 sides)"
+          "es": "[tejado: hexágono,6 lados] puerta=⬟(pentágono,black,5 lados)"
         },
         "isCorrect": true,
         "explanation": {
@@ -1196,7 +1196,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "♡ + [shaded section 3rd/right] + dots(4 bottom row, none bottom-left)",
-          "es": "♡ + [sección sombreada 3ª/derecha] + puntos(4 bottom row, none bottom-left)"
+          "es": "♡ + [sección sombreada 3ª/derecha] + puntos(4 en la fila inferior, ninguno abajo-izquierda)"
         },
         "isCorrect": false
       },
@@ -1204,7 +1204,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "[no heart] + [shaded section 2nd] + dots(4 bottom row)",
-          "es": "[sin corazón] + [sección sombreada 2ª] + puntos(4 bottom row)"
+          "es": "[sin corazón] + [sección sombreada 2ª] + puntos(4 en la fila inferior)"
         },
         "isCorrect": false
       },
@@ -1212,7 +1212,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "♡ + [shaded section 2nd] + dots(4 bottom row, 1 bottom-left)",
-          "es": "♡ + [sección sombreada 2ª] + puntos(4 bottom row, 1 bottom-left)"
+          "es": "♡ + [sección sombreada 2ª] + puntos(4 en la fila inferior, 1 abajo-izquierda)"
         },
         "isCorrect": false
       },
@@ -1220,7 +1220,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "[no heart] + [shaded top section] + dots(only 2)",
-          "es": "[sin corazón] + [sección superior sombreada] + puntos(only 2)"
+          "es": "[sin corazón] + [sección superior sombreada] + puntos(solo 2)"
         },
         "isCorrect": false
       },
@@ -1228,7 +1228,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "♡ + [shaded section 3rd/right] + dots(4 bottom row, 1 top-right offset)",
-          "es": "♡ + [sección sombreada 3ª/derecha] + puntos(4 bottom row, 1 top-right offset)"
+          "es": "♡ + [sección sombreada 3ª/derecha] + puntos(4 en la fila inferior, 1 desplazado arriba-derecha)"
         },
         "isCorrect": true,
         "explanation": {
@@ -1248,7 +1248,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A fine grid with one cell shaded, tracing a small diamond-shaped path of positions around the grid's centre; the shading cycles grey → black → black (repeating); a small icon above the grid cycles ◇ → ● → (nothing) (repeating).\n\n◇ + [grey cell, upper area] · ● + [black cell, mid-right] · (none) + [black cell, centre] · ◇ + [grey cell, left] · ● + [black cell, centre-right] · ?",
-      "es": "Una cuadrícula fina con una celda sombreada, que traza un pequeño recorrido en forma de rombo alrededor del centro de la cuadrícula; el sombreado sigue el ciclo gris → negro → negro (en repetición); un pequeño icono sobre la cuadrícula sigue el ciclo ◇ → ● → (nada) (en repetición).\n\n◇ + [celda gris, zona superior] · ● + [celda negra, centro-derecha] · (none) + [celda negra, centro] · ◇ + [celda gris, izquierda] · ● + [celda negra, centro-derecha] · ?"
+      "es": "Una cuadrícula fina con una celda sombreada, que traza un pequeño recorrido en forma de rombo alrededor del centro de la cuadrícula; el sombreado sigue el ciclo gris → negro → negro (en repetición); un pequeño icono sobre la cuadrícula sigue el ciclo ◇ → ● → (nada) (en repetición).\n\n◇ + [celda gris, zona superior] · ● + [celda negra, centro-derecha] · (ninguno) + [celda negra, centro] · ◇ + [celda gris, izquierda] · ● + [celda negra, centro-derecha] · ?"
     },
     "options": [
       {
@@ -1263,7 +1263,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "(none) + [black cell, upper-right]",
-          "es": "(none) + [celda negra, esquina superior derecha]"
+          "es": "(ninguno) + [celda negra, esquina superior derecha]"
         },
         "isCorrect": true,
         "explanation": {
@@ -1275,7 +1275,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "(none) + [grey cell, centre]",
-          "es": "(none) + [celda gris, centro]"
+          "es": "(ninguno) + [celda gris, centro]"
         },
         "isCorrect": false
       },
@@ -1291,7 +1291,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "(none) + [black cell, lower-middle]",
-          "es": "(none) + [celda negra, zona inferior media]"
+          "es": "(ninguno) + [celda negra, zona inferior media]"
         },
         "isCorrect": false
       }
@@ -1543,14 +1543,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Four small corner shapes (all the same type) plus one oversized, half-shaded version of a *different* shape; the large shape steps one corner clockwise each panel; if an \"extra\" shape shows up near the middle of a panel, the small corner shapes switch to that shape next time (otherwise they stay the same); the large shape's rotation alternates 45°/90° (visible via how its shading is split).\n\n○(corners) + [large ●, half black, vertical split] · □+○(mixed corners) + [large ○, half black, horizontal split] · □(corners) + [large ◆, half black diagonal] · △+□(corners) + [large ◆, half black diagonal] · △(corners) + [large ▬, half black horizontal] · ?",
-      "es": "Cuatro figuras pequeñas en las esquinas (todas del mismo tipo) más una versión sobredimensionada y medio sombreada de una figura *distinta*; la figura grande avanza una esquina en sentido horario en cada panel; si aparece una figura «extra» cerca del centro de un panel, las figuras pequeñas de las esquinas cambian a esa figura la próxima vez (si no, permanecen iguales); la rotación de la figura grande alterna 45°/90° (visible por cómo se divide su sombreado).\n\n○(corners) + [● grande, mitad negra, división vertical] · □+○(mixed corners) + [○ grande, mitad negra, división horizontal] · □(corners) + [◆ grande, mitad negra en diagonal] · △+□(corners) + [◆ grande, mitad negra en diagonal] · △(corners) + [▬ grande, mitad negra en horizontal] · ?"
+      "es": "Cuatro figuras pequeñas en las esquinas (todas del mismo tipo) más una versión sobredimensionada y medio sombreada de una figura *distinta*; la figura grande avanza una esquina en sentido horario en cada panel; si aparece una figura «extra» cerca del centro de un panel, las figuras pequeñas de las esquinas cambian a esa figura la próxima vez (si no, permanecen iguales); la rotación de la figura grande alterna 45°/90° (visible por cómo se divide su sombreado).\n\n○(esquinas) + [● grande, mitad negra, división vertical] · □+○(mixed corners) + [○ grande, mitad negra, división horizontal] · □(esquinas) + [◆ grande, mitad negra en diagonal] · △+□(esquinas) + [◆ grande, mitad negra en diagonal] · △(esquinas) + [▬ grande, mitad negra en horizontal] · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "⬠(corners) + [large ▬, black-bottom, pentagon-cornered]",
-          "es": "⬠(corners) + [▬ grande, negro abajo, esquinas pentagonales]"
+          "es": "⬠(esquinas) + [▬ grande, negro abajo, esquinas pentagonales]"
         },
         "isCorrect": false
       },
@@ -1558,7 +1558,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "△(corners) + [large ◆, half black]",
-          "es": "△(corners) + [◆ grande, mitad negra]"
+          "es": "△(esquinas) + [◆ grande, mitad negra]"
         },
         "isCorrect": false
       },
@@ -1566,7 +1566,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "⬠(corners) + [large ⬡, half black]",
-          "es": "⬠(corners) + [⬡ grande, mitad negra]"
+          "es": "⬠(esquinas) + [⬡ grande, mitad negra]"
         },
         "isCorrect": false
       },
@@ -1574,7 +1574,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "⬡(corners) + [large ⬟, half black]",
-          "es": "⬡(corners) + [⬟ grande, mitad negra]"
+          "es": "⬡(esquinas) + [⬟ grande, mitad negra]"
         },
         "isCorrect": false
       },
@@ -1582,7 +1582,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "⬠(corners) + [large ⬟, half black]",
-          "es": "⬠(corners) + [⬟ grande, mitad negra]"
+          "es": "⬠(esquinas) + [⬟ grande, mitad negra]"
         },
         "isCorrect": true,
         "explanation": {
@@ -1668,7 +1668,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "◐ + ↕ + ♡ (all top row, 2 shapes + arrow)",
-          "es": "◐ + ↕ + ♡ (all top row, 2 shapes + arrow)"
+          "es": "◐ + ↕ + ♡ (todas en la fila superior, 2 figuras + flecha)"
         },
         "isCorrect": true,
         "explanation": {
@@ -1688,7 +1688,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "◐ + ♡ (2 shapes, no arrow)",
-          "es": "◐ + ♡ (2 shapes, no arrow)"
+          "es": "◐ + ♡ (2 figuras, sin flecha)"
         },
         "isCorrect": false
       },
@@ -1696,7 +1696,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "↕ + ◐+♡ (arrow with both shapes)",
-          "es": "↕ + ◐+♡ (arrow with both shapes)"
+          "es": "↕ + ◐+♡ (flecha con las dos figuras)"
         },
         "isCorrect": false
       },
@@ -1786,7 +1786,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "[★] ◆+▲▲▲▲(black cluster, small star position slightly off)",
-          "es": "[★] ◆+▲▲▲▲(black cluster, small star position slightly off)"
+          "es": "[★] ◆+▲▲▲▲(grupo negro, la estrella pequeña algo desplazada)"
         },
         "isCorrect": false
       },
@@ -1794,7 +1794,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "[★] ◆+▲▲▲▲▲▲(black cluster, 6 triangles)",
-          "es": "[★] ◆+▲▲▲▲▲▲(black cluster, 6 triangles)"
+          "es": "[★] ◆+▲▲▲▲▲▲(grupo negro, 6 triángulos)"
         },
         "isCorrect": true,
         "explanation": {
@@ -1838,14 +1838,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A cluster of small balls at the top of the frame (count cycling 8, 4, 0, repeating) gets added onto a growing pile of balls at the bottom, which then shrinks by 3; a jagged \"explosion\" burst icon sometimes appears top-right, and whenever it does the balls are shaded grey rather than left white.\n\n☀[burst] + top(8,grey) + bottom(pile,grey) · top(4,white,2×2) + bottom(smaller pile,white) · top(0) + bottom(pile,white) · ☀[burst] + top(8,grey) + bottom(large pile,grey) · top(4,grey,2×2) + bottom(pile,grey) · ?",
-      "es": "Un grupo de pequeñas bolas en la parte superior del marco (cantidad que sigue el ciclo 8, 4, 0, en repetición) se añade a un montón creciente de bolas en la parte inferior, que después se reduce en 3; a veces aparece un icono de «explosión» dentado arriba a la derecha, y cuando aparece, las bolas se sombrean en gris en lugar de dejarse en blanco.\n\n☀[explosión] + arriba(8,grey) + abajo(pile,grey) · arriba(4,white,2×2) + abajo(smaller pile,white) · arriba(0) + abajo(pile,white) · ☀[explosión] + arriba(8,grey) + abajo(large pile,grey) · arriba(4,grey,2×2) + abajo(pile,grey) · ?"
+      "es": "Un grupo de pequeñas bolas en la parte superior del marco (cantidad que sigue el ciclo 8, 4, 0, en repetición) se añade a un montón creciente de bolas en la parte inferior, que después se reduce en 3; a veces aparece un icono de «explosión» dentado arriba a la derecha, y cuando aparece, las bolas se sombrean en gris en lugar de dejarse en blanco.\n\n☀[explosión] + arriba(8,grey) + abajo(montón,grey) · arriba(4,white,2×2) + abajo(smaller pile,white) · arriba(0) + abajo(montón,white) · ☀[explosión] + arriba(8,grey) + abajo(montón grande,grey) · arriba(4,grey,2×2) + abajo(montón,grey) · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "☀[burst] + top(4,grey) + bottom(pile,white)",
-          "es": "☀[explosión] + arriba(4,grey) + abajo(pile,white)"
+          "es": "☀[explosión] + arriba(4,grey) + abajo(montón,white)"
         },
         "isCorrect": false
       },
@@ -1853,7 +1853,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "☀[burst] + top(4,grey) + bottom(large pile,grey)",
-          "es": "☀[explosión] + arriba(4,grey) + abajo(large pile,grey)"
+          "es": "☀[explosión] + arriba(4,grey) + abajo(montón grande,grey)"
         },
         "isCorrect": false
       },
@@ -1861,7 +1861,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "☀[burst] + top(4,clear) + bottom(pile,clear)",
-          "es": "☀[explosión] + arriba(4,clear) + abajo(pile,clear)"
+          "es": "☀[explosión] + arriba(4,clear) + abajo(montón,clear)"
         },
         "isCorrect": false
       },
@@ -1869,7 +1869,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "☀[burst] + top(0) + bottom(large pile,grey)",
-          "es": "☀[explosión] + arriba(0) + abajo(large pile,grey)"
+          "es": "☀[explosión] + arriba(0) + abajo(montón grande,grey)"
         },
         "isCorrect": false
       },
@@ -1877,7 +1877,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "☀[burst] + top(0) + bottom(pile,grey)",
-          "es": "☀[explosión] + arriba(0) + abajo(pile,grey)"
+          "es": "☀[explosión] + arriba(0) + abajo(montón,grey)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2317,7 +2317,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "◇ △ ↻(rotation marker angle differs)",
-          "es": "◇ △ ↻(rotation marker angle differs)"
+          "es": "◇ △ ↻(el ángulo del marcador de rotación difiere)"
         },
         "isCorrect": false
       },
@@ -2341,7 +2341,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "◇ □ ↻ (marker rotated on)",
-          "es": "◇ □ ↻ (marker rotated on)"
+          "es": "◇ □ ↻ (marcador girado encima)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2487,14 +2487,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "A triangle and a square are nested (one inside the other); each panel only one of the two rotates 45° while the other stays still, alternating; whichever shape *didn't* rotate this turn is the outer/containing one; the triangle is shaded solid whenever it's the one that rotated this turn.\n\n□(outer,still) ◀(inner,rotated,filled) · ▽(outer,triangle,unrotated,outline) ◇(inner,square rotated,outline) · ◆(outer,square rotated,filled) ▶(inner,triangle rotated,filled) · ▷(outer,triangle,outline) □(inner,square,outline) · □(outer,still) ◀(inner,filled) · ?",
-      "es": "Un triángulo y un cuadrado están anidados (uno dentro del otro); en cada panel solo uno de los dos rota 45° mientras el otro permanece quieto, alternando; la figura que *no* rotó en ese turno es la exterior/contenedora; el triángulo se sombrea sólido siempre que sea el que rotó en ese turno.\n\n□(outer,still) ◀(inner,rotated,filled) · ▽(outer,triangle,unrotated,outline) ◇(inner,square rotated,outline) · ◆(outer,square rotated,filled) ▶(inner,triangle rotated,filled) · ▷(outer,triangle,outline) □(inner,square,outline) · □(outer,still) ◀(inner,filled) · ?"
+      "es": "Un triángulo y un cuadrado están anidados (uno dentro del otro); en cada panel solo uno de los dos rota 45° mientras el otro permanece quieto, alternando; la figura que *no* rotó en ese turno es la exterior/contenedora; el triángulo se sombrea sólido siempre que sea el que rotó en ese turno.\n\n□(outer,still) ◀(inner,rotated,filled) · ▽(outer,triangle,unrotated,outline) ◇(inner,square rotated,outline) · ◆(outer,square rotated,filled) ▶(inner,triangle rotated,filled) · ▷(outer,triangle,outline) □(inner,square,outline) · □(outer,still) ◀(interior,filled) · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "△(outer,outline) ◇(inner,outline)",
-          "es": "△(outer,outline) ◇(inner,outline)"
+          "es": "△(exterior,outline) ◇(interior,outline)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2506,7 +2506,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "▽(outer,outline) ◇(inner,outline, different orientation)",
-          "es": "▽(outer,outline) ◇(inner,outline, different orientation)"
+          "es": "▽(exterior,outline) ◇(interior,outline, orientación distinta)"
         },
         "isCorrect": false
       },
@@ -2514,7 +2514,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "▲(outer,outline) ◆(inner,filled)",
-          "es": "▲(outer,outline) ◆(inner,filled)"
+          "es": "▲(exterior,outline) ◆(interior,filled)"
         },
         "isCorrect": false
       },
@@ -2522,7 +2522,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "◁(outer,outline) □(inner,outline)",
-          "es": "◁(outer,outline) □(inner,outline)"
+          "es": "◁(exterior,outline) □(interior,outline)"
         },
         "isCorrect": false
       },
@@ -2530,7 +2530,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "□(outer) ▼(inner,filled)",
-          "es": "□(outer) ▼(inner,filled)"
+          "es": "□(exterior) ▼(interior,filled)"
         },
         "isCorrect": false
       }
@@ -2644,7 +2644,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "●(bottom-left) + ★+▲(shaded, left corner)",
-          "es": "●(bottom-left) + ★+▲(shaded, left corner)"
+          "es": "●(bottom-left) + ★+▲(shaded, esquina izquierda)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2900,14 +2900,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Three shapes in a row, with a black line either above (sides increase left-to-right) or below them (sides decrease left-to-right); which of the three is shaded steps rightward by an increasing number of positions each panel (wrapping around); a small shape below the row repeats whichever shape was shaded the panel before.\n\n[line above] ▲(shaded,3) □(4) ⬠(5) / ⬠(below) · [line below] ⬡(6) ●(shaded,5) △(3) / △(below) · [line above] ⬢(shaded,6) □(4) △(3) / ⬠(below) · [line below] ■(shaded,4) ⬠(5) ⬡(6) / ○(below) · [line above] △(3) ⬟(shaded,5) ⬡(6) / □(below) · ?",
-      "es": "Tres figuras en fila, con una línea negra encima (los lados aumentan de izquierda a derecha) o debajo de ellas (los lados disminuyen de izquierda a derecha); cuál de las tres está sombreada se desplaza a la derecha un número creciente de posiciones en cada panel (dando la vuelta al llegar al borde); una figura pequeña debajo de la fila repite la que estuvo sombreada en el panel anterior.\n\n[línea arriba] ▲(shaded,3) □(4) ⬠(5) / ⬠(below) · [línea abajo] ⬡(6) ●(shaded,5) △(3) / △(below) · [línea arriba] ⬢(shaded,6) □(4) △(3) / ⬠(below) · [línea abajo] ■(shaded,4) ⬠(5) ⬡(6) / ○(below) · [línea arriba] △(3) ⬟(shaded,5) ⬡(6) / □(below) · ?"
+      "es": "Tres figuras en fila, con una línea negra encima (los lados aumentan de izquierda a derecha) o debajo de ellas (los lados disminuyen de izquierda a derecha); cuál de las tres está sombreada se desplaza a la derecha un número creciente de posiciones en cada panel (dando la vuelta al llegar al borde); una figura pequeña debajo de la fila repite la que estuvo sombreada en el panel anterior.\n\n[línea arriba] ▲(shaded,3) □(4) ⬠(5) / ⬠(debajo) · [línea abajo] ⬡(6) ●(shaded,5) △(3) / △(debajo) · [línea arriba] ⬢(shaded,6) □(4) △(3) / ⬠(debajo) · [línea abajo] ■(shaded,4) ⬠(5) ⬡(6) / ○(debajo) · [línea arriba] △(3) ⬟(shaded,5) ⬡(6) / □(debajo) · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "[line above] ⬢(shaded) ⬠ □ / ⬠(below)",
-          "es": "[línea arriba] ⬢(shaded) ⬠ □ / ⬠(below)"
+          "es": "[línea arriba] ⬢(shaded) ⬠ □ / ⬠(debajo)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2919,7 +2919,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "[line above] ⬟(shaded) ■ ▲ / ⬟(below)",
-          "es": "[línea arriba] ⬟(shaded) ■ ▲ / ⬟(below)"
+          "es": "[línea arriba] ⬟(shaded) ■ ▲ / ⬟(debajo)"
         },
         "isCorrect": false
       },
@@ -2927,7 +2927,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "[line below] ⬢(shaded) ⬠ △ / ⬠(below)",
-          "es": "[línea abajo] ⬢(shaded) ⬠ △ / ⬠(below)"
+          "es": "[línea abajo] ⬢(shaded) ⬠ △ / ⬠(debajo)"
         },
         "isCorrect": false
       },
@@ -2935,7 +2935,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "[line above] ⬡(shaded) ⬠ □ / ○(below)",
-          "es": "[línea arriba] ⬡(shaded) ⬠ □ / ○(below)"
+          "es": "[línea arriba] ⬡(shaded) ⬠ □ / ○(debajo)"
         },
         "isCorrect": false
       },
@@ -2943,7 +2943,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "[line above] ▲(shaded) ⬡ ⬠ / ⬡(below)",
-          "es": "[línea arriba] ▲(shaded) ⬡ ⬠ / ⬡(below)"
+          "es": "[línea arriba] ▲(shaded) ⬡ ⬠ / ⬡(debajo)"
         },
         "isCorrect": false
       }
@@ -3372,14 +3372,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Two arrows (top-left, top-right) and one shape below: the left arrow shows which direction the shape will move next turn; the right arrow adds a side to the shape if it points up, removes one if it points down; the shape is shaded solid whenever both arrows point the same direction.\n\n⇧⇧(same) + ▲(3,shaded) · ⇦⇧(diff.) + □(4,outline,moved) · ⇩⇩(same) + ⬟(5,shaded) · ⇨⇧(diff.) + □(4,outline,moved) · ⇨⇧(diff.) + ⬠(5,outline) · ?",
-      "es": "Dos flechas (arriba a la izquierda, arriba a la derecha) y una figura debajo: la flecha izquierda indica en qué dirección se moverá la figura en el siguiente turno; la flecha derecha añade un lado a la figura si apunta hacia arriba, quita uno si apunta hacia abajo; la figura se sombrea sólida siempre que ambas flechas apunten en la misma dirección.\n\n⇧⇧(same) + ▲(3,shaded) · ⇦⇧(diff.) + □(4,outline,moved) · ⇩⇩(same) + ⬟(5,shaded) · ⇨⇧(diff.) + □(4,outline,moved) · ⇨⇧(diff.) + ⬠(5,outline) · ?"
+      "es": "Dos flechas (arriba a la izquierda, arriba a la derecha) y una figura debajo: la flecha izquierda indica en qué dirección se moverá la figura en el siguiente turno; la flecha derecha añade un lado a la figura si apunta hacia arriba, quita uno si apunta hacia abajo; la figura se sombrea sólida siempre que ambas flechas apunten en la misma dirección.\n\n⇧⇧(same) + ▲(3,shaded) · ⇦⇧(diff.) + □(4,outline,moved) · ⇩⇩(iguales) + ⬟(5,shaded) · ⇨⇧(diff.) + □(4,outline,moved) · ⇨⇧(diff.) + ⬠(5,outline) · ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "⇩⇩(same) + ⬡(6,shaded)",
-          "es": "⇩⇩(same) + ⬡(6,shaded)"
+          "es": "⇩⇩(iguales) + ⬡(6,shaded)"
         },
         "isCorrect": false
       },
@@ -3726,14 +3726,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Each panel shows a \"snowflake/sun\" indicator top-left (❄❄ = two small snowflakes, ☀ = one larger sun/spiky-star) next to an ice-cream cone (a downward triangle with 0–3 small circle \"scoops\" stacked on top; the cone itself may be filled or empty).\n\n❄❄ / ▽(cone, empty, no scoops)  —  ☀ / ▽(cone, empty) with ○○ (2 empty scoops)  —  ☀(smaller) / ▼(cone, filled) with ● (1 filled scoop)  —  ❄❄ / ▽(cone, empty) with ○ (1 empty scoop)  —  ☀(larger) / ▼(cone, filled) with ○● (2 scoops, one empty one filled)  —  ?",
-      "es": "Cada panel muestra un indicador de «copo de nieve/sol» arriba a la izquierda (❄❄ = dos copos de nieve pequeños, ☀ = un sol/estrella puntiaguda más grande) junto a un cucurucho de helado (un triángulo invertido con 0–3 pequeñas «bolas» circulares apiladas encima; el propio cucurucho puede estar relleno o vacío).\n\n❄❄ / ▽(cone, empty, no scoops)  —  ☀ / ▽(cone, empty) con ○○ (2 empty scoops)  —  ☀(smaller) / ▼(cone, filled) con ● (1 filled scoop)  —  ❄❄ / ▽(cone, empty) con ○ (1 empty scoop)  —  ☀(larger) / ▼(cone, filled) con ○● (2 scoops, one empty one filled)  —  ?"
+      "es": "Cada panel muestra un indicador de «copo de nieve/sol» arriba a la izquierda (❄❄ = dos copos de nieve pequeños, ☀ = un sol/estrella puntiaguda más grande) junto a un cucurucho de helado (un triángulo invertido con 0–3 pequeñas «bolas» circulares apiladas encima; el propio cucurucho puede estar relleno o vacío).\n\n❄❄ / ▽(cone, empty, no scoops)  —  ☀ / ▽(cono, empty) con ○○ (2 empty scoops)  —  ☀(smaller) / ▼(cono, filled) con ● (1 bola rellena)  —  ❄❄ / ▽(cono, empty) con ○ (1 bola vacía)  —  ☀(larger) / ▼(cono, filled) con ○● (2 scoops, one empty one filled)  —  ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "☀ / ▼(cone, filled) with ●○ (1 filled + 1 empty scoop)",
-          "es": "☀ / ▼(cone, filled) con ●○ (1 filled + 1 empty scoop)"
+          "es": "☀ / ▼(cono, filled) con ●○ (1 bola rellena + 1 vacía)"
         },
         "isCorrect": false
       },
@@ -3741,7 +3741,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "☀ / ▽(cone, empty) with ○○ (2 empty scoops)",
-          "es": "☀ / ▽(cone, empty) con ○○ (2 empty scoops)"
+          "es": "☀ / ▽(cono, empty) con ○○ (2 empty scoops)"
         },
         "isCorrect": false
       },
@@ -3749,7 +3749,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "❄❄ / ▼(cone, filled) with ● (1 filled scoop)",
-          "es": "❄❄ / ▼(cone, filled) con ● (1 filled scoop)"
+          "es": "❄❄ / ▼(cono, filled) con ● (1 bola rellena)"
         },
         "isCorrect": true,
         "explanation": {
@@ -3761,7 +3761,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "☀ / ▽(cone, empty) with ○ (1 empty scoop)",
-          "es": "☀ / ▽(cone, empty) con ○ (1 empty scoop)"
+          "es": "☀ / ▽(cono, empty) con ○ (1 bola vacía)"
         },
         "isCorrect": false
       },
@@ -3769,7 +3769,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "☀ / ▼(cone, filled) with ●●● (3 filled scoops)",
-          "es": "☀ / ▼(cone, filled) con ●●● (3 filled scoops)"
+          "es": "☀ / ▼(cono, filled) con ●●● (3 filled scoops)"
         },
         "isCorrect": false
       }
@@ -3812,7 +3812,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "[upper: ○↓] [lower: ○↙] (both empty)",
-          "es": "[superior: ○↓] [inferior: ○↙] (both empty)"
+          "es": "[superior: ○↓] [inferior: ○↙] (ambos vacíos)"
         },
         "isCorrect": false
       },
@@ -4028,7 +4028,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "◔E ◔S ◔E / ◇ over ⬠ (both empty) / ◔N ◔E ◔E",
-          "es": "◔E ◔S ◔E / ◇ sobre ⬠ (both empty) / ◔N ◔E ◔E"
+          "es": "◔E ◔S ◔E / ◇ sobre ⬠ (ambos vacíos) / ◔N ◔E ◔E"
         },
         "isCorrect": false
       },
@@ -4036,7 +4036,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "◔W ◔N ◔E / ■ over ◆ (both filled) / ◔N ◔E ◔N",
-          "es": "◔W ◔N ◔E / ■ sobre ◆ (both filled) / ◔N ◔E ◔N"
+          "es": "◔W ◔N ◔E / ■ sobre ◆ (ambos rellenos) / ◔N ◔E ◔N"
         },
         "isCorrect": false
       },
@@ -4044,7 +4044,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "◔E ◔N ◔E / ▲ over ▶ (both filled) / ◔N ◔E ◔E",
-          "es": "◔E ◔N ◔E / ▲ sobre ▶ (both filled) / ◔N ◔E ◔E"
+          "es": "◔E ◔N ◔E / ▲ sobre ▶ (ambos rellenos) / ◔N ◔E ◔E"
         },
         "isCorrect": false
       },
@@ -4052,7 +4052,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "◔E ◔N ◔W / ◇ over ⬠ (both empty) / ◔N ◔E ◔N",
-          "es": "◔E ◔N ◔W / ◇ sobre ⬠ (both empty) / ◔N ◔E ◔N"
+          "es": "◔E ◔N ◔W / ◇ sobre ⬠ (ambos vacíos) / ◔N ◔E ◔N"
         },
         "isCorrect": true,
         "explanation": {
@@ -4064,7 +4064,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "◔N ◔W ◔N / □ and △ (empty, side by side) / ◔N ◔N ◔E",
-          "es": "◔N ◔W ◔N / □ y △ (empty, side by side) / ◔N ◔N ◔E"
+          "es": "◔N ◔W ◔N / □ y △ (empty, uno al lado del otro) / ◔N ◔N ◔E"
         },
         "isCorrect": false
       }
@@ -4080,7 +4080,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Each panel is a cross (plus-sign) outline: a shape sits in the top arm, a \"[shape] → [shape]\" pair sits in the horizontal arms, a face (☺ happy / 😐 neutral-frowning / ☹ sad) sits in the bottom arm, and 0–2 small dots sit below the cross (a running tally that grows when the face has been happy and shrinks when it has been sad).\n\n[top ⬠, arms △→△, face ☺, dots •]  —  [top ⬠, arms ⬠→□, face 😐, dots •]  —  [top ⬡, arms (single)→□, face ☹, dots (none)]  —  [top ⬠, arms ⬠→△, face ☹, dots (none)]  —  [top ⬡, arms △→△, face ☺, dots •]  —  ?",
-      "es": "Cada panel es un contorno en forma de cruz (signo más): una figura se sitúa en el brazo superior, un par «[figura] → [figura]» se sitúa en los brazos horizontales, una cara (☺ feliz / 😐 neutra-con-ceño / ☹ triste) se sitúa en el brazo inferior, y 0–2 pequeños puntos se sitúan debajo de la cruz (un recuento acumulado que crece cuando la cara ha estado feliz y se reduce cuando ha estado triste).\n\n[arriba ⬠, brazos △→△, cara ☺, puntos •]  —  [arriba ⬠, brazos ⬠→□, cara 😐, puntos •]  —  [arriba ⬡, brazos (single)→□, cara ☹, puntos (none)]  —  [arriba ⬠, brazos ⬠→△, cara ☹, puntos (none)]  —  [arriba ⬡, brazos △→△, cara ☺, puntos •]  —  ?"
+      "es": "Cada panel es un contorno en forma de cruz (signo más): una figura se sitúa en el brazo superior, un par «[figura] → [figura]» se sitúa en los brazos horizontales, una cara (☺ feliz / 😐 neutra-con-ceño / ☹ triste) se sitúa en el brazo inferior, y 0–2 pequeños puntos se sitúan debajo de la cruz (un recuento acumulado que crece cuando la cara ha estado feliz y se reduce cuando ha estado triste).\n\n[arriba ⬠, brazos △→△, cara ☺, puntos •]  —  [arriba ⬠, brazos ⬠→□, cara 😐, puntos •]  —  [arriba ⬡, brazos (single)→□, cara ☹, puntos (ninguno)]  —  [arriba ⬠, brazos ⬠→△, cara ☹, puntos (ninguno)]  —  [arriba ⬡, brazos △→△, cara ☺, puntos •]  —  ?"
     },
     "options": [
       {
@@ -4103,7 +4103,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "top ⬠, arms →⬡, face ☺, dots (none)",
-          "es": "arriba ⬠, brazos →⬡, cara ☺, puntos (none)"
+          "es": "arriba ⬠, brazos →⬡, cara ☺, puntos (ninguno)"
         },
         "isCorrect": false
       },
@@ -4111,7 +4111,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "top ⬡, arms →⬠, face ☹, dots (none)",
-          "es": "arriba ⬡, brazos →⬠, cara ☹, puntos (none)"
+          "es": "arriba ⬡, brazos →⬠, cara ☹, puntos (ninguno)"
         },
         "isCorrect": false
       },
@@ -4119,7 +4119,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "top △, arms →△, face ☹, dots (none)",
-          "es": "arriba △, brazos →△, cara ☹, puntos (none)"
+          "es": "arriba △, brazos →△, cara ☹, puntos (ninguno)"
         },
         "isCorrect": true,
         "explanation": {
@@ -4323,7 +4323,7 @@ export const QUESTIONS: Question[] = [
         "id": "A",
         "text": {
           "en": "large ■(half-filled) + small △(plain outline) / ●○",
-          "es": "grande ■(half-filled) + pequeña △(plain outline) / ●○"
+          "es": "grande ■(half-filled) + pequeña △(contorno simple) / ●○"
         },
         "isCorrect": false
       },
@@ -4331,7 +4331,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "large ■(half-filled, other diagonal) + small △(plain outline) / ○○●",
-          "es": "grande ■(half-filled, other diagonal) + pequeña △(plain outline) / ○○●"
+          "es": "grande ■(medio relleno, la otra diagonal) + pequeña △(contorno simple) / ○○●"
         },
         "isCorrect": false
       },
@@ -4654,7 +4654,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "dot○ / dot○ (both at top); ▲(filled) below",
-          "es": "punto○ / punto○ (both at top); ▲(filled) debajo"
+          "es": "punto○ / punto○ (los dos arriba); ▲(filled) debajo"
         },
         "isCorrect": false
       }
@@ -5708,7 +5708,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "circle: ◁+⬠+⬠ (different arrangement) — 3 shapes / no star",
-          "es": "círculo: ◁+⬠+⬠ (different arrangement) — 3 figuras / sin estrella"
+          "es": "círculo: ◁+⬠+⬠ (disposición distinta) — 3 figuras / sin estrella"
         },
         "isCorrect": false
       },
@@ -5909,7 +5909,7 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Each panel shows two \"clock\" tokens — one alternates a black face/white hand and a white face/black hand, the other is grey with a dashed outline and mirrors the first — each with an arrow-hand pointing in a direction, at varying sizes/positions. *(Hand angles below are approximate.)*\n\n[small white-face clock (hand ↗, lower-left) + grey clock (hand ↙, centre)]  —  [large BLACK-face clock (hand ↖, top) + grey clock (hand ↙, mid)]  —  [grey clock (hand ↙, mid-left) + white-face clock (hand ←, bottom-right)]  —  [grey clock (hand ↑, top) + large BLACK-face clock (hand ↓, bottom)]  —  [grey clock (hand ↗, top-left) + white-face clock (hand →, top-right, overlapping)]  —  ?",
-      "es": "Cada panel muestra dos fichas de «reloj» — una alterna entre esfera negra/manecilla blanca y esfera blanca/manecilla negra, la otra es gris con contorno discontinuo y refleja a la primera — cada una con una manecilla-flecha que apunta en una dirección, con tamaños/posiciones variables. *(Los ángulos de las manecillas indicados abajo son aproximados.)*\n\n[reloj pequeño de esfera blanca (hand ↗, lower-left) + reloj gris (hand ↙, centre)]  —  [reloj grande de esfera NEGRA (hand ↖, top) + reloj gris (hand ↙, mid)]  —  [reloj gris (hand ↙, mid-left) + reloj de esfera blanca (hand ←, bottom-right)]  —  [reloj gris (hand ↑, top) + reloj grande de esfera NEGRA (hand ↓, bottom)]  —  [reloj gris (hand ↗, top-left) + reloj de esfera blanca (hand →, top-right, overlapping)]  —  ?"
+      "es": "Cada panel muestra dos fichas de «reloj» — una alterna entre esfera negra/manecilla blanca y esfera blanca/manecilla negra, la otra es gris con contorno discontinuo y refleja a la primera — cada una con una manecilla-flecha que apunta en una dirección, con tamaños/posiciones variables. *(Los ángulos de las manecillas indicados abajo son aproximados.)*\n\n[reloj pequeño de esfera blanca (hand ↗, lower-left) + reloj gris (hand ↙, centre)]  —  [reloj grande de esfera NEGRA (hand ↖, top) + reloj gris (hand ↙, mid)]  —  [reloj gris (hand ↙, mid-left) + reloj de esfera blanca (hand ←, bottom-right)]  —  [reloj gris (manecilla ↑, top) + reloj grande de esfera NEGRA (hand ↓, bottom)]  —  [reloj gris (hand ↗, top-left) + reloj de esfera blanca (hand →, top-right, overlapping)]  —  ?"
     },
     "options": [
       {
@@ -5924,7 +5924,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "white-face clock (hand →, top) + grey clock (hand ↙, overlapping below)",
-          "es": "reloj de esfera blanca (hand →, top) + reloj gris (hand ↙, overlapping below)"
+          "es": "reloj de esfera blanca (manecilla →, arriba) + reloj gris (manecilla ↙, solapado debajo)"
         },
         "isCorrect": false
       },
@@ -5932,7 +5932,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "large BLACK-face clock (hand ↗, top) + grey clock (hand ↙, below)",
-          "es": "reloj grande de esfera NEGRA (hand ↗, top) + reloj gris (hand ↙, below)"
+          "es": "reloj grande de esfera NEGRA (manecilla ↗, arriba) + reloj gris (manecilla ↙, debajo)"
         },
         "isCorrect": false
       },
@@ -5940,7 +5940,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "large BLACK-face clock (hand ↗) + grey clock (overlapping below)",
-          "es": "reloj grande de esfera NEGRA (hand ↗) + reloj gris (overlapping below)"
+          "es": "reloj grande de esfera NEGRA (manecilla ↗) + reloj gris (solapado debajo)"
         },
         "isCorrect": true,
         "explanation": {
@@ -5952,7 +5952,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "large BLACK-face clock (hand ↖) + grey clock (overlapping below)",
-          "es": "reloj grande de esfera NEGRA (hand ↖) + reloj gris (overlapping below)"
+          "es": "reloj grande de esfera NEGRA (manecilla ↖) + reloj gris (solapado debajo)"
         },
         "isCorrect": false
       }
@@ -6027,14 +6027,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Each panel has a growing left-hand column of triangles (filled/empty mix) and a growing right-hand column of squares (filled/empty mix).\n\n[triangles: ▲▲(2, filled) / squares: □(1, empty)]  —  [triangles: 5 (mixed) / squares: 3 (mixed)]  —  [triangles: 7 (mixed) / squares: 5 (mixed)]  —  [triangles: 10 (mixed) / squares: 7 (mixed)]  —  [triangles: 9 (mixed) / squares: 9 (mixed)]  —  ?",
-      "es": "Cada panel tiene una columna creciente de triángulos a la izquierda (mezcla de rellenos/vacíos) y una columna creciente de cuadrados a la derecha (mezcla de rellenos/vacíos).\n\n[triángulos: ▲▲(2, filled) / cuadrados: □(1, empty)]  —  [triángulos: 5 (mixed) / cuadrados: 3 (mixed)]  —  [triángulos: 7 (mixed) / cuadrados: 5 (mixed)]  —  [triángulos: 10 (mixed) / cuadrados: 7 (mixed)]  —  [triángulos: 9 (mixed) / cuadrados: 9 (mixed)]  —  ?"
+      "es": "Cada panel tiene una columna creciente de triángulos a la izquierda (mezcla de rellenos/vacíos) y una columna creciente de cuadrados a la derecha (mezcla de rellenos/vacíos).\n\n[triángulos: ▲▲(2, filled) / cuadrados: □(1, empty)]  —  [triángulos: 5 (mezclados) / cuadrados: 3 (mezclados)]  —  [triángulos: 7 (mezclados) / cuadrados: 5 (mezclados)]  —  [triángulos: 10 (mezclados) / cuadrados: 7 (mezclados)]  —  [triángulos: 9 (mezclados) / cuadrados: 9 (mezclados)]  —  ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "triangles: ~12 (mixed) / squares: ~11 (mixed)",
-          "es": "triángulos: ~12 (mixed) / cuadrados: ~11 (mixed)"
+          "es": "triángulos: ~12 (mezclados) / cuadrados: ~11 (mezclados)"
         },
         "isCorrect": false
       },
@@ -6042,7 +6042,7 @@ export const QUESTIONS: Question[] = [
         "id": "B",
         "text": {
           "en": "triangles: ~12 (mixed, different fill pattern) / squares: ~11 (mixed)",
-          "es": "triángulos: ~12 (mixed, different fill pattern) / cuadrados: ~11 (mixed)"
+          "es": "triángulos: ~12 (mezclados, patrón de relleno distinto) / cuadrados: ~11 (mezclados)"
         },
         "isCorrect": true,
         "explanation": {
@@ -6054,7 +6054,7 @@ export const QUESTIONS: Question[] = [
         "id": "C",
         "text": {
           "en": "triangles: ~13 (mixed) / squares: ~11 (mixed)",
-          "es": "triángulos: ~13 (mixed) / cuadrados: ~11 (mixed)"
+          "es": "triángulos: ~13 (mezclados) / cuadrados: ~11 (mezclados)"
         },
         "isCorrect": false
       },
@@ -6062,7 +6062,7 @@ export const QUESTIONS: Question[] = [
         "id": "D",
         "text": {
           "en": "triangles: ~11 (mixed) / squares: ~12 (mixed)",
-          "es": "triángulos: ~11 (mixed) / cuadrados: ~12 (mixed)"
+          "es": "triángulos: ~11 (mezclados) / cuadrados: ~12 (mezclados)"
         },
         "isCorrect": false
       },
@@ -6188,7 +6188,7 @@ export const QUESTIONS: Question[] = [
         "id": "E",
         "text": {
           "en": "8 spikes, 1 black (upper-left, different spike); centre empty; pie-slice tiny",
-          "es": "8 pinchos, 1 negro (upper-left, different spike); centro vacío; gajo diminuto"
+          "es": "8 pinchos, 1 negro (upper-left, pincho distinto); centro vacío; gajo diminuto"
         },
         "isCorrect": false
       }
@@ -6971,14 +6971,14 @@ export const QUESTIONS: Question[] = [
     "phase": "reasoning",
     "prompt": {
       "en": "Each panel shows three half-black/half-white circles (large, medium, small) orbiting one another, the medium and small circles taking increasing steps around the large one, with shading that flips on its own schedule. *(Exact orbital positions below are approximate.)*\n\n[large (half-black, left) + medium+small (half-black, touching, bottom-left)]  —  [large (half-black, right) + medium+small (half-black, stacked, left)]  —  [large (half-black, centre-left) + medium (half-black, right, touching) + small (half-black, far right)]  —  [large (half-black, centre) + medium+small (half-black, tiny, top, stacked)]  —  [large (half-black, centre-bottom) + medium+small (half-black, touching, top)]  —  ?",
-      "es": "Cada panel muestra tres círculos mitad-negro/mitad-blanco (grande, mediano, pequeño) orbitando entre sí, con el mediano y el pequeño dando pasos cada vez mayores alrededor del grande, y un sombreado que se invierte según su propio ritmo. *(Las posiciones orbitales exactas indicadas abajo son aproximadas.)*\n\n[grande (half-black, left) + mediano+pequeño (half-black, touching, bottom-left)]  —  [grande (half-black, right) + mediano+pequeño (half-black, stacked, left)]  —  [grande (half-black, centre-left) + mediano (half-black, right, touching) + pequeño (half-black, far right)]  —  [grande (half-black, centre) + mediano+pequeño (half-black, tiny, top, stacked)]  —  [grande (half-black, centre-bottom) + mediano+pequeño (half-black, touching, top)]  —  ?"
+      "es": "Cada panel muestra tres círculos mitad-negro/mitad-blanco (grande, mediano, pequeño) orbitando entre sí, con el mediano y el pequeño dando pasos cada vez mayores alrededor del grande, y un sombreado que se invierte según su propio ritmo. *(Las posiciones orbitales exactas indicadas abajo son aproximadas.)*\n\n[grande (half-black, left) + mediano+pequeño (half-black, touching, bottom-left)]  —  [grande (half-black, right) + mediano+pequeño (half-black, stacked, left)]  —  [grande (half-black, centre-left) + mediano (half-black, right, touching) + pequeño (half-black, far right)]  —  [grande (medio negro, centre) + mediano+pequeño (half-black, tiny, top, stacked)]  —  [grande (half-black, centre-bottom) + mediano+pequeño (half-black, touching, top)]  —  ?"
     },
     "options": [
       {
         "id": "A",
         "text": {
           "en": "large (half-black, centre) + medium+small (half-black, touching, bottom, stacked vertically)",
-          "es": "grande (half-black, centre) + mediano+pequeño (half-black, touching, bottom, stacked vertically)"
+          "es": "grande (medio negro, centre) + mediano+pequeño (medio negro, en contacto, bottom, apilados verticalmente)"
         },
         "isCorrect": false
       },

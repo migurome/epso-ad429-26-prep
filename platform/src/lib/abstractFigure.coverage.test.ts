@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { extractPromptFigures, parsePanel } from './abstractFigure'
+import { extractPromptFigures, panelSignature, panelsDrawable, parsePanel } from './abstractFigure'
 import { QUESTIONS } from '../data/content.abstract.generated'
 import { pick, type Locale } from './localeStore'
 
@@ -26,6 +26,35 @@ describe('abstract figure parser coverage against real content', () => {
       }
     }
     expect(withShapes / total).toBeGreaterThan(0.75)
+  })
+
+  // La queja concreta del alumno: una secuencia con unos paneles dibujados y
+  // otros en un párrafo no se puede comparar, y el panel que se queda en texto
+  // suele ser justo el que lleva la diferencia. Con el criterio todo-o-nada de
+  // `panelsDrawable`, ninguna pregunta del banco puede acabar así.
+  it.each(['en', 'es'] as Locale[])('never mixes drawn and prose panels in one question (%s)', (locale) => {
+    const mixed: string[] = []
+    for (const q of abstractQuestions) {
+      const options = q.options.map((o) => parsePanel(pick(locale, o.text)))
+      const figures = extractPromptFigures(pick(locale, q.prompt))
+      const seen = new Map<string, string>()
+      let collision = false
+      options.forEach((panel, i) => {
+        if (panel.shapes.length === 0) return
+        const key = panelSignature(panel)
+        const previous = seen.get(key)
+        if (previous !== undefined && previous !== pick(locale, q.options[i].text)) collision = true
+        seen.set(key, pick(locale, q.options[i].text))
+      })
+      const draws =
+        panelsDrawable(options) && !collision && (figures === null || panelsDrawable(figures.panels))
+      if (!draws) return
+      const panels = [...options, ...(figures?.panels ?? [])]
+      const drawn = panels.filter((p) => p.shapes.length > 0).length
+      const prose = panels.filter((p) => p.shapes.length === 0 && !p.isBlank).length
+      if (drawn > 0 && prose > 0) mixed.push(q.id)
+    }
+    expect(mixed).toEqual([])
   })
 
   it.each(['en', 'es'] as Locale[])('never throws while parsing any real prompt or option (%s)', (locale) => {

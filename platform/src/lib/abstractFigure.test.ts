@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { splitPanels, parsePanel, parseMarkdownTable, extractPromptFigures } from './abstractFigure'
+import { splitPanels, parsePanel, parseMarkdownTable, extractPromptFigures, panelsDrawable } from './abstractFigure'
 
 describe('splitPanels', () => {
   it('splits a simple sequence by spaces', () => {
@@ -234,33 +234,105 @@ describe('positions written as words', () => {
   })
 
   it('applies a "position:" label that comes before the symbol', () => {
-    const p = parsePanel('TL: △ TR: ⬡ mid: ● BL: ⬢ BR: △')
+    const p = parsePanel('TL: △ TR: ⬡ mid-left: ● BL: ⬢ BR: △')
     expect(p.shapes.map((s) => s.position)).toEqual([
-      'top-left', 'top-right', 'centre', 'bottom-left', 'bottom-right',
+      'top-left', 'top-right', 'mid-left', 'bottom-left', 'bottom-right',
     ])
   })
 
   it('reads shapes inside brackets instead of dropping them into the caption', () => {
-    const p = parsePanel('[TR: ■] [mid-left: ○] [bottom: ⬠]')
+    const p = parsePanel('[TR: ■] [mid-left: ○] [BL: ⬠]')
     expect(p.shapes.map((s) => [s.shape, s.position])).toEqual([
       ['square', 'top-right'],
       ['circle', 'mid-left'],
-      ['pentagon', 'bottom-centre'],
+      ['pentagon', 'bottom-left'],
     ])
   })
 
-  it('lays "/" separated rows top to bottom inside a bracket', () => {
-    const p = parsePanel('[○○ / ▲▼▲ / ○○○]')
-    expect(p.shapes).toHaveLength(8)
-    expect(p.shapes.map((s) => s.position)).toEqual([
-      'top-centre', 'top-centre',
-      'centre', 'centre', 'centre',
-      'bottom-centre', 'bottom-centre', 'bottom-centre',
-    ])
+  it('ignores a bare position word that has no symbol to attach to', () => {
+    // "centre" describe el rombo negro, que no se dibuja; aplicarla al primer
+    // círculo que venga detrás coloca una figura donde no va — y en español
+    // ("central") ni siquiera es la misma palabra, así que las dos versiones
+    // de la misma opción dibujarían cosas distintas.
+    const p = parsePanel('diamond-in-diamond, black diamond centre / dots: ○●')
+    expect(p.shapes.every((s) => s.position === undefined)).toBe(true)
   })
 
   it('treats a parenthesis glued to a symbol as a gloss, not an extra shape', () => {
     const p = parsePanel('[bottom: △⬢(filled hexagon)]')
     expect(p.shapes.map((s) => s.shape)).toEqual(['triangle', 'hexagon'])
+  })
+})
+
+// Un panel con filas ("[○○ / ▲▼▲ / ○○○○]") no cabe en la rejilla 3×3: cada
+// fila lleva tantas figuras como diga el texto. Además el enunciado escribe
+// esas filas dentro de un corchete y las opciones sin él — es la misma
+// notación y tiene que dibujarse igual, o no hay forma de compararlos.
+describe('panels written as stacked rows', () => {
+  it('lays "/" separated rows top to bottom inside a bracket', () => {
+    const p = parsePanel('[○○ / ▲▼▲ / ○○○]')
+    expect(p.shapes).toHaveLength(8)
+    expect(p.shapes.map((s) => s.row)).toEqual([0, 0, 1, 1, 1, 2, 2, 2])
+    expect(p.partial).toBe(false)
+  })
+
+  it('reads the same rows without the bracket', () => {
+    expect(parsePanel('○○ / ▲▼▲ / ○○○').shapes).toEqual(parsePanel('[○○ / ▲▼▲ / ○○○]').shapes)
+  })
+
+  it('puts every symbol of a "top:"/"bottom:" band in that band', () => {
+    const p = parsePanel('top: △△ / bottom: △')
+    expect(p.shapes.map((s) => s.row)).toEqual([0, 0, 2])
+  })
+
+  it('reads separate "top:"/"bottom:" brackets as the same two bands', () => {
+    const p = parsePanel('[top: □⬠] [bottom: △□]')
+    expect(p.shapes.map((s) => [s.shape, s.row])).toEqual([
+      ['square', 0], ['pentagon', 0], ['triangle', 2], ['square', 2],
+    ])
+  })
+
+  it('keeps an arrow in the row of the symbol it accompanies', () => {
+    const p = parsePanel('[upper: ●↑] [lower: ○↙]')
+    expect(p.shapes.map((s) => [s.shape, s.row])).toEqual([
+      ['circle', 0], ['arrow', 0], ['circle', 2], ['arrow', 2],
+    ])
+  })
+
+  it('does not split prose punctuation into rows', () => {
+    const p = parsePanel('[2 ears, droopy/floppy]')
+    expect(p.shapes.every((s) => s.row === undefined)).toBe(true)
+  })
+
+  it('marks the panel partial when a declared row cannot be drawn', () => {
+    // "arrow alone" no produce ninguna figura: dibujar solo la fila de abajo
+    // enseñaría media figura y escondería la otra mitad en el pie de texto.
+    const p = parsePanel('[arrow alone / bottom: ○ ×1]')
+    expect(p.partial).toBe(true)
+  })
+
+  it('is not partial when every declared row draws', () => {
+    expect(parsePanel('[corners: □ ▲ ⬠ □ / centre: ⬡(large)]').partial).toBe(false)
+  })
+})
+
+// Los corchetes son, en la propia leyenda del banco, el recurso para "esta
+// figura no se reduce al juego de símbolos". Si además no sacamos ninguna
+// figura de dentro, lo que se dibuje del resto del panel es solo el adorno.
+describe('panels whose drawing would be a fragment', () => {
+  it('marks a panel partial when a bracket yields no figure at all', () => {
+    const p = parsePanel('♡ + [triangle, section shaded] + dots(≈7 total)')
+    expect(p.shapes.map((s) => s.shape)).toEqual(['heart'])
+    expect(p.partial).toBe(true)
+  })
+
+  it('does not mark a panel partial when its brackets do yield figures', () => {
+    expect(parsePanel('[top: □] [bottom: △]').partial).toBe(false)
+  })
+
+  it('reports a group as undrawable if any member of it is a fragment', () => {
+    const panels = [parsePanel('[top: □] [bottom: △]'), parsePanel('[shifted down]'), parsePanel('?')]
+    expect(panelsDrawable(panels)).toBe(false)
+    expect(panelsDrawable([panels[0], panels[2]])).toBe(true)
   })
 })

@@ -6,6 +6,10 @@ import { extractPromptFigures, type FigurePanel, type SizeKind } from '../lib/ab
 interface AbstractPromptViewProps {
   prompt: string
   large?: boolean
+  /** Dibujar iconos sería engañoso en esta pregunta (ver `panelsDrawable`):
+   * se mantiene la estructura de secuencia, pero cada panel se muestra con su
+   * texto completo. */
+  forceText?: boolean
 }
 
 // Encoge los iconos cuando hay muchos paneles/símbolos, para que la secuencia
@@ -23,7 +27,34 @@ function sequenceIconSize(panels: FigurePanel[], baseLarge: boolean | undefined)
   return 'small'
 }
 
-export function AbstractPromptView({ prompt, large }: AbstractPromptViewProps) {
+/** Un panel de la secuencia mostrado como texto. Se usa cuando la pregunta
+ * entera va en texto, para que los paneles sigan leyéndose como una
+ * secuencia comparable (misma anchura, mismo orden) en vez de fundirse en un
+ * párrafo corrido. */
+function TextPanel({ panel, large }: { panel: FigurePanel; large?: boolean }) {
+  if (panel.isBlank) {
+    return (
+      <div
+        className={`flex items-center justify-center rounded-lg border-2 border-dashed border-slate-300 text-slate-400 ${
+          large ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'
+        }`}
+      >
+        ?
+      </div>
+    )
+  }
+  return (
+    <div
+      className={`flex min-h-16 items-center rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-700 ${
+        large ? 'w-44 text-sm' : 'w-40 text-xs'
+      }`}
+    >
+      <span className="leading-relaxed">{panel.raw}</span>
+    </div>
+  )
+}
+
+export function AbstractPromptView({ prompt, large, forceText }: AbstractPromptViewProps) {
   const figures = extractPromptFigures(prompt)
 
   if (!figures) {
@@ -38,9 +69,16 @@ export function AbstractPromptView({ prompt, large }: AbstractPromptViewProps) {
         <div className="mb-4 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-3">
           {figures.panels.map((panel, i) => (
             <div key={i} className="flex items-center gap-1.5">
-              <FigurePanelView panel={panel} sizeOverride={sequenceSize} />
+              {forceText ? (
+                <TextPanel panel={panel} large={large} />
+              ) : (
+                <FigurePanelView panel={panel} sizeOverride={sequenceSize} />
+              )}
               {i < figures.panels.length - 1 && (
-                <SequenceArrow size={sequenceSize === 'small' ? 12 : large ? 20 : 16} className="shrink-0 text-slate-300" />
+                <SequenceArrow
+                  size={forceText ? 16 : sequenceSize === 'small' ? 12 : large ? 20 : 16}
+                  className="shrink-0 text-slate-300"
+                />
               )}
             </div>
           ))}
@@ -55,7 +93,7 @@ export function AbstractPromptView({ prompt, large }: AbstractPromptViewProps) {
           >
             {figures.panels.map((panel, i) => (
               <div key={i} className="flex items-center justify-center rounded-lg bg-white p-2 shadow-sm">
-                <FigurePanelView panel={panel} large={large} />
+                {forceText ? <TextPanel panel={panel} large={large} /> : <FigurePanelView panel={panel} large={large} />}
               </div>
             ))}
           </div>

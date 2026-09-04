@@ -40,6 +40,11 @@ export interface ShapeSpec {
   /** Solo para 'spiked-circle': qué mitad queda sombreada respecto a esa
    * línea, y con qué relleno. */
   shadedHalf?: { side: 'first' | 'second'; fill: FillKind }
+  /** Fila del panel en la que va esta forma, cuando el texto describe filas
+   * apiladas ("[○○ / ▲▼▲ / ○○○○]", "[top: □] [bottom: △]"). Es una estructura
+   * distinta de `position`: la rejilla 3×3 coloca UNA figura por celda, pero
+   * una fila puede llevar cinco. */
+  row?: number
 }
 
 export interface FigurePanel {
@@ -47,12 +52,20 @@ export interface FigurePanel {
   caption?: string
   isBlank: boolean
   raw: string
+  /** El dibujo de este panel es un FRAGMENTO de lo que describe su texto:
+   * queda descripción sin representar (típicamente un corchete de prosa que
+   * el legado del banco real usa justo cuando "la figura no se reduce al
+   * juego de símbolos"). Dibujarlo sería enseñar media figura y esconder en
+   * un pie de 10 px justo lo que distingue unas opciones de otras, así que
+   * el llamador debe pasar toda la pregunta a texto. */
+  partial: boolean
 }
 
 const SHAPE_MAP: Record<string, { shape: ShapeKind; fill: FillKind }> = {
   '●': { shape: 'circle', fill: 'filled' },
   '○': { shape: 'circle', fill: 'empty' },
   '⬤': { shape: 'circle', fill: 'filled' },
+  '•': { shape: 'circle', fill: 'filled' },
   '■': { shape: 'square', fill: 'filled' },
   '□': { shape: 'square', fill: 'empty' },
   '▰': { shape: 'square', fill: 'grey' },
@@ -510,12 +523,16 @@ function parseSpikedCirclePart(text: string): Partial<ShapeSpec> | null {
   return null
 }
 
-/** Reparto de filas cuando un corchete separa su contenido con "/"
- * ("[○○ / ▲▼▲ / ○○○○]"): la primera fila arriba y la última abajo, dentro de
- * la misma rejilla 3×3 que usa el resto del render. */
-const ROW_POSITIONS: Record<number, Position[]> = {
-  2: ['top-centre', 'bottom-centre'],
-  3: ['top-centre', 'centre', 'bottom-centre'],
+/** Etiquetas que nombran una BANDA horizontal del panel ("top:", "bottom:",
+ * "upper:", "lower:") en vez de una celda de la rejilla 3×3. El banco real
+ * las usa para paneles con filas apiladas de varias figuras cada una
+ * ("[top: □⬠] [bottom: △□]"), que no caben en una celda. Se traducen a un
+ * índice de fila; las filas vacías se compactan al dibujar. */
+const ROW_LABELS: Record<string, number> = {
+  row: 0, rows: 0, fila: 0, filas: 0,
+  top: 0, upper: 0, arriba: 0, superior: 0, 'fila superior': 0, 'top row': 0,
+  middle: 1, mid: 1, centre: 1, center: 1, medio: 1, centro: 1, central: 1,
+  bottom: 2, lower: 2, abajo: 2, inferior: 2, 'fila inferior': 2, 'bottom row': 2,
 }
 
 /** Lee un trozo de texto de dentro de un corchete y saca de él las figuras que
@@ -525,20 +542,30 @@ const ROW_POSITIONS: Record<number, Position[]> = {
  *
  * Acepta el prefijo "etiqueta:" ("TR: ■", "top: □△") aplicando esa posición a
  * todas las figuras del segmento. */
-function parseBracketSegment(seg: string): { shapes: ShapeSpec[]; leftover: string[] } {
+function parseBracketSegment(seg: string): { shapes: ShapeSpec[]; leftover: string[]; row?: number } {
   let text = seg.trim()
   const shapes: ShapeSpec[] = []
   const leftover: string[] = []
 
   let segPosition: Position | undefined
+  let segRow: number | undefined
   let labelled = false
   const label = text.match(/^([A-Za-zÁÉÍÓÚÑáéíóúñ][A-Za-zÁÉÍÓÚÑáéíóúñ -]*?)\s*:\s*([\s\S]*)$/)
   if (label) {
-    const p = normalisePositionWord(label[1].trim().toLowerCase())
-    if (p) {
-      segPosition = p
+    const word = label[1].trim().toLowerCase()
+    // "top:"/"bottom:" nombran una banda entera del panel, no una celda:
+    // pueden llevar varias figuras en fila. "top-left:" sí es una celda.
+    if (word in ROW_LABELS) {
+      segRow = ROW_LABELS[word]
       labelled = true
       text = label[2]
+    } else {
+      const p = normalisePositionWord(word)
+      if (p) {
+        segPosition = p
+        labelled = true
+        text = label[2]
+      }
     }
   }
 
@@ -546,10 +573,14 @@ function parseBracketSegment(seg: string): { shapes: ShapeSpec[]; leftover: stri
     leftover.push(
       ...consumePhrase(phrase, {
         position: (p) => {
-          // Una posición suelta coloca la última figura vista; si todavía no
-          // hay ninguna, queda pendiente para las que vengan detrás.
-          if (shapes.length > 0) shapes[shapes.length - 1].position = p
-          else segPosition = p
+          // Una posición suelta coloca la última figura vista. Si todavía no
+          // hay ninguna, NO se guarda para la siguiente: en prosa suelta esa
+          // palabra suele describir otra cosa ("black diamond centre",
+          // "4 círculos arriba + 4 abajo") y acabaría colocando una figura que
+          // no le corresponde — y de forma distinta en inglés y en español.
+          // Para eso está la etiqueta explícita "algo:" del principio.
+          if (shapes.length === 0) return false
+          shapes[shapes.length - 1].position = p
           return true
         },
         // Un nombre de figura en palabras solo cuenta como figura si el
@@ -625,6 +656,15 @@ function parseBracketSegment(seg: string): { shapes: ShapeSpec[]; leftover: stri
       shapes.push({ shape: s.shape, fill: s.fill, rotationDeg: 0, size: 'medium' })
       continue
     }
+    // Una flecha dentro del corchete pertenece a SU segmento ("[upper: ●↑]"):
+    // si se saca antes de repartir las filas acaba flotando fuera de la fila
+    // del círculo al que acompaña.
+    if (ch in COMPASS_MAP) {
+      applyPhrase(run)
+      run = ''
+      shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: COMPASS_MAP[ch], size: 'small' })
+      continue
+    }
     if (/[,;]/.test(ch)) {
       applyPhrase(run)
       run = ''
@@ -637,27 +677,31 @@ function parseBracketSegment(seg: string): { shapes: ShapeSpec[]; leftover: stri
   if (segPosition) {
     for (const s of shapes) s.position = s.position ?? segPosition
   }
-  return { shapes, leftover }
+  if (segRow != null) {
+    for (const s of shapes) s.row = s.row ?? segRow
+  }
+  return { shapes, leftover, row: segRow }
 }
 
 /** Interpreta el contenido de un corchete como figuras en vez de como pie de
  * texto. Devuelve null si no reconoce ninguna, para que el llamador siga con
  * el tratamiento de siempre. */
-function parseBracketShapes(inner: string): { shapes: ShapeSpec[]; leftover: string[] } | null {
-  const rows = inner.split('/').map((r) => r.trim()).filter(Boolean)
-  const rowPositions = ROW_POSITIONS[rows.length]
-  if (rows.length > 1 && rowPositions) {
+function parseBracketShapes(
+  inner: string,
+): { shapes: ShapeSpec[]; leftover: string[]; partial: boolean } | null {
+  const split = splitRows(inner, (part) => parseBracketSegment(part).shapes.length > 0)
+  if (split.parts) {
     const shapes: ShapeSpec[] = []
     const leftover: string[] = []
-    rows.forEach((row, i) => {
+    split.parts.forEach((row, i) => {
       const r = parseBracketSegment(row)
       for (const s of r.shapes) {
-        s.position = s.position ?? rowPositions[i]
+        s.row = s.row ?? i
         shapes.push(s)
       }
       leftover.push(...r.leftover)
     })
-    return shapes.length > 0 ? { shapes, leftover } : null
+    return shapes.length > 0 ? { shapes, leftover, partial: split.partial } : null
   }
 
   const shapes: ShapeSpec[] = []
@@ -667,7 +711,30 @@ function parseBracketShapes(inner: string): { shapes: ShapeSpec[]; leftover: str
     shapes.push(...r.shapes)
     leftover.push(...r.leftover)
   }
-  return shapes.length > 0 ? { shapes, leftover } : null
+  return shapes.length > 0 ? { shapes, leftover, partial: split.partial } : null
+}
+
+/** Decide si un "/" separa FILAS de un panel ("○○○○ / ▽▽▽ / ●●●") o es solo
+ * puntuación dentro de la prosa ("droopy/floppy", "3rd/right", "grey/black").
+ * Solo cuenta como fila si al partir salen al menos dos trozos que de verdad
+ * contienen figuras — así una barra suelta en un texto descriptivo no parte
+ * el panel en pedazos. Devuelve null si no es un reparto en filas. */
+function splitRows(
+  text: string,
+  hasShapes: (part: string) => boolean,
+): { parts: string[] | null; partial: boolean } {
+  if (!text.includes('/')) return { parts: null, partial: false }
+  const parts = tokenize(text, (ch) => ch === '/')
+  if (parts.length < 2) return { parts: null, partial: false }
+  const drawable = parts.filter(hasShapes).length
+  // Si el texto declara N filas y solo sabemos dibujar algunas, la figura sale
+  // incompleta justo en lo que la pregunta compara ("[arrow alone / bottom: ○]"
+  // dibujaría el círculo y se comería la flecha). Cero filas dibujables no
+  // cuenta: ahí la barra es puntuación de la prosa ("droopy/floppy").
+  return {
+    parts: drawable >= 2 ? parts : null,
+    partial: drawable >= 1 && drawable < parts.length,
+  }
 }
 
 /** Parsea UN panel (un token separado por splitPanels) en una FigurePanel.
@@ -682,9 +749,46 @@ function parseBracketShapes(inner: string): { shapes: ShapeSpec[]; leftover: str
 export function parsePanel(raw: string): FigurePanel {
   const trimmed = raw.trim()
   if (trimmed === '?') {
-    return { shapes: [], isBlank: true, raw: trimmed }
+    return { shapes: [], isBlank: true, raw: trimmed, partial: false }
   }
 
+  // Las opciones escriben las filas del panel sin corchetes ("○○○○ / ▽▽▽ /
+  // ●●●") mientras que el enunciado las escribe dentro de uno ("[○○ / ▲▼▲ /
+  // ○○○○]"). Es la MISMA notación, así que tiene que dibujarse igual: si no,
+  // el enunciado sale en filas y las opciones en un montón plano, y no hay
+  // forma de compararlos.
+  const topRows = splitRows(trimmed, (part) => parsePanelBody(part).shapes.length > 0)
+  if (topRows.parts) {
+    const shapes: ShapeSpec[] = []
+    const captions: string[] = []
+    let partial = topRows.partial
+    topRows.parts.forEach((row, i) => {
+      const body = parsePanelBody(row)
+      for (const s of body.shapes) {
+        s.row = s.row ?? i
+        shapes.push(s)
+      }
+      if (body.caption) captions.push(body.caption)
+      partial = partial || body.partial
+    })
+    const caption = captions.join(' ').replace(/\s+/g, ' ').trim() || undefined
+    return {
+      shapes,
+      caption: shapes.length > 0 ? cleanCaption(caption) : (caption ?? trimmed),
+      isBlank: false,
+      raw: trimmed,
+      partial,
+    }
+  }
+
+  const body = parsePanelBody(trimmed)
+  return { ...body, partial: body.partial || topRows.partial, isBlank: false, raw: trimmed }
+}
+
+/** Cuerpo de `parsePanel` para un texto ya sin reparto en filas. */
+function parsePanelBody(raw: string): { shapes: ShapeSpec[]; caption?: string; partial: boolean } {
+  const trimmed = raw.trim()
+  let partial = false
   const shapes: ShapeSpec[] = []
   const captions: string[] = []
   let unrecognizedRun = ''
@@ -704,7 +808,14 @@ export function parsePanel(raw: string): FigurePanel {
     // del glifo, así que se guarda y se aplica a la siguiente figura.
     const labelled = raw.match(/^(.*?)\s*:\s*$/)
     if (labelled) {
-      const p = normalisePositionWord(labelled[1].trim().toLowerCase())
+      const word = labelled[1].trim().toLowerCase()
+      // Igual que dentro de un corchete: "top:"/"bottom:" nombran una banda
+      // entera del panel (puede llevar varias figuras en fila), no una celda.
+      if (word in ROW_LABELS) {
+        pendingRow = ROW_LABELS[word]
+        return
+      }
+      const p = normalisePositionWord(word)
       if (p) {
         pendingPosition = p
         return
@@ -732,9 +843,14 @@ export function parsePanel(raw: string): FigurePanel {
   // Posición anunciada ANTES de la figura ("centro: ●"), pendiente de
   // aplicarse a la siguiente que aparezca.
   let pendingPosition: Position | undefined
+  // Banda horizontal anunciada antes de las figuras ("top: △△ / bottom: △").
+  let pendingRow: number | undefined
   // Figura "círculo con radios" que varios corchetes seguidos van componiendo.
   let spikedCircle: ShapeSpec | undefined
   const takePendingPosition = () => {
+    // A diferencia de la posición, la banda NO se consume: "top: △△" pone las
+    // DOS figuras en la fila de arriba, no solo la primera.
+    if (pendingRow != null) shapes[shapes.length - 1].row = pendingRow
     if (!pendingPosition) return
     shapes[shapes.length - 1].position = pendingPosition
     pendingPosition = undefined
@@ -787,6 +903,19 @@ export function parsePanel(raw: string): FigurePanel {
    * color que desentona con el resto de iconos en blanco y negro. */
   function applyBracketContent(inner: string) {
     let text = inner
+    // Los corchetes del banco real no son solo prosa: muchos describen el
+    // contenido del panel con glifos y/o nombres de figura ("[TR: ■]",
+    // "[top: □] [bottom: △]", "[○○ / ▲▼▲ / ○○○○]"). Dejarlos siempre como pie
+    // de texto hacía que opciones distintas dibujaran el mismo icono, porque
+    // toda la diferencia vivía en el texto descartado.
+    const asShapes = parseBracketShapes(text)
+    if (asShapes) {
+      shapes.push(...asShapes.shapes)
+      if (asShapes.leftover.length > 0) captions.push(asShapes.leftover.join(' '))
+      if (asShapes.partial) partial = true
+      attributedUpTo = shapes.length
+      return
+    }
     for (const [ch, deg] of Object.entries(COMPASS_MAP)) {
       while (text.includes(ch)) {
         shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: deg, size: 'small' })
@@ -812,25 +941,22 @@ export function parsePanel(raw: string): FigurePanel {
       Object.assign(spikedCircle, spikePart)
       return
     }
-    // Los corchetes del banco real no son solo prosa: muchos describen el
-    // contenido del panel con glifos y/o nombres de figura ("[TR: ■]",
-    // "[top: □] [bottom: △]", "[roof: hexagon, 6 sides]"). Dejarlos siempre
-    // como pie de texto hacía que opciones distintas dibujaran el mismo
-    // icono, porque toda la diferencia vivía en el texto descartado.
-    const asShapes = parseBracketShapes(text)
-    if (asShapes) {
-      shapes.push(...asShapes.shapes)
-      if (asShapes.leftover.length > 0) captions.push(asShapes.leftover.join(' '))
-      attributedUpTo = shapes.length
-      return
-    }
     text = text
       .replace(/\(\s*\)/g, '')
       .replace(/\s*,\s*,/g, ',')
       .replace(/^[\s,]+|[\s,]+$/g, '')
       .replace(/\s{2,}/g, ' ')
       .trim()
-    if (text) captions.push(text)
+    if (text) {
+      captions.push(text)
+      // El propio libro reserva los corchetes para "aquí la figura no se
+      // reduce al juego de símbolos" (ver la leyenda de notación). Si encima
+      // no hemos sabido sacar ninguna figura del corchete, lo que se dibuje
+      // del resto del panel es solo el adorno — el sujeto de la figura se
+      // queda fuera. Marcar el panel como parcial hace que la pregunta
+      // entera se muestre como texto en vez de como media figura.
+      partial = true
+    }
   }
 
   const chars = [...trimmed]
@@ -900,12 +1026,65 @@ export function parsePanel(raw: string): FigurePanel {
 
   const caption = captions.join(' ').replace(/\s+/g, ' ').trim() || undefined
 
+  // Una flecha de compás junto a otras figuras es un adorno de esas figuras
+  // ("[upper: ●↑]"), no una figura del mismo rango: se dibuja pequeña. Sola en
+  // su panel (las matrices de flechas) sí es la figura, a tamaño normal. Sin
+  // esto el enunciado y las opciones de una misma pregunta dibujaban la misma
+  // flecha a tamaños distintos según cómo estuviera escrito el panel.
+  if (shapes.length > 1) {
+    for (const shape of shapes) {
+      if (shape.shape === 'arrow') shape.size = 'small'
+    }
+  }
+
   return {
     shapes,
-    caption: shapes.length > 0 ? caption : caption ?? trimmed,
-    isBlank: false,
-    raw: trimmed,
+    caption: shapes.length > 0 ? cleanCaption(caption) : (caption ?? trimmed),
+    partial,
   }
+}
+
+/** ¿Se puede dibujar TODO este grupo de paneles con fidelidad? Un panel vale
+ * si es la incógnita ("?") o si tiene figuras y no es un fragmento
+ * (`partial`). Se pregunta por el grupo entero, no panel a panel, porque la
+ * comparación es lo único que se le pide al alumno: una secuencia (o una
+ * lista de opciones) mitad iconos mitad párrafos no se puede comparar, y las
+ * que se quedan en texto suelen ser justo las que llevan la diferencia. */
+export function panelsDrawable(panels: FigurePanel[]): boolean {
+  return panels.every((p) => p.isBlank || (p.shapes.length > 0 && !p.partial))
+}
+
+// Palabras que un pie de figura puede contener sin aportar nada: nombran una
+// figura, un relleno o una orientación que el icono YA muestra. Aparecen
+// cuando el texto glosa su propio símbolo ("⬢(filled hexagon)", "▲(filled,
+// up)") o cuando repite un recuento que ya se ve ("(2 filled + 1 empty)").
+// Un pie hecho solo de estas palabras es ruido bajo el icono — y encima se
+// queda sin traducir en la versión española, porque son la notación.
+const REDUNDANT_CAPTION_WORDS = new Set([
+  'circle', 'circles', 'square', 'squares', 'triangle', 'triangles', 'diamond', 'diamonds',
+  'star', 'stars', 'heart', 'hearts', 'pentagon', 'pentagons', 'hexagon', 'hexagons',
+  'arrow', 'arrows', 'dot', 'dots', 'shape', 'shapes',
+  'filled', 'empty', 'black', 'white', 'grey', 'gray', 'outline', 'clear', 'shaded', 'striped',
+  'hatched', 'small', 'large', 'big', 'up', 'down', 'left', 'right', 'and', 'plus', 'both',
+  // Los mismos, en español: el pie tiene que desaparecer en los dos idiomas o
+  // la misma opción se ve con pie en uno y sin él en el otro.
+  'círculo', 'círculos', 'cuadrado', 'cuadrados', 'triángulo', 'triángulos',
+  'rombo', 'rombos', 'estrella', 'estrellas', 'corazón', 'corazones',
+  'pentágono', 'pentágonos', 'hexágono', 'hexágonos', 'flecha', 'flechas',
+  'punto', 'puntos', 'figura', 'figuras',
+  'relleno', 'rellena', 'rellenos', 'rellenas', 'vacío', 'vacía', 'vacíos', 'vacías',
+  'negro', 'negra', 'negros', 'negras', 'blanco', 'blanca', 'blancos', 'blancas',
+  'gris', 'grises', 'contorno', 'transparente', 'transparentes',
+  'sombreado', 'sombreada', 'rayado', 'rayada', 'pequeño', 'pequeña', 'grande',
+  'arriba', 'abajo', 'izquierda', 'derecha', 'y', 'más', 'ambos', 'ambas',
+])
+
+/** Quita el pie de figura cuando no dice nada que el icono no enseñe ya. */
+function cleanCaption(caption: string | undefined): string | undefined {
+  if (!caption) return undefined
+  const words = caption.toLowerCase().match(/[a-záéíóúñ]+|\d+/g)
+  if (!words || words.length === 0) return undefined
+  return words.every((w) => REDUNDANT_CAPTION_WORDS.has(w) || /^\d+$/.test(w)) ? undefined : caption
 }
 
 /** Firma de lo que `FigurePanelView` dibuja realmente para un panel (formas,
@@ -924,7 +1103,7 @@ export function panelSignature(panel: FigurePanel): string {
   return panel.shapes
     .map(
       (s) =>
-        `${s.position ?? ''}|${s.shape}|${s.fill}|${s.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}` +
+        `${s.position ?? ''}|${s.row ?? ''}|${s.shape}|${s.fill}|${s.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}` +
         `|${s.spikes ?? ''}${s.spikeExtra ?? ''}|${s.dividerDeg ?? ''}|${s.shadedHalf ? `${s.shadedHalf.side}${s.shadedHalf.fill}` : ''}`,
     )
     .join(',')
@@ -1002,7 +1181,27 @@ export function extractPromptFigures(prompt: string): PromptFigures | null {
     }
   })
 
-  if (!best) return null
+  // Prompts cuya secuencia es toda prosa ("[trompa media] [charco 3] · ..."):
+  // no hay ninguna figura que dibujar, pero la secuencia SÍ existe y se pierde
+  // si se deja como un párrafo corrido. Se devuelven los paneles en texto,
+  // para que se lean en orden y uno al lado de otro igual que en las preguntas
+  // que sí se dibujan. Se exige el separador de panel explícito ('·'/'—') y el
+  // panel incógnita final, para no confundir un párrafo con una secuencia.
+  const asTextSequence = (): PromptFigures | null => {
+    for (const block of blocks) {
+      if (!/[·—]/.test(block)) continue
+      const panelTexts = splitPanels(block)
+      if (panelTexts.length < 3 || panelTexts[panelTexts.length - 1].trim() !== '?') continue
+      return {
+        kind: 'sequence',
+        panels: panelTexts.map(parsePanel),
+        remainderMd: blocks.filter((b) => b !== block).join('\n\n').trim(),
+      }
+    }
+    return null
+  }
+
+  if (!best) return asTextSequence()
 
   const chosen: { index: number; panels: FigurePanel[]; score: number } = best
   // Un párrafo de prosa que solo contiene una flecha suelta como signo de
@@ -1014,7 +1213,7 @@ export function extractPromptFigures(prompt: string): PromptFigures | null {
   // Los scores reales del banco son bimodales (72 secuencias auténticas dan
   // 1.00; los párrafos de prosa dan 0.04–0.13), así que el corte separa
   // limpiamente ambos casos y ninguna secuencia legítima cae por debajo.
-  if (chosen.score < MIN_DRAWABLE_RATIO) return null
+  if (chosen.score < MIN_DRAWABLE_RATIO) return asTextSequence()
 
   const remainderMd = blocks
     .filter((_, i) => i !== chosen.index)

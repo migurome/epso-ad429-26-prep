@@ -68,6 +68,37 @@ export function FigurePanelView({ panel, large, sizeOverride }: FigurePanelViewP
     return s
   }
 
+  // Filas apiladas ("[○○ / ▲▼▲ / ○○○○]"): cada fila lleva tantas figuras como
+  // diga el texto, así que NO caben en una celda de la rejilla 3×3. Se dibujan
+  // como filas de verdad, una debajo de otra y centradas.
+  const anyRow = panel.shapes.some((s) => s.row != null)
+  if (anyRow) {
+    const byRow = new Map<number, ShapeSpec[]>()
+    for (const s of panel.shapes) {
+      const row = s.row ?? Number.MAX_SAFE_INTEGER
+      if (!byRow.has(row)) byRow.set(row, [])
+      byRow.get(row)!.push(s)
+    }
+    const rowKeys = [...byRow.keys()].sort((a, b) => a - b)
+    const rowSize: SizeKind = sizeOverride ?? (large ? 'medium' : 'small')
+    return (
+      <div className="flex flex-col items-center gap-1.5">
+        <div className="flex flex-col items-center gap-1 rounded-lg border border-dashed border-slate-300 px-2 py-1.5">
+          {rowKeys.map((key) => (
+            <div key={key} className="flex items-center justify-center gap-0.5">
+              {byRow.get(key)!.map((s, i) => (
+                <ShapeIcon key={i} spec={{ ...s, size: rowSize }} />
+              ))}
+            </div>
+          ))}
+        </div>
+        {panel.caption && (
+          <span className="max-w-[7rem] text-center text-[10px] leading-tight text-slate-400">{panel.caption}</span>
+        )}
+      </div>
+    )
+  }
+
   const anyPositioned = panel.shapes.some((s) => s.position)
 
   if (anyPositioned) {
