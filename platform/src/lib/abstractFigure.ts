@@ -11,6 +11,7 @@ export type ShapeKind =
   | 'quarter-circle' | 'half-circle' | 'three-quarter-circle' | 'circle-quartered'
   | 'circled-plus' | 'circled-x' | 'circled-minus'
   | 'sun' | 'cloud' | 'snowflake' | 'lightning' | 'four-point-star' | 'moon'
+  | 'spiked-circle'
 export type FillKind = 'filled' | 'empty' | 'grey' | 'hatched'
 export type SizeKind = 'small' | 'medium' | 'large' | 'extra-large'
 export type Position =
@@ -28,6 +29,17 @@ export interface ShapeSpec {
    * + círculo abajo-izquierda" son dos formas con posiciones distintas
    * dentro del mismo panel, no un grupo que se mueve en bloque. */
   position?: Position
+  /** Solo para 'spiked-circle': nº de radios que salen del círculo. */
+  spikes?: number
+  /** Solo para 'spiked-circle': dónde va el radio "extra", además de los de
+   * la corona superior. Es lo único que distingue algunas opciones. */
+  spikeExtra?: 'bottom-left' | 'bottom-right'
+  /** Solo para 'spiked-circle': ángulo en grados (0 = horizontal) de la línea
+   * que parte el círculo en dos mitades. */
+  dividerDeg?: number
+  /** Solo para 'spiked-circle': qué mitad queda sombreada respecto a esa
+   * línea, y con qué relleno. */
+  shadedHalf?: { side: 'first' | 'second'; fill: FillKind }
 }
 
 export interface FigurePanel {
@@ -135,13 +147,161 @@ const POSITION_WORDS: Record<string, Position> = {
   'mid-center': 'centre',
   'middle': 'centre',
   'center': 'centre',
+  // Abreviaturas de esquina y formas sueltas ("TR: ■", "top: □", "left-mid")
+  // que el banco real usa dentro de corchetes.
+  tl: 'top-left',
+  tr: 'top-right',
+  bl: 'bottom-left',
+  br: 'bottom-right',
+  top: 'top-centre',
+  bottom: 'bottom-centre',
+  upper: 'top-centre',
+  lower: 'bottom-centre',
+  left: 'mid-left',
+  right: 'mid-right',
+  mid: 'centre',
+  centre: 'centre',
+  'above-left': 'top-left',
+  'above-right': 'top-right',
+  'below-left': 'bottom-left',
+  'below-right': 'bottom-right',
+  'centre-left': 'mid-left',
+  'centre-right': 'mid-right',
+  'center-left': 'mid-left',
+  'center-right': 'mid-right',
+  'centre-top': 'top-centre',
+  'centre-bottom': 'bottom-centre',
+  'center-top': 'top-centre',
+  'center-bottom': 'bottom-centre',
+  'far-left': 'mid-left',
+  'far-right': 'mid-right',
+  'top-mid': 'top-centre',
+  'bottom-mid': 'bottom-centre',
+  'left-mid': 'mid-left',
+  'right-mid': 'mid-right',
+  'mid-top': 'top-centre',
+  'mid-bottom': 'bottom-centre',
+  // Español: los bancos traducidos describen la posición con frases de varias
+  // palabras, así que `normalisePositionWord` compara también frases enteras.
+  'arriba a la izquierda': 'top-left',
+  'arriba a la derecha': 'top-right',
+  'abajo a la izquierda': 'bottom-left',
+  'abajo a la derecha': 'bottom-right',
+  'superior izquierda': 'top-left',
+  'superior derecha': 'top-right',
+  'inferior izquierda': 'bottom-left',
+  'inferior derecha': 'bottom-right',
+  'centro-arriba': 'top-centre',
+  'centro-abajo': 'bottom-centre',
+  'centro-izquierda': 'mid-left',
+  'centro-derecha': 'mid-right',
+  'arriba-izquierda': 'top-left',
+  'arriba-derecha': 'top-right',
+  'abajo-izquierda': 'bottom-left',
+  'abajo-derecha': 'bottom-right',
+  'muy a la derecha': 'mid-right',
+  'muy a la izquierda': 'mid-left',
+  'a la derecha': 'mid-right',
+  'a la izquierda': 'mid-left',
+  'arriba en el centro': 'top-centre',
+  'abajo en el centro': 'bottom-centre',
+  'inferior media': 'bottom-centre',
+  'superior media': 'top-centre',
+  arriba: 'top-centre',
+  abajo: 'bottom-centre',
+  izquierda: 'mid-left',
+  derecha: 'mid-right',
+  centro: 'centre',
+  medio: 'centre',
+  superior: 'top-centre',
+  inferior: 'bottom-centre',
 }
 
 function normalisePositionWord(clean: string): Position | null {
-  const stripped = clean.replace(/ corner$/, '')
+  // "top-right corner", "esquina superior derecha", "far lower-right" — el
+  // banco adorna la posición con palabras que no cambian de qué celda habla.
+  const stripped = clean
+    .replace(/^(far|just|slightly|en la|la|el)\s+/, '')
+    .replace(/^(esquina|zona|parte)\s+/, '')
+    .replace(/\s+(corner|area|side|edge|row|column)$/, '')
+    .replace(/\s+(esquina|zona|lado|fila|columna)$/, '')
+    .trim()
   if ((POSITIONS as string[]).includes(stripped)) return stripped as Position
   if (stripped in POSITION_WORDS) return POSITION_WORDS[stripped]
   return null
+}
+
+/** Nº máximo de palabras que puede ocupar una posición ("arriba a la
+ * izquierda"), para la búsqueda voraz de `consumePhrase`. */
+const MAX_POSITION_WORDS = 4
+
+/** Recorre una frase de izquierda a derecha reconociendo, de forma voraz,
+ * posiciones (que pueden ocupar varias palabras en español), nombres de
+ * figura y atributos sueltos. Devuelve las palabras que no ha sabido
+ * interpretar, para que el llamador las conserve como texto. */
+function consumePhrase(
+  phrase: string,
+  handlers: {
+    position?: (p: Position) => boolean
+    shapeName?: (s: ShapeKind) => boolean
+    attr?: (a: ParenAttr) => boolean
+  },
+): string[] {
+  const words = phrase.split(/\s+/).filter(Boolean)
+  const leftover: string[] = []
+  let i = 0
+  while (i < words.length) {
+    let taken = 0
+    for (let take = Math.min(MAX_POSITION_WORDS, words.length - i); take >= 1 && !taken; take--) {
+      const chunk = words.slice(i, i + take).join(' ').toLowerCase().replace(/[.;:,]+$/, '')
+      if (!chunk) continue
+      const position = handlers.position ? normalisePositionWord(chunk) : null
+      if (position && handlers.position!(position)) {
+        taken = take
+        break
+      }
+      if (take > 1) continue
+      const name = handlers.shapeName ? SHAPE_NAMES[chunk] : undefined
+      if (name && handlers.shapeName!(name)) {
+        taken = 1
+        break
+      }
+      const attr = handlers.attr ? parseParenAttr(chunk) : null
+      if (attr && handlers.attr!(attr)) {
+        taken = 1
+        break
+      }
+    }
+    if (taken) {
+      i += taken
+    } else {
+      leftover.push(words[i])
+      i += 1
+    }
+  }
+  return leftover
+}
+
+// Nombres de figura en palabras. El banco real los usa dentro de corchetes
+// ("[roof: hexagon, 6 sides]", "[top: square]") donde no hay glifo Unicode.
+// Solo se reconocen DENTRO de corchetes: a nivel superior una palabra suelta
+// como "circle" es prosa descriptiva, no una figura que haya que dibujar.
+const SHAPE_NAMES: Record<string, ShapeKind> = {
+  circle: 'circle', circles: 'circle', círculo: 'circle', círculos: 'circle',
+  square: 'square', squares: 'square', cuadrado: 'square', cuadrados: 'square',
+  triangle: 'triangle', triangles: 'triangle', triángulo: 'triangle', triángulos: 'triangle',
+  star: 'star', stars: 'star', estrella: 'star', estrellas: 'star',
+  diamond: 'diamond', diamonds: 'diamond', rhombus: 'diamond',
+  rombo: 'diamond', rombos: 'diamond',
+  pentagon: 'pentagon', pentagons: 'pentagon', pentágono: 'pentagon', pentágonos: 'pentagon',
+  hexagon: 'hexagon', hexagons: 'hexagon', hexágono: 'hexagon', hexágonos: 'hexagon',
+  rectangle: 'rectangle', rectangles: 'rectangle', bar: 'rectangle',
+  rectángulo: 'rectangle', rectángulos: 'rectangle', barra: 'rectangle',
+  heart: 'heart', hearts: 'heart', corazón: 'heart', corazones: 'heart',
+  arrow: 'arrow', arrows: 'arrow', flecha: 'arrow', flechas: 'arrow',
+  sun: 'sun', suns: 'sun', sol: 'sun', soles: 'sun',
+  cloud: 'cloud', clouds: 'cloud', nube: 'cloud', nubes: 'cloud',
+  moon: 'moon', luna: 'moon',
 }
 
 const SIZES: SizeKind[] = ['small', 'medium', 'large', 'extra-large']
@@ -305,6 +465,211 @@ function parseCircleFractionBracket(text: string): { spec: ShapeSpec; leftover: 
   return { spec: { shape, fill, rotationDeg: 0, size: 'medium' }, leftover }
 }
 
+/** Notación en prosa del "círculo con radios" del banco real: la figura se
+ * describe repartida en varios corchetes seguidos — "[6 spikes, 6th
+ * lower-left] [line diagonal] [one half black]" — donde ninguno contiene un
+ * glifo. Cada corchete aporta una parte de la MISMA figura, así que se
+ * acumulan sobre un único ShapeSpec en vez de crear tres.
+ *
+ * Devuelve los cambios que ese corchete aporta, o null si no habla de esto. */
+function parseSpikedCirclePart(text: string): Partial<ShapeSpec> | null {
+  const t = text.trim().toLowerCase()
+
+  const count = t.match(/^(\d+)\s*(spikes?|rayos?|lines?|líneas?|radios?)\b(.*)$/)
+  if (count) {
+    const part: Partial<ShapeSpec> = { spikes: Number(count[1]) }
+    const extra = count[3]
+    if (/lower-left|abajo a la izquierda|inferior izquierda/.test(extra)) part.spikeExtra = 'bottom-left'
+    else if (/lower-right|abajo a la derecha|inferior derecha/.test(extra)) part.spikeExtra = 'bottom-right'
+    return part
+  }
+
+  const divider = t.match(/^(?:line|línea)\s*~?\s*(diagonal|vertical|horizontal)\b/)
+  if (divider) {
+    return { dividerDeg: divider[1] === 'vertical' ? 90 : divider[1] === 'diagonal' ? 45 : 0 }
+  }
+
+  // "one half black", "left black / right clear", "bottom grey", "both clear"
+  const halfFill = t.match(
+    /\b(black|negra|grey|gris|shaded|sombreada|clear|transparente|white|blanca)\b/,
+  )
+  const halfSide = t.match(
+    /^(one half|una mitad|left|izquierda|right|derecha|top|arriba|bottom|abajo|both|ambas)\b/,
+  )
+  if (halfSide && halfFill) {
+    const word = halfFill[1]
+    const fill: FillKind =
+      word === 'black' || word === 'negra'
+        ? 'filled'
+        : word === 'grey' || word === 'gris' || word === 'shaded' || word === 'sombreada'
+          ? 'grey'
+          : 'empty'
+    const side = /^(right|derecha|bottom|abajo)/.test(halfSide[1]) ? 'second' : 'first'
+    return { shadedHalf: { side, fill } }
+  }
+  return null
+}
+
+/** Reparto de filas cuando un corchete separa su contenido con "/"
+ * ("[○○ / ▲▼▲ / ○○○○]"): la primera fila arriba y la última abajo, dentro de
+ * la misma rejilla 3×3 que usa el resto del render. */
+const ROW_POSITIONS: Record<number, Position[]> = {
+  2: ['top-centre', 'bottom-centre'],
+  3: ['top-centre', 'centre', 'bottom-centre'],
+}
+
+/** Lee un trozo de texto de dentro de un corchete y saca de él las figuras que
+ * describa: glifos Unicode, nombres de figura en palabras ("hexagon"), y las
+ * palabras de posición/relleno/tamaño que los acompañen. Devuelve también lo
+ * que no ha sabido interpretar, para no perderlo.
+ *
+ * Acepta el prefijo "etiqueta:" ("TR: ■", "top: □△") aplicando esa posición a
+ * todas las figuras del segmento. */
+function parseBracketSegment(seg: string): { shapes: ShapeSpec[]; leftover: string[] } {
+  let text = seg.trim()
+  const shapes: ShapeSpec[] = []
+  const leftover: string[] = []
+
+  let segPosition: Position | undefined
+  let labelled = false
+  const label = text.match(/^([A-Za-zÁÉÍÓÚÑáéíóúñ][A-Za-zÁÉÍÓÚÑáéíóúñ -]*?)\s*:\s*([\s\S]*)$/)
+  if (label) {
+    const p = normalisePositionWord(label[1].trim().toLowerCase())
+    if (p) {
+      segPosition = p
+      labelled = true
+      text = label[2]
+    }
+  }
+
+  const applyPhrase = (phrase: string) => {
+    leftover.push(
+      ...consumePhrase(phrase, {
+        position: (p) => {
+          // Una posición suelta coloca la última figura vista; si todavía no
+          // hay ninguna, queda pendiente para las que vengan detrás.
+          if (shapes.length > 0) shapes[shapes.length - 1].position = p
+          else segPosition = p
+          return true
+        },
+        // Un nombre de figura en palabras solo cuenta como figura si el
+        // segmento venía etiquetado con una posición ("[TR: square]"). En
+        // prosa suelta no: "half-circle shaded" y "medio círculo sombreado"
+        // no contienen los mismos sustantivos, así que reconocerlos ahí
+        // haría que el inglés y el español dibujaran cosas distintas.
+        shapeName: labelled
+          ? (s) => {
+              shapes.push({ shape: s, fill: 'empty', rotationDeg: 0, size: 'medium' })
+              return true
+            }
+          : undefined,
+        attr: (a) => {
+          if (shapes.length === 0) return false
+          const target = shapes[shapes.length - 1]
+          if (a.size) target.size = a.size
+          if (a.fill) target.fill = a.fill
+          if (a.rotationDeg != null) target.rotationDeg = a.rotationDeg
+          return true
+        },
+      }),
+    )
+  }
+
+  let run = ''
+  const chars = [...text]
+  for (let i = 0; i < chars.length; i++) {
+    const ch = chars[i]
+    if (ch === '(') {
+      const end = chars.indexOf(')', i + 1)
+      if (end !== -1) {
+        applyPhrase(run)
+        run = ''
+        // Un paréntesis pegado a un glifo es una GLOSA de esa figura
+        // ("⬢(filled hexagon)", "⬠(empty pentagon)"): ajusta su relleno o su
+        // tamaño, pero no añade una figura más. Sin esta distinción el panel
+        // acababa con el doble de figuras de las que describe.
+        for (const part of chars.slice(i + 1, end).join('').split(',')) {
+          leftover.push(
+            ...consumePhrase(part, {
+              position: (p) => {
+                if (shapes.length === 0) return false
+                shapes[shapes.length - 1].position = p
+                return true
+              },
+              attr: (a) => {
+                if (shapes.length === 0) return false
+                const target = shapes[shapes.length - 1]
+                if (a.size) target.size = a.size
+                if (a.fill) target.fill = a.fill
+                if (a.rotationDeg != null) target.rotationDeg = a.rotationDeg
+                return true
+              },
+            }),
+          )
+        }
+        i = end
+        continue
+      }
+    }
+    if (ch in TRIANGLE_MAP) {
+      applyPhrase(run)
+      run = ''
+      const t = TRIANGLE_MAP[ch]
+      shapes.push({ shape: 'triangle', fill: t.fill, rotationDeg: t.rotationDeg, size: 'medium' })
+      continue
+    }
+    if (ch in SHAPE_MAP) {
+      applyPhrase(run)
+      run = ''
+      const s = SHAPE_MAP[ch]
+      shapes.push({ shape: s.shape, fill: s.fill, rotationDeg: 0, size: 'medium' })
+      continue
+    }
+    if (/[,;]/.test(ch)) {
+      applyPhrase(run)
+      run = ''
+      continue
+    }
+    run += ch
+  }
+  applyPhrase(run)
+
+  if (segPosition) {
+    for (const s of shapes) s.position = s.position ?? segPosition
+  }
+  return { shapes, leftover }
+}
+
+/** Interpreta el contenido de un corchete como figuras en vez de como pie de
+ * texto. Devuelve null si no reconoce ninguna, para que el llamador siga con
+ * el tratamiento de siempre. */
+function parseBracketShapes(inner: string): { shapes: ShapeSpec[]; leftover: string[] } | null {
+  const rows = inner.split('/').map((r) => r.trim()).filter(Boolean)
+  const rowPositions = ROW_POSITIONS[rows.length]
+  if (rows.length > 1 && rowPositions) {
+    const shapes: ShapeSpec[] = []
+    const leftover: string[] = []
+    rows.forEach((row, i) => {
+      const r = parseBracketSegment(row)
+      for (const s of r.shapes) {
+        s.position = s.position ?? rowPositions[i]
+        shapes.push(s)
+      }
+      leftover.push(...r.leftover)
+    })
+    return shapes.length > 0 ? { shapes, leftover } : null
+  }
+
+  const shapes: ShapeSpec[] = []
+  const leftover: string[] = []
+  for (const seg of inner.split(/[,;]/)) {
+    const r = parseBracketSegment(seg)
+    shapes.push(...r.shapes)
+    leftover.push(...r.leftover)
+  }
+  return shapes.length > 0 ? { shapes, leftover } : null
+}
+
 /** Parsea UN panel (un token separado por splitPanels) en una FigurePanel.
  *
  * Recorre el texto en una sola pasada, carácter a carácter: cada símbolo
@@ -324,13 +689,35 @@ export function parsePanel(raw: string): FigurePanel {
   const captions: string[] = []
   let unrecognizedRun = ''
   const flushRun = () => {
+    const raw = unrecognizedRun.trim()
+    unrecognizedRun = ''
+    if (!raw) return
     // Conectores puramente gramaticales entre dos símbolos ("△ with □",
     // "△ con □") no aportan ninguna descripción visual — mostrarlos como
     // caption es solo ruido bajo el icono, no información.
-    if (unrecognizedRun && !CONNECTOR_WORDS.has(unrecognizedRun.toLowerCase())) {
-      captions.push(unrecognizedRun)
+    if (CONNECTOR_WORDS.has(raw.toLowerCase())) return
+    // Una posición escrita sin paréntesis justo detrás de una figura
+    // ("☆ top-right corner; ■ centre", "★ arriba a la izquierda") la coloca
+    // en su celda. Sin esto las cinco opciones de una pregunta de rejilla
+    // dibujaban los mismos iconos y toda la diferencia quedaba en el texto.
+    // "arriba-izquierda: △ arriba-derecha: ⬡" — aquí la posición va DELANTE
+    // del glifo, así que se guarda y se aplica a la siguiente figura.
+    const labelled = raw.match(/^(.*?)\s*:\s*$/)
+    if (labelled) {
+      const p = normalisePositionWord(labelled[1].trim().toLowerCase())
+      if (p) {
+        pendingPosition = p
+        return
+      }
     }
-    unrecognizedRun = ''
+    const rest = consumePhrase(raw, {
+      position: (p) => {
+        if (shapes.length === 0) return false
+        shapes[shapes.length - 1].position = p
+        return true
+      },
+    })
+    if (rest.length > 0) captions.push(rest.join(' '))
   }
 
   // Índice (en `shapes`) hasta el que ya se han aplicado atributos de algún
@@ -341,6 +728,17 @@ export function parsePanel(raw: string): FigurePanel {
   // donde un tamaño/relleno compartido se declara una sola vez al final de
   // una tanda de símbolos idénticos.
   let attributedUpTo = 0
+
+  // Posición anunciada ANTES de la figura ("centro: ●"), pendiente de
+  // aplicarse a la siguiente que aparezca.
+  let pendingPosition: Position | undefined
+  // Figura "círculo con radios" que varios corchetes seguidos van componiendo.
+  let spikedCircle: ShapeSpec | undefined
+  const takePendingPosition = () => {
+    if (!pendingPosition) return
+    shapes[shapes.length - 1].position = pendingPosition
+    pendingPosition = undefined
+  }
 
   /** Aplica los atributos reconocidos de un grupo "(...)" a las formas
    * creadas desde el último grupo aplicado (`attached` limita eso a solo la
@@ -399,6 +797,31 @@ export function parsePanel(raw: string): FigurePanel {
     if (circleFraction) {
       shapes.push(circleFraction.spec)
       if (circleFraction.leftover.length > 0) captions.push(circleFraction.leftover.join(', '))
+      attributedUpTo = shapes.length
+      return
+    }
+    // "[6 spikes] [line diagonal] [one half black]" describen UNA figura
+    // repartida en tres corchetes: se acumulan sobre la misma.
+    const spikePart = parseSpikedCirclePart(text)
+    if (spikePart) {
+      if (!spikedCircle) {
+        spikedCircle = { shape: 'spiked-circle', fill: 'empty', rotationDeg: 0, size: 'medium' }
+        shapes.push(spikedCircle)
+        attributedUpTo = shapes.length
+      }
+      Object.assign(spikedCircle, spikePart)
+      return
+    }
+    // Los corchetes del banco real no son solo prosa: muchos describen el
+    // contenido del panel con glifos y/o nombres de figura ("[TR: ■]",
+    // "[top: □] [bottom: △]", "[roof: hexagon, 6 sides]"). Dejarlos siempre
+    // como pie de texto hacía que opciones distintas dibujaran el mismo
+    // icono, porque toda la diferencia vivía en el texto descartado.
+    const asShapes = parseBracketShapes(text)
+    if (asShapes) {
+      shapes.push(...asShapes.shapes)
+      if (asShapes.leftover.length > 0) captions.push(asShapes.leftover.join(' '))
+      attributedUpTo = shapes.length
       return
     }
     text = text
@@ -445,7 +868,10 @@ export function parsePanel(raw: string): FigurePanel {
       i = end + 1
       continue
     }
-    if (/\s/.test(ch) || ch === '/' || ch === '+' || ch === '=') {
+    // El espacio ya NO corta el texto acumulado: una posición en español
+    // ocupa varias palabras ("arriba a la izquierda") y hay que verla entera.
+    // Lo que corta son los separadores de descripción.
+    if (/[;,]/.test(ch) || ch === '/' || ch === '+' || ch === '=') {
       flushRun()
       i++
       continue
@@ -454,13 +880,16 @@ export function parsePanel(raw: string): FigurePanel {
       flushRun()
       const t = TRIANGLE_MAP[ch]
       shapes.push({ shape: 'triangle', fill: t.fill, rotationDeg: t.rotationDeg, size: 'medium' })
+      takePendingPosition()
     } else if (ch in SHAPE_MAP) {
       flushRun()
       const s = SHAPE_MAP[ch]
       shapes.push({ shape: s.shape, fill: s.fill, rotationDeg: 0, size: 'medium' })
+      takePendingPosition()
     } else if (ch in COMPASS_MAP) {
       flushRun()
       shapes.push({ shape: 'arrow', fill: 'filled', rotationDeg: COMPASS_MAP[ch], size: 'medium' })
+      takePendingPosition()
     } else {
       // carácter no reconocido (letra, dígito, puntuación residual…): a caption
       unrecognizedRun += ch
@@ -493,7 +922,11 @@ export function panelSignature(panel: FigurePanel): string {
   // eso o dos paneles que solo difieren en tamaño parecerían distintos aun
   // dibujándose exactamente igual dentro de un marco.
   return panel.shapes
-    .map((s) => `${s.position ?? ''}|${s.shape}|${s.fill}|${s.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}`)
+    .map(
+      (s) =>
+        `${s.position ?? ''}|${s.shape}|${s.fill}|${s.position ? 'framed' : s.size}|${((s.rotationDeg % 360) + 360) % 360}` +
+        `|${s.spikes ?? ''}${s.spikeExtra ?? ''}|${s.dividerDeg ?? ''}|${s.shadedHalf ? `${s.shadedHalf.side}${s.shadedHalf.fill}` : ''}`,
+    )
     .join(',')
 }
 

@@ -193,6 +193,17 @@ describe('extractPromptFigures', () => {
     const prompt =
       'A circle sprouts short "sun-ray" spike lines one at a time; a dividing line rotates 45° clockwise each panel; the two halves it creates are shaded grey → clear → black (repeating).\n\n' +
       '[1 spike] [line ~horizontal] · [2 spikes] [line diagonal] · [3 spikes] [line ~vertical] · ?'
+    const result = extractPromptFigures(prompt)
+    // Se elige la línea de la secuencia, no el párrafo de prosa (que solo
+    // contiene flechas como signo de puntuación).
+    expect(result?.panels).toHaveLength(4)
+    expect(result?.remainderMd).toContain('sun-ray')
+    expect(result?.panels[0].shapes[0].shape).toBe('spiked-circle')
+  })
+
+  it('ignores a prose paragraph when there is no figure line at all', () => {
+    const prompt =
+      'The fill cycles black → grey → white and the shape rotates 45° clockwise each panel.'
     expect(extractPromptFigures(prompt)).toBeNull()
   })
 
@@ -200,5 +211,56 @@ describe('extractPromptFigures', () => {
     const result = extractPromptFigures('● ●● ●●● ●●●● ●●●●● ?')
     expect(result?.kind).toBe('sequence')
     expect(result?.panels).toHaveLength(6)
+  })
+})
+
+// El banco real coloca las figuras con palabras, no solo con paréntesis. Antes
+// todo eso se tiraba a un pie de texto, así que las cinco opciones de una
+// pregunta de rejilla dibujaban exactamente los mismos iconos y la diferencia
+// solo se veía leyendo. Estos casos cubren las formas que usa el banco.
+describe('positions written as words', () => {
+  it('binds a bare position that follows a symbol', () => {
+    const p = parsePanel('☆ top-right corner; ■ centre; ● bottom')
+    expect(p.shapes.map((s) => [s.shape, s.position])).toEqual([
+      ['star', 'top-right'],
+      ['square', 'centre'],
+      ['circle', 'bottom-centre'],
+    ])
+  })
+
+  it('binds a Spanish multi-word position', () => {
+    const p = parsePanel('★ arriba a la izquierda, ● centro-arriba, ☆ abajo a la derecha')
+    expect(p.shapes.map((s) => s.position)).toEqual(['top-left', 'top-centre', 'bottom-right'])
+  })
+
+  it('applies a "position:" label that comes before the symbol', () => {
+    const p = parsePanel('TL: △ TR: ⬡ mid: ● BL: ⬢ BR: △')
+    expect(p.shapes.map((s) => s.position)).toEqual([
+      'top-left', 'top-right', 'centre', 'bottom-left', 'bottom-right',
+    ])
+  })
+
+  it('reads shapes inside brackets instead of dropping them into the caption', () => {
+    const p = parsePanel('[TR: ■] [mid-left: ○] [bottom: ⬠]')
+    expect(p.shapes.map((s) => [s.shape, s.position])).toEqual([
+      ['square', 'top-right'],
+      ['circle', 'mid-left'],
+      ['pentagon', 'bottom-centre'],
+    ])
+  })
+
+  it('lays "/" separated rows top to bottom inside a bracket', () => {
+    const p = parsePanel('[○○ / ▲▼▲ / ○○○]')
+    expect(p.shapes).toHaveLength(8)
+    expect(p.shapes.map((s) => s.position)).toEqual([
+      'top-centre', 'top-centre',
+      'centre', 'centre', 'centre',
+      'bottom-centre', 'bottom-centre', 'bottom-centre',
+    ])
+  })
+
+  it('treats a parenthesis glued to a symbol as a gloss, not an extra shape', () => {
+    const p = parsePanel('[bottom: △⬢(filled hexagon)]')
+    expect(p.shapes.map((s) => s.shape)).toEqual(['triangle', 'hexagon'])
   })
 })

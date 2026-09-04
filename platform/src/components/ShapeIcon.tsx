@@ -112,6 +112,70 @@ export function ShapeIcon({ spec, className }: ShapeIconProps) {
         </g>
       )
       break
+    case 'spiked-circle': {
+      // Círculo con radios cortos ("rayos de sol"), una línea que lo parte en
+      // dos mitades y, opcionalmente, una de esas mitades sombreada. El banco
+      // real describe esta figura en prosa repartida en varios corchetes.
+      const R = 30
+      // Los cinco radios de la corona superior son los que comparten todas
+      // las variantes; el "extra" es el que distingue unas opciones de otras.
+      const baseAngles = [-90, -135, -45, 180, 0]
+      const angles = baseAngles.slice(0, Math.min(spec.spikes ?? 0, 5))
+      if (spec.spikeExtra === 'bottom-left') angles.push(135)
+      if (spec.spikeExtra === 'bottom-right') angles.push(45)
+      else if ((spec.spikes ?? 0) > 5 && !spec.spikeExtra) angles.push(90)
+
+      const half = spec.shadedHalf
+      const deg = spec.dividerDeg ?? 0
+      const rad = (deg * Math.PI) / 180
+      const dx = Math.cos(rad) * R
+      const dy = Math.sin(rad) * R
+      const sweep = half?.side === 'second' ? 1 : 0
+      const halfFill = half
+        ? half.fill === 'filled'
+          ? INK
+          : half.fill === 'grey'
+            ? GREY
+            : 'none'
+        : 'none'
+
+      shapeEl = (
+        <g>
+          {half && halfFill !== 'none' && (
+            <path
+              d={`M ${50 - dx},${50 - dy} A ${R},${R} 0 0 ${sweep} ${50 + dx},${50 + dy} Z`}
+              fill={halfFill}
+            />
+          )}
+          <circle cx={50} cy={50} r={R} fill="none" stroke={INK} strokeWidth={4} />
+          {spec.dividerDeg != null && (
+            <line
+              x1={50 - dx}
+              y1={50 - dy}
+              x2={50 + dx}
+              y2={50 + dy}
+              stroke={INK}
+              strokeWidth={4}
+            />
+          )}
+          {angles.map((a) => {
+            const r2 = (a * Math.PI) / 180
+            return (
+              <line
+                key={a}
+                x1={50 + Math.cos(r2) * R}
+                y1={50 + Math.sin(r2) * R}
+                x2={50 + Math.cos(r2) * (R + 12)}
+                y2={50 + Math.sin(r2) * (R + 12)}
+                stroke={INK}
+                strokeWidth={4}
+              />
+            )
+          })}
+        </g>
+      )
+      break
+    }
     case 'circled-plus':
       shapeEl = (
         <g>
