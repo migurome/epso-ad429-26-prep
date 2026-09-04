@@ -35,7 +35,7 @@ export function ProgressPage() {
 
   const hasActivity = testAttempts.length > 0 || essayAttempts.length > 0
 
-  const rows: Row[] = [
+  const allRows: Row[] = [
     ...REASONING_SKILLS.map((s) => ({
       key: `reasoning-${s.id}`,
       label: pick(locale, s.label),
@@ -49,6 +49,10 @@ export function ProgressPage() {
       maxScore: FIELD_MCQ_FORMAT.maxScore,
     })),
   ]
+  // Solo las pruebas con algún intento. Sin este filtro, quien únicamente
+  // hubiera guardado redacciones EUFTE veía una tabla con cabeceras y ni una
+  // fila debajo.
+  const rows = allRows.filter((r) => r.attempts.length > 0)
 
   return (
     <div>
@@ -80,6 +84,7 @@ export function ProgressPage() {
 
       {hasActivity && (
         <div className="space-y-6">
+          {rows.length > 0 && (
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-sm">
@@ -93,28 +98,27 @@ export function ProgressPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
-                  {rows
-                    .filter((r) => r.attempts.length > 0)
-                    .map((r) => {
-                      const { avg, best, totalTime, count } = summarize(r.attempts, r.maxScore)
-                      return (
-                        <tr key={r.key}>
-                          <td className="px-4 py-2.5 font-medium text-slate-800">{r.label}</td>
-                          <td className="px-4 py-2.5 text-slate-600">{count}</td>
-                          <td className="px-4 py-2.5 text-slate-600">
-                            {avg.toFixed(1)} / {r.maxScore}
-                          </td>
-                          <td className="px-4 py-2.5 text-slate-600">
-                            {best.toFixed(1)} / {r.maxScore}
-                          </td>
-                          <td className="px-4 py-2.5 text-slate-600">{formatClock(totalTime)}</td>
-                        </tr>
-                      )
-                    })}
+                  {rows.map((r) => {
+                    const { avg, best, totalTime, count } = summarize(r.attempts, r.maxScore)
+                    return (
+                      <tr key={r.key}>
+                        <td className="px-4 py-2.5 font-medium text-slate-800">{r.label}</td>
+                        <td className="px-4 py-2.5 text-slate-600">{count}</td>
+                        <td className="px-4 py-2.5 text-slate-600">
+                          {avg.toFixed(1)} / {r.maxScore}
+                        </td>
+                        <td className="px-4 py-2.5 text-slate-600">
+                          {best.toFixed(1)} / {r.maxScore}
+                        </td>
+                        <td className="px-4 py-2.5 text-slate-600">{formatClock(totalTime)}</td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
           </div>
+          )}
 
           {essayAttempts.length > 0 && (
             <div className="rounded-xl border border-slate-200 bg-white p-5">

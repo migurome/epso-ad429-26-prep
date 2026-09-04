@@ -428,40 +428,40 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "[wave, trough-first] ◇(1st) ● ▲",
-          "es": "[onda, empezando por el valle] ◇(1st) ● ▲"
+          "en": "[wave, crest at edges] ◇(1st) ● ▲",
+          "es": "[onda, cresta en los bordes] ◇(1st) ● ▲"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "[wave, trough-first] ◆ ■ ○(3rd)",
-          "es": "[onda, empezando por el valle] ◆ ■ ○(3rd)"
+          "en": "[wave, trough at edges] ◆ ■ ○(3rd)",
+          "es": "[onda, valle en los bordes] ◆ ■ ○(3rd)"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "[wave, crest-first, phase off by one step] □(1st) ● ▲",
-          "es": "[onda, empezando por la cresta, fase desplazada un paso] □(1st) ● ▲"
+          "en": "[wave, trough at edges] □(1st) ● ▲",
+          "es": "[onda, valle en los bordes] □(1st) ● ▲"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "[wave, crest-first] ■ ○(2nd) ▲",
-          "es": "[onda, empezando por la cresta] ■ ○(2nd) ▲"
+          "en": "[wave, crest at edges] ■ ○(2nd) ▲",
+          "es": "[onda, cresta en los bordes] ■ ○(2nd) ▲"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[wave, crest-first, correct phase] □(1st) ● ▲",
-          "es": "[onda, empezando por la cresta, fase correcta] □(1st) ● ▲"
+          "en": "[wave, crest at edges] □(1st) ● ▲",
+          "es": "[onda, cresta en los bordes] □(1st) ● ▲"
         },
         "isCorrect": true,
         "explanation": {
@@ -723,32 +723,32 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "(0 pentagons) + ♡[● ▷ ●] (triangle mirror wrong way)",
-          "es": "(0 pentagons) + ♡[● ▷ ●] (triangle mirror wrong way)"
+          "en": "(0 pentagons) + ♡[● ▷ ●]",
+          "es": "(0 pentagons) + ♡[● ▷ ●]"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "●●●● + ♡[● ▷ ✚ ●] (4 shapes, wrong count)",
-          "es": "●●●● + ♡[● ▷ ✚ ●] (4 shapes, wrong count)"
+          "en": "●●●● + ♡[● ▷ ✚ ●] (4 shapes)",
+          "es": "●●●● + ♡[● ▷ ✚ ●] (4 shapes)"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "● + ♡[● ▷] (2 shapes, wrong count)",
-          "es": "● + ♡[● ▷] (2 shapes, wrong count)"
+          "en": "● + ♡[● ▷] (2 shapes)",
+          "es": "● + ♡[● ▷] (2 shapes)"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "●●●● + ♡[● ▷ ●] (wrong pentagon count)",
-          "es": "●●●● + ♡[● ▷ ●] (wrong pentagon count)"
+          "en": "●●●● + ♡[● ▷ ●]",
+          "es": "●●●● + ♡[● ▷ ●]"
         },
         "isCorrect": false
       },
@@ -782,32 +782,32 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "hand ↑ + [two 8-sided shapes] (only 2 shapes — should be 3)",
-          "es": "hand ↑ + [dos figuras de 8 lados] (only 2 shapes — should be 3)"
+          "en": "hand ↑ + [two 8-sided shapes] (only 2 shapes)",
+          "es": "hand ↑ + [dos figuras de 8 lados] (only 2 shapes)"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "hand ↓↑ (malformed) + [3 diamonds+square, wrong shapes]",
-          "es": "hand ↓↑ (malformed) + [3 rombos+cuadrado, figuras incorrectas]"
+          "en": "hand ↓↑ (malformed) + [3 diamonds+square]",
+          "es": "hand ↓↑ (malformed) + [3 rombos+cuadrado]"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "hand → + [octagon + square, wrong shapes/count]",
-          "es": "hand → + [octágono + cuadrado, figuras/cantidad incorrectas]"
+          "en": "hand → + [octagon + square]",
+          "es": "hand → + [octágono + cuadrado]"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "hand ↑(at marker) + ⬠⬠⬠(three pentagons — shape count increased as expected)",
-          "es": "hand ↑(at marker) + ⬠⬠⬠(three pentagons — shape count increased as expected)"
+          "en": "hand ↑(at marker) + ⬠⬠⬠(three pentagons)",
+          "es": "hand ↑(at marker) + ⬠⬠⬠(three pentagons)"
         },
         "isCorrect": true,
         "explanation": {
@@ -869,16 +869,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "[2 whiskers] eyes○○ nose●(filled circle, wrong)",
-          "es": "[2 bigotes] ojos○○ nariz●(filled circle, wrong)"
+          "en": "[2 whiskers] eyes○○ nose●(filled circle)",
+          "es": "[2 bigotes] ojos○○ nariz●(filled circle)"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[1 whisker] eyes○○ nose○ (wrong eyes)",
-          "es": "[1 bigote] ojos○○ nariz○ (wrong eyes)"
+          "en": "[1 whisker] eyes○○ nose○",
+          "es": "[1 bigote] ojos○○ nariz○"
         },
         "isCorrect": false
       }
@@ -900,40 +900,40 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "[6 spikes] [line diagonal] [one half black — wrong spike arrangement]",
-          "es": "[6 rayos] [línea diagonal] [una mitad negra — disposición de rayos incorrecta]"
+          "en": "[6 spikes, 6th lower-left] [line diagonal] [one half black]",
+          "es": "[6 rayos, el 6.º abajo a la izquierda] [línea diagonal] [una mitad negra]"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "[6 spikes] [line diagonal] [one half black — wrong spike side]",
-          "es": "[6 rayos] [línea diagonal] [una mitad negra — lado de rayo incorrecto]"
+          "en": "[5 spikes, none below] [line diagonal] [one half black]",
+          "es": "[5 rayos, ninguno abajo] [línea diagonal] [una mitad negra]"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "[6 spikes] [line ~vertical] [left black / right clear — wrong angle]",
-          "es": "[6 rayos] [línea ~vertical] [izquierda negra / derecha transparente — ángulo incorrecto]"
+          "en": "[6 spikes] [line ~vertical] [left black / right clear]",
+          "es": "[6 rayos] [línea ~vertical] [izquierda negra / derecha transparente]"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "[6 spikes] [line ~horizontal] [bottom grey — wrong fill]",
-          "es": "[6 rayos] [línea ~horizontal] [abajo gris — relleno incorrecto]"
+          "en": "[6 spikes] [line ~horizontal] [bottom grey]",
+          "es": "[6 rayos] [línea ~horizontal] [abajo gris]"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[6 spikes] [line diagonal, correct rotation] [one half black]",
-          "es": "[6 rayos] [línea diagonal, rotación correcta] [una mitad negra]"
+          "en": "[6 spikes, 6th lower-right] [line diagonal] [one half black]",
+          "es": "[6 rayos, el 6.º abajo a la derecha] [línea diagonal] [una mitad negra]"
         },
         "isCorrect": true,
         "explanation": {
@@ -1018,16 +1018,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "↑ + ⬠-on-⬠(stacked) + ⇐(wrong arrow direction)",
-          "es": "↑ + ⬠-on-⬠(stacked) + ⇐(wrong arrow direction)"
+          "en": "↑ + ⬠-on-⬠(stacked) + ⇐",
+          "es": "↑ + ⬠-on-⬠(stacked) + ⇐"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "↑ + ⬡(hexagon, single, wrong shape) + ⇒",
-          "es": "↑ + ⬡(hexagon, single, wrong shape) + ⇒"
+          "en": "↑ + ⬡(hexagon, single) + ⇒",
+          "es": "↑ + ⬡(hexagon, single) + ⇒"
         },
         "isCorrect": false
       },
@@ -1046,16 +1046,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "↓ + ⬡-on-⬡(hexagons, wrong shape) + ⇐",
-          "es": "↓ + ⬡-on-⬡(hexagons, wrong shape) + ⇐"
+          "en": "↓ + ⬡-on-⬡(hexagons) + ⇐",
+          "es": "↓ + ⬡-on-⬡(hexagons) + ⇐"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "↓ + ⬠-on-⬠(stacked) + ⇒(wrong arrow direction)",
-          "es": "↓ + ⬠-on-⬠(stacked) + ⇒(wrong arrow direction)"
+          "en": "↓ + ⬠-on-⬠(stacked) + ⇒",
+          "es": "↓ + ⬠-on-⬠(stacked) + ⇒"
         },
         "isCorrect": false
       }
@@ -1077,16 +1077,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "☹ + ⬟(upper-right point — wrong face)",
-          "es": "☹ + ⬟(upper-right point — wrong face)"
+          "en": "☹ + ⬟(upper-right point)",
+          "es": "☹ + ⬟(upper-right point)"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "☹ + ●(top point — wrong shape/position)",
-          "es": "☹ + ●(top point — wrong shape/position)"
+          "en": "☹ + ●(top point)",
+          "es": "☹ + ●(top point)"
         },
         "isCorrect": false
       },
@@ -1105,16 +1105,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "☺ + ●(top point — wrong shape, repeats panel 4)",
-          "es": "☺ + ●(top point — wrong shape, repeats panel 4)"
+          "en": "☺ + ●(top point)",
+          "es": "☺ + ●(top point)"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "☺ + ●(upper-right point — wrong shape)",
-          "es": "☺ + ●(upper-right point — wrong shape)"
+          "en": "☺ + ●(upper-right point)",
+          "es": "☺ + ●(upper-right point)"
         },
         "isCorrect": false
       }
@@ -1227,8 +1227,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "♡ + [shaded section 3rd/right, apex continuing the rotation] + dots(4 bottom row, 1 top-right offset)",
-          "es": "♡ + [sección sombreada 3ª/derecha, vértice que continúa la rotación] + puntos(4 bottom row, 1 top-right offset)"
+          "en": "♡ + [shaded section 3rd/right] + dots(4 bottom row, 1 top-right offset)",
+          "es": "♡ + [sección sombreada 3ª/derecha] + puntos(4 bottom row, 1 top-right offset)"
         },
         "isCorrect": true,
         "explanation": {
@@ -1337,16 +1337,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "[pieces] ☺☺☺(3, wrong corner layout)",
-          "es": "[piezas] ☺☺☺(3, wrong corner layout)"
+          "en": "[pieces] ☺☺☺(3)",
+          "es": "[piezas] ☺☺☺(3)"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[pieces: triangle bottom-left, matching the rotation/position cycle] ☺(1)",
-          "es": "[piezas: triángulo abajo a la izquierda, conforme al ciclo de rotación/posición] ☺(1)"
+          "en": "[pieces: triangle bottom-left] ☺(1)",
+          "es": "[piezas: triángulo abajo a la izquierda] ☺(1)"
         },
         "isCorrect": true,
         "explanation": {
@@ -1581,8 +1581,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "⬠(corners) + [large ⬟, half black, rotation continues correctly]",
-          "es": "⬠(corners) + [⬟ grande, mitad negra, la rotación continúa correctamente]"
+          "en": "⬠(corners) + [large ⬟, half black]",
+          "es": "⬠(corners) + [⬟ grande, mitad negra]"
         },
         "isCorrect": true,
         "explanation": {
@@ -1821,8 +1821,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "[no star] ▲▲▲+◆(grey, wrong fill)",
-          "es": "[sin estrella] ▲▲▲+◆(grey, wrong fill)"
+          "en": "[no star] ▲▲▲+◆(grey)",
+          "es": "[sin estrella] ▲▲▲+◆(grey)"
         },
         "isCorrect": false
       }
@@ -1962,8 +1962,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "☺ + [square frame, star lenses, cross-marks]",
-          "es": "☺ + [marco cuadrado, lentes en forma de estrella, marcas en cruz]"
+          "en": "☺ + [square frame, star bursts with round dots, cross-marks]",
+          "es": "☺ + [marco cuadrado, estrellas con punto redondo, marcas en cruz]"
         },
         "isCorrect": false
       },
@@ -1986,8 +1986,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "☺ + [square frame, star lenses, cross-marks] (matches continuation)",
-          "es": "☺ + [marco cuadrado, lentes en forma de estrella, marcas en cruz] (coincide con la continuación)"
+          "en": "☺ + [square frame, star bursts with oval slits, cross-marks]",
+          "es": "☺ + [marco cuadrado, estrellas con marca ovalada, marcas en cruz]"
         },
         "isCorrect": true,
         "explanation": {
@@ -2096,8 +2096,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "[6 segments, matches accumulation+turn pattern] ☆",
-          "es": "[6 segmentos, conforme al patrón de acumulación+giro] ☆"
+          "en": "[6 segments] ☆",
+          "es": "[6 segmentos] ☆"
         },
         "isCorrect": true,
         "explanation": {
@@ -2222,16 +2222,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "[trunk medium] [puddle] [belly squares, wrong count]",
-          "es": "[trompa media] [charco] [cuadrados en el vientre, cantidad incorrecta]"
+          "en": "[trunk medium] [puddle] [belly squares]",
+          "es": "[trompa media] [charco] [cuadrados en el vientre]"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[trunk long, continues cycle] [large puddle, belly squares matching growth rule]",
-          "es": "[trompa larga, continúa el ciclo] [charco grande, cuadrados en el vientre conforme a la regla de crecimiento]"
+          "en": "[trunk long] [large puddle]",
+          "es": "[trompa larga] [charco grande]"
         },
         "isCorrect": true,
         "explanation": {
@@ -2257,24 +2257,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "[dot next pos] + [rope, weight ▲ black]",
-          "es": "[punto en la siguiente posición] + [cuerda, peso ▲ negro]"
+          "en": "[dot on top point] + [short rope, weight ▲ black]",
+          "es": "[punto en la punta superior] + [cuerda corta, peso ▲ negro]"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "[dot next pos] + [rope, weight ▲ black, different rope angle]",
-          "es": "[punto en la siguiente posición] + [cuerda, peso ▲ negro, ángulo de cuerda distinto]"
+          "en": "[dot on left point] + [long rope, weight ▲ black, large]",
+          "es": "[punto en la punta izquierda] + [cuerda larga, peso ▲ negro, grande]"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "[dot next pos] + [rope, weight △ clear]",
-          "es": "[punto en la siguiente posición] + [cuerda, peso △ transparente]"
+          "en": "[dot on top point] + [long rope, weight △ clear]",
+          "es": "[punto en la punta superior] + [cuerda larga, peso △ transparente]"
         },
         "isCorrect": true,
         "explanation": {
@@ -2285,16 +2285,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "[dot next pos] + [rope, weight ▲ black]",
-          "es": "[punto en la siguiente posición] + [cuerda, peso ▲ negro]"
+          "en": "[dot on upper-left point] + [long rope, weight ▲ black]",
+          "es": "[punto en la punta superior izquierda] + [cuerda larga, peso ▲ negro]"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[dot next pos, wrong side] + [rope, weight △ clear]",
-          "es": "[punto en la siguiente posición, lado incorrecto] + [cuerda, peso △ transparente]"
+          "en": "[dot on lower-left point] + [short rope, weight △ clear]",
+          "es": "[punto en la punta inferior izquierda] + [cuerda corta, peso △ transparente]"
         },
         "isCorrect": false
       }
@@ -2324,24 +2324,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "↻ △ ◇ (wrong arrangement — repeats panel 2/5)",
-          "es": "↻ △ ◇ (wrong arrangement — repeats panel 2/5)"
+          "en": "↻ △ ◇",
+          "es": "↻ △ ◇"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "□ ↻ △ (wrong arrangement)",
-          "es": "□ ↻ △ (wrong arrangement)"
+          "en": "□ ↻ △",
+          "es": "□ ↻ △"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "◇ □ ↻ (matches panel 3's arrangement, marker rotated on)",
-          "es": "◇ □ ↻ (matches panel 3's arrangement, marker rotated on)"
+          "en": "◇ □ ↻ (marker rotated on)",
+          "es": "◇ □ ↻ (marker rotated on)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2352,8 +2352,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "□ ↻ ◇ (wrong arrangement)",
-          "es": "□ ↻ ◇ (wrong arrangement)"
+          "en": "□ ↻ ◇",
+          "es": "□ ↻ ◇"
         },
         "isCorrect": false
       }
@@ -2375,8 +2375,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "△(3,unshaded — wrong fill)",
-          "es": "△(3,unshaded — wrong fill)"
+          "en": "△(3,unshaded)",
+          "es": "△(3,unshaded)"
         },
         "isCorrect": false
       },
@@ -2395,24 +2395,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "▲(3,odd,filled) arrow↓(bottom — wrong fill/position pairing)",
-          "es": "▲(3,odd,filled) arrow↓(bottom — wrong fill/position pairing)"
+          "en": "▲(3,odd,filled) arrow↓(bottom)",
+          "es": "▲(3,odd,filled) arrow↓(bottom)"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "⬠(5,unshaded) arrow→(wrong fill for a non-bottom arrow)",
-          "es": "⬠(5,unshaded) arrow→(wrong fill for a non-bottom arrow)"
+          "en": "⬠(5,unshaded) arrow→",
+          "es": "⬠(5,unshaded) arrow→"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "■(4,even,filled) arrow→(wrong parity)",
-          "es": "■(4,even,filled) arrow→(wrong parity)"
+          "en": "■(4,even,filled) arrow→",
+          "es": "■(4,even,filled) arrow→"
         },
         "isCorrect": false
       }
@@ -2434,32 +2434,32 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "arrow↓ + ●(filled, lower slot — wrong fill)",
-          "es": "arrow↓ + ●(filled, lower slot — wrong fill)"
+          "en": "arrow↓ + ●(filled, lower slot)",
+          "es": "arrow↓ + ●(filled, lower slot)"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "arrow↑ + ●(filled — wrong fill)",
-          "es": "arrow↑ + ●(filled — wrong fill)"
+          "en": "arrow↑ + ●(filled)",
+          "es": "arrow↑ + ●(filled)"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "arrow↓ + ○(outline, lower slot — wrong arrow direction for slot)",
-          "es": "arrow↓ + ○(outline, lower slot — wrong arrow direction for slot)"
+          "en": "arrow↓ + ○(outline, lower slot)",
+          "es": "arrow↓ + ○(outline, lower slot)"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "arrow↓ + ●(filled — wrong fill)",
-          "es": "arrow↓ + ●(filled — wrong fill)"
+          "en": "arrow↓ + ●(filled)",
+          "es": "arrow↓ + ●(filled)"
         },
         "isCorrect": false
       },
@@ -2552,8 +2552,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "⬅(filled) + ○",
-          "es": "⬅(filled) + ○"
+          "en": "⬅(filled) [upper] + ○ [below right]",
+          "es": "⬅(filled) [arriba] + ○ [debajo a la derecha]"
         },
         "isCorrect": false
       },
@@ -2568,8 +2568,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "⬅(filled) + ○ (matches continuation)",
-          "es": "⬅(filled) + ○ (matches continuation)"
+          "en": "⬅(filled) + ○ [side by side, middle row]",
+          "es": "⬅(filled) + ○ [uno al lado del otro, fila central]"
         },
         "isCorrect": true,
         "explanation": {
@@ -2611,40 +2611,40 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "○(bottom-right) + ★+▲(wrong rotation)",
-          "es": "○(bottom-right) + ★+▲(wrong rotation)"
+          "en": "○(bottom-right) + ★+▲",
+          "es": "○(bottom-right) + ★+▲"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "○(bottom-left) + ★+▲(wrong fill — should be shaded)",
-          "es": "○(bottom-left) + ★+▲(wrong fill — should be shaded)"
+          "en": "○(bottom-left) + ★+▲(black) [upper-right point of the star]",
+          "es": "○(bottom-left) + ★+▲(black) [punta superior derecha de la estrella]"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "●(top-right) + ★+▲(wrong fill — should be unshaded)",
-          "es": "●(top-right) + ★+▲(wrong fill — should be unshaded)"
+          "en": "●(top-right) + ★+▲",
+          "es": "●(top-right) + ★+▲"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "○(bottom-left) + ★+▲(wrong fill)",
-          "es": "○(bottom-left) + ★+▲(wrong fill)"
+          "en": "○(bottom-left) + ★+▲(black) [bottom point of the star, pointing down]",
+          "es": "○(bottom-left) + ★+▲(black) [punta inferior de la estrella, apuntando hacia abajo]"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "●(bottom-left) + ★+▲(shaded, left corner, rotation continues)",
-          "es": "●(bottom-left) + ★+▲(shaded, left corner, rotation continues)"
+          "en": "●(bottom-left) + ★+▲(shaded, left corner)",
+          "es": "●(bottom-left) + ★+▲(shaded, left corner)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2670,8 +2670,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "△ □ ●(filled) — wrong size placement",
-          "es": "△ □ ●(filled) — wrong size placement"
+          "en": "△ □ ●(filled)",
+          "es": "△ □ ●(filled)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2682,32 +2682,32 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "○ □(large) ▲(filled) — wrong arrangement",
-          "es": "○ □(large) ▲(filled) — wrong arrangement"
+          "en": "○ □(large) ▲(filled)",
+          "es": "○ □(large) ▲(filled)"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "▲(large) □ ○ — wrong fill",
-          "es": "▲(large) □ ○ — wrong fill"
+          "en": "▲(large) □ ○",
+          "es": "▲(large) □ ○"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "●(large,filled) □ △ — wrong arrangement",
-          "es": "●(large,filled) □ △ — wrong arrangement"
+          "en": "●(large,filled) □ △",
+          "es": "●(large,filled) □ △"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "○ ▭(large) ▲(filled) — wrong arrangement",
-          "es": "○ ▭(large) ▲(filled) — wrong arrangement"
+          "en": "○ ▭(large) ▲(filled)",
+          "es": "○ ▭(large) ▲(filled)"
         },
         "isCorrect": false
       }
@@ -2749,8 +2749,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "[slope white] ↑ ○(outline, wrong shape)",
-          "es": "[pendiente blanca] ↑ ○(outline, wrong shape)"
+          "en": "[slope white] ↑ ○(outline)",
+          "es": "[pendiente blanca] ↑ ○(outline)"
         },
         "isCorrect": false
       },
@@ -2796,8 +2796,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "●■△ / ●■▲(wrong unshaded position)",
-          "es": "●■△ / ●■▲(wrong unshaded position)"
+          "en": "●■△ / ●■▲",
+          "es": "●■△ / ●■▲"
         },
         "isCorrect": false
       },
@@ -2812,8 +2812,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "●■△ / ●□▲(□ unshaded,middle — matches the top=previous-bottom rule and the cycle)",
-          "es": "●■△ / ●□▲(□ unshaded,middle — matches the top=previous-bottom rule and the cycle)"
+          "en": "●■△ / ●□▲(□ unshaded,middle)",
+          "es": "●■△ / ●□▲(□ unshaded,middle)"
         },
         "isCorrect": true,
         "explanation": {
@@ -2863,8 +2863,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "[cells: matches continued downward drift + shading cycle]",
-          "es": "[celdas: conforme a la continuación del desplazamiento descendente + ciclo de sombreado]"
+          "en": "[cells: full square upper-right, empty split square lower-left]",
+          "es": "[celdas: cuadrado completo arriba a la derecha, cuadrado vacío dividido abajo a la izquierda]"
         },
         "isCorrect": true,
         "explanation": {
@@ -3115,8 +3115,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "○●●●(outside) + [inside, matches predicted count/shading]",
-          "es": "○●●●(outside) + [dentro, conforme a la cantidad/sombreado previstos]"
+          "en": "○●●●(outside) + [inside]",
+          "es": "○●●●(outside) + [dentro]"
         },
         "isCorrect": true,
         "explanation": {
@@ -3260,8 +3260,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "[circle, 6 lines, tip-circles matching the \"2nd-turn shades\" rule]",
-          "es": "[círculo, 6 líneas, círculos de punta conforme a la regla del «sombreado en el 2.º turno»]"
+          "en": "[circle, bottom half black, tips only on the three upper lines]",
+          "es": "[círculo, mitad inferior negra, puntas solo en las tres líneas superiores]"
         },
         "isCorrect": true,
         "explanation": {
@@ -3288,16 +3288,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "[circle, 6 lines, wrong split orientation]",
-          "es": "[círculo, 6 líneas, orientación de división incorrecta]"
+          "en": "[circle, top half black, tips on the three upper lines]",
+          "es": "[círculo, mitad superior negra, puntas en las tres líneas superiores]"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "[circle, 6 lines, tip-circles: wrong subset shaded]",
-          "es": "[círculo, 6 líneas, círculos de punta: subconjunto sombreado incorrecto]"
+          "en": "[circle, bottom half black, tips on both the upper and the lower lines]",
+          "es": "[círculo, mitad inferior negra, puntas en las líneas superiores y en las inferiores]"
         },
         "isCorrect": false
       }
@@ -3335,8 +3335,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "⬠(6,outline) + grid[2 cells] + ⬟(5,shaded) — matches side-gain+shading rule",
-          "es": "⬠(6,outline) + cuadrícula[2 celdas] + ⬟(5,shaded) — conforme a la regla de ganancia de lados+sombreado"
+          "en": "⬠(6,outline) + grid[2 cells] + ⬟(5,shaded)",
+          "es": "⬠(6,outline) + cuadrícula[2 celdas] + ⬟(5,shaded)"
         },
         "isCorrect": true,
         "explanation": {
@@ -3394,8 +3394,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "⇧⇩(diff.) + ⬡(6,outline)",
-          "es": "⇧⇩(diff.) + ⬡(6,outline)"
+          "en": "⇧⇩(diff.) + ⬢(6,filled)",
+          "es": "⇧⇩(diff.) + ⬢(6,filled)"
         },
         "isCorrect": false
       },
@@ -3410,8 +3410,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "⇧⇩(diff.) + ⬡(6,outline) — matches the side-count/shading rule",
-          "es": "⇧⇩(diff.) + ⬡(6,outline) — conforme a la regla del recuento de lados/sombreado"
+          "en": "⇧⇩(diff.) + ⬡(6,outline)",
+          "es": "⇧⇩(diff.) + ⬡(6,outline)"
         },
         "isCorrect": true,
         "explanation": {
@@ -3437,8 +3437,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "★[3 dots] + ▲(filled,bottom-right) — wrong dot count",
-          "es": "★[3 puntos] + ▲(filled,bottom-right) — cantidad de puntos incorrecta"
+          "en": "★[3 dots] + ▲(filled,bottom-right)",
+          "es": "★[3 puntos] + ▲(filled,bottom-right)"
         },
         "isCorrect": false
       },
@@ -3909,8 +3909,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "TL: △  TR: ⬡  mid: ●  BL: ⬢  BR: △",
-          "es": "arriba-izquierda: △  arriba-derecha: ⬡  centro: ●  abajo-izquierda: ⬢  abajo-derecha: △"
+          "en": "TL: △ TR: ⬡ mid: ● BL: ⬢ BR: △",
+          "es": "arriba-izquierda: △ arriba-derecha: ⬡ centro: ● abajo-izquierda: ⬢ abajo-derecha: △"
         },
         "isCorrect": true,
         "explanation": {
@@ -3921,32 +3921,32 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "TL: ⬠  TR: ⬡  mid: ●  BL: ⬢  BR: △",
-          "es": "arriba-izquierda: ⬠  arriba-derecha: ⬡  centro: ●  abajo-izquierda: ⬢  abajo-derecha: △"
+          "en": "TL: ⬠ TR: ⬡ mid: ● BL: ⬢ BR: △",
+          "es": "arriba-izquierda: ⬠ arriba-derecha: ⬡ centro: ● abajo-izquierda: ⬢ abajo-derecha: △"
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "TL: △  TR: ⬢  mid: ●  BL: ⬢  BR: △",
-          "es": "arriba-izquierda: △  arriba-derecha: ⬢  centro: ●  abajo-izquierda: ⬢  abajo-derecha: △"
+          "en": "TL: △ TR: ⬢ mid: ● BL: ⬢ BR: △",
+          "es": "arriba-izquierda: △ arriba-derecha: ⬢ centro: ● abajo-izquierda: ⬢ abajo-derecha: △"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "TL: △  TR: ⬢  mid: △  BR: ▲(filled) — no bottom-left shape",
-          "es": "arriba-izquierda: △  arriba-derecha: ⬢  centro: △  abajo-derecha: ▲(filled) — sin figura abajo-izquierda"
+          "en": "TL: △ TR: ⬢ mid: △ BR: ▲(filled) — no bottom-left shape",
+          "es": "arriba-izquierda: △ arriba-derecha: ⬢ centro: △ abajo-derecha: ▲(filled) — sin figura abajo-izquierda"
         },
         "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "TL: ⬠  TR: ⬡  mid: ⬢(large)  BR: ○ — no bottom-left shape",
-          "es": "arriba-izquierda: ⬠  arriba-derecha: ⬡  centro: ⬢(large)  abajo-derecha: ○ — sin figura abajo-izquierda"
+          "en": "TL: ⬠ TR: ⬡ mid: ⬢(large) BR: ○ — no bottom-left shape",
+          "es": "arriba-izquierda: ⬠ arriba-derecha: ⬡ centro: ⬢(large) abajo-derecha: ○ — sin figura abajo-izquierda"
         },
         "isCorrect": false
       }
@@ -4145,8 +4145,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "top: □ / bottom: △ (repeats panel 1)",
-          "es": "arriba: □ / abajo: △ (repite el panel 1)"
+          "en": "top: □ / bottom: △",
+          "es": "arriba: □ / abajo: △"
         },
         "isCorrect": false
       },
@@ -5986,8 +5986,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "⬡(empty hexagon, lower-left) — matching outline only",
-          "es": "⬡(empty hexagon, lower-left) — solo el contorno coincide"
+          "en": "⬡(empty hexagon, lower-left)",
+          "es": "⬡(empty hexagon, lower-left)"
         },
         "isCorrect": false
       },
@@ -6210,16 +6210,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "★ top-left, ● upper-mid, ☆ bottom-right",
-          "es": "★ arriba a la izquierda, ● centro-arriba, ☆ abajo a la derecha"
+          "en": "★ top row 2nd column, ● upper-mid, ☆ bottom row 4th column",
+          "es": "★ fila superior 2.ª columna, ● centro-arriba, ☆ fila inferior 4.ª columna"
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "★ top-left, ● upper-mid, ☆ bottom-right (shifted)",
-          "es": "★ arriba a la izquierda, ● centro-arriba, ☆ abajo a la derecha (desplazada)"
+          "en": "★ top-left corner, ● upper-mid, ☆ bottom-right corner",
+          "es": "★ esquina superior izquierda, ● centro-arriba, ☆ esquina inferior derecha"
         },
         "isCorrect": false
       },
@@ -7095,14 +7095,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "●●●●●",
-          "es": "●●●●●"
+          "en": "●●●●●●",
+          "es": "●●●●●●"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: the count of filled circles increases by one in every panel (1, 2, 3, 4 → 5). B repeats the previous panel's count instead of increasing it. C has the right count but the wrong fill (empty instead of filled, breaking the fill that was constant throughout). D overshoots to six.",
-          "es": "Regla: el número de círculos rellenos aumenta en uno en cada panel (1, 2, 3, 4 → 5). B repite el recuento del panel anterior en lugar de aumentarlo. C tiene el recuento correcto, pero el relleno equivocado (vacío en lugar de relleno, lo que rompe el relleno que se mantenía constante). D se pasa y llega a seis."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -7115,16 +7111,20 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "○○○○○",
-          "es": "○○○○○"
+          "en": "●●●●●",
+          "es": "●●●●●"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: the count of filled circles increases by one in every panel (1, 2, 3, 4 → 5). B repeats the previous panel's count instead of increasing it. D has the right count but the wrong fill (empty instead of filled, breaking the fill that was constant throughout). A overshoots to six.",
+          "es": "Regla: el número de círculos rellenos aumenta en uno en cada panel (1, 2, 3, 4 → 5). B repite el recuento del panel anterior en lugar de aumentarlo. D tiene el recuento correcto, pero el relleno equivocado (vacío en lugar de relleno, lo que rompe el relleno que se mantenía constante). A se pasa y llega a seis."
+        }
       },
       {
         "id": "D",
         "text": {
-          "en": "●●●●●●",
-          "es": "●●●●●●"
+          "en": "○○○○○",
+          "es": "○○○○○"
         },
         "isCorrect": false
       }
@@ -7203,14 +7203,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "■■■",
-          "es": "■■■"
+          "en": "▲▲▲",
+          "es": "▲▲▲"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: rows fix the shape (circles, triangles, squares) and columns fix the count (1, 2, 3). The missing cell is in the square row and the \"3\" column, so three filled squares. B has the right shape and fill but the wrong count. C has the right count and fill but belongs to the triangle row. D has the right shape and count but the wrong fill.",
-          "es": "Regla: las filas fijan la forma (círculos, triángulos, cuadrados) y las columnas fijan el recuento (1, 2, 3). La celda que falta está en la fila de los cuadrados y en la columna «3», por lo que son tres cuadrados rellenos. B tiene la forma y el relleno correctos, pero el recuento equivocado. C tiene el recuento y el relleno correctos, pero pertenece a la fila de los triángulos. D tiene la forma y el recuento correctos, pero el relleno equivocado."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -7223,10 +7219,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "▲▲▲",
-          "es": "▲▲▲"
+          "en": "■■■",
+          "es": "■■■"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: rows fix the shape (circles, triangles, squares) and columns fix the count (1, 2, 3). The missing cell is in the square row and the \"3\" column, so three filled squares. B has the right shape and fill but the wrong count. A has the right count and fill but belongs to the triangle row. D has the right shape and count but the wrong fill.",
+          "es": "Regla: las filas fijan la forma (círculos, triángulos, cuadrados) y las columnas fijan el recuento (1, 2, 3). La celda que falta está en la fila de los cuadrados y en la columna «3», por lo que son tres cuadrados rellenos. B tiene la forma y el relleno correctos, pero el recuento equivocado. A tiene el recuento y el relleno correctos, pero pertenece a la fila de los triángulos. D tiene la forma y el recuento correctos, pero el relleno equivocado."
+        }
       },
       {
         "id": "D",
@@ -7253,36 +7253,36 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "●",
+          "es": "●"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: simple A-B-A-B alternation between a filled circle and a filled triangle. C repeats the previous panel instead of alternating. D introduces a shape that never appears in the sequence. B has the right shape family but the wrong fill.",
+          "es": "Regla: simple alternancia A-B-A-B entre un círculo relleno y un triángulo relleno. C repite el panel anterior en lugar de alternar. D introduce una forma que nunca aparece en la secuencia. B tiene la familia de forma correcta, pero el relleno equivocado."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "△",
+          "es": "△"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "▲",
           "es": "▲"
         },
         "isCorrect": false
       },
       {
-        "id": "B",
-        "text": {
-          "en": "●",
-          "es": "●"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: simple A-B-A-B alternation between a filled circle and a filled triangle. A repeats the previous panel instead of alternating. C introduces a shape that never appears in the sequence. D has the right shape family but the wrong fill.",
-          "es": "Regla: simple alternancia A-B-A-B entre un círculo relleno y un triángulo relleno. A repite el panel anterior en lugar de alternar. C introduce una forma que nunca aparece en la secuencia. D tiene la familia de forma correcta, pero el relleno equivocado."
-        }
-      },
-      {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "■",
           "es": "■"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "△",
-          "es": "△"
         },
         "isCorrect": false
       }
@@ -7303,10 +7303,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "■",
-          "es": "■"
+          "en": "●",
+          "es": "●"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Four figures are filled squares (■); A is a filled circle (●), breaking the shared shape.",
+          "es": "Cuatro figuras son cuadrados rellenos (■); A es un círculo relleno (●), lo que rompe la forma compartida."
+        }
       },
       {
         "id": "B",
@@ -7327,14 +7331,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "●",
-          "es": "●"
+          "en": "■",
+          "es": "■"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Four figures are filled squares (■); D is a filled circle (●), breaking the shared shape.",
-          "es": "Cuatro figuras son cuadrados rellenos (■); D es un círculo relleno (●), lo que rompe la forma compartida."
-        }
+        "isCorrect": false
       },
       {
         "id": "E",
@@ -7385,22 +7385,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
+          "en": "●●●",
+          "es": "●●●"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "E",
+        "text": {
           "en": "●●●●",
           "es": "●●●●"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Four figures show three filled circles; D shows four, breaking the shared count.",
-          "es": "Cuatro figuras muestran tres círculos rellenos; D muestra cuatro, lo que rompe el recuento compartido."
+          "en": "Four figures show three filled circles; E shows four, breaking the shared count.",
+          "es": "Cuatro figuras muestran tres círculos rellenos; E muestra cuatro, lo que rompe el recuento compartido."
         }
-      },
-      {
-        "id": "E",
-        "text": {
-          "en": "●●●",
-          "es": "●●●"
-        },
-        "isCorrect": false
       }
     ],
     "skill": "abstract",
@@ -7424,15 +7424,15 @@ export const QUESTIONS: Question[] = [
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: a checkerboard fill pattern — a cell is filled when the sum of its row and column position is even, and empty when it is odd. The bottom-right cell (row 3, column 3, sum 6, even) must be filled: ■. B has the right shape but the wrong fill. C has the right fill but the wrong shape. D has the right shape and fill but the wrong count.",
-          "es": "Regla: un patrón de relleno en forma de tablero de ajedrez — una celda está rellena cuando la suma de su fila y su columna es par, y vacía cuando es impar. La celda inferior derecha (fila 3, columna 3, suma 6, par) debe estar rellena: ■. B tiene la forma correcta, pero el relleno equivocado. C tiene el relleno correcto, pero la forma equivocada. D tiene la forma y el relleno correctos, pero el recuento equivocado."
+          "en": "Rule: a checkerboard fill pattern — a cell is filled when the sum of its row and column position is even, and empty when it is odd. The bottom-right cell (row 3, column 3, sum 6, even) must be filled: ■. D has the right shape but the wrong fill. C has the right fill but the wrong shape. B has the right shape and fill but the wrong count.",
+          "es": "Regla: un patrón de relleno en forma de tablero de ajedrez — una celda está rellena cuando la suma de su fila y su columna es par, y vacía cuando es impar. La celda inferior derecha (fila 3, columna 3, suma 6, par) debe estar rellena: ■. D tiene la forma correcta, pero el relleno equivocado. C tiene el relleno correcto, pero la forma equivocada. B tiene la forma y el relleno correctos, pero el recuento equivocado."
         }
       },
       {
         "id": "B",
         "text": {
-          "en": "□",
-          "es": "□"
+          "en": "■■",
+          "es": "■■"
         },
         "isCorrect": false
       },
@@ -7447,8 +7447,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "■■",
-          "es": "■■"
+          "en": "□",
+          "es": "□"
         },
         "isCorrect": false
       }
@@ -7469,10 +7469,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "↑",
-          "es": "↑"
+          "en": "→",
+          "es": "→"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: the arrow rotates 90° clockwise at every step (→, ↓, ←, ↑), completing a full four-step cycle and returning to →. D repeats the previous panel instead of rotating. B is two steps behind rather than one step ahead. C rotates by the wrong angle (45° instead of 90°).",
+          "es": "Regla: la flecha gira 90° en sentido horario en cada paso (→, ↓, ←, ↑), completando un ciclo completo de cuatro pasos y volviendo a →. D repite el panel anterior en lugar de girar. B va dos pasos por detrás en lugar de un paso por delante. C gira con el ángulo equivocado (45° en lugar de 90°)."
+        }
       },
       {
         "id": "B",
@@ -7485,20 +7489,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "→",
-          "es": "→"
+          "en": "↖",
+          "es": "↖"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: the arrow rotates 90° clockwise at every step (→, ↓, ←, ↑), completing a full four-step cycle and returning to →. A repeats the previous panel instead of rotating. B is two steps behind rather than one step ahead. D rotates by the wrong angle (45° instead of 90°).",
-          "es": "Regla: la flecha gira 90° en sentido horario en cada paso (→, ↓, ←, ↑), completando un ciclo completo de cuatro pasos y volviendo a →. A repite el panel anterior en lugar de girar. B va dos pasos por detrás en lugar de un paso por delante. D gira con el ángulo equivocado (45° en lugar de 90°)."
-        }
+        "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "↖",
-          "es": "↖"
+          "en": "↑",
+          "es": "↑"
         },
         "isCorrect": false
       }
@@ -7519,25 +7519,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "●(bottom-right)",
-          "es": "●(bottom-right)"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: the dot moves one step clockwise around the border positions of the frame each panel (top-left → top-centre → top-right → mid-right → bottom-right → …). B repeats the previous position. C jumps back to the very first position, skipping the rest of the cycle. D skips ahead by one extra position.",
-          "es": "Regla: el punto se desplaza un paso en sentido horario por las posiciones del borde del marco en cada panel (top-left → top-centre → top-right → mid-right → bottom-right → …). B repite la posición anterior. C salta hacia atrás hasta la primerísima posición, saltándose el resto del ciclo. D se adelanta una posición de más."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "●(mid-right)",
-          "es": "●(mid-right)"
+          "en": "●(bottom-left)",
+          "es": "●(bottom-left)"
         },
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "●(top-left)",
           "es": "●(top-left)"
@@ -7545,10 +7533,22 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
+        "id": "C",
+        "text": {
+          "en": "●(bottom-right)",
+          "es": "●(bottom-right)"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: the dot moves one step clockwise around the border positions of the frame each panel (top-left → top-centre → top-right → mid-right → bottom-right → …). D repeats the previous position. B jumps back to the very first position, skipping the rest of the cycle. A skips ahead by one extra position.",
+          "es": "Regla: el punto se desplaza un paso en sentido horario por las posiciones del borde del marco en cada panel (top-left → top-centre → top-right → mid-right → bottom-right → …). D repite la posición anterior. B salta hacia atrás hasta la primerísima posición, saltándose el resto del ciclo. A se adelanta una posición de más."
+        }
+      },
+      {
         "id": "D",
         "text": {
-          "en": "●(bottom-left)",
-          "es": "●(bottom-left)"
+          "en": "●(mid-right)",
+          "es": "●(mid-right)"
         },
         "isCorrect": false
       }
@@ -7585,14 +7585,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "●(small)",
-          "es": "●(small)"
+          "en": "●(large)",
+          "es": "●(large)"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Four figures are large circles; C is a small circle, breaking the shared size.",
-          "es": "Cuatro figuras son círculos de tamaño large; C es un círculo de tamaño small, lo que rompe el tamaño compartido."
-        }
+        "isCorrect": false
       },
       {
         "id": "D",
@@ -7605,10 +7601,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "●(large)",
-          "es": "●(large)"
+          "en": "●(small)",
+          "es": "●(small)"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Four figures are large circles; E is a small circle, breaking the shared size.",
+          "es": "Cuatro figuras son círculos de tamaño large; E es un círculo de tamaño small, lo que rompe el tamaño compartido."
+        }
       }
     ],
     "skill": "abstract",
@@ -7632,20 +7632,12 @@ export const QUESTIONS: Question[] = [
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: rows fix the shape and columns fix a decreasing count (3, 2, 1) — the mirror image of item 3. The missing cell is one filled square. B has the right shape and fill but the wrong count. C has the right count but belongs to the triangle row. D has the right shape and count but the wrong fill.",
-          "es": "Regla: las filas fijan la forma y las columnas fijan un recuento decreciente (3, 2, 1) — la imagen especular del elemento 3. La celda que falta es un cuadrado relleno. B tiene la forma y el relleno correctos, pero el recuento equivocado. C tiene el recuento correcto, pero pertenece a la fila de los triángulos. D tiene la forma y el recuento correctos, pero el relleno equivocado."
+          "en": "Rule: rows fix the shape and columns fix a decreasing count (3, 2, 1) — the mirror image of item 3. The missing cell is one filled square. D has the right shape and fill but the wrong count. B has the right count but belongs to the triangle row. C has the right shape and count but the wrong fill.",
+          "es": "Regla: las filas fijan la forma y las columnas fijan un recuento decreciente (3, 2, 1) — la imagen especular del elemento 3. La celda que falta es un cuadrado relleno. D tiene la forma y el relleno correctos, pero el recuento equivocado. B tiene el recuento correcto, pero pertenece a la fila de los triángulos. C tiene la forma y el recuento correctos, pero el relleno equivocado."
         }
       },
       {
         "id": "B",
-        "text": {
-          "en": "■■",
-          "es": "■■"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
         "text": {
           "en": "▲",
           "es": "▲"
@@ -7653,10 +7645,18 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "C",
         "text": {
           "en": "□",
           "es": "□"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "■■",
+          "es": "■■"
         },
         "isCorrect": false
       }
@@ -7677,17 +7677,25 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "□",
+          "es": "□"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "■",
           "es": "■"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: a three-term repeating cycle, circle-triangle-square, restarting after every third panel (● ▲ ■ ● ▲ →). B and C each repeat a value that has already been used earlier in the current cycle instead of continuing it. D introduces the correct shape family (square) but with the wrong fill.",
-          "es": "Regla: un ciclo repetitivo de tres términos, círculo-triángulo-cuadrado, que se reinicia cada tres paneles (● ▲ ■ ● ▲ →). B y C repiten cada una un valor ya utilizado antes en el ciclo actual en lugar de continuarlo. D introduce la familia de forma correcta (cuadrado), pero con el relleno equivocado."
+          "en": "Rule: a three-term repeating cycle, circle-triangle-square, restarting after every third panel (● ▲ ■ ● ▲ →). C and D each repeat a value that has already been used earlier in the current cycle instead of continuing it. A introduces the correct shape family (square) but with the wrong fill.",
+          "es": "Regla: un ciclo repetitivo de tres términos, círculo-triángulo-cuadrado, que se reinicia cada tres paneles (● ▲ ■ ● ▲ →). C y D repiten cada una un valor ya utilizado antes en el ciclo actual en lugar de continuarlo. A introduce la familia de forma correcta (cuadrado), pero con el relleno equivocado."
         }
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "●",
           "es": "●"
@@ -7695,18 +7703,10 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "▲",
           "es": "▲"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "□",
-          "es": "□"
         },
         "isCorrect": false
       }
@@ -7727,36 +7727,36 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "▲",
-          "es": "▲"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: a Latin square — each row is the row above shifted one position to the left, so every row and every column contains each of the three shapes exactly once (all filled throughout). Row 3 already contains ■ and ●, so the missing cell must be ▲ to complete the set. B and C each repeat a shape already used in row 3. D has the right shape but the wrong fill.",
-          "es": "Regla: un cuadrado latino — cada fila es la fila superior desplazada una posición hacia la izquierda, de modo que cada fila y cada columna contiene cada una de las tres formas exactamente una vez (todas rellenas en todo momento). La fila 3 ya contiene ■ y ●, por lo que la celda que falta debe ser ▲ para completar el conjunto. B y C repiten cada una una forma ya utilizada en la fila 3. D tiene la forma correcta, pero el relleno equivocado."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "●",
-          "es": "●"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "■",
           "es": "■"
         },
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "B",
         "text": {
           "en": "△",
           "es": "△"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "▲",
+          "es": "▲"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: a Latin square — each row is the row above shifted one position to the left, so every row and every column contains each of the three shapes exactly once (all filled throughout). Row 3 already contains ■ and ●, so the missing cell must be ▲ to complete the set. D and A each repeat a shape already used in row 3. B has the right shape but the wrong fill.",
+          "es": "Regla: un cuadrado latino — cada fila es la fila superior desplazada una posición hacia la izquierda, de modo que cada fila y cada columna contiene cada una de las tres formas exactamente una vez (todas rellenas en todo momento). La fila 3 ya contiene ■ y ●, por lo que la celda que falta debe ser ▲ para completar el conjunto. D y A repiten cada una una forma ya utilizada en la fila 3. B tiene la forma correcta, pero el relleno equivocado."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "●",
+          "es": "●"
         },
         "isCorrect": false
       }
@@ -7793,14 +7793,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "↙",
-          "es": "↙"
+          "en": "↗",
+          "es": "↗"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Four figures point north-east (↗); C points south-west (↙), breaking the shared direction.",
-          "es": "Cuatro figuras apuntan al nordeste (↗); C apunta al suroeste (↙), lo que rompe la dirección compartida."
-        }
+        "isCorrect": false
       },
       {
         "id": "D",
@@ -7813,10 +7809,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "↗",
-          "es": "↗"
+          "en": "↙",
+          "es": "↙"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Four figures point north-east (↗); E points south-west (↙), breaking the shared direction.",
+          "es": "Cuatro figuras apuntan al nordeste (↗); E apunta al suroeste (↙), lo que rompe la dirección compartida."
+        }
       }
     ],
     "skill": "abstract",
@@ -7835,38 +7835,38 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "★★★",
-          "es": "★★★"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "(no stars)",
           "es": "(no stars)"
         },
         "isCorrect": false
       },
       {
+        "id": "B",
+        "text": {
+          "en": "☆",
+          "es": "☆"
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
+        "text": {
+          "en": "★★★",
+          "es": "★★★"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "★",
           "es": "★"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: the count of filled stars decreases by one every panel (5, 4, 3, 2 → 1). A overshoots (three instead of one). B skips past the expected value straight to zero. D has the right count but the wrong fill.",
-          "es": "Regla: el número de estrellas rellenas disminuye en uno en cada panel (5, 4, 3, 2 → 1). A se pasa (tres en lugar de una). B se salta el valor esperado y va directo a cero. D tiene el recuento correcto, pero el relleno equivocado."
+          "en": "Rule: the count of filled stars decreases by one every panel (5, 4, 3, 2 → 1). C overshoots (three instead of one). A skips past the expected value straight to zero. B has the right count but the wrong fill.",
+          "es": "Regla: el número de estrellas rellenas disminuye en uno en cada panel (5, 4, 3, 2 → 1). C se pasa (tres en lugar de una). A se salta el valor esperado y va directo a cero. B tiene el recuento correcto, pero el relleno equivocado."
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "☆",
-          "es": "☆"
-        },
-        "isCorrect": false
       }
     ],
     "skill": "abstract",
@@ -7901,14 +7901,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "◀",
-          "es": "◀"
+          "en": "▶",
+          "es": "▶"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Four figures are filled triangles pointing right (▶); C points left (◀), breaking the shared direction.",
-          "es": "Cuatro figuras son triángulos rellenos que apuntan a la derecha (▶); C apunta a la izquierda (◀), lo que rompe la dirección compartida."
-        }
+        "isCorrect": false
       },
       {
         "id": "D",
@@ -7921,10 +7917,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "E",
         "text": {
-          "en": "▶",
-          "es": "▶"
+          "en": "◀",
+          "es": "◀"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Four figures are filled triangles pointing right (▶); E points left (◀), breaking the shared direction.",
+          "es": "Cuatro figuras son triángulos rellenos que apuntan a la derecha (▶); E apunta a la izquierda (◀), lo que rompe la dirección compartida."
+        }
       }
     ],
     "skill": "abstract",
@@ -7943,8 +7943,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "●(large)",
-          "es": "●(large)"
+          "en": "○(medium)",
+          "es": "○(medium)"
         },
         "isCorrect": false
       },
@@ -7956,8 +7956,8 @@ export const QUESTIONS: Question[] = [
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: a repeating three-step size cycle — small, medium, large, small, medium, … The sequence has already completed one full cycle and restarted (small), so the next term continues the cycle at medium. A is the wrong stage of the cycle (large instead of medium). C repeats the immediately preceding term instead of advancing. D has the right size but the wrong fill.",
-          "es": "Regla: un ciclo de tamaño repetitivo de tres pasos — small, medium, large, small, medium, … La secuencia ya ha completado un ciclo completo y ha reiniciado (small), por lo que el siguiente término continúa el ciclo en medium. A está en la etapa equivocada del ciclo (large en lugar de medium). C repite el término inmediatamente anterior en lugar de avanzar. D tiene el tamaño correcto, pero el relleno equivocado."
+          "en": "Rule: a repeating three-step size cycle — small, medium, large, small, medium, … The sequence has already completed one full cycle and restarted (small), so the next term continues the cycle at medium. D is the wrong stage of the cycle (large instead of medium). C repeats the immediately preceding term instead of advancing. A has the right size but the wrong fill.",
+          "es": "Regla: un ciclo de tamaño repetitivo de tres pasos — small, medium, large, small, medium, … La secuencia ya ha completado un ciclo completo y ha reiniciado (small), por lo que el siguiente término continúa el ciclo en medium. D está en la etapa equivocada del ciclo (large en lugar de medium). C repite el término inmediatamente anterior en lugar de avanzar. A tiene el tamaño correcto, pero el relleno equivocado."
         }
       },
       {
@@ -7971,8 +7971,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "○(medium)",
-          "es": "○(medium)"
+          "en": "●(large)",
+          "es": "●(large)"
         },
         "isCorrect": false
       }
@@ -7993,36 +7993,36 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "▲▲▲",
-          "es": "▲▲▲"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "This mirrors item 3's rule (rows fix the shape, columns fix the count 1-2-3) with different shapes, to make sure you can apply the rule under a new \"costume\". The missing cell is the triangle row's third column: three filled triangles. B has the right shape and fill but the wrong count. C has the right count and fill but belongs to the diamond row. D has the right shape and count but the wrong fill.",
-          "es": "Esto refleja la regla del elemento 3 (las filas fijan la forma, las columnas fijan el recuento 1-2-3) con formas distintas, para comprobar que sabes aplicar la regla bajo un «disfraz» nuevo. La celda que falta es la tercera columna de la fila de los triángulos: tres triángulos rellenos. B tiene la forma y el relleno correctos, pero el recuento equivocado. C tiene el recuento y el relleno correctos, pero pertenece a la fila de los rombos. D tiene la forma y el recuento correctos, pero el relleno equivocado."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "▲▲",
-          "es": "▲▲"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "◆◆◆",
           "es": "◆◆◆"
         },
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "B",
+        "text": {
+          "en": "▲▲▲",
+          "es": "▲▲▲"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "This mirrors item 3's rule (rows fix the shape, columns fix the count 1-2-3) with different shapes, to make sure you can apply the rule under a new \"costume\". The missing cell is the triangle row's third column: three filled triangles. D has the right shape and fill but the wrong count. A has the right count and fill but belongs to the diamond row. C has the right shape and count but the wrong fill.",
+          "es": "Esto refleja la regla del elemento 3 (las filas fijan la forma, las columnas fijan el recuento 1-2-3) con formas distintas, para comprobar que sabes aplicar la regla bajo un «disfraz» nuevo. La celda que falta es la tercera columna de la fila de los triángulos: tres triángulos rellenos. D tiene la forma y el relleno correctos, pero el recuento equivocado. A tiene el recuento y el relleno correctos, pero pertenece a la fila de los rombos. C tiene la forma y el recuento correctos, pero el relleno equivocado."
+        }
+      },
+      {
+        "id": "C",
         "text": {
           "en": "△△△",
           "es": "△△△"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "▲▲",
+          "es": "▲▲"
         },
         "isCorrect": false
       }
@@ -8043,28 +8043,28 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "●●●●●",
+          "es": "●●●●●"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "●●●●●●●",
           "es": "●●●●●●●"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: the count increases by two each panel (1, 3, 5 → 7), not by one — read the step size carefully. B is one short of the correct count. C simply repeats the previous panel. D has the right count but the wrong fill.",
-          "es": "Regla: el recuento aumenta de dos en dos en cada panel (1, 3, 5 → 7), no de uno en uno — lee con atención el tamaño del salto. B se queda una unidad por debajo del recuento correcto. C simplemente repite el panel anterior. D tiene el recuento correcto, pero el relleno equivocado."
+          "en": "Rule: the count increases by two each panel (1, 3, 5 → 7), not by one — read the step size carefully. C is one short of the correct count. A simply repeats the previous panel. D has the right count but the wrong fill.",
+          "es": "Regla: el recuento aumenta de dos en dos en cada panel (1, 3, 5 → 7), no de uno en uno — lee con atención el tamaño del salto. C se queda una unidad por debajo del recuento correcto. A simplemente repite el panel anterior. D tiene el recuento correcto, pero el relleno equivocado."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "●●●●●●",
-          "es": "●●●●●●"
-        },
-        "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "●●●●●",
-          "es": "●●●●●"
+          "en": "●●●●●●",
+          "es": "●●●●●●"
         },
         "isCorrect": false
       },
@@ -8117,22 +8117,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
+          "en": "●●■",
+          "es": "●●■"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "E",
+        "text": {
           "en": "●■■",
           "es": "●■■"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Four figures show two filled circles plus one filled square; D shows one filled circle plus two filled squares — a different composition, breaking the shared count-per-shape.",
-          "es": "Cuatro figuras muestran dos círculos rellenos más un cuadrado relleno; D muestra un círculo relleno más dos cuadrados rellenos — una composición distinta, lo que rompe el recuento compartido por forma."
+          "en": "Four figures show two filled circles plus one filled square; E shows one filled circle plus two filled squares — a different composition, breaking the shared count-per-shape.",
+          "es": "Cuatro figuras muestran dos círculos rellenos más un cuadrado relleno; E muestra un círculo relleno más dos cuadrados rellenos — una composición distinta, lo que rompe el recuento compartido por forma."
         }
-      },
-      {
-        "id": "E",
-        "text": {
-          "en": "●●■",
-          "es": "●●■"
-        },
-        "isCorrect": false
       }
     ],
     "skill": "abstract",
@@ -8151,25 +8151,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "▲▲▲▲▲",
-          "es": "▲▲▲▲▲"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: two attributes combined. The shape cycles circle-triangle-square (period 3), while the count simply equals the panel's position number (1, 2, 3, 4, 5). Panel 5 falls on \"triangle\" in the shape cycle and takes a count of 5, giving five triangles. B has the right shape but the wrong count (4 instead of 5). C has the right count but the wrong shape (square instead of triangle). D continues the previous shape instead of cycling to the next one.",
-          "es": "Regla: dos atributos combinados. La forma sigue un ciclo círculo-triángulo-cuadrado (periodo 3), mientras que el recuento es simplemente igual al número de posición del panel (1, 2, 3, 4, 5). El panel 5 cae en «triángulo» dentro del ciclo de formas y toma un recuento de 5, lo que da cinco triángulos. B tiene la forma correcta, pero el recuento equivocado (4 en lugar de 5). C tiene el recuento correcto, pero la forma equivocada (cuadrado en lugar de triángulo). D continúa con la forma anterior en lugar de avanzar a la siguiente del ciclo."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "▲▲▲▲",
           "es": "▲▲▲▲"
         },
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "■■■■■",
           "es": "■■■■■"
@@ -8177,12 +8165,24 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "C",
         "text": {
           "en": "●●●●●",
           "es": "●●●●●"
         },
         "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "▲▲▲▲▲",
+          "es": "▲▲▲▲▲"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: two attributes combined. The shape cycles circle-triangle-square (period 3), while the count simply equals the panel's position number (1, 2, 3, 4, 5). Panel 5 falls on \"triangle\" in the shape cycle and takes a count of 5, giving five triangles. A has the right shape but the wrong count (4 instead of 5). B has the right count but the wrong shape (square instead of triangle). C continues the previous shape instead of cycling to the next one.",
+          "es": "Regla: dos atributos combinados. La forma sigue un ciclo círculo-triángulo-cuadrado (periodo 3), mientras que el recuento es simplemente igual al número de posición del panel (1, 2, 3, 4, 5). El panel 5 cae en «triángulo» dentro del ciclo de formas y toma un recuento de 5, lo que da cinco triángulos. A tiene la forma correcta, pero el recuento equivocado (4 en lugar de 5). B tiene el recuento correcto, pero la forma equivocada (cuadrado en lugar de triángulo). C continúa con la forma anterior en lugar de avanzar a la siguiente del ciclo."
+        }
       }
     ],
     "skill": "abstract",
@@ -8201,36 +8201,36 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "▲",
-          "es": "▲"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: two attributes combined. Direction cycles up-right-down-left every panel, and fill is filled on odd-numbered panels and empty on even-numbered panels. Panel 5 is odd (filled) and direction returns to \"up\", giving ▲. B has the right direction but the wrong fill. C has the right fill but the wrong direction. D repeats the previous panel's direction and fill instead of advancing either.",
-          "es": "Regla: dos atributos combinados. La dirección sigue un ciclo arriba-derecha-abajo-izquierda en cada panel, y el relleno está relleno en los paneles de número impar y vacío en los de número par. El panel 5 es impar (relleno) y la dirección vuelve a «arriba», lo que da ▲. B tiene la dirección correcta, pero el relleno equivocado. C tiene el relleno correcto, pero la dirección equivocada. D repite la dirección y el relleno del panel anterior en lugar de avanzar en cualquiera de los dos."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "△",
-          "es": "△"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "▶",
           "es": "▶"
         },
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "B",
+        "text": {
+          "en": "▲",
+          "es": "▲"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: two attributes combined. Direction cycles up-right-down-left every panel, and fill is filled on odd-numbered panels and empty on even-numbered panels. Panel 5 is odd (filled) and direction returns to \"up\", giving ▲. D has the right direction but the wrong fill. A has the right fill but the wrong direction. C repeats the previous panel's direction and fill instead of advancing either.",
+          "es": "Regla: dos atributos combinados. La dirección sigue un ciclo arriba-derecha-abajo-izquierda en cada panel, y el relleno está relleno en los paneles de número impar y vacío en los de número par. El panel 5 es impar (relleno) y la dirección vuelve a «arriba», lo que da ▲. D tiene la dirección correcta, pero el relleno equivocado. A tiene el relleno correcto, pero la dirección equivocada. C repite la dirección y el relleno del panel anterior en lugar de avanzar en cualquiera de los dos."
+        }
+      },
+      {
+        "id": "C",
         "text": {
           "en": "◁",
           "es": "◁"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "△",
+          "es": "△"
         },
         "isCorrect": false
       }
@@ -8309,16 +8309,20 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "●■●",
-          "es": "●■●"
+          "en": "●■▲",
+          "es": "●■▲"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "The shared rule is left-right symmetry: the outer two symbols in each option match each other (with a square always in the middle as a constant, irrelevant detail). A breaks this — its outer symbols (circle and triangle) do not match.",
+          "es": "La regla compartida es la simetría izquierda-derecha: los dos símbolos exteriores de cada opción coinciden entre sí (con un cuadrado siempre en el centro como detalle constante e irrelevante). A rompe esto — sus símbolos exteriores (círculo y triángulo) no coinciden."
+        }
       },
       {
         "id": "B",
         "text": {
-          "en": "▲■▲",
-          "es": "▲■▲"
+          "en": "◆■◆",
+          "es": "◆■◆"
         },
         "isCorrect": false
       },
@@ -8333,20 +8337,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "●■▲",
-          "es": "●■▲"
+          "en": "▲■▲",
+          "es": "▲■▲"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "The shared rule is left-right symmetry: the outer two symbols in each option match each other (with a square always in the middle as a constant, irrelevant detail). D breaks this — its outer symbols (circle and triangle) do not match.",
-          "es": "La regla compartida es la simetría izquierda-derecha: los dos símbolos exteriores de cada opción coinciden entre sí (con un cuadrado siempre en el centro como detalle constante e irrelevante). D rompe esto — sus símbolos exteriores (círculo y triángulo) no coinciden."
-        }
+        "isCorrect": false
       },
       {
         "id": "E",
         "text": {
-          "en": "◆■◆",
-          "es": "◆■◆"
+          "en": "●■●",
+          "es": "●■●"
         },
         "isCorrect": false
       }
@@ -8367,22 +8367,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "▲▲▲",
+          "es": "▲▲▲"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "■■■",
           "es": "■■■"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: three attributes combined. Shape is fixed by row (circles, triangles, squares), count is fixed by column (1, 2, 3), and fill follows a checkerboard rule (filled when row + column is even, empty when odd). The missing cell (row 3, column 3, sum 6, even) must be filled, giving three filled squares. B has the right shape and count but the wrong fill. C has the right shape and fill but the wrong count. D has the right count and fill but belongs to the triangle row.",
-          "es": "Regla: tres atributos combinados. La forma la fija la fila (círculos, triángulos, cuadrados), el recuento lo fija la columna (1, 2, 3), y el relleno sigue una regla de tablero de ajedrez (relleno cuando fila + columna es par, vacío cuando es impar). La celda que falta (fila 3, columna 3, suma 6, par) debe estar rellena, lo que da tres cuadrados rellenos. B tiene la forma y el recuento correctos, pero el relleno equivocado. C tiene la forma y el relleno correctos, pero el recuento equivocado. D tiene el recuento y el relleno correctos, pero pertenece a la fila de los triángulos."
+          "en": "Rule: three attributes combined. Shape is fixed by row (circles, triangles, squares), count is fixed by column (1, 2, 3), and fill follows a checkerboard rule (filled when row + column is even, empty when odd). The missing cell (row 3, column 3, sum 6, even) must be filled, giving three filled squares. D has the right shape and count but the wrong fill. C has the right shape and fill but the wrong count. A has the right count and fill but belongs to the triangle row.",
+          "es": "Regla: tres atributos combinados. La forma la fija la fila (círculos, triángulos, cuadrados), el recuento lo fija la columna (1, 2, 3), y el relleno sigue una regla de tablero de ajedrez (relleno cuando fila + columna es par, vacío cuando es impar). La celda que falta (fila 3, columna 3, suma 6, par) debe estar rellena, lo que da tres cuadrados rellenos. D tiene la forma y el recuento correctos, pero el relleno equivocado. C tiene la forma y el relleno correctos, pero el recuento equivocado. A tiene el recuento y el relleno correctos, pero pertenece a la fila de los triángulos."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "□□□",
-          "es": "□□□"
-        },
-        "isCorrect": false
       },
       {
         "id": "C",
@@ -8395,8 +8395,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "▲▲▲",
-          "es": "▲▲▲"
+          "en": "□□□",
+          "es": "□□□"
         },
         "isCorrect": false
       }
@@ -8417,25 +8417,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "→",
-          "es": "→"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: moving one cell to the right, or one cell down, always rotates the arrow 90° clockwise (equivalently, every diagonal running from bottom-left to top-right shares the same arrow, and each successive diagonal is rotated 90° clockwise from the last). Applying this to the missing cell gives →. B rotates the wrong way (counter-clockwise). C simply repeats the cell immediately to its left instead of rotating it. D uses an intercardinal direction that never appears anywhere else in the matrix.",
-          "es": "Regla: al moverse una celda hacia la derecha, o una celda hacia abajo, la flecha siempre gira 90° en sentido horario (de forma equivalente, cada diagonal que va de la esquina inferior izquierda a la superior derecha comparte la misma flecha, y cada diagonal sucesiva está girada 90° en sentido horario respecto a la anterior). Aplicando esto a la celda que falta se obtiene →. B gira en el sentido equivocado (antihorario). C simplemente repite la celda inmediatamente a su izquierda en lugar de girarla. D utiliza una dirección intercardinal que no aparece en ningún otro lugar de la matriz."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "↓",
-          "es": "↓"
+          "en": "↖",
+          "es": "↖"
         },
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "↑",
           "es": "↑"
@@ -8443,10 +8431,22 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
+        "id": "C",
+        "text": {
+          "en": "→",
+          "es": "→"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: moving one cell to the right, or one cell down, always rotates the arrow 90° clockwise (equivalently, every diagonal running from bottom-left to top-right shares the same arrow, and each successive diagonal is rotated 90° clockwise from the last). Applying this to the missing cell gives →. D rotates the wrong way (counter-clockwise). B simply repeats the cell immediately to its left instead of rotating it. A uses an intercardinal direction that never appears anywhere else in the matrix.",
+          "es": "Regla: al moverse una celda hacia la derecha, o una celda hacia abajo, la flecha siempre gira 90° en sentido horario (de forma equivalente, cada diagonal que va de la esquina inferior izquierda a la superior derecha comparte la misma flecha, y cada diagonal sucesiva está girada 90° en sentido horario respecto a la anterior). Aplicando esto a la celda que falta se obtiene →. D gira en el sentido equivocado (antihorario). B simplemente repite la celda inmediatamente a su izquierda en lugar de girarla. A utiliza una dirección intercardinal que no aparece en ningún otro lugar de la matriz."
+        }
+      },
+      {
         "id": "D",
         "text": {
-          "en": "↖",
-          "es": "↖"
+          "en": "↓",
+          "es": "↓"
         },
         "isCorrect": false
       }
@@ -8467,10 +8467,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "●●○",
-          "es": "●●○"
+          "en": "○●●",
+          "es": "○●●"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Four options show two filled circles followed by one empty circle, in that order; A shows the same three symbols in a different order (empty circle first) — a reminder that arrangement, not just the set of elements present, can be the rule.",
+          "es": "Cuatro opciones muestran dos círculos rellenos seguidos de un círculo vacío, en ese orden; A muestra los mismos tres símbolos en un orden distinto (círculo vacío primero) — un recordatorio de que la disposición, y no solo el conjunto de elementos presentes, puede ser la regla."
+        }
       },
       {
         "id": "B",
@@ -8491,14 +8495,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "○●●",
-          "es": "○●●"
+          "en": "●●○",
+          "es": "●●○"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Four options show two filled circles followed by one empty circle, in that order; D shows the same three symbols in a different order (empty circle first) — a reminder that arrangement, not just the set of elements present, can be the rule.",
-          "es": "Cuatro opciones muestran dos círculos rellenos seguidos de un círculo vacío, en ese orden; D muestra los mismos tres símbolos en un orden distinto (círculo vacío primero) — un recordatorio de que la disposición, y no solo el conjunto de elementos presentes, puede ser la regla."
-        }
+        "isCorrect": false
       },
       {
         "id": "E",
@@ -8525,36 +8525,36 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "▲(top-left)",
-          "es": "▲(top-left)"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: two attributes combined. The shape cycles circle-triangle-square (period 3) while the position steps clockwise around the four corners of the frame (period 4). Panel 5 falls on \"triangle\" in the shape cycle and back on \"top-left\" in the position cycle. B has the right shape but the wrong position. C has the right position but the wrong shape. D repeats the very first panel's shape at the correct position, but shape must still follow the cycle, not revert to the start.",
-          "es": "Regla: dos atributos combinados. La forma sigue un ciclo círculo-triángulo-cuadrado (periodo 3) mientras que la posición avanza en sentido horario por las cuatro esquinas del marco (periodo 4). El panel 5 cae en «triángulo» dentro del ciclo de formas y de vuelta en top-left dentro del ciclo de posiciones. B tiene la forma correcta, pero la posición equivocada. C tiene la posición correcta, pero la forma equivocada. D repite la forma del primerísimo panel en la posición correcta, pero la forma debe seguir el ciclo, no volver al principio."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "▲(bottom-left)",
-          "es": "▲(bottom-left)"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "■(top-left)",
           "es": "■(top-left)"
         },
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "B",
         "text": {
           "en": "●(top-left)",
           "es": "●(top-left)"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "▲(top-left)",
+          "es": "▲(top-left)"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: two attributes combined. The shape cycles circle-triangle-square (period 3) while the position steps clockwise around the four corners of the frame (period 4). Panel 5 falls on \"triangle\" in the shape cycle and back on \"top-left\" in the position cycle. D has the right shape but the wrong position. A has the right position but the wrong shape. B repeats the very first panel's shape at the correct position, but shape must still follow the cycle, not revert to the start.",
+          "es": "Regla: dos atributos combinados. La forma sigue un ciclo círculo-triángulo-cuadrado (periodo 3) mientras que la posición avanza en sentido horario por las cuatro esquinas del marco (periodo 4). El panel 5 cae en «triángulo» dentro del ciclo de formas y de vuelta en top-left dentro del ciclo de posiciones. D tiene la forma correcta, pero la posición equivocada. A tiene la posición correcta, pero la forma equivocada. B repite la forma del primerísimo panel en la posición correcta, pero la forma debe seguir el ciclo, no volver al principio."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "▲(bottom-left)",
+          "es": "▲(bottom-left)"
         },
         "isCorrect": false
       }
@@ -8575,14 +8575,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "■●▲",
-          "es": "■●▲"
+          "en": "●▲■",
+          "es": "●▲■"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: each row starts with one shape and cumulatively appends the next shape in a fixed cycle (circle → triangle → square → circle …), building up one extra shape per column. Row 3 starts at square, so its sequence is ■, then ■●, then ■●▲. B repeats a shape instead of appending the correct new one. C uses row 1's exact order rather than row 3's. D is missing the third, newly-added shape entirely.",
-          "es": "Regla: cada fila empieza con una forma y va añadiendo acumulativamente la siguiente forma de un ciclo fijo (círculo → triángulo → cuadrado → círculo …), sumando una forma más por columna. La fila 3 empieza en cuadrado, por lo que su secuencia es ■, luego ■●, luego ■●▲. B repite una forma en lugar de añadir la nueva que corresponde. C utiliza el orden exacto de la fila 1 en lugar del de la fila 3. D carece por completo de la tercera forma, la recién añadida."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -8595,10 +8591,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "●▲■",
-          "es": "●▲■"
+          "en": "■●▲",
+          "es": "■●▲"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: each row starts with one shape and cumulatively appends the next shape in a fixed cycle (circle → triangle → square → circle …), building up one extra shape per column. Row 3 starts at square, so its sequence is ■, then ■●, then ■●▲. B repeats a shape instead of appending the correct new one. A uses row 1's exact order rather than row 3's. D is missing the third, newly-added shape entirely.",
+          "es": "Regla: cada fila empieza con una forma y va añadiendo acumulativamente la siguiente forma de un ciclo fijo (círculo → triángulo → cuadrado → círculo …), sumando una forma más por columna. La fila 3 empieza en cuadrado, por lo que su secuencia es ■, luego ■●, luego ■●▲. B repite una forma en lugar de añadir la nueva que corresponde. A utiliza el orden exacto de la fila 1 en lugar del de la fila 3. D carece por completo de la tercera forma, la recién añadida."
+        }
       },
       {
         "id": "D",
@@ -8625,14 +8625,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "□★",
-          "es": "□★"
+          "en": "□■",
+          "es": "□■"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: each cell combines a row-constant symbol (●, △, □ for rows 1–3) with a column-constant symbol (▲, ■, ★ for columns 1–3), row-symbol first. The missing cell combines row 3's □ with column 3's ★, giving □★. B uses the wrong row symbol. C uses the wrong column symbol. D has the right two symbols but in the wrong order.",
-          "es": "Regla: cada celda combina un símbolo constante por fila (●, △, □ para las filas 1-3) con un símbolo constante por columna (▲, ■, ★ para las columnas 1-3), con el símbolo de fila primero. La celda que falta combina el □ de la fila 3 con el ★ de la columna 3, lo que da □★. B utiliza el símbolo de fila equivocado. C utiliza el símbolo de columna equivocado. D tiene los dos símbolos correctos, pero en el orden equivocado."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -8645,18 +8641,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "□■",
-          "es": "□■"
+          "en": "★□",
+          "es": "★□"
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "★□",
-          "es": "★□"
+          "en": "□★",
+          "es": "□★"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: each cell combines a row-constant symbol (●, △, □ for rows 1–3) with a column-constant symbol (▲, ■, ★ for columns 1–3), row-symbol first. The missing cell combines row 3's □ with column 3's ★, giving □★. B uses the wrong row symbol. A uses the wrong column symbol. C has the right two symbols but in the wrong order.",
+          "es": "Regla: cada celda combina un símbolo constante por fila (●, △, □ para las filas 1-3) con un símbolo constante por columna (▲, ■, ★ para las columnas 1-3), con el símbolo de fila primero. La celda que falta combina el □ de la fila 3 con el ★ de la columna 3, lo que da □★. B utiliza el símbolo de fila equivocado. A utiliza el símbolo de columna equivocado. C tiene los dos símbolos correctos, pero en el orden equivocado."
+        }
       }
     ],
     "skill": "abstract",
@@ -8725,14 +8725,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "▲▲▲",
-          "es": "▲▲▲"
+          "en": "●●●",
+          "es": "●●●"
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: two interleaved sequences running at once. The odd-numbered panels (1st, 3rd, 5th) show circles increasing in count (1, 2, 3); the even-numbered panels (2nd, 4th, 6th) show triangles increasing in count (1, 2, …). The missing panel is the 6th (even), so it must continue the triangle track at a count of 3. B wrongly continues the circle track instead of the triangle track that panel 6 belongs to. C repeats the previous triangle panel's count instead of advancing it. D has the correct next count value (3) but applies it to the wrong track's shape.",
-          "es": "Regla: dos secuencias entrelazadas que avanzan a la vez. Los paneles de número impar (1.º, 3.º, 5.º) muestran círculos con recuento creciente (1, 2, 3); los paneles de número par (2.º, 4.º, 6.º) muestran triángulos con recuento creciente (1, 2, …). El panel que falta es el 6.º (par), por lo que debe continuar la serie de los triángulos con un recuento de 3. B continúa erróneamente la serie de los círculos en lugar de la de los triángulos, a la que pertenece el panel 6. C repite el recuento del panel de triángulo anterior en lugar de avanzarlo. D tiene el valor de recuento correcto para el siguiente paso (3), pero lo aplica a la forma de la serie equivocada."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -8753,10 +8749,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "●●●",
-          "es": "●●●"
+          "en": "▲▲▲",
+          "es": "▲▲▲"
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: two interleaved sequences running at once. The odd-numbered panels (1st, 3rd, 5th) show circles increasing in count (1, 2, 3); the even-numbered panels (2nd, 4th, 6th) show triangles increasing in count (1, 2, …). The missing panel is the 6th (even), so it must continue the triangle track at a count of 3. B wrongly continues the circle track instead of the triangle track that panel 6 belongs to. C repeats the previous triangle panel's count instead of advancing it. A has the correct next count value (3) but applies it to the wrong track's shape.",
+          "es": "Regla: dos secuencias entrelazadas que avanzan a la vez. Los paneles de número impar (1.º, 3.º, 5.º) muestran círculos con recuento creciente (1, 2, 3); los paneles de número par (2.º, 4.º, 6.º) muestran triángulos con recuento creciente (1, 2, …). El panel que falta es el 6.º (par), por lo que debe continuar la serie de los triángulos con un recuento de 3. B continúa erróneamente la serie de los círculos en lugar de la de los triángulos, a la que pertenece el panel 6. C repite el recuento del panel de triángulo anterior en lugar de avanzarlo. A tiene el valor de recuento correcto para el siguiente paso (3), pero lo aplica a la forma de la serie equivocada."
+        }
       }
     ],
     "skill": "abstract",
@@ -8833,22 +8833,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "●(small)",
+          "es": "●(small)"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "●(extra-large)",
           "es": "●(extra-large)"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Rule: an inverse relationship between two attributes — as the count of circles decreases by one each panel (4, 3, 2 → 1), their size increases one step on the small–medium–large–extra-large scale. The missing panel must show one circle at extra-large size. B has the right count but the wrong size (size should keep growing, not reset to small). C repeats the previous panel exactly. D has the right size but the wrong count.",
-          "es": "Regla: una relación inversa entre dos atributos — a medida que el recuento de círculos disminuye en uno en cada panel (4, 3, 2 → 1), su tamaño aumenta un escalón en la escala small–medium–large–extra-large. El panel que falta debe mostrar un círculo de tamaño extra-large. B tiene el recuento correcto, pero el tamaño equivocado (el tamaño debería seguir creciendo, no volver a small). C repite exactamente el panel anterior. D tiene el tamaño correcto, pero el recuento equivocado."
+          "en": "Rule: an inverse relationship between two attributes — as the count of circles decreases by one each panel (4, 3, 2 → 1), their size increases one step on the small–medium–large–extra-large scale. The missing panel must show one circle at extra-large size. A has the right count but the wrong size (size should keep growing, not reset to small). C repeats the previous panel exactly. D has the right size but the wrong count.",
+          "es": "Regla: una relación inversa entre dos atributos — a medida que el recuento de círculos disminuye en uno en cada panel (4, 3, 2 → 1), su tamaño aumenta un escalón en la escala small–medium–large–extra-large. El panel que falta debe mostrar un círculo de tamaño extra-large. A tiene el recuento correcto, pero el tamaño equivocado (el tamaño debería seguir creciendo, no volver a small). C repite exactamente el panel anterior. D tiene el tamaño correcto, pero el recuento equivocado."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "●(small)",
-          "es": "●(small)"
-        },
-        "isCorrect": false
       },
       {
         "id": "C",
@@ -8883,17 +8883,25 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "★★★",
+          "es": "★★★"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "▲▲▲",
           "es": "▲▲▲"
         },
         "isCorrect": true,
         "explanation": {
-          "en": "Same underlying rule as item 25 (row = shape, column = count, fill = checkerboard by row + column parity), reskinned with different shapes to reinforce that a genuinely three-attribute rule can recur under exam pressure and should still be worked the same methodical way. Missing cell: three filled triangles. B breaks fill only; C breaks count only; D breaks shape only.",
-          "es": "Misma regla subyacente que la del elemento 25 (fila = forma, columna = recuento, relleno = tablero de ajedrez según la paridad de fila + columna), presentada con formas distintas para reforzar que una regla genuinamente de tres atributos puede repetirse bajo la presión del examen y debe abordarse igualmente de forma metódica. Celda que falta: tres triángulos rellenos. B solo rompe el relleno; C solo rompe el recuento; D solo rompe la forma."
+          "en": "Same underlying rule as item 25 (row = shape, column = count, fill = checkerboard by row + column parity), reskinned with different shapes to reinforce that a genuinely three-attribute rule can recur under exam pressure and should still be worked the same methodical way. Missing cell: three filled triangles. C breaks fill only; D breaks count only; A breaks shape only.",
+          "es": "Misma regla subyacente que la del elemento 25 (fila = forma, columna = recuento, relleno = tablero de ajedrez según la paridad de fila + columna), presentada con formas distintas para reforzar que una regla genuinamente de tres atributos puede repetirse bajo la presión del examen y debe abordarse igualmente de forma metódica. Celda que falta: tres triángulos rellenos. C solo rompe el relleno; D solo rompe el recuento; A solo rompe la forma."
         }
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "△△△",
           "es": "△△△"
@@ -8901,18 +8909,10 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "▲▲",
           "es": "▲▲"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "★★★",
-          "es": "★★★"
         },
         "isCorrect": false
       }
@@ -8933,25 +8933,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "●",
-          "es": "●"
-        },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Rule: the grid has point symmetry about its centre cell — the figure in any cell must match the figure in the cell diagonally opposite through the centre. The missing cell (bottom-right) must therefore match the top-left cell, ●. This can be checked against the other three mirrored pairs already filled in: top-centre (▲) matches bottom-centre (▲); top-right (■) matches bottom-left (■); mid-left (★) matches mid-right (★) — all consistent. B and C each copy a neighbouring cell instead of the true mirror partner, and D copies the (unpaired) centre cell.",
-          "es": "Regla: la cuadrícula tiene simetría puntual respecto a su celda central — la figura de cualquier celda debe coincidir con la figura de la celda diagonalmente opuesta a través del centro. Por tanto, la celda que falta (inferior derecha) debe coincidir con la celda superior izquierda, ●. Esto puede comprobarse con los otros tres pares reflejados ya presentes: top-centre (▲) coincide con bottom-centre (▲); top-right (■) coincide con bottom-left (■); mid-left (★) coincide con mid-right (★) — todo es consistente. B y C copian cada una una celda vecina en lugar de la verdadera pareja especular, y D copia la celda central (sin pareja)."
-        }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "▲",
-          "es": "▲"
+          "en": "◆",
+          "es": "◆"
         },
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "■",
           "es": "■"
@@ -8959,10 +8947,22 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
+        "id": "C",
+        "text": {
+          "en": "●",
+          "es": "●"
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Rule: the grid has point symmetry about its centre cell — the figure in any cell must match the figure in the cell diagonally opposite through the centre. The missing cell (bottom-right) must therefore match the top-left cell, ●. This can be checked against the other three mirrored pairs already filled in: top-centre (▲) matches bottom-centre (▲); top-right (■) matches bottom-left (■); mid-left (★) matches mid-right (★) — all consistent. D and B each copy a neighbouring cell instead of the true mirror partner, and A copies the (unpaired) centre cell.",
+          "es": "Regla: la cuadrícula tiene simetría puntual respecto a su celda central — la figura de cualquier celda debe coincidir con la figura de la celda diagonalmente opuesta a través del centro. Por tanto, la celda que falta (inferior derecha) debe coincidir con la celda superior izquierda, ●. Esto puede comprobarse con los otros tres pares reflejados ya presentes: top-centre (▲) coincide con bottom-centre (▲); top-right (■) coincide con bottom-left (■); mid-left (★) coincide con mid-right (★) — todo es consistente. D y B copian cada una una celda vecina en lugar de la verdadera pareja especular, y A copia la celda central (sin pareja)."
+        }
+      },
+      {
         "id": "D",
         "text": {
-          "en": "◆",
-          "es": "◆"
+          "en": "▲",
+          "es": "▲"
         },
         "isCorrect": false
       }

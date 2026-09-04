@@ -146,6 +146,10 @@ function normalisePositionWord(clean: string): Position | null {
 
 const SIZES: SizeKind[] = ['small', 'medium', 'large', 'extra-large']
 
+/** Proporción mínima de paneles dibujables que debe tener un bloque de texto
+ * para tratarlo como una secuencia de figuras (ver `extractPromptFigures`). */
+const MIN_DRAWABLE_RATIO = 0.3
+
 function tokenize(text: string, isSeparator: (ch: string) => boolean): string[] {
   const tokens: string[] = []
   let depth = 0
@@ -547,7 +551,8 @@ export function extractPromptFigures(prompt: string): PromptFigures | null {
   // El bloque (párrafo) con la secuencia de figuras no siempre es el primero:
   // algunas preguntas del banco real anteponen una frase descriptiva antes de
   // los símbolos. Se evalúa cada bloque y se elige el que mejor se reconoce
-  // como secuencia (mayor proporción de paneles con al menos una forma).
+  // como secuencia (mayor proporción de paneles dibujables: con alguna forma,
+  // o el panel incógnita "?").
   const blocks = prompt.split(/\n\s*\n/)
   let best: { index: number; panels: FigurePanel[]; score: number } | null = null
 
@@ -557,7 +562,8 @@ export function extractPromptFigures(prompt: string): PromptFigures | null {
     const panels = panelTexts.map(parsePanel)
     const withShapes = panels.filter((p) => p.shapes.length > 0).length
     if (withShapes === 0) return
-    const score = withShapes / panels.length
+    const drawable = panels.filter((p) => p.shapes.length > 0 || p.isBlank).length
+    const score = drawable / panels.length
     if (!best || score > best.score) {
       best = { index, panels, score }
     }
@@ -566,6 +572,17 @@ export function extractPromptFigures(prompt: string): PromptFigures | null {
   if (!best) return null
 
   const chosen: { index: number; panels: FigurePanel[]; score: number } = best
+  // Un párrafo de prosa que solo contiene una flecha suelta como signo de
+  // puntuación ("el relleno sigue el ciclo negro → gris → blanco") pasa el
+  // filtro de arriba: '→' está en COMPASS_MAP, así que el bloque tiene "una
+  // forma". Sin este umbral, la frase entera se trocea en un panel por
+  // palabra y se dibuja como una ristra de ~50 recuadros de texto con flechas
+  // intercaladas, relegando además la secuencia real a texto plano debajo.
+  // Los scores reales del banco son bimodales (72 secuencias auténticas dan
+  // 1.00; los párrafos de prosa dan 0.04–0.13), así que el corte separa
+  // limpiamente ambos casos y ninguna secuencia legítima cae por debajo.
+  if (chosen.score < MIN_DRAWABLE_RATIO) return null
+
   const remainderMd = blocks
     .filter((_, i) => i !== chosen.index)
     .join('\n\n')

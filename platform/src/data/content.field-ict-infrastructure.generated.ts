@@ -117,22 +117,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "RAID 5",
-          "es": "RAID 5"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "RAID 6",
-          "es": "RAID 6"
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "RAID 10",
           "es": "RAID 10"
         },
@@ -143,10 +127,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "D",
+        "id": "B",
         "text": {
           "en": "RAID 0",
           "es": "RAID 0"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "RAID 6",
+          "es": "RAID 6"
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "RAID 5",
+          "es": "RAID 5"
         },
         "isCorrect": false
       }
@@ -219,22 +219,18 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It permanently deletes infrequently accessed data in order to free up capacity on faster storage media.",
-          "es": "Elimina permanentemente los datos a los que se accede con poca frecuencia para liberar capacidad en el almacenamiento más rápido."
+          "en": "It converts block storage into file storage as the underlying data ages.",
+          "es": "Convierte el almacenamiento en bloque en almacenamiento en archivos a medida que los datos subyacentes envejecen."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "It automatically moves data between faster, more expensive storage media and slower, cheaper media based on how frequently that data is actually accessed, balancing cost against performance without manual intervention.",
-          "es": "Desplaza automáticamente los datos entre soportes de almacenamiento más rápidos y caros y soportes más lentos y baratos, en función de la frecuencia real con la que se accede a esos datos, equilibrando el coste frente al rendimiento sin intervención manual."
+          "en": "It permanently deletes infrequently accessed data in order to free up capacity on faster storage media.",
+          "es": "Elimina permanentemente los datos a los que se accede con poca frecuencia para liberar capacidad en el almacenamiento más rápido."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Automated tiering moves data between faster/costlier and slower/cheaper media purely based on access frequency, optimising cost against performance without requiring anyone to move it by hand.\n\n### Topic 2 — Data Centre Design and Facilities Management",
-          "es": "El almacenamiento por niveles automatizado desplaza los datos entre soportes más rápidos/caros y más lentos/baratos basándose únicamente en la frecuencia de acceso, optimizando el coste frente al rendimiento sin que nadie tenga que moverlos manualmente.\n\n### Topic 2 — Diseño de centros de datos y gestión de instalaciones"
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -247,10 +243,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "It converts block storage into file storage as the underlying data ages.",
-          "es": "Convierte el almacenamiento en bloque en almacenamiento en archivos a medida que los datos subyacentes envejecen."
+          "en": "It automatically moves data between faster, more expensive storage media and slower, cheaper media based on how frequently that data is actually accessed, balancing cost against performance without manual intervention.",
+          "es": "Desplaza automáticamente los datos entre soportes de almacenamiento más rápidos y caros y soportes más lentos y baratos, en función de la frecuencia real con la que se accede a esos datos, equilibrando el coste frente al rendimiento sin intervención manual."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Automated tiering moves data between faster/costlier and slower/cheaper media purely based on access frequency, optimising cost against performance without requiring anyone to move it by hand.\n\n### Topic 2 — Data Centre Design and Facilities Management",
+          "es": "El almacenamiento por niveles automatizado desplaza los datos entre soportes más rápidos/caros y más lentos/baratos basándose únicamente en la frecuencia de acceso, optimizando el coste frente al rendimiento sin que nadie tenga que moverlos manualmente.\n\n### Topic 2 — Diseño de centros de datos y gestión de instalaciones"
+        }
       }
     ],
     "field": "ict-infrastructure",
@@ -270,14 +270,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Tier IV facilities are simply larger, in physical floor space, than Tier III facilities.",
-          "es": "Las instalaciones Tier IV son simplemente más grandes, en superficie física, que las instalaciones Tier III."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Tier IV adds fault tolerance, so the site continues operating through an unplanned failure of any single component, whereas Tier III is only concurrently maintainable, guaranteeing uptime during planned maintenance but not necessarily during an unplanned failure.",
           "es": "El Tier IV añade tolerancia a fallos, de modo que la instalación sigue funcionando ante un fallo no planificado de cualquier componente individual, mientras que el Tier III es solo mantenible de forma concurrente, garantizando el funcionamiento durante el mantenimiento planificado, pero no necesariamente durante un fallo no planificado."
         },
@@ -286,6 +278,14 @@ export const QUESTIONS: Question[] = [
           "en": "Tier IV's defining feature over Tier III is fault tolerance: the site survives an unplanned failure of any single component, not just planned maintenance, which is all a Tier III (concurrently maintainable) facility guarantees.",
           "es": "El rasgo distintivo del Tier IV frente al Tier III es la tolerancia a fallos: la instalación sobrevive a un fallo no planificado de cualquier componente individual, no solo al mantenimiento planificado, que es todo lo que garantiza una instalación Tier III (mantenible de forma concurrente)."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Tier IV facilities are simply larger, in physical floor space, than Tier III facilities.",
+          "es": "Las instalaciones Tier IV son simplemente más grandes, en superficie física, que las instalaciones Tier III."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -435,24 +435,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "To reduce the physical noise generated by server fans, for the comfort of on-site staff.",
-          "es": "Reducir el ruido físico generado por los ventiladores de los servidores, por comodidad del personal presente en las instalaciones."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "To separate servers by manufacturer, so that warranty claims can be processed more easily.",
           "es": "Separar los servidores por fabricante, de modo que las reclamaciones de garantía puedan tramitarse con mayor facilidad."
         },
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "C",
         "text": {
           "en": "To physically prevent unauthorised staff from accessing production racks.",
           "es": "Impedir físicamente que el personal no autorizado acceda a los racks de producción."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To reduce the physical noise generated by server fans, for the comfort of on-site staff.",
+          "es": "Reducir el ruido físico generado por los ventiladores de los servidores, por comodidad del personal presente en las instalaciones."
         },
         "isCorrect": false
       }
@@ -627,6 +627,30 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "It replaces the need for a configuration management database.",
+          "es": "Sustituye la necesidad de una base de datos de gestión de configuración."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It is a purely technical inventory of the server hardware used to deliver IT services.",
+          "es": "Es un inventario puramente técnico del hardware de servidores utilizado para prestar los servicios de TI."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It lists every service the organisation has ever offered, including retired and future planned services, purely for internal planning purposes.",
+          "es": "Enumera todos los servicios que la organización ha ofrecido alguna vez, incluidos los retirados y los planificados para el futuro, únicamente con fines de planificación interna."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "It lists the services currently available to customers and users, described in terms they can understand and act on, rather than the complete technical detail of every service at every lifecycle stage.",
           "es": "Enumera los servicios actualmente disponibles para clientes y usuarios, descritos en términos que puedan entender y sobre los que puedan actuar, en lugar del detalle técnico completo de cada servicio en cada fase de su ciclo de vida."
         },
@@ -635,30 +659,6 @@ export const QUESTIONS: Question[] = [
           "en": "The service catalogue is the customer-facing view: current, available services described in terms customers and users can act on, as distinct from the full service portfolio spanning every lifecycle stage.",
           "es": "El catálogo de servicios es la vista orientada al cliente: los servicios actuales y disponibles, descritos en términos sobre los que los clientes y usuarios pueden actuar, a diferencia del portafolio de servicios completo, que abarca todas las fases del ciclo de vida."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "It lists every service the organisation has ever offered, including retired and future planned services, purely for internal planning purposes.",
-          "es": "Enumera todos los servicios que la organización ha ofrecido alguna vez, incluidos los retirados y los planificados para el futuro, únicamente con fines de planificación interna."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "It is a purely technical inventory of the server hardware used to deliver IT services.",
-          "es": "Es un inventario puramente técnico del hardware de servidores utilizado para prestar los servicios de TI."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It replaces the need for a configuration management database.",
-          "es": "Sustituye la necesidad de una base de datos de gestión de configuración."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -729,16 +729,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It automatically applies security patches to every registered configuration item overnight.",
-          "es": "Aplica automáticamente los parches de seguridad a todos los elementos de configuración registrados durante la noche."
+          "en": "It stores the source code of every application deployed by the organisation.",
+          "es": "Almacena el código fuente de todas las aplicaciones desplegadas por la organización."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "It stores the source code of every application deployed by the organisation.",
-          "es": "Almacena el código fuente de todas las aplicaciones desplegadas por la organización."
+          "en": "It automatically applies security patches to every registered configuration item overnight.",
+          "es": "Aplica automáticamente los parches de seguridad a todos los elementos de configuración registrados durante la noche."
         },
         "isCorrect": false
       },
@@ -831,6 +831,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Backups retained for exactly three years, reviewed twice a year, with one copy encrypted.",
+          "es": "Copias de seguridad conservadas durante exactamente tres años, revisadas dos veces al año, con una copia cifrada."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Two copies of the data kept onsite, with a third copy discarded after 30 days to save storage costs.",
+          "es": "Dos copias de los datos conservadas en las instalaciones, con una tercera copia descartada a los 30 días para ahorrar en costes de almacenamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "At least three copies of the data, stored on at least two different types of media, with at least one copy kept offsite.",
           "es": "Al menos tres copias de los datos, almacenadas en al menos dos tipos de soporte distintos, con al menos una copia conservada fuera de las instalaciones (offsite)."
         },
@@ -841,26 +857,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Three full backups taken every single day, stored on one type of media, at one single location for consistency.",
           "es": "Tres copias de seguridad completas cada día, almacenadas en un único tipo de soporte, en una única ubicación, por coherencia."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Backups retained for exactly three years, reviewed twice a year, with one copy encrypted.",
-          "es": "Copias de seguridad conservadas durante exactamente tres años, revisadas dos veces al año, con una copia cifrada."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Two copies of the data kept onsite, with a third copy discarded after 30 days to save storage costs.",
-          "es": "Dos copias de los datos conservadas en las instalaciones, con una tercera copia descartada a los 30 días para ahorrar en costes de almacenamiento."
         },
         "isCorrect": false
       }
@@ -933,21 +933,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "This is called failover, and it is generally considered less risky than the original switch to the DR site.",
-          "es": "Esto se llama failover, y generalmente se considera menos arriesgado que la conmutación original hacia el sitio de recuperación."
+          "en": "This is called a rollback, and it should always be performed automatically without verification, in order to minimise downtime.",
+          "es": "Esto se llama rollback, y siempre debe realizarse de forma automática y sin verificación, para minimizar el tiempo de inactividad."
         },
         "isCorrect": false
       },
       {
         "id": "B",
-        "text": {
-          "en": "This step has no specific name in business continuity terminology.",
-          "es": "Este paso no tiene un nombre específico en la terminología de continuidad de negocio."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
         "text": {
           "en": "This is called failback, and it is often riskier than the original failover and should never be rushed, since it requires carefully verifying the primary site before committing production traffic to it again.",
           "es": "Esto se llama failback, y a menudo es más arriesgado que el failover original y nunca debe precipitarse, ya que exige verificar cuidadosamente el sitio primario antes de volver a confiarle el tráfico de producción."
@@ -959,10 +951,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "C",
+        "text": {
+          "en": "This step has no specific name in business continuity terminology.",
+          "es": "Este paso no tiene un nombre específico en la terminología de continuidad de negocio."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "D",
         "text": {
-          "en": "This is called a rollback, and it should always be performed automatically without verification, in order to minimise downtime.",
-          "es": "Esto se llama rollback, y siempre debe realizarse de forma automática y sin verificación, para minimizar el tiempo de inactividad."
+          "en": "This is called failover, and it is generally considered less risky than the original switch to the DR site.",
+          "es": "Esto se llama failover, y generalmente se considera menos arriesgado que la conmutación original hacia el sitio de recuperación."
         },
         "isCorrect": false
       }
@@ -1086,13 +1086,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Over-provisioning eliminates the possibility of any future outage, so it carries no meaningful downside.",
-          "es": "El sobreaprovisionamiento elimina la posibilidad de cualquier interrupción futura, por lo que no conlleva ningún inconveniente relevante."
+          "en": "Over-provisioning is always cheaper than under-provisioning, in every scenario.",
+          "es": "El sobreaprovisionamiento siempre resulta más barato que el infraaprovisionamiento, en cualquier escenario."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Over-provisioning has no effect on cost, only on performance.",
+          "es": "El sobreaprovisionamiento no tiene ningún efecto sobre el coste, solo sobre el rendimiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Over-provisioning wastes budget on capacity that sits idle, whereas under-provisioning risks performance degradation and outages precisely when demand peaks — good capacity planning avoids both extremes.",
           "es": "El sobreaprovisionamiento desperdicia presupuesto en capacidad que permanece ociosa, mientras que el infraaprovisionamiento arriesga una degradación del rendimiento y caídas justo cuando la demanda alcanza su pico; una buena planificación de capacidad evita ambos extremos."
@@ -1104,18 +1112,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Over-provisioning is always cheaper than under-provisioning, in every scenario.",
-          "es": "El sobreaprovisionamiento siempre resulta más barato que el infraaprovisionamiento, en cualquier escenario."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Over-provisioning has no effect on cost, only on performance.",
-          "es": "El sobreaprovisionamiento no tiene ningún efecto sobre el coste, solo sobre el rendimiento."
+          "en": "Over-provisioning eliminates the possibility of any future outage, so it carries no meaningful downside.",
+          "es": "El sobreaprovisionamiento elimina la posibilidad de cualquier interrupción futura, por lo que no conlleva ningún inconveniente relevante."
         },
         "isCorrect": false
       }
@@ -1188,30 +1188,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The team will detect every real incident faster than before; no change to the thresholds is needed.",
-          "es": "El equipo detectará todas las incidencias reales más rápido que antes; no es necesario cambiar los umbrales."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "The correct fix is to disable alerting entirely and rely on manual checks instead.",
-          "es": "La solución correcta es desactivar por completo las alertas y confiar en comprobaciones manuales."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "This has no effect on incident response time, only on the storage cost of log data.",
-          "es": "Esto no tiene ningún efecto sobre el tiempo de respuesta ante incidencias, solo sobre el coste de almacenamiento de los registros."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
           "en": "Alert fatigue: genuine, actionable alerts get lost among the noise and are ignored or delayed; the fix is to make alerts symptom-based and tied to real user or business impact, not simply to add more alerts.",
           "es": "Fatiga de alertas: las alertas genuinas y accionables se pierden entre el ruido y se ignoran o se retrasan; la solución es hacer que las alertas se basen en síntomas y estén ligadas a un impacto real para el usuario o el negocio, no simplemente añadir más alertas."
         },
@@ -1220,6 +1196,30 @@ export const QUESTIONS: Question[] = [
           "en": "Overly sensitive thresholds bury genuine, actionable alerts under low-value noise until they are ignored or delayed; the fix is to make alerts symptom-based and tied to real impact, not to keep adding more of them.",
           "es": "Unos umbrales demasiado sensibles entierran las alertas genuinas y accionables bajo un ruido de bajo valor hasta que se ignoran o se retrasan; la solución es hacer que las alertas se basen en síntomas y estén ligadas a un impacto real, no seguir añadiendo más alertas."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The team will detect every real incident faster than before; no change to the thresholds is needed.",
+          "es": "El equipo detectará todas las incidencias reales más rápido que antes; no es necesario cambiar los umbrales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The correct fix is to disable alerting entirely and rely on manual checks instead.",
+          "es": "La solución correcta es desactivar por completo las alertas y confiar en comprobaciones manuales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "This has no effect on incident response time, only on the storage cost of log data.",
+          "es": "Esto no tiene ningún efecto sobre el tiempo de respuesta ante incidencias, solo sobre el coste de almacenamiento de los registros."
+        },
+        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -1290,6 +1290,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "It is a certification exam, rather than a method for developing architecture.",
+          "es": "Es un examen de certificación, no un método para desarrollar arquitectura."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It applies only to software architecture and has no defined phase for business architecture.",
+          "es": "Se aplica únicamente a la arquitectura de software y no tiene ninguna fase definida para la arquitectura de negocio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "It is an iterative cycle that moves through phases such as Architecture Vision, Business/Information Systems/Technology Architecture, Opportunities and Solutions, Migration Planning and Implementation Governance, before returning to revisit the vision in light of what was learned.",
           "es": "Es un ciclo iterativo que recorre fases como la Visión de la Arquitectura, la Arquitectura de Negocio/de Sistemas de Información/Tecnológica, Oportunidades y Soluciones, Planificación de la Migración y Gobernanza de la Implementación, antes de volver a revisar la visión a la luz de lo aprendido."
         },
@@ -1300,26 +1316,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "It is a strictly linear, one-time project plan that concludes once the Technology Architecture phase is complete.",
           "es": "Es un plan de proyecto estrictamente lineal y de una sola vez, que concluye una vez completada la fase de Arquitectura Tecnológica."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "It applies only to software architecture and has no defined phase for business architecture.",
-          "es": "Se aplica únicamente a la arquitectura de software y no tiene ninguna fase definida para la arquitectura de negocio."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It is a certification exam, rather than a method for developing architecture.",
-          "es": "Es un examen de certificación, no un método para desarrollar arquitectura."
         },
         "isCorrect": false
       }
@@ -1451,16 +1451,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "A budget shortfall in the annual IT department expenditure.",
-          "es": "Un déficit presupuestario en el gasto anual del departamento de TI."
+          "en": "Any architecture decision that was later proven to be technically incorrect.",
+          "es": "Cualquier decisión de arquitectura que posteriormente resultara ser técnicamente incorrecta."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "Any architecture decision that was later proven to be technically incorrect.",
-          "es": "Cualquier decisión de arquitectura que posteriormente resultara ser técnicamente incorrecta."
+          "en": "A budget shortfall in the annual IT department expenditure.",
+          "es": "Un déficit presupuestario en el gasto anual del departamento de TI."
         },
         "isCorrect": false
       },
@@ -1494,6 +1494,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "As-is and to-be are alternative names for the same architecture, used in different TOGAF phases.",
+          "es": "As-is y to-be son nombres alternativos para la misma arquitectura, utilizados en distintas fases de TOGAF."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To-be architecture refers exclusively to hardware that has been ordered but not yet delivered.",
+          "es": "La arquitectura to-be se refiere exclusivamente al hardware que se ha pedido pero todavía no se ha entregado."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "The as-is architecture documents the currently existing state of a domain, while the to-be architecture describes the intended target state; transition planning is defined by the gap between the two.",
           "es": "La arquitectura as-is documenta el estado actualmente existente de un dominio, mientras que la arquitectura to-be describe el estado objetivo previsto; la planificación de la transición se define por la brecha entre ambas."
         },
@@ -1504,26 +1520,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "The as-is architecture is always technically superior to the to-be architecture, which is merely aspirational.",
           "es": "La arquitectura as-is es siempre técnicamente superior a la arquitectura to-be, que es meramente aspiracional."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "As-is and to-be are alternative names for the same architecture, used in different TOGAF phases.",
-          "es": "As-is y to-be son nombres alternativos para la misma arquitectura, utilizados en distintas fases de TOGAF."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "To-be architecture refers exclusively to hardware that has been ordered but not yet delivered.",
-          "es": "La arquitectura to-be se refiere exclusivamente al hardware que se ha pedido pero todavía no se ha entregado."
         },
         "isCorrect": false
       }
@@ -1647,29 +1647,13 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Granting a fixed set of trusted staff standing, always-on administrator access, so that they never have to request it again.",
-          "es": "Conceder a un conjunto fijo de personal de confianza acceso de administrador permanente y siempre activo, de modo que nunca tengan que volver a solicitarlo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Publishing the list of administrator accounts on the internal company wiki, for transparency.",
           "es": "Publicar la lista de cuentas de administrador en la wiki interna de la empresa, por transparencia."
         },
         "isCorrect": false
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Requiring privileged accounts to change their password once a year.",
-          "es": "Exigir que las cuentas privilegiadas cambien su contraseña una vez al año."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
+        "id": "B",
         "text": {
           "en": "Vaulting privileged credentials centrally and granting elevated access only just-in-time, for a limited duration, with sessions logged for accountability — shrinking the window and scope in which elevated access actually exists.",
           "es": "Almacenar de forma centralizada («en bóveda») las credenciales privilegiadas y conceder el acceso elevado solo justo a tiempo (just-in-time), por una duración limitada, con las sesiones registradas para garantizar la trazabilidad, reduciendo así la ventana temporal y el alcance en los que realmente existe el acceso elevado."
@@ -1679,6 +1663,22 @@ export const QUESTIONS: Question[] = [
           "en": "Mature PAM vaults privileged credentials and grants elevated access only just-in-time, for a limited window, with sessions logged — minimising both how long and how broadly elevated access exists, rather than simply tracking who holds standing rights.",
           "es": "Una PAM madura almacena en bóveda las credenciales privilegiadas y concede acceso elevado solo justo a tiempo, por una ventana limitada, con las sesiones registradas, minimizando tanto la duración como el alcance en los que existe realmente el acceso elevado, en lugar de limitarse a rastrear quién posee derechos permanentes."
         }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Granting a fixed set of trusted staff standing, always-on administrator access, so that they never have to request it again.",
+          "es": "Conceder a un conjunto fijo de personal de confianza acceso de administrador permanente y siempre activo, de modo que nunca tengan que volver a solicitarlo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Requiring privileged accounts to change their password once a year.",
+          "es": "Exigir que las cuentas privilegiadas cambien su contraseña una vez al año."
+        },
+        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -1749,8 +1749,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It violates no principle, since service accounts are not subject to the same access rules as human accounts.",
-          "es": "No se vulnera ningún principio, ya que las cuentas de servicio no están sujetas a las mismas reglas de acceso que las cuentas humanas."
+          "en": "This is a recommended practice, since it avoids the need to reconfigure permissions later if requirements change.",
+          "es": "Esta es una práctica recomendada, ya que evita tener que reconfigurar los permisos más adelante si cambian los requisitos."
         },
         "isCorrect": false
       },
@@ -1769,16 +1769,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "This is a recommended practice, since it avoids the need to reconfigure permissions later if requirements change.",
-          "es": "Esta es una práctica recomendada, ya que evita tener que reconfigurar los permisos más adelante si cambian los requisitos."
+          "en": "This only matters for accounts used by human administrators, not for accounts used by applications.",
+          "es": "Esto solo importa en el caso de las cuentas utilizadas por administradores humanos, no en el de las cuentas utilizadas por aplicaciones."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "This only matters for accounts used by human administrators, not for accounts used by applications.",
-          "es": "Esto solo importa en el caso de las cuentas utilizadas por administradores humanos, no en el de las cuentas utilizadas por aplicaciones."
+          "en": "It violates no principle, since service accounts are not subject to the same access rules as human accounts.",
+          "es": "No se vulnera ningún principio, ya que las cuentas de servicio no están sujetas a las mismas reglas de acceso que las cuentas humanas."
         },
         "isCorrect": false
       }
@@ -1902,14 +1902,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The gradual divergence of a system's actual configuration from its documented or intended baseline, typically caused by manual, ad hoc changes applied directly outside the automated process.",
-          "es": "La divergencia gradual entre la configuración real de un sistema y su línea base documentada o prevista, causada habitualmente por cambios manuales y puntuales aplicados directamente al margen del proceso automatizado."
+          "en": "The physical movement of servers between racks during a data-centre migration.",
+          "es": "El desplazamiento físico de servidores entre racks durante una migración de centro de datos."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Configuration drift is exactly this unplanned divergence: a system's real configuration slowly diverges from its documented baseline, almost always because of manual changes applied outside the automated pipeline.",
-          "es": "La deriva de configuración es exactamente esta divergencia no planificada: la configuración real de un sistema se aleja poco a poco de su línea base documentada, casi siempre debido a cambios manuales aplicados al margen del proceso automatizado."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -1922,10 +1918,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "The physical movement of servers between racks during a data-centre migration.",
-          "es": "El desplazamiento físico de servidores entre racks durante una migración de centro de datos."
+          "en": "The gradual divergence of a system's actual configuration from its documented or intended baseline, typically caused by manual, ad hoc changes applied directly outside the automated process.",
+          "es": "La divergencia gradual entre la configuración real de un sistema y su línea base documentada o prevista, causada habitualmente por cambios manuales y puntuales aplicados directamente al margen del proceso automatizado."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Configuration drift is exactly this unplanned divergence: a system's real configuration slowly diverges from its documented baseline, almost always because of manual changes applied outside the automated pipeline.",
+          "es": "La deriva de configuración es exactamente esta divergencia no planificada: la configuración real de un sistema se aleja poco a poco de su línea base documentada, casi siempre debido a cambios manuales aplicados al margen del proceso automatizado."
+        }
       },
       {
         "id": "D",
@@ -1961,6 +1961,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "It requires manual approval before every single execution.",
+          "es": "Requiere aprobación manual antes de cada ejecución individual."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Running it repeatedly against the same target converges on, and then simply confirms, the same end state, without duplicating resources or causing unintended side effects on repeat runs.",
           "es": "Ejecutarlo repetidamente contra el mismo destino converge hacia el mismo estado final, y simplemente lo confirma, sin duplicar recursos ni provocar efectos secundarios no deseados en ejecuciones repetidas."
         },
@@ -1971,18 +1979,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "It always produces a different result each time it is run, which improves auditability.",
           "es": "Siempre produce un resultado distinto cada vez que se ejecuta, lo que mejora la auditabilidad."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It requires manual approval before every single execution.",
-          "es": "Requiere aprobación manual antes de cada ejecución individual."
         },
         "isCorrect": false
       }
@@ -2157,22 +2157,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "HCI is simply a marketing term for any server that includes a RAID controller.",
-          "es": "HCI es simplemente un término de marketing para cualquier servidor que incluya un controlador RAID."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "HCI still requires a dedicated, separately-managed SAN for storage, and only converges compute and networking hardware.",
-          "es": "HCI sigue requiriendo una SAN dedicada y gestionada por separado para el almacenamiento, y solo converge el hardware de cómputo y de red."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "HCI converges compute, storage and networking — and typically virtualization — into a single software-defined platform of standardized, scalable nodes, managed centrally rather than as separate, independently-scaled tiers.",
           "es": "HCI converge el cómputo, el almacenamiento y la red —y habitualmente la virtualización— en una única plataforma definida por software, formada por nodos estandarizados y escalables, gestionada de forma centralizada en lugar de como niveles independientes escalados por separado."
         },
@@ -2183,10 +2167,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "D",
+        "id": "B",
         "text": {
           "en": "HCI is unsuitable for virtualized workloads and is only used for bare-metal deployments.",
           "es": "HCI no es adecuada para cargas de trabajo virtualizadas y solo se utiliza en despliegues bare-metal."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "HCI still requires a dedicated, separately-managed SAN for storage, and only converges compute and networking hardware.",
+          "es": "HCI sigue requiriendo una SAN dedicada y gestionada por separado para el almacenamiento, y solo converge el hardware de cómputo y de red."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "HCI is simply a marketing term for any server that includes a RAID controller.",
+          "es": "HCI es simplemente un término de marketing para cualquier servidor que incluya un controlador RAID."
         },
         "isCorrect": false
       }
@@ -2208,6 +2208,30 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Live migration requires the VM to be powered off first, then automatically powers it back on at the destination host.",
+          "es": "La migración en vivo exige apagar primero la VM, que después se enciende automáticamente en el host de destino."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Live migration is only possible between hosts running completely different hypervisor vendors, and fails between identical hosts.",
+          "es": "La migración en vivo solo es posible entre hosts que ejecutan hipervisores de proveedores completamente distintos, y falla entre hosts idénticos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Convert a running VM into a container without any interruption to the running process.",
+          "es": "Convertir una VM en ejecución en un contenedor sin ninguna interrupción del proceso en marcha."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Move a running VM from one physical host to another with minimal to no perceptible downtime for the workload, typically to enable planned host maintenance or load rebalancing without interrupting the service.",
           "es": "Trasladar una VM en ejecución de un host físico a otro con un tiempo de inactividad mínimo o imperceptible para la carga de trabajo, normalmente para permitir el mantenimiento planificado del host o el reequilibrio de la carga sin interrumpir el servicio."
         },
@@ -2216,30 +2240,6 @@ export const QUESTIONS: Question[] = [
           "en": "Live migration moves a running VM's active state between hosts while it continues to run, so the workload experiences little to no downtime — the standard mechanism for performing host maintenance or rebalancing load without an outage.",
           "es": "La migración en vivo traslada el estado activo de una VM en ejecución entre hosts mientras esta sigue funcionando, de modo que la carga de trabajo experimenta un tiempo de inactividad mínimo o nulo; es el mecanismo estándar para realizar mantenimiento planificado del host o reequilibrar la carga sin causar una interrupción."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Convert a running VM into a container without any interruption to the running process.",
-          "es": "Convertir una VM en ejecución en un contenedor sin ninguna interrupción del proceso en marcha."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Live migration requires the VM to be powered off first, then automatically powers it back on at the destination host.",
-          "es": "La migración en vivo exige apagar primero la VM, que después se enciende automáticamente en el host de destino."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Live migration is only possible between hosts running completely different hypervisor vendors, and fails between identical hosts.",
-          "es": "La migración en vivo solo es posible entre hosts que ejecutan hipervisores de proveedores completamente distintos, y falla entre hosts idénticos."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -2259,13 +2259,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "NVMe drives are always physically larger, allowing more flash chips to be packed into the same enclosure.",
-          "es": "Las unidades NVMe son siempre físicamente más grandes, lo que permite empaquetar más chips de memoria flash en la misma carcasa."
+          "en": "NVMe and SATA SSDs use identical protocols; the only difference between them is the physical connector shape.",
+          "es": "NVMe y los SSD SATA utilizan protocolos idénticos; la única diferencia entre ambos es la forma física del conector."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "SATA and SAS drives achieve higher throughput than NVMe because they use a more mature, optimized driver stack.",
+          "es": "Las unidades SATA y SAS logran un mayor rendimiento que NVMe porque utilizan una pila de controladores (drivers) más madura y optimizada."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "NVMe connects directly over the PCIe bus and uses a streamlined command protocol designed for flash memory with many parallel queues, avoiding the legacy overhead and limited queue depth of the SATA/SAS storage stack originally designed for spinning disks.",
           "es": "NVMe se conecta directamente al bus PCIe y utiliza un protocolo de comandos simplificado, diseñado para memoria flash y con numerosas colas paralelas, evitando la sobrecarga heredada y la escasa profundidad de cola de la pila de almacenamiento SATA/SAS, diseñada originalmente para discos mecánicos."
@@ -2277,18 +2285,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "NVMe and SATA SSDs use identical protocols; the only difference between them is the physical connector shape.",
-          "es": "NVMe y los SSD SATA utilizan protocolos idénticos; la única diferencia entre ambos es la forma física del conector."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "SATA and SAS drives achieve higher throughput than NVMe because they use a more mature, optimized driver stack.",
-          "es": "Las unidades SATA y SAS logran un mayor rendimiento que NVMe porque utilizan una pila de controladores (drivers) más madura y optimizada."
+          "en": "NVMe drives are always physically larger, allowing more flash chips to be packed into the same enclosure.",
+          "es": "Las unidades NVMe son siempre físicamente más grandes, lo que permite empaquetar más chips de memoria flash en la misma carcasa."
         },
         "isCorrect": false
       }
@@ -2310,20 +2310,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "To use favourable outside air or water temperatures to reduce or replace mechanical, compressor-based cooling for part of the year, lowering energy consumption and improving PUE.",
-          "es": "Aprovechar temperaturas exteriores de aire o agua favorables para reducir o sustituir la refrigeración mecánica basada en compresores durante parte del año, reduciendo el consumo de energía y mejorando el PUE."
+          "en": "To physically cool servers using compressed CO2 canisters instead of air conditioning.",
+          "es": "Refrigerar físicamente los servidores utilizando botellas de CO2 comprimido en lugar de aire acondicionado."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Economizers use naturally cool outside air or water, when ambient conditions allow, to meet some or all of the facility's cooling load without running energy-intensive compressors, directly reducing the facility's energy overhead and therefore improving PUE.",
-          "es": "Los economizadores aprovechan el aire o el agua exterior, naturalmente fríos cuando las condiciones ambientales lo permiten, para cubrir parte o la totalidad de la carga de refrigeración de la instalación sin recurrir a compresores que consumen mucha energía, reduciendo directamente la sobrecarga energética de la instalación y, por tanto, mejorando el PUE."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "To physically cool servers using compressed CO2 canisters instead of air conditioning.",
-          "es": "Refrigerar físicamente los servidores utilizando botellas de CO2 comprimido en lugar de aire acondicionado."
+          "en": "Free cooling means the data centre operator receives cooling services from the utility provider at no additional charge.",
+          "es": "La refrigeración gratuita significa que el proveedor eléctrico presta servicios de refrigeración al operador del centro de datos sin coste adicional."
         },
         "isCorrect": false
       },
@@ -2338,10 +2334,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Free cooling means the data centre operator receives cooling services from the utility provider at no additional charge.",
-          "es": "La refrigeración gratuita significa que el proveedor eléctrico presta servicios de refrigeración al operador del centro de datos sin coste adicional."
+          "en": "To use favourable outside air or water temperatures to reduce or replace mechanical, compressor-based cooling for part of the year, lowering energy consumption and improving PUE.",
+          "es": "Aprovechar temperaturas exteriores de aire o agua favorables para reducir o sustituir la refrigeración mecánica basada en compresores durante parte del año, reduciendo el consumo de energía y mejorando el PUE."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Economizers use naturally cool outside air or water, when ambient conditions allow, to meet some or all of the facility's cooling load without running energy-intensive compressors, directly reducing the facility's energy overhead and therefore improving PUE.",
+          "es": "Los economizadores aprovechan el aire o el agua exterior, naturalmente fríos cuando las condiciones ambientales lo permiten, para cubrir parte o la totalidad de la carga de refrigeración de la instalación sin recurrir a compresores que consumen mucha energía, reduciendo directamente la sobrecarga energética de la instalación y, por tanto, mejorando el PUE."
+        }
       }
     ],
     "field": "ict-infrastructure",
@@ -2420,6 +2420,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Blanking panels are only needed in data centres that do not use hot/cold aisle containment.",
+          "es": "Los paneles ciegos solo son necesarios en los centros de datos que no utilizan contención de pasillo frío/pasillo caliente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "To close gaps in the rack face so cold supply air cannot bypass through empty slots and mix with hot exhaust air, which would otherwise undermine the separation the containment strategy is designed to achieve.",
           "es": "Cerrar los huecos en la cara del rack para que el aire frío de suministro no pueda pasar a través de las ranuras vacías y mezclarse con el aire caliente de salida, lo que de otro modo socavaría la separación que la estrategia de contención está diseñada para lograr."
         },
@@ -2430,18 +2438,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Blanking panels are a fire-code requirement, entirely unrelated to cooling efficiency.",
           "es": "Los paneles ciegos son un requisito del código contra incendios, sin relación alguna con la eficiencia de la refrigeración."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Blanking panels are only needed in data centres that do not use hot/cold aisle containment.",
-          "es": "Los paneles ciegos solo son necesarios en los centros de datos que no utilizan contención de pasillo frío/pasillo caliente."
         },
         "isCorrect": false
       }
@@ -2565,14 +2565,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Completing an entire service improvement in a single, large, \"big bang\" release, then gathering feedback only once everything has gone live.",
-          "es": "Completar toda una mejora de servicio en una única entrega grande, de tipo «big bang», y recabar retroalimentación solo una vez que todo esté ya en producción."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Breaking work into smaller, manageable pieces, delivering them incrementally, and using the feedback gathered from each iteration to inform and adjust the next one, rather than attempting to plan every detail upfront.",
           "es": "Dividir el trabajo en piezas más pequeñas y manejables, entregarlas de forma incremental, y utilizar la retroalimentación recogida en cada iteración para orientar y ajustar la siguiente, en lugar de intentar planificar cada detalle por adelantado."
         },
@@ -2581,6 +2573,14 @@ export const QUESTIONS: Question[] = [
           "en": "The principle calls for breaking work into smaller increments, delivering them, and using the feedback from each cycle to steer the next one, rather than trying to specify and deliver everything in one large release before learning anything from real use.",
           "es": "El principio pide dividir el trabajo en incrementos más pequeños, entregarlos y utilizar la retroalimentación de cada ciclo para orientar el siguiente, en lugar de intentar especificar y entregar todo en una única entrega grande antes de aprender nada del uso real."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "This principle applies only to software development projects and has no relevance to infrastructure or operational services.",
+          "es": "Este principio se aplica únicamente a los proyectos de desarrollo de software y no tiene relevancia para la infraestructura o los servicios operativos."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -2593,8 +2593,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "This principle applies only to software development projects and has no relevance to infrastructure or operational services.",
-          "es": "Este principio se aplica únicamente a los proyectos de desarrollo de software y no tiene relevancia para la infraestructura o los servicios operativos."
+          "en": "Completing an entire service improvement in a single, large, \"big bang\" release, then gathering feedback only once everything has gone live.",
+          "es": "Completar toda una mejora de servicio en una única entrega grande, de tipo «big bang», y recabar retroalimentación solo una vez que todo esté ya en producción."
         },
         "isCorrect": false
       }
@@ -2616,14 +2616,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It is the set of six activities (plan, improve, engage, design & transition, obtain/build, and deliver & support) that organisations combine and adapt into value streams to convert demand into value.",
-          "es": "Es el conjunto de seis actividades (planificar, mejorar, involucrar, diseñar y hacer la transición, obtener/construir, y entregar y dar soporte) que las organizaciones combinan y adaptan en flujos de valor para convertir la demanda en valor."
+          "en": "It refers exclusively to the financial accounting of service costs charged to customers.",
+          "es": "Se refiere exclusivamente a la contabilidad financiera de los costes de servicio facturados a los clientes."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "The Service Value Chain is the operating model at the centre of the SVS: six activities that organisations combine into value streams appropriate to a given scenario, converting demand into value for customers and stakeholders.",
-          "es": "La Cadena de Valor del Servicio es el modelo operativo situado en el centro del SVS: seis actividades que las organizaciones combinan en flujos de valor adecuados a cada situación, convirtiendo la demanda en valor para los clientes y las partes interesadas."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -2636,18 +2632,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "It refers exclusively to the financial accounting of service costs charged to customers.",
-          "es": "Se refiere exclusivamente a la contabilidad financiera de los costes de servicio facturados a los clientes."
+          "en": "It replaces the need for guiding principles, governance, and continual improvement, which are optional add-ons under ITIL 4.",
+          "es": "Sustituye la necesidad de los principios rectores, la gobernanza y la mejora continua, que son complementos opcionales bajo ITIL 4."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "It replaces the need for guiding principles, governance, and continual improvement, which are optional add-ons under ITIL 4.",
-          "es": "Sustituye la necesidad de los principios rectores, la gobernanza y la mejora continua, que son complementos opcionales bajo ITIL 4."
+          "en": "It is the set of six activities (plan, improve, engage, design & transition, obtain/build, and deliver & support) that organisations combine and adapt into value streams to convert demand into value.",
+          "es": "Es el conjunto de seis actividades (planificar, mejorar, involucrar, diseñar y hacer la transición, obtener/construir, y entregar y dar soporte) que las organizaciones combinan y adaptan en flujos de valor para convertir la demanda en valor."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "The Service Value Chain is the operating model at the centre of the SVS: six activities that organisations combine into value streams appropriate to a given scenario, converting demand into value for customers and stakeholders.",
+          "es": "La Cadena de Valor del Servicio es el modelo operativo situado en el centro del SVS: seis actividades que las organizaciones combinan en flujos de valor adecuados a cada situación, convirtiendo la demanda en valor para los clientes y las partes interesadas."
+        }
       }
     ],
     "field": "ict-infrastructure",
@@ -2871,13 +2871,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "MTD applies only to financial-sector organisations and has no relevance elsewhere.",
+          "es": "El MTD solo se aplica a organizaciones del sector financiero y no tiene relevancia en ningún otro ámbito."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "RTO is always longer than MTD, since recovery naturally takes more time than the business can tolerate.",
+          "es": "El RTO siempre es más largo que el MTD, ya que la recuperación requiere de forma natural más tiempo del que el negocio puede tolerar."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "MTD and RTO must always be set to the exact same value, since they measure identical things.",
           "es": "El MTD y el RTO siempre deben fijarse exactamente en el mismo valor, ya que miden lo mismo."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "MTD is the absolute outer limit beyond which an outage causes unacceptable harm to the business; the RTO is the recovery target an organisation actually designs and invests toward, and sound planning always sets RTO comfortably within MTD rather than equal to or beyond it.",
           "es": "El MTD es el límite absoluto más allá del cual la interrupción causa un daño inaceptable a la organización, ya sea existencial o financiero; el RTO es el objetivo de recuperación que la organización realmente planifica y en el que invierte, y una buena planificación siempre sitúa el RTO cómodamente dentro del MTD, en lugar de igualarlo o superarlo."
@@ -2887,22 +2903,6 @@ export const QUESTIONS: Question[] = [
           "en": "MTD is the hard ceiling beyond which the disruption becomes existentially or financially unacceptable to the business; RTO is the target an organisation actually plans and invests to hit, and sound practice always keeps RTO safely inside MTD rather than pushing right up against or past it.",
           "es": "El MTD es el límite absoluto más allá del cual la interrupción resulta inaceptable para el negocio, ya sea existencial o financieramente; el RTO es el objetivo de recuperación que la organización realmente planifica y en el que invierte, y una buena planificación siempre sitúa el RTO con un margen cómodo dentro del MTD, en lugar de igualarlo o superarlo."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "RTO is always longer than MTD, since recovery naturally takes more time than the business can tolerate.",
-          "es": "El RTO siempre es más largo que el MTD, ya que la recuperación requiere de forma natural más tiempo del que el negocio puede tolerar."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "MTD applies only to financial-sector organisations and has no relevance elsewhere.",
-          "es": "El MTD solo se aplica a organizaciones del sector financiero y no tiene relevancia en ningún otro ámbito."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -2922,6 +2922,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A differential backup only ever captures a single file, regardless of how many files actually changed.",
+          "es": "Una copia diferencial solo llega a capturar un único archivo, independientemente de cuántos archivos hayan cambiado realmente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Incremental backups always take longer to create than a full backup, which is why they are rarely used in practice.",
+          "es": "Las copias incrementales siempre tardan más en crearse que una copia completa, razón por la cual rara vez se utilizan en la práctica."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "An incremental backup captures only the data that changed since the last backup of any type (full or incremental), making each incremental backup fast and small, but a full restore requires replaying every incremental in sequence; a differential backup captures all changes since the last full backup, so each one grows larger over time, but a restore only ever needs the last full backup plus the single latest differential.",
           "es": "Una copia incremental captura únicamente los datos que han cambiado desde la última copia de cualquier tipo (completa o incremental), lo que hace que cada copia incremental sea rápida y de tamaño reducido, pero una restauración completa exige reproducir todas las incrementales en orden; una copia diferencial captura todos los cambios desde la última copia completa, por lo que cada una va creciendo con el tiempo, pero una restauración solo necesita la última copia completa más la última diferencial."
         },
@@ -2932,26 +2948,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Incremental and differential backups are identical in every respect except for their name.",
           "es": "Las copias incrementales y las diferenciales son idénticas en todos los aspectos, salvo en su nombre."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A differential backup only ever captures a single file, regardless of how many files actually changed.",
-          "es": "Una copia diferencial solo llega a capturar un único archivo, independientemente de cuántos archivos hayan cambiado realmente."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Incremental backups always take longer to create than a full backup, which is why they are rarely used in practice.",
-          "es": "Las copias incrementales siempre tardan más en crearse que una copia completa, razón por la cual rara vez se utilizan en la práctica."
         },
         "isCorrect": false
       }
@@ -3032,14 +3032,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "It captures and replicates changes to a DR target continuously or at very short intervals, achieving a dramatically tighter RPO than a nightly backup can provide, since far less time's worth of data is ever at risk of being lost.",
-          "es": "Captura y replica los cambios hacia un destino de recuperación de forma continua o a intervalos muy breves, logrando un RPO drásticamente más ajustado del que puede ofrecer una copia de seguridad nocturna, ya que hay muchísimo menos tiempo de datos en riesgo de perderse en cualquier momento."
+          "en": "CDP primarily improves RTO, but has no meaningful effect on RPO whatsoever.",
+          "es": "La CDP mejora principalmente el RTO, pero no tiene ningún efecto relevante sobre el RPO."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "By replicating changes continuously or at very short intervals rather than waiting for the next scheduled backup window, CDP dramatically shrinks the amount of data that could ever be lost, which is exactly what a tighter RPO means.\n\n### Topic 5 — Infrastructure Monitoring, Capacity and Performance Management",
-          "es": "Al replicar los cambios hacia un destino de recuperación de forma continua o a intervalos muy breves, en lugar de esperar a la siguiente ventana de copia de seguridad programada, la CDP reduce drásticamente la cantidad de datos que podrían llegar a perderse en cualquier momento, que es exactamente lo que significa un RPO más ajustado.\n\n### Topic 5 — Monitorización de infraestructura, capacidad y gestión del rendimiento"
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3052,10 +3048,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "CDP primarily improves RTO, but has no meaningful effect on RPO whatsoever.",
-          "es": "La CDP mejora principalmente el RTO, pero no tiene ningún efecto relevante sobre el RPO."
+          "en": "It captures and replicates changes to a DR target continuously or at very short intervals, achieving a dramatically tighter RPO than a nightly backup can provide, since far less time's worth of data is ever at risk of being lost.",
+          "es": "Captura y replica los cambios hacia un destino de recuperación de forma continua o a intervalos muy breves, logrando un RPO drásticamente más ajustado del que puede ofrecer una copia de seguridad nocturna, ya que hay muchísimo menos tiempo de datos en riesgo de perderse en cualquier momento."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "By replicating changes continuously or at very short intervals rather than waiting for the next scheduled backup window, CDP dramatically shrinks the amount of data that could ever be lost, which is exactly what a tighter RPO means.\n\n### Topic 5 — Infrastructure Monitoring, Capacity and Performance Management",
+          "es": "Al replicar los cambios hacia un destino de recuperación de forma continua o a intervalos muy breves, en lugar de esperar a la siguiente ventana de copia de seguridad programada, la CDP reduce drásticamente la cantidad de datos que podrían llegar a perderse en cualquier momento, que es exactamente lo que significa un RPO más ajustado.\n\n### Topic 5 — Monitorización de infraestructura, capacidad y gestión del rendimiento"
+        }
       }
     ],
     "field": "ict-infrastructure",
@@ -3087,16 +3087,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "SLI, SLO and error budget are three interchangeable terms for the same underlying SLA already agreed with an external customer.",
-          "es": "SLI, SLO y presupuesto de errores son tres términos intercambiables para el mismo SLA subyacente ya acordado con un cliente externo."
+          "en": "The error budget is a fixed sum of money set aside to pay contractual penalties whenever an SLA is breached.",
+          "es": "El presupuesto de errores es una suma de dinero fija reservada para pagar las penalizaciones contractuales cada vez que se incumple un SLA."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "The error budget is a fixed sum of money set aside to pay contractual penalties whenever an SLA is breached.",
-          "es": "El presupuesto de errores es una suma de dinero fija reservada para pagar las penalizaciones contractuales cada vez que se incumple un SLA."
+          "en": "SLI, SLO and error budget are three interchangeable terms for the same underlying SLA already agreed with an external customer.",
+          "es": "SLI, SLO y presupuesto de errores son tres términos intercambiables para el mismo SLA subyacente ya acordado con un cliente externo."
         },
         "isCorrect": false
       },
@@ -3138,8 +3138,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Synthetic monitoring and RUM are two names for the exact same monitoring technique.",
-          "es": "La monitorización sintética y la RUM son dos nombres para exactamente la misma técnica de monitorización."
+          "en": "Synthetic monitoring requires no configuration and automatically monitors every possible user journey with zero setup.",
+          "es": "La monitorización sintética no requiere ninguna configuración y monitoriza automáticamente cualquier posible recorrido de usuario sin necesidad de configuración alguna."
         },
         "isCorrect": false
       },
@@ -3154,8 +3154,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Synthetic monitoring requires no configuration and automatically monitors every possible user journey with zero setup.",
-          "es": "La monitorización sintética no requiere ninguna configuración y monitoriza automáticamente cualquier posible recorrido de usuario sin necesidad de configuración alguna."
+          "en": "Synthetic monitoring and RUM are two names for the exact same monitoring technique.",
+          "es": "La monitorización sintética y la RUM son dos nombres para exactamente la misma técnica de monitorización."
         },
         "isCorrect": false
       }
@@ -3177,13 +3177,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "MTTD is only relevant to security incidents and has no application to general infrastructure incidents.",
+          "es": "El MTTD solo es relevante para incidencias de seguridad y no tiene aplicación en incidencias generales de infraestructura."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "MTTR always occurs before MTTD in the incident timeline.",
+          "es": "El MTTR siempre ocurre antes que el MTTD en la línea temporal de la incidencia."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "MTTD and MTTR both measure exactly the same interval, from the moment an incident begins until service is fully restored.",
           "es": "El MTTD y el MTTR miden exactamente el mismo intervalo, desde el momento en que comienza una incidencia hasta que el servicio queda totalmente restaurado."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "MTTD measures the average time between an incident actually starting and the team becoming aware of it, while MTTR measures the average time from when the team begins responding until the incident is fully resolved; reducing either metric shortens overall incident impact, but they target different parts of the timeline.",
           "es": "El MTTD mide el tiempo medio entre el inicio real de una incidencia y el momento en que el equipo la detecta, mientras que el MTTR mide el tiempo medio desde que el equipo comienza a responder hasta que la incidencia queda completamente resuelta; reducir cualquiera de las dos métricas acorta el impacto global de la incidencia, pero cada una se refiere a un tramo distinto de la línea temporal."
@@ -3193,22 +3209,6 @@ export const QUESTIONS: Question[] = [
           "en": "MTTD measures how long an incident goes unnoticed before anyone becomes aware of it, while MTTR measures how long it then takes to actually resolve it once response begins; both shorten overall impact when reduced, but they describe different segments of the incident timeline.",
           "es": "El MTTD mide cuánto tiempo pasa desapercibida una incidencia antes de que alguien la detecte, mientras que el MTTR mide cuánto tiempo se tarda después en resolverla realmente una vez que comienza la respuesta; reducir cualquiera de las dos métricas acorta el impacto global, pero cada una describe un tramo distinto de la línea temporal de la incidencia."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "MTTR always occurs before MTTD in the incident timeline.",
-          "es": "El MTTR siempre ocurre antes que el MTTD en la línea temporal de la incidencia."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "MTTD is only relevant to security incidents and has no application to general infrastructure incidents.",
-          "es": "El MTTD solo es relevante para incidencias de seguridad y no tiene aplicación en incidencias generales de infraestructura."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -3381,14 +3381,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Enterprise architecture and solution architecture describe exactly the same scope, differing only in which job title is assigned to the person doing the work.",
-          "es": "La arquitectura empresarial y la arquitectura de soluciones describen exactamente el mismo alcance, y solo se diferencian en el título del puesto asignado a la persona que realiza el trabajo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Enterprise architecture takes an organisation-wide view, aligning strategy, business capability and technology across all domains and projects, while solution architecture designs the specific architecture of a single system or project, working within the constraints and standards the enterprise architecture has established.",
           "es": "La arquitectura empresarial adopta una visión de toda la organización, alineando la estrategia, la capacidad de negocio y la tecnología a través de todos los dominios y proyectos, mientras que la arquitectura de soluciones diseña la arquitectura específica de un único sistema o proyecto, trabajando dentro de las restricciones y los estándares que la arquitectura empresarial ha establecido."
         },
@@ -3397,6 +3389,14 @@ export const QUESTIONS: Question[] = [
           "en": "Enterprise architecture takes the organisation-wide view, aligning strategy, capability and technology across every domain and project, while solution architecture works within that broader framework to design a single system or project, applying the enterprise's standards rather than setting them.",
           "es": "La arquitectura empresarial adopta la visión de toda la organización, alineando la estrategia, la capacidad de negocio y la tecnología a través de todos los dominios y proyectos, mientras que la arquitectura de soluciones trabaja dentro de ese marco más amplio para diseñar un único sistema o proyecto, aplicando los estándares de la empresa en lugar de fijarlos."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Enterprise architecture is only relevant to private-sector organisations and has no application within public administrations.",
+          "es": "La arquitectura empresarial solo es relevante para organizaciones del sector privado y no tiene aplicación dentro de las administraciones públicas."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3409,8 +3409,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Enterprise architecture is only relevant to private-sector organisations and has no application within public administrations.",
-          "es": "La arquitectura empresarial solo es relevante para organizaciones del sector privado y no tiene aplicación dentro de las administraciones públicas."
+          "en": "Enterprise architecture and solution architecture describe exactly the same scope, differing only in which job title is assigned to the person doing the work.",
+          "es": "La arquitectura empresarial y la arquitectura de soluciones describen exactamente el mismo alcance, y solo se diferencian en el título del puesto asignado a la persona que realiza el trabajo."
         },
         "isCorrect": false
       }
@@ -3432,14 +3432,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "TOGAF and ArchiMate are competing, mutually exclusive standards, and an organisation must choose only one.",
-          "es": "TOGAF y ArchiMate son estándares competidores y mutuamente excluyentes, y una organización debe elegir solo uno de los dos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "ArchiMate is a modelling notation used to visually represent and document architectures, while TOGAF is a methodology (the ADM) describing the process for developing architecture; the two are complementary and commonly used together, with ArchiMate diagrams used to express TOGAF ADM deliverables.",
           "es": "ArchiMate es una notación de modelado utilizada para representar y documentar visualmente las arquitecturas, mientras que TOGAF es una metodología (el ADM) que describe el proceso para desarrollar la arquitectura; ambos son complementarios y se utilizan habitualmente juntos, empleándose diagramas de ArchiMate para expresar los entregables del ADM de TOGAF."
         },
@@ -3448,6 +3440,14 @@ export const QUESTIONS: Question[] = [
           "en": "ArchiMate is a modelling notation for visually representing architecture, while TOGAF's ADM defines the process for developing it; they are complementary and commonly paired, with ArchiMate diagrams used to express the deliverables the ADM calls for at each phase.",
           "es": "ArchiMate es una notación de modelado para representar visualmente la arquitectura, mientras que el ADM de TOGAF define el proceso para desarrollarla; ambos son complementarios y se combinan habitualmente, utilizándose diagramas de ArchiMate para expresar los entregables que el ADM exige en cada fase."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "TOGAF and ArchiMate are competing, mutually exclusive standards, and an organisation must choose only one.",
+          "es": "TOGAF y ArchiMate son estándares competidores y mutuamente excluyentes, y una organización debe elegir solo uno de los dos."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3483,13 +3483,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It is a single physical server room where all architecture team members must work on-site.",
-          "es": "Es una única sala de servidores física donde todos los miembros del equipo de arquitectura deben trabajar de forma presencial."
+          "en": "It replaces the need for architecture governance, since anything stored there is automatically pre-approved.",
+          "es": "Sustituye la necesidad de la gobernanza de la arquitectura, ya que todo lo almacenado en él queda automáticamente preaprobado."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "It is a synonym for the CMDB used to store configuration items for change management.",
+          "es": "Es un sinónimo de la CMDB utilizada para almacenar elementos de configuración para la gestión de cambios."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "It provides a structured store for architecture-related outputs — reference architectures, standards, patterns, and governance artefacts from prior and ongoing ADM cycles — so that new architecture work can reuse and build on what already exists rather than starting from a blank page each time.",
           "es": "Proporciona un almacén estructurado para los productos relacionados con la arquitectura —arquitecturas de referencia, estándares, patrones y artefactos de gobernanza de ciclos del ADM anteriores y en curso—, de modo que el nuevo trabajo de arquitectura pueda reutilizar y construirse sobre lo que ya existe, en lugar de partir de cero cada vez."
@@ -3501,18 +3509,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "It is a synonym for the CMDB used to store configuration items for change management.",
-          "es": "Es un sinónimo de la CMDB utilizada para almacenar elementos de configuración para la gestión de cambios."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "It replaces the need for architecture governance, since anything stored there is automatically pre-approved.",
-          "es": "Sustituye la necesidad de la gobernanza de la arquitectura, ya que todo lo almacenado en él queda automáticamente preaprobado."
+          "en": "It is a single physical server room where all architecture team members must work on-site.",
+          "es": "Es una única sala de servidores física donde todos los miembros del equipo de arquitectura deben trabajar de forma presencial."
         },
         "isCorrect": false
       }
@@ -3542,6 +3542,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Interoperability is defined purely in financial terms, based only on the shared cost of maintaining common infrastructure.",
+          "es": "La interoperabilidad se define en términos puramente financieros, basándose únicamente en el coste compartido de mantener una infraestructura común."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Legal, organisational, semantic, and technical interoperability — ranging from aligned legislation and coordinated processes, through a shared, precise meaning of exchanged data, down to the technical specifications and standards that let systems actually connect and exchange that data.",
           "es": "Interoperabilidad legal, organizativa, semántica y técnica, que abarca desde la legislación alineada y los procesos coordinados, pasando por un significado compartido y preciso de los datos intercambiados, hasta las especificaciones y estándares técnicos que permiten que los sistemas realmente se conecten e intercambien esos datos."
         },
@@ -3550,14 +3558,6 @@ export const QUESTIONS: Question[] = [
           "en": "The EIF defines interoperability across legal, organisational, semantic and technical layers, running from aligned legislation and coordinated processes, through a shared and precise meaning for exchanged data, down to the technical standards that let systems actually connect — a structure specifically built for cross-border public-sector digital services.\n\n### Topic 7 — Infrastructure Security Fundamentals",
           "es": "El EIF define la interoperabilidad a través de capas legal, organizativa, semántica y técnica, que van desde una legislación alineada y unos procesos coordinados, pasando por un significado compartido y preciso de los datos intercambiados, hasta los estándares técnicos que permiten que los sistemas realmente se conecten; una estructura pensada específicamente para los servicios públicos digitales transfronterizos.\n\n### Topic 7 — Fundamentos de seguridad de infraestructura"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Interoperability is defined purely in financial terms, based only on the shared cost of maintaining common infrastructure.",
-          "es": "La interoperabilidad se define en términos puramente financieros, basándose únicamente en el coste compartido de mantener una infraestructura común."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -3585,13 +3585,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Zero Trust means no encryption is used anywhere on the network, since trust relationships have been eliminated entirely.",
+          "es": "Zero Trust significa que no se utiliza cifrado en ninguna parte de la red, ya que las relaciones de confianza se han eliminado por completo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Zero Trust assumes that anything already inside the network perimeter can automatically be trusted, while a perimeter-based model requires continuous verification of every request.",
           "es": "Zero Trust asume que cualquier elemento que ya se encuentre dentro del perímetro de la red puede considerarse automáticamente de confianza, mientras que un modelo basado en el perímetro exige una verificación continua de cada solicitud."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Zero Trust is simply a rebranding of a traditional firewall, with no substantive architectural difference.",
+          "es": "Zero Trust es simplemente un cambio de nombre de un cortafuegos tradicional, sin ninguna diferencia arquitectónica sustancial."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "Zero Trust requires every access request to be explicitly verified and authorised based on identity, device posture and context — regardless of whether it originates inside or outside the traditional network perimeter — rather than assuming that anything already inside the perimeter is inherently trustworthy.",
           "es": "Zero Trust exige que cada solicitud de acceso se verifique y autorice explícitamente en función de la identidad, el estado del dispositivo y el contexto —independientemente de si se origina dentro o fuera del perímetro tradicional de la red—, en lugar de asumir que cualquier elemento ya presente dentro del perímetro es inherentemente digno de confianza."
@@ -3601,22 +3617,6 @@ export const QUESTIONS: Question[] = [
           "en": "Zero Trust requires every access request to be explicitly verified based on identity, device posture and context, regardless of whether it originates inside or outside the traditional network boundary, rather than assuming anything already inside the perimeter is automatically trustworthy the way a castle-and-moat model does.",
           "es": "Zero Trust exige que cada solicitud de acceso se verifique explícitamente en función de la identidad, el estado del dispositivo y el contexto, independientemente de si se origina dentro o fuera del límite tradicional de la red, en lugar de asumir que cualquier elemento ya presente dentro del perímetro es automáticamente digno de confianza, como sí hace un modelo de castillo y foso."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Zero Trust means no encryption is used anywhere on the network, since trust relationships have been eliminated entirely.",
-          "es": "Zero Trust significa que no se utiliza cifrado en ninguna parte de la red, ya que las relaciones de confianza se han eliminado por completo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Zero Trust is simply a rebranding of a traditional firewall, with no substantive architectural difference.",
-          "es": "Zero Trust es simplemente un cambio de nombre de un cortafuegos tradicional, sin ninguna diferencia arquitectónica sustancial."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -3636,13 +3636,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Segmentation exists purely to improve network speed, and has no bearing on security.",
+          "es": "La segmentación existe únicamente para mejorar la velocidad de la red, y no tiene ninguna relación con la seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "It guarantees that no device connected to the network can ever be compromised.",
           "es": "Garantiza que ningún dispositivo conectado a la red pueda verse comprometido jamás."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Microsegmentation refers exclusively to physically separating network cables of different colours.",
+          "es": "La microsegmentación se refiere exclusivamente a separar físicamente cables de red de distintos colores."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "It divides the network into smaller, isolated zones with controlled traffic between them, so that if an attacker compromises one segment, their ability to move laterally to other systems and segments is significantly restricted, containing the blast radius of a breach.",
           "es": "Divide la red en zonas más pequeñas y aisladas, con tráfico controlado entre ellas, de modo que, si un atacante compromete un segmento, su capacidad de desplazarse lateralmente hacia otros sistemas y segmentos queda significativamente restringida, conteniendo así el radio de impacto de una brecha."
@@ -3652,22 +3668,6 @@ export const QUESTIONS: Question[] = [
           "en": "Segmenting the network into smaller, controlled zones limits how far an attacker who compromises one part of the network can move laterally into others, containing the blast radius of a breach rather than leaving every system reachable from any compromised point on a flat network.",
           "es": "Segmentar la red en zonas más pequeñas y controladas limita hasta dónde puede desplazarse lateralmente un atacante que comprometa una parte de la red hacia otras, conteniendo el radio de impacto de una brecha en lugar de dejar cualquier sistema alcanzable desde cualquier punto comprometido en una red plana."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Segmentation exists purely to improve network speed, and has no bearing on security.",
-          "es": "La segmentación existe únicamente para mejorar la velocidad de la red, y no tiene ninguna relación con la seguridad."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Microsegmentation refers exclusively to physically separating network cables of different colours.",
-          "es": "La microsegmentación se refiere exclusivamente a separar físicamente cables de red de distintos colores."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -3738,6 +3738,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Implementing encryption at rest automatically also encrypts all data in transit, making separate transit encryption unnecessary.",
+          "es": "Implementar el cifrado en reposo también cifra automáticamente todos los datos en tránsito, haciendo innecesario un cifrado de tránsito independiente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Encryption at rest protects data stored on disks or backups from being read if the storage media is stolen or accessed without authorisation, while encryption in transit protects data as it moves across a network from being intercepted or read by an eavesdropper; a system exposed to both risks needs both forms of protection, since one does not substitute for the other.",
           "es": "El cifrado en reposo protege los datos almacenados en discos o copias de seguridad frente a su lectura si el soporte de almacenamiento es robado o se accede a él sin autorización, mientras que el cifrado en tránsito protege los datos mientras se desplazan por una red frente a su interceptación o lectura por parte de un espía; un sistema expuesto a ambos riesgos necesita ambas formas de protección, ya que una no sustituye a la otra."
         },
@@ -3748,26 +3756,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "Encryption in transit protects stored data on disk, while encryption at rest protects data flowing across the network.",
-          "es": "El cifrado en tránsito protege los datos almacenados en disco, mientras que el cifrado en reposo protege los datos que circulan por la red."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "C",
         "text": {
-          "en": "Implementing encryption at rest automatically also encrypts all data in transit, making separate transit encryption unnecessary.",
-          "es": "Implementar el cifrado en reposo también cifra automáticamente todos los datos en tránsito, haciendo innecesario un cifrado de tránsito independiente."
+          "en": "Encryption at rest and in transit are only relevant to cloud-hosted systems, and unnecessary for on-premises infrastructure.",
+          "es": "El cifrado en reposo y en tránsito solo son relevantes para los sistemas alojados en la nube, y resultan innecesarios en la infraestructura local (on-premises)."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Encryption at rest and in transit are only relevant to cloud-hosted systems, and unnecessary for on-premises infrastructure.",
-          "es": "El cifrado en reposo y en tránsito solo son relevantes para los sistemas alojados en la nube, y resultan innecesarios en la infraestructura local (on-premises)."
+          "en": "Encryption in transit protects stored data on disk, while encryption at rest protects data flowing across the network.",
+          "es": "El cifrado en tránsito protege los datos almacenados en disco, mientras que el cifrado en reposo protege los datos que circulan por la red."
         },
         "isCorrect": false
       }
@@ -3840,6 +3840,30 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Push-based tools cannot be run on a schedule, while pull-based tools can only ever be triggered manually.",
+          "es": "Las herramientas basadas en push no pueden ejecutarse de forma programada, mientras que las herramientas basadas en pull solo pueden activarse manualmente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A pull-based model requires the controller to initiate every configuration change manually, while a push-based model runs entirely autonomously with no configuration source at all.",
+          "es": "Un modelo basado en pull exige que el controlador inicie manualmente cada cambio de configuración, mientras que un modelo basado en push funciona de forma totalmente autónoma sin ninguna fuente de configuración."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Push and pull models are identical in practice, differing only in the marketing terminology used by each vendor.",
+          "es": "Los modelos push y pull son idénticos en la práctica, y solo se diferencian en la terminología de marketing que utiliza cada proveedor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "In a push model, a central controller initiates connections to target nodes and applies configuration on demand, without requiring a persistent agent running on each node; in a pull model, an agent installed on each node periodically checks in with a central server and pulls down and applies its own configuration on a regular schedule.",
           "es": "En un modelo push, un controlador central inicia las conexiones hacia los nodos de destino y aplica la configuración bajo demanda, sin necesitar un agente persistente en ejecución en cada nodo; en un modelo pull, un agente instalado en cada nodo se conecta periódicamente con un servidor central y descarga y aplica su propia configuración conforme a un calendario regular."
         },
@@ -3848,30 +3872,6 @@ export const QUESTIONS: Question[] = [
           "en": "In a push model, a central controller connects out to targets and applies configuration on demand with no persistent agent required; in a pull model, an agent running on each node checks in with a central server on its own schedule and pulls down whatever configuration applies to it.",
           "es": "En un modelo push, un controlador central se conecta a los destinos y aplica la configuración bajo demanda, sin necesitar ningún agente persistente; en un modelo pull, un agente que se ejecuta en cada nodo se conecta con un servidor central conforme a su propio calendario y descarga la configuración que le corresponde."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Push and pull models are identical in practice, differing only in the marketing terminology used by each vendor.",
-          "es": "Los modelos push y pull son idénticos en la práctica, y solo se diferencian en la terminología de marketing que utiliza cada proveedor."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A pull-based model requires the controller to initiate every configuration change manually, while a push-based model runs entirely autonomously with no configuration source at all.",
-          "es": "Un modelo basado en pull exige que el controlador inicie manualmente cada cambio de configuración, mientras que un modelo basado en push funciona de forma totalmente autónoma sin ninguna fuente de configuración."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Push-based tools cannot be run on a schedule, while pull-based tools can only ever be triggered manually.",
-          "es": "Las herramientas basadas en push no pueden ejecutarse de forma programada, mientras que las herramientas basadas en pull solo pueden activarse manualmente."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-infrastructure",
@@ -3891,8 +3891,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Continuous delivery and continuous deployment are exactly the same practice, just using regional spelling differences.",
-          "es": "La entrega continua y el despliegue continuo son exactamente la misma práctica, solo que con diferencias ortográficas regionales."
+          "en": "Continuous deployment only applies to database changes, while continuous delivery only applies to application code.",
+          "es": "El despliegue continuo solo se aplica a los cambios en bases de datos, mientras que la entrega continua solo se aplica al código de la aplicación."
         },
         "isCorrect": false
       },
@@ -3911,8 +3911,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Continuous deployment only applies to database changes, while continuous delivery only applies to application code.",
-          "es": "El despliegue continuo solo se aplica a los cambios en bases de datos, mientras que la entrega continua solo se aplica al código de la aplicación."
+          "en": "Continuous delivery and continuous deployment are exactly the same practice, just using regional spelling differences.",
+          "es": "La entrega continua y el despliegue continuo son exactamente la misma práctica, solo que con diferencias ortográficas regionales."
         },
         "isCorrect": false
       },
@@ -3950,14 +3950,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "It records the tool's understanding of the currently-deployed infrastructure and how it maps to the resources declared in the configuration, so the tool can compute the difference between desired and actual state and determine exactly what to create, change, or destroy on the next run.",
-          "es": "Registra lo que la herramienta entiende que está realmente desplegado y cómo se corresponde con los recursos declarados en la configuración, lo que le permite calcular la diferencia entre el estado deseado y el estado real, y determinar exactamente qué crear, cambiar o destruir en la siguiente ejecución."
+          "en": "The state file exists purely to encrypt secrets and credentials used during provisioning.",
+          "es": "El archivo de estado existe únicamente para cifrar los secretos y las credenciales utilizados durante el aprovisionamiento."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Terraform's state file is its record of what it believes is actually deployed and how that maps to the resources declared in configuration, which is what lets it compute the difference between desired and actual state and decide precisely what to create, modify, or destroy on the next run.",
-          "es": "El archivo de estado de Terraform es su registro de lo que cree que está realmente desplegado y de cómo se corresponde con los recursos declarados en la configuración, lo que le permite calcular la diferencia entre el estado deseado y el real y decidir con precisión qué crear, modificar o destruir en la siguiente ejecución."
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3970,10 +3966,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "The state file exists purely to encrypt secrets and credentials used during provisioning.",
-          "es": "El archivo de estado existe únicamente para cifrar los secretos y las credenciales utilizados durante el aprovisionamiento."
+          "en": "It records the tool's understanding of the currently-deployed infrastructure and how it maps to the resources declared in the configuration, so the tool can compute the difference between desired and actual state and determine exactly what to create, change, or destroy on the next run.",
+          "es": "Registra lo que la herramienta entiende que está realmente desplegado y cómo se corresponde con los recursos declarados en la configuración, lo que le permite calcular la diferencia entre el estado deseado y el estado real, y determinar exactamente qué crear, cambiar o destruir en la siguiente ejecución."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Terraform's state file is its record of what it believes is actually deployed and how that maps to the resources declared in configuration, which is what lets it compute the difference between desired and actual state and decide precisely what to create, modify, or destroy on the next run.",
+          "es": "El archivo de estado de Terraform es su registro de lo que cree que está realmente desplegado y de cómo se corresponde con los recursos declarados en la configuración, lo que le permite calcular la diferencia entre el estado deseado y el real y decidir con precisión qué crear, modificar o destruir en la siguiente ejecución."
+        }
       }
     ],
     "field": "ict-infrastructure",

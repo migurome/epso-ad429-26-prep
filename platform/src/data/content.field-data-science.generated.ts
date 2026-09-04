@@ -66,6 +66,30 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Encrypt data while it is in transit between two microservices.",
+          "es": "Cifrar los datos mientras están en tránsito entre dos microservicios."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Automatically resolve schema conflicts between two data warehouses.",
+          "es": "Resolver automáticamente los conflictos de esquema entre dos data warehouses."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Compress historical records to reduce data lake storage costs.",
+          "es": "Comprimir registros históricos para reducir los costes de almacenamiento en un data lake."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Capture only the rows that have changed in a source system since the last extraction — often by reading the source's transaction log — so downstream systems can be updated incrementally.",
           "es": "Capturar únicamente las filas que han cambiado en un sistema de origen desde la última extracción —a menudo leyendo el registro de transacciones del origen— de modo que los sistemas posteriores puedan actualizarse de forma incremental."
         },
@@ -74,30 +98,6 @@ export const QUESTIONS: Question[] = [
           "en": "CDC identifies and propagates only the changed rows since the last extraction, commonly by tailing the source database's transaction log, enabling efficient incremental loads instead of full re-extraction.",
           "es": "CDC identifica y propaga únicamente las filas modificadas desde la última extracción, habitualmente leyendo el registro de transacciones de la base de datos origen, lo que permite cargas incrementales eficientes en lugar de una reextracción completa."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Encrypt data while it is in transit between two microservices.",
-          "es": "Cifrar los datos mientras están en tránsito entre dos microservicios."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Automatically resolve schema conflicts between two data warehouses.",
-          "es": "Resolver automáticamente los conflictos de esquema entre dos data warehouses."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Compress historical records to reduce data lake storage costs.",
-          "es": "Comprimir registros históricos para reducir los costes de almacenamiento en un data lake."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -168,6 +168,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A systematic rounding error introduced when joining two floating-point columns.",
+          "es": "Un error de redondeo sistemático que se introduce al unir dos columnas de coma flotante."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "A situation where one or a few join keys hold disproportionately many rows, causing the tasks handling them to run far longer than the rest.",
           "es": "Una situación en la que una o unas pocas claves de unión concentran un número desproporcionado de filas, lo que hace que las tareas que las gestionan tarden mucho más que el resto."
         },
@@ -178,26 +186,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "A systematic rounding error introduced when joining two floating-point columns.",
-          "es": "Un error de redondeo sistemático que se introduce al unir dos columnas de coma flotante."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "C",
         "text": {
-          "en": "A join returning fewer rows than expected because a database index is missing.",
-          "es": "Una unión que devuelve menos filas de las esperadas porque falta un índice de base de datos."
+          "en": "The scheduling delay between a job being submitted and being executed.",
+          "es": "El retraso de programación entre el envío de un trabajo y su ejecución."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "The scheduling delay between a job being submitted and being executed.",
-          "es": "El retraso de programación entre el envío de un trabajo y su ejecución."
+          "en": "A join returning fewer rows than expected because a database index is missing.",
+          "es": "Una unión que devuelve menos filas de las esperadas porque falta un índice de base de datos."
         },
         "isCorrect": false
       }
@@ -576,14 +576,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Row, column and cell, as in a relational table.",
-          "es": "Fila, columna y celda, como en una tabla relacional."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Subject, predicate and object — for example, \"Paris — isCapitalOf — France\".",
           "es": "Sujeto, predicado y objeto —por ejemplo, «París — isCapitalOf — Francia»—."
         },
@@ -592,6 +584,14 @@ export const QUESTIONS: Question[] = [
           "en": "RDF represents facts as subject–predicate–object triples, forming a graph of statements rather than rows in a table.",
           "es": "RDF representa hechos como tripletas sujeto-predicado-objeto, formando un grafo de enunciados en lugar de filas de una tabla."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Row, column and cell, as in a relational table.",
+          "es": "Fila, columna y celda, como en una tabla relacional."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -627,13 +627,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A markup language for describing website navigation structures.",
+          "es": "Un lenguaje de marcado para describir estructuras de navegación de sitios web."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "A NoSQL database engine optimised for key-value lookups.",
           "es": "Un motor de base de datos NoSQL optimizado para búsquedas clave-valor."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "A binary data-serialisation format equivalent to Protocol Buffers.",
+          "es": "Un formato binario de serialización de datos equivalente a Protocol Buffers."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "A query language for retrieving and manipulating data stored as RDF, playing a role for RDF graphs similar to what SQL plays for relational tables.",
           "es": "Un lenguaje de consulta para recuperar y manipular datos almacenados como RDF, que desempeña para los grafos RDF un papel similar al que SQL desempeña para las tablas relacionales."
@@ -643,22 +659,6 @@ export const QUESTIONS: Question[] = [
           "en": "SPARQL is the standard query language for RDF data, used to match graph patterns and retrieve triples — functionally analogous to SQL for relational databases, though the underlying data model is very different.",
           "es": "SPARQL es el lenguaje de consulta estándar para los datos RDF, utilizado para buscar patrones en el grafo y recuperar tripletas, funcionalmente análogo a SQL para las bases de datos relacionales, aunque el modelo de datos subyacente es muy distinto."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A markup language for describing website navigation structures.",
-          "es": "Un lenguaje de marcado para describir estructuras de navegación de sitios web."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A binary data-serialisation format equivalent to Protocol Buffers.",
-          "es": "Un formato binario de serialización de datos equivalente a Protocol Buffers."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -729,14 +729,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Replace relational databases with graph databases for all use cases.",
-          "es": "Sustituir las bases de datos relacionales por bases de datos de grafos en todos los casos de uso."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Represent controlled vocabularies, thesauri and classification schemes — using relations such as broader, narrower and related — in a form compatible with RDF and linked data.",
           "es": "Representar vocabularios controlados, tesauros y esquemas de clasificación —mediante relaciones como más amplio (broader), más específico (narrower) y relacionado (related)— de forma compatible con RDF y los datos enlazados (linked data)."
         },
@@ -747,18 +739,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "Encrypt sensitive fields within a data catalogue's metadata.",
+          "es": "Cifrar los campos sensibles dentro de los metadatos de un catálogo de datos."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "Compress large ontologies to reduce their storage footprint.",
-          "es": "Comprimir ontologías grandes para reducir su huella de almacenamiento."
+          "en": "Replace relational databases with graph databases for all use cases.",
+          "es": "Sustituir las bases de datos relacionales por bases de datos de grafos en todos los casos de uso."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Encrypt sensitive fields within a data catalogue's metadata.",
-          "es": "Cifrar los campos sensibles dentro de los metadatos de un catálogo de datos."
+          "en": "Compress large ontologies to reduce their storage footprint.",
+          "es": "Comprimir ontologías grandes para reducir su huella de almacenamiento."
         },
         "isCorrect": false
       }
@@ -788,14 +788,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Describe and publish metadata about datasets and data services — as used by open-data portals such as data.europa.eu — to make them discoverable and comparable across catalogues.",
-          "es": "Describir y publicar metadatos sobre conjuntos de datos y servicios de datos —tal como se usa en portales de datos abiertos como data.europa.eu— para hacerlos localizables y comparables entre catálogos."
+          "en": "Serve as a general-purpose scripting language for writing ETL jobs.",
+          "es": "Servir como lenguaje de scripting de propósito general para escribir trabajos ETL."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "DCAT is a metadata vocabulary for describing datasets and data services so they can be catalogued, discovered and compared across portals — this is exactly what underpins EU open-data portals like data.europa.eu.\n\n### Topic 4 — HPC and Parallel Processing",
-          "es": "DCAT es un vocabulario de metadatos para describir conjuntos de datos y servicios de datos de modo que puedan catalogarse, localizarse y compararse entre portales; esto es exactamente lo que sustenta portales de datos abiertos de la UE como data.europa.eu.\n\n### Topic 4 — HPC y procesamiento paralelo"
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -808,10 +804,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Serve as a general-purpose scripting language for writing ETL jobs.",
-          "es": "Servir como lenguaje de scripting de propósito general para escribir trabajos ETL."
+          "en": "Describe and publish metadata about datasets and data services — as used by open-data portals such as data.europa.eu — to make them discoverable and comparable across catalogues.",
+          "es": "Describir y publicar metadatos sobre conjuntos de datos y servicios de datos —tal como se usa en portales de datos abiertos como data.europa.eu— para hacerlos localizables y comparables entre catálogos."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "DCAT is a metadata vocabulary for describing datasets and data services so they can be catalogued, discovered and compared across portals — this is exactly what underpins EU open-data portals like data.europa.eu.\n\n### Topic 4 — HPC and Parallel Processing",
+          "es": "DCAT es un vocabulario de metadatos para describir conjuntos de datos y servicios de datos de modo que puedan catalogarse, localizarse y compararse entre portales; esto es exactamente lo que sustenta portales de datos abiertos de la UE como data.europa.eu.\n\n### Topic 4 — HPC y procesamiento paralelo"
+        }
       }
     ],
     "field": "data-science",
@@ -831,13 +831,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The number of GPU cores available, regardless of how the program is structured.",
-          "es": "El número de núcleos de GPU disponibles, independientemente de cómo esté estructurado el programa."
+          "en": "The clock speed of the single slowest processor in the cluster.",
+          "es": "La velocidad de reloj del procesador más lento del clúster."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "The total amount of RAM installed across the cluster.",
+          "es": "La cantidad total de RAM instalada en todo el clúster."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "The proportion of the program that must remain serial and cannot be parallelised — speedup is capped by this fraction, however many processors are added.",
           "es": "La proporción del programa que debe permanecer secuencial y no puede paralelizarse —la aceleración queda limitada por esa fracción, por muchos procesadores que se añadan."
@@ -849,18 +857,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "The total amount of RAM installed across the cluster.",
-          "es": "La cantidad total de RAM instalada en todo el clúster."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "The clock speed of the single slowest processor in the cluster.",
-          "es": "La velocidad de reloj del procesador más lento del clúster."
+          "en": "The number of GPU cores available, regardless of how the program is structured.",
+          "es": "El número de núcleos de GPU disponibles, independientemente de cómo esté estructurado el programa."
         },
         "isCorrect": false
       }
@@ -984,14 +984,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Involve highly sequential control logic with many data-dependent branches.",
-          "es": "Implican una lógica de control muy secuencial con numerosas bifurcaciones dependientes de los datos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Apply the same simple arithmetic operation across large, regular arrays of data in parallel — for example, matrix multiplication.",
           "es": "Aplican la misma operación aritmética sencilla en paralelo sobre matrices de datos grandes y regulares —por ejemplo, la multiplicación de matrices."
         },
@@ -1002,18 +994,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "Are dominated by disk I/O rather than by computation.",
+          "es": "Están dominadas por la E/S de disco más que por el cómputo."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "Require frequent, low-latency access to a single shared mutable data structure.",
-          "es": "Requieren un acceso frecuente y de baja latencia a una única estructura de datos mutable y compartida."
+          "en": "Involve highly sequential control logic with many data-dependent branches.",
+          "es": "Implican una lógica de control muy secuencial con numerosas bifurcaciones dependientes de los datos."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Are dominated by disk I/O rather than by computation.",
-          "es": "Están dominadas por la E/S de disco más que por el cómputo."
+          "en": "Require frequent, low-latency access to a single shared mutable data structure.",
+          "es": "Requieren un acceso frecuente y de baja latencia a una única estructura de datos mutable y compartida."
         },
         "isCorrect": false
       }
@@ -1035,14 +1035,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Work is unevenly distributed across workers, so a few overloaded workers (\"stragglers\") become finish points that the rest of the job must wait for.",
-          "es": "El trabajo se reparte de forma desigual entre los procesos, de modo que unos pocos procesos sobrecargados («rezagados», stragglers) se convierten en puntos de finalización que el resto del trabajo debe esperar."
+          "en": "Two unrelated jobs happen to be scheduled at exactly the same time.",
+          "es": "Dos trabajos no relacionados se programan por casualidad exactamente al mismo tiempo."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Load imbalance means work is unevenly split across workers; the whole job's completion time is then dictated by the slowest (\"straggler\") worker, even if total compute capacity is more than sufficient.\n\n### Topic 5 — Advanced Data Integration and APIs",
-          "es": "El desequilibrio de carga significa que el trabajo se reparte de forma desigual entre los procesos; el tiempo de finalización de todo el trabajo queda entonces dictado por el proceso más lento («rezagado»), aunque la capacidad de cómputo total sea más que suficiente.\n\n### Topic 5 — Integración avanzada de datos y APIs"
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -1055,10 +1051,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Two unrelated jobs happen to be scheduled at exactly the same time.",
-          "es": "Dos trabajos no relacionados se programan por casualidad exactamente al mismo tiempo."
+          "en": "Work is unevenly distributed across workers, so a few overloaded workers (\"stragglers\") become finish points that the rest of the job must wait for.",
+          "es": "El trabajo se reparte de forma desigual entre los procesos, de modo que unos pocos procesos sobrecargados («rezagados», stragglers) se convierten en puntos de finalización que el resto del trabajo debe esperar."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Load imbalance means work is unevenly split across workers; the whole job's completion time is then dictated by the slowest (\"straggler\") worker, even if total compute capacity is more than sufficient.\n\n### Topic 5 — Advanced Data Integration and APIs",
+          "es": "El desequilibrio de carga significa que el trabajo se reparte de forma desigual entre los procesos; el tiempo de finalización de todo el trabajo queda entonces dictado por el proceso más lento («rezagado»), aunque la capacidad de cómputo total sea más que suficiente.\n\n### Topic 5 — Integración avanzada de datos y APIs"
+        }
       },
       {
         "id": "D",
@@ -1086,14 +1086,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Encrypt the request payload before transmission.",
-          "es": "Cifrar el cuerpo de la solicitud antes de la transmisión."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Let the server recognise a duplicate retry of the same request and return the original result instead of performing the operation again — preventing, for example, a double charge.",
           "es": "Permitir que el servidor reconozca un reintento duplicado de la misma solicitud y devuelva el resultado original en lugar de volver a ejecutar la operación, evitando así, por ejemplo, un cobro duplicado."
         },
@@ -1104,7 +1096,7 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "Authenticate the client in place of an API token.",
           "es": "Autenticar al cliente en lugar de un token de API."
@@ -1112,10 +1104,18 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "C",
         "text": {
           "en": "Indicate which version of the API the request should be routed to.",
           "es": "Indicar a qué versión de la API debe dirigirse la solicitud."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Encrypt the request payload before transmission.",
+          "es": "Cifrar el cuerpo de la solicitud antes de la transmisión."
         },
         "isCorrect": false
       }
@@ -1137,20 +1137,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It avoids skipped or duplicated records when rows are inserted or deleted between page requests, and it does not slow down for deep pages the way offset scans typically do.",
-          "es": "Evita omitir o duplicar registros cuando se insertan o eliminan filas entre solicitudes de página sucesivas, y no se ralentiza en páginas profundas del modo en que suelen hacerlo los recorridos por desplazamiento."
+          "en": "It always returns results in a random order, which improves load balancing across servers.",
+          "es": "Siempre devuelve los resultados en un orden aleatorio, lo que mejora el equilibrio de carga entre servidores."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Keyset pagination anchors each page to a value (a cursor) rather than a row offset, so it is unaffected by concurrent inserts/deletes shifting row positions, and it avoids the performance cost of scanning-and-skipping large offsets.",
-          "es": "La paginación por cursor ancla cada página a un valor (un cursor) en lugar de a un desplazamiento de filas, por lo que no se ve afectada por inserciones o eliminaciones concurrentes que desplazan la posición de las filas, y evita el coste de rendimiento de recorrer y omitir grandes desplazamientos."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "It always returns results in a random order, which improves load balancing across servers.",
-          "es": "Siempre devuelve los resultados en un orden aleatorio, lo que mejora el equilibrio de carga entre servidores."
+          "en": "It guarantees that every page contains exactly the same number of items.",
+          "es": "Garantiza que cada página contenga exactamente el mismo número de elementos."
         },
         "isCorrect": false
       },
@@ -1165,10 +1161,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "It guarantees that every page contains exactly the same number of items.",
-          "es": "Garantiza que cada página contenga exactamente el mismo número de elementos."
+          "en": "It avoids skipped or duplicated records when rows are inserted or deleted between page requests, and it does not slow down for deep pages the way offset scans typically do.",
+          "es": "Evita omitir o duplicar registros cuando se insertan o eliminan filas entre solicitudes de página sucesivas, y no se ralentiza en páginas profundas del modo en que suelen hacerlo los recorridos por desplazamiento."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Keyset pagination anchors each page to a value (a cursor) rather than a row offset, so it is unaffected by concurrent inserts/deletes shifting row positions, and it avoids the performance cost of scanning-and-skipping large offsets.",
+          "es": "La paginación por cursor ancla cada página a un valor (un cursor) en lugar de a un desplazamiento de filas, por lo que no se ve afectada por inserciones o eliminaciones concurrentes que desplazan la posición de las filas, y evita el coste de rendimiento de recorrer y omitir grandes desplazamientos."
+        }
       }
     ],
     "field": "data-science",
@@ -1188,13 +1188,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Automatically generate API documentation from source-code comments.",
+          "es": "Generar automáticamente documentación de la API a partir de comentarios del código fuente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Measure API response latency under simulated load.",
+          "es": "Medir la latencia de respuesta de la API bajo carga simulada."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Replace the need for integration testing entirely.",
           "es": "Sustituir por completo la necesidad de pruebas de integración."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Detect, before deployment and without a full end-to-end environment, that a provider's proposed API change would break an expectation its consumers actually rely on.",
           "es": "Detectar, antes del despliegue y sin necesidad de un entorno completo de extremo a extremo, que un cambio de API propuesto por un proveedor rompería una expectativa de la que realmente dependen sus consumidores."
@@ -1204,22 +1220,6 @@ export const QUESTIONS: Question[] = [
           "en": "Consumer-driven contract tests encode what consumers actually rely on from a provider's API and run them against the provider in CI, catching breaking changes early without needing a full integrated environment.",
           "es": "Las pruebas de contrato impulsadas por el consumidor codifican aquello de lo que los consumidores realmente dependen en la API de un proveedor y las ejecutan contra el proveedor en CI, detectando los cambios incompatibles con antelación sin necesidad de un entorno integrado completo."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Automatically generate API documentation from source-code comments.",
-          "es": "Generar automáticamente documentación de la API a partir de comentarios del código fuente."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Measure API response latency under simulated load.",
-          "es": "Medir la latencia de respuesta de la API bajo carga simulada."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -1239,6 +1239,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Because consumers are legally obliged to log every message exactly twice.",
+          "es": "Porque los consumidores están legalmente obligados a registrar cada mensaje exactamente dos veces."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because producers are contractually forbidden from ever retrying a failed send.",
+          "es": "Porque los productores tienen contractualmente prohibido reintentar un envío fallido."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Because most message brokers only guarantee \"at-least-once\" delivery in practice — a message may be redelivered after a timeout or failed acknowledgement — rather than true \"exactly-once\" delivery.",
           "es": "Porque la mayoría de los brokers de mensajes solo garantizan en la práctica una entrega «al menos una vez» (at-least-once) —un mensaje puede reenviarse tras un tiempo de espera agotado o un acuse de recibo fallido— en lugar de una entrega verdaderamente «exactamente una vez» (exactly-once)."
         },
@@ -1249,26 +1265,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Because queues are required by design to deliver messages in reverse chronological order.",
           "es": "Porque las colas están obligadas por diseño a entregar los mensajes en orden cronológico inverso."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Because producers are contractually forbidden from ever retrying a failed send.",
-          "es": "Porque los productores tienen contractualmente prohibido reintentar un envío fallido."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Because consumers are legally obliged to log every message exactly twice.",
-          "es": "Porque los consumidores están legalmente obligados a registrar cada mensaje exactamente dos veces."
         },
         "isCorrect": false
       }
@@ -1298,6 +1298,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Breaking changes are structurally impossible in a properly designed REST API.",
+          "es": "Los cambios incompatibles son estructuralmente imposibles en una API REST bien diseñada."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Only clients using SOAP are exposed to this risk; REST clients are unaffected by contract changes.",
+          "es": "Solo los clientes que usan SOAP están expuestos a este riesgo; los clientes REST no se ven afectados por los cambios de contrato."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Existing client applications built against the old contract may fail or misbehave, since they have no mechanism to opt in only once they are ready for the new contract.",
           "es": "Las aplicaciones cliente existentes construidas sobre el contrato anterior pueden fallar o comportarse de forma incorrecta, ya que no disponen de ningún mecanismo para adoptar el nuevo contrato solo cuando estén preparadas."
         },
@@ -1306,22 +1322,6 @@ export const QUESTIONS: Question[] = [
           "en": "Without versioning, clients built against the old contract have no way to keep using it while they migrate, so a breaking change can fail or silently corrupt their behaviour the moment it ships.\n\n### Topic 6 — MLOps and Production Model Operations",
           "es": "Sin versionado, los clientes construidos sobre el contrato antiguo no tienen forma de seguir usándolo mientras migran, por lo que un cambio incompatible puede hacer fallar o corromper silenciosamente su comportamiento en el momento en que se despliega.\n\n### Topic 6 — MLOps y operaciones de modelos en producción"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Breaking changes are structurally impossible in a properly designed REST API.",
-          "es": "Los cambios incompatibles son estructuralmente imposibles en una API REST bien diseñada."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Only clients using SOAP are exposed to this risk; REST clients are unaffected by contract changes.",
-          "es": "Solo los clientes que usan SOAP están expuestos a este riesgo; los clientes REST no se ven afectados por los cambios de contrato."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -1443,14 +1443,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A discrepancy between how a feature is computed or behaves at training time versus at serving (inference) time, which can silently degrade a production model's real-world performance even though nothing about the model itself changed.",
-          "es": "Una discrepancia entre cómo se calcula o se comporta una variable en el momento del entrenamiento frente al momento de servirla (inferencia), que puede degradar de forma silenciosa el rendimiento real de un modelo en producción aunque no haya cambiado nada en el propio modelo."
+          "en": "A difference in server response latency between training jobs and prediction requests.",
+          "es": "Una diferencia en la latencia de respuesta del servidor entre los trabajos de entrenamiento y las solicitudes de predicción."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Training–serving skew is specifically a mismatch between how a feature is computed or behaves in the training pipeline versus the serving path — a subtle, code-level cause of production performance degradation that offline metrics won't reveal.",
-          "es": "El training-serving skew es específicamente un desajuste entre cómo se calcula o se comporta una variable en el pipeline de entrenamiento frente a la ruta de servicio: una causa sutil, a nivel de código, de la degradación del rendimiento en producción que las métricas offline no revelarán."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -1463,18 +1459,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "A difference in server response latency between training jobs and prediction requests.",
-          "es": "Una diferencia en la latencia de respuesta del servidor entre los trabajos de entrenamiento y las solicitudes de predicción."
+          "en": "The gap between a model's reported validation-set score and its test-set score.",
+          "es": "La diferencia entre la puntuación reportada de un modelo en el conjunto de validación y su puntuación en el conjunto de prueba."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "The gap between a model's reported validation-set score and its test-set score.",
-          "es": "La diferencia entre la puntuación reportada de un modelo en el conjunto de validación y su puntuación en el conjunto de prueba."
+          "en": "A discrepancy between how a feature is computed or behaves at training time versus at serving (inference) time, which can silently degrade a production model's real-world performance even though nothing about the model itself changed.",
+          "es": "Una discrepancia entre cómo se calcula o se comporta una variable en el momento del entrenamiento frente al momento de servirla (inferencia), que puede degradar de forma silenciosa el rendimiento real de un modelo en producción aunque no haya cambiado nada en el propio modelo."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Training–serving skew is specifically a mismatch between how a feature is computed or behaves in the training pipeline versus the serving path — a subtle, code-level cause of production performance degradation that offline metrics won't reveal.",
+          "es": "El training-serving skew es específicamente un desajuste entre cómo se calcula o se comporta una variable en el pipeline de entrenamiento frente a la ruta de servicio: una causa sutil, a nivel de código, de la degradación del rendimiento en producción que las métricas offline no revelarán."
+        }
       }
     ],
     "field": "data-science",
@@ -1494,14 +1494,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Notebooks are technically incapable of computing accuracy correctly.",
-          "es": "Los notebooks son técnicamente incapaces de calcular la exactitud correctamente."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Production readiness also requires things the notebook result does not demonstrate: reproducible training, data lineage, drift monitoring and alerting, a rollback plan, and validated behaviour on live, potentially shifting data.",
           "es": "Estar listo para producción también exige elementos que el resultado del notebook no demuestra: entrenamiento reproducible, linaje de datos, monitorización y alertas de deriva (drift), un plan de reversión (rollback), y un comportamiento validado sobre datos reales y potencialmente cambiantes."
         },
@@ -1510,6 +1502,14 @@ export const QUESTIONS: Question[] = [
           "en": "Notebook accuracy says nothing about reproducibility, lineage, monitoring, alerting, or how the model will behave on data distributions that shift after deployment — all of which are required for genuine production readiness.",
           "es": "La exactitud obtenida en un notebook no dice nada sobre reproducibilidad, linaje, monitorización, alertas, ni sobre cómo se comportará el modelo ante distribuciones de datos que cambien tras el despliegue; todo ello necesario para una auténtica preparación para producción."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Deploying a model to production always requires rewriting it in a different programming language.",
+          "es": "Desplegar un modelo en producción siempre exige reescribirlo en otro lenguaje de programación."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1522,8 +1522,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Deploying a model to production always requires rewriting it in a different programming language.",
-          "es": "Desplegar un modelo en producción siempre exige reescribirlo en otro lenguaje de programación."
+          "en": "Notebooks are technically incapable of computing accuracy correctly.",
+          "es": "Los notebooks son técnicamente incapaces de calcular la exactitud correctamente."
         },
         "isCorrect": false
       }
@@ -1545,14 +1545,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A software bug that causes the model's serving code to crash intermittently.",
-          "es": "Un error de software que hace que el código de servicio del modelo falle de forma intermitente."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "A change, over time, in the statistical distribution of the input data the model receives in production compared to the data it was trained on, which can degrade prediction quality with no code change at all.",
           "es": "Un cambio, a lo largo del tiempo, en la distribución estadística de los datos de entrada que el modelo recibe en producción en comparación con los datos con los que fue entrenado, lo que puede degradar la calidad de las predicciones sin ningún cambio de código."
         },
@@ -1563,10 +1555,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "The natural variation in a model's output caused by using a different random seed at training time.",
           "es": "La variación natural en la salida de un modelo causada por usar una semilla aleatoria distinta durante el entrenamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A software bug that causes the model's serving code to crash intermittently.",
+          "es": "Un error de software que hace que el código de servicio del modelo falle de forma intermitente."
         },
         "isCorrect": false
       },
@@ -1596,14 +1596,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "They reliably improve the model's raw predictive accuracy.",
-          "es": "Mejoran de forma fiable la exactitud predictiva bruta del modelo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "They help stakeholders and auditors understand which factors drove a prediction or the model's overall behaviour, supporting trust, debugging, and transparency obligations.",
           "es": "Ayudan a las partes interesadas y a los auditores a entender qué factores impulsaron una predicción o el comportamiento general del modelo, favoreciendo la confianza, la depuración y el cumplimiento de las obligaciones de transparencia."
         },
@@ -1614,10 +1606,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "They remove any need for ongoing performance monitoring after deployment.",
           "es": "Eliminan cualquier necesidad de monitorización continua del rendimiento tras el despliegue."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "They reliably improve the model's raw predictive accuracy.",
+          "es": "Mejoran de forma fiable la exactitud predictiva bruta del modelo."
         },
         "isCorrect": false
       },
@@ -1647,14 +1647,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A 3D pie chart, since the added dimension aids visual comparison.",
-          "es": "Un gráfico circular 3D, ya que la dimensión añadida facilita la comparación visual."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "A sorted bar chart, because position along a common baseline is easier for the human eye to compare accurately than angle or area.",
           "es": "Un gráfico de barras ordenado, porque la posición sobre una línea base común es más fácil de comparar con precisión para el ojo humano que el ángulo o el área."
         },
@@ -1663,6 +1655,14 @@ export const QUESTIONS: Question[] = [
           "en": "Perceptual studies consistently show that position along a common baseline (as in a sorted bar chart) is judged more accurately by viewers than angle or area (as in a pie chart), especially once the number of categories grows.",
           "es": "Los estudios de percepción muestran de forma consistente que la posición sobre una línea base común (como en un gráfico de barras ordenado) se juzga con más precisión que el ángulo o el área (como en un gráfico circular), especialmente a medida que aumenta el número de categorías."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A word cloud, because it visually emphasises the largest values.",
+          "es": "Una nube de palabras, porque enfatiza visualmente los valores más grandes."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1675,8 +1675,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "A word cloud, because it visually emphasises the largest values.",
-          "es": "Una nube de palabras, porque enfatiza visualmente los valores más grandes."
+          "en": "A 3D pie chart, since the added dimension aids visual comparison.",
+          "es": "Un gráfico circular 3D, ya que la dimensión añadida facilita la comparación visual."
         },
         "isCorrect": false
       }
@@ -1698,13 +1698,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "This discrepancy is simply random measurement noise, so the two figures should be averaged.",
+          "es": "Esta discrepancia es simplemente ruido de medición aleatorio, por lo que las dos cifras deberían promediarse."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "One team's dashboard tool must be defective; the fix is to migrate both teams to the same BI software.",
           "es": "La herramienta de dashboard de uno de los equipos debe de tener un defecto; la solución es migrar a ambos equipos a la misma herramienta de BI."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "This kind of discrepancy cannot be diagnosed and should be accepted as normal.",
+          "es": "Este tipo de discrepancia no se puede diagnosticar y debe aceptarse como algo normal."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "The teams are most likely using different underlying definitions of \"active\" (e.g. different time windows or thresholds); the fix is a single, documented, governed metric definition that both dashboards reference.",
           "es": "Lo más probable es que los equipos estén utilizando definiciones subyacentes distintas de «activo» (por ejemplo, ventanas temporales o umbrales diferentes); la solución es una única definición de métrica, documentada y gobernada, a la que ambos dashboards hagan referencia."
@@ -1714,22 +1730,6 @@ export const QUESTIONS: Question[] = [
           "en": "Divergent numbers from the same underlying data almost always trace back to inconsistent business logic (different definitions, filters, or time windows) applied independently by each team; the durable fix is a single governed metric definition, not a tooling change.",
           "es": "Cifras divergentes procedentes de los mismos datos subyacentes casi siempre se deben a una lógica de negocio incoherente (definiciones, filtros o ventanas temporales distintas) aplicada de forma independiente por cada equipo; la solución duradera es una única definición de métrica gobernada, no un cambio de herramienta."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "This discrepancy is simply random measurement noise, so the two figures should be averaged.",
-          "es": "Esta discrepancia es simplemente ruido de medición aleatorio, por lo que las dos cifras deberían promediarse."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "This kind of discrepancy cannot be diagnosed and should be accepted as normal.",
-          "es": "Este tipo de discrepancia no se puede diagnosticar y debe aceptarse como algo normal."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -1757,6 +1757,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Round all figures to the nearest whole number to keep the chart simple.",
+          "es": "Redondear todas las cifras al número entero más cercano para mantener el gráfico sencillo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Display the point estimate together with a visual representation of its uncertainty (such as a confidence or prediction band), so viewers do not over-interpret false precision.",
           "es": "Mostrar el valor puntual junto con una representación visual de su incertidumbre (como una banda de confianza o de predicción), de modo que quien lo vea no interprete en exceso una falsa precisión."
         },
@@ -1765,14 +1773,6 @@ export const QUESTIONS: Question[] = [
           "en": "Showing uncertainty alongside a point estimate (e.g. a confidence or prediction band) helps decision-makers avoid treating a forecast as more precise or certain than it actually is.",
           "es": "Mostrar la incertidumbre junto con un valor puntual (por ejemplo, una banda de confianza o de predicción) ayuda a quienes toman decisiones a evitar tratar una previsión como más precisa o más segura de lo que realmente es."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Round all figures to the nearest whole number to keep the chart simple.",
-          "es": "Redondear todas las cifras al número entero más cercano para mantener el gráfico sencillo."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -1812,8 +1812,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Survivorship bias: a distortion caused by drawing conclusions only from cases that \"survived\" some selection process, while ignoring those that did not.",
-          "es": "El sesgo de supervivencia (survivorship bias): una distorsión causada por extraer conclusiones únicamente de los casos que «sobrevivieron» a algún proceso de selección, ignorando los que no lo hicieron."
+          "en": "Regression to the mean, considered on its own.",
+          "es": "La regresión a la media, considerada de forma aislada."
         },
         "isCorrect": false
       },
@@ -1828,8 +1828,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Regression to the mean, considered on its own.",
-          "es": "La regresión a la media, considerada de forma aislada."
+          "en": "Survivorship bias: a distortion caused by drawing conclusions only from cases that \"survived\" some selection process, while ignoring those that did not.",
+          "es": "El sesgo de supervivencia (survivorship bias): una distorsión causada por extraer conclusiones únicamente de los casos que «sobrevivieron» a algún proceso de selección, ignorando los que no lo hicieron."
         },
         "isCorrect": false
       }
@@ -1863,8 +1863,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Self-service BI tools are inherently slower than centrally built reports.",
-          "es": "Las herramientas de BI de autoservicio son inherentemente más lentas que los informes construidos de forma centralizada."
+          "en": "It would violate the relational data model.",
+          "es": "Violaría el modelo de datos relacional."
         },
         "isCorrect": false
       },
@@ -1879,8 +1879,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "It would violate the relational data model.",
-          "es": "Violaría el modelo de datos relacional."
+          "en": "Self-service BI tools are inherently slower than centrally built reports.",
+          "es": "Las herramientas de BI de autoservicio son inherentemente más lentas que los informes construidos de forma centralizada."
         },
         "isCorrect": false
       }
@@ -1902,13 +1902,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The legal ownership status of a dataset.",
+          "es": "La situación de propiedad legal de un conjunto de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "The organisational chart of a data team.",
           "es": "El organigrama de un equipo de datos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "A measure of how free of missing values a dataset is.",
+          "es": "Una medida de en qué grado un conjunto de datos está libre de valores ausentes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "The documented trail showing where a piece of data originated and how it was transformed and moved through systems, from source to point of consumption.",
           "es": "El rastro documentado que muestra dónde se originó un dato y cómo se transformó y se desplazó a través de los sistemas, desde la fuente hasta el punto de consumo."
@@ -1918,22 +1934,6 @@ export const QUESTIONS: Question[] = [
           "en": "Lineage is the traceable record of a data item's origin and every transformation and movement it underwent on its way to being consumed — essential for debugging, trust and compliance.",
           "es": "El linaje es el registro trazable del origen de un dato y de cada transformación y movimiento que sufrió en su camino hasta ser consumido; esencial para la depuración, la confianza y el cumplimiento normativo."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "The legal ownership status of a dataset.",
-          "es": "La situación de propiedad legal de un conjunto de datos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A measure of how free of missing values a dataset is.",
-          "es": "Una medida de en qué grado un conjunto de datos está libre de valores ausentes."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -1953,13 +1953,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Be personally, legally liable for any bug in an application that later consumes the dataset.",
+          "es": "Ser personal y legalmente responsable de cualquier error de una aplicación que posteriormente consuma el conjunto de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Personally write all the ETL code that populates the dataset.",
+          "es": "Escribir personalmente todo el código ETL que alimenta el conjunto de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Personally administer the physical database servers that host the data.",
           "es": "Administrar personalmente los servidores de base de datos físicos que alojan los datos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Be accountable for that dataset's quality, appropriate use, and access decisions, and serve as the point of contact for questions about it.",
           "es": "Ser responsable de la calidad de ese conjunto de datos, de su uso adecuado y de las decisiones de acceso, y actuar como punto de contacto para las preguntas al respecto."
@@ -1969,22 +1985,6 @@ export const QUESTIONS: Question[] = [
           "en": "The data owner/steward is accountable for quality, appropriate use and access decisions for a dataset, and is the go-to contact for questions about it — a governance role, not necessarily a technical/engineering one.",
           "es": "El propietario de los datos o custodio es responsable de la calidad, el uso adecuado y las decisiones de acceso de un conjunto de datos, y es el contacto de referencia para las preguntas al respecto: un rol de gobernanza, no necesariamente técnico o de ingeniería."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Personally write all the ETL code that populates the dataset.",
-          "es": "Escribir personalmente todo el código ETL que alimenta el conjunto de datos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Be personally, legally liable for any bug in an application that later consumes the dataset.",
-          "es": "Ser personal y legalmente responsable de cualquier error de una aplicación que posteriormente consuma el conjunto de datos."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -2055,13 +2055,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Published on an open-data portal by default, in the interest of maximum transparency.",
+          "es": "Publicarse por defecto en un portal de datos abiertos, en aras de la máxima transparencia."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Excluded from any governance policy, since it is only ever used internally.",
+          "es": "Excluirse de cualquier política de gobernanza, ya que solo se usa internamente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Treated the same as fully anonymised, aggregated statistics, since both are simply \"data\".",
           "es": "Tratarse igual que unas estadísticas totalmente anonimizadas y agregadas, ya que ambas son simplemente «datos»."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Classified at a higher sensitivity tier with corresponding access restrictions, and processed under principles such as purpose limitation, data minimisation, and a documented legal basis.",
           "es": "Clasificarse en un nivel de sensibilidad más alto, con las correspondientes restricciones de acceso, y tratarse conforme a principios como la limitación de la finalidad, la minimización de datos y una base jurídica documentada."
@@ -2071,22 +2087,6 @@ export const QUESTIONS: Question[] = [
           "en": "Directly identifying personal data warrants a higher sensitivity classification with corresponding access controls, and its processing should follow core data-protection principles such as purpose limitation, minimisation, and a documented legal basis — not open-by-default publication.",
           "es": "Los datos personales directamente identificativos merecen una clasificación de sensibilidad más alta con los controles de acceso correspondientes, y su tratamiento debe seguir principios básicos de protección de datos como la limitación de la finalidad, la minimización y una base jurídica documentada, no una publicación abierta por defecto."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Published on an open-data portal by default, in the interest of maximum transparency.",
-          "es": "Publicarse por defecto en un portal de datos abiertos, en aras de la máxima transparencia."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Excluded from any governance policy, since it is only ever used internally.",
-          "es": "Excluirse de cualquier política de gobernanza, ya que solo se usa internamente."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -2106,14 +2106,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Leaving quality checks to whichever team happens to notice a problem first.",
-          "es": "Dejar las comprobaciones de calidad al equipo que resulte notar un problema primero."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Assigning a clear named owner for the dataset and embedding automated data-quality checks into the pipeline that produces it, with alerts triggered when checks fail.",
           "es": "Asignar un propietario claramente identificado para el conjunto de datos e integrar comprobaciones automatizadas de calidad de los datos en el pipeline que lo produce, con alertas que se disparen cuando fallen."
         },
@@ -2122,6 +2114,14 @@ export const QUESTIONS: Question[] = [
           "en": "Durable quality accountability comes from pairing a clearly named owner with automated, alerting data-quality checks embedded in the pipeline itself, rather than relying on ad hoc, after-the-fact discovery of problems.\n\n### Topic 1 — Data Engineering and Distributed Ecosystems",
           "es": "Una responsabilidad de calidad duradera surge de combinar un propietario claramente identificado con comprobaciones automatizadas y con alertas de calidad de los datos integradas en el propio pipeline, en lugar de depender del descubrimiento ad hoc y a posteriori de los problemas.\n\n### Topic 1 — Ingeniería de datos y ecosistemas distribuidos"
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Avoiding documentation, so that the dataset's structure can remain maximally flexible.",
+          "es": "Evitar la documentación, para que la estructura del conjunto de datos pueda mantenerse con la máxima flexibilidad."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -2134,8 +2134,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Avoiding documentation, so that the dataset's structure can remain maximally flexible.",
-          "es": "Evitar la documentación, para que la estructura del conjunto de datos pueda mantenerse con la máxima flexibilidad."
+          "en": "Leaving quality checks to whichever team happens to notice a problem first.",
+          "es": "Dejar las comprobaciones de calidad al equipo que resulte notar un problema primero."
         },
         "isCorrect": false
       }
@@ -2157,8 +2157,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Streaming is always cheaper to operate than batch, regardless of data volume.",
-          "es": "El streaming siempre es más barato de operar que el procesamiento por lotes, independientemente del volumen de datos."
+          "en": "Batch pipelines cannot process structured data, only unstructured files.",
+          "es": "Los pipelines por lotes no pueden procesar datos estructurados, solo archivos no estructurados."
         },
         "isCorrect": false
       },
@@ -2177,16 +2177,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Streaming removes the need for any schema definition on the data.",
-          "es": "El streaming elimina la necesidad de definir cualquier esquema sobre los datos."
+          "en": "Streaming is always cheaper to operate than batch, regardless of data volume.",
+          "es": "El streaming siempre es más barato de operar que el procesamiento por lotes, independientemente del volumen de datos."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Batch pipelines cannot process structured data, only unstructured files.",
-          "es": "Los pipelines por lotes no pueden procesar datos estructurados, solo archivos no estructurados."
+          "en": "Streaming removes the need for any schema definition on the data.",
+          "es": "El streaming elimina la necesidad de definir cualquier esquema sobre los datos."
         },
         "isCorrect": false
       }
@@ -2208,13 +2208,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Partitioning automatically compresses the data using a better codec.",
-          "es": "El particionado comprime automáticamente los datos con un mejor códec."
+          "en": "Partitioned tables are always stored entirely in memory.",
+          "es": "Las tablas particionadas siempre se almacenan enteramente en memoria."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Partitioning converts the query from SQL into a MapReduce job automatically.",
+          "es": "El particionado convierte automáticamente la consulta de SQL en un trabajo MapReduce."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "The query engine can perform partition pruning, skipping the files for dates outside the filter instead of scanning the entire table.",
           "es": "El motor de consultas puede aplicar «partition pruning» (poda de particiones), omitiendo los archivos de las fechas fuera del filtro en lugar de escanear toda la tabla."
@@ -2226,18 +2234,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Partitioned tables are always stored entirely in memory.",
-          "es": "Las tablas particionadas siempre se almacenan enteramente en memoria."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Partitioning converts the query from SQL into a MapReduce job automatically.",
-          "es": "El particionado convierte automáticamente la consulta de SQL en un trabajo MapReduce."
+          "en": "Partitioning automatically compresses the data using a better codec.",
+          "es": "El particionado comprime automáticamente los datos con un mejor códec."
         },
         "isCorrect": false
       }
@@ -2259,13 +2259,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Every message is guaranteed to arrive within one second of being produced.",
-          "es": "Cada mensaje llega garantizado en menos de un segundo desde que se produjo."
+          "en": "Producers are physically prevented from ever sending a message twice.",
+          "es": "Los productores tienen físicamente prohibido enviar un mensaje dos veces."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "The system can only ever process one message per second.",
+          "es": "El sistema solo puede procesar un mensaje por segundo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Each message's effect is applied to the downstream state exactly one time, even if the message itself is internally retried or redelivered — typically achieved via idempotent writes or transactional offsets, not by making network duplication physically impossible.",
           "es": "El efecto de cada mensaje se aplica al estado posterior exactamente una vez, incluso si el propio mensaje se reintenta o se reentrega internamente — normalmente mediante escrituras idempotentes o commits transaccionales de offsets, no impidiendo físicamente la duplicación en la red."
@@ -2277,18 +2285,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "The system can only ever process one message per second.",
-          "es": "El sistema solo puede procesar un mensaje por segundo."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Producers are physically prevented from ever sending a message twice.",
-          "es": "Los productores tienen físicamente prohibido enviar un mensaje dos veces."
+          "en": "Every message is guaranteed to arrive within one second of being produced.",
+          "es": "Cada mensaje llega garantizado en menos de un segundo desde que se produjo."
         },
         "isCorrect": false
       }
@@ -2310,8 +2310,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The orchestrator automatically deletes old data before backfilling.",
-          "es": "El orquestador borra automáticamente los datos antiguos antes de rehacer el proceso."
+          "en": "DAGs do not support being run for dates in the past, by design.",
+          "es": "Los DAG no admiten, por diseño, ejecutarse para fechas pasadas."
         },
         "isCorrect": false
       },
@@ -2338,8 +2338,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "DAGs do not support being run for dates in the past, by design.",
-          "es": "Los DAG no admiten, por diseño, ejecutarse para fechas pasadas."
+          "en": "The orchestrator automatically deletes old data before backfilling.",
+          "es": "El orquestador borra automáticamente los datos antiguos antes de rehacer el proceso."
         },
         "isCorrect": false
       }
@@ -2361,14 +2361,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Downstream consumers must be written defensively to tolerate fields that may or may not be present, since the schema is interpreted at query time rather than enforced at write time.",
-          "es": "Los consumidores posteriores deben escribirse de forma defensiva para tolerar campos que pueden estar presentes o no, ya que el esquema se interpreta en el momento de la consulta y no se impone en el momento de la escritura."
+          "en": "Every historical record is automatically rewritten to include the new fields with default values.",
+          "es": "Cada registro histórico se reescribe automáticamente para incluir los nuevos campos con valores por defecto."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Schema-on-read defers schema interpretation to query time, so producers can add optional fields without a coordinated migration — but this pushes the burden of handling missing/extra fields gracefully onto every downstream consumer.\n\n### Topic 2 — Advanced Statistical Modelling",
-          "es": "Schema-on-read pospone la interpretación del esquema al momento de la consulta, de modo que los productores pueden añadir campos opcionales sin una migración coordinada, pero esto traslada la carga de gestionar con elegancia los campos ausentes o adicionales a cada consumidor posterior.\n\n### Topic 2 — Modelización estadística avanzada"
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -2381,18 +2377,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Every historical record is automatically rewritten to include the new fields with default values.",
-          "es": "Cada registro histórico se reescribe automáticamente para incluir los nuevos campos con valores por defecto."
+          "en": "Schema-on-read eliminates the need for any data-quality checks.",
+          "es": "El schema-on-read elimina la necesidad de cualquier comprobación de calidad de datos."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Schema-on-read eliminates the need for any data-quality checks.",
-          "es": "El schema-on-read elimina la necesidad de cualquier comprobación de calidad de datos."
+          "en": "Downstream consumers must be written defensively to tolerate fields that may or may not be present, since the schema is interpreted at query time rather than enforced at write time.",
+          "es": "Los consumidores posteriores deben escribirse de forma defensiva para tolerar campos que pueden estar presentes o no, ya que el esquema se interpreta en el momento de la consulta y no se impone en el momento de la escritura."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Schema-on-read defers schema interpretation to query time, so producers can add optional fields without a coordinated migration — but this pushes the burden of handling missing/extra fields gracefully onto every downstream consumer.\n\n### Topic 2 — Advanced Statistical Modelling",
+          "es": "Schema-on-read pospone la interpretación del esquema al momento de la consulta, de modo que los productores pueden añadir campos opcionales sin una migración coordinada, pero esto traslada la carga de gestionar con elegancia los campos ausentes o adicionales a cada consumidor posterior.\n\n### Topic 2 — Modelización estadística avanzada"
+        }
       }
     ],
     "field": "data-science",
@@ -2420,6 +2420,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Multicollinearity always improves the model's out-of-sample accuracy.",
+          "es": "La multicolinealidad siempre mejora la precisión fuera de muestra del modelo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "The individual coefficient estimates for the correlated predictors become unstable and hard to interpret, even though the model's overall predictive fit may remain largely unaffected.",
           "es": "Las estimaciones individuales de los coeficientes de las variables correlacionadas se vuelven inestables y difíciles de interpretar, aunque el ajuste predictivo global del modelo puede permanecer en gran medida inalterado."
         },
@@ -2428,14 +2436,6 @@ export const QUESTIONS: Question[] = [
           "en": "Multicollinearity inflates the variance of the correlated coefficients, making them unstable and hard to interpret individually (small data changes can swing them a lot), even though the model's overall predictions can remain reasonably accurate.",
           "es": "La multicolinealidad infla la varianza de los coeficientes correlacionados, haciéndolos inestables y difíciles de interpretar individualmente (pequeños cambios en los datos pueden hacerlos variar mucho), aunque las predicciones globales del modelo pueden seguir siendo razonablemente precisas."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Multicollinearity always improves the model's out-of-sample accuracy.",
-          "es": "La multicolinealidad siempre mejora la precisión fuera de muestra del modelo."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -2463,13 +2463,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Have no effect on the required sample size.",
+          "es": "No tiene ningún efecto sobre el tamaño de muestra necesario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Decrease the required sample size, since higher power needs less evidence.",
           "es": "Reduce el tamaño de muestra necesario, ya que una mayor potencia necesita menos evidencia."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Only affect the test's Type I error rate, not its sample-size requirement.",
+          "es": "Solo afecta a la tasa de error de Tipo I del test, no a su requisito de tamaño muestral."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "Increase the required sample size, since more evidence is needed to reliably detect the effect and reduce the risk of missing a real effect (a false negative).",
           "es": "Aumenta el tamaño de muestra necesario, ya que se necesita más evidencia para detectar el efecto de forma fiable y reducir el riesgo de no detectar un efecto real (un falso negativo)."
@@ -2479,22 +2495,6 @@ export const QUESTIONS: Question[] = [
           "en": "Higher statistical power means a lower chance of missing a real effect (a lower false-negative rate), which requires more evidence — i.e. a larger sample — to achieve, all else being equal.",
           "es": "Una mayor potencia estadística implica una menor probabilidad de pasar por alto un efecto real (una menor tasa de falsos negativos), lo cual requiere más evidencia —es decir, una muestra mayor— para lograrse, manteniendo todo lo demás igual."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Have no effect on the required sample size.",
-          "es": "No tiene ningún efecto sobre el tamaño de muestra necesario."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Only affect the test's Type I error rate, not its sample-size requirement.",
-          "es": "Solo afecta a la tasa de error de Tipo I del test, no a su requisito de tamaño muestral."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -2565,14 +2565,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "That the model is excellent and ready for production.",
-          "es": "Que el modelo es excelente y está listo para producción."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "The accuracy paradox: with severe class imbalance, accuracy is a misleading metric, and measures like precision, recall or F1 on the minority class are needed to assess real performance.",
           "es": "La paradoja de la exactitud: con un desequilibrio de clases tan severo, la exactitud es una métrica engañosa, y se necesitan medidas como precisión, exhaustividad (recall) o F1 sobre la clase minoritaria para evaluar el rendimiento real."
         },
@@ -2581,6 +2573,14 @@ export const QUESTIONS: Question[] = [
           "en": "This is the classic accuracy paradox: with 0.5% positives, always predicting the majority class scores 99.5% accuracy while being useless at the actual task, which is exactly why precision/recall/F1 on the minority class matter for imbalanced problems.",
           "es": "Esta es la clásica paradoja de la exactitud: con un 0,5 % de positivos, predecir siempre la clase mayoritaria obtiene un 99,5 % de exactitud sin ser en absoluto útil para la tarea real, que es precisamente por lo que la precisión, la exhaustividad o el F1 sobre la clase minoritaria importan en problemas desequilibrados."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "That the dataset must contain a labelling error, since accuracy this high is otherwise impossible.",
+          "es": "Que el conjunto de datos debe contener un error de etiquetado, ya que de otro modo una exactitud tan alta sería imposible."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -2593,8 +2593,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "That the dataset must contain a labelling error, since accuracy this high is otherwise impossible.",
-          "es": "Que el conjunto de datos debe contener un error de etiquetado, ya que de otro modo una exactitud tan alta sería imposible."
+          "en": "That the model is excellent and ready for production.",
+          "es": "Que el modelo es excelente y está listo para producción."
         },
         "isCorrect": false
       }
@@ -2616,13 +2616,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "K-fold cross-validation is only defined for classification tasks, never for regression.",
+          "es": "La validación cruzada k-fold solo está definida para tareas de clasificación, nunca para regresión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "K-fold cross-validation cannot mathematically be computed on numeric data.",
           "es": "La validación cruzada k-fold no puede calcularse matemáticamente sobre datos numéricos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Random folds can place future observations in the training set while testing on the past, leaking future information and overstating performance; a time-series-aware split (e.g. walk-forward validation) that always trains on the past and tests on the future should be used instead.",
           "es": "Las particiones aleatorias pueden situar observaciones futuras en el conjunto de entrenamiento mientras se evalúa sobre el pasado, filtrando información futura y sobrestimando el rendimiento; en su lugar debe usarse una división consciente del tiempo (por ejemplo, validación walk-forward) que siempre entrena sobre el pasado y evalúa sobre el futuro."
@@ -2632,14 +2640,6 @@ export const QUESTIONS: Question[] = [
           "en": "Random folds can leak future information into training when the data has a time order, inflating apparent performance; walk-forward (time-series) validation preserves the chronological training-then-testing structure the model will actually face in deployment.\n\n### Topic 3 — Data Architecture and Semantic Technologies",
           "es": "Las particiones aleatorias pueden filtrar información futura al entrenamiento cuando los datos tienen un orden temporal, inflando el rendimiento aparente; la validación walk-forward (consciente del tiempo) preserva la estructura cronológica de entrenar-y-luego-evaluar a la que el modelo se enfrentará realmente en producción.\n\n### Topic 3 — Arquitectura de datos y tecnologías semánticas"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "K-fold cross-validation is only defined for classification tasks, never for regression.",
-          "es": "La validación cruzada k-fold solo está definida para tareas de clasificación, nunca para regresión."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -2667,8 +2667,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "URIs make queries run faster than integer primary keys in every case.",
-          "es": "Las URI hacen que las consultas se ejecuten más rápido que las claves primarias enteras en todos los casos."
+          "en": "Dereferenceable URIs are required only for multimedia files, never for plain facts.",
+          "es": "Las URI resolubles solo son necesarias para archivos multimedia, nunca para hechos simples."
         },
         "isCorrect": false
       },
@@ -2687,16 +2687,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "URIs remove the need for any access control on the referenced data.",
-          "es": "Las URI eliminan la necesidad de cualquier control de acceso sobre los datos referenciados."
+          "en": "URIs make queries run faster than integer primary keys in every case.",
+          "es": "Las URI hacen que las consultas se ejecuten más rápido que las claves primarias enteras en todos los casos."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Dereferenceable URIs are required only for multimedia files, never for plain facts.",
-          "es": "Las URI resolubles solo son necesarias para archivos multimedia, nunca para hechos simples."
+          "en": "URIs remove the need for any access control on the referenced data.",
+          "es": "Las URI eliminan la necesidad de cualquier control de acceso sobre los datos referenciados."
         },
         "isCorrect": false
       }
@@ -2718,14 +2718,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A knowledge graph is simply any graph database, regardless of whether it uses formal semantics.",
-          "es": "Un grafo de conocimiento es simplemente cualquier base de datos de grafos, use o no semántica formal."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "A knowledge graph layers formal, machine-interpretable semantics (classes, properties, logical constraints defined in an ontology) on top of the graph structure, enabling consistency checking and richer automated reasoning than a graph of unlabelled nodes and edges alone.",
           "es": "Un grafo de conocimiento añade una capa de semántica formal e interpretable por máquinas (clases, propiedades y restricciones lógicas definidas en una ontología) sobre la estructura del grafo, lo que permite comprobaciones de consistencia y un razonamiento automatizado más rico que un grafo de nodos y aristas sin etiquetar."
         },
@@ -2736,7 +2728,7 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "Knowledge graphs cannot represent hierarchical relationships, only flat lists.",
           "es": "Los grafos de conocimiento no pueden representar relaciones jerárquicas, solo listas planas."
@@ -2744,10 +2736,18 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "C",
         "text": {
           "en": "Knowledge graphs are, by definition, always smaller than relational databases.",
           "es": "Los grafos de conocimiento son, por definición, siempre más pequeños que las bases de datos relacionales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A knowledge graph is simply any graph database, regardless of whether it uses formal semantics.",
+          "es": "Un grafo de conocimiento es simplemente cualquier base de datos de grafos, use o no semántica formal."
         },
         "isCorrect": false
       }
@@ -2769,13 +2769,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "It replaces the need for any national open-data legislation.",
+          "es": "Sustituye la necesidad de cualquier legislación nacional de datos abiertos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "It provides the electrical wiring standard for data-centre hardware.",
           "es": "Proporciona el estándar de cableado eléctrico para el hardware de los centros de datos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "It defines the row-level encryption standard for sensitive government datasets.",
+          "es": "Define el estándar de cifrado a nivel de fila para conjuntos de datos gubernamentales sensibles."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "It standardises how dataset metadata (title, description, licence, distribution format, publisher, and so on) is described, so datasets published by different member states' portals can be harvested, compared and discovered consistently, for example via data.europa.eu.",
           "es": "Estandariza cómo se describen los metadatos de los conjuntos de datos (título, descripción, licencia, formato de distribución, editor, etc.), de modo que los conjuntos de datos publicados por los portales de los distintos estados miembros puedan recolectarse, compararse y descubrirse de forma coherente, por ejemplo a través de data.europa.eu."
@@ -2785,22 +2801,6 @@ export const QUESTIONS: Question[] = [
           "en": "DCAT-AP standardises dataset-metadata description across member states' portals, which is what makes cross-border discovery and comparison of datasets on platforms like data.europa.eu practically possible.",
           "es": "DCAT-AP estandariza la descripción de los metadatos de los conjuntos de datos entre los portales de los distintos estados miembros, lo cual es lo que hace posible, en la práctica, el descubrimiento y la comparación transfronteriza de conjuntos de datos en plataformas como data.europa.eu."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "It replaces the need for any national open-data legislation.",
-          "es": "Sustituye la necesidad de cualquier legislación nacional de datos abiertos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It defines the row-level encryption standard for sensitive government datasets.",
-          "es": "Define el estándar de cifrado a nivel de fila para conjuntos de datos gubernamentales sensibles."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -2820,6 +2820,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A record that has been manually flagged as important by a business user.",
+          "es": "Un registro que un usuario de negocio ha marcado manualmente como importante."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "The single, reconciled, most trustworthy version of that entity's data, produced by resolving and merging conflicting or duplicate records held across multiple source systems.",
           "es": "La versión única, conciliada y más fiable de los datos de esa entidad, producida al resolver y fusionar registros conflictivos o duplicados mantenidos en múltiples sistemas de origen."
         },
@@ -2830,26 +2838,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "The very first record ever created for that entity, regardless of whether it is still accurate.",
-          "es": "El primer registro que se creó jamás para esa entidad, independientemente de si sigue siendo exacto."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "C",
         "text": {
-          "en": "A record that has been manually flagged as important by a business user.",
-          "es": "Un registro que un usuario de negocio ha marcado manualmente como importante."
+          "en": "The backup copy of a record kept purely for disaster-recovery purposes.",
+          "es": "La copia de seguridad de un registro que se conserva únicamente con fines de recuperación ante desastres."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "The backup copy of a record kept purely for disaster-recovery purposes.",
-          "es": "La copia de seguridad de un registro que se conserva únicamente con fines de recuperación ante desastres."
+          "en": "The very first record ever created for that entity, regardless of whether it is still accurate.",
+          "es": "El primer registro que se creó jamás para esa entidad, independientemente de si sigue siendo exacto."
         },
         "isCorrect": false
       }
@@ -2871,13 +2871,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Property graphs cannot store any data on their edges, only on their nodes.",
+          "es": "Los grafos de propiedades no pueden almacenar ningún dato en sus aristas, solo en sus nodos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "RDF and property graphs are functionally and syntactically identical, so the choice never matters.",
           "es": "RDF y los grafos de propiedades son funcional y sintácticamente idénticos, así que la elección nunca importa."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "RDF, paired with ontologies and SPARQL, favours standardised interoperability and formal reasoning across organisations, while property graphs often favour simpler, attribute-rich modelling and faster traversal for a single application's internal use case.",
           "es": "RDF, combinado con ontologías y SPARQL, favorece la interoperabilidad estandarizada y el razonamiento formal entre organizaciones, mientras que los grafos de propiedades suelen favorecer un modelado más simple y rico en atributos, y un recorrido (traversal) más rápido para el caso de uso interno de una sola aplicación."
@@ -2887,14 +2895,6 @@ export const QUESTIONS: Question[] = [
           "en": "RDF plus ontologies and SPARQL is optimised for standardised, cross-organisation interoperability and formal reasoning; property graphs are often simpler to model with rich attributes and are commonly faster for traversal-heavy queries within a single application's own data.\n\n### Topic 4 — HPC and Parallel Processing",
           "es": "RDF combinado con ontologías y SPARQL está optimizado para la interoperabilidad estandarizada entre organizaciones y el razonamiento formal; los grafos de propiedades suelen ser más sencillos de modelar con atributos ricos y suelen ser más rápidos para consultas centradas en el recorrido (traversal) dentro de los propios datos de una única aplicación.\n\n### Topic 4 — HPC y procesamiento paralelo"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Property graphs cannot store any data on their edges, only on their nodes.",
-          "es": "Los grafos de propiedades no pueden almacenar ningún dato en sus aristas, solo en sus nodos."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -2922,13 +2922,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Switching to a lower-precision arithmetic mode, which has no effect on memory traffic.",
+          "es": "Cambiando a un modo de aritmética de menor precisión, lo cual no tiene ningún efecto sobre el tráfico de memoria."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Increasing the clock speed of the CPU, which always resolves memory-bandwidth limits.",
+          "es": "Aumentando la velocidad de reloj de la CPU, lo cual siempre resuelve las limitaciones de ancho de banda de memoria."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Adding more processor cores, since compute is always the bottleneck.",
           "es": "Añadiendo más núcleos de procesador, ya que el cómputo siempre es el cuello de botella."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Reducing the volume of data movement or improving data reuse (e.g. via caching or blocking), since memory bandwidth, not arithmetic throughput, is the limiting factor.",
           "es": "Reduciendo el volumen de movimiento de datos o mejorando la reutilización de datos (por ejemplo, mediante caché o blocking), ya que el factor limitante es el ancho de banda de memoria, no el rendimiento aritmético."
@@ -2938,22 +2954,6 @@ export const QUESTIONS: Question[] = [
           "en": "Under the roofline model, a workload sitting below the memory-bandwidth roof is memory-bound, so the effective fix is reducing data movement or improving reuse (caching, blocking), not simply adding more compute, which will not relieve a memory bottleneck.",
           "es": "Según el modelo roofline, una carga de trabajo situada por debajo del techo de ancho de banda de memoria está limitada por memoria, así que la solución eficaz es reducir el movimiento de datos o mejorar su reutilización (caché, blocking), no simplemente añadir más cómputo, lo cual no aliviará un cuello de botella de memoria."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Increasing the clock speed of the CPU, which always resolves memory-bandwidth limits.",
-          "es": "Aumentando la velocidad de reloj de la CPU, lo cual siempre resuelve las limitaciones de ancho de banda de memoria."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Switching to a lower-precision arithmetic mode, which has no effect on memory traffic.",
-          "es": "Cambiando a un modo de aritmética de menor precisión, lo cual no tiene ningún efecto sobre el tráfico de memoria."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -2973,13 +2973,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The problem size is held fixed while the number of processors increases, and runtime is measured.",
-          "es": "El tamaño del problema se mantiene fijo mientras aumenta el número de procesadores, y se mide el tiempo de ejecución."
+          "en": "The number of processors is reduced while keeping the problem size fixed.",
+          "es": "Se reduce el número de procesadores manteniendo fijo el tamaño del problema."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Only a single processor is used, regardless of problem size.",
+          "es": "Se usa un único procesador, independientemente del tamaño del problema."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Both the problem size and the number of processors are increased proportionally, so the amount of work per processor stays roughly constant, and performance (not wall-clock reduction) is what is measured.",
           "es": "Tanto el tamaño del problema como el número de procesadores aumentan de forma proporcional, de modo que la cantidad de trabajo por procesador se mantiene aproximadamente constante, y lo que se mide es el rendimiento (no la reducción del tiempo total)."
@@ -2991,18 +2999,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "The number of processors is reduced while keeping the problem size fixed.",
-          "es": "Se reduce el número de procesadores manteniendo fijo el tamaño del problema."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Only a single processor is used, regardless of problem size.",
-          "es": "Se usa un único procesador, independientemente del tamaño del problema."
+          "en": "The problem size is held fixed while the number of processors increases, and runtime is measured.",
+          "es": "El tamaño del problema se mantiene fijo mientras aumenta el número de procesadores, y se mide el tiempo de ejecución."
         },
         "isCorrect": false
       }
@@ -3024,13 +3024,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Amdahl's Law being violated.",
-          "es": "Una violación de la ley de Amdahl."
+          "en": "Strong scaling being achieved perfectly.",
+          "es": "Un escalado fuerte (strong scaling) logrado a la perfección."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "The roofline model predicting compute-bound behaviour.",
+          "es": "El modelo roofline prediciendo un comportamiento limitado por cómputo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Load imbalance: work or resources are not evenly distributed across workers, so the slowest ones become the effective bottleneck for the whole job.",
           "es": "Desequilibrio de carga (load imbalance): el trabajo o los recursos no están distribuidos de forma uniforme entre los trabajadores, de modo que los más lentos se convierten en el cuello de botella efectivo de todo el trabajo."
@@ -3042,18 +3050,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "The roofline model predicting compute-bound behaviour.",
-          "es": "El modelo roofline prediciendo un comportamiento limitado por cómputo."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Strong scaling being achieved perfectly.",
-          "es": "Un escalado fuerte (strong scaling) logrado a la perfección."
+          "en": "Amdahl's Law being violated.",
+          "es": "Una violación de la ley de Amdahl."
         },
         "isCorrect": false
       }
@@ -3075,13 +3075,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Automatically parallelise a job that was originally written as sequential code.",
+          "es": "Paralelizar automáticamente un trabajo que originalmente se escribió como código secuencial."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Reduce the total amount of memory the job uses while running.",
+          "es": "Reducir la cantidad total de memoria que usa el trabajo mientras se ejecuta."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Improve the final numerical accuracy of the computation.",
           "es": "Mejorar la precisión numérica final del cálculo."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Allow the job to resume from the last saved state after a hardware or software failure, instead of having to restart the entire (potentially very long) computation from scratch.",
           "es": "Permitir que el trabajo se reanude desde el último estado guardado tras un fallo de hardware o software, en lugar de tener que reiniciar todo el cálculo (potencialmente muy largo) desde cero."
@@ -3091,22 +3107,6 @@ export const QUESTIONS: Question[] = [
           "en": "Checkpointing lets a long job resume from its last saved state after a failure, avoiding a costly full restart — its purpose is fault tolerance and efficient recovery, not accuracy or automatic parallelisation.",
           "es": "Los checkpoints permiten que un trabajo largo se reanude desde su último estado guardado tras un fallo, evitando un costoso reinicio completo; su propósito es la tolerancia a fallos y una recuperación eficiente, no la precisión ni la paralelización automática."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Automatically parallelise a job that was originally written as sequential code.",
-          "es": "Paralelizar automáticamente un trabajo que originalmente se escribió como código secuencial."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Reduce the total amount of memory the job uses while running.",
-          "es": "Reducir la cantidad total de memoria que usa el trabajo mientras se ejecuta."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -3126,13 +3126,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Neither can ever be compute-bound, since both perform the same total amount of arithmetic.",
+          "es": "Ninguna puede estar nunca limitada por cómputo, ya que ambas realizan la misma cantidad total de aritmética."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Workload Y, because touching data only once minimises memory traffic overall.",
           "es": "La carga Y, porque tocar los datos una sola vez minimiza el tráfico de memoria en conjunto."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Workload X, because its high data reuse gives it higher arithmetic intensity (more operations per byte moved from memory), pushing it toward the compute-bound region of the roofline model.",
           "es": "La carga X, porque su alta reutilización de datos le da una mayor intensidad aritmética (más operaciones por byte movido desde memoria), acercándola a la región limitada por cómputo del modelo roofline."
@@ -3142,14 +3150,6 @@ export const QUESTIONS: Question[] = [
           "en": "Higher data reuse per byte loaded means higher arithmetic intensity (operations per byte), which the roofline model places further toward the compute-bound region — Workload X reuses values, so it is more likely to be compute-bound than Workload Y, which touches each value only once.\n\n### Topic 5 — Advanced Data Integration and APIs",
           "es": "Una mayor reutilización de datos por byte cargado implica una mayor intensidad aritmética (operaciones por byte), lo que el modelo roofline sitúa más hacia la región limitada por cómputo: la carga X reutiliza valores, así que es más probable que esté limitada por cómputo que la carga Y, que toca cada valor una sola vez.\n\n### Topic 5 — Integración avanzada de datos y APIs"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Neither can ever be compute-bound, since both perform the same total amount of arithmetic.",
-          "es": "Ninguna puede estar nunca limitada por cómputo, ya que ambas realizan la misma cantidad total de aritmética."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -3177,13 +3177,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Guaranteeing that the receiving endpoint can never go down.",
-          "es": "Garantiza que el endpoint receptor nunca pueda caerse."
+          "en": "Removing the need for authentication between provider and consumer.",
+          "es": "Elimina la necesidad de autenticación entre proveedor y consumidor."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Eliminating the need for the consumer to have any publicly reachable endpoint.",
+          "es": "Elimina la necesidad de que el consumidor tenga cualquier endpoint accesible públicamente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Having the provider push a notification to the consumer as soon as an event occurs, avoiding the wasted requests and latency inherent in periodic polling for something that may not have changed.",
           "es": "El proveedor envía (push) una notificación al consumidor en cuanto ocurre un evento, evitando las peticiones desperdiciadas y la latencia inherentes a consultar periódicamente algo que puede no haber cambiado."
@@ -3195,18 +3203,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Eliminating the need for the consumer to have any publicly reachable endpoint.",
-          "es": "Elimina la necesidad de que el consumidor tenga cualquier endpoint accesible públicamente."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Removing the need for authentication between provider and consumer.",
-          "es": "Elimina la necesidad de autenticación entre proveedor y consumidor."
+          "en": "Guaranteeing that the receiving endpoint can never go down.",
+          "es": "Garantiza que el endpoint receptor nunca pueda caerse."
         },
         "isCorrect": false
       }
@@ -3228,6 +3228,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Removing the need for any server-side authorisation checks.",
+          "es": "Eliminar la necesidad de cualquier comprobación de autorización en el servidor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Replacing HTTP entirely with a binary transport protocol.",
+          "es": "Sustituir HTTP por completo por un protocolo de transporte binario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Letting the client specify exactly which fields it needs in a single request, rather than fetching a fixed, provider-defined response shape.",
           "es": "Permitir que el cliente especifique exactamente qué campos necesita en una única petición, en lugar de recibir una forma de respuesta fija definida por el proveedor."
         },
@@ -3238,26 +3254,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "Removing the need for any server-side authorisation checks.",
-          "es": "Eliminar la necesidad de cualquier comprobación de autorización en el servidor."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Guaranteeing lower network latency than REST in every possible scenario.",
           "es": "Garantizar una latencia de red menor que REST en absolutamente todos los escenarios."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Replacing HTTP entirely with a binary transport protocol.",
-          "es": "Sustituir HTTP por completo por un protocolo de transporte binario."
         },
         "isCorrect": false
       }
@@ -3330,14 +3330,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Increase the API provider's advertising revenue.",
-          "es": "Aumentar los ingresos publicitarios del proveedor de la API."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Protect the shared service from being overwhelmed by any single client (whether malicious or simply misbehaving), preserving availability and fair capacity for all consumers.",
           "es": "Proteger el servicio compartido frente a la saturación por parte de un único cliente (ya sea malicioso o simplemente mal comportado), preservando la disponibilidad y una capacidad justa para todos los consumidores."
         },
@@ -3348,18 +3340,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "Increase the API provider's advertising revenue.",
+          "es": "Aumentar los ingresos publicitarios del proveedor de la API."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "Guarantee that every client will always receive identical response times.",
-          "es": "Garantizar que todos los clientes reciban siempre tiempos de respuesta idénticos."
+          "en": "Make the API's documentation simpler to write.",
+          "es": "Simplificar la redacción de la documentación de la API."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Make the API's documentation simpler to write.",
-          "es": "Simplificar la redacción de la documentación de la API."
+          "en": "Guarantee that every client will always receive identical response times.",
+          "es": "Garantizar que todos los clientes reciban siempre tiempos de respuesta idénticos."
         },
         "isCorrect": false
       }
@@ -3483,14 +3483,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The new model's predictions are served directly to end users without any monitoring.",
-          "es": "Las predicciones del nuevo modelo se sirven directamente a los usuarios finales sin ninguna monitorización."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "The new model runs in parallel on live production traffic and its predictions are logged and compared against the current model's, but its outputs are not actually shown to or acted on by end users — letting teams validate real-world behaviour risk-free.",
           "es": "El nuevo modelo se ejecuta en paralelo sobre tráfico real de producción, y sus predicciones se registran y se comparan con las del modelo actual, pero sus salidas no se muestran ni se usan realmente para los usuarios finales, lo que permite validar el comportamiento real sin riesgo."
         },
@@ -3501,18 +3493,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "The model is deployed exclusively to a disconnected, offline test environment with no production data at all.",
+          "es": "El modelo se despliega exclusivamente en un entorno de pruebas desconectado y sin ningún dato de producción."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "The model is deployed only during night-time hours.",
-          "es": "El modelo se despliega únicamente durante el horario nocturno."
+          "en": "The new model's predictions are served directly to end users without any monitoring.",
+          "es": "Las predicciones del nuevo modelo se sirven directamente a los usuarios finales sin ninguna monitorización."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "The model is deployed exclusively to a disconnected, offline test environment with no production data at all.",
-          "es": "El modelo se despliega exclusivamente en un entorno de pruebas desconectado y sin ningún dato de producción."
+          "en": "The model is deployed only during night-time hours.",
+          "es": "El modelo se despliega únicamente durante el horario nocturno."
         },
         "isCorrect": false
       }
@@ -3534,13 +3534,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Data drift only affects classification models, while concept drift only affects regression models.",
+          "es": "La deriva de datos solo afecta a los modelos de clasificación, y la deriva de concepto solo a los de regresión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Concept drift can only be caused by a change in the training code, never by the real world changing.",
+          "es": "La deriva de concepto solo puede deberse a un cambio en el código de entrenamiento, nunca a un cambio en el mundo real."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "They are exactly the same phenomenon under two different names.",
           "es": "Son exactamente el mismo fenómeno con dos nombres distintos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Data drift is a change in the distribution of the input features over time; concept drift is a change in the underlying relationship between the inputs and the target variable itself, so even unchanged inputs may now map to a different correct output.",
           "es": "La deriva de datos es un cambio en la distribución de las variables de entrada a lo largo del tiempo; la deriva de concepto es un cambio en la relación subyacente entre las entradas y la propia variable objetivo, de modo que incluso entradas sin cambios pueden ahora corresponder a una salida correcta distinta."
@@ -3550,22 +3566,6 @@ export const QUESTIONS: Question[] = [
           "en": "Data drift is a shift in the input distribution; concept drift is a shift in the actual input-output relationship, meaning even the same inputs may now genuinely warrant a different prediction — a more fundamental and often more serious failure mode than data drift alone.",
           "es": "La deriva de datos es un cambio en la distribución de las entradas; la deriva de concepto es un cambio en la relación real entre entrada y salida, lo que significa que incluso las mismas entradas pueden ahora merecer legítimamente una predicción distinta: un modo de fallo más fundamental y a menudo más grave que la sola deriva de datos."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Data drift only affects classification models, while concept drift only affects regression models.",
-          "es": "La deriva de datos solo afecta a los modelos de clasificación, y la deriva de concepto solo a los de regresión."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Concept drift can only be caused by a change in the training code, never by the real world changing.",
-          "es": "La deriva de concepto solo puede deberse a un cambio en el código de entrenamiento, nunca a un cambio en el mundo real."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -3593,14 +3593,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Without a gate, a newly retrained model that has quietly degraded (e.g. due to a data-quality issue or drift in the new training window) could be automatically promoted to production without anyone reviewing its actual performance first.",
-          "es": "Sin esa puerta, un modelo recién reentrenado que se haya degradado silenciosamente (por ejemplo, por un problema de calidad de datos o por deriva en la nueva ventana de entrenamiento) podría promoverse automáticamente a producción sin que nadie revise antes su rendimiento real."
+          "en": "Automated evaluation is unnecessary once a model registry is in place.",
+          "es": "La evaluación automatizada deja de ser necesaria una vez que existe un registro de modelos (model registry)."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "An evaluation gate exists precisely because retraining does not guarantee improvement — a data-quality problem or an unfavourable shift in the new training window could silently produce a worse model, which the gate is designed to catch before it reaches production.",
-          "es": "Una puerta de evaluación existe precisamente porque el reentrenamiento no garantiza una mejora: un problema de calidad de datos o un giro desfavorable en la nueva ventana de entrenamiento podrían producir silenciosamente un modelo peor, algo que la puerta está diseñada para detectar antes de que llegue a producción."
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3613,10 +3609,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Automated evaluation is unnecessary once a model registry is in place.",
-          "es": "La evaluación automatizada deja de ser necesaria una vez que existe un registro de modelos (model registry)."
+          "en": "Without a gate, a newly retrained model that has quietly degraded (e.g. due to a data-quality issue or drift in the new training window) could be automatically promoted to production without anyone reviewing its actual performance first.",
+          "es": "Sin esa puerta, un modelo recién reentrenado que se haya degradado silenciosamente (por ejemplo, por un problema de calidad de datos o por deriva en la nueva ventana de entrenamiento) podría promoverse automáticamente a producción sin que nadie revise antes su rendimiento real."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "An evaluation gate exists precisely because retraining does not guarantee improvement — a data-quality problem or an unfavourable shift in the new training window could silently produce a worse model, which the gate is designed to catch before it reaches production.",
+          "es": "Una puerta de evaluación existe precisamente porque el reentrenamiento no garantiza una mejora: un problema de calidad de datos o un giro desfavorable en la nueva ventana de entrenamiento podrían producir silenciosamente un modelo peor, algo que la puerta está diseñada para detectar antes de que llegue a producción."
+        }
       }
     ],
     "field": "data-science",
@@ -3644,6 +3644,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "It is required only for models that do not have a feature store.",
+          "es": "Solo es necesario para modelos que no disponen de un almacén de características (feature store)."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Ground-truth labels for production predictions are often delayed or unavailable, so watching for shifts in the input distribution can provide an early warning of potential data drift before enough labelled outcomes exist to measure accuracy directly.",
           "es": "Las etiquetas de verdad fundamental (ground truth) para las predicciones de producción suelen llegar con retraso o no estar disponibles, así que vigilar cambios en la distribución de entrada puede dar una alerta temprana de una posible deriva de datos antes de disponer de suficientes resultados etiquetados para medir la exactitud directamente."
         },
@@ -3654,18 +3662,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Input feature distributions never change once a model is deployed.",
           "es": "Las distribuciones de las variables de entrada nunca cambian una vez desplegado un modelo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It is required only for models that do not have a feature store.",
-          "es": "Solo es necesario para modelos que no disponen de un almacén de características (feature store)."
         },
         "isCorrect": false
       }
@@ -3687,13 +3687,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Drowning incidents directly cause increased ice cream sales.",
+          "es": "Los incidentes de ahogamiento causan directamente el aumento de las ventas de helados."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Any correlation this strong must indicate direct causation in one direction or the other.",
+          "es": "Cualquier correlación tan fuerte debe indicar necesariamente causalidad directa en un sentido o en otro."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Ice cream sales directly cause drowning incidents, so ice cream sales should be restricted.",
           "es": "Las ventas de helados causan directamente los incidentes de ahogamiento, así que deberían restringirse."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "The correlation likely reflects a confounding variable (such as warmer weather driving both more swimming and more ice cream sales) rather than a direct causal link between the two variables themselves.",
           "es": "La correlación probablemente refleja una variable de confusión (como un clima más cálido que impulsa a la vez más natación y más ventas de helados), en lugar de un vínculo causal directo entre las dos variables en sí."
@@ -3703,22 +3719,6 @@ export const QUESTIONS: Question[] = [
           "en": "This is a classic confounder: warmer weather independently increases both swimming (and therefore drowning risk) and ice-cream sales, producing a correlation between the two variables with no direct causal link between them.",
           "es": "Este es un caso clásico de variable de confusión: un clima más cálido aumenta de forma independiente tanto la natación (y por tanto el riesgo de ahogamiento) como las ventas de helados, produciendo una correlación entre ambas variables sin ningún vínculo causal directo entre ellas."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Drowning incidents directly cause increased ice cream sales.",
-          "es": "Los incidentes de ahogamiento causan directamente el aumento de las ventas de helados."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Any correlation this strong must indicate direct causation in one direction or the other.",
-          "es": "Cualquier correlación tan fuerte debe indicar necesariamente causalidad directa en un sentido o en otro."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -3789,13 +3789,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Colour-blindness has no meaningful impact on chart design, since screen brightness fixes it automatically.",
+          "es": "El daltonismo no tiene un impacto relevante en el diseño de gráficos, ya que el brillo de la pantalla lo corrige automáticamente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Avoiding colour entirely and using only shades of a single hue for every chart, regardless of what is being shown.",
+          "es": "Evitar el color por completo y usar solo tonos de un único matiz en todos los gráficos, sea cual sea el contenido."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Relying solely on a red-green colour scale to distinguish categories, since red and green are the most visually distinct colours for most people.",
           "es": "Basarse únicamente en una escala de color rojo-verde para distinguir categorías, ya que el rojo y el verde son los colores visualmente más distintos para la mayoría de las personas."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Encoding the key distinction using more than colour alone — for example, adding distinct shapes, patterns or direct labels — and choosing a colour-blind-safe palette rather than a red-green scheme.",
           "es": "Codificar la distinción clave usando algo más que solo el color —por ejemplo, añadiendo formas, patrones o etiquetas directas distintas— y elegir una paleta segura para el daltonismo en lugar de un esquema rojo-verde."
@@ -3805,22 +3821,6 @@ export const QUESTIONS: Question[] = [
           "en": "Because a meaningful share of viewers cannot reliably distinguish red from green, robust charts encode the key distinction redundantly (shape, pattern, direct labelling) in addition to using a colour-blind-safe palette, rather than relying on colour — especially red/green — alone.",
           "es": "Dado que una parte significativa de las personas no puede distinguir de forma fiable el rojo del verde, los gráficos robustos codifican la distinción clave de forma redundante (forma, patrón, etiquetado directo) además de usar una paleta segura para el daltonismo, en lugar de depender únicamente del color —especialmente del rojo/verde—."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Avoiding colour entirely and using only shades of a single hue for every chart, regardless of what is being shown.",
-          "es": "Evitar el color por completo y usar solo tonos de un único matiz en todos los gráficos, sea cual sea el contenido."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Colour-blindness has no meaningful impact on chart design, since screen brightness fixes it automatically.",
-          "es": "El daltonismo no tiene un impacto relevante en el diseño de gráficos, ya que el brillo de la pantalla lo corrige automáticamente."
-        },
-        "isCorrect": false
       }
     ],
     "field": "data-science",
@@ -3840,8 +3840,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Making the underlying raw data disappear so storage costs drop to zero.",
-          "es": "Hace que los datos brutos subyacentes desaparezcan, de modo que el coste de almacenamiento se reduce a cero."
+          "en": "Removing the need for any governed metric definitions.",
+          "es": "Elimina la necesidad de cualquier definición de métrica gobernada."
         },
         "isCorrect": false
       },
@@ -3860,8 +3860,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Removing the need for any governed metric definitions.",
-          "es": "Elimina la necesidad de cualquier definición de métrica gobernada."
+          "en": "Making the underlying raw data disappear so storage costs drop to zero.",
+          "es": "Hace que los datos brutos subyacentes desaparezcan, de modo que el coste de almacenamiento se reduce a cero."
         },
         "isCorrect": false
       },
@@ -3891,13 +3891,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A control chart.",
-          "es": "Un gráfico de control."
+          "en": "Survivorship weighting.",
+          "es": "Ponderación por supervivencia."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "A funnel chart.",
+          "es": "Un gráfico de embudo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Cohort analysis.",
           "es": "Análisis de cohortes."
@@ -3909,18 +3917,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "A funnel chart.",
-          "es": "Un gráfico de embudo."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Survivorship weighting.",
-          "es": "Ponderación por supervivencia."
+          "en": "A control chart.",
+          "es": "Un gráfico de control."
         },
         "isCorrect": false
       }
@@ -3950,6 +3950,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Store all personal data in the smallest possible file format to save space.",
+          "es": "Almacenar todos los datos personales en el formato de archivo más pequeño posible para ahorrar espacio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Collect and retain only the personal data that is actually necessary for the specified, legitimate purpose it was gathered for — not more, and not for longer than needed.",
           "es": "Recopilar y conservar únicamente los datos personales que sean realmente necesarios para la finalidad específica y legítima para la que se recogieron, ni más ni durante más tiempo del necesario."
         },
@@ -3960,18 +3968,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Minimise the number of staff who work with data, regardless of the data volume involved.",
           "es": "Minimizar el número de empleados que trabajan con datos, independientemente del volumen de datos implicado."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Store all personal data in the smallest possible file format to save space.",
-          "es": "Almacenar todos los datos personales en el formato de archivo más pequeño posible para ahorrar espacio."
         },
         "isCorrect": false
       }
@@ -4001,6 +4001,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Ignore erasure requests if the data is also used for internal analytics.",
+          "es": "Ignorar las solicitudes de supresión si los datos también se usan para analítica interna."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Identify all the systems and copies holding a specific individual's personal data — which depends heavily on having accurate data lineage — so that data can actually be located and removed or anonymised on request.",
           "es": "Identificar todos los sistemas y copias que contienen los datos personales de una persona concreta —lo cual depende en gran medida de disponer de un linaje de datos preciso— de modo que esos datos puedan localizarse y eliminarse o anonimizarse a petición."
         },
@@ -4009,14 +4017,6 @@ export const QUESTIONS: Question[] = [
           "en": "Honouring an erasure request in practice requires knowing everywhere that individual's data lives — every system, copy and downstream derivative — which is precisely what accurate, maintained data lineage makes tractable; without it, erasure cannot be verified as complete.",
           "es": "Atender una solicitud de supresión en la práctica exige saber dónde viven los datos de esa persona: en todos los sistemas, copias y derivados posteriores, que es precisamente lo que hace factible un linaje de datos preciso y mantenido; sin él, no puede verificarse que la supresión sea completa."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Ignore erasure requests if the data is also used for internal analytics.",
-          "es": "Ignorar las solicitudes de supresión si los datos también se usan para analítica interna."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -4095,14 +4095,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "They are legally and technically identical processes.",
-          "es": "Son procesos legal y técnicamente idénticos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Anonymisation irreversibly removes the ability to link data back to an individual; pseudonymisation replaces identifying fields with an artificial identifier or token, but re-identification remains possible for someone holding the separately-stored mapping key.",
           "es": "La anonimización elimina de forma irreversible la posibilidad de vincular los datos a una persona; la seudonimización sustituye los campos identificativos por un identificador o token artificial, pero la reidentificación sigue siendo posible para quien disponga de la clave de correspondencia almacenada por separado."
         },
@@ -4113,10 +4105,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "Pseudonymisation is always irreversible, while anonymisation is always reversible.",
           "es": "La seudonimización es siempre irreversible, mientras que la anonimización es siempre reversible."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "They are legally and technically identical processes.",
+          "es": "Son procesos legal y técnicamente idénticos."
         },
         "isCorrect": false
       },
@@ -4146,13 +4146,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A legal framework that replaces the need for any data governance policy.",
+          "es": "Un marco legal que sustituye la necesidad de cualquier política de gobernanza de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Making sure every dataset is released completely open with no access restrictions whatsoever, regardless of its sensitivity.",
           "es": "Asegurar que todo conjunto de datos se publique completamente abierto sin ninguna restricción de acceso, sea cual sea su sensibilidad."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Making data (and its metadata) easy to discover, retrievable under clear conditions, structured so it can interoperate with other data and tools, and well-documented enough to be reused appropriately by others — without necessarily mandating that all data be public.",
           "es": "Hacer que los datos (y sus metadatos) sean fáciles de encontrar, recuperables bajo condiciones claras, estructurados de modo que puedan interoperar con otros datos y herramientas, y estén suficientemente documentados como para que otros puedan reutilizarlos de forma adecuada, sin exigir necesariamente que todos los datos sean públicos."
@@ -4164,18 +4172,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "A purely technical file-format standard with no relevance to metadata or documentation.",
           "es": "Un estándar puramente técnico de formato de archivo sin relevancia para los metadatos o la documentación."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A legal framework that replaces the need for any data governance policy.",
-          "es": "Un marco legal que sustituye la necesidad de cualquier política de gobernanza de datos."
         },
         "isCorrect": false
       }

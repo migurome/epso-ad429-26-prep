@@ -43,6 +43,12 @@ export function QuestionCard({
   // son un problema — en las preguntas "cuatro de estas cinco comparten una
   // regla, una no" es justamente el diseño que los distractores compartan
   // aspecto y solo la respuesta se salga del patrón (o al revés).
+  // Las preguntas de muestra oficiales de EPSO llegan sin explicación (la
+  // fuente solo publica la letra). Sin avisar, al corregir no aparecía nada
+  // bajo la respuesta y parecía que faltaba contenido.
+  const lacksOfficialExplanation =
+    question.tags?.includes('epso-official') === true &&
+    !question.options.find((o) => o.isCorrect)?.explanation
   const optionPanelsForCollisionCheck = isAbstract
     ? question.options.map((opt) => parsePanel(pick(testLocale, opt.text)))
     : null
@@ -172,6 +178,11 @@ export function QuestionCard({
           )
         })}
       </div>
+      {revealed && lacksOfficialExplanation && (
+        <p className={clsx('mt-3 text-slate-500', large ? 'text-sm' : 'text-xs')}>
+          {t('no_official_explanation')}
+        </p>
+      )}
     </div>
   )
 }

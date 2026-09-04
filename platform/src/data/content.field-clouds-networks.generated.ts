@@ -78,16 +78,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Guaranteed zero downtime, since all cloud services are contractually required to be continuously available.",
-          "es": "Tiempo de inactividad cero garantizado, ya que todos los servicios en la nube están contractualmente obligados a estar disponibles de forma continua."
+          "en": "Mandatory use of containers as the underlying compute unit.",
+          "es": "Uso obligatorio de contenedores como unidad de cómputo subyacente."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "Mandatory use of containers as the underlying compute unit.",
-          "es": "Uso obligatorio de contenedores como unidad de cómputo subyacente."
+          "en": "Guaranteed zero downtime, since all cloud services are contractually required to be continuously available.",
+          "es": "Tiempo de inactividad cero garantizado, ya que todos los servicios en la nube están contractualmente obligados a estar disponibles de forma continua."
         },
         "isCorrect": false
       },
@@ -168,8 +168,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Public cloud, which always provides more control than private infrastructure.",
-          "es": "La nube pública, que siempre proporciona más control que la infraestructura privada."
+          "en": "Community cloud, since only one organisation is involved.",
+          "es": "La nube comunitaria, ya que solo interviene una organización."
         },
         "isCorrect": false
       },
@@ -188,8 +188,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Community cloud, since only one organisation is involved.",
-          "es": "La nube comunitaria, ya que solo interviene una organización."
+          "en": "Public cloud, which always provides more control than private infrastructure.",
+          "es": "La nube pública, que siempre proporciona más control que la infraestructura privada."
         },
         "isCorrect": false
       },
@@ -219,14 +219,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Multi-cloud means using services from two or more public cloud providers (whether or not they are integrated), while hybrid cloud specifically means integrating private/on-premises infrastructure with public cloud resources so workloads and data can move between them.",
-          "es": "Multi-cloud significa usar servicios de dos o más proveedores de nube pública (estén o no integrados entre sí), mientras que nube híbrida significa específicamente integrar infraestructura privada o local con recursos de nube pública, de modo que las cargas de trabajo y los datos puedan moverse entre ambos."
+          "en": "A multi-cloud strategy always requires abandoning any on-premises infrastructure entirely.",
+          "es": "Una estrategia multi-cloud siempre exige abandonar por completo cualquier infraestructura local (on-premises)."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Multi-cloud is about the number and independence of public cloud providers in use; hybrid cloud is specifically about integrating private/on-premises infrastructure with public cloud resources. The two describe different axes of an architecture and are not interchangeable.\n\n### Topic 2 — Networking Fundamentals",
-          "es": "Multi-cloud tiene que ver con el número y la independencia de los proveedores de nube pública utilizados; la nube híbrida tiene que ver específicamente con integrar infraestructura privada u on-premises con recursos de nube pública. Ambos conceptos describen ejes distintos de una arquitectura y no son intercambiables.\n\n### Topic 2 — Fundamentos de redes"
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -239,10 +235,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "A multi-cloud strategy always requires abandoning any on-premises infrastructure entirely.",
-          "es": "Una estrategia multi-cloud siempre exige abandonar por completo cualquier infraestructura local (on-premises)."
+          "en": "Multi-cloud means using services from two or more public cloud providers (whether or not they are integrated), while hybrid cloud specifically means integrating private/on-premises infrastructure with public cloud resources so workloads and data can move between them.",
+          "es": "Multi-cloud significa usar servicios de dos o más proveedores de nube pública (estén o no integrados entre sí), mientras que nube híbrida significa específicamente integrar infraestructura privada o local con recursos de nube pública, de modo que las cargas de trabajo y los datos puedan moverse entre ambos."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Multi-cloud is about the number and independence of public cloud providers in use; hybrid cloud is specifically about integrating private/on-premises infrastructure with public cloud resources. The two describe different axes of an architecture and are not interchangeable.\n\n### Topic 2 — Networking Fundamentals",
+          "es": "Multi-cloud tiene que ver con el número y la independencia de los proveedores de nube pública utilizados; la nube híbrida tiene que ver específicamente con integrar infraestructura privada u on-premises con recursos de nube pública. Ambos conceptos describen ejes distintos de una arquitectura y no son intercambiables.\n\n### Topic 2 — Fundamentos de redes"
+        }
       },
       {
         "id": "D",
@@ -341,16 +341,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "A nine-layer model that adds two additional layers on top of OSI to account for cloud computing.",
-          "es": "Un modelo de nueve capas que añade dos capas adicionales sobre OSI para dar cabida a la computación en la nube."
+          "en": "A model that only describes wireless networks, with wired networks following the OSI model exclusively.",
+          "es": "Un modelo que solo describe redes inalámbricas, mientras que las redes cableadas siguen exclusivamente el modelo OSI."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "A model that only describes wireless networks, with wired networks following the OSI model exclusively.",
-          "es": "Un modelo que solo describe redes inalámbricas, mientras que las redes cableadas siguen exclusivamente el modelo OSI."
+          "en": "A nine-layer model that adds two additional layers on top of OSI to account for cloud computing.",
+          "es": "Un modelo de nueve capas que añade dos capas adicionales sobre OSI para dar cabida a la computación en la nube."
         },
         "isCorrect": false
       }
@@ -627,22 +627,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Zero trust assumes that once a user or device is inside the network perimeter, it can be trusted by default and no longer needs to be checked.",
-          "es": "Zero trust asume que, una vez que un usuario o dispositivo está dentro del perímetro de la red, se puede confiar en él por defecto y ya no es necesario comprobarlo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Zero trust removes the need for any authentication, since trust is established purely by network location.",
-          "es": "Zero trust elimina la necesidad de cualquier autenticación, ya que la confianza se establece únicamente por la ubicación de red."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "Zero trust assumes no implicit trust based on network location alone — every request is authenticated, authorised and continuously verified regardless of whether it originates inside or outside the traditional perimeter — whereas a perimeter-based model trusts traffic more freely once it is past the outer defences.",
           "es": "Zero trust no asume ninguna confianza implícita basada únicamente en la ubicación de red: cada solicitud se autentica, autoriza y verifica de forma continua, independientemente de si procede de dentro o de fuera del perímetro tradicional; mientras que un modelo basado en el perímetro confía en el tráfico con mayor libertad una vez que ha superado las defensas exteriores."
         },
@@ -653,10 +637,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "D",
+        "id": "B",
         "text": {
           "en": "A perimeter-based model and a zero trust model are the same thing, differing only in marketing terminology.",
           "es": "Un modelo basado en el perímetro y un modelo zero trust son lo mismo, y solo se diferencian en la terminología de marketing."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Zero trust assumes that once a user or device is inside the network perimeter, it can be trusted by default and no longer needs to be checked.",
+          "es": "Zero trust asume que, una vez que un usuario o dispositivo está dentro del perímetro de la red, se puede confiar en él por defecto y ya no es necesario comprobarlo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Zero trust removes the need for any authentication, since trust is established purely by network location.",
+          "es": "Zero trust elimina la necesidad de cualquier autenticación, ya que la confianza se establece únicamente por la ubicación de red."
         },
         "isCorrect": false
       }
@@ -678,6 +678,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "An IDS can only detect physical intrusions into a data centre, not network-based attacks.",
+          "es": "Un IDS solo puede detectar intrusiones físicas en un centro de datos, no ataques a nivel de red."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "An IDS is typically deployed out-of-band to monitor a copy of traffic and alert on suspicious activity without altering it; an IPS is typically deployed inline, actively able to block or drop malicious traffic in real time.",
           "es": "Un IDS suele desplegarse fuera de banda (out-of-band) para analizar una copia del tráfico y alertar de actividad sospechosa sin modificarlo; un IPS suele desplegarse en línea (inline), pudiendo bloquear o descartar activamente el tráfico malicioso en tiempo real."
         },
@@ -686,14 +694,6 @@ export const QUESTIONS: Question[] = [
           "en": "An IDS is a monitoring and alerting tool that typically inspects a copy of traffic out-of-band; an IPS sits inline and can actively block malicious traffic as it happens, which is the core practical difference between detection and prevention.",
           "es": "Un IDS es una herramienta de monitorización y alerta que normalmente inspecciona una copia del tráfico fuera de banda; un IPS se sitúa en línea y puede bloquear activamente el tráfico malicioso en el momento en que ocurre, lo cual constituye la diferencia práctica central entre detección y prevención."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "An IDS actively blocks malicious traffic in real time, while an IPS can only passively log traffic for later review.",
-          "es": "Un IDS bloquea activamente el tráfico malicioso en tiempo real, mientras que un IPS solo puede registrar el tráfico de forma pasiva para su revisión posterior."
-        },
-        "isCorrect": false
       },
       {
         "id": "C",
@@ -706,8 +706,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "An IDS can only detect physical intrusions into a data centre, not network-based attacks.",
-          "es": "Un IDS solo puede detectar intrusiones físicas en un centro de datos, no ataques a nivel de red."
+          "en": "An IDS actively blocks malicious traffic in real time, while an IPS can only passively log traffic for later review.",
+          "es": "Un IDS bloquea activamente el tráfico malicioso en tiempo real, mientras que un IPS solo puede registrar el tráfico de forma pasiva para su revisión posterior."
         },
         "isCorrect": false
       }
@@ -780,8 +780,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Containers and VMs both require their own full guest operating system kernel; they differ only in file format.",
-          "es": "Los contenedores y las VM requieren ambos su propio núcleo de sistema operativo invitado completo; solo se diferencian en el formato de archivo."
+          "en": "A VM is simply a container that has been compressed for storage efficiency.",
+          "es": "Una VM es simplemente un contenedor que se ha comprimido para ahorrar espacio de almacenamiento."
         },
         "isCorrect": false
       },
@@ -800,16 +800,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "A VM is simply a container that has been compressed for storage efficiency.",
-          "es": "Una VM es simplemente un contenedor que se ha comprimido para ahorrar espacio de almacenamiento."
+          "en": "Containers can only run stateless applications, while VMs can only run stateful applications.",
+          "es": "Los contenedores solo pueden ejecutar aplicaciones sin estado (stateless), mientras que las VM solo pueden ejecutar aplicaciones con estado (stateful)."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Containers can only run stateless applications, while VMs can only run stateful applications.",
-          "es": "Los contenedores solo pueden ejecutar aplicaciones sin estado (stateless), mientras que las VM solo pueden ejecutar aplicaciones con estado (stateful)."
+          "en": "Containers and VMs both require their own full guest operating system kernel; they differ only in file format.",
+          "es": "Los contenedores y las VM requieren ambos su propio núcleo de sistema operativo invitado completo; solo se diferencian en el formato de archivo."
         },
         "isCorrect": false
       }
@@ -882,6 +882,30 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Because Services replace the need for a Deployment to manage replica counts.",
+          "es": "Porque los Services sustituyen la necesidad de que un Deployment gestione el número de réplicas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because a Service is required to physically encrypt traffic between the client and the cluster.",
+          "es": "Porque un Service es necesario para cifrar físicamente el tráfico entre el cliente y el clúster."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because Pods are not permitted to have IP addresses at all under the Kubernetes networking model.",
+          "es": "Porque los Pods no pueden tener ninguna dirección IP en absoluto bajo el modelo de red de Kubernetes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Because Pods are ephemeral — they can be created, destroyed and rescheduled with new IP addresses at any time — a Service provides a stable virtual IP address and/or DNS name that automatically load-balances traffic across the current, healthy set of matching Pods.",
           "es": "Porque los Pods son efímeros —pueden crearse, destruirse y reprogramarse con nuevas direcciones IP en cualquier momento—, un Service proporciona una dirección IP virtual o un nombre DNS estables que balancean automáticamente el tráfico entre el conjunto actual de Pods sanos que coinciden con su selector."
         },
@@ -890,30 +914,6 @@ export const QUESTIONS: Question[] = [
           "en": "Because Pods can be destroyed and rescheduled with new IP addresses at any time, a Service supplies a stable virtual IP/DNS name and load-balances across whichever healthy Pods currently match its selector, insulating clients from Pod churn.",
           "es": "Como los Pods pueden destruirse y reprogramarse con nuevas direcciones IP en cualquier momento, un Service proporciona una IP virtual o un nombre DNS estables y balancea la carga entre los Pods sanos que coinciden con su selector en cada momento, aislando a los clientes de la rotación de los Pods."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Because Pods are not permitted to have IP addresses at all under the Kubernetes networking model.",
-          "es": "Porque los Pods no pueden tener ninguna dirección IP en absoluto bajo el modelo de red de Kubernetes."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Because a Service is required to physically encrypt traffic between the client and the cluster.",
-          "es": "Porque un Service es necesario para cifrar físicamente el tráfico entre el cliente y el clúster."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Because Services replace the need for a Deployment to manage replica counts.",
-          "es": "Porque los Services sustituyen la necesidad de que un Deployment gestione el número de réplicas."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -941,6 +941,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "A monolithic architecture cannot be scaled at all, while microservices can always scale to unlimited size.",
+          "es": "Una arquitectura monolítica no puede escalarse en absoluto, mientras que los microservicios siempre pueden escalar sin límite."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Microservices enable independent deployability and technology diversity per service, but they also introduce distributed-systems complexity that a monolith does not have — network latency and partial failure between services, more complex testing and observability, and the need to manage data consistency across separately owned services.",
           "es": "Los microservicios permiten desplegabilidad independiente y diversidad tecnológica por servicio, pero también introducen una complejidad de sistemas distribuidos que un monolito no tiene: latencia de red y fallos parciales entre servicios, pruebas y observabilidad más complejas, y la necesidad de gestionar la consistencia de los datos entre servicios que pertenecen a equipos distintos."
         },
@@ -951,18 +959,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Microservices eliminate the need for any network communication between components of the application.",
           "es": "Los microservicios eliminan la necesidad de cualquier comunicación de red entre los componentes de la aplicación."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A monolithic architecture cannot be scaled at all, while microservices can always scale to unlimited size.",
-          "es": "Una arquitectura monolítica no puede escalarse en absoluto, mientras que los microservicios siempre pueden escalar sin límite."
         },
         "isCorrect": false
       }
@@ -1035,13 +1035,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "SDN requires that every switch and router run its own independent, uncoordinated control plane, with no centralisation.",
+          "es": "SDN exige que cada switch y cada router ejecuten su propio plano de control independiente y sin coordinación, sin ninguna centralización."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "SDN is simply a marketing term for any network that uses Wi-Fi instead of Ethernet cabling.",
+          "es": "SDN es simplemente un término de marketing para cualquier red que utilice Wi-Fi en lugar de cableado Ethernet."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "SDN eliminates the data plane entirely, so no physical forwarding of packets is required.",
           "es": "SDN elimina por completo el plano de datos, de modo que ya no es necesario reenviar físicamente los paquetes."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "SDN decouples the control plane (which makes decisions about how traffic should be forwarded) from the data plane (which actually forwards traffic based on those decisions), typically centralising control-plane logic in a software SDN controller that can programmatically manage forwarding devices across the network.",
           "es": "SDN desacopla el plano de control (que decide cómo debe reenviarse el tráfico) del plano de datos (que realmente reenvía el tráfico según esas decisiones), centralizando normalmente la lógica del plano de control en un controlador SDN software que puede gestionar de forma programática los dispositivos de reenvío de toda la red."
@@ -1051,22 +1067,6 @@ export const QUESTIONS: Question[] = [
           "en": "SDN's defining move is separating the control plane from the data plane and centralising control-plane logic in a software controller, enabling programmable, network-wide management instead of per-device configuration.",
           "es": "El movimiento definitorio de SDN es separar el plano de control del plano de datos y centralizar la lógica del plano de control en un controlador software, lo que permite una gestión programable y a nivel de toda la red en lugar de una configuración dispositivo por dispositivo."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "SDN is simply a marketing term for any network that uses Wi-Fi instead of Ethernet cabling.",
-          "es": "SDN es simplemente un término de marketing para cualquier red que utilice Wi-Fi en lugar de cableado Ethernet."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "SDN requires that every switch and router run its own independent, uncoordinated control plane, with no centralisation.",
-          "es": "SDN exige que cada switch y cada router ejecuten su propio plano de control independiente y sin coordinación, sin ninguna centralización."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -1137,13 +1137,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "It is a physical cabling standard for connecting data-centre racks.",
+          "es": "Es un estándar de cableado físico para conectar racks de un centro de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It is a firewall rule language used exclusively by next-generation firewalls.",
+          "es": "Es un lenguaje de reglas de firewall utilizado exclusivamente por los firewalls de nueva generación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "It replaces TCP with a faster transport protocol for all network traffic.",
           "es": "Sustituye TCP por un protocolo de transporte más rápido para todo el tráfico de red."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "It encapsulates Layer 2 Ethernet frames inside Layer 3 UDP packets, allowing Layer 2 segments to be extended across an IP network, and uses a 24-bit identifier that supports far more isolated virtual segments than the roughly 4,000 segments allowed by traditional 802.1Q VLAN tagging.",
           "es": "Encapsula tramas Ethernet de Capa 2 dentro de paquetes UDP de Capa 3, permitiendo extender los segmentos de Capa 2 a través de una red IP, y utiliza un identificador de 24 bits que admite muchos más segmentos virtuales aislados que los aproximadamente 4.000 segmentos permitidos por el etiquetado VLAN 802.1Q tradicional."
@@ -1153,22 +1169,6 @@ export const QUESTIONS: Question[] = [
           "en": "VXLAN encapsulates Ethernet frames in UDP/IP packets so Layer 2 segments can span a Layer 3 network, and its 24-bit VNI supports vastly more isolated segments than the ~4,000-segment ceiling of traditional VLAN tagging.",
           "es": "VXLAN encapsula tramas Ethernet en paquetes UDP/IP para que los segmentos de Capa 2 puedan extenderse por una red de Capa 3, y su VNI de 24 bits admite muchísimos más segmentos aislados que el límite de unos 4.000 del etiquetado VLAN tradicional."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "It is a physical cabling standard for connecting data-centre racks.",
-          "es": "Es un estándar de cableado físico para conectar racks de un centro de datos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It is a firewall rule language used exclusively by next-generation firewalls.",
-          "es": "Es un lenguaje de reglas de firewall utilizado exclusivamente por los firewalls de nueva generación."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -1188,13 +1188,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "NFV only applies to wireless networks, while SDN only applies to wired networks.",
+          "es": "NFV solo se aplica a redes inalámbricas, mientras que SDN solo se aplica a redes cableadas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "NFV and SDN are indeed exactly the same concept in every respect.",
           "es": "NFV y SDN son, en efecto, exactamente el mismo concepto en todos los aspectos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "SDN is a subset of NFV that deals exclusively with virtualising firewalls.",
+          "es": "SDN es un subconjunto de NFV que se ocupa exclusivamente de virtualizar firewalls."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "NFV is about replacing dedicated hardware network appliances (such as physical firewalls, load balancers or routers) with software-based virtual network functions running on standard servers; SDN is about separating the control and data planes and centralising network control. The two are complementary and often deployed together, but they solve different problems.",
           "es": "NFV consiste en sustituir los equipos de red dedicados basados en hardware (como firewalls físicos, balanceadores de carga o routers) por funciones de red virtuales basadas en software que se ejecutan sobre servidores estándar; SDN consiste en separar el plano de control y el plano de datos y centralizar el control de la red. Ambas son complementarias y a menudo se despliegan juntas, pero resuelven problemas distintos."
@@ -1204,22 +1220,6 @@ export const QUESTIONS: Question[] = [
           "en": "NFV virtualises network functions themselves (moving firewalls, load balancers and routers from dedicated hardware to software on standard servers); SDN separates and centralises the control of traffic forwarding. They are complementary, frequently combined, but not the same concept — treating them as synonyms is a category error.",
           "es": "NFV virtualiza las propias funciones de red (trasladando firewalls, balanceadores de carga y routers del hardware dedicado a software sobre servidores estándar); SDN separa y centraliza el control del reenvío del tráfico. Son complementarias y se combinan con frecuencia, pero no son el mismo concepto: tratarlas como sinónimos es un error de categoría."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "NFV only applies to wireless networks, while SDN only applies to wired networks.",
-          "es": "NFV solo se aplica a redes inalámbricas, mientras que SDN solo se aplica a redes cableadas."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "SDN is a subset of NFV that deals exclusively with virtualising firewalls.",
-          "es": "SDN es un subconjunto de NFV que se ocupa exclusivamente de virtualizar firewalls."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -1247,14 +1247,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "It enables centralised, programmable, and more consistent management of forwarding behaviour across the whole network — policies can be defined and changed in one place (often via an API or protocol such as OpenFlow) rather than manually reconfiguring each device individually.",
-          "es": "Permite una gestión centralizada, programable y más coherente del comportamiento de reenvío en toda la red: las políticas pueden definirse y modificarse en un único lugar (a menudo mediante una API o un protocolo como OpenFlow) en lugar de reconfigurar manualmente cada dispositivo por separado."
+          "en": "It eliminates the need for any network security controls, since the controller handles security automatically.",
+          "es": "Elimina la necesidad de cualquier control de seguridad de red, ya que el controlador gestiona la seguridad automáticamente."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Centralising control logic in an SDN controller allows forwarding policy to be defined and updated in one place and pushed out programmatically, rather than manually touching every device — the core operational payoff of SDN's architecture.\n\n### Topic 6 — Cloud Migration, Cost Management and FinOps",
-          "es": "Centralizar la lógica de control en un controlador SDN permite definir y actualizar la política de reenvío en un único lugar y desplegarla de forma programática, en lugar de tocar manualmente cada dispositivo: el beneficio operativo central de la arquitectura de SDN.\n\n### Topic 6 — Migración a la nube, gestión de costes y FinOps"
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1267,10 +1263,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "It eliminates the need for any network security controls, since the controller handles security automatically.",
-          "es": "Elimina la necesidad de cualquier control de seguridad de red, ya que el controlador gestiona la seguridad automáticamente."
+          "en": "It enables centralised, programmable, and more consistent management of forwarding behaviour across the whole network — policies can be defined and changed in one place (often via an API or protocol such as OpenFlow) rather than manually reconfiguring each device individually.",
+          "es": "Permite una gestión centralizada, programable y más coherente del comportamiento de reenvío en toda la red: las políticas pueden definirse y modificarse en un único lugar (a menudo mediante una API o un protocolo como OpenFlow) en lugar de reconfigurar manualmente cada dispositivo por separado."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Centralising control logic in an SDN controller allows forwarding policy to be defined and updated in one place and pushed out programmatically, rather than manually touching every device — the core operational payoff of SDN's architecture.\n\n### Topic 6 — Cloud Migration, Cost Management and FinOps",
+          "es": "Centralizar la lógica de control en un controlador SDN permite definir y actualizar la política de reenvío en un único lugar y desplegarla de forma programática, en lugar de tocar manualmente cada dispositivo: el beneficio operativo central de la arquitectura de SDN.\n\n### Topic 6 — Migración a la nube, gestión de costes y FinOps"
+        }
       }
     ],
     "field": "clouds-networks",
@@ -1298,6 +1298,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Retain, because the application stays exactly where it is and is never migrated.",
+          "es": "Retain, porque la aplicación se queda exactamente donde está y nunca se migra."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Rehost, commonly called \"lift and shift\" — moving the application to the cloud largely unchanged, which is typically the fastest migration path but captures fewer cloud-native benefits.",
           "es": "Rehost, comúnmente llamado «lift and shift»: trasladar la aplicación a la nube prácticamente sin cambios, lo que suele ser la vía de migración más rápida, aunque capta menos beneficios cloud-native."
         },
@@ -1308,18 +1316,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Repurchase, because the organisation is replacing the application with a different commercial product.",
           "es": "Repurchase, porque la organización está sustituyendo la aplicación por un producto comercial distinto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Retain, because the application stays exactly where it is and is never migrated.",
-          "es": "Retain, porque la aplicación se queda exactamente donde está y nunca se migra."
         },
         "isCorrect": false
       }
@@ -1392,16 +1392,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Reserved instances, which require a one- to three-year commitment in exchange for a discount and are never reclaimed by the provider.",
-          "es": "Instancias reservadas (reserved), que exigen un compromiso de uno a tres años a cambio de un descuento y que el proveedor nunca recupera."
+          "en": "A dedicated host, which is always the cheapest purchasing option available in any public cloud.",
+          "es": "Un host dedicado, que es siempre la opción de compra más barata disponible en cualquier nube pública."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "On-demand instances, which are billed at the highest unit rate specifically because they can be interrupted at any time.",
-          "es": "Instancias on-demand, que se facturan a la tarifa unitaria más alta precisamente porque pueden interrumpirse en cualquier momento."
+          "en": "Reserved instances, which require a one- to three-year commitment in exchange for a discount and are never reclaimed by the provider.",
+          "es": "Instancias reservadas (reserved), que exigen un compromiso de uno a tres años a cambio de un descuento y que el proveedor nunca recupera."
         },
         "isCorrect": false
       },
@@ -1420,8 +1420,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "A dedicated host, which is always the cheapest purchasing option available in any public cloud.",
-          "es": "Un host dedicado, que es siempre la opción de compra más barata disponible en cualquier nube pública."
+          "en": "On-demand instances, which are billed at the highest unit rate specifically because they can be interrupted at any time.",
+          "es": "Instancias on-demand, que se facturan a la tarifa unitaria más alta precisamente porque pueden interrumpirse en cualquier momento."
         },
         "isCorrect": false
       }
@@ -1443,16 +1443,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Cloud cost management should be handled exclusively by the finance department, with engineering teams kept unaware of the cost implications of their architectural decisions.",
-          "es": "La gestión de costes en la nube debe ser gestionada exclusivamente por el departamento financiero, manteniendo a los equipos de ingeniería al margen de las implicaciones de coste de sus decisiones arquitectónicas."
+          "en": "FinOps only applies to on-premises data-centre costs, not to public cloud spend.",
+          "es": "FinOps solo se aplica a los costes de los centros de datos on-premises, no al gasto en la nube pública."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "FinOps is a one-time cost-cutting project that concludes once an initial round of resource rightsizing is complete.",
-          "es": "FinOps es un proyecto puntual de reducción de costes que concluye una vez completada una primera ronda de rightsizing (redimensionamiento) de recursos."
+          "en": "Cloud cost management should be handled exclusively by the finance department, with engineering teams kept unaware of the cost implications of their architectural decisions.",
+          "es": "La gestión de costes en la nube debe ser gestionada exclusivamente por el departamento financiero, manteniendo a los equipos de ingeniería al margen de las implicaciones de coste de sus decisiones arquitectónicas."
         },
         "isCorrect": false
       },
@@ -1471,8 +1471,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "FinOps only applies to on-premises data-centre costs, not to public cloud spend.",
-          "es": "FinOps solo se aplica a los costes de los centros de datos on-premises, no al gasto en la nube pública."
+          "en": "FinOps is a one-time cost-cutting project that concludes once an initial round of resource rightsizing is complete.",
+          "es": "FinOps es un proyecto puntual de reducción de costes que concluye una vez completada una primera ronda de rightsizing (redimensionamiento) de recursos."
         },
         "isCorrect": false
       }
@@ -1514,16 +1514,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Tags are required by cloud providers before any resource can be provisioned, regardless of cost-management goals.",
-          "es": "Los proveedores de nube exigen las etiquetas antes de poder aprovisionar cualquier recurso, con independencia de los objetivos de gestión de costes."
+          "en": "Tags automatically apply the cheapest available pricing tier to a resource.",
+          "es": "Las etiquetas aplican automáticamente el nivel de precios más barato disponible a un recurso."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Tags automatically apply the cheapest available pricing tier to a resource.",
-          "es": "Las etiquetas aplican automáticamente el nivel de precios más barato disponible a un recurso."
+          "en": "Tags are required by cloud providers before any resource can be provisioned, regardless of cost-management goals.",
+          "es": "Los proveedores de nube exigen las etiquetas antes de poder aprovisionar cualquier recurso, con independencia de los objetivos de gestión de costes."
         },
         "isCorrect": false
       }
@@ -1545,13 +1545,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Sending each new request to the server with the fewest currently active connections, accounting for how busy each server actually is.",
-          "es": "Envía cada nueva solicitud al servidor con menos conexiones activas en ese momento, teniendo en cuenta lo ocupado que está realmente cada servidor."
+          "en": "Always sending every request to the single server with the lowest historical average response time.",
+          "es": "Envía siempre todas las solicitudes al único servidor con el menor tiempo de respuesta histórico medio."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Randomly discarding a fixed percentage of requests to reduce server load.",
+          "es": "Descarta aleatoriamente un porcentaje fijo de solicitudes para reducir la carga del servidor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Cycling through the available servers in sequential order, sending each new request to the next server in the list regardless of how many connections each server currently has open.",
           "es": "Recorre los servidores disponibles en orden secuencial, enviando cada nueva solicitud al siguiente servidor de la lista, con independencia de cuántas conexiones tenga abiertas cada servidor en ese momento."
@@ -1563,18 +1571,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Always sending every request to the single server with the lowest historical average response time.",
-          "es": "Envía siempre todas las solicitudes al único servidor con el menor tiempo de respuesta histórico medio."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Randomly discarding a fixed percentage of requests to reduce server load.",
-          "es": "Descarta aleatoriamente un porcentaje fijo de solicitudes para reducir la carga del servidor."
+          "en": "Sending each new request to the server with the fewest currently active connections, accounting for how busy each server actually is.",
+          "es": "Envía cada nueva solicitud al servidor con menos conexiones activas en ese momento, teniendo en cuenta lo ocupado que está realmente cada servidor."
         },
         "isCorrect": false
       }
@@ -1604,6 +1604,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "It guarantees that every server will always have exactly the same number of connections at every moment.",
+          "es": "Garantiza que todos los servidores tendrán siempre exactamente el mismo número de conexiones en todo momento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "It accounts for the current load on each server by routing new requests to whichever server currently has the fewest active connections, which handles uneven request durations or server capacities better than blindly cycling through servers in a fixed sequence.",
           "es": "Tiene en cuenta la carga actual de cada servidor, dirigiendo las nuevas solicitudes al servidor que en ese momento tenga menos conexiones activas, lo que gestiona mejor que una rotación fija las duraciones de solicitud desiguales o las diferencias de capacidad entre servidores."
         },
@@ -1612,14 +1620,6 @@ export const QUESTIONS: Question[] = [
           "en": "Least connections routes new requests to the currently least-busy server, which handles uneven request durations and server capacities far better than round robin's blind, fixed rotation.",
           "es": "Least connections dirige las nuevas solicitudes al servidor menos ocupado en ese momento, lo que gestiona mucho mejor que la rotación fija y ciega de round robin las duraciones desiguales de las solicitudes y las diferencias de capacidad entre servidores."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "It guarantees that every server will always have exactly the same number of connections at every moment.",
-          "es": "Garantiza que todos los servidores tendrán siempre exactamente el mismo número de conexiones en todo momento."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -1647,8 +1647,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Vertical scaling, because the application is being made \"taller\" by adding more CPU to each existing instance.",
-          "es": "Escalado vertical, porque la aplicación se hace «más alta» añadiendo más CPU a cada instancia existente."
+          "en": "Chaos engineering, since the number of instances is changing unpredictably.",
+          "es": "Chaos engineering, ya que el número de instancias cambia de forma impredecible."
         },
         "isCorrect": false
       },
@@ -1667,8 +1667,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Chaos engineering, since the number of instances is changing unpredictably.",
-          "es": "Chaos engineering, ya que el número de instancias cambia de forma impredecible."
+          "en": "Vertical scaling, because the application is being made \"taller\" by adding more CPU to each existing instance.",
+          "es": "Escalado vertical, porque la aplicación se hace «más alta» añadiendo más CPU a cada instancia existente."
         },
         "isCorrect": false
       },
@@ -1698,14 +1698,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Multi-AZ and multi-region provide exactly the same failure protection and latency characteristics, so the choice is purely about cost.",
-          "es": "Multi-AZ y multi-región ofrecen exactamente la misma protección frente a fallos y las mismas características de latencia, por lo que la elección es puramente una cuestión de coste."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Multi-AZ protects against the failure of a single data centre (with low latency between zones, making synchronous replication practical), while multi-region additionally protects against a region-wide event and can reduce latency for geographically distributed users, at the cost of higher inter-region latency and more complex data replication and consistency management.",
           "es": "Multi-AZ protege frente al fallo de un único centro de datos (con una latencia entre zonas lo bastante baja como para que la replicación síncrona resulte viable), mientras que multi-región protege además frente a un evento que afecte a toda una región y puede reducir la latencia para usuarios distribuidos geográficamente, a costa de una latencia entre regiones más alta y de una gestión más compleja de la replicación y la consistencia de los datos."
         },
@@ -1714,6 +1706,14 @@ export const QUESTIONS: Question[] = [
           "en": "Multi-AZ protects against a single data-centre failure with latency low enough for synchronous replication; multi-region adds protection against a region-wide event and can improve latency for distant users, at the cost of higher inter-region latency and harder data consistency management. The two address different failure scopes and are often combined.",
           "es": "Multi-AZ protege frente al fallo de un único centro de datos con una latencia lo bastante baja como para permitir la replicación síncrona; multi-región añade protección frente a un evento que afecta a toda una región y puede mejorar la latencia para usuarios distantes, a costa de una latencia entre regiones más alta y una gestión de la consistencia de datos más difícil. Ambos abordan alcances de fallo distintos y a menudo se combinan."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Multi-AZ and multi-region provide exactly the same failure protection and latency characteristics, so the choice is purely about cost.",
+          "es": "Multi-AZ y multi-región ofrecen exactamente la misma protección frente a fallos y las mismas características de latencia, por lo que la elección es puramente una cuestión de coste."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1749,13 +1749,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "To intentionally cause outages in the production environment for its own sake, with no diagnostic purpose.",
-          "es": "Provocar interrupciones intencionadamente en el entorno de producción por sí mismas, sin ningún propósito de diagnóstico."
+          "en": "To replace the need for automated testing or monitoring entirely.",
+          "es": "Sustituir por completo la necesidad de pruebas automatizadas o de monitorización."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "To permanently reduce a system's overall availability as a cost-saving measure.",
+          "es": "Reducir permanentemente la disponibilidad general de un sistema como medida de ahorro de costes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "To proactively and empirically discover weaknesses in a system's resilience — hidden dependencies, missing fallbacks, incorrect assumptions about failure handling — under controlled conditions, before those same weaknesses cause an uncontrolled, real-world incident.",
           "es": "Descubrir de forma proactiva y empírica las debilidades en la resiliencia de un sistema —dependencias ocultas, mecanismos de reserva ausentes, suposiciones incorrectas sobre la gestión de fallos— en condiciones controladas, antes de que esas mismas debilidades provoquen un incidente real y descontrolado."
@@ -1767,18 +1775,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "To replace the need for automated testing or monitoring entirely.",
-          "es": "Sustituir por completo la necesidad de pruebas automatizadas o de monitorización."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "To permanently reduce a system's overall availability as a cost-saving measure.",
-          "es": "Reducir permanentemente la disponibilidad general de un sistema como medida de ahorro de costes."
+          "en": "To intentionally cause outages in the production environment for its own sake, with no diagnostic purpose.",
+          "es": "Provocar interrupciones intencionadamente en el entorno de producción por sí mismas, sin ningún propósito de diagnóstico."
         },
         "isCorrect": false
       }
@@ -1902,13 +1902,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A European Union regulation that applies exclusively to public-sector cloud contracts.",
+          "es": "Un reglamento de la Unión Europea que se aplica exclusivamente a los contratos de nube del sector público."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A firewall configuration language used to define network access-control lists.",
+          "es": "Un lenguaje de configuración de firewall utilizado para definir listas de control de acceso de red."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "A technical protocol that automatically encrypts all cloud storage buckets.",
           "es": "Un protocolo técnico que cifra automáticamente todos los buckets de almacenamiento en la nube."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "An international standard that specifies the requirements for establishing, implementing, maintaining and continually improving an Information Security Management System (ISMS) — a risk-based management framework and set of controls, rather than a certification of any single specific technology.",
           "es": "Un estándar internacional que especifica los requisitos para establecer, implementar, mantener y mejorar continuamente un Sistema de Gestión de la Seguridad de la Información (SGSI): un marco de gestión basado en el riesgo y un conjunto de controles, y no una certificación de ninguna tecnología específica concreta."
@@ -1918,22 +1934,6 @@ export const QUESTIONS: Question[] = [
           "en": "ISO/IEC 27001 specifies how to build and run an Information Security Management System — a risk-based governance and process framework — rather than certifying any specific technical product or encryption mechanism.",
           "es": "ISO/IEC 27001 especifica cómo construir y operar un Sistema de Gestión de la Seguridad de la Información: un marco de gobernanza y de procesos basado en el riesgo, y no la certificación de ningún producto técnico o mecanismo de cifrado concreto."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A European Union regulation that applies exclusively to public-sector cloud contracts.",
-          "es": "Un reglamento de la Unión Europea que se aplica exclusivamente a los contratos de nube del sector público."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A firewall configuration language used to define network access-control lists.",
-          "es": "Un lenguaje de configuración de firewall utilizado para definir listas de control de acceso de red."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -1953,14 +1953,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Data residency is a purely technical performance concern with no legal significance.",
-          "es": "La residencia de datos es una consideración puramente técnica de rendimiento, sin ninguna relevancia jurídica."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Where personal data is physically stored and processed can determine which legal jurisdiction and data-protection safeguards apply — transferring personal data outside the EEA generally requires an appropriate transfer mechanism (such as an adequacy decision or appropriate safeguards like Standard Contractual Clauses), so region selection is a genuine governance and compliance decision, not just a latency one.",
           "es": "El lugar donde se almacenan y procesan físicamente los datos personales puede determinar qué jurisdicción legal y qué garantías de protección de datos se aplican; transferir datos personales fuera del EEE generalmente requiere un mecanismo de transferencia apropiado (como una decisión de adecuación o garantías apropiadas del tipo cláusulas contractuales tipo), por lo que la elección de la región es una decisión genuina de gobernanza y cumplimiento normativo, no solo de latencia."
         },
@@ -1969,6 +1961,14 @@ export const QUESTIONS: Question[] = [
           "en": "Because personal data's physical location determines which legal safeguards and jurisdiction apply, and transfers of EU personal data outside the EEA generally require an appropriate transfer mechanism or safeguard (an adequacy decision or measures such as Standard Contractual Clauses), cloud region selection is a genuine compliance decision, not merely a performance or cost one.",
           "es": "Como la ubicación física de los datos personales determina qué garantías legales y qué jurisdicción se aplican, y las transferencias de datos personales de la UE fuera del EEE generalmente requieren un mecanismo de transferencia o una garantía apropiados (una decisión de adecuación o medidas como las cláusulas contractuales tipo), la elección de la región de la nube es una decisión genuina de cumplimiento normativo, no meramente de rendimiento o de coste."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Data residency only matters for data stored on physical tape backups, never for data in a public cloud.",
+          "es": "La residencia de datos solo importa para los datos almacenados en copias de seguridad físicas en cinta, nunca para los datos en una nube pública."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1981,8 +1981,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Data residency only matters for data stored on physical tape backups, never for data in a public cloud.",
-          "es": "La residencia de datos solo importa para los datos almacenados en copias de seguridad físicas en cinta, nunca para los datos en una nube pública."
+          "en": "Data residency is a purely technical performance concern with no legal significance.",
+          "es": "La residencia de datos es una consideración puramente técnica de rendimiento, sin ninguna relevancia jurídica."
         },
         "isCorrect": false
       }
@@ -2004,8 +2004,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "To replace the need for any human governance oversight permanently, with no periodic review.",
-          "es": "Sustituir permanentemente la necesidad de cualquier supervisión de gobernanza humana, sin revisión periódica alguna."
+          "en": "To make cloud infrastructure configuration entirely undocumented and untraceable.",
+          "es": "Hacer que la configuración de la infraestructura en la nube quede totalmente indocumentada y sin trazabilidad."
         },
         "isCorrect": false
       },
@@ -2024,16 +2024,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "To increase the manual approval workload on the security team for every single resource created.",
-          "es": "Aumentar la carga de trabajo de aprobación manual del equipo de seguridad para cada recurso creado."
+          "en": "To replace the need for any human governance oversight permanently, with no periodic review.",
+          "es": "Sustituir permanentemente la necesidad de cualquier supervisión de gobernanza humana, sin revisión periódica alguna."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "To make cloud infrastructure configuration entirely undocumented and untraceable.",
-          "es": "Hacer que la configuración de la infraestructura en la nube quede totalmente indocumentada y sin trazabilidad."
+          "en": "To increase the manual approval workload on the security team for every single resource created.",
+          "es": "Aumentar la carga de trabajo de aprobación manual del equipo de seguridad para cada recurso creado."
         },
         "isCorrect": false
       }
@@ -2055,13 +2055,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Measured service, since resource usage is being monitored and controlled.",
+          "es": "Servicio medido, ya que se está supervisando y controlando el uso de los recursos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "On-demand self-service, since the consumer can provision resources without human interaction with the provider.",
+          "es": "Autoservicio bajo demanda, ya que el consumidor puede aprovisionar recursos sin interacción humana con el proveedor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Rapid elasticity, since resources are being reassigned dynamically as demand changes.",
           "es": "Elasticidad rápida, ya que los recursos se reasignan dinámicamente a medida que cambia la demanda."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Resource pooling, which is specifically about a multi-tenant model where physical and virtual resources are dynamically assigned across consumers with no need for the consumer to know or control the exact resource location.",
           "es": "Agrupación de recursos (resource pooling), que se refiere específicamente a un modelo multiinquilino en el que los recursos físicos y virtuales se asignan dinámicamente entre consumidores, sin que el consumidor necesite conocer ni controlar la ubicación exacta del recurso."
@@ -2071,22 +2087,6 @@ export const QUESTIONS: Question[] = [
           "en": "Resource pooling is specifically NIST's characteristic describing a multi-tenant model with dynamically assigned physical and virtual resources and no consumer visibility into physical location; rapid elasticity is about scaling capacity up and down, which is a related but distinct characteristic.",
           "es": "La agrupación de recursos (resource pooling) es específicamente la característica del NIST que describe un modelo multiinquilino con recursos físicos y virtuales asignados dinámicamente y sin visibilidad del consumidor sobre la ubicación física; la elasticidad rápida tiene que ver con escalar la capacidad hacia arriba y hacia abajo, una característica relacionada pero distinta."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Measured service, since resource usage is being monitored and controlled.",
-          "es": "Servicio medido, ya que se está supervisando y controlando el uso de los recursos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "On-demand self-service, since the consumer can provision resources without human interaction with the provider.",
-          "es": "Autoservicio bajo demanda, ya que el consumidor puede aprovisionar recursos sin interacción humana con el proveedor."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -2122,6 +2122,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
+          "en": "Hybrid cloud, since the universities are combining their own infrastructure with a public provider.",
+          "es": "Nube híbrida, ya que las universidades están combinando su propia infraestructura con un proveedor público."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Community cloud, since the infrastructure is provisioned for exclusive use by a specific community of consumers from organisations with shared concerns (such as a common mission, security requirements, or compliance considerations), rather than being open to the general public or restricted to a single organisation.",
           "es": "Nube comunitaria, ya que la infraestructura se aprovisiona para el uso exclusivo de una comunidad específica de consumidores de organizaciones con intereses compartidos (como una misión común, requisitos de seguridad o consideraciones de cumplimiento normativo), en lugar de estar abierta al público general o restringida a una sola organización."
         },
@@ -2130,14 +2138,6 @@ export const QUESTIONS: Question[] = [
           "en": "Community cloud describes infrastructure provisioned for exclusive use by a specific community of consumers sharing common concerns, distinct from private cloud (a single organisation) and public cloud (open to the general public).",
           "es": "La nube comunitaria describe una infraestructura aprovisionada para el uso exclusivo de una comunidad específica de consumidores con intereses compartidos, a diferencia de la nube privada (una única organización) y la nube pública (abierta al público general)."
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Hybrid cloud, since the universities are combining their own infrastructure with a public provider.",
-          "es": "Nube híbrida, ya que las universidades están combinando su propia infraestructura con un proveedor público."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -2157,13 +2157,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Vendor lock-in, because the organisation is dependent on a single infrastructure.",
+          "es": "Vendor lock-in (dependencia del proveedor), porque la organización depende de una única infraestructura."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Multi-cloud, because two different cloud providers are being used simultaneously at all times.",
           "es": "Multi-cloud, porque en todo momento se están utilizando simultáneamente dos proveedores de nube distintos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Rehosting, because the workload's architecture is being redesigned for the cloud.",
           "es": "Rehosting, porque se está rediseñando la arquitectura de la carga de trabajo para la nube."
@@ -2171,7 +2179,7 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Cloud bursting, a hybrid-cloud pattern where an application runs primarily in a private environment and \"bursts\" into a public cloud only when demand temporarily exceeds private capacity, then scales back down once demand subsides.",
           "es": "Cloud bursting, un patrón de nube híbrida en el que una aplicación se ejecuta principalmente en un entorno privado y «desborda» (bursts) hacia una nube pública solo cuando la demanda supera temporalmente la capacidad privada, para luego volver a reducirse una vez que la demanda disminuye."
@@ -2181,14 +2189,6 @@ export const QUESTIONS: Question[] = [
           "en": "Cloud bursting is the specific hybrid-cloud pattern of running primarily on private infrastructure and temporarily extending into public cloud only when demand exceeds private capacity, then scaling back down once it subsides.",
           "es": "Cloud bursting es el patrón específico de nube híbrida consistente en ejecutar principalmente en infraestructura privada y extenderse temporalmente a la nube pública solo cuando la demanda supera la capacidad privada, para luego volver a reducirse una vez que esta disminuye."
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Vendor lock-in, because the organisation is dependent on a single infrastructure.",
-          "es": "Vendor lock-in (dependencia del proveedor), porque la organización depende de una única infraestructura."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -2208,6 +2208,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "It does not — lock-in risk is identical across all three service models, since all cloud services use standardised, portable APIs.",
+          "es": "No lo hace: el riesgo de dependencia es idéntico en los tres modelos de servicio, ya que todos los servicios en la nube utilizan APIs estandarizadas y portables."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because PaaS services are always more expensive than IaaS, and cost alone constitutes vendor lock-in.",
+          "es": "Porque los servicios de PaaS siempre son más caros que los de IaaS, y el coste por sí solo constituye dependencia del proveedor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Because PaaS and higher-level managed services expose provider-specific APIs, runtimes and operational tooling that an application becomes coupled to, making it harder to migrate away without significant rework, whereas IaaS workloads (running on standard VMs and OS images) are generally easier to port across providers.",
           "es": "Porque PaaS y los servicios gestionados de nivel superior exponen APIs, entornos de ejecución (runtimes) y herramientas operativas específicas del proveedor a las que la aplicación queda acoplada, lo que dificulta migrar sin un esfuerzo de reescritura considerable, mientras que las cargas de trabajo de IaaS (que se ejecutan sobre máquinas virtuales e imágenes de sistema operativo estándar) suelen ser más fáciles de portar entre proveedores."
         },
@@ -2216,22 +2232,6 @@ export const QUESTIONS: Question[] = [
           "en": "Because PaaS and higher-level managed services couple an application to provider-specific APIs, runtimes and tooling, migrating away requires significant rework, whereas IaaS workloads running on comparatively standard VMs and OS images are generally easier to port between providers.",
           "es": "Como PaaS y los servicios gestionados de nivel superior acoplan una aplicación a APIs, entornos de ejecución y herramientas específicas del proveedor, migrar fuera de ellos exige un esfuerzo de reescritura considerable, mientras que las cargas de trabajo de IaaS que se ejecutan sobre máquinas virtuales e imágenes de sistema operativo comparativamente estándar suelen ser más fáciles de portar entre proveedores."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "It does not — lock-in risk is identical across all three service models, since all cloud services use standardised, portable APIs.",
-          "es": "No lo hace: el riesgo de dependencia es idéntico en los tres modelos de servicio, ya que todos los servicios en la nube utilizan APIs estandarizadas y portables."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Because PaaS services are always more expensive than IaaS, and cost alone constitutes vendor lock-in.",
-          "es": "Porque los servicios de PaaS siempre son más caros que los de IaaS, y el coste por sí solo constituye dependencia del proveedor."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -2259,16 +2259,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Operational expenditure (OpEx) to capital expenditure (CapEx), since cloud resources must be purchased outright.",
-          "es": "Gasto operativo (OpEx) a gasto de capital (CapEx), ya que los recursos en la nube deben comprarse por adelantado."
+          "en": "Fixed costs to fixed costs, since cloud pricing eliminates all cost variability.",
+          "es": "Costes fijos a costes fijos, ya que la tarificación en la nube elimina toda variabilidad de costes."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Fixed costs to fixed costs, since cloud pricing eliminates all cost variability.",
-          "es": "Costes fijos a costes fijos, ya que la tarificación en la nube elimina toda variabilidad de costes."
+          "en": "Operational expenditure (OpEx) to capital expenditure (CapEx), since cloud resources must be purchased outright.",
+          "es": "Gasto operativo (OpEx) a gasto de capital (CapEx), ya que los recursos en la nube deben comprarse por adelantado."
         },
         "isCorrect": false
       },
@@ -2310,24 +2310,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "DNS, which resolves hostnames to IP addresses, not IP addresses to MAC addresses.",
-          "es": "DNS, que resuelve nombres de host a direcciones IP, no direcciones IP a direcciones MAC."
+          "en": "ICMP, which is used for diagnostic messages such as ping, not address resolution.",
+          "es": "ICMP, que se utiliza para mensajes de diagnóstico como ping, no para la resolución de direcciones."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "DHCP, which assigns IP addresses to hosts but does not resolve MAC addresses.",
-          "es": "DHCP, que asigna direcciones IP a los hosts pero no resuelve direcciones MAC."
+          "en": "DNS, which resolves hostnames to IP addresses, not IP addresses to MAC addresses.",
+          "es": "DNS, que resuelve nombres de host a direcciones IP, no direcciones IP a direcciones MAC."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "ICMP, which is used for diagnostic messages such as ping, not address resolution.",
-          "es": "ICMP, que se utiliza para mensajes de diagnóstico como ping, no para la resolución de direcciones."
+          "en": "DHCP, which assigns IP addresses to hosts but does not resolve MAC addresses.",
+          "es": "DHCP, que asigna direcciones IP a los hosts pero no resuelve direcciones MAC."
         },
         "isCorrect": false
       },
@@ -2361,22 +2361,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The client sends a SYN-ACK, the server replies with a SYN, and the client confirms with an ACK.",
-          "es": "El cliente envía un SYN-ACK, el servidor responde con un SYN, y el cliente confirma con un ACK."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "The server sends a SYN, the client replies with an ACK, and no further message is needed since UDP handles the reverse direction.",
-          "es": "El servidor envía un SYN, el cliente responde con un ACK, y no se necesita ningún otro mensaje porque UDP se encarga de la dirección inversa."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "The client sends a SYN (synchronize) segment, the server replies with a SYN-ACK segment acknowledging the client's SYN while sending its own SYN, and the client completes the handshake with an ACK segment.",
           "es": "El cliente envía un segmento SYN (synchronize), el servidor responde con un segmento SYN-ACK que reconoce el SYN del cliente a la vez que envía su propio SYN, y el cliente completa el saludo con un segmento ACK."
         },
@@ -2385,6 +2369,22 @@ export const QUESTIONS: Question[] = [
           "en": "TCP's three-way handshake is SYN, then SYN-ACK, then ACK, establishing synchronised sequence numbers in both directions before either side sends application data.",
           "es": "El saludo de tres vías de TCP es SYN, luego SYN-ACK, y luego ACK, estableciendo números de secuencia sincronizados en ambas direcciones antes de que cualquiera de las partes envíe datos de aplicación."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The client sends a SYN-ACK, the server replies with a SYN, and the client confirms with an ACK.",
+          "es": "El cliente envía un SYN-ACK, el servidor responde con un SYN, y el cliente confirma con un ACK."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The server sends a SYN, the client replies with an ACK, and no further message is needed since UDP handles the reverse direction.",
+          "es": "El servidor envía un SYN, el cliente responde con un ACK, y no se necesita ningún otro mensaje porque UDP se encarga de la dirección inversa."
+        },
+        "isCorrect": false
       },
       {
         "id": "D",
@@ -2412,13 +2412,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "It specifies the maximum transmission unit (MTU) the packet is allowed to use on the outgoing link.",
+          "es": "Especifica la unidad máxima de transmisión (MTU) que el paquete puede utilizar en el enlace de salida."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It records the total time the packet has spent queued in every router's buffer along its path, purely for statistical monitoring purposes.",
+          "es": "Registra el tiempo total que el paquete ha pasado en cola en el búfer de cada router a lo largo de su ruta, con fines puramente estadísticos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "It specifies the maximum amount of time, in seconds, that the payload's data remains valid before it must be re-encrypted.",
           "es": "Especifica la cantidad máxima de tiempo, en segundos, durante la cual los datos de la carga útil siguen siendo válidos antes de que deban volver a cifrarse."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "It limits the packet's lifetime by having each router that forwards it decrement the field by one; when it reaches zero, the packet is discarded, which prevents packets from looping indefinitely due to routing errors and is what tools such as traceroute exploit to map a path hop by hop.",
           "es": "Limita la vida útil del paquete haciendo que cada router que lo reenvía decremente el campo en una unidad; cuando llega a cero, el paquete se descarta, lo que evita que los paquetes queden atrapados indefinidamente en bucles de enrutamiento por errores de enrutamiento, y es precisamente lo que aprovechan herramientas como traceroute para trazar una ruta salto a salto."
@@ -2428,22 +2444,6 @@ export const QUESTIONS: Question[] = [
           "en": "TTL is decremented by each router that forwards the packet and causes it to be discarded once it reaches zero, which prevents packets from looping indefinitely due to routing errors and is precisely what tools such as traceroute exploit to map a path hop by hop.",
           "es": "El TTL es decrementado por cada router que reenvía el paquete y provoca que se descarte al llegar a cero, lo que evita que los paquetes queden atrapados indefinidamente en bucles debidos a errores de enrutamiento, y es precisamente lo que aprovechan herramientas como traceroute para trazar una ruta salto a salto."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "It records the total time the packet has spent queued in every router's buffer along its path, purely for statistical monitoring purposes.",
-          "es": "Registra el tiempo total que el paquete ha pasado en cola en el búfer de cada router a lo largo de su ruta, con fines puramente estadísticos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "It specifies the maximum transmission unit (MTU) the packet is allowed to use on the outgoing link.",
-          "es": "Especifica la unidad máxima de transmisión (MTU) que el paquete puede utilizar en el enlace de salida."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -2514,20 +2514,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Network Address Translation (NAT) — specifically, in this many-to-one form, often called Port Address Translation (PAT) — which allows multiple internally addressed devices to share a single public IP address for outbound internet connectivity.",
-          "es": "Network Address Translation (NAT) —concretamente, en esta forma de muchos a uno, a menudo llamada Port Address Translation (PAT)— que permite que varios dispositivos con direccionamiento interno compartan una única dirección IP pública para la conectividad saliente a internet."
+          "en": "DNS resolution, since it is translating one form of address into another.",
+          "es": "Resolución DNS, ya que se está traduciendo una forma de dirección a otra."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "This many-to-one translation of private addresses to a single shared public IP address, tracked by port, is Network Address Translation (specifically Port Address Translation), not DNS resolution, VXLAN encapsulation, or ARP, none of which translate private addresses to a shared public one.\n\n### Topic 3 — Network Security and Perimeter Defence",
-          "es": "Esta traducción de muchos a uno de direcciones privadas a una única dirección IP pública compartida, con seguimiento por puerto, es Network Address Translation (concretamente Port Address Translation), no la resolución DNS, la encapsulación VXLAN ni ARP, ninguno de los cuales traduce direcciones privadas a una dirección pública compartida.\n\n### Topic 3 — Seguridad de red y defensa perimetral"
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "DNS resolution, since it is translating one form of address into another.",
-          "es": "Resolución DNS, ya que se está traduciendo una forma de dirección a otra."
+          "en": "ARP, since it involves resolving one address to another at the same layer.",
+          "es": "ARP, ya que implica resolver una dirección a otra en la misma capa."
         },
         "isCorrect": false
       },
@@ -2542,10 +2538,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "ARP, since it involves resolving one address to another at the same layer.",
-          "es": "ARP, ya que implica resolver una dirección a otra en la misma capa."
+          "en": "Network Address Translation (NAT) — specifically, in this many-to-one form, often called Port Address Translation (PAT) — which allows multiple internally addressed devices to share a single public IP address for outbound internet connectivity.",
+          "es": "Network Address Translation (NAT) —concretamente, en esta forma de muchos a uno, a menudo llamada Port Address Translation (PAT)— que permite que varios dispositivos con direccionamiento interno compartan una única dirección IP pública para la conectividad saliente a internet."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "This many-to-one translation of private addresses to a single shared public IP address, tracked by port, is Network Address Translation (specifically Port Address Translation), not DNS resolution, VXLAN encapsulation, or ARP, none of which translate private addresses to a shared public one.\n\n### Topic 3 — Network Security and Perimeter Defence",
+          "es": "Esta traducción de muchos a uno de direcciones privadas a una única dirección IP pública compartida, con seguimiento por puerto, es Network Address Translation (concretamente Port Address Translation), no la resolución DNS, la encapsulación VXLAN ni ARP, ninguno de los cuales traduce direcciones privadas a una dirección pública compartida.\n\n### Topic 3 — Seguridad de red y defensa perimetral"
+        }
       }
     ],
     "field": "clouds-networks",
@@ -2581,6 +2581,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
+          "en": "Site-to-site connection, since two networks are being linked.",
+          "es": "Conexión site-to-site, ya que se están enlazando dos redes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Demilitarized zone (DMZ) — a perimeter network segment that hosts externally accessible services in isolation from the internal network, so that a breach of the exposed service does not directly grant an attacker a path into internal systems.",
           "es": "Zona desmilitarizada (DMZ) —un segmento de red perimetral que aloja servicios accesibles externamente de forma aislada de la red interna, de modo que una brecha en el servicio expuesto no otorga directamente al atacante una vía de acceso a los sistemas internos."
         },
@@ -2589,14 +2597,6 @@ export const QUESTIONS: Question[] = [
           "en": "Isolating a public-facing service on its own segment between two firewalls, so that a breach of it does not directly expose the internal network, is the defining purpose of a DMZ.",
           "es": "Aislar un servicio de cara al público en su propio segmento entre dos firewalls, de modo que una brecha en él no exponga directamente la red interna, es el propósito definitorio de una DMZ."
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Site-to-site connection, since two networks are being linked.",
-          "es": "Conexión site-to-site, ya que se están enlazando dos redes."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -2769,8 +2769,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A security group is stateless and must have matching inbound and outbound rules explicitly configured, while a NACL is stateful and automatically allows return traffic.",
-          "es": "Un security group no tiene estado (stateless) y debe tener reglas de entrada y salida coincidentes configuradas explícitamente, mientras que una NACL tiene estado (stateful) y permite automáticamente el tráfico de retorno."
+          "en": "Security groups and NACLs are two names for the exact same mechanism, differing only by cloud provider terminology.",
+          "es": "Los security groups y las NACL son dos nombres para exactamente el mismo mecanismo, y solo se diferencian según la terminología del proveedor de nube."
         },
         "isCorrect": false
       },
@@ -2789,16 +2789,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "Security groups and NACLs are two names for the exact same mechanism, differing only by cloud provider terminology.",
-          "es": "Los security groups y las NACL son dos nombres para exactamente el mismo mecanismo, y solo se diferencian según la terminología del proveedor de nube."
+          "en": "A NACL can only deny traffic, never allow it, while a security group can only allow traffic, never deny it.",
+          "es": "Una NACL solo puede denegar tráfico, nunca permitirlo, mientras que un security group solo puede permitir tráfico, nunca denegarlo."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "A NACL can only deny traffic, never allow it, while a security group can only allow traffic, never deny it.",
-          "es": "Una NACL solo puede denegar tráfico, nunca permitirlo, mientras que un security group solo puede permitir tráfico, nunca denegarlo."
+          "en": "A security group is stateless and must have matching inbound and outbound rules explicitly configured, while a NACL is stateful and automatically allows return traffic.",
+          "es": "Un security group no tiene estado (stateless) y debe tener reglas de entrada y salida coincidentes configuradas explícitamente, mientras que una NACL tiene estado (stateful) y permite automáticamente el tráfico de retorno."
         },
         "isCorrect": false
       }
@@ -2871,14 +2871,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "A Deployment, since Deployments already guarantee stable per-replica identity and storage by default.",
-          "es": "Un Deployment, ya que los Deployments ya garantizan por defecto una identidad y un almacenamiento estables por réplica."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "A StatefulSet, which provides each replica with a stable, unique network identifier and its own persistent storage claim that persists across rescheduling, along with ordered, predictable deployment and scaling — properties a standard Deployment (designed for stateless, interchangeable replicas) does not provide.",
           "es": "Un StatefulSet, que proporciona a cada réplica un identificador de red único y estable y su propia reclamación de almacenamiento persistente que se mantiene a través de las reprogramaciones, junto con un despliegue y un escalado ordenados y predecibles: propiedades que un Deployment estándar (diseñado para réplicas sin estado e intercambiables) no proporciona."
         },
@@ -2889,18 +2881,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "A ConfigMap, since it manages persistent configuration data.",
+          "es": "Un ConfigMap, ya que gestiona datos de configuración persistentes."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "A DaemonSet, since it is specifically designed to run stateful database workloads.",
-          "es": "Un DaemonSet, ya que está diseñado específicamente para ejecutar cargas de trabajo de bases de datos con estado."
+          "en": "A Deployment, since Deployments already guarantee stable per-replica identity and storage by default.",
+          "es": "Un Deployment, ya que los Deployments ya garantizan por defecto una identidad y un almacenamiento estables por réplica."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "A ConfigMap, since it manages persistent configuration data.",
-          "es": "Un ConfigMap, ya que gestiona datos de configuración persistentes."
+          "en": "A DaemonSet, since it is specifically designed to run stateful database workloads.",
+          "es": "Un DaemonSet, ya que está diseñado específicamente para ejecutar cargas de trabajo de bases de datos con estado."
         },
         "isCorrect": false
       }
@@ -2922,13 +2922,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Pods, since each Pod already provides a fully isolated logical environment for a team.",
-          "es": "Los Pods, ya que cada Pod ya proporciona un entorno lógico completamente aislado para un equipo."
+          "en": "Nodes, since assigning a dedicated physical node to each team is the standard way to separate teams in Kubernetes.",
+          "es": "Los Nodes, ya que asignar un nodo físico dedicado a cada equipo es la forma estándar de separar equipos en Kubernetes."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Services, since a Service is what defines the boundary of a team's resources.",
+          "es": "Los Services, ya que un Service es lo que define el límite de los recursos de un equipo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Namespaces, which partition a single cluster into multiple virtual clusters, giving each team its own scope for resource names, its own resource quotas, and its own access-control (RBAC) policies, without the overhead of operating separate physical clusters.",
           "es": "Los Namespaces, que dividen un único clúster en varios clústeres virtuales, otorgando a cada equipo su propio ámbito para nombres de recursos, sus propias cuotas de recursos y sus propias políticas de control de acceso (RBAC), sin la sobrecarga de operar clústeres físicos separados."
@@ -2940,18 +2948,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Services, since a Service is what defines the boundary of a team's resources.",
-          "es": "Los Services, ya que un Service es lo que define el límite de los recursos de un equipo."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Nodes, since assigning a dedicated physical node to each team is the standard way to separate teams in Kubernetes.",
-          "es": "Los Nodes, ya que asignar un nodo físico dedicado a cada equipo es la forma estándar de separar equipos en Kubernetes."
+          "en": "Pods, since each Pod already provides a fully isolated logical environment for a team.",
+          "es": "Los Pods, ya que cada Pod ya proporciona un entorno lógico completamente aislado para un equipo."
         },
         "isCorrect": false
       }
@@ -2973,16 +2973,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Another Service of the same type, since Services alone already support host- and path-based Layer 7 routing rules.",
-          "es": "Otro Service del mismo tipo, ya que los Services por sí solos ya admiten reglas de enrutamiento de Capa 7 basadas en host y en ruta."
+          "en": "A Namespace, since Namespaces are what provide external routing between a cluster and the internet.",
+          "es": "Un Namespace, ya que los Namespaces son los que proporcionan el enrutamiento externo entre un clúster e internet."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "A Deployment, since Deployments are responsible for exposing applications to external clients.",
-          "es": "Un Deployment, ya que los Deployments son responsables de exponer aplicaciones a clientes externos."
+          "en": "Another Service of the same type, since Services alone already support host- and path-based Layer 7 routing rules.",
+          "es": "Otro Service del mismo tipo, ya que los Services por sí solos ya admiten reglas de enrutamiento de Capa 7 basadas en host y en ruta."
         },
         "isCorrect": false
       },
@@ -3001,8 +3001,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "A Namespace, since Namespaces are what provide external routing between a cluster and the internet.",
-          "es": "Un Namespace, ya que los Namespaces son los que proporcionan el enrutamiento externo entre un clúster e internet."
+          "en": "A Deployment, since Deployments are responsible for exposing applications to external clients.",
+          "es": "Un Deployment, ya que los Deployments son responsables de exponer aplicaciones a clientes externos."
         },
         "isCorrect": false
       }
@@ -3024,6 +3024,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A readiness probe, since it is specifically responsible for validating that credentials are correctly embedded in the image before startup.",
+          "es": "Una readiness probe, ya que es la responsable específica de validar que las credenciales están correctamente incrustadas en la imagen antes del arranque."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Hard-coding remains the recommended approach, since externalising configuration values introduces unnecessary complexity.",
+          "es": "La codificación fija (hard-coding) sigue siendo el enfoque recomendado, ya que externalizar los valores de configuración introduce una complejidad innecesaria."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Kubernetes Secrets, which externalise sensitive values from the container image so they can be updated independently of it; the caveat is that, by default, Secrets are only base64-encoded (not encrypted) as stored, so encryption at rest and tighter RBAC access controls should also be configured for genuinely sensitive values.",
           "es": "Los Secrets de Kubernetes, que externalizan los valores sensibles de la imagen del contenedor para que puedan actualizarse de forma independiente a ella; la salvedad es que, por defecto, los Secrets solo están codificados en base64 (no cifrados) tal como se almacenan, por lo que también deben configurarse el cifrado en reposo y controles de acceso RBAC más estrictos para los valores realmente sensibles."
         },
@@ -3034,26 +3050,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Namespaces, which automatically encrypt any value referenced inside them, requiring no further configuration.",
           "es": "Los Namespaces, que cifran automáticamente cualquier valor referenciado dentro de ellos, sin necesidad de configuración adicional."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Hard-coding remains the recommended approach, since externalising configuration values introduces unnecessary complexity.",
-          "es": "La codificación fija (hard-coding) sigue siendo el enfoque recomendado, ya que externalizar los valores de configuración introduce una complejidad innecesaria."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A readiness probe, since it is specifically responsible for validating that credentials are correctly embedded in the image before startup.",
-          "es": "Una readiness probe, ya que es la responsable específica de validar que las credenciales están correctamente incrustadas en la imagen antes del arranque."
         },
         "isCorrect": false
       }
@@ -3075,14 +3075,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Southbound APIs (upward, toward applications) and northbound APIs (downward, toward forwarding devices).",
-          "es": "Southbound APIs (hacia arriba, hacia las aplicaciones) y northbound APIs (hacia abajo, hacia los dispositivos de reenvío)."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Northbound APIs, which the controller exposes upward to orchestration and business applications, and southbound APIs, which the controller uses downward to communicate with and programmatically control the physical and virtual forwarding devices in the network.",
           "es": "Northbound APIs, que el controlador expone hacia arriba a los sistemas de orquestación y las aplicaciones de negocio, y southbound APIs, que el controlador utiliza hacia abajo para comunicarse con los dispositivos de reenvío físicos y virtuales de la red y controlarlos de forma programática."
         },
@@ -3093,7 +3085,7 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "Both directions use the same single \"eastbound API,\" since SDN controllers do not distinguish direction.",
           "es": "Ambas direcciones utilizan la misma «eastbound API» única, ya que los controladores SDN no distinguen la dirección."
@@ -3101,10 +3093,18 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "D",
+        "id": "C",
         "text": {
           "en": "Ingress APIs (upward) and egress APIs (downward).",
           "es": "Ingress APIs (hacia arriba) y egress APIs (hacia abajo)."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Southbound APIs (upward, toward applications) and northbound APIs (downward, toward forwarding devices).",
+          "es": "Southbound APIs (hacia arriba, hacia las aplicaciones) y northbound APIs (hacia abajo, hacia los dispositivos de reenvío)."
         },
         "isCorrect": false
       }
@@ -3126,30 +3126,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "VXLAN, since it is the standard technology for connecting branch offices to a data centre.",
-          "es": "VXLAN, ya que es la tecnología estándar para conectar oficinas remotas con un centro de datos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "NFV, since replacing branch routers with virtual appliances alone solves the WAN routing problem described.",
-          "es": "NFV, ya que sustituir los routers de las oficinas remotas por appliances virtuales por sí solo resuelve el problema de enrutamiento WAN descrito."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A traditional stateful firewall, since firewalls are responsible for WAN path selection.",
-          "es": "Un firewall con estado tradicional, ya que los firewalls son responsables de la selección de rutas WAN."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
           "en": "SD-WAN (Software-Defined Wide Area Network), which applies centralised, policy-driven control to how traffic is routed across multiple underlying WAN transport types, allowing dynamic, application-aware path selection instead of static routing over a single dedicated circuit.",
           "es": "SD-WAN (Software-Defined Wide Area Network), que aplica un control centralizado y basado en políticas a la forma en que se enruta el tráfico a través de múltiples tipos de transporte WAN subyacentes, permitiendo una selección de ruta dinámica y consciente de la aplicación en lugar de un enrutamiento estático sobre un único circuito dedicado."
         },
@@ -3158,6 +3134,30 @@ export const QUESTIONS: Question[] = [
           "en": "SD-WAN extends SDN's centralised, policy-driven control specifically to the wide-area network, enabling dynamic, application-aware path selection across multiple transport types instead of static routing over a single dedicated circuit.",
           "es": "SD-WAN extiende el control centralizado y basado en políticas de SDN específicamente a la red de área extensa, permitiendo una selección de ruta dinámica y consciente de la aplicación entre múltiples tipos de transporte, en lugar de un enrutamiento estático sobre un único circuito dedicado."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A traditional stateful firewall, since firewalls are responsible for WAN path selection.",
+          "es": "Un firewall con estado tradicional, ya que los firewalls son responsables de la selección de rutas WAN."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "NFV, since replacing branch routers with virtual appliances alone solves the WAN routing problem described.",
+          "es": "NFV, ya que sustituir los routers de las oficinas remotas por appliances virtuales por sí solo resuelve el problema de enrutamiento WAN descrito."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "VXLAN, since it is the standard technology for connecting branch offices to a data centre.",
+          "es": "VXLAN, ya que es la tecnología estándar para conectar oficinas remotas con un centro de datos."
+        },
+        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -3228,8 +3228,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "GRE encapsulates over UDP, giving better load-balancing entropy across equal-cost paths, while VXLAN encapsulates over a protocol that lacks any port information, making it harder to load-balance.",
-          "es": "GRE encapsula sobre UDP, lo que proporciona mejor entropía de balanceo de carga entre rutas de igual coste, mientras que VXLAN encapsula sobre un protocolo que carece de cualquier información de puerto, lo que dificulta el balanceo de carga."
+          "en": "GRE is exclusively a Layer 7 protocol, while VXLAN operates only at Layer 1, so they solve entirely unrelated problems.",
+          "es": "GRE es exclusivamente un protocolo de Capa 7, mientras que VXLAN opera únicamente en la Capa 1, por lo que resuelven problemas totalmente distintos."
         },
         "isCorrect": false
       },
@@ -3248,16 +3248,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "GRE and VXLAN are functionally identical in every respect, and the choice between them is purely a matter of vendor naming convention.",
-          "es": "GRE y VXLAN son funcionalmente idénticos en todos los aspectos, y la elección entre ambos es puramente una cuestión de convención de nomenclatura del fabricante."
+          "en": "GRE encapsulates over UDP, giving better load-balancing entropy across equal-cost paths, while VXLAN encapsulates over a protocol that lacks any port information, making it harder to load-balance.",
+          "es": "GRE encapsula sobre UDP, lo que proporciona mejor entropía de balanceo de carga entre rutas de igual coste, mientras que VXLAN encapsula sobre un protocolo que carece de cualquier información de puerto, lo que dificulta el balanceo de carga."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "GRE is exclusively a Layer 7 protocol, while VXLAN operates only at Layer 1, so they solve entirely unrelated problems.",
-          "es": "GRE es exclusivamente un protocolo de Capa 7, mientras que VXLAN opera únicamente en la Capa 1, por lo que resuelven problemas totalmente distintos."
+          "en": "GRE and VXLAN are functionally identical in every respect, and the choice between them is purely a matter of vendor naming convention.",
+          "es": "GRE y VXLAN son funcionalmente idénticos en todos los aspectos, y la elección entre ambos es puramente una cuestión de convención de nomenclatura del fabricante."
         },
         "isCorrect": false
       }
@@ -3287,13 +3287,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "A single shared routing table with strict access-control lists, since Layer 3 isolation cannot be achieved without a common table.",
+          "es": "Una única tabla de enrutamiento compartida con listas de control de acceso estrictas, ya que el aislamiento de Capa 3 no puede lograrse sin una tabla común."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "NAT, since translating addresses is what keeps overlapping ranges from conflicting at the routing level.",
           "es": "NAT, ya que traducir las direcciones es lo que evita que los rangos superpuestos entren en conflicto a nivel de enrutamiento."
         },
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Virtual Routing and Forwarding (VRF), which allows multiple independent routing tables to coexist simultaneously on the same physical router, so that overlapping address spaces from different customers or tenants can be kept logically separate at the routing (Layer 3) level.",
           "es": "Virtual Routing and Forwarding (VRF), que permite que varias tablas de enrutamiento independientes coexistan simultáneamente en el mismo router físico, de modo que los espacios de direcciones superpuestos de distintos clientes o inquilinos puedan mantenerse lógicamente separados a nivel de enrutamiento (Capa 3)."
@@ -3303,14 +3311,6 @@ export const QUESTIONS: Question[] = [
           "en": "VRF lets multiple independent routing tables coexist on the same shared physical router, keeping overlapping address spaces from different customers or tenants logically separate at the routing (Layer 3) level.\n\n### Topic 6 — Cloud Migration, Cost Management and FinOps",
           "es": "VRF permite que varias tablas de enrutamiento independientes coexistan en el mismo router físico compartido, manteniendo lógicamente separados a nivel de enrutamiento (Capa 3) los espacios de direcciones superpuestos de distintos clientes o inquilinos.\n\n### Topic 6 — Migración a la nube, gestión de costes y FinOps"
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A single shared routing table with strict access-control lists, since Layer 3 isolation cannot be achieved without a common table.",
-          "es": "Una única tabla de enrutamiento compartida con listas de control de acceso estrictas, ya que el aislamiento de Capa 3 no puede lograrse sin una tabla común."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -3389,6 +3389,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Migrating the workload to a completely different cloud provider, since utilisation problems can only be solved by changing providers.",
+          "es": "Migrar la carga de trabajo a un proveedor de nube completamente distinto, ya que los problemas de utilización solo pueden resolverse cambiando de proveedor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Right-sizing: analysing actual utilisation data and resizing (or changing the instance family of) over-provisioned resources to match real workload demand, eliminating paid-for-but-unused capacity without necessarily changing the pricing model at all.",
           "es": "Right-sizing (redimensionamiento adecuado): analizar los datos reales de utilización y redimensionar (o cambiar la familia de instancia de) los recursos sobreaprovisionados para ajustarlos a la demanda real de la carga de trabajo, eliminando la capacidad pagada pero no utilizada sin necesidad de cambiar necesariamente el modelo de precios."
         },
@@ -3399,18 +3407,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Leaving the instances at their current size permanently, since utilisation naturally fluctuates and no action is ever justified based on historical averages.",
           "es": "Dejar las instancias en su tamaño actual de forma permanente, ya que la utilización fluctúa de forma natural y ninguna acción está nunca justificada a partir de promedios históricos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Migrating the workload to a completely different cloud provider, since utilisation problems can only be solved by changing providers.",
-          "es": "Migrar la carga de trabajo a un proveedor de nube completamente distinto, ya que los problemas de utilización solo pueden resolverse cambiando de proveedor."
         },
         "isCorrect": false
       }
@@ -3483,20 +3483,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Data egress charges: most cloud providers charge for data leaving their network to the internet or to another provider, while inbound data transfer is typically free, so architectures that repeatedly move large volumes of data out of a provider can accumulate significant, easy-to-overlook network transfer costs.",
-          "es": "Los cargos por salida de datos (egress): la mayoría de los proveedores de nube cobran por los datos que salen de su red hacia internet o hacia otro proveedor, mientras que la transferencia de datos entrante suele ser gratuita, por lo que las arquitecturas que mueven repetidamente grandes volúmenes de datos fuera de un proveedor pueden acumular costes de transferencia de red significativos y fáciles de pasar por alto."
+          "en": "Data egress is never billed by cloud providers, so this design carries no network-related cost risk at all.",
+          "es": "La salida de datos nunca se factura por parte de los proveedores de nube, por lo que este diseño no conlleva ningún riesgo de coste relacionado con la red."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Most cloud providers charge for data leaving their network (egress) while inbound transfer is typically free, so architectures that repeatedly move large volumes of data between providers can accumulate significant, easily overlooked network transfer costs.",
-          "es": "La mayoría de los proveedores de nube cobran por los datos que salen de su red (egress), mientras que la transferencia entrante suele ser gratuita, por lo que las arquitecturas que mueven repetidamente grandes volúmenes de datos entre proveedores pueden acumular costes de transferencia de red significativos y fáciles de pasar por alto."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Data egress is never billed by cloud providers, so this design carries no network-related cost risk at all.",
-          "es": "La salida de datos nunca se factura por parte de los proveedores de nube, por lo que este diseño no conlleva ningún riesgo de coste relacionado con la red."
+          "en": "This design eliminates cost risk entirely, since using two providers automatically qualifies for a multi-cloud discount.",
+          "es": "Este diseño elimina por completo el riesgo de coste, ya que usar dos proveedores da derecho automáticamente a un descuento multi-cloud."
         },
         "isCorrect": false
       },
@@ -3511,10 +3507,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "This design eliminates cost risk entirely, since using two providers automatically qualifies for a multi-cloud discount.",
-          "es": "Este diseño elimina por completo el riesgo de coste, ya que usar dos proveedores da derecho automáticamente a un descuento multi-cloud."
+          "en": "Data egress charges: most cloud providers charge for data leaving their network to the internet or to another provider, while inbound data transfer is typically free, so architectures that repeatedly move large volumes of data out of a provider can accumulate significant, easy-to-overlook network transfer costs.",
+          "es": "Los cargos por salida de datos (egress): la mayoría de los proveedores de nube cobran por los datos que salen de su red hacia internet o hacia otro proveedor, mientras que la transferencia de datos entrante suele ser gratuita, por lo que las arquitecturas que mueven repetidamente grandes volúmenes de datos fuera de un proveedor pueden acumular costes de transferencia de red significativos y fáciles de pasar por alto."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Most cloud providers charge for data leaving their network (egress) while inbound transfer is typically free, so architectures that repeatedly move large volumes of data between providers can accumulate significant, easily overlooked network transfer costs.",
+          "es": "La mayoría de los proveedores de nube cobran por los datos que salen de su red (egress), mientras que la transferencia entrante suele ser gratuita, por lo que las arquitecturas que mueven repetidamente grandes volúmenes de datos entre proveedores pueden acumular costes de transferencia de red significativos y fáciles de pasar por alto."
+        }
       }
     ],
     "field": "clouds-networks",
@@ -3534,14 +3534,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "It removes the need to ever look at total spend again, since unit cost is the only number that matters.",
-          "es": "Elimina la necesidad de volver a mirar nunca el gasto total, ya que el coste unitario es la única cifra que importa."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Unit economics connects cost to the business value or activity that generated it, so cost efficiency can be judged even as total spend grows with the business — a rising total spend alongside a falling or stable cost-per-unit can indicate healthy, efficient growth rather than waste.",
           "es": "La economía unitaria (unit economics) conecta el coste con el valor o la actividad de negocio que lo generó, de modo que la eficiencia de coste puede evaluarse incluso a medida que el gasto total crece junto con el negocio: un gasto total creciente junto con un coste por unidad decreciente o estable puede indicar un crecimiento sano y eficiente, en lugar de despilfarro."
         },
@@ -3552,18 +3544,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "It guarantees that total cloud spend will decrease every month, regardless of business growth.",
+          "es": "Garantiza que el gasto total en la nube disminuirá cada mes, con independencia del crecimiento del negocio."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "It is only useful for engineering teams and has no relevance to finance or business stakeholders.",
-          "es": "Solo es útil para los equipos de ingeniería y no tiene ninguna relevancia para finanzas ni para los interesados del negocio."
+          "en": "It removes the need to ever look at total spend again, since unit cost is the only number that matters.",
+          "es": "Elimina la necesidad de volver a mirar nunca el gasto total, ya que el coste unitario es la única cifra que importa."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "It guarantees that total cloud spend will decrease every month, regardless of business growth.",
-          "es": "Garantiza que el gasto total en la nube disminuirá cada mes, con independencia del crecimiento del negocio."
+          "en": "It is only useful for engineering teams and has no relevance to finance or business stakeholders.",
+          "es": "Solo es útil para los equipos de ingeniería y no tiene ninguna relevancia para finanzas ni para los interesados del negocio."
         },
         "isCorrect": false
       }
@@ -3644,6 +3644,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Mean Time Between Failures (MTBF) for the 15 minutes, and Mean Time to Repair (MTTR) for the 2 hours.",
+          "es": "Mean Time Between Failures (MTBF) para los 15 minutos, y Mean Time to Repair (MTTR) para las 2 horas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Recovery Point Objective (RPO) — the maximum acceptable amount of data loss, measured as a point in time before the failure — for the 15 minutes, and Recovery Time Objective (RTO) — the maximum acceptable duration of downtime before service is restored — for the 2 hours.",
           "es": "Recovery Point Objective (RPO) —la cantidad máxima aceptable de pérdida de datos, medida como un punto en el tiempo anterior al fallo— para los 15 minutos, y Recovery Time Objective (RTO) —la duración máxima aceptable de inactividad antes de que se restaure el servicio— para las 2 horas."
         },
@@ -3654,18 +3662,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Both figures describe the same metric under two different names, used interchangeably across the industry.",
           "es": "Ambas cifras describen la misma métrica bajo dos nombres distintos, utilizados indistintamente en el sector."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Mean Time Between Failures (MTBF) for the 15 minutes, and Mean Time to Repair (MTTR) for the 2 hours.",
-          "es": "Mean Time Between Failures (MTBF) para los 15 minutos, y Mean Time to Repair (MTTR) para las 2 horas."
         },
         "isCorrect": false
       }
@@ -3687,6 +3687,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Active-active and active-passive are two names for exactly the same architecture, differing only in marketing terminology.",
+          "es": "Activa-activa y activa-pasiva son dos nombres para exactamente la misma arquitectura, y solo se diferencian en la terminología de marketing."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Active-active can only be implemented within a single Availability Zone, never across regions.",
+          "es": "Activa-activa solo puede implementarse dentro de una única zona de disponibilidad, nunca entre regiones."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Active-active generally offers faster failover and better utilisation of resources across all sites, since traffic is already being served everywhere, but at the cost of running (and paying for) full capacity at every site continuously and needing to handle data consistency across simultaneously active sites; active-passive is typically cheaper to run day-to-day but risks a slower, \"cold start\" failover and wastes the standby site's capacity while idle.",
           "es": "Activa-activa generalmente ofrece una conmutación por error más rápida y una mejor utilización de los recursos en todas las sedes, ya que el tráfico ya se está sirviendo en todas partes, pero a costa de ejecutar (y pagar) capacidad completa en cada sede de forma continua y de tener que gestionar la consistencia de los datos entre sedes activas simultáneamente; activa-pasiva suele ser más barata de operar en el día a día, pero corre el riesgo de una conmutación por error más lenta, de «arranque en frío», y desperdicia la capacidad de la sede en espera mientras está inactiva."
         },
@@ -3697,26 +3713,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Active-passive is always strictly better because it costs less, with no disadvantages of any kind.",
           "es": "Activa-pasiva siempre es estrictamente mejor porque cuesta menos, sin ningún tipo de desventaja."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Active-active and active-passive are two names for exactly the same architecture, differing only in marketing terminology.",
-          "es": "Activa-activa y activa-pasiva son dos nombres para exactamente la misma arquitectura, y solo se diferencian en la terminología de marketing."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Active-active can only be implemented within a single Availability Zone, never across regions.",
-          "es": "Activa-activa solo puede implementarse dentro de una única zona de disponibilidad, nunca entre regiones."
         },
         "isCorrect": false
       }
@@ -3738,22 +3738,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Load balancing, since traffic is being redirected away from a specific destination.",
-          "es": "Balanceo de carga, ya que el tráfico se está redirigiendo lejos de un destino específico."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Auto-scaling, since additional capacity is presumably being added to compensate for the failures.",
-          "es": "Autoescalado, ya que presumiblemente se está añadiendo capacidad adicional para compensar los fallos."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
           "en": "The circuit breaker pattern, which \"opens\" after detecting an elevated failure rate to stop sending requests to a failing dependency (failing fast instead of piling up slow timeouts), then periodically moves to a \"half-open\" state to test recovery before fully closing again and resuming normal traffic.",
           "es": "El patrón circuit breaker (interruptor de circuito o cortacircuitos), que se «abre» tras detectar una tasa de fallos elevada para dejar de enviar solicitudes a una dependencia fallida (fallando rápido en lugar de acumular timeouts lentos), y que después pasa periódicamente a un estado «semiabierto» (half-open) para probar la recuperación antes de cerrarse por completo de nuevo y reanudar el tráfico normal."
         },
@@ -3764,10 +3748,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "D",
+        "id": "B",
+        "text": {
+          "en": "Load balancing, since traffic is being redirected away from a specific destination.",
+          "es": "Balanceo de carga, ya que el tráfico se está redirigiendo lejos de un destino específico."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "A stateful firewall rule, since traffic to a specific destination is being blocked.",
           "es": "Una regla de firewall con estado, ya que se está bloqueando el tráfico hacia un destino específico."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Auto-scaling, since additional capacity is presumably being added to compensate for the failures.",
+          "es": "Autoescalado, ya que presumiblemente se está añadiendo capacidad adicional para compensar los fallos."
         },
         "isCorrect": false
       }
@@ -3789,14 +3789,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Blue-green deployment, which maintains two complete, identical production environments and switches all traffic from one to the other instantly.",
-          "es": "Blue-green deployment, que mantiene dos entornos de producción completos e idénticos y cambia todo el tráfico de uno a otro de forma instantánea."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Canary deployment, which gradually shifts a small, then increasing, percentage of real production traffic to a new version, limiting the \"blast radius\" of any problem to a small subset of users before a full rollout.",
           "es": "Canary deployment, que traslada gradualmente un porcentaje pequeño, y progresivamente creciente, del tráfico real de producción a una nueva versión, limitando el «radio de impacto» (blast radius) de cualquier problema a un pequeño subconjunto de usuarios antes de un despliegue completo."
         },
@@ -3807,10 +3799,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "B",
         "text": {
           "en": "Rehosting, since the application is simply being redeployed without architectural change.",
           "es": "Rehosting, ya que la aplicación simplemente se está redesplegando sin ningún cambio arquitectónico."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Blue-green deployment, which maintains two complete, identical production environments and switches all traffic from one to the other instantly.",
+          "es": "Blue-green deployment, que mantiene dos entornos de producción completos e idénticos y cambia todo el tráfico de uno a otro de forma instantánea."
         },
         "isCorrect": false
       },
@@ -3840,13 +3840,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Multi-factor authentication (MFA), since it is what secures the initial login.",
+          "es": "La autenticación multifactor (MFA), ya que es lo que asegura el inicio de sesión inicial."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Role-based access control (RBAC), since it is what determines which permissions a user has after logging in.",
           "es": "El control de acceso basado en roles (RBAC), ya que es lo que determina qué permisos tiene un usuario después de iniciar sesión."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Attribute-based access control (ABAC), since it evaluates contextual attributes at request time.",
+          "es": "El control de acceso basado en atributos (ABAC), ya que evalúa atributos contextuales en el momento de la solicitud."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "Federated identity / single sign-on (SSO), where a trusted identity provider authenticates the user once and issues a token that participating service providers accept as proof of identity, so users can access multiple independent systems without separate credentials for each one.",
           "es": "Identidad federada / inicio de sesión único (SSO), en el que un proveedor de identidad de confianza autentica al usuario una sola vez y emite un token que los proveedores de servicio participantes aceptan como prueba de identidad, de modo que los usuarios pueden acceder a varios sistemas independientes sin credenciales separadas para cada uno."
@@ -3856,22 +3872,6 @@ export const QUESTIONS: Question[] = [
           "en": "Federated identity/SSO lets a trusted identity provider authenticate the user once and issue a token that other participating service providers accept, avoiding separate credentials and repeated logins across independent systems.",
           "es": "La identidad federada/SSO permite que un proveedor de identidad de confianza autentique al usuario una sola vez y emita un token que otros proveedores de servicio participantes aceptan, evitando credenciales separadas e inicios de sesión repetidos entre sistemas independientes."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Multi-factor authentication (MFA), since it is what secures the initial login.",
-          "es": "La autenticación multifactor (MFA), ya que es lo que asegura el inicio de sesión inicial."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Attribute-based access control (ABAC), since it evaluates contextual attributes at request time.",
-          "es": "El control de acceso basado en atributos (ABAC), ya que evalúa atributos contextuales en el momento de la solicitud."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -3891,13 +3891,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Federated identity, since two different people are involved in the process.",
+          "es": "La identidad federada, ya que en el proceso intervienen dos personas distintas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "The principle of least privilege, since it is limiting how much access any one person has.",
           "es": "El principio de mínimo privilegio, ya que limita cuánto acceso tiene cualquier persona."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Separation of duties, which requires that critical tasks (such as requesting and approving a sensitive change) be divided among different individuals, so that no single person can both initiate and authorise an action alone — reducing the risk of fraud, error or unchecked abuse of legitimate access, independent of how narrow that person's own permissions are.",
           "es": "La separación de funciones (separation of duties), que exige que las tareas críticas (como solicitar y aprobar un cambio sensible) se dividan entre distintas personas, de modo que ninguna persona pueda a la vez iniciar y autorizar por sí sola una acción, lo que reduce el riesgo de fraude, error o abuso no controlado de un acceso legítimo, con independencia de cuán limitados sean los propios permisos de esa persona."
@@ -3909,18 +3917,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Zero trust, since it means the requester is never trusted.",
           "es": "Zero trust, ya que significa que nunca se confía en quien solicita."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Federated identity, since two different people are involved in the process.",
-          "es": "La identidad federada, ya que en el proceso intervienen dos personas distintas."
         },
         "isCorrect": false
       }
@@ -3942,8 +3942,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Logs should be stored in the same account and with the same permissions as the resources they monitor, so administrators of those resources can edit them freely if needed.",
-          "es": "Los registros deben almacenarse en la misma cuenta y con los mismos permisos que los recursos que supervisan, de modo que los administradores de esos recursos puedan editarlos libremente si es necesario."
+          "en": "Audit logging should be disabled by default and only enabled temporarily during an active investigation, to minimise storage costs.",
+          "es": "El registro de auditoría debe estar desactivado por defecto y activarse solo temporalmente durante una investigación activa, para minimizar los costes de almacenamiento."
         },
         "isCorrect": false
       },
@@ -3958,6 +3958,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
+          "en": "Logs should be stored in the same account and with the same permissions as the resources they monitor, so administrators of those resources can edit them freely if needed.",
+          "es": "Los registros deben almacenarse en la misma cuenta y con los mismos permisos que los recursos que supervisan, de modo que los administradores de esos recursos puedan editarlos libremente si es necesario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Audit logs should be immutable (or at least tamper-evident) and ideally stored separately from, and with more restricted access than, the resources and accounts they record activity for, so that a compromised account cannot also be used to alter or delete the evidence of what it did.",
           "es": "Los registros de auditoría deben ser inmutables (o al menos a prueba de manipulaciones) e idealmente almacenarse por separado de los recursos y cuentas cuya actividad registran, con un acceso más restringido que el de estos, de modo que una cuenta comprometida no pueda utilizarse también para alterar o eliminar la evidencia de lo que hizo."
         },
@@ -3966,14 +3974,6 @@ export const QUESTIONS: Question[] = [
           "en": "Credible audit logs must be immutable or at least tamper-evident, and are ideally isolated from the accounts and resources they monitor, so that a compromised account cannot also be used to erase or alter the record of its own actions.",
           "es": "Los registros de auditoría creíbles deben ser inmutables o al menos a prueba de manipulaciones, e idealmente estar aislados de las cuentas y recursos que supervisan, de modo que una cuenta comprometida no pueda utilizarse también para borrar o alterar el registro de sus propias acciones."
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Audit logging should be disabled by default and only enabled temporarily during an active investigation, to minimise storage costs.",
-          "es": "El registro de auditoría debe estar desactivado por defecto y activarse solo temporalmente durante una investigación activa, para minimizar los costes de almacenamiento."
-        },
-        "isCorrect": false
       }
     ],
     "field": "clouds-networks",
@@ -4013,16 +4013,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "A longer password-complexity requirement, since the password that was phished was, by definition, already compliant with that policy.",
-          "es": "Un requisito de complejidad de contraseña más largo, ya que la contraseña obtenida mediante phishing, por definición, ya cumplía esa política."
+          "en": "Data classification, since it labels the sensitivity of data rather than controlling authentication.",
+          "es": "La clasificación de datos, ya que etiqueta la sensibilidad de los datos en lugar de controlar la autenticación."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Data classification, since it labels the sensitivity of data rather than controlling authentication.",
-          "es": "La clasificación de datos, ya que etiqueta la sensibilidad de los datos en lugar de controlar la autenticación."
+          "en": "A longer password-complexity requirement, since the password that was phished was, by definition, already compliant with that policy.",
+          "es": "Un requisito de complejidad de contraseña más largo, ya que la contraseña obtenida mediante phishing, por definición, ya cumplía esa política."
         },
         "isCorrect": false
       }

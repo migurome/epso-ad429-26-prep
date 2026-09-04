@@ -27,24 +27,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "A process group that only occurs at the very end of the project, immediately before Closing.",
-          "es": "Un grupo de procesos que solo tiene lugar al final del proyecto, inmediatamente antes del Cierre."
+          "en": "A phase that occurs only once, immediately after Initiating and before Planning.",
+          "es": "Una fase que ocurre una única vez, inmediatamente después del Inicio y antes de la Planificación."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "An optional process group that can be skipped for projects under a certain budget threshold.",
-          "es": "Un grupo de procesos opcional que puede omitirse en proyectos por debajo de un determinado umbral presupuestario."
+          "en": "A process group that only occurs at the very end of the project, immediately before Closing.",
+          "es": "Un grupo de procesos que solo tiene lugar al final del proyecto, inmediatamente antes del Cierre."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "A phase that occurs only once, immediately after Initiating and before Planning.",
-          "es": "Una fase que ocurre una única vez, inmediatamente después del Inicio y antes de la Planificación."
+          "en": "An optional process group that can be skipped for projects under a certain budget threshold.",
+          "es": "Un grupo de procesos opcional que puede omitirse en proyectos por debajo de un determinado umbral presupuestario."
         },
         "isCorrect": false
       }
@@ -74,14 +74,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Initiating, Planning, Executing and Closing, with Monitoring & Control running as a continuous activity across all four.",
-          "es": "Inicio, Planificación, Ejecución y Cierre, con el Seguimiento y Control ejecutándose como una actividad continua a lo largo de las cuatro."
+          "en": "A single \"Delivery\" phase, since PM² deliberately avoids formal phase boundaries.",
+          "es": "Una única fase de «Entrega», ya que PM² evita deliberadamente los límites formales entre fases."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "PM² organises delivery into four sequential phases — Initiating, Planning, Executing, Closing — with Monitoring & Control running continuously across all of them, rather than as a separate fifth phase. This structure, developed by the European Commission's CoEPM² within DG DIGIT, is directly relevant to how ICT projects are actually run across EU institutions.",
-          "es": "PM² organiza la entrega en cuatro fases secuenciales —Inicio, Planificación, Ejecución, Cierre—, con el Seguimiento y Control ejecutándose de forma continua a lo largo de todas ellas, en lugar de constituir una quinta fase independiente. Esta estructura, desarrollada por el CoEPM² de la Comisión Europea dentro de la DG DIGIT, es directamente relevante para entender cómo se gestionan realmente los proyectos TIC en las instituciones de la UE."
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -94,10 +90,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "A single \"Delivery\" phase, since PM² deliberately avoids formal phase boundaries.",
-          "es": "Una única fase de «Entrega», ya que PM² evita deliberadamente los límites formales entre fases."
+          "en": "Initiating, Planning, Executing and Closing, with Monitoring & Control running as a continuous activity across all four.",
+          "es": "Inicio, Planificación, Ejecución y Cierre, con el Seguimiento y Control ejecutándose como una actividad continua a lo largo de las cuatro."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "PM² organises delivery into four sequential phases — Initiating, Planning, Executing, Closing — with Monitoring & Control running continuously across all of them, rather than as a separate fifth phase. This structure, developed by the European Commission's CoEPM² within DG DIGIT, is directly relevant to how ICT projects are actually run across EU institutions.",
+          "es": "PM² organiza la entrega en cuatro fases secuenciales —Inicio, Planificación, Ejecución, Cierre—, con el Seguimiento y Control ejecutándose de forma continua a lo largo de todas ellas, en lugar de constituir una quinta fase independiente. Esta estructura, desarrollada por el CoEPM² de la Comisión Europea dentro de la DG DIGIT, es directamente relevante para entender cómo se gestionan realmente los proyectos TIC en las instituciones de la UE."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -168,13 +168,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The Project Charter is produced only at project closure, to confirm the benefits were realised.",
+          "es": "El Project Charter se elabora únicamente al cierre del proyecto, para confirmar que los beneficios se han materializado."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The Business Case is written by the project manager alone, while the Project Charter is written collaboratively by the whole project team.",
+          "es": "El Business Case lo redacta únicamente el project manager, mientras que el Project Charter lo redacta de forma colaborativa todo el equipo del proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "They are two names for the same document, mandated by two different frameworks.",
           "es": "Son dos nombres para el mismo documento, exigidos por dos marcos de trabajo distintos."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "The Business Case justifies the investment by setting out the problem, options, costs and expected benefits; the Project Charter (or equivalent initiation document) formally authorises the project and grants the project manager authority to use organisational resources, based on that justification.",
           "es": "El Business Case justifica la inversión exponiendo el problema, las opciones, los costes y los beneficios esperados; el Project Charter (o el documento de inicio equivalente) autoriza formalmente el proyecto y otorga al project manager autoridad para utilizar los recursos de la organización, sobre la base de esa justificación."
@@ -184,22 +200,6 @@ export const QUESTIONS: Question[] = [
           "en": "The Business Case justifies why the investment should be made; the Project Charter (or equivalent) is the authorisation document that formally launches the project and empowers the project manager, building on that justification. They serve different governance purposes and are produced by different roles.",
           "es": "El Business Case justifica por qué debería realizarse la inversión; el Project Charter (o equivalente) es el documento de autorización que pone en marcha formalmente el proyecto y otorga poder al project manager, apoyándose en esa justificación. Cumplen propósitos de gobernanza distintos y los elaboran roles distintos."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "The Project Charter is produced only at project closure, to confirm the benefits were realised.",
-          "es": "El Project Charter se elabora únicamente al cierre del proyecto, para confirmar que los beneficios se han materializado."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "The Business Case is written by the project manager alone, while the Project Charter is written collaboratively by the whole project team.",
-          "es": "El Business Case lo redacta únicamente el project manager, mientras que el Project Charter lo redacta de forma colaborativa todo el equipo del proyecto."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -270,13 +270,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The stakeholder who owns the product backlog and decides what gets built.",
+          "es": "La parte interesada que posee el product backlog y decide qué se construye."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "A traditional project manager who assigns daily tasks to the Developers and reports their individual performance to management.",
           "es": "Un project manager tradicional que asigna tareas diarias a los Developers e informa a la dirección sobre su rendimiento individual."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "The person accountable for the Scrum Team's effectiveness, primarily by helping the team understand and apply Scrum, and by removing impediments to its progress — not a task-assigning manager.",
           "es": "La persona responsable de la eficacia del Scrum Team, principalmente ayudando al equipo a comprender y aplicar Scrum, y eliminando los impedimentos a su progreso — no un gestor que asigna tareas."
@@ -286,14 +294,6 @@ export const QUESTIONS: Question[] = [
           "en": "The Scrum Master serves the Scrum Team by coaching its use of Scrum and removing impediments; this is explicitly not the same as a traditional command-and-control project manager who assigns individual tasks.",
           "es": "El Scrum Master sirve al Scrum Team ayudándolo a aplicar Scrum y eliminando impedimentos; esto es explícitamente distinto de un project manager tradicional de mando y control que asigna tareas individuales."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "The stakeholder who owns the product backlog and decides what gets built.",
-          "es": "La parte interesada que posee el product backlog y decide qué se construye."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -321,6 +321,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The Scrum Master is accountable for maximising product value and managing the backlog, while the Product Owner focuses on coaching the team's process.",
+          "es": "El Scrum Master es responsable de maximizar el valor del producto y de gestionar el backlog, mientras que el Product Owner se centra en guiar el proceso del equipo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The Scrum Master decides which backlog items are built next, while the Product Owner facilitates the Daily Scrum.",
+          "es": "El Scrum Master decide qué elementos del backlog se construyen a continuación, mientras que el Product Owner facilita la Daily Scrum."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "The Product Owner is accountable for maximising the value of the product and managing the Product Backlog; the Scrum Master is accountable for the Scrum Team's effective application of the Scrum framework.",
           "es": "El Product Owner es responsable de maximizar el valor del producto y de gestionar el Product Backlog; el Scrum Master es responsable de que el Scrum Team aplique el marco de Scrum de forma eficaz."
         },
@@ -331,26 +347,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "The Scrum Master is accountable for maximising product value and managing the backlog, while the Product Owner focuses on coaching the team's process.",
-          "es": "El Scrum Master es responsable de maximizar el valor del producto y de gestionar el backlog, mientras que el Product Owner se centra en guiar el proceso del equipo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "The Product Owner and the Scrum Master are two titles for the same accountability, used interchangeably depending on the organisation.",
           "es": "El Product Owner y el Scrum Master son dos denominaciones para la misma responsabilidad, utilizadas de forma intercambiable según la organización."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "The Scrum Master decides which backlog items are built next, while the Product Owner facilitates the Daily Scrum.",
-          "es": "El Scrum Master decide qué elementos del backlog se construyen a continuación, mientras que el Product Owner facilita la Daily Scrum."
         },
         "isCorrect": false
       }
@@ -372,13 +372,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Fix the exact number of sprints a project will require in advance.",
+          "es": "Fijar de antemano el número exacto de sprints que requerirá un proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Guarantee that every team member is always working on at least one task.",
           "es": "Garantizar que cada miembro del equipo esté siempre trabajando en al menos una tarea."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Make bottlenecks immediately visible — as items pile up against a capped stage — and encourage the team to finish existing work before starting new work, improving flow.",
           "es": "Hacer visibles de inmediato los cuellos de botella —a medida que los elementos se acumulan contra una etapa con el límite alcanzado— y animar al equipo a terminar el trabajo existente antes de iniciar trabajo nuevo, mejorando el flujo."
@@ -388,14 +396,6 @@ export const QUESTIONS: Question[] = [
           "en": "WIP limits force problems to surface early: once a stage is at its cap, new work cannot enter it until existing work moves on, which exposes bottlenecks immediately rather than letting them hide until a later review.",
           "es": "Los límites de WIP hacen que los problemas afloren pronto: en cuanto una etapa alcanza su límite, no puede entrar trabajo nuevo hasta que el existente avance, lo que expone los cuellos de botella de inmediato en lugar de dejar que permanezcan ocultos hasta una revisión posterior."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Fix the exact number of sprints a project will require in advance.",
-          "es": "Fijar de antemano el número exacto de sprints que requerirá un proyecto."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -423,14 +423,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The amount of backlog (typically measured in story points) a specific team completes per sprint, averaged over recent sprints, used by that same team to forecast realistically how much work it can commit to in future sprints.",
-          "es": "La cantidad de backlog (normalmente medida en puntos de historia) que un equipo concreto completa por sprint, promediada sobre los sprints recientes, utilizada por ese mismo equipo para prever de forma realista cuánto trabajo puede comprometerse a asumir en sprints futuros."
+          "en": "The speed, in kilometres per hour, at which a project is progressing toward its deadline.",
+          "es": "La velocidad, en kilómetros por hora, a la que un proyecto avanza hacia su fecha límite."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Velocity is a team-specific, historically-derived measure used for that team's own sprint-planning forecasts; because team composition, tooling and estimating habits differ, it is explicitly not designed or valid for comparing different teams against each other.",
-          "es": "La velocidad es una medida específica de cada equipo, derivada de su historial, utilizada para las previsiones de planificación de sprint de ese mismo equipo; dado que la composición del equipo, las herramientas y los hábitos de estimación difieren, no está diseñada ni es válida para comparar distintos equipos entre sí."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -443,10 +439,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
-          "en": "The speed, in kilometres per hour, at which a project is progressing toward its deadline.",
-          "es": "La velocidad, en kilómetros por hora, a la que un proyecto avanza hacia su fecha límite."
+          "en": "The amount of backlog (typically measured in story points) a specific team completes per sprint, averaged over recent sprints, used by that same team to forecast realistically how much work it can commit to in future sprints.",
+          "es": "La cantidad de backlog (normalmente medida en puntos de historia) que un equipo concreto completa por sprint, promediada sobre los sprints recientes, utilizada por ese mismo equipo para prever de forma realista cuánto trabajo puede comprometerse a asumir en sprints futuros."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Velocity is a team-specific, historically-derived measure used for that team's own sprint-planning forecasts; because team composition, tooling and estimating habits differ, it is explicitly not designed or valid for comparing different teams against each other.",
+          "es": "La velocidad es una medida específica de cada equipo, derivada de su historial, utilizada para las previsiones de planificación de sprint de ese mismo equipo; dado que la composición del equipo, las herramientas y los hábitos de estimación difieren, no está diseñada ni es válida para comparar distintos equipos entre sí."
+        }
       },
       {
         "id": "D",
@@ -482,6 +482,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "A violation of the Agile Manifesto that should be immediately corrected.",
+          "es": "Una infracción del Manifiesto Ágil que debería corregirse de inmediato."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "A hybrid agile-waterfall approach, combining iterative agile execution with a more traditional, milestone-based governance and reporting structure.",
           "es": "Un enfoque híbrido ágil-cascada, que combina la ejecución ágil iterativa con una estructura de gobernanza e informes más tradicional, basada en hitos."
         },
@@ -490,14 +498,6 @@ export const QUESTIONS: Question[] = [
           "en": "Combining iterative, sprint-based execution with a fixed, milestone-driven governance and reporting layer is the defining feature of a hybrid agile-waterfall approach — common in EU institutional ICT delivery, where procurement and financial cycles impose fixed external milestones.\n\n### Topic 3 — Scope, Schedule and Cost Management",
           "es": "Combinar una ejecución iterativa basada en sprints con una capa de gobernanza e informes fija y basada en hitos es precisamente lo que define un enfoque híbrido ágil-cascada, habitual en la entrega TIC institucional de la UE, donde los ciclos de contratación y financieros imponen hitos externos fijos.\n\n### Topic 3 — Gestión del alcance, el cronograma y los costes"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A violation of the Agile Manifesto that should be immediately corrected.",
-          "es": "Una infracción del Manifiesto Ágil que debería corregirse de inmediato."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -576,13 +576,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "An activity that has been cancelled and removed from the schedule.",
+          "es": "Una actividad que se ha cancelado y se ha eliminado del cronograma."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "An activity that has already been completed and can therefore be ignored.",
           "es": "Una actividad que ya se ha completado y que, por tanto, puede ignorarse."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "An activity on the critical path: any delay to it will delay the project's overall finish date, since it has no spare time available.",
           "es": "Una actividad del camino crítico: cualquier retraso en ella retrasará la fecha de finalización global del proyecto, ya que no dispone de tiempo de margen."
@@ -592,14 +600,6 @@ export const QUESTIONS: Question[] = [
           "en": "Zero float means an activity has no scheduling slack: any delay to it propagates directly to the project's finish date, which is exactly the defining property of the critical path.",
           "es": "Una holgura cero significa que una actividad no dispone de margen de programación: cualquier retraso en ella se traslada directamente a la fecha de finalización del proyecto, que es exactamente la propiedad definitoria del camino crítico."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "An activity that has been cancelled and removed from the schedule.",
-          "es": "Una actividad que se ha cancelado y se ha eliminado del cronograma."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -729,14 +729,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Gold plating.",
-          "es": "Gold plating (sobreingeniería no solicitada)."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Scope creep.",
           "es": "Scope creep (deslizamiento del alcance)."
         },
@@ -745,6 +737,14 @@ export const QUESTIONS: Question[] = [
           "en": "Scope creep is the uncontrolled, incremental expansion of scope without formal change control. Gold plating is a related but distinct concept (adding unrequested extras on the team's own initiative); crashing and fast tracking are schedule-compression techniques, not scope-control failures.\n\n### Topic 4 — Risk and Issue Management",
           "es": "El scope creep es la expansión no controlada e incremental del alcance sin un control de cambios formal. El gold plating es un concepto relacionado pero distinto (añadir extras no solicitados por iniciativa propia del equipo); el crashing y el fast tracking son técnicas de compresión del cronograma, no fallos de control del alcance.\n\n### Topic 4 — Gestión de riesgos e incidencias"
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Fast tracking.",
+          "es": "Fast tracking (ejecución de actividades en paralelo)."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -757,8 +757,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Fast tracking.",
-          "es": "Fast tracking (ejecución de actividades en paralelo)."
+          "en": "Gold plating.",
+          "es": "Gold plating (sobreingeniería no solicitada)."
         },
         "isCorrect": false
       }
@@ -839,6 +839,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Avoid, because the risk can no longer occur once insurance is purchased.",
+          "es": "Evitar, porque el riesgo ya no puede producirse una vez contratado el seguro."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Transfer, because the financial consequence of the risk is shifted to a third party (the insurer), even though the risk itself may still occur.",
           "es": "Transferir, porque la consecuencia financiera del riesgo se traslada a un tercero (la aseguradora), aunque el riesgo en sí pueda seguir produciéndose."
         },
@@ -847,14 +855,6 @@ export const QUESTIONS: Question[] = [
           "en": "Purchasing insurance does not stop the risk from occurring — it shifts who bears the financial consequence if it does, which is the definition of a transfer response, not mitigation (which would reduce probability or impact) or avoidance (which would eliminate the risk itself).",
           "es": "Contratar un seguro no impide que el riesgo se produzca: traslada quién asume la consecuencia financiera si llega a materializarse, lo cual es la definición de una respuesta de transferencia, no de mitigación (que reduciría la probabilidad o el impacto) ni de evitación (que eliminaría el propio riesgo)."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Avoid, because the risk can no longer occur once insurance is purchased.",
-          "es": "Evitar, porque el riesgo ya no puede producirse una vez contratado el seguro."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -984,8 +984,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Avoid.",
-          "es": "Evitar."
+          "en": "Transfer.",
+          "es": "Transferir."
         },
         "isCorrect": false
       },
@@ -1000,6 +1000,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "C",
         "text": {
+          "en": "Avoid.",
+          "es": "Evitar."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Accept (specifically, active acceptance, since a contingency plan and reserve are prepared in case the risk occurs).",
           "es": "Aceptar (concretamente, aceptación activa, ya que se prepara un plan de contingencia y una reserva por si el riesgo se materializa)."
         },
@@ -1008,14 +1016,6 @@ export const QUESTIONS: Question[] = [
           "en": "Deciding not to act proactively, while preparing a contingency reserve in case the risk does occur, is a textbook description of (active) acceptance — distinct from mitigation, avoidance or transfer, none of which apply here.\n\n### Topic 5 — Stakeholder Management and Governance",
           "es": "Decidir no actuar de forma proactiva, mientras se prepara una reserva de contingencia por si el riesgo llega a materializarse, es la descripción de manual de la aceptación (activa), distinta de la mitigación, la evitación o la transferencia, ninguna de las cuales aplica aquí.\n\n### Topic 5 — Gestión de partes interesadas y gobernanza"
         }
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Transfer.",
-          "es": "Transferir."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -1035,6 +1035,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "They describe the same role; RACI simply lists both terms for emphasis.",
+          "es": "Describen el mismo rol; RACI simplemente enumera ambos términos por énfasis."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "\"Responsible\" identifies the person or people who actually perform the work; \"Accountable\" identifies the single person ultimately answerable for the work being completed correctly — there should be exactly one Accountable per task, even when several people are Responsible.",
           "es": "«Responsible» identifica a la persona o personas que realmente ejecutan el trabajo; «Accountable» identifica a la única persona que responde en última instancia de que el trabajo se complete de forma correcta — debe haber exactamente un Accountable por tarea, aunque varias personas sean Responsible."
         },
@@ -1045,26 +1053,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "They describe the same role; RACI simply lists both terms for emphasis.",
-          "es": "Describen el mismo rol; RACI simplemente enumera ambos términos por énfasis."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "C",
         "text": {
-          "en": "\"Accountable\" identifies who performs the work, while \"Responsible\" identifies who is kept informed of progress.",
-          "es": "«Accountable» identifica a quien ejecuta el trabajo, mientras que «Responsible» identifica a quien se mantiene informado del avance."
+          "en": "There can be multiple people marked \"Accountable\" for the same task, but only one person marked \"Responsible\".",
+          "es": "Puede haber varias personas marcadas como «Accountable» para la misma tarea, pero solo una persona marcada como «Responsible»."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "There can be multiple people marked \"Accountable\" for the same task, but only one person marked \"Responsible\".",
-          "es": "Puede haber varias personas marcadas como «Accountable» para la misma tarea, pero solo una persona marcada como «Responsible»."
+          "en": "\"Accountable\" identifies who performs the work, while \"Responsible\" identifies who is kept informed of progress.",
+          "es": "«Accountable» identifica a quien ejecuta el trabajo, mientras que «Responsible» identifica a quien se mantiene informado del avance."
         },
         "isCorrect": false
       }
@@ -1086,14 +1086,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Consulted stakeholders are engaged in two-way communication and provide input before a decision is made, while Informed stakeholders are simply told about the decision afterwards, one-way.",
-          "es": "Las partes interesadas Consulted participan en una comunicación bidireccional y aportan su opinión antes de que se tome una decisión, mientras que las partes interesadas Informed simplemente reciben la noticia de la decisión después, de forma unidireccional."
+          "en": "Only one stakeholder may ever be marked Consulted, but any number can be marked Informed.",
+          "es": "Solo puede haber una parte interesada marcada como Consulted, pero puede haber cualquier número marcadas como Informed."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Consulted implies two-way engagement before a decision is finalised; Informed implies one-way notification after the fact. Confusing the two is a common misreading of the RACI framework.",
-          "es": "Consulted implica una implicación bidireccional antes de que se cierre una decisión; Informed implica una notificación unidireccional después de los hechos. Confundir ambos términos es una lectura errónea habitual del marco RACI."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
@@ -1114,10 +1110,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Only one stakeholder may ever be marked Consulted, but any number can be marked Informed.",
-          "es": "Solo puede haber una parte interesada marcada como Consulted, pero puede haber cualquier número marcadas como Informed."
+          "en": "Consulted stakeholders are engaged in two-way communication and provide input before a decision is made, while Informed stakeholders are simply told about the decision afterwards, one-way.",
+          "es": "Las partes interesadas Consulted participan en una comunicación bidireccional y aportan su opinión antes de que se tome una decisión, mientras que las partes interesadas Informed simplemente reciben la noticia de la decisión después, de forma unidireccional."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Consulted implies two-way engagement before a decision is finalised; Informed implies one-way notification after the fact. Confusing the two is a common misreading of the RACI framework.",
+          "es": "Consulted implica una implicación bidireccional antes de que se cierre una decisión; Informed implica una notificación unidireccional después de los hechos. Confundir ambos términos es una lectura errónea habitual del marco RACI."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -1145,6 +1145,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "To write the project's technical documentation.",
+          "es": "Redactar la documentación técnica del proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "To make the higher-level decisions the Project Manager is not authorised to make alone — such as approving changes to the baselined scope, schedule or budget, or deciding whether the project proceeds past a phase gate — while the Project Manager runs the project day to day.",
           "es": "Tomar las decisiones de mayor nivel que el Project Manager no está autorizado a adoptar por sí solo — como aprobar cambios en el alcance, el cronograma o el presupuesto de referencia, o decidir si el proyecto avanza más allá de un phase gate — mientras el Project Manager dirige el proyecto en el día a día."
         },
@@ -1153,14 +1161,6 @@ export const QUESTIONS: Question[] = [
           "en": "The Steering Committee owns decisions above the Project Manager's authority — baseline changes, phase-gate approval — while day-to-day execution remains the Project Manager's responsibility. It does not replace either role.",
           "es": "El Comité de Dirección posee las decisiones que superan la autoridad del Project Manager —cambios en la línea base, aprobación de phase gates—, mientras que la ejecución diaria sigue siendo responsabilidad del Project Manager. No sustituye a ninguno de los dos roles."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "To write the project's technical documentation.",
-          "es": "Redactar la documentación técnica del proyecto."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -1188,13 +1188,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Kept informed only, with minimal proactive engagement.",
+          "es": "Mantenerse informada únicamente, con una implicación proactiva mínima."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Managed closely, with the most frequent and detailed communication of any stakeholder group.",
           "es": "Gestionarse de cerca, con la comunicación más frecuente y detallada de todos los grupos de partes interesadas."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Monitored with minimal effort, since their low interest means they can safely be ignored.",
+          "es": "Supervisarse con un esfuerzo mínimo, ya que su bajo interés permite ignorarla sin problema."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "Kept satisfied, with enough targeted communication to maintain their support, without overwhelming them with detail they have not asked for.",
           "es": "Mantenerse satisfecha, con comunicación suficientemente dirigida para conservar su apoyo, sin abrumarla con detalles que no ha solicitado."
@@ -1204,22 +1220,6 @@ export const QUESTIONS: Question[] = [
           "en": "High power, low interest stakeholders should be kept satisfied: engaged enough to retain their support, without burying them in detail they have not asked for and are unlikely to want.",
           "es": "Las partes interesadas con alto poder y bajo interés deben mantenerse satisfechas: lo suficientemente implicadas como para conservar su apoyo, sin abrumarlas con detalles que no han solicitado ni probablemente desean."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Kept informed only, with minimal proactive engagement.",
-          "es": "Mantenerse informada únicamente, con una implicación proactiva mínima."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Monitored with minimal effort, since their low interest means they can safely be ignored.",
-          "es": "Supervisarse con un esfuerzo mínimo, ya que su bajo interés permite ignorarla sin problema."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -1239,13 +1239,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Because status reports are never useful to senior stakeholders such as a Steering Committee sponsor.",
+          "es": "Porque los informes de estado nunca resultan útiles para partes interesadas de alto nivel, como un patrocinador del Comité de Dirección."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Because EU institutional projects are legally required to produce a different report format for every stakeholder.",
           "es": "Porque los proyectos institucionales de la UE están legalmente obligados a producir un formato de informe distinto para cada parte interesada."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Because a single report format is technically impossible to produce in more than one language.",
+          "es": "Porque técnicamente es imposible producir un único formato de informe en más de un idioma."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "Because different stakeholders have different power, interest, and information needs, so an effective communication plan tailors the content, level of detail and frequency of communication to each stakeholder group rather than using one format for everyone.",
           "es": "Porque distintas partes interesadas tienen distinto poder, interés y necesidades de información, de modo que un plan de comunicación eficaz adapta el contenido, el nivel de detalle y la frecuencia de la comunicación a cada grupo de partes interesadas, en lugar de utilizar un único formato para todos."
@@ -1255,22 +1271,6 @@ export const QUESTIONS: Question[] = [
           "en": "Stakeholders differ in power, interest and informational needs, so a single, one-size-fits-all report will typically over-inform some stakeholders and under-inform others; the fix is a communication plan tailored by stakeholder group, not a legal requirement or a language-formatting limitation.\n\n### Topic 6 — Procurement and Contract Management",
           "es": "Las partes interesadas difieren en poder, interés y necesidades de información, por lo que un único informe uniforme para todos suele sobreinformar a unas y subinformar a otras; la solución es un plan de comunicación adaptado a cada grupo de partes interesadas, no un requisito legal ni una limitación de formato lingüístico.\n\n### Topic 6 — Gestión de la contratación pública y de proveedores"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Because status reports are never useful to senior stakeholders such as a Steering Committee sponsor.",
-          "es": "Porque los informes de estado nunca resultan útiles para partes interesadas de alto nivel, como un patrocinador del Comité de Dirección."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Because a single report format is technically impossible to produce in more than one language.",
-          "es": "Porque técnicamente es imposible producir un único formato de informe en más de un idioma."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -1290,6 +1290,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Speed, secrecy and supplier loyalty.",
+          "es": "Rapidez, confidencialidad y fidelidad al proveedor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Transparency, equal treatment (non-discrimination) and proportionality.",
           "es": "Transparencia, igualdad de trato (no discriminación) y proporcionalidad."
         },
@@ -1298,14 +1306,6 @@ export const QUESTIONS: Question[] = [
           "en": "Transparency, equal treatment and proportionality (together with related principles such as mutual recognition) are the foundational principles underpinning EU public procurement law, derived from the EU treaties and reflected in directives such as 2014/24/EU.",
           "es": "La transparencia, la igualdad de trato y la proporcionalidad (junto con principios relacionados, como el reconocimiento mutuo) son los principios fundacionales que sustentan el derecho de contratación pública de la UE, derivados de los tratados de la UE y reflejados en directivas como la 2014/24/UE."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Speed, secrecy and supplier loyalty.",
-          "es": "Rapidez, confidencialidad y fidelidad al proveedor."
-        },
-        "isCorrect": false
       },
       {
         "id": "C",
@@ -1443,14 +1443,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Because contract signature has no legal effect until the first invoice is paid.",
-          "es": "Porque la firma del contrato no tiene efecto legal hasta que se paga la primera factura."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Because delivering value requires ongoing monitoring of the supplier's performance against agreed service levels and active management of deliverables, changes and disputes for the life of the contract, not just a well-negotiated agreement at the outset.",
           "es": "Porque generar valor requiere una supervisión continua del rendimiento del proveedor frente a los niveles de servicio acordados y una gestión activa de los entregables, los cambios y las disputas durante toda la vigencia del contrato, y no solo un acuerdo bien negociado al inicio."
         },
@@ -1461,18 +1453,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "Because contract signature has no legal effect until the first invoice is paid.",
+          "es": "Porque la firma del contrato no tiene efecto legal hasta que se paga la primera factura."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "Because EU procurement rules require a new procurement procedure to be launched every three months regardless of contract terms.",
-          "es": "Porque las normas de contratación de la UE exigen lanzar un nuevo procedimiento de contratación cada tres meses, con independencia de las condiciones del contrato."
+          "en": "Because signed contracts under EU procurement law automatically renew themselves without any oversight.",
+          "es": "Porque los contratos firmados en el marco del derecho de contratación pública de la UE se renuevan automáticamente sin ninguna supervisión."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Because signed contracts under EU procurement law automatically renew themselves without any oversight.",
-          "es": "Porque los contratos firmados en el marco del derecho de contratación pública de la UE se renuevan automáticamente sin ninguna supervisión."
+          "en": "Because EU procurement rules require a new procurement procedure to be launched every three months regardless of contract terms.",
+          "es": "Porque las normas de contratación de la UE exigen lanzar un nuevo procedimiento de contratación cada tres meses, con independencia de las condiciones del contrato."
         },
         "isCorrect": false
       }
@@ -1502,6 +1502,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "Avoid publishing any details of the requirement, to protect the preferred supplier's competitive position.",
+          "es": "Evitar publicar cualquier detalle de la necesidad, para proteger la posición competitiva del proveedor preferido."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Select the supplier based solely on which one responds fastest to an informal enquiry.",
+          "es": "Seleccionar al proveedor basándose únicamente en cuál responda más rápido a una consulta informal."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "Run an appropriately competitive procurement procedure open to qualified economic operators, since above-threshold contracts must generally be advertised and awarded transparently and without unjustified preference for any single supplier.",
           "es": "Aplicar un procedimiento de contratación adecuadamente competitivo, abierto a operadores económicos cualificados, ya que los contratos por encima del umbral deben, en general, anunciarse y adjudicarse de forma transparente y sin preferencia injustificada por ningún proveedor concreto."
         },
@@ -1510,22 +1526,6 @@ export const QUESTIONS: Question[] = [
           "en": "Above the relevant threshold, EU procurement principles require a competitive, transparent procedure open to qualified suppliers; an existing informal relationship is not, on its own, a lawful basis for direct award.\n\n### Topic 7 — Quality Management and Project Assurance",
           "es": "Por encima del umbral aplicable, los principios de contratación de la UE exigen un procedimiento competitivo y transparente, abierto a proveedores cualificados; una relación informal ya existente no constituye, por sí sola, una base legal para la adjudicación directa.\n\n### Topic 7 — Gestión de la calidad y aseguramiento del proyecto"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Avoid publishing any details of the requirement, to protect the preferred supplier's competitive position.",
-          "es": "Evitar publicar cualquier detalle de la necesidad, para proteger la posición competitiva del proveedor preferido."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Select the supplier based solely on which one responds fastest to an informal enquiry.",
-          "es": "Seleccionar al proveedor basándose únicamente en cuál responda más rápido a una consulta informal."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -1647,13 +1647,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "They are identical activities; \"audit\" is simply another word for quality assurance.",
-          "es": "Son actividades idénticas; «auditoría» es simplemente otra forma de llamar al aseguramiento de la calidad."
+          "en": "Quality assurance is performed by external auditors, while audits are performed by the project team itself.",
+          "es": "El aseguramiento de la calidad lo realizan auditores externos, mientras que las auditorías las realiza el propio equipo del proyecto."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Audits are only ever performed after a project has already failed.",
+          "es": "Las auditorías solo se realizan una vez que un proyecto ya ha fracasado."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "An audit is typically a separate, independent and structured check of the project's compliance with its methodology, governance rules and quality plan, distinct from the ongoing quality assurance the project team performs on itself.",
           "es": "Una auditoría suele ser una comprobación independiente y estructurada, separada, del cumplimiento del proyecto respecto a su metodología, sus normas de gobernanza y su plan de calidad, distinta del aseguramiento de la calidad continuo que el propio equipo del proyecto aplica sobre su trabajo."
@@ -1665,18 +1673,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Audits are only ever performed after a project has already failed.",
-          "es": "Las auditorías solo se realizan una vez que un proyecto ya ha fracasado."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Quality assurance is performed by external auditors, while audits are performed by the project team itself.",
-          "es": "El aseguramiento de la calidad lo realizan auditores externos, mientras que las auditorías las realiza el propio equipo del proyecto."
+          "en": "They are identical activities; \"audit\" is simply another word for quality assurance.",
+          "es": "Son actividades idénticas; «auditoría» es simplemente otra forma de llamar al aseguramiento de la calidad."
         },
         "isCorrect": false
       }
@@ -1698,13 +1698,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "They are two names for the same event, held on different days for scheduling convenience.",
-          "es": "Son dos nombres para el mismo evento, celebrado en días distintos por conveniencia de programación."
+          "en": "The Sprint Review is an internal, team-only event that excludes stakeholders.",
+          "es": "La Sprint Review es un evento interno, exclusivo del equipo, que excluye a las partes interesadas."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "The Sprint Retrospective is where stakeholders approve the increment for release.",
+          "es": "La Sprint Retrospective es el evento en el que las partes interesadas aprueban el incremento para su publicación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "The Sprint Review inspects the product increment with stakeholders and adapts the product backlog; the Sprint Retrospective inspects how the team itself worked and collaborated during the sprint, to identify process improvements.",
           "es": "La Sprint Review inspecciona el incremento del producto junto con las partes interesadas y adapta el product backlog; la Sprint Retrospective inspecciona cómo ha trabajado y colaborado el propio equipo durante el sprint, para identificar mejoras de proceso."
@@ -1716,18 +1724,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "The Sprint Retrospective is where stakeholders approve the increment for release.",
-          "es": "La Sprint Retrospective es el evento en el que las partes interesadas aprueban el incremento para su publicación."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "The Sprint Review is an internal, team-only event that excludes stakeholders.",
-          "es": "La Sprint Review es un evento interno, exclusivo del equipo, que excluye a las partes interesadas."
+          "en": "They are two names for the same event, held on different days for scheduling convenience.",
+          "es": "Son dos nombres para el mismo evento, celebrado en días distintos por conveniencia de programación."
         },
         "isCorrect": false
       }
@@ -1749,13 +1749,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Avoid documenting lessons learned formally, since informal team memory is considered sufficient.",
+          "es": "Evitar documentarlas formalmente, ya que se considera suficiente la memoria informal del equipo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Capture them only once, in a single retrospective session held after the project has fully closed.",
           "es": "Recogerlas una única vez, en una sola sesión retrospectiva celebrada después de que el proyecto se haya cerrado por completo."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "Delegate lessons-learned capture entirely to an external auditor, since the project team cannot be objective about its own performance.",
+          "es": "Delegar por completo la recogida de lecciones aprendidas en un auditor externo, ya que el equipo del proyecto no puede ser objetivo respecto a su propio rendimiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "Capture them continuously or at regular intervals throughout the project (as well as at closure), so that improvements can actually be applied to the current project rather than only benefiting future ones.",
           "es": "Recogerlas de forma continua o a intervalos regulares a lo largo del proyecto (además de en el cierre), de modo que las mejoras puedan aplicarse realmente al proyecto actual y no solo beneficiar a proyectos futuros."
@@ -1765,22 +1781,6 @@ export const QUESTIONS: Question[] = [
           "en": "Capturing lessons learned only at final closure means the current project can never benefit from them; capturing them continuously allows improvements to be applied while the project is still running, not just passed on to future projects.\n\n### Topic 8 — Programme, Portfolio Management and Benefits Realisation",
           "es": "Recoger las lecciones aprendidas únicamente en el cierre final significa que el proyecto actual nunca puede beneficiarse de ellas; recogerlas de forma continua permite aplicar mejoras mientras el proyecto sigue en marcha, y no solo transmitirlas a proyectos futuros.\n\n### Topic 8 — Gestión de programas, portafolios y realización de beneficios"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Avoid documenting lessons learned formally, since informal team memory is considered sufficient.",
-          "es": "Evitar documentarlas formalmente, ya que se considera suficiente la memoria informal del equipo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Delegate lessons-learned capture entirely to an external auditor, since the project team cannot be objective about its own performance.",
-          "es": "Delegar por completo la recogida de lecciones aprendidas en un auditor externo, ya que el equipo del proyecto no puede ser objetivo respecto a su propio rendimiento."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -1859,14 +1859,10 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Because many benefits only materialise after go-live, once the organisation has actually adopted and embedded the new capability, so a named benefits owner needs to keep tracking realisation on a timeline that extends beyond the project's own closure.",
-          "es": "Porque muchos beneficios solo se materializan después de la puesta en marcha (go-live), una vez que la organización ha adoptado realmente e interiorizado la nueva capacidad, por lo que un responsable de beneficios designado necesita seguir haciendo seguimiento de su realización según un calendario que se prolonga más allá del propio cierre del proyecto."
+          "en": "Because benefits can only be measured before a project starts, not after it delivers.",
+          "es": "Porque los beneficios solo pueden medirse antes de que comience un proyecto, no después de que este entregue sus resultados."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Many benefits are only realised once the organisation has adopted and embedded a new capability in practice, which typically happens after the delivering project has closed — so benefits tracking must continue on its own timeline, owned by someone specifically accountable for it.",
-          "es": "Muchos beneficios solo se materializan una vez que la organización ha adoptado e interiorizado en la práctica una nueva capacidad, lo cual suele ocurrir después de que se haya cerrado el proyecto que la entregó; por eso el seguimiento de los beneficios debe continuar según su propio calendario, bajo la responsabilidad de alguien específicamente designado para ello."
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1879,10 +1875,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Because benefits can only be measured before a project starts, not after it delivers.",
-          "es": "Porque los beneficios solo pueden medirse antes de que comience un proyecto, no después de que este entregue sus resultados."
+          "en": "Because many benefits only materialise after go-live, once the organisation has actually adopted and embedded the new capability, so a named benefits owner needs to keep tracking realisation on a timeline that extends beyond the project's own closure.",
+          "es": "Porque muchos beneficios solo se materializan después de la puesta en marcha (go-live), una vez que la organización ha adoptado realmente e interiorizado la nueva capacidad, por lo que un responsable de beneficios designado necesita seguir haciendo seguimiento de su realización según un calendario que se prolonga más allá del propio cierre del proyecto."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Many benefits are only realised once the organisation has adopted and embedded a new capability in practice, which typically happens after the delivering project has closed — so benefits tracking must continue on its own timeline, owned by someone specifically accountable for it.",
+          "es": "Muchos beneficios solo se materializan una vez que la organización ha adoptado e interiorizado en la práctica una nueva capacidad, lo cual suele ocurrir después de que se haya cerrado el proyecto que la entregó; por eso el seguimiento de los beneficios debe continuar según su propio calendario, bajo la responsabilidad de alguien específicamente designado para ello."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -1902,14 +1902,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Ensure every proposed project with a positive business case is automatically approved and funded.",
-          "es": "Garantizar que todo proyecto propuesto con un business case positivo se apruebe y se financie automáticamente."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Continually rank, select and balance candidate projects and programmes against strategic value, risk, interdependency and finite organisational capacity, deciding what to fund, pause or stop.",
           "es": "Clasificar, seleccionar y equilibrar de forma continua los proyectos y programas candidatos frente al valor estratégico, el riesgo, las interdependencias y la capacidad finita de la organización, decidiendo qué financiar, pausar o detener."
         },
@@ -1920,18 +1912,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "Eliminate the need for individual project business cases.",
+          "es": "Eliminar la necesidad de contar con business cases individuales por proyecto."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "Take over the day-to-day execution tasks of every project in the organisation.",
-          "es": "Asumir las tareas de ejecución diaria de todos los proyectos de la organización."
+          "en": "Ensure every proposed project with a positive business case is automatically approved and funded.",
+          "es": "Garantizar que todo proyecto propuesto con un business case positivo se apruebe y se financie automáticamente."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Eliminate the need for individual project business cases.",
-          "es": "Eliminar la necesidad de contar con business cases individuales por proyecto."
+          "en": "Take over the day-to-day execution tasks of every project in the organisation.",
+          "es": "Asumir las tareas de ejecución diaria de todos los proyectos de la organización."
         },
         "isCorrect": false
       }
@@ -1953,22 +1953,18 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Because EU financial regulations require the business case document to be physically reprinted at every meeting.",
-          "es": "Porque la normativa financiera de la UE exige que el documento del business case se reimprima físicamente en cada reunión."
+          "en": "Because only the Project Manager, and no one else, is permitted to read the business case after initial approval.",
+          "es": "Porque solo el Project Manager, y nadie más, tiene permitido leer el business case después de su aprobación inicial."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Because the assumptions, costs, benefits or strategic context underpinning the original justification can change over time, and a business case that is no longer valid is a legitimate reason to stop or redirect a project, even one otherwise on time and on budget.",
-          "es": "Porque las suposiciones, los costes, los beneficios o el contexto estratégico que sustentaban la justificación original pueden cambiar con el tiempo, y un business case que ya no es válido constituye un motivo legítimo para detener o redirigir un proyecto, incluso uno que por lo demás vaya dentro de plazo y de presupuesto."
+          "en": "Because EU financial regulations require the business case document to be physically reprinted at every meeting.",
+          "es": "Porque la normativa financiera de la UE exige que el documento del business case se reimprima físicamente en cada reunión."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "The conditions that originally justified a project can change; revisiting the business case at each governance gate confirms the investment is still worthwhile, and an invalid business case is sufficient grounds to stop a project regardless of its schedule or budget performance.",
-          "es": "Las condiciones que originalmente justificaron un proyecto pueden cambiar; revisar el business case en cada punto de gobernanza confirma que la inversión sigue mereciendo la pena, y un business case ya no válido constituye motivo suficiente para detener un proyecto, con independencia de su rendimiento en plazo o en presupuesto."
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -1981,10 +1977,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Because only the Project Manager, and no one else, is permitted to read the business case after initial approval.",
-          "es": "Porque solo el Project Manager, y nadie más, tiene permitido leer el business case después de su aprobación inicial."
+          "en": "Because the assumptions, costs, benefits or strategic context underpinning the original justification can change over time, and a business case that is no longer valid is a legitimate reason to stop or redirect a project, even one otherwise on time and on budget.",
+          "es": "Porque las suposiciones, los costes, los beneficios o el contexto estratégico que sustentaban la justificación original pueden cambiar con el tiempo, y un business case que ya no es válido constituye un motivo legítimo para detener o redirigir un proyecto, incluso uno que por lo demás vaya dentro de plazo y de presupuesto."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "The conditions that originally justified a project can change; revisiting the business case at each governance gate confirms the investment is still worthwhile, and an invalid business case is sufficient grounds to stop a project regardless of its schedule or budget performance.",
+          "es": "Las condiciones que originalmente justificaron un proyecto pueden cambiar; revisar el business case en cada punto de gobernanza confirma que la inversión sigue mereciendo la pena, y un business case ya no válido constituye motivo suficiente para detener un proyecto, con independencia de su rendimiento en plazo o en presupuesto."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -2004,13 +2004,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Outcome is produced first, and only afterwards does the project decide on its outputs and benefits.",
+          "es": "El resultado se produce primero, y solo después el proyecto decide sus salidas y sus beneficios."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Benefit leads to outcome, which leads to output — value is identified first and then built backwards into a deliverable.",
           "es": "El beneficio conduce al resultado, que a su vez conduce a la salida — el valor se identifica primero y después se construye hacia atrás hasta llegar a un entregable."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Output (what the project directly delivers, e.g. a new IT system) leads to outcome (the change in behaviour or capability that results from using it), which in turn leads to benefit (the measurable positive value the organisation gains from that changed outcome).",
           "es": "La salida (lo que el proyecto entrega directamente, por ejemplo un nuevo sistema informático) conduce al resultado (el cambio de comportamiento o de capacidad que se deriva de utilizarla), que a su vez conduce al beneficio (el valor positivo medible que la organización obtiene de ese resultado transformado)."
@@ -2022,18 +2030,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Output, outcome and benefit are fully interchangeable terms describing the same concept at different points in a project's life.",
           "es": "Salida, resultado y beneficio son términos completamente intercambiables que describen el mismo concepto en distintos momentos de la vida de un proyecto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Outcome is produced first, and only afterwards does the project decide on its outputs and benefits.",
-          "es": "El resultado se produce primero, y solo después el proyecto decide sus salidas y sus beneficios."
         },
         "isCorrect": false
       }
@@ -2055,6 +2055,30 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A one-off induction leaflet handed to new team members at kick-off, which is never revisited or updated for the remainder of the project.",
+          "es": "Un folleto de acogida puntual que se entrega a los nuevos miembros del equipo en el arranque y que nunca se revisa ni se actualiza durante el resto del proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The document that justifies the investment by weighing the problem, options, costs and expected benefits — that is actually the Business Case, not the Project Handbook.",
+          "es": "El documento que justifica la inversión sopesando el problema, las opciones, los costes y los beneficios esperados — eso es en realidad el Business Case, no el Project Handbook."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Another name for the Project Charter, since PM² treats the two terms as interchangeable.",
+          "es": "Otro nombre para el Project Charter, ya que PM² trata ambos términos como intercambiables."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
           "en": "A living reference document, first drafted early in the project and kept up to date throughout its life, that consolidates the agreed management approach — covering areas such as scope, schedule, quality, risk, communication and procurement — into a single shared source for everyone involved.",
           "es": "Un documento de referencia vivo, redactado por primera vez al principio del proyecto y mantenido actualizado a lo largo de toda su vida, que consolida el enfoque de gestión acordado —cubriendo áreas como el alcance, el cronograma, la calidad, el riesgo, la comunicación y la contratación— en una única fuente compartida por todos los implicados."
         },
@@ -2063,30 +2087,6 @@ export const QUESTIONS: Question[] = [
           "en": "The Project Handbook is a living artefact, started early and maintained across the project's life, that consolidates the agreed management approach across areas such as scope, schedule, quality, risk and communication — distinct from the one-time Business Case (investment justification) or Project Charter (authorisation).",
           "es": "El Project Handbook es un artefacto vivo, iniciado pronto y mantenido a lo largo de toda la vida del proyecto, que consolida el enfoque de gestión acordado en áreas como el alcance, el cronograma, la calidad, el riesgo y la comunicación — distinto tanto del Business Case (justificación de la inversión, un documento puntual) como del Project Charter (autorización, también puntual)."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "A one-off induction leaflet handed to new team members at kick-off, which is never revisited or updated for the remainder of the project.",
-          "es": "Un folleto de acogida puntual que se entrega a los nuevos miembros del equipo en el arranque y que nunca se revisa ni se actualiza durante el resto del proyecto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "The document that justifies the investment by weighing the problem, options, costs and expected benefits — that is actually the Business Case, not the Project Handbook.",
-          "es": "El documento que justifica la inversión sopesando el problema, las opciones, los costes y los beneficios esperados — eso es en realidad el Business Case, no el Project Handbook."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Another name for the Project Charter, since PM² treats the two terms as interchangeable.",
-          "es": "Otro nombre para el Project Charter, ya que PM² trata ambos términos como intercambiables."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -2106,6 +2106,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The single decision-making authority above the Project Steering Committee, superseding the Project Owner's own authority.",
+          "es": "La única autoridad de decisión por encima del Comité de Dirección del proyecto, que sustituye a la propia autoridad del Project Owner."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A synonym for the Project Manager, used only in the specific case of ICT projects delivered by an external supplier.",
+          "es": "Un sinónimo del project manager, utilizado únicamente en el caso concreto de proyectos TIC entregados por un proveedor externo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "The person who represents the Project Owner on a day-to-day basis, helping define the project's business objectives (via inputs such as the Project Initiation Request and Business Case) and coordinating the Business Implementation Group that will absorb the project's outputs into the business.",
           "es": "La persona que representa al Project Owner en el día a día, ayuda a definir los objetivos de negocio del proyecto (a través de elementos como el Project Initiation Request y el Business Case) y coordina el Business Implementation Group que absorberá los resultados del proyecto dentro del negocio."
         },
@@ -2116,26 +2132,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "The role accountable overall for delivering the project's technical deliverables, equivalent to the Solution Provider on the Provider side.",
           "es": "El rol responsable en última instancia de entregar los productos técnicos del proyecto, equivalente al Solution Provider en el lado Provider."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A synonym for the Project Manager, used only in the specific case of ICT projects delivered by an external supplier.",
-          "es": "Un sinónimo del project manager, utilizado únicamente en el caso concreto de proyectos TIC entregados por un proveedor externo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "The single decision-making authority above the Project Steering Committee, superseding the Project Owner's own authority.",
-          "es": "La única autoridad de decisión por encima del Comité de Dirección del proyecto, que sustituye a la propia autoridad del Project Owner."
         },
         "isCorrect": false
       }
@@ -2157,6 +2157,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The internal EU institution business unit that will use the finished product once delivered, equivalent to the Business Implementation Group.",
+          "es": "La unidad de negocio interna de la institución de la UE que utilizará el producto terminado una vez entregado, equivalente al Business Implementation Group."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Another name for the Project Steering Committee.",
+          "es": "Otro nombre para el Comité de Dirección del proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "The role, on the Provider side of the project, that assumes overall accountability for delivering the project's outputs and represents the interests of those who design, build and implement them — distinct from the Project Manager, who runs the project day to day on the Solution Provider's behalf.",
           "es": "El rol, en el lado Provider del proyecto, que asume la responsabilidad global de entregar los resultados del proyecto y representa los intereses de quienes diseñan, construyen e implementan dichos resultados — distinto del project manager, que dirige el proyecto en el día a día en nombre del Solution Provider."
         },
@@ -2167,26 +2183,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "The internal EU institution business unit that will use the finished product once delivered, equivalent to the Business Implementation Group.",
-          "es": "La unidad de negocio interna de la institución de la UE que utilizará el producto terminado una vez entregado, equivalente al Business Implementation Group."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "A role that exists only in externally outsourced projects and has no equivalent when a project is delivered entirely in-house.",
           "es": "Un rol que solo existe en proyectos externalizados y que no tiene equivalente cuando un proyecto se entrega íntegramente de forma interna."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Another name for the Project Steering Committee.",
-          "es": "Otro nombre para el Comité de Dirección del proyecto."
         },
         "isCorrect": false
       }
@@ -2310,6 +2310,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A formal Scrum event that occurs only once, at the very start of the project, to write every backlog item that will ever be needed.",
+          "es": "Un evento formal de Scrum que ocurre una única vez, al principio mismo del proyecto, para redactar todos los elementos del backlog que se necesitarán jamás."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "An ongoing activity, carried out throughout the sprint by the Product Owner and Developers together, of adding detail, estimates and order to backlog items so that the top of the backlog is ready to be selected in an upcoming Sprint Planning.",
           "es": "Una actividad continua, realizada a lo largo del sprint conjuntamente por el Product Owner y los Developers, que consiste en añadir detalle, estimaciones y orden a los elementos del backlog, de modo que la parte superior del backlog esté lista para ser seleccionada en una próxima Sprint Planning."
         },
@@ -2320,26 +2328,18 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
-        "text": {
-          "en": "A formal Scrum event that occurs only once, at the very start of the project, to write every backlog item that will ever be needed.",
-          "es": "Un evento formal de Scrum que ocurre una única vez, al principio mismo del proyecto, para redactar todos los elementos del backlog que se necesitarán jamás."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "C",
         "text": {
-          "en": "The Scrum Master's sole responsibility, performed without input from the Developers or Product Owner.",
-          "es": "La responsabilidad exclusiva del Scrum Master, realizada sin la participación de los Developers ni del Product Owner."
+          "en": "The activity of testing the increment for defects before the Sprint Review.",
+          "es": "La actividad de probar el incremento en busca de defectos antes de la Sprint Review."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "The activity of testing the increment for defects before the Sprint Review.",
-          "es": "La actividad de probar el incremento en busca de defectos antes de la Sprint Review."
+          "en": "The Scrum Master's sole responsibility, performed without input from the Developers or Product Owner.",
+          "es": "La responsabilidad exclusiva del Scrum Master, realizada sin la participación de los Developers ni del Product Owner."
         },
         "isCorrect": false
       }
@@ -2361,13 +2361,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Formally accept or reject the increment produced during the previous sprint.",
+          "es": "Aceptar o rechazar formalmente el incremento producido durante el sprint anterior."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Retrospectively review what the team accomplished in the previous sprint and assign blame for missed items.",
           "es": "Revisar retrospectivamente lo que el equipo logró en el sprint anterior y asignar responsabilidades por los elementos no completados."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Establish the Sprint Goal and select and plan the backlog items the Developers forecast they can deliver during the sprint, answering both \"what can be delivered\" and \"how the chosen work will get done.\"",
           "es": "Establecer el Sprint Goal y seleccionar y planificar los elementos del backlog que los Developers prevén poder entregar durante el sprint, respondiendo tanto a «qué se puede entregar» como a «cómo se realizará el trabajo elegido»."
@@ -2379,18 +2387,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Allow the Product Owner to unilaterally dictate the exact hours each Developer must work each day of the sprint.",
           "es": "Permitir que el Product Owner dicte unilateralmente las horas exactas que cada Developer debe trabajar cada día del sprint."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Formally accept or reject the increment produced during the previous sprint.",
-          "es": "Aceptar o rechazar formalmente el incremento producido durante el sprint anterior."
         },
         "isCorrect": false
       }
@@ -2412,6 +2412,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Cycle time measures customer-facing wait time before a request is even accepted, while lead time measures only active development effort.",
+          "es": "El cycle time mide el tiempo de espera de cara al cliente antes incluso de que la solicitud sea aceptada, mientras que el lead time mide únicamente el esfuerzo activo de desarrollo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Lead time can only be measured in Scrum, and cycle time can only be measured in Kanban.",
+          "es": "El lead time solo puede medirse en Scrum, y el cycle time solo puede medirse en Kanban."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Lead time measures the total elapsed time from when a work item is first requested (enters the backlog) until it is delivered; cycle time measures only the time from when active work actually starts on that item until it is finished — cycle time is always a subset of lead time, never longer than it.",
           "es": "El lead time mide el tiempo total transcurrido desde que un elemento de trabajo se solicita por primera vez (entra en el backlog) hasta que se entrega; el cycle time mide únicamente el tiempo desde que el trabajo activo realmente comienza sobre ese elemento hasta que termina — el cycle time siempre es un subconjunto del lead time, nunca puede ser mayor que él."
         },
@@ -2422,26 +2438,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Lead time and cycle time are two names for exactly the same measurement, differing only by team preference.",
           "es": "El lead time y el cycle time son dos nombres para exactamente la misma medición, que solo difieren según la preferencia de cada equipo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Cycle time measures customer-facing wait time before a request is even accepted, while lead time measures only active development effort.",
-          "es": "El cycle time mide el tiempo de espera de cara al cliente antes incluso de que la solicitud sea aceptada, mientras que el lead time mide únicamente el esfuerzo activo de desarrollo."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Lead time can only be measured in Scrum, and cycle time can only be measured in Kanban.",
-          "es": "El lead time solo puede medirse en Scrum, y el cycle time solo puede medirse en Kanban."
         },
         "isCorrect": false
       }
@@ -2463,13 +2463,21 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Have every team member from every team attend every other team's Daily Scrum, to keep everyone fully informed of all detail.",
-          "es": "Hacer que todos los miembros de cada equipo asistan a la Daily Scrum de todos los demás equipos, para mantener a todo el mundo plenamente informado de cada detalle."
+          "en": "Abandon agile practices entirely once more than one team is involved, reverting fully to a traditional waterfall approach.",
+          "es": "Abandonar por completo las prácticas ágiles en cuanto interviene más de un equipo, volviendo íntegramente a un enfoque en cascada tradicional."
         },
         "isCorrect": false
       },
       {
         "id": "B",
+        "text": {
+          "en": "Merge all teams into a single Scrum Team, regardless of size, since Scrum has no guidance for team size.",
+          "es": "Fusionar todos los equipos en un único Scrum Team, sin importar su tamaño, ya que Scrum no ofrece ninguna orientación sobre el tamaño de los equipos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
         "text": {
           "en": "Hold a regular coordination event across teams (often called a \"Scrum of Scrums\") where representatives share dependencies, risks and progress, complemented at organisational scale by frameworks purpose-built for scaling agile delivery across many teams.",
           "es": "Celebrar un evento periódico de coordinación entre equipos (a menudo llamado «Scrum of Scrums») en el que representantes comparten dependencias, riesgos y avances, complementado a escala organizativa con marcos de trabajo diseñados específicamente para escalar la entrega ágil entre muchos equipos."
@@ -2481,18 +2489,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "C",
-        "text": {
-          "en": "Merge all teams into a single Scrum Team, regardless of size, since Scrum has no guidance for team size.",
-          "es": "Fusionar todos los equipos en un único Scrum Team, sin importar su tamaño, ya que Scrum no ofrece ninguna orientación sobre el tamaño de los equipos."
-        },
-        "isCorrect": false
-      },
-      {
         "id": "D",
         "text": {
-          "en": "Abandon agile practices entirely once more than one team is involved, reverting fully to a traditional waterfall approach.",
-          "es": "Abandonar por completo las prácticas ágiles en cuanto interviene más de un equipo, volviendo íntegramente a un enfoque en cascada tradicional."
+          "en": "Have every team member from every team attend every other team's Daily Scrum, to keep everyone fully informed of all detail.",
+          "es": "Hacer que todos los miembros de cada equipo asistan a la Daily Scrum de todos los demás equipos, para mantener a todo el mundo plenamente informado de cada detalle."
         },
         "isCorrect": false
       }
@@ -2514,6 +2514,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Minimum, Optimum, Scope, Cost, Overrun, Waste — a budget-classification scheme.",
+          "es": "Minimum, Optimum, Scope, Cost, Overrun, Waste — un esquema de clasificación presupuestaria."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "Must have, Should have, Could have, Won't have (this time) — used to agree, with stakeholders, which requirements are non-negotiable versus which can be dropped if time or budget runs short.",
           "es": "Must have, Should have, Could have, Won't have (this time) — utilizadas para acordar con las partes interesadas qué requisitos son innegociables y cuáles pueden descartarse si el tiempo o el presupuesto se agotan."
         },
@@ -2524,7 +2532,7 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "Mandatory, Optional, Scheduled, Cancelled, Overdue, With-delay — a cost-tracking scheme unrelated to requirements.",
           "es": "Mandatory, Optional, Scheduled, Cancelled, Overdue, With-delay — un esquema de seguimiento de costes sin relación con los requisitos."
@@ -2532,18 +2540,10 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "Monthly, Sprint, Cycle, Overall, Weekly — a set of reporting cadences, not a prioritisation technique.",
           "es": "Monthly, Sprint, Cycle, Overall, Weekly — un conjunto de cadencias de reporte, no una técnica de priorización."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Minimum, Optimum, Scope, Cost, Overrun, Waste — a budget-classification scheme.",
-          "es": "Minimum, Optimum, Scope, Cost, Overrun, Waste — un esquema de clasificación presupuestaria."
         },
         "isCorrect": false
       }
@@ -2565,6 +2565,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "SV = −€30,000 (behind schedule) and CV = +€10,000 (under budget), since SV should be calculated as PV − EV and CV as AC − EV.",
+          "es": "SV = −30.000 € (por detrás del cronograma) y CV = +10.000 € (por debajo de presupuesto), ya que el SV debería calcularse como PV − EV y el CV como AC − EV."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "SV = +€30,000 (ahead of schedule, since more value has been earned than was planned by this point) and CV = −€10,000 (over budget, since more was actually spent than the value earned).",
           "es": "SV = +30.000 € (por delante del cronograma, ya que se ha ganado más valor del que estaba previsto a estas alturas) y CV = −10.000 € (por encima de presupuesto, ya que se ha gastado más de lo que representa el valor ganado)."
         },
@@ -2573,14 +2581,6 @@ export const QUESTIONS: Question[] = [
           "en": "SV = EV − PV = 150,000 − 120,000 = +€30,000, a positive (favourable) variance meaning more value has been earned than was planned by this point — ahead of schedule. CV = EV − AC = 150,000 − 160,000 = −€10,000, a negative (unfavourable) variance meaning the work performed cost more than its earned value — over budget.",
           "es": "SV = EV − PV = 150.000 − 120.000 = +30.000 €, una desviación positiva (favorable) que indica que se ha ganado más valor del previsto a estas alturas — por delante del cronograma. CV = EV − AC = 150.000 − 160.000 = −10.000 €, una desviación negativa (desfavorable) que indica que el trabajo realizado ha costado más que su valor ganado — por encima de presupuesto."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "SV = −€30,000 (behind schedule) and CV = +€10,000 (under budget), since SV should be calculated as PV − EV and CV as AC − EV.",
-          "es": "SV = −30.000 € (por detrás del cronograma) y CV = +10.000 € (por debajo de presupuesto), ya que el SV debería calcularse como PV − EV y el CV como AC − EV."
-        },
-        "isCorrect": false
       },
       {
         "id": "C",
@@ -2628,24 +2628,24 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "An alternative name for the standard critical path method; the two terms describe an identical technique.",
-          "es": "Un nombre alternativo para el método estándar del camino crítico; ambos términos describen exactamente la misma técnica."
+          "en": "A technique used exclusively in agile projects and never applicable to traditionally scheduled projects.",
+          "es": "Una técnica utilizada exclusivamente en proyectos ágiles y que nunca resulta aplicable a proyectos programados de forma tradicional."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "A method that removes the need to identify any critical sequence of activities at all, relying purely on team self-organisation.",
-          "es": "Un método que elimina la necesidad de identificar cualquier secuencia crítica de actividades, basándose únicamente en la autoorganización del equipo."
+          "en": "An alternative name for the standard critical path method; the two terms describe an identical technique.",
+          "es": "Un nombre alternativo para el método estándar del camino crítico; ambos términos describen exactamente la misma técnica."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "A technique used exclusively in agile projects and never applicable to traditionally scheduled projects.",
-          "es": "Una técnica utilizada exclusivamente en proyectos ágiles y que nunca resulta aplicable a proyectos programados de forma tradicional."
+          "en": "A method that removes the need to identify any critical sequence of activities at all, relying purely on team self-organisation.",
+          "es": "Un método que elimina la necesidad de identificar cualquier secuencia crítica de actividades, basándose únicamente en la autoorganización del equipo."
         },
         "isCorrect": false
       }
@@ -2667,20 +2667,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Extend the project's overall finish date, because levelling resolves resource over-allocation by delaying or re-sequencing activities based on resource availability, even where doing so pushes out the schedule — unlike resource smoothing, which only reassigns work within existing float and therefore cannot change the finish date.",
-          "es": "Prolongará la fecha de finalización global del proyecto, porque la nivelación resuelve la sobreasignación de recursos retrasando o reordenando actividades en función de la disponibilidad de los recursos, incluso cuando eso implica retrasar el cronograma — a diferencia del alisado de recursos (resource smoothing), que solo reasigna trabajo dentro de la holgura existente y, por tanto, no puede modificar la fecha de finalización."
+          "en": "Have no effect whatsoever on the schedule, since levelling only concerns cost, not time.",
+          "es": "No tendrá ningún efecto sobre el cronograma, ya que la nivelación afecta únicamente al coste, no al tiempo."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Because neither over-allocated activity has spare float, resolving the conflict by shifting one of them to when the resource is actually available pushes out the schedule — this is resource levelling. Resource smoothing, by contrast, only reassigns work within existing float, so it cannot affect the finish date but also cannot resolve a conflict where no float exists.",
-          "es": "Dado que ninguna de las actividades sobreasignadas dispone de holgura, resolver el conflicto trasladando una de ellas al momento en que el recurso esté realmente disponible retrasa el cronograma — esto es la nivelación de recursos. El alisado de recursos, en cambio, solo reasigna trabajo dentro de la holgura existente, por lo que no puede afectar a la fecha de finalización, pero tampoco puede resolver un conflicto en el que no existe holgura."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Have no effect whatsoever on the schedule, since levelling only concerns cost, not time.",
-          "es": "No tendrá ningún efecto sobre el cronograma, ya que la nivelación afecta únicamente al coste, no al tiempo."
+          "en": "Guarantee that the project's finish date stays exactly the same, since levelling is defined as never affecting the critical path.",
+          "es": "Garantizará que la fecha de finalización del proyecto permanezca exactamente igual, ya que la nivelación se define como una técnica que nunca afecta al camino crítico."
         },
         "isCorrect": false
       },
@@ -2695,10 +2691,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Guarantee that the project's finish date stays exactly the same, since levelling is defined as never affecting the critical path.",
-          "es": "Garantizará que la fecha de finalización del proyecto permanezca exactamente igual, ya que la nivelación se define como una técnica que nunca afecta al camino crítico."
+          "en": "Extend the project's overall finish date, because levelling resolves resource over-allocation by delaying or re-sequencing activities based on resource availability, even where doing so pushes out the schedule — unlike resource smoothing, which only reassigns work within existing float and therefore cannot change the finish date.",
+          "es": "Prolongará la fecha de finalización global del proyecto, porque la nivelación resuelve la sobreasignación de recursos retrasando o reordenando actividades en función de la disponibilidad de los recursos, incluso cuando eso implica retrasar el cronograma — a diferencia del alisado de recursos (resource smoothing), que solo reasigna trabajo dentro de la holgura existente y, por tanto, no puede modificar la fecha de finalización."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Because neither over-allocated activity has spare float, resolving the conflict by shifting one of them to when the resource is actually available pushes out the schedule — this is resource levelling. Resource smoothing, by contrast, only reassigns work within existing float, so it cannot affect the finish date but also cannot resolve a conflict where no float exists.",
+          "es": "Dado que ninguna de las actividades sobreasignadas dispone de holgura, resolver el conflicto trasladando una de ellas al momento en que el recurso esté realmente disponible retrasa el cronograma — esto es la nivelación de recursos. El alisado de recursos, en cambio, solo reasigna trabajo dentro de la holgura existente, por lo que no puede afectar a la fecha de finalización, pero tampoco puede resolver un conflicto en el que no existe holgura."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -2718,6 +2718,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "€580,000, an arbitrary adjustment with no basis in the reported performance data.",
+          "es": "580.000 €, un ajuste arbitrario sin ninguna base en los datos de rendimiento reportados."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "€625,000, since dividing the original budget by the current cost efficiency reflects the expectation that the same rate of overspend will continue on the remaining work.",
           "es": "625.000 €, ya que dividir el presupuesto original entre la eficiencia de coste actual refleja la expectativa de que el mismo ritmo de sobrecoste continuará en el trabajo restante."
         },
@@ -2728,7 +2736,7 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "C",
         "text": {
           "en": "€500,000, since the original budget always remains the best forecast regardless of performance to date.",
           "es": "500.000 €, ya que el presupuesto original sigue siendo siempre la mejor previsión, con independencia del rendimiento obtenido hasta la fecha."
@@ -2736,18 +2744,10 @@ export const QUESTIONS: Question[] = [
         "isCorrect": false
       },
       {
-        "id": "C",
+        "id": "D",
         "text": {
           "en": "€400,000, obtained by multiplying BAC by CPI rather than dividing by it.",
           "es": "400.000 €, obtenidos multiplicando el BAC por el CPI en lugar de dividir entre él."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "€580,000, an arbitrary adjustment with no basis in the reported performance data.",
-          "es": "580.000 €, un ajuste arbitrario sin ninguna base en los datos de rendimiento reportados."
         },
         "isCorrect": false
       }
@@ -2820,6 +2820,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "The two terms are legally standardised and fixed at an identical value for every EU institutional project, regardless of context.",
+          "es": "Ambos términos están estandarizados legalmente y fijados en un valor idéntico para todos los proyectos institucionales de la UE, con independencia del contexto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Risk appetite refers only to positive risks (opportunities), while risk tolerance refers only to negative risks (threats).",
+          "es": "El risk appetite se refiere únicamente a los riesgos positivos (oportunidades), mientras que el risk tolerance se refiere únicamente a los riesgos negativos (amenazas)."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Risk appetite is the general, high-level amount of risk an organisation or project is willing to accept in pursuit of its objectives; risk tolerance is the specific, measurable range of acceptable variation around a particular objective (for example, an acceptable cost overrun of up to 5% of budget).",
           "es": "El risk appetite es la cantidad general y de alto nivel de riesgo que una organización o un proyecto está dispuesto a aceptar en la persecución de sus objetivos; el risk tolerance es el rango específico y medible de variación aceptable en torno a un objetivo concreto (por ejemplo, un sobrecoste aceptable de hasta el 5% del presupuesto)."
         },
@@ -2830,26 +2846,10 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Risk tolerance is the general, high-level amount of risk an organisation is willing to accept, while risk appetite is a specific numeric limit set individually for every risk in the register.",
           "es": "El risk tolerance es la cantidad general y de alto nivel de riesgo que una organización está dispuesta a aceptar, mientras que el risk appetite es un límite numérico específico fijado individualmente para cada riesgo del registro."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "The two terms are legally standardised and fixed at an identical value for every EU institutional project, regardless of context.",
-          "es": "Ambos términos están estandarizados legalmente y fijados en un valor idéntico para todos los proyectos institucionales de la UE, con independencia del contexto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Risk appetite refers only to positive risks (opportunities), while risk tolerance refers only to negative risks (threats).",
-          "es": "El risk appetite se refiere únicamente a los riesgos positivos (oportunidades), mientras que el risk tolerance se refiere únicamente a los riesgos negativos (amenazas)."
         },
         "isCorrect": false
       }
@@ -2883,16 +2883,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
-          "en": "Mitigate, since mitigation is the correct term for responding to both positive and negative risks alike.",
-          "es": "Mitigar, ya que mitigar es el término correcto para responder tanto a los riesgos positivos como a los negativos por igual."
+          "en": "Share, since the opportunity is being handed over to a third party outside the project.",
+          "es": "Compartir (share), ya que la oportunidad se está transfiriendo a un tercero ajeno al proyecto."
         },
         "isCorrect": false
       },
       {
         "id": "C",
         "text": {
-          "en": "Share, since the opportunity is being handed over to a third party outside the project.",
-          "es": "Compartir (share), ya que la oportunidad se está transfiriendo a un tercero ajeno al proyecto."
+          "en": "Mitigate, since mitigation is the correct term for responding to both positive and negative risks alike.",
+          "es": "Mitigar, ya que mitigar es el término correcto para responder tanto a los riesgos positivos como a los negativos por igual."
         },
         "isCorrect": false
       },
@@ -3024,22 +3024,18 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Replaces the need to identify individual risks in the first place.",
-          "es": "Sustituye la necesidad de identificar los riesgos individuales en primer lugar."
+          "en": "Can only be applied to negative risks (threats), never to positive risks (opportunities).",
+          "es": "Solo puede aplicarse a los riesgos negativos (amenazas), nunca a los riesgos positivos (oportunidades)."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Numerically models the combined effect of multiple risks together on overall project cost or schedule, producing probabilistic outputs (such as a confidence level for hitting a given completion date), rather than just a relative priority ranking of individual risks.",
-          "es": "Modela numéricamente el efecto combinado de varios riesgos en conjunto sobre el coste o el cronograma global del proyecto, produciendo resultados probabilísticos (como un nivel de confianza para alcanzar una fecha de finalización determinada), en lugar de limitarse a una clasificación relativa de prioridad de los riesgos individuales."
+          "en": "Replaces the need to identify individual risks in the first place.",
+          "es": "Sustituye la necesidad de identificar los riesgos individuales en primer lugar."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Monte Carlo simulation runs many randomised iterations across a project's risks and estimates to produce a probability distribution of overall outcomes (such as total cost or finish date), giving quantitative, aggregate insight that a qualitative probability-impact matrix — which ranks risks individually and relatively — cannot provide on its own.\n\n### Topic 5 — Stakeholder Management and Governance",
-          "es": "La simulación de Monte Carlo ejecuta muchas iteraciones aleatorizadas a partir de los riesgos y las estimaciones de un proyecto para producir una distribución de probabilidad de los resultados globales (como el coste total o la fecha de finalización), aportando una visión cuantitativa y agregada que una matriz de probabilidad-impacto cualitativa —que clasifica los riesgos de forma individual y relativa— no puede ofrecer por sí sola.\n\n### Topic 5 — Gestión de partes interesadas y gobernanza"
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3052,10 +3048,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Can only be applied to negative risks (threats), never to positive risks (opportunities).",
-          "es": "Solo puede aplicarse a los riesgos negativos (amenazas), nunca a los riesgos positivos (oportunidades)."
+          "en": "Numerically models the combined effect of multiple risks together on overall project cost or schedule, producing probabilistic outputs (such as a confidence level for hitting a given completion date), rather than just a relative priority ranking of individual risks.",
+          "es": "Modela numéricamente el efecto combinado de varios riesgos en conjunto sobre el coste o el cronograma global del proyecto, produciendo resultados probabilísticos (como un nivel de confianza para alcanzar una fecha de finalización determinada), en lugar de limitarse a una clasificación relativa de prioridad de los riesgos individuales."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Monte Carlo simulation runs many randomised iterations across a project's risks and estimates to produce a probability distribution of overall outcomes (such as total cost or finish date), giving quantitative, aggregate insight that a qualitative probability-impact matrix — which ranks risks individually and relatively — cannot provide on its own.\n\n### Topic 5 — Stakeholder Management and Governance",
+          "es": "La simulación de Monte Carlo ejecuta muchas iteraciones aleatorizadas a partir de los riesgos y las estimaciones de un proyecto para producir una distribución de probabilidad de los resultados globales (como el coste total o la fecha de finalización), aportando una visión cuantitativa y agregada que una matriz de probabilidad-impacto cualitativa —que clasifica los riesgos de forma individual y relativa— no puede ofrecer por sí sola.\n\n### Topic 5 — Gestión de partes interesadas y gobernanza"
+        }
       }
     ],
     "field": "ict-project-management",
@@ -3075,14 +3075,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Record the technical specifications of the project's planned deliverables.",
-          "es": "Registrar las especificaciones técnicas de los entregables previstos del proyecto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Identify and document each stakeholder's identity, role, level of influence and interest, and expectations, so that this information can then be used to build tools such as the power-interest grid and a tailored communication plan.",
           "es": "Identificar y documentar la identidad, el rol, el nivel de influencia e interés, y las expectativas de cada parte interesada, de modo que esta información pueda utilizarse después para construir herramientas como la cuadrícula de poder-interés y un plan de comunicación adaptado."
         },
@@ -3093,18 +3085,26 @@ export const QUESTIONS: Question[] = [
         }
       },
       {
+        "id": "B",
+        "text": {
+          "en": "Record the technical specifications of the project's planned deliverables.",
+          "es": "Registrar las especificaciones técnicas de los entregables previstos del proyecto."
+        },
+        "isCorrect": false
+      },
+      {
         "id": "C",
         "text": {
-          "en": "Serve as the single legal contract governing the relationship between the contracting authority and its suppliers.",
-          "es": "Servir como el único contrato legal que rige la relación entre el poder adjudicador y sus proveedores."
+          "en": "Replace the need for a RACI matrix once it has been completed.",
+          "es": "Sustituir la necesidad de una matriz RACI una vez que se ha completado."
         },
         "isCorrect": false
       },
       {
         "id": "D",
         "text": {
-          "en": "Replace the need for a RACI matrix once it has been completed.",
-          "es": "Sustituir la necesidad de una matriz RACI una vez que se ha completado."
+          "en": "Serve as the single legal contract governing the relationship between the contracting authority and its suppliers.",
+          "es": "Servir como el único contrato legal que rige la relación entre el poder adjudicador y sus proveedores."
         },
         "isCorrect": false
       }
@@ -3126,6 +3126,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Allow any team member to unilaterally decide to stop project work at any time, without needing to inform anyone else.",
+          "es": "Permitir que cualquier miembro del equipo decida unilateralmente detener el trabajo del proyecto en cualquier momento, sin necesidad de informar a nadie más."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Guarantee that no issue will ever need to be raised above the Project Manager's own authority.",
+          "es": "Garantizar que ninguna incidencia tendrá jamás que elevarse por encima de la propia autoridad del Project Manager."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Provide a predefined path and timeframe for raising a decision or unresolved issue to a higher level of authority (for example, from the Project Manager to the Project Steering Committee) when it exceeds the current level's authority to resolve, ensuring timely resolution rather than delay or unauthorised unilateral action.",
           "es": "Proporcionar una vía y un plazo predefinidos para elevar una decisión o una incidencia sin resolver a un nivel de autoridad superior (por ejemplo, del Project Manager al Comité de Dirección del proyecto) cuando supera la autoridad del nivel actual para resolverla, garantizando una resolución oportuna en lugar de un retraso o una acción unilateral no autorizada."
         },
@@ -3134,22 +3150,6 @@ export const QUESTIONS: Question[] = [
           "en": "An escalation procedure defines, in advance, where and how quickly an issue or decision should be raised once it exceeds the current handler's authority to resolve — ensuring timely, orderly resolution through the right governance layer rather than unmanaged delay or someone acting outside their authority.",
           "es": "Un procedimiento de escalado define de antemano dónde y con qué rapidez debe elevarse una incidencia o una decisión una vez que supera la autoridad de quien la gestiona en ese momento — garantizando una resolución oportuna y ordenada a través de la capa de gobernanza adecuada, en lugar de un retraso sin control o de que alguien actúe fuera de su autoridad."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Allow any team member to unilaterally decide to stop project work at any time, without needing to inform anyone else.",
-          "es": "Permitir que cualquier miembro del equipo decida unilateralmente detener el trabajo del proyecto en cualquier momento, sin necesidad de informar a nadie más."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Guarantee that no issue will ever need to be raised above the Project Manager's own authority.",
-          "es": "Garantizar que ninguna incidencia tendrá jamás que elevarse por encima de la propia autoridad del Project Manager."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -3228,13 +3228,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "A synonym for the RACI matrix, used interchangeably with it.",
+          "es": "Un sinónimo de la matriz RACI, utilizado de forma intercambiable con ella."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
           "en": "A tool that ranks stakeholders purely by the size of their financial contribution to the project's budget.",
           "es": "Una herramienta que clasifica a las partes interesadas únicamente según el tamaño de su contribución financiera al presupuesto del proyecto."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "C",
+        "text": {
+          "en": "A checklist used only during project closure to determine who receives the final report.",
+          "es": "Una lista de comprobación utilizada únicamente durante el cierre del proyecto para determinar quién recibe el informe final."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
         "text": {
           "en": "A tool, complementary to (and distinct from) the power-interest grid, for assessing how much attention a stakeholder's claims warrant based on their power to influence the project, the legitimacy (appropriateness) of their involvement, and the urgency (time-criticality) of their claim.",
           "es": "Una herramienta, complementaria a la cuadrícula de poder-interés (y distinta de ella), para evaluar cuánta atención merecen las reivindicaciones de una parte interesada en función de su poder para influir en el proyecto, la legitimidad (adecuación) de su implicación y la urgencia (carácter time-sensitive) de su reivindicación."
@@ -3244,22 +3260,6 @@ export const QUESTIONS: Question[] = [
           "en": "The salience model classifies stakeholders along three dimensions — power, legitimacy and urgency — to judge how much management attention their claims deserve; it complements rather than replaces the power-interest grid, which uses a different pair of dimensions (power and interest alone).",
           "es": "El modelo de saliencia clasifica a las partes interesadas según tres dimensiones —poder, legitimidad y urgencia— para valorar cuánta atención de gestión merecen sus reivindicaciones; complementa, en lugar de sustituir, a la cuadrícula de poder-interés, que utiliza un par de dimensiones distinto (únicamente poder e interés)."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A synonym for the RACI matrix, used interchangeably with it.",
-          "es": "Un sinónimo de la matriz RACI, utilizado de forma intercambiable con ella."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A checklist used only during project closure to determine who receives the final report.",
-          "es": "Una lista de comprobación utilizada únicamente durante el cierre del proyecto para determinar quién recibe el informe final."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -3279,13 +3279,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Determine each stakeholder's formal RACI designation on every project deliverable.",
+          "es": "Determinar la designación formal en la matriz RACI de cada parte interesada para cada entregable del proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Calculate each stakeholder's financial risk exposure on the project.",
+          "es": "Calcular la exposición al riesgo financiero de cada parte interesada en el proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Replace the power-interest grid entirely, since the two tools measure exactly the same thing.",
           "es": "Sustituir por completo la cuadrícula de poder-interés, ya que ambas herramientas miden exactamente lo mismo."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Identify the gap between where each stakeholder currently stands and where the project needs them to stand, so that engagement actions can be specifically targeted at closing that gap rather than being applied uniformly to everyone.",
           "es": "Identificar la brecha entre la posición actual de cada parte interesada y la posición que el proyecto necesita que ocupe, de modo que las acciones de compromiso puedan dirigirse específicamente a cerrar esa brecha en lugar de aplicarse de manera uniforme a todo el mundo."
@@ -3295,22 +3311,6 @@ export const QUESTIONS: Question[] = [
           "en": "By plotting each stakeholder's current engagement level against the level actually needed for the project to succeed, the matrix highlights exactly where targeted engagement effort will have the most impact, rather than applying identical treatment to every stakeholder regardless of their starting point.\n\n### Topic 6 — Procurement and Contract Management",
           "es": "Al representar el nivel actual de compromiso de cada parte interesada frente al nivel realmente necesario para que el proyecto tenga éxito, la matriz señala con precisión dónde el esfuerzo de compromiso dirigido tendrá el mayor impacto, en lugar de aplicar el mismo tratamiento a todas las partes interesadas con independencia de su punto de partida.\n\n### Topic 6 — Gestión de la contratación pública y de proveedores"
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Determine each stakeholder's formal RACI designation on every project deliverable.",
-          "es": "Determinar la designación formal en la matriz RACI de cada parte interesada para cada entregable del proyecto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Calculate each stakeholder's financial risk exposure on the project.",
-          "es": "Calcular la exposición al riesgo financiero de cada parte interesada en el proyecto."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -3381,22 +3381,18 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "The contracting authority already has a fully defined technical specification and simply wants the fastest possible award, skipping any evaluation of quality.",
-          "es": "El poder adjudicador ya cuenta con una especificación técnica plenamente definida y simplemente desea la adjudicación más rápida posible, prescindiendo de cualquier evaluación de la calidad."
+          "en": "The contract value falls below the threshold requiring any publication at all.",
+          "es": "El valor del contrato se sitúa por debajo del umbral que exige cualquier publicación."
         },
         "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "The contracting authority is not able to define, in advance, the technical means or legal/financial arrangements needed to meet a complex requirement, so it conducts a structured dialogue with selected candidates to develop one or more suitable solutions, ahead of a final tender based on those solutions.",
-          "es": "El poder adjudicador no es capaz de definir de antemano los medios técnicos o las condiciones jurídicas/financieras necesarias para satisfacer una necesidad compleja, por lo que mantiene un diálogo estructurado con candidatos seleccionados para desarrollar una o varias soluciones adecuadas, antes de solicitar una oferta final basada en ellas."
+          "en": "The contracting authority already has a fully defined technical specification and simply wants the fastest possible award, skipping any evaluation of quality.",
+          "es": "El poder adjudicador ya cuenta con una especificación técnica plenamente definida y simplemente desea la adjudicación más rápida posible, prescindiendo de cualquier evaluación de la calidad."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Competitive dialogue exists for genuinely complex requirements where the contracting authority cannot fully specify the technical or contractual solution in advance; a structured dialogue with selected candidates helps develop viable solutions before a final tender is requested against them.",
-          "es": "El diálogo competitivo existe para necesidades genuinamente complejas en las que el poder adjudicador no puede especificar por completo de antemano la solución técnica o contractual; un diálogo estructurado con candidatos seleccionados ayuda a desarrollar soluciones viables antes de solicitar una oferta final basada en ellas."
-        }
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3409,10 +3405,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "The contract value falls below the threshold requiring any publication at all.",
-          "es": "El valor del contrato se sitúa por debajo del umbral que exige cualquier publicación."
+          "en": "The contracting authority is not able to define, in advance, the technical means or legal/financial arrangements needed to meet a complex requirement, so it conducts a structured dialogue with selected candidates to develop one or more suitable solutions, ahead of a final tender based on those solutions.",
+          "es": "El poder adjudicador no es capaz de definir de antemano los medios técnicos o las condiciones jurídicas/financieras necesarias para satisfacer una necesidad compleja, por lo que mantiene un diálogo estructurado con candidatos seleccionados para desarrollar una o varias soluciones adecuadas, antes de solicitar una oferta final basada en ellas."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Competitive dialogue exists for genuinely complex requirements where the contracting authority cannot fully specify the technical or contractual solution in advance; a structured dialogue with selected candidates helps develop viable solutions before a final tender is requested against them.",
+          "es": "El diálogo competitivo existe para necesidades genuinamente complejas en las que el poder adjudicador no puede especificar por completo de antemano la solución técnica o contractual; un diálogo estructurado con candidatos seleccionados ayuda a desarrollar soluciones viables antes de solicitar una oferta final basada en ellas."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -3585,20 +3585,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Prevention costs (avoiding defects) and appraisal costs (inspecting/testing to find them) together form the \"cost of conformance,\" which is generally far lower than the \"cost of nonconformance\" — the internal and, especially, external failure costs incurred when defects are found late, particularly after delivery to the customer.",
-          "es": "Los costes de prevención (evitar defectos) y los costes de evaluación (inspeccionar o probar para detectarlos) forman juntos el «coste de conformidad», que en general es muy inferior al «coste de la no conformidad» —los costes de fallos internos y, especialmente, externos en que se incurre cuando los defectos se detectan tarde, sobre todo después de la entrega al cliente."
+          "en": "Failure costs are always lower than prevention and appraisal costs combined, which is why quality planning is generally not considered a worthwhile early investment.",
+          "es": "Los costes de fallos son siempre inferiores a la suma de los costes de prevención y evaluación, razón por la cual la planificación de la calidad generalmente no se considera una inversión temprana rentable."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Prevention and appraisal costs (the cost of conformance — investing to avoid or catch defects early) are generally much smaller than internal and especially external failure costs (the cost of nonconformance), which grow sharply the later a defect is found, particularly after it has already reached the customer.",
-          "es": "Los costes de prevención y evaluación (el coste de conformidad —invertir para evitar o detectar defectos a tiempo—) suelen ser mucho menores que los costes de fallos internos y, sobre todo, externos (el coste de la no conformidad), que crecen de forma acusada cuanto más tarde se detecta un defecto, especialmente después de haber llegado ya al cliente."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Failure costs are always lower than prevention and appraisal costs combined, which is why quality planning is generally not considered a worthwhile early investment.",
-          "es": "Los costes de fallos son siempre inferiores a la suma de los costes de prevención y evaluación, razón por la cual la planificación de la calidad generalmente no se considera una inversión temprana rentable."
+          "en": "External failure costs (defects found after delivery) are typically the cheapest category of quality cost to resolve.",
+          "es": "Los costes de fallos externos (defectos detectados después de la entrega) suelen ser la categoría más barata de resolver dentro del coste de la calidad."
         },
         "isCorrect": false
       },
@@ -3613,10 +3609,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "External failure costs (defects found after delivery) are typically the cheapest category of quality cost to resolve.",
-          "es": "Los costes de fallos externos (defectos detectados después de la entrega) suelen ser la categoría más barata de resolver dentro del coste de la calidad."
+          "en": "Prevention costs (avoiding defects) and appraisal costs (inspecting/testing to find them) together form the \"cost of conformance,\" which is generally far lower than the \"cost of nonconformance\" — the internal and, especially, external failure costs incurred when defects are found late, particularly after delivery to the customer.",
+          "es": "Los costes de prevención (evitar defectos) y los costes de evaluación (inspeccionar o probar para detectarlos) forman juntos el «coste de conformidad», que en general es muy inferior al «coste de la no conformidad» —los costes de fallos internos y, especialmente, externos en que se incurre cuando los defectos se detectan tarde, sobre todo después de la entrega al cliente."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Prevention and appraisal costs (the cost of conformance — investing to avoid or catch defects early) are generally much smaller than internal and especially external failure costs (the cost of nonconformance), which grow sharply the later a defect is found, particularly after it has already reached the customer.",
+          "es": "Los costes de prevención y evaluación (el coste de conformidad —invertir para evitar o detectar defectos a tiempo—) suelen ser mucho menores que los costes de fallos internos y, sobre todo, externos (el coste de la no conformidad), que crecen de forma acusada cuanto más tarde se detecta un defecto, especialmente después de haber llegado ya al cliente."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -3636,6 +3636,22 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Assign formal blame to the specific individual who introduced the defect.",
+          "es": "Asignar formalmente la culpa a la persona concreta que introdujo el defecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Avoid the need for any further quality control testing on future deliverables.",
+          "es": "Evitar la necesidad de cualquier prueba adicional de control de calidad en entregables futuros."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Identify the underlying systemic cause behind the defect, so that a permanent process fix can be applied, rather than repeatedly patching the same visible symptom.",
           "es": "Identificar la causa sistémica subyacente del defecto, de modo que pueda aplicarse una solución permanente del proceso, en lugar de parchear repetidamente el mismo síntoma visible."
         },
@@ -3644,22 +3660,6 @@ export const QUESTIONS: Question[] = [
           "en": "Root cause analysis techniques like a fishbone diagram or the \"5 Whys\" exist to trace a recurring defect back to its underlying systemic cause, enabling a durable process fix rather than repeatedly treating the same visible symptom without addressing what actually keeps producing it.",
           "es": "Técnicas de análisis de causa raíz como el diagrama de espina de pescado o los «5 porqués» existen para rastrear un defecto recurrente hasta su causa sistémica subyacente, permitiendo una solución duradera del proceso en lugar de tratar repetidamente el mismo síntoma visible sin abordar lo que realmente sigue produciéndolo."
         }
-      },
-      {
-        "id": "B",
-        "text": {
-          "en": "Assign formal blame to the specific individual who introduced the defect.",
-          "es": "Asignar formalmente la culpa a la persona concreta que introdujo el defecto."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Avoid the need for any further quality control testing on future deliverables.",
-          "es": "Evitar la necesidad de cualquier prueba adicional de control de calidad en entregables futuros."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -3687,14 +3687,6 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Spreading quality-improvement effort evenly across every reported defect category, regardless of frequency or severity.",
-          "es": "Repartir el esfuerzo de mejora de la calidad de forma equitativa entre todas las categorías de defectos reportadas, con independencia de su frecuencia o gravedad."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "B",
-        "text": {
           "en": "Focusing improvement effort on the small number of defect categories or root causes responsible for the large majority of reported quality problems, since addressing those has the greatest overall impact.",
           "es": "Concentrar el esfuerzo de mejora en el reducido número de categorías de defectos o causas raíz responsables de la gran mayoría de los problemas de calidad reportados, ya que abordarlas tiene el mayor impacto global."
         },
@@ -3703,6 +3695,14 @@ export const QUESTIONS: Question[] = [
           "en": "Applying the 80/20 rule to quality data means recognising that a small number of defect categories or root causes typically account for most of the reported problems, so improvement effort is most effective when concentrated there rather than spread evenly across every category regardless of frequency.",
           "es": "Aplicar la regla 80/20 a los datos de calidad significa reconocer que un número reducido de categorías de defectos o causas raíz suele explicar la mayoría de los problemas reportados, de modo que el esfuerzo de mejora resulta más eficaz cuando se concentra ahí en lugar de repartirse por igual entre todas las categorías sin tener en cuenta su frecuencia."
         }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Requiring that 80% of the project team be dedicated to quality control activities at all times.",
+          "es": "Exigir que el 80% del equipo del proyecto se dedique en todo momento a actividades de control de calidad."
+        },
+        "isCorrect": false
       },
       {
         "id": "C",
@@ -3715,8 +3715,8 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Requiring that 80% of the project team be dedicated to quality control activities at all times.",
-          "es": "Exigir que el 80% del equipo del proyecto se dedique en todo momento a actividades de control de calidad."
+          "en": "Spreading quality-improvement effort evenly across every reported defect category, regardless of frequency or severity.",
+          "es": "Repartir el esfuerzo de mejora de la calidad de forma equitativa entre todas las categorías de defectos reportadas, con independencia de su frecuencia o gravedad."
         },
         "isCorrect": false
       }
@@ -3746,6 +3746,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "B",
         "text": {
+          "en": "A synonym for the Sprint Review, used only in agile contexts.",
+          "es": "Un sinónimo de la Sprint Review, utilizado únicamente en contextos ágiles."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "An iterative cycle in which each pass's results (what worked, what did not) feed directly into planning the next cycle, so process improvement continues incrementally rather than being treated as a single, isolated event.",
           "es": "Un ciclo iterativo en el que los resultados de cada pasada (qué funcionó, qué no funcionó) alimentan directamente la planificación del siguiente ciclo, de modo que la mejora del proceso continúa de forma incremental en lugar de tratarse como un hecho único y aislado."
         },
@@ -3754,14 +3762,6 @@ export const QUESTIONS: Question[] = [
           "en": "PDCA is deliberately iterative: each cycle's outcomes directly inform the planning of the next cycle, making continuous improvement an ongoing discipline rather than a single completed project or a one-time procurement scoring method.",
           "es": "El PDCA es deliberadamente iterativo: los resultados de cada ciclo alimentan directamente la planificación del ciclo siguiente, convirtiendo la mejora continua en una disciplina permanente en lugar de un proyecto único ya concluido o un método de puntuación de contrataciones."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "A synonym for the Sprint Review, used only in agile contexts.",
-          "es": "Un sinónimo de la Sprint Review, utilizado únicamente en contextos ágiles."
-        },
-        "isCorrect": false
       },
       {
         "id": "D",
@@ -3840,13 +3840,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Replace the need for a Programme Steering Committee or equivalent governance body.",
+          "es": "Sustituir la necesidad de un Comité de Dirección de programa o de un órgano de gobernanza equivalente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Guarantee that every constituent project within the programme finishes on exactly the same date.",
+          "es": "Garantizar que todos los proyectos que componen el programa finalicen exactamente en la misma fecha."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Deliver the programme's benefits in a single, indivisible step at the very end, since tranches only apply to a programme's internal administrative paperwork.",
           "es": "Entregar los beneficios del programa en un único paso indivisible al final, ya que los tramos solo se aplican a la documentación administrativa interna de un programa."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Structure delivery of the programme's benefits as a series of step changes in capability, with each tranche-end review reassessing the business case and confirming the programme should proceed, redirect, or stop — providing programme-level governance analogous to a project's phase gates, but at a larger scale.",
           "es": "Estructurar la entrega de los beneficios del programa como una serie de cambios escalonados de capacidad, de modo que cada revisión al final de un tramo reevalúe el business case y confirme si el programa debe continuar, redirigirse o detenerse — proporcionando una gobernanza a escala de programa análoga a los phase gates de un proyecto, pero a mayor escala."
@@ -3856,22 +3872,6 @@ export const QUESTIONS: Question[] = [
           "en": "Dividing a programme into tranches lets it deliver benefits as a series of capability step-changes, with each tranche-end review reassessing the business case and deciding whether to continue, adjust or stop — a programme-scale equivalent of a project's phase gates, not a purely administrative device.",
           "es": "Dividir un programa en tramos le permite entregar beneficios como una serie de cambios escalonados de capacidad, con cada revisión de fin de tramo reevaluando el business case y decidiendo si continuar, ajustar o detener — un equivalente a escala de programa de los phase gates de un proyecto, y no un simple mecanismo administrativo."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Guarantee that every constituent project within the programme finishes on exactly the same date.",
-          "es": "Garantizar que todos los proyectos que componen el programa finalicen exactamente en la misma fecha."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "Replace the need for a Programme Steering Committee or equivalent governance body.",
-          "es": "Sustituir la necesidad de un Comité de Dirección de programa o de un órgano de gobernanza equivalente."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",
@@ -3942,20 +3942,16 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
-          "en": "Balance investment across categories such as \"run-the-business\" (keeping existing operations running) versus \"change-the-business\" (strategic transformation), and across differing risk profiles, so the overall collection matches the organisation's strategic priorities and risk appetite as a whole.",
-          "es": "Equilibrar la inversión entre categorías como «mantener el negocio en marcha» (run-the-business, sostener las operaciones existentes) frente a «transformar el negocio» (change-the-business, transformación estratégica), y entre distintos perfiles de riesgo, de modo que el conjunto global se ajuste a las prioridades estratégicas y al apetito de riesgo de la organización en su totalidad."
+          "en": "Fund every proposed project individually, in isolation, as soon as its own business case turns out to be positive, without reference to any other project in the portfolio.",
+          "es": "Financiar cada proyecto propuesto de forma individual y aislada, en cuanto su propio business case resulte positivo, sin tener en cuenta ningún otro proyecto del portafolio."
         },
-        "isCorrect": true,
-        "explanation": {
-          "en": "Portfolio balancing goes beyond ranking individual projects by value alone: it also weighs the mix across categories like running versus transforming the business, and across differing risk profiles, so the portfolio as a whole reflects the organisation's strategic priorities and risk appetite.",
-          "es": "El equilibrio del portafolio va más allá de clasificar los proyectos individuales solo por su valor: también pondera la combinación entre categorías como sostener frente a transformar el negocio, y entre distintos perfiles de riesgo, de modo que el portafolio en su conjunto refleje las prioridades estratégicas y el apetito de riesgo de la organización."
-        }
+        "isCorrect": false
       },
       {
         "id": "B",
         "text": {
-          "en": "Fund every proposed project individually, in isolation, as soon as its own business case turns out to be positive, without reference to any other project in the portfolio.",
-          "es": "Financiar cada proyecto propuesto de forma individual y aislada, en cuanto su propio business case resulte positivo, sin tener en cuenta ningún otro proyecto del portafolio."
+          "en": "Avoid categorising projects altogether, since categorisation is considered a project-level, not portfolio-level, concern.",
+          "es": "Evitar por completo la categorización de proyectos, ya que la categorización se considera una cuestión de nivel de proyecto y no de nivel de portafolio."
         },
         "isCorrect": false
       },
@@ -3970,10 +3966,14 @@ export const QUESTIONS: Question[] = [
       {
         "id": "D",
         "text": {
-          "en": "Avoid categorising projects altogether, since categorisation is considered a project-level, not portfolio-level, concern.",
-          "es": "Evitar por completo la categorización de proyectos, ya que la categorización se considera una cuestión de nivel de proyecto y no de nivel de portafolio."
+          "en": "Balance investment across categories such as \"run-the-business\" (keeping existing operations running) versus \"change-the-business\" (strategic transformation), and across differing risk profiles, so the overall collection matches the organisation's strategic priorities and risk appetite as a whole.",
+          "es": "Equilibrar la inversión entre categorías como «mantener el negocio en marcha» (run-the-business, sostener las operaciones existentes) frente a «transformar el negocio» (change-the-business, transformación estratégica), y entre distintos perfiles de riesgo, de modo que el conjunto global se ajuste a las prioridades estratégicas y al apetito de riesgo de la organización en su totalidad."
         },
-        "isCorrect": false
+        "isCorrect": true,
+        "explanation": {
+          "en": "Portfolio balancing goes beyond ranking individual projects by value alone: it also weighs the mix across categories like running versus transforming the business, and across differing risk profiles, so the portfolio as a whole reflects the organisation's strategic priorities and risk appetite.",
+          "es": "El equilibrio del portafolio va más allá de clasificar los proyectos individuales solo por su valor: también pondera la combinación entre categorías como sostener frente a transformar el negocio, y entre distintos perfiles de riesgo, de modo que el portafolio en su conjunto refleje las prioridades estratégicas y el apetito de riesgo de la organización."
+        }
       }
     ],
     "field": "ict-project-management",
@@ -3993,13 +3993,29 @@ export const QUESTIONS: Question[] = [
       {
         "id": "A",
         "text": {
+          "en": "Qualitative benefits are, by definition, not real benefits and should never appear in a business case.",
+          "es": "Los beneficios cualitativos, por definición, no son beneficios reales y nunca deberían figurar en un business case."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A benefit can only be classified once, at project initiation, and can never move between categories as the project progresses.",
+          "es": "Un beneficio solo puede clasificarse una vez, en el inicio del proyecto, y nunca puede cambiar de categoría a medida que el proyecto avanza."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
           "en": "Only cash-releasing benefits count as genuine benefits; anything that cannot be expressed as a direct financial saving should be dropped from the benefits realisation plan.",
           "es": "Solo los beneficios cash-releasing (que liberan efectivo) cuentan como beneficios genuinos; cualquier cosa que no pueda expresarse como un ahorro financiero directo debería eliminarse del plan de realización de beneficios."
         },
         "isCorrect": false
       },
       {
-        "id": "B",
+        "id": "D",
         "text": {
           "en": "Benefits can be cash-releasing (quantifiable, direct financial savings, such as reduced staff costs), quantifiable but non-cash (measurable but not directly monetary, such as hours saved), or non-quantifiable/qualitative (real but not expressible in numbers, such as improved reputation or staff morale) — all three are legitimate and worth tracking, even though only some can be reduced to a euro figure.",
           "es": "Los beneficios pueden ser cash-releasing (cuantificables, ahorros financieros directos, como la reducción de costes de personal), cuantificables pero no monetarios (medibles pero no directamente económicos, como las horas ahorradas), o no cuantificables/cualitativos (reales pero no expresables en cifras, como una mejor reputación o una mejor moral del personal) — los tres son legítimos y merece la pena seguirlos, aunque solo algunos puedan reducirse a una cifra en euros."
@@ -4009,22 +4025,6 @@ export const QUESTIONS: Question[] = [
           "en": "Legitimate benefits span cash-releasing (direct financial savings), quantifiable non-cash (measurable but not monetary) and non-quantifiable qualitative benefits (real but not expressible as a number) — a sound benefits realisation plan tracks all three rather than only counting what can be reduced to a euro figure.",
           "es": "Los beneficios legítimos abarcan los cash-releasing (ahorros financieros directos), los cuantificables no monetarios (medibles pero no económicos) y los cualitativos no cuantificables (reales pero no expresables como una cifra) — un buen plan de realización de beneficios hace seguimiento de los tres, en lugar de contar únicamente lo que puede reducirse a una cifra en euros."
         }
-      },
-      {
-        "id": "C",
-        "text": {
-          "en": "Qualitative benefits are, by definition, not real benefits and should never appear in a business case.",
-          "es": "Los beneficios cualitativos, por definición, no son beneficios reales y nunca deberían figurar en un business case."
-        },
-        "isCorrect": false
-      },
-      {
-        "id": "D",
-        "text": {
-          "en": "A benefit can only be classified once, at project initiation, and can never move between categories as the project progresses.",
-          "es": "Un beneficio solo puede clasificarse una vez, en el inicio del proyecto, y nunca puede cambiar de categoría a medida que el proyecto avanza."
-        },
-        "isCorrect": false
       }
     ],
     "field": "ict-project-management",

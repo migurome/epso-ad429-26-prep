@@ -44,7 +44,13 @@ export function EssayRunner({ prompt }: EssayRunnerProps) {
   }
 
   function stopWriting() {
-    setElapsedSeconds(totalSeconds - remaining)
+    // Medido contra el reloj y no como `total - restante`: al agotarse el
+    // tiempo, `remaining` aún vale 1 en el render vigente (ver useCountdown).
+    setElapsedSeconds(
+      startedAt
+        ? Math.min(totalSeconds, Math.max(0, Math.round((Date.now() - new Date(startedAt).getTime()) / 1000)))
+        : totalSeconds - remaining,
+    )
     setStage('review')
   }
 

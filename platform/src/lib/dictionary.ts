@@ -77,6 +77,14 @@ export const DICT = {
 
   n_exercise: { es: '{n} ejercicio', en: '{n} exercise' },
 
+  // Nota para las preguntas de muestra oficiales de EPSO: la fuente publica
+  // la clave de respuesta pero no el razonamiento, y el proyecto no inventa
+  // explicaciones sobre material oficial (ver Docs/1.- Verbal reasoning.md).
+  no_official_explanation: {
+    es: 'EPSO publica la respuesta correcta de esta pregunta de muestra, pero no su razonamiento; aquí no se inventa ninguno.',
+    en: 'EPSO publishes the correct answer to this sample question but not the reasoning behind it; none is invented here.',
+  },
+
   // PracticeBank
   filter_real_bank: { es: 'Banco real', en: 'Real bank' },
   filter_ai_bank: { es: 'Bonus (generado)', en: 'Bonus (generated)' },

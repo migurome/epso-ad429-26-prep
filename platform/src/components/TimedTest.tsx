@@ -55,7 +55,14 @@ export function TimedTest({ questions, format, phase, skill, field }: TimedTestP
     if (finishedRef.current) return
     finishedRef.current = true
 
-    const timeSpent = totalSeconds - remaining
+    // Tiempo empleado medido contra el reloj, no como `total - restante`: si
+    // el test termina porque se agota el tiempo, `remaining` todavía vale 1 en
+    // el render vigente y el intento quedaría guardado con un segundo de menos.
+    const startedAtIso = startedAt ?? new Date().toISOString()
+    const timeSpent = Math.min(
+      totalSeconds,
+      Math.max(0, Math.round((Date.now() - new Date(startedAtIso).getTime()) / 1000)),
+    )
     setElapsedSeconds(timeSpent)
 
     const results: QuestionResult[] = testQuestions.map((q) => {
@@ -73,7 +80,7 @@ export function TimedTest({ questions, format, phase, skill, field }: TimedTestP
       phase,
       skill,
       field,
-      startedAt: startedAt ?? new Date().toISOString(),
+      startedAt: startedAtIso,
       finishedAt: new Date().toISOString(),
       results,
       totalQuestions: testQuestions.length,

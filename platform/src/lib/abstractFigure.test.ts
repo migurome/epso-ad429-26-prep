@@ -183,4 +183,22 @@ describe('extractPromptFigures', () => {
     const panels = splitPanels('▮(black) ◈(hatched diamond) □(white) · ◁(white triangle) ▮(black)')
     expect(panels).toEqual(['▮(black) ◈(hatched diamond) □(white)', '◁(white triangle) ▮(black)'])
   })
+
+  // Regresión: la prosa usa '→' como puntuación ("negro → gris → blanco"), y
+  // '→' es un símbolo de figura reconocido. Sin un umbral mínimo de paneles
+  // dibujables, el párrafo entero se troceaba en un panel por palabra y se
+  // pintaba como una ristra de recuadros de texto, dejando además la
+  // secuencia real (descrita solo con corchetes) como texto plano debajo.
+  it('does not treat a prose paragraph with arrow punctuation as a figure sequence', () => {
+    const prompt =
+      'A circle sprouts short "sun-ray" spike lines one at a time; a dividing line rotates 45° clockwise each panel; the two halves it creates are shaded grey → clear → black (repeating).\n\n' +
+      '[1 spike] [line ~horizontal] · [2 spikes] [line diagonal] · [3 spikes] [line ~vertical] · ?'
+    expect(extractPromptFigures(prompt)).toBeNull()
+  })
+
+  it('still accepts a sequence whose only non-figure panel is the blank "?"', () => {
+    const result = extractPromptFigures('● ●● ●●● ●●●● ●●●●● ?')
+    expect(result?.kind).toBe('sequence')
+    expect(result?.panels).toHaveLength(6)
+  })
 })
