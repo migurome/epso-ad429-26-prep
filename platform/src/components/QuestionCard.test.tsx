@@ -7,6 +7,10 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
 import { QuestionCard } from './QuestionCard'
 import type { Question } from '../types/content'
+import { SCANNED_FIGURES } from '../data/scannedFigures.generated'
+import { QUESTIONS } from '../data/content.abstract.generated'
+
+const SCANNED_ID = 'abs-real-1'
 
 afterEach(cleanup)
 
@@ -60,5 +64,30 @@ describe('QuestionCard, abstract figures', () => {
     const q = build('Four of these five share a rule.', ['●●▲', '●●▲', '●●▲', '●●△', '●●▲'])
     render0(q)
     expect(drawnOptions()).toBe(5)
+  })
+
+  it('serves the book scan, not a redrawing, for the questions that have one', () => {
+    // El banco real sale de un libro escaneado: cuando hay recorte, mandan las
+    // dos imágenes (enunciado y opciones) y las opciones se reducen a su letra.
+    // Redibujar la misma pregunta al lado sería enseñar dos figuras distintas
+    // para la misma pregunta.
+    const q = { ...build('● · ○ · ?', ['●', '○', '■', '▲', '⬠']), id: SCANNED_ID }
+    render0(q)
+    const images = screen.getAllByRole('img')
+    expect(images.map((i) => (i as HTMLImageElement).src.split('/').pop())).toEqual([
+      `${SCANNED_ID}-prompt.webp`,
+      `${SCANNED_ID}-options.webp`,
+    ])
+    expect(drawnOptions()).toBe(0)
+    expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual(['A', 'B', 'C', 'D', 'E'])
+  })
+
+  it('has a scan for every question of the real bank', () => {
+    // Si `extract_figures.py` deja de recortar una página, esas preguntas
+    // desaparecen del manifiesto y vuelven solas al dibujo vectorial: no se
+    // rompe nada, pero conviene enterarse.
+    const real = QUESTIONS.filter((q) => q.skill === 'abstract' && q.id.startsWith('abs-real-'))
+    expect(real.length).toBe(120)
+    expect(real.filter((q) => !SCANNED_FIGURES.has(q.id)).map((q) => q.id)).toEqual([])
   })
 })

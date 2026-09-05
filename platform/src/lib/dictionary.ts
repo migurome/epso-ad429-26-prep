@@ -85,6 +85,17 @@ export const DICT = {
     en: 'EPSO publishes the correct answer to this sample question but not the reasoning behind it; none is invented here.',
   },
 
+  // Figuras escaneadas del libro de referencia (ver ScannedFigure.tsx)
+  figure_sequence_alt: {
+    es: 'Secuencia de figuras del enunciado, tal como aparece en el libro',
+    en: 'The question’s figure sequence, as printed in the book',
+  },
+  figure_options_alt: {
+    es: 'Las cinco opciones A–E, tal como aparecen en el libro',
+    en: 'The five options A–E, as printed in the book',
+  },
+  choose_option: { es: 'Elige una opción', en: 'Choose an option' },
+
   // PracticeBank
   filter_real_bank: { es: 'Banco real', en: 'Real bank' },
   filter_ai_bank: { es: 'Bonus (generado)', en: 'Bonus (generated)' },

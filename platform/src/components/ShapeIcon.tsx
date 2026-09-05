@@ -30,42 +30,66 @@ function regularPolygonPoints(sides: number, cx: number, cy: number, r: number):
   return points.join(' ')
 }
 
+type Paint = { fill: string; stroke: string; strokeWidth: number }
+
+/** Figuras que el banco real llega a describir «medio sombreadas». Se
+ * declaran como función del pincel porque hay que pintarlas dos veces: el
+ * contorno completo y, recortada, la mitad rellena. */
+const HALF_CAPABLE: Partial<Record<ShapeSpec['shape'], (p: Paint) => React.ReactNode>> = {
+  circle: (p) => <circle cx={50} cy={50} r={32} {...p} />,
+  square: (p) => <rect x={20} y={20} width={60} height={60} rx={4} {...p} />,
+  rectangle: (p) => <rect x={12} y={27} width={76} height={46} rx={3} {...p} />,
+  diamond: (p) => <polygon points="50,12 88,50 50,88 12,50" {...p} />,
+  pentagon: (p) => <polygon points={regularPolygonPoints(5, 50, 52, 34)} {...p} />,
+  hexagon: (p) => <polygon points={regularPolygonPoints(6, 50, 50, 34)} {...p} />,
+  triangle: (p) => <polygon points="50,14 87,81 13,81" {...p} />,
+}
+
 interface ShapeIconProps {
   spec: ShapeSpec
   className?: string
+  /** Lado en píxeles, ignorando `spec.size`. Se usa cuando varias figuras
+   * comparten una celda de la rejilla 3×3 y hay que encogerlas para que
+   * quepan: con el tamaño normal se salían del marco y se montaban sobre el
+   * texto de debajo. */
+  px?: number
 }
 
-export function ShapeIcon({ spec, className }: ShapeIconProps) {
+export function ShapeIcon({ spec, className, px: pxOverride }: ShapeIconProps) {
   const patternId = useId()
-  const px = SIZE_PX[spec.size]
+  const px = pxOverride ?? SIZE_PX[spec.size]
 
   const isEmpty = spec.fill === 'empty'
-  const fill = spec.fill === 'grey' ? GREY : spec.fill === 'hatched' ? `url(#${patternId})` : isEmpty ? 'none' : INK
-  const strokeWidth = isEmpty ? 6 : 0
-  const commonProps = { fill, stroke: isEmpty ? INK : 'none', strokeWidth }
+  const isHatched = spec.fill === 'hatched'
+  const fill = spec.fill === 'grey' ? GREY : isHatched ? `url(#${patternId})` : isEmpty ? 'none' : INK
+  // El rayado se dibujaba sin contorno, así que la figura se veía como una
+  // mancha de líneas diagonales: un rombo rayado y un rectángulo rayado eran
+  // indistinguibles. Con contorno se recupera la silueta.
+  const strokeWidth = isEmpty ? 6 : isHatched ? 4 : 0
+  const commonProps = { fill, stroke: isEmpty || isHatched ? INK : 'none', strokeWidth }
 
   let shapeEl: React.ReactNode
   switch (spec.shape) {
     case 'circle':
-      shapeEl = <circle cx={50} cy={50} r={32} {...commonProps} />
+      shapeEl = HALF_CAPABLE.circle!(commonProps)
       break
     case 'square':
-      shapeEl = <rect x={20} y={20} width={60} height={60} rx={4} {...commonProps} />
+      shapeEl = HALF_CAPABLE.square!(commonProps)
       break
     case 'rectangle':
-      shapeEl = <rect x={12} y={27} width={76} height={46} rx={3} {...commonProps} />
+      shapeEl = HALF_CAPABLE.rectangle!(commonProps)
       break
     case 'diamond':
-      shapeEl = <polygon points="50,12 88,50 50,88 12,50" {...commonProps} />
+      shapeEl = HALF_CAPABLE.diamond!(commonProps)
       break
     case 'pentagon':
-      shapeEl = <polygon points={regularPolygonPoints(5, 50, 52, 34)} {...commonProps} />
+      shapeEl = HALF_CAPABLE.pentagon!(commonProps)
       break
     case 'hexagon':
-      shapeEl = <polygon points={regularPolygonPoints(6, 50, 50, 34)} {...commonProps} />
+      shapeEl = HALF_CAPABLE.hexagon!(commonProps)
       break
     case 'star':
-      shapeEl = <polygon points={starPoints(50, 50, 34, 14, 5)} {...commonProps} />
+      shapeEl = <polygon points={starPoints(50, 50, 34, 14, spec.points ?? 5)} {...commonProps} />
       break
     case 'four-point-star':
       shapeEl = <polygon points={starPoints(50, 50, 38, 12, 4)} {...commonProps} />
@@ -79,7 +103,7 @@ export function ShapeIcon({ spec, className }: ShapeIconProps) {
       )
       break
     case 'triangle':
-      shapeEl = <polygon points="50,14 87,81 13,81" {...commonProps} />
+      shapeEl = HALF_CAPABLE.triangle!(commonProps)
       break
     case 'arrow':
       shapeEl = (
@@ -176,6 +200,106 @@ export function ShapeIcon({ spec, className }: ShapeIconProps) {
       )
       break
     }
+    case 'line':
+      // Recta que cruza el marco entero: es el «escenario» sobre el que se
+      // apoyan las demás figuras del panel, no una figura más.
+      shapeEl = <line x1={4} y1={50} x2={96} y2={50} stroke={INK} strokeWidth={5} strokeLinecap="round" />
+      break
+    case 'bent-line':
+      // Línea acodada en ángulo recto («en escalón»), pegada a dos bordes.
+      shapeEl = (
+        <polyline
+          points="6,94 6,30 50,30 50,6 94,6"
+          fill="none"
+          stroke={INK}
+          strokeWidth={5}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )
+      break
+    case 'slope':
+      // Rampa: triángulo rectángulo apoyado en la base del marco.
+      shapeEl = <polygon points="6,88 94,88 94,26" {...commonProps} strokeWidth={isEmpty ? 5 : 0} />
+      break
+    case 'wave':
+    case 'wave-trough':
+      // La misma onda reflejada: en 'wave' los bordes son cresta y en
+      // 'wave-trough', valle. Es lo único que distingue varias opciones.
+      shapeEl = (
+        <path
+          d={
+            spec.shape === 'wave'
+              ? 'M4,50 C20,18 34,18 50,50 C66,82 80,82 96,50'
+              : 'M4,50 C20,82 34,82 50,50 C66,18 80,18 96,50'
+          }
+          fill="none"
+          stroke={INK}
+          strokeWidth={5}
+          strokeLinecap="round"
+        />
+      )
+      break
+    case 'polygon':
+      // Polígono regular con el nº de lados que diga el texto: el banco compara
+      // "dos figuras de 7 lados" con "dos de 8", y sin el recuento salían
+      // idénticas.
+      shapeEl = <polygon points={regularPolygonPoints(Math.max(3, spec.sides ?? 5), 50, 50, 34)} {...commonProps} />
+      break
+    case 'tally':
+      // Recuento de algo que no es una figura (las velas de una tarta): tantas
+      // marcas como diga el texto.
+      shapeEl = (
+        <g stroke={INK} strokeWidth={8} strokeLinecap="round">
+          {Array.from({ length: Math.max(1, Math.min(8, spec.sides ?? 1)) }).map((_, i, all) => {
+            const step = 100 / (all.length + 1)
+            const x = step * (i + 1)
+            return <line key={i} x1={x} y1={20} x2={x} y2={80} />
+          })}
+        </g>
+      )
+      break
+    case 'ellipse':
+      shapeEl = <ellipse cx={50} cy={50} rx={20} ry={34} {...commonProps} />
+      break
+    case 'double-arrow':
+      // Flecha de doble punta: el eje lo da la rotación (0 = horizontal).
+      shapeEl = (
+        <g stroke={INK} strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" fill="none">
+          <line x1={14} y1={50} x2={86} y2={50} />
+          <polyline points="30,32 12,50 30,68" />
+          <polyline points="70,32 88,50 70,68" />
+        </g>
+      )
+      break
+    case 'rotate-cw':
+    case 'rotate-ccw': {
+      // Marcador de giro: arco casi cerrado con una punta de flecha. El banco
+      // lo usa para decir en qué sentido rota el panel.
+      const cw = spec.shape === 'rotate-cw'
+      shapeEl = (
+        <g
+          stroke={INK}
+          strokeWidth={7}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          transform={cw ? undefined : 'scale(-1,1) translate(-100,0)'}
+        >
+          <path d="M78,38 A32,32 0 1 0 84,58" />
+          <polyline points="62,34 80,36 78,54" />
+        </g>
+      )
+      break
+    }
+    case 'cross':
+      shapeEl = (
+        <g stroke={INK} strokeWidth={12} strokeLinecap="butt">
+          <line x1={50} y1={12} x2={50} y2={88} />
+          <line x1={12} y1={50} x2={88} y2={50} />
+        </g>
+      )
+      break
     case 'circled-plus':
       shapeEl = (
         <g>
@@ -288,8 +412,54 @@ export function ShapeIcon({ spec, className }: ShapeIconProps) {
       break
   }
 
+  // Media figura sombreada: se pinta la figura entera recortada a un
+  // semiplano, y encima se repasa el contorno (que el recorte tapa) más la
+  // línea divisoria, para que la partición se lea aunque la mitad sea blanca.
+  const halfSpec = spec.halfFill
+  const halfGeometry = halfSpec ? HALF_CAPABLE[spec.shape] : undefined
+  const halfAngle = halfSpec?.split === 'vertical' ? 90 : halfSpec?.split === 'diagonal' ? 45 : 0
+  const halfColor = !halfSpec
+    ? 'none'
+    : halfSpec.fill === 'grey'
+      ? GREY
+      : halfSpec.fill === 'hatched'
+        ? `url(#${patternId})`
+        : halfSpec.fill === 'empty'
+          ? '#ffffff'
+          : INK
+  const halfRotation = halfAngle + (halfSpec?.side === 'second' ? 180 : 0)
+  const halfEl = halfGeometry ? (
+    <g>
+      <defs>
+        <clipPath id={`${patternId}-half`}>
+          {/* Semiplano y ≤ 50 (la mitad de arriba del lienzo 0-100) con margen
+              de sobra, girado para partir en vertical o en diagonal. */}
+          <rect x={-100} y={-100} width={300} height={150} transform={`rotate(${halfRotation} 50 50)`} />
+        </clipPath>
+      </defs>
+      <g clipPath={`url(#${patternId}-half)`}>
+        {halfGeometry({ fill: halfColor, stroke: 'none', strokeWidth: 0 })}
+      </g>
+      {halfGeometry({ fill: 'none', stroke: INK, strokeWidth: 5 })}
+      <line
+        x1={50 - 50 * Math.cos((halfRotation * Math.PI) / 180)}
+        y1={50 - 50 * Math.sin((halfRotation * Math.PI) / 180)}
+        x2={50 + 50 * Math.cos((halfRotation * Math.PI) / 180)}
+        y2={50 + 50 * Math.sin((halfRotation * Math.PI) / 180)}
+        stroke={INK}
+        strokeWidth={4}
+        clipPath={`url(#${patternId}-shape)`}
+      />
+    </g>
+  ) : null
+
   return (
     <svg width={px} height={px} viewBox="0 0 100 100" className={className} role="img" aria-hidden="true">
+      {halfGeometry && (
+        <defs>
+          <clipPath id={`${patternId}-shape`}>{halfGeometry({ fill: '#000', stroke: 'none', strokeWidth: 0 })}</clipPath>
+        </defs>
+      )}
       {spec.fill === 'hatched' && (
         <defs>
           <pattern id={patternId} width={10} height={10} patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
@@ -298,7 +468,9 @@ export function ShapeIcon({ spec, className }: ShapeIconProps) {
           </pattern>
         </defs>
       )}
-      <g transform={spec.rotationDeg ? `rotate(${spec.rotationDeg} 50 50)` : undefined}>{shapeEl}</g>
+      <g transform={spec.rotationDeg ? `rotate(${spec.rotationDeg} 50 50)` : undefined}>
+        {halfEl ?? shapeEl}
+      </g>
     </svg>
   )
 }

@@ -1,7 +1,7 @@
 import { SequenceArrow } from './SequenceArrow'
 import { FigurePanelView } from './FigurePanelView'
 import { Markdown } from './Markdown'
-import { extractPromptFigures, type FigurePanel, type SizeKind } from '../lib/abstractFigure'
+import { asPlainNotation, extractPromptFigures, type FigurePanel, type SizeKind } from '../lib/abstractFigure'
 
 interface AbstractPromptViewProps {
   prompt: string
@@ -49,7 +49,7 @@ function TextPanel({ panel, large }: { panel: FigurePanel; large?: boolean }) {
         large ? 'w-44 text-sm' : 'w-40 text-xs'
       }`}
     >
-      <span className="leading-relaxed">{panel.raw}</span>
+      <span className="leading-relaxed">{asPlainNotation(panel.raw)}</span>
     </div>
   )
 }
@@ -62,6 +62,10 @@ export function AbstractPromptView({ prompt, large, forceText }: AbstractPromptV
   }
 
   const sequenceSize = figures.kind === 'sequence' ? sequenceIconSize(figures.panels, large) : undefined
+  // Igual que en las opciones: o todos los paneles de la secuencia llevan
+  // marco de posición o ninguno, o el enunciado parece cambiar de formato a
+  // mitad de la serie.
+  const framed = figures.panels.some((p) => p.shapes.some((shape) => shape.position != null || shape.row != null))
 
   return (
     <div>
@@ -72,7 +76,7 @@ export function AbstractPromptView({ prompt, large, forceText }: AbstractPromptV
               {forceText ? (
                 <TextPanel panel={panel} large={large} />
               ) : (
-                <FigurePanelView panel={panel} sizeOverride={sequenceSize} />
+                <FigurePanelView panel={panel} sizeOverride={sequenceSize} framed={framed} />
               )}
               {i < figures.panels.length - 1 && (
                 <SequenceArrow
@@ -93,7 +97,11 @@ export function AbstractPromptView({ prompt, large, forceText }: AbstractPromptV
           >
             {figures.panels.map((panel, i) => (
               <div key={i} className="flex items-center justify-center rounded-lg bg-white p-2 shadow-sm">
-                {forceText ? <TextPanel panel={panel} large={large} /> : <FigurePanelView panel={panel} large={large} />}
+                {forceText ? (
+                  <TextPanel panel={panel} large={large} />
+                ) : (
+                  <FigurePanelView panel={panel} large={large} framed={framed} />
+                )}
               </div>
             ))}
           </div>
