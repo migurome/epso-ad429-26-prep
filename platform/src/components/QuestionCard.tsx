@@ -143,7 +143,7 @@ export function QuestionCard({
           const asCard = drawFigures && optionPanel !== null
 
           const stateClasses = clsx(
-            !revealed && isSelected && 'border-eu-blue bg-eu-blue/5',
+            !revealed && isSelected && 'border-accent bg-accent/5',
             !revealed && !isSelected && 'border-slate-200 hover:border-slate-300 cursor-pointer',
             showCorrect && 'border-emerald-500 bg-emerald-50',
             showWrong && 'border-red-500 bg-red-50',
@@ -158,7 +158,7 @@ export function QuestionCard({
                 asCard ? 'mb-1.5' : 'mt-0.5',
                 showCorrect && 'border-emerald-500 text-emerald-700',
                 showWrong && 'border-red-500 text-red-700',
-                !revealed && isSelected && 'border-eu-blue text-eu-blue',
+                !revealed && isSelected && 'border-accent text-accent',
                 (!revealed && !isSelected) || (revealed && !isSelected && !opt.isCorrect)
                   ? 'border-slate-300 text-slate-500'
                   : '',

@@ -2,7 +2,8 @@ import { BrainCircuit, ListChecks, PenLine } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { PhaseCard } from '../components/PhaseCard'
 import { EmptyState } from '../components/EmptyState'
-import { COMPETITION, PHASES } from '../data/competition'
+import { PHASES } from '../data/competition'
+import { useCompetition } from '../lib/competitionStore'
 import { useProgressStore } from '../lib/progressStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
@@ -22,6 +23,7 @@ const PHASE_ROUTES: Record<string, string> = {
 export function Dashboard() {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
+  const competition = useCompetition()
   const attemptCount =
     useProgressStore((s) => s.testAttempts.length) +
     useProgressStore((s) => s.essayAttempts.length)
@@ -29,7 +31,7 @@ export function Dashboard() {
   return (
     <div>
       <PageHeader
-        eyebrow={`${COMPETITION.grade} · ${COMPETITION.id}`}
+        eyebrow={`${competition.grade} · ${competition.id}`}
         title={t('dashboard_title')}
         description={t('dashboard_description')}
       />

@@ -1,12 +1,14 @@
 import { PageHeader } from '../components/PageHeader'
 import { PhaseCard } from '../components/PhaseCard'
-import { FIELDS, PHASES, USER_FIELD } from '../data/competition'
+import { PHASES } from '../data/competition'
+import { useCompetition } from '../lib/competitionStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
 
 export function FieldMcqOverview() {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
+  const competition = useCompetition()
   const phase = PHASES.find((p) => p.id === 'field-mcq')!
 
   return (
@@ -14,14 +16,16 @@ export function FieldMcqOverview() {
       <PageHeader eyebrow={t('phase_2')} title={pick(locale, phase.shortLabel)} description={pick(locale, phase.description)} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {FIELDS.map((field) => (
+        {competition.fields.map((field) => (
           <PhaseCard
             key={field.id}
             to={`/campo/${field.id}`}
             title={pick(locale, field.label)}
-            description={t('field_card_description')}
+            description={
+              competition.key === 'ad8' ? t('field_card_scope_only') : t('field_card_description')
+            }
             meta={
-              field.id === USER_FIELD
+              field.id === competition.userField
                 ? `${field.posts} ${locale === 'es' ? 'plazas' : 'posts'} · ${t('your_field_suffix')}`
                 : `${field.posts} ${locale === 'es' ? 'plazas' : 'posts'}`
             }

@@ -78,7 +78,7 @@ export function EssayRunner({ prompt }: EssayRunnerProps) {
         <button
           type="button"
           onClick={start}
-          className="mt-4 inline-flex items-center gap-2 rounded-lg bg-eu-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-eu-blue-dark"
+          className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-dark"
         >
           <Play size={16} />
           {t('start_minutes', { n: prompt.recommendedMinutes })}
@@ -102,13 +102,13 @@ export function EssayRunner({ prompt }: EssayRunnerProps) {
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={16}
-            className="w-full rounded-xl border border-slate-200 p-4 text-sm leading-relaxed text-slate-800 focus:border-eu-blue focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 p-4 text-sm leading-relaxed text-slate-800 focus:border-accent focus:outline-none"
             placeholder={t('essay_placeholder')}
           />
           <button
             type="button"
             onClick={stopWriting}
-            className="mt-3 rounded-lg bg-eu-blue px-5 py-2 text-sm font-semibold text-white hover:bg-eu-blue-dark"
+            className="mt-3 rounded-lg bg-accent px-5 py-2 text-sm font-semibold text-white hover:bg-accent-dark"
           >
             {t('finish')}
           </button>
@@ -140,7 +140,7 @@ export function EssayRunner({ prompt }: EssayRunnerProps) {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={4}
-              className="w-full rounded-xl border border-slate-200 p-3 text-sm text-slate-800 focus:border-eu-blue focus:outline-none"
+              className="w-full rounded-xl border border-slate-200 p-3 text-sm text-slate-800 focus:border-accent focus:outline-none"
               placeholder={t('self_review_placeholder')}
             />
           </div>
@@ -149,7 +149,7 @@ export function EssayRunner({ prompt }: EssayRunnerProps) {
             type="button"
             onClick={save}
             disabled={saved}
-            className="inline-flex items-center gap-2 rounded-lg bg-eu-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-eu-blue-dark disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-dark disabled:opacity-50"
           >
             <Save size={16} />
             {saved ? t('saved') : t('save_attempt')}

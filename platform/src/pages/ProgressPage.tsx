@@ -5,7 +5,13 @@ import { formatClock } from '../lib/time'
 import { useProgressStore } from '../lib/progressStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
-import { EUFTE_FORMAT, FIELDS, FIELD_MCQ_FORMAT, REASONING_SKILLS } from '../data/competition'
+import {
+  COMPETITIONS,
+  COMPETITION_ORDER,
+  EUFTE_FORMAT,
+  FIELD_MCQ_FORMAT,
+  REASONING_SKILLS,
+} from '../data/competition'
 import type { TestAttempt } from '../types/content'
 
 interface Row {
@@ -42,7 +48,10 @@ export function ProgressPage() {
       attempts: testAttempts.filter((a) => a.phase === 'reasoning' && a.skill === s.id),
       maxScore: s.format.maxScore,
     })),
-    ...FIELDS.map((f) => ({
+    // Los ámbitos de LAS DOS convocatorias, no solo los de la activa: el
+    // progreso ya hecho no debe desaparecer de la tabla por cambiar de
+    // convocatoria. Las filas sin intentos se filtran igualmente abajo.
+    ...COMPETITION_ORDER.flatMap((key) => COMPETITIONS[key].fields).map((f) => ({
       key: `field-mcq-${f.id}`,
       label: pick(locale, f.label),
       attempts: testAttempts.filter((a) => a.phase === 'field-mcq' && a.field === f.id),

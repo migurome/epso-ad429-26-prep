@@ -1,6 +1,6 @@
 import { ExternalLink } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
-import { COMPETITION, FIELDS } from '../data/competition'
+import { useCompetition } from '../lib/competitionStore'
 import { REFERENCE_LINKS } from '../data/content'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
@@ -18,7 +18,10 @@ function groupByCategory<T extends { category: string }>(items: T[]) {
 export function ResourcesPage() {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
-  const grouped = groupByCategory(REFERENCE_LINKS)
+  const competition = useCompetition()
+  const grouped = groupByCategory(
+    REFERENCE_LINKS.filter((l) => l.competition == null || l.competition === competition.key),
+  )
 
   return (
     <div>
@@ -26,32 +29,32 @@ export function ResourcesPage() {
 
       <div className="mb-8 rounded-xl border border-slate-200 bg-white p-5">
         <h3 className="text-sm font-semibold text-slate-800">
-          {COMPETITION.id} — {pick(locale, COMPETITION.title)}
+          {competition.id} — {pick(locale, competition.title)}
         </h3>
         <dl className="mt-4 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
           <div>
             <dt className="text-slate-400">{t('total_posts')}</dt>
-            <dd className="font-medium text-slate-700">{COMPETITION.postsTotal}</dd>
+            <dd className="font-medium text-slate-700">{competition.postsTotal}</dd>
           </div>
           <div>
             <dt className="text-slate-400">{t('fields_label')}</dt>
             <dd className="font-medium text-slate-700">
-              {FIELDS.map((f) => `${pick(locale, f.label)} (${f.posts})`).join(' · ')}
+              {competition.fields.map((f) => `${pick(locale, f.label)} (${f.posts})`).join(' · ')}
             </dd>
           </div>
           <div>
             <dt className="text-slate-400">{t('application_window')}</dt>
             <dd className="font-medium text-slate-700">
-              {COMPETITION.applicationWindow.open} → {COMPETITION.applicationWindow.close}
+              {competition.applicationWindow.open} → {competition.applicationWindow.close}
             </dd>
           </div>
           <div>
             <dt className="text-slate-400">{t('language_regime')}</dt>
-            <dd className="font-medium text-slate-700">{pick(locale, COMPETITION.languageRule)}</dd>
+            <dd className="font-medium text-slate-700">{pick(locale, competition.languageRule)}</dd>
           </div>
         </dl>
         <p className="mt-4 text-xs text-slate-400">
-          {t('resources_verified_note')}{' '}
+          {t('resources_verified_note', { notice: competition.id })}{' '}
           <code className="rounded bg-slate-100 px-1 py-0.5">
             Docs/0.- Selection procedure overview.md
           </code>
@@ -72,11 +75,11 @@ export function ResourcesPage() {
                     href={link.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-start gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm transition-colors hover:border-eu-blue"
+                    className="group flex items-start gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm transition-colors hover:border-accent"
                   >
                     <ExternalLink
                       size={15}
-                      className="mt-0.5 shrink-0 text-slate-300 group-hover:text-eu-blue"
+                      className="mt-0.5 shrink-0 text-slate-300 group-hover:text-accent"
                     />
                     <span>
                       <span className="font-medium text-slate-800">{link.title}</span>

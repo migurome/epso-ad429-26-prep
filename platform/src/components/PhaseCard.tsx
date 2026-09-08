@@ -17,11 +17,11 @@ export function PhaseCard({ to, order, title, description, meta, icon }: PhaseCa
   return (
     <Link
       to={to}
-      className="group flex flex-col rounded-xl border border-slate-200 bg-white p-5 transition-all hover:border-eu-blue hover:shadow-sm"
+      className="group flex flex-col rounded-xl border border-slate-200 bg-white p-5 transition-all hover:border-accent hover:shadow-sm"
     >
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
-          {icon && <div className="text-eu-blue">{icon}</div>}
+          {icon && <div className="text-accent">{icon}</div>}
           {order && (
             <span className="text-xs font-semibold text-slate-400">
               {t('phase_n', { n: order })}
@@ -30,7 +30,7 @@ export function PhaseCard({ to, order, title, description, meta, icon }: PhaseCa
         </div>
         <ArrowRight
           size={16}
-          className="text-slate-300 transition-transform group-hover:translate-x-1 group-hover:text-eu-blue"
+          className="text-slate-300 transition-transform group-hover:translate-x-1 group-hover:text-accent"
         />
       </div>
       <h3 className="mt-3 text-base font-semibold text-slate-800">{title}</h3>

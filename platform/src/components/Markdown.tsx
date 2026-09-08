@@ -26,7 +26,7 @@ export function Markdown({ children, className, compact }: MarkdownProps) {
           em: (props) => <em className="italic" {...props} />,
           blockquote: (props) => (
             <blockquote
-              className="mb-3 border-l-4 border-eu-blue/30 pl-4 text-slate-600 last:mb-0 [&>p]:italic"
+              className="mb-3 border-l-4 border-accent/30 pl-4 text-slate-600 last:mb-0 [&>p]:italic"
               {...props}
             />
           ),
@@ -43,7 +43,7 @@ export function Markdown({ children, className, compact }: MarkdownProps) {
           td: (props) => <td className="border border-slate-200 px-2.5 py-1.5 text-slate-700" {...props} />,
           a: (props) => (
             // eslint-disable-next-line jsx-a11y/anchor-has-content
-            <a className="text-eu-blue underline hover:text-eu-blue-dark" target="_blank" rel="noreferrer" {...props} />
+            <a className="text-accent underline hover:text-accent-dark" target="_blank" rel="noreferrer" {...props} />
           ),
           hr: () => <hr className="my-4 border-slate-200" />,
         }}

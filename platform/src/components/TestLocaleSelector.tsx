@@ -23,7 +23,7 @@ export function TestLocaleSelector() {
             onClick={() => setLocale(l)}
             className={clsx(
               'rounded-md px-3 py-1 text-xs font-semibold uppercase transition-colors',
-              locale === l ? 'bg-white text-eu-blue shadow-sm' : 'text-slate-500 hover:text-slate-700',
+              locale === l ? 'bg-white text-accent shadow-sm' : 'text-slate-500 hover:text-slate-700',
             )}
           >
             {l}

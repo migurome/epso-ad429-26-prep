@@ -13,7 +13,8 @@ export const DICT = {
   nav_test_day: { es: 'Día del examen', en: 'Test day' },
   nav_resources: { es: 'Recursos', en: 'Resources' },
   nav_progress: { es: 'Progreso', en: 'Progress' },
-  sidebar_footer: { es: '{posts} plazas · 4 campos ICT', en: '{posts} posts · 4 ICT fields' },
+  sidebar_footer: { es: '{posts} plazas · {fields} ámbitos', en: '{posts} posts · {fields} fields' },
+  competition_selector_label: { es: 'Convocatoria', en: 'Competition' },
   open_menu: { es: 'Abrir menú', en: 'Open menu' },
   close_menu: { es: 'Cerrar menú', en: 'Close menu' },
   loading: { es: 'Cargando…', en: 'Loading…' },
@@ -45,6 +46,10 @@ export const DICT = {
     es: 'Banco de preguntas específico de este campo de especialización.',
     en: 'Question bank specific to this specialisation field.',
   },
+  field_card_scope_only: {
+    es: 'Alcance oficial del ámbito. El banco de preguntas está pendiente.',
+    en: 'Official scope of the field. The question bank is still pending.',
+  },
   your_field_suffix: { es: 'tu campo', en: 'your field' },
   your_field_chosen_suffix: { es: 'Campo de especialización elegido.', en: 'Chosen specialisation field.' },
 
@@ -64,6 +69,14 @@ export const DICT = {
   empty_bank_description: {
     es: 'Las preguntas de práctica de esta prueba aparecerán aquí, con corrección explicada opción por opción.',
     en: 'This test’s practice questions will appear here, with the correction explained option by option.',
+  },
+  empty_ad8_bank_title: {
+    es: 'Todavía sin banco de preguntas',
+    en: 'No question bank yet',
+  },
+  empty_ad8_bank_description: {
+    es: 'La convocatoria AD8 es de septiembre de 2026 y su banco de preguntas de ámbito aún no está transcrito. Lo que sí hay, en la pestaña Teoría, es el alcance oficial del ámbito: el anexo II de la convocatoria, que es de donde salen las 30 preguntas.',
+    en: 'The AD8 competition dates from September 2026 and its field question bank is not transcribed yet. What is available, under the Theory tab, is the field’s official scope: Annex II of the notice, which is where the 30 questions come from.',
   },
   empty_field_bank_description: {
     es: 'Las preguntas específicas de este campo se incorporarán en la fase de recopilación de contenido.',
@@ -210,8 +223,8 @@ export const DICT = {
   application_window: { es: 'Ventana de solicitud', en: 'Application window' },
   language_regime: { es: 'Régimen lingüístico', en: 'Language regime' },
   resources_verified_note: {
-    es: 'Verificado contra el texto de la convocatoria oficial (DOUE C/2026/02425). Ante cualquier duda, el texto oficial prevalece — ver detalle y fuentes en',
-    en: 'Verified against the official competition notice text (OJ C/2026/02425). In case of doubt, the official text prevails — see detail and sources in',
+    es: 'Verificado contra el texto oficial de {notice}. Ante cualquier duda, el texto oficial prevalece — ver detalle y fuentes en',
+    en: 'Verified against the official text of {notice}. In case of doubt, the official text prevails — see detail and sources in',
   },
 
   // Selector de idioma

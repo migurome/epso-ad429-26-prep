@@ -67,7 +67,7 @@ export function FullscreenPractice({ questions }: FullscreenPracticeProps) {
               onClick={() => changeFilter(value)}
               className={clsx(
                 'flex-1 rounded-md px-3 py-1.5 font-medium transition-colors',
-                sourceFilter === value ? 'bg-white text-eu-blue shadow-sm' : 'text-slate-500 hover:text-slate-700',
+                sourceFilter === value ? 'bg-white text-accent shadow-sm' : 'text-slate-500 hover:text-slate-700',
               )}
             >
               {label}
@@ -104,7 +104,7 @@ export function FullscreenPractice({ questions }: FullscreenPracticeProps) {
           type="button"
           disabled={safeIndex === filtered.length - 1}
           onClick={() => setIndex((i) => Math.min(filtered.length - 1, i + 1))}
-          className="inline-flex items-center gap-1 rounded-lg bg-eu-blue px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
+          className="inline-flex items-center gap-1 rounded-lg bg-accent px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
           {t('next')}
           <ChevronRight size={16} />

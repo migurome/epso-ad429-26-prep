@@ -9,8 +9,8 @@
 // <Suspense> de Layout.tsx — por eso se envuelven aquí también en <Suspense>
 // y se espera con `waitFor` a que el contenido real (no el fallback) aparezca.
 import { Suspense } from 'react'
-import { describe, it, expect } from 'vitest'
-import { act, render, waitFor } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { ReasoningSkillPage } from './pages/ReasoningSkillPage'
 import { FieldMcqPage } from './pages/FieldMcqPage'
@@ -18,6 +18,12 @@ import { EuftePage } from './pages/EuftePage'
 import { TestDayPage } from './pages/TestDayPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { useLocaleStore } from './lib/localeStore'
+import { useCompetitionStore } from './lib/competitionStore'
+
+// Sin esto, cada test dejaba montado su árbol y los siguientes convivían con
+// los anteriores en el mismo documento: dos páginas de ámbito montadas a la vez
+// se pisaban la convocatoria activa (cada una quiere la suya).
+afterEach(cleanup)
 
 const FALLBACK = 'smoke-test-loading-fallback'
 
@@ -89,6 +95,20 @@ describe('pages render without crashing', () => {
       </MemoryRouter>,
     )
     await waitForRealContent(container)
+  })
+
+  // Los ámbitos de la AD8: se llega a ellos por la misma ruta, y abrirlos
+  // cambia la convocatoria activa (cada ámbito pertenece a una sola).
+  it.each(['artificial-intelligence', 'cybersecurity'])('field mcq: %s (AD8)', async (fieldId) => {
+    const { container } = await renderSuspended(
+      <MemoryRouter initialEntries={[`/campo/${fieldId}`]}>
+        <Routes>
+          <Route path="/campo/:fieldId" element={<FieldMcqPage />} />
+        </Routes>
+      </MemoryRouter>,
+    )
+    await waitForRealContent(container)
+    await waitFor(() => expect(useCompetitionStore.getState().competition).toBe('ad8'))
   })
 
   it('eufte', async () => {

@@ -6,11 +6,16 @@ export type PhaseId = 'reasoning' | 'field-mcq' | 'eufte' | 'test-day'
 
 export type ReasoningSkill = 'verbal' | 'numerical' | 'abstract'
 
+// Los ámbitos de las DOS convocatorias que cubre la plataforma. Cada uno
+// pertenece a una sola de ellas (ver src/data/competition.ts): la AD7 convoca
+// cuatro perfiles TIC y la AD8, inteligencia artificial y ciberseguridad.
 export type Field =
   | 'ict-infrastructure'
   | 'ict-project-management'
   | 'clouds-networks'
   | 'data-science'
+  | 'artificial-intelligence'
+  | 'cybersecurity'
 
 export interface LocalizedText {
   es: string
@@ -41,6 +46,7 @@ export interface TheoryDoc {
   id: string
   phase: PhaseId
   skill?: ReasoningSkill
+  field?: Field
   title: LocalizedText
   summaryMd: LocalizedText
   sourceFile?: string
@@ -61,6 +67,10 @@ export interface ReferenceLink {
   category: string
   notes?: string
   dateAdded: string
+  /** Convocatoria a la que pertenece este enlace, si solo vale para una. Sin
+   * este campo el enlace se muestra siempre (documentación de las pruebas,
+   * material de preparación genérico). */
+  competition?: 'ad7' | 'ad8'
 }
 
 export interface QuestionResult {

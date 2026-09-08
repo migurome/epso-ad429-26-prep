@@ -28,6 +28,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 DOCS = ROOT / "Docs"
+DOCS_ES = DOCS / "es"
 GEN_DIR = Path(__file__).resolve().parent.parent / "src" / "data"
 
 QNUM_RE = re.compile(r'^\*\*(\d+)\.\*\*(.*?)(?=^\*\*\d+\.\*\*|\Z)', re.MULTILINE | re.DOTALL)
@@ -531,6 +532,45 @@ def emit_chunk(filename, *, questions=None, theory=None, essays=None):
     (GEN_DIR / filename).write_text('\n'.join(lines), encoding='utf-8')
 
 
+# Los dos ámbitos de la AD8 (IA y ciberseguridad) todavía no tienen banco de
+# preguntas transcrito: lo que sí hay es su alcance oficial, el anexo II de la
+# convocatoria, que es de donde sale el test de ámbito. Se publica como
+# documento de teoría para que la sección exista con contenido verificado en
+# vez de con un hueco.
+AD8_SCOPE_CONFIGS = [
+    {
+        'field': 'artificial-intelligence',
+        'en_file': '7.- AD8 - Artificial Intelligence (scope).md',
+        'es_file': '7.- AD8 - Inteligencia Artificial (ámbito).md',
+        'theory_id': 'theory-field-artificial-intelligence',
+        'title_en': 'Field 1 — Artificial intelligence (AI): official scope',
+        'title_es': 'Ámbito 1 — Inteligencia artificial (IA): alcance oficial',
+    },
+    {
+        'field': 'cybersecurity',
+        'en_file': '7.- AD8 - Cybersecurity (scope).md',
+        'es_file': '7.- AD8 - Ciberseguridad (ámbito).md',
+        'theory_id': 'theory-field-cybersecurity',
+        'title_en': 'Field 2 — Cybersecurity: official scope',
+        'title_es': 'Ámbito 2 — Ciberseguridad: alcance oficial',
+    },
+]
+
+
+def build_ad8_scope(cfg):
+    """Theory-only chunk for an AD8 field: the notice's Annex II, verbatim."""
+    en = (DOCS / cfg['en_file']).read_text(encoding='utf-8')
+    es = (DOCS_ES / cfg['es_file']).read_text(encoding='utf-8')
+    return {
+        'id': cfg['theory_id'],
+        'phase': 'field-mcq',
+        'field': cfg['field'],
+        'title': {'en': cfg['title_en'], 'es': cfg['title_es']},
+        'summaryMd': {'en': en.strip(), 'es': es.strip()},
+        'sourceFile': cfg['en_file'],
+    }
+
+
 def main():
     all_questions = []
     all_theory = []
@@ -568,6 +608,13 @@ def main():
         total_q += len(questions)
         total_theory += 1
 
+    for cfg in AD8_SCOPE_CONFIGS:
+        theory_doc = build_ad8_scope(cfg)
+        print(f"build_ad8_scope[{cfg['field']}]: 0 questions, 1 theory doc(s)")
+        emit_chunk(f"content.field-{cfg['field']}.generated.ts", theory=[theory_doc])
+        all_theory.append(theory_doc)
+        total_theory += 1
+
     essays, theory = build_eufte()
     print(f"build_eufte: {len(essays)} essay prompts, {len(theory)} theory doc(s)")
     emit_chunk('content.eufte.generated.ts', theory=theory, essays=essays)
@@ -582,7 +629,7 @@ def main():
     total_theory += len(theory)
 
     print(f"\nTOTAL: {total_q} questions, {total_theory} theory docs, {len(all_essays)} essay prompts")
-    print(f"Wrote 9 chunk files to {GEN_DIR}")
+    print(f"Wrote 11 chunk files to {GEN_DIR}")
 
     debug_dir = Path(__file__).resolve().parent / "_debug"
     debug_dir.mkdir(exist_ok=True)

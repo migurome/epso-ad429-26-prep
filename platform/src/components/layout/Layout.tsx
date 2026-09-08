@@ -3,12 +3,21 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { Sidebar } from './Sidebar'
 import { LoadingFallback } from '../LoadingFallback'
+import { useCompetitionStore } from '../../lib/competitionStore'
 import { useT } from '../../lib/useT'
 
 export function Layout() {
   const t = useT()
   const location = useLocation()
+  const competition = useCompetitionStore((s) => s.competition)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+
+  // El color de acento de toda la interfaz cuelga de este atributo (ver
+  // src/index.css): azul para la AD7, rojo para la AD8. Va en <html> y no en un
+  // contenedor para que también alcance a lo que se pinta fuera del árbol.
+  useEffect(() => {
+    document.documentElement.dataset.competition = competition
+  }, [competition])
 
   // Cierra el menú móvil automáticamente al cambiar de ruta (p.ej. tras
   // navegar por un enlace), para no dejar el overlay abierto por accidente.

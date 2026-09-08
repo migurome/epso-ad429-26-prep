@@ -10,7 +10,8 @@ import {
   BarChart3,
   X,
 } from 'lucide-react'
-import { COMPETITION } from '../../data/competition'
+import { CompetitionSelector } from '../CompetitionSelector'
+import { useCompetition } from '../../lib/competitionStore'
 import { useLocaleStore } from '../../lib/localeStore'
 import { useT } from '../../lib/useT'
 
@@ -23,6 +24,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
   const setLocale = useLocaleStore((s) => s.setLocale)
+  const competition = useCompetition()
 
   const NAV_ITEMS = [
     { to: '/', label: t('nav_dashboard'), icon: LayoutDashboard, end: true },
@@ -52,9 +54,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         )}
       >
         <div className="flex items-start justify-between gap-2 border-b border-slate-200 px-5 py-5">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-eu-blue">
-              {COMPETITION.grade} · {COMPETITION.id}
+          <div className="min-w-0 flex-1">
+            <CompetitionSelector className="mb-2" />
+            <p className="truncate text-xs font-semibold uppercase tracking-wide text-accent">
+              {competition.id}
             </p>
             <h1 className="mt-1 text-sm font-semibold text-slate-800">{t('app_name')}</h1>
           </div>
@@ -79,7 +82,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 clsx(
                   'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-eu-blue text-white'
+                    ? 'bg-accent text-white'
                     : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
                 )
               }
@@ -99,7 +102,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 onClick={() => setLocale(l)}
                 className={clsx(
                   'flex-1 rounded-md py-1 font-semibold uppercase transition-colors',
-                  locale === l ? 'bg-white text-eu-blue shadow-sm' : 'text-slate-500 hover:text-slate-700',
+                  locale === l ? 'bg-white text-accent shadow-sm' : 'text-slate-500 hover:text-slate-700',
                 )}
               >
                 {l}
@@ -107,7 +110,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             ))}
           </div>
           <p className="text-xs text-slate-400">
-            {t('sidebar_footer', { posts: COMPETITION.postsTotal })}
+            {t('sidebar_footer', {
+              posts: competition.postsTotal,
+              fields: competition.fields.length,
+            })}
           </p>
         </div>
       </aside>

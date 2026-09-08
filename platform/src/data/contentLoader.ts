@@ -41,6 +41,12 @@ export function loadFieldContent(field: Field) {
         return import('./content.field-ict-project-management.generated')
       case 'clouds-networks':
         return import('./content.field-clouds-networks.generated')
+      // Los dos ámbitos de la AD8 traen de momento el alcance oficial de la
+      // convocatoria (anexo II) como teoría, sin banco de preguntas propio.
+      case 'artificial-intelligence':
+        return import('./content.field-artificial-intelligence.generated')
+      case 'cybersecurity':
+        return import('./content.field-cybersecurity.generated')
     }
   })
 }

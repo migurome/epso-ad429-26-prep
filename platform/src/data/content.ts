@@ -9,12 +9,96 @@ import type { ReferenceLink } from '../types/content'
 
 export const REFERENCE_LINKS: ReferenceLink[] = [
   {
+    id: 'ref-notice-ad8',
+    title: 'Convocatoria oficial EPSO/AD/430/26 — DOUE C/2026/4668',
+    url: 'https://eur-lex.europa.eu/eli/C/2026/4668/oj',
+    category: 'Oficial — convocatoria',
+    notes: 'Fuente jurídica. Prevalece sobre cualquier resumen de esta plataforma.',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-notice-ad8-pdf-es',
+    title: 'Convocatoria AD8 (texto completo, PDF, ES)',
+    url: 'https://eur-lex.europa.eu/legal-content/ES/TXT/PDF/?uri=OJ:C_202604668',
+    category: 'Oficial — convocatoria',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-apply-ad8',
+    title: 'Presentar la candidatura (IA / ciberseguridad, AD 8)',
+    url: 'https://eu-careers.europa.eu/es/apply-ict-competition-ad8',
+    category: 'Oficial — convocatoria',
+    notes: 'Plazo hasta el 13 de octubre de 2026, 12:00 (hora de Bruselas). Hace falta cuenta EPSO.',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-job-cybersecurity',
+    title: 'Perfil de puesto: Cybersecurity',
+    url: 'https://eu-careers.europa.eu/en/job-opportunities/cybersecurity',
+    category: 'Oficial — perfil de campo',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-enisa',
+    title: 'ENISA — Agencia de la UE para la Ciberseguridad',
+    url: 'https://www.enisa.europa.eu/',
+    category: 'Técnico — Ciberseguridad',
+    notes: 'Informes de amenazas y marcos de referencia que la UE usa como doctrina propia.',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-cert-eu',
+    title: 'CERT-EU — equipo de respuesta a incidentes de las instituciones',
+    url: 'https://cert.europa.eu/',
+    category: 'Técnico — Ciberseguridad',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-nis2',
+    title: 'Directiva NIS2 (UE) 2022/2555',
+    url: 'https://eur-lex.europa.eu/eli/dir/2022/2555/oj',
+    category: 'Técnico — Ciberseguridad',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-cyber-resilience-act',
+    title: 'Reglamento de Ciberresiliencia (UE) 2024/2847',
+    url: 'https://eur-lex.europa.eu/eli/reg/2024/2847/oj',
+    category: 'Técnico — Ciberseguridad',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-cybersecurity-act',
+    title: 'Reglamento de Ciberseguridad (UE) 2019/881',
+    url: 'https://eur-lex.europa.eu/eli/reg/2019/881/oj',
+    category: 'Técnico — Ciberseguridad',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
+    id: 'ref-ai-act',
+    title: 'Reglamento de Inteligencia Artificial (UE) 2024/1689',
+    url: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
+    category: 'Técnico — Inteligencia artificial',
+    competition: 'ad8',
+    dateAdded: '2026-09-05',
+  },
+  {
     id: 'ref-notice',
     title: 'Convocatoria oficial EPSO/AD/429/26 (4) — DOUE C/2026/02425',
     url: 'https://eur-lex.europa.eu/eli/C/2026/2425/oj',
     category: 'Oficial — convocatoria',
     notes: 'Fuente jurídica. Prevalece sobre cualquier resumen de esta plataforma.',
     dateAdded: '2026-08-18',
+    competition: 'ad7',
   },
   {
     id: 'ref-notice-html-es',
@@ -22,6 +106,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     url: 'https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=OJ:C_202602425',
     category: 'Oficial — convocatoria',
     dateAdded: '2026-08-18',
+    competition: 'ad7',
   },
   {
     id: 'ref-notice-pdf-es',
@@ -29,6 +114,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     url: 'https://eur-lex.europa.eu/legal-content/ES/TXT/PDF/?uri=OJ:C_202602425',
     category: 'Oficial — convocatoria',
     dateAdded: '2026-08-18',
+    competition: 'ad7',
   },
   {
     id: 'ref-op-publication',
@@ -36,6 +122,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     url: 'https://op.europa.eu/es/publication-detail/-/publication/05a8b852-48e5-11f1-8095-01aa75ed71a1/language-es',
     category: 'Oficial — convocatoria',
     dateAdded: '2026-08-18',
+    competition: 'ad7',
   },
   {
     id: 'ref-job-data-science',
@@ -43,6 +130,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     url: 'https://eu-careers.europa.eu/en/job-opportunities/data-science',
     category: 'Oficial — perfil de campo',
     dateAdded: '2026-08-18',
+    competition: 'ad7',
   },
   {
     id: 'ref-what-know-testing',
@@ -136,6 +224,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     title: 'scikit-learn — documentación',
     url: 'https://scikit-learn.org/stable/',
     category: 'Técnico — Data Science',
+    competition: 'ad7',
     dateAdded: '2026-08-18',
   },
   {
@@ -143,6 +232,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     title: 'Python — documentación oficial',
     url: 'https://docs.python.org/3/',
     category: 'Técnico — Data Science',
+    competition: 'ad7',
     dateAdded: '2026-08-18',
   },
   {
@@ -150,6 +240,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     title: 'pandas — documentación',
     url: 'https://pandas.pydata.org/docs/',
     category: 'Técnico — Data Science',
+    competition: 'ad7',
     dateAdded: '2026-08-18',
   },
   {
@@ -157,6 +248,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     title: 'NumPy — documentación',
     url: 'https://numpy.org/doc/stable/',
     category: 'Técnico — Data Science',
+    competition: 'ad7',
     dateAdded: '2026-08-18',
   },
   {
@@ -164,6 +256,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     title: 'SciPy — documentación',
     url: 'https://docs.scipy.org/doc/scipy/',
     category: 'Técnico — Data Science',
+    competition: 'ad7',
     dateAdded: '2026-08-18',
   },
   {
@@ -171,6 +264,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
     title: 'Stanford CS229 — Machine Learning',
     url: 'https://cs229.stanford.edu/',
     category: 'Técnico — Data Science',
+    competition: 'ad7',
     dateAdded: '2026-08-18',
   },
 ]

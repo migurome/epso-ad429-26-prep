@@ -1,9 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-eu-blue: #003399;
-  --color-eu-blue-dark: #002266;
+  /* Color de acento de la interfaz. El valor por defecto es el azul de la UE,
+     que es el de la convocatoria AD7; la AD8 lo sustituye por rojo más abajo.
+     Se llama "accent" y no "eu-blue" justamente porque cambia de color: una
+     variable llamada azul con un rojo dentro es una trampa para el siguiente
+     que lea esto. */
+  --color-accent: #003399;
+  --color-accent-dark: #002266;
   --color-eu-gold: #ffcc00;
+}
+
+/* Convocatoria activa (ver src/lib/competitionStore.ts). El atributo lo pone
+   Layout sobre <html>, y con él basta para teñir toda la interfaz: cada clase
+   de Tailwind construida sobre estos tokens (`text-accent`, `bg-accent`,
+   `border-accent`…) lee la variable, así que no hay que tocar ni un componente.
+   El rojo es oscuro a propósito: tiene que contrastar sobre blanco igual de
+   bien que el azul, porque se usa para texto pequeño y bordes finos. */
+:root[data-competition="ad8"] {
+  --color-accent: #a4141e;
+  --color-accent-dark: #7a0f16;
 }
 
 html,

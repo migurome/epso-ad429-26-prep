@@ -62,7 +62,7 @@ export function PracticeBank({ questions }: PracticeBankProps) {
               onClick={() => setSourceFilter(value)}
               className={clsx(
                 'flex-1 rounded-md px-3 py-1.5 font-medium transition-colors',
-                sourceFilter === value ? 'bg-white text-eu-blue shadow-sm' : 'text-slate-500 hover:text-slate-700',
+                sourceFilter === value ? 'bg-white text-accent shadow-sm' : 'text-slate-500 hover:text-slate-700',
               )}
             >
               {label}
@@ -87,7 +87,7 @@ export function PracticeBank({ questions }: PracticeBankProps) {
                 <span
                   className={clsx(
                     'flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold',
-                    answered ? 'bg-eu-blue/10 text-eu-blue' : 'bg-slate-100 text-slate-500',
+                    answered ? 'bg-accent/10 text-accent' : 'bg-slate-100 text-slate-500',
                   )}
                 >
                   {i + 1}

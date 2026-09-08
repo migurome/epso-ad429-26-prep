@@ -1,31 +1,17 @@
-// Datos estructurales de la convocatoria EPSO/AD/429/26 (4) - Administradores AD7.
-// Verificados contra el texto oficial de la convocatoria (DOUE C/2026/02425).
+// Datos estructurales de las DOS convocatorias que cubre la plataforma.
+// Verificados contra el texto oficial de cada convocatoria en el DOUE.
 // Ver Docs/0.- Selection procedure overview.md para el detalle y las fuentes.
+//
+// Lo que cambia entre una y otra es el encabezado (grado, ámbitos, plazas,
+// plazos) y poco más: el formato de las pruebas es IDÉNTICO en ambas — mismas
+// preguntas, mismos minutos, mismas notas de corte —, así que las secciones de
+// razonamiento y EUFTE sirven tal cual para las dos y viven fuera de este
+// mapa. Ver REASONING_SKILLS, FIELD_MCQ_FORMAT y EUFTE_FORMAT más abajo.
 
 import type { Field } from '../types/content'
 import type { Localized } from '../lib/localeStore'
 
-export const COMPETITION = {
-  id: 'EPSO/AD/429/26 (4)',
-  grade: 'AD7',
-  title: {
-    es: 'Administradores AD7 — Perfiles ICT',
-    en: 'Administrators AD7 — ICT Profiles',
-  } satisfies Localized,
-  postsTotal: 782,
-  applicationWindow: { open: '2026-05-06', close: '2026-06-10' },
-  supportingDocsDeadline: '2026-10-01',
-  languageRule: {
-    es: 'C1 en Lengua 1 + B2 en Lengua 2 (2 de las 24 lenguas oficiales). Razonamiento se hace en Lengua 1; test de ámbito y EUFTE en Lengua 2.',
-    en: 'C1 in Language 1 + B2 in Language 2 (2 of the 24 official languages). Reasoning is done in Language 1; the field test and EUFTE in Language 2.',
-  } satisfies Localized,
-}
-
-// Campo por el que se presenta el usuario de esta plataforma (ver Referencias.txt:
-// enlaces a documentación de Python/pandas/numpy/scikit-learn/scipy y al recurso
-// de Data Science field-related MCQ). Se usa para priorizar contenido, sin
-// ocultar los demás campos.
-export const USER_FIELD: Field = 'data-science'
+export type CompetitionId = 'ad7' | 'ad8'
 
 export interface FieldInfo {
   id: Field
@@ -33,16 +19,95 @@ export interface FieldInfo {
   posts: number
 }
 
-export const FIELDS: FieldInfo[] = [
-  { id: 'ict-infrastructure', label: { es: 'Infraestructura TIC', en: 'ICT Infrastructure' }, posts: 204 },
-  {
-    id: 'ict-project-management',
-    label: { es: 'Gestión de proyectos TIC', en: 'ICT Project Management' },
-    posts: 228,
+export interface CompetitionInfo {
+  key: CompetitionId
+  /** Referencia oficial, tal como aparece en el DOUE. */
+  id: string
+  grade: string
+  title: Localized
+  postsTotal: number
+  applicationWindow: { open: string; close: string }
+  supportingDocsDeadline: string
+  languageRule: Localized
+  noticeUrl: string
+  /** Página de EPSO para presentar la candidatura, mientras el plazo esté
+   * abierto. La AD7 ya cerró, así que no tiene. */
+  applyUrl?: string
+  fields: FieldInfo[]
+  /** Ámbito por el que se presenta el usuario de esta plataforma. Se usa para
+   * priorizar contenido, sin ocultar los demás. */
+  userField: Field
+}
+
+export const COMPETITIONS: Record<CompetitionId, CompetitionInfo> = {
+  ad7: {
+    key: 'ad7',
+    id: 'EPSO/AD/429/26 (4)',
+    grade: 'AD 7',
+    title: {
+      es: 'Administradores AD7 — Perfiles ICT',
+      en: 'Administrators AD7 — ICT Profiles',
+    },
+    postsTotal: 782,
+    applicationWindow: { open: '2026-05-06', close: '2026-06-10' },
+    supportingDocsDeadline: '2026-10-01',
+    languageRule: {
+      es: 'C1 en Lengua 1 + B2 en Lengua 2 (2 de las 24 lenguas oficiales). Razonamiento se hace en Lengua 1; test de ámbito y EUFTE en Lengua 2.',
+      en: 'C1 in Language 1 + B2 in Language 2 (2 of the 24 official languages). Reasoning is done in Language 1; the field test and EUFTE in Language 2.',
+    },
+    noticeUrl: 'https://eur-lex.europa.eu/eli/C/2026/2425/oj',
+    fields: [
+      { id: 'ict-infrastructure', label: { es: 'Infraestructura TIC', en: 'ICT Infrastructure' }, posts: 204 },
+      {
+        id: 'ict-project-management',
+        label: { es: 'Gestión de proyectos TIC', en: 'ICT Project Management' },
+        posts: 228,
+      },
+      { id: 'clouds-networks', label: { es: 'Nubes y redes', en: 'Clouds & Networks' }, posts: 166 },
+      { id: 'data-science', label: { es: 'Ciencia de datos', en: 'Data Science' }, posts: 184 },
+    ],
+    userField: 'data-science',
   },
-  { id: 'clouds-networks', label: { es: 'Nubes y redes', en: 'Clouds & Networks' }, posts: 166 },
-  { id: 'data-science', label: { es: 'Ciencia de datos', en: 'Data Science' }, posts: 184 },
-]
+  ad8: {
+    key: 'ad8',
+    id: 'EPSO/AD/430/26',
+    grade: 'AD 8',
+    title: {
+      es: 'Administradores AD8 — IA y ciberseguridad',
+      en: 'Administrators AD8 — AI and cybersecurity',
+    },
+    postsTotal: 494,
+    applicationWindow: { open: '2026-09-08', close: '2026-10-13' },
+    supportingDocsDeadline: '2027-01-14',
+    languageRule: {
+      // A diferencia de la AD7, esta convocatoria NO restringe la Lengua 2 a
+      // inglés/francés/alemán: ambas lenguas se eligen libremente entre las 24
+      // oficiales.
+      es: 'C1 en Lengua 1 + B2 en Lengua 2, ambas libremente elegidas entre las 24 lenguas oficiales. Razonamiento se hace en Lengua 1; test de ámbito y EUFTE en Lengua 2.',
+      en: 'C1 in Language 1 + B2 in Language 2, both freely chosen from the 24 official languages. Reasoning is done in Language 1; the field test and EUFTE in Language 2.',
+    },
+    noticeUrl: 'https://eur-lex.europa.eu/eli/C/2026/4668/oj',
+    applyUrl: 'https://eu-careers.europa.eu/es/apply-ict-competition-ad8',
+    fields: [
+      {
+        id: 'artificial-intelligence',
+        label: { es: 'Inteligencia artificial (IA)', en: 'Artificial intelligence (AI)' },
+        posts: 240,
+      },
+      { id: 'cybersecurity', label: { es: 'Ciberseguridad', en: 'Cybersecurity' }, posts: 254 },
+    ],
+    userField: 'cybersecurity',
+  },
+}
+
+export const COMPETITION_ORDER: CompetitionId[] = ['ad7', 'ad8']
+
+/** Hora límite de todos los plazos de EPSO. Es la misma en las dos
+ * convocatorias y no aparece en las fechas ISO, así que se muestra aparte. */
+export const DEADLINE_TIME: Localized = {
+  es: '12:00 del mediodía (hora de Bruselas)',
+  en: '12:00 noon (Brussels time)',
+}
 
 export interface PhaseInfo {
   id: 'reasoning' | 'field-mcq' | 'eufte'
@@ -102,6 +167,9 @@ export interface TestFormat {
   passMarkNote?: Localized
 }
 
+// Formatos de prueba. Son los mismos en la AD7 y en la AD8 — comprobado
+// tabla a tabla contra las dos convocatorias —, así que no se duplican por
+// convocatoria: todo el material de razonamiento y de EUFTE vale para ambas.
 export const REASONING_SKILLS: Array<{
   id: 'verbal' | 'numerical' | 'abstract'
   label: Localized
