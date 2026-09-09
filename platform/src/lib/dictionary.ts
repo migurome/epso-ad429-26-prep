@@ -75,8 +75,8 @@ export const DICT = {
     en: 'No question bank yet',
   },
   empty_ad8_bank_description: {
-    es: 'La convocatoria AD8 es de septiembre de 2026 y su banco de preguntas de ámbito aún no está transcrito. Lo que sí hay, en la pestaña Teoría, es el alcance oficial del ámbito: el anexo II de la convocatoria, que es de donde salen las 30 preguntas.',
-    en: 'The AD8 competition dates from September 2026 and its field question bank is not transcribed yet. What is available, under the Theory tab, is the field’s official scope: Annex II of the notice, which is where the 30 questions come from.',
+    es: 'La convocatoria AD8 es de septiembre de 2026 y el banco de este ámbito aún no está escrito. Lo que sí hay, en la pestaña Teoría, es su alcance oficial: el anexo II de la convocatoria, que es de donde salen las 30 preguntas del examen.',
+    en: 'The AD8 competition dates from September 2026 and this field’s bank is not written yet. What is available, under the Theory tab, is its official scope: Annex II of the notice, which is where the exam’s 30 questions come from.',
   },
   empty_field_bank_description: {
     es: 'Las preguntas específicas de este campo se incorporarán en la fase de recopilación de contenido.',

@@ -315,6 +315,14 @@ def build_abstract():
 
 FIELD_MCQ_CONFIGS = [
     {
+        'field': 'cybersecurity',
+        'id_prefix': 'field-cyber',
+        'en_file': '4.- Field-Related MCQ - Cybersecurity.md',
+        'es_theory_file': '4.- MCQ de campo - Ciberseguridad (teoría).md',
+        'es_bank_file': '4.- MCQ de campo - Ciberseguridad (banco).md',
+        'theory_id': 'theory-field-cybersecurity-guide',
+    },
+    {
         'field': 'data-science',
         'id_prefix': 'field-ds',
         'en_file': '4.- Field-Related MCQ - Data Science.md',
@@ -595,23 +603,31 @@ def main():
         total_q += len(questions)
         total_theory += len(theory)
 
+    # El alcance oficial (anexo II) de los ámbitos de la AD8 se construye primero
+    # para poder adjuntarlo al chunk del ámbito que además tenga banco propio,
+    # en vez de que uno sobrescriba al otro.
+    scope_docs = {cfg['field']: build_ad8_scope(cfg) for cfg in AD8_SCOPE_CONFIGS}
+
     for cfg in FIELD_MCQ_CONFIGS:
         try:
             questions, theory = build_field_mcq_one(cfg)
         except Exception as e:
             print(f"ERROR in build_field_mcq[{cfg['field']}]: {e}", file=sys.stderr)
             raise
-        print(f"build_field_mcq[{cfg['field']}]: {len(questions)} questions, 1 theory doc(s)")
-        emit_chunk(f"content.field-{cfg['field']}.generated.ts", questions=questions, theory=[theory])
+        docs = [theory]
+        scope = scope_docs.pop(cfg['field'], None)
+        if scope:
+            docs.append(scope)
+        print(f"build_field_mcq[{cfg['field']}]: {len(questions)} questions, {len(docs)} theory doc(s)")
+        emit_chunk(f"content.field-{cfg['field']}.generated.ts", questions=questions, theory=docs)
         all_questions += questions
-        all_theory.append(theory)
+        all_theory += docs
         total_q += len(questions)
-        total_theory += 1
+        total_theory += len(docs)
 
-    for cfg in AD8_SCOPE_CONFIGS:
-        theory_doc = build_ad8_scope(cfg)
-        print(f"build_ad8_scope[{cfg['field']}]: 0 questions, 1 theory doc(s)")
-        emit_chunk(f"content.field-{cfg['field']}.generated.ts", theory=[theory_doc])
+    for field, theory_doc in scope_docs.items():
+        print(f"build_ad8_scope[{field}]: 0 questions, 1 theory doc(s)")
+        emit_chunk(f"content.field-{field}.generated.ts", theory=[theory_doc])
         all_theory.append(theory_doc)
         total_theory += 1
 

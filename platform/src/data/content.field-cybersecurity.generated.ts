@@ -3,9 +3,6143 @@
 
 import type { Question, TheoryDoc, EssayPrompt } from '../types/content'
 
-export const QUESTIONS: Question[] = []
+export const QUESTIONS: Question[] = [
+  {
+    "id": "field-cyber-1",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which of the following correctly distinguishes a threat, a vulnerability and a risk?",
+      "es": "¿Cuál de las siguientes opciones distingue correctamente una amenaza, una vulnerabilidad y un riesgo?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A threat is a weakness in a system; a vulnerability is an actor who might exploit it; risk is the total number of weaknesses found.",
+          "es": "Una amenaza es una debilidad de un sistema; una vulnerabilidad es el actor que podría explotarla; el riesgo es el número total de debilidades encontradas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A threat and a vulnerability are synonyms; risk is the term auditors use for either of them.",
+          "es": "Amenaza y vulnerabilidad son sinónimos; riesgo es el término que usan los auditores para cualquiera de las dos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A threat is any event that has already occurred; a vulnerability is an event that might occur; risk is the cost of remediation.",
+          "es": "Una amenaza es cualquier suceso que ya ha ocurrido; una vulnerabilidad es un suceso que podría ocurrir; el riesgo es el coste de la remediación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A threat is a potential cause of an unwanted incident; a vulnerability is a weakness that a threat can exploit; risk is the effect of that uncertainty on objectives, estimated from likelihood and impact.",
+          "es": "Una amenaza es una causa potencial de un incidente no deseado; una vulnerabilidad es una debilidad que una amenaza puede explotar; el riesgo es el efecto de esa incertidumbre sobre los objetivos, estimado a partir de la probabilidad y el impacto."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A threat is the potential cause, a vulnerability the weakness it can exploit, and risk the effect of that uncertainty on objectives — likelihood combined with impact. The distractors either swap threat and vulnerability or reduce risk to a count of findings, which is the most common error in practice: a list of vulnerabilities is not a risk register.",
+          "es": "Una amenaza es la causa potencial, una vulnerabilidad la debilidad que puede explotar y el riesgo el efecto de esa incertidumbre sobre los objetivos: probabilidad combinada con impacto. Los distractores intercambian amenaza y vulnerabilidad o reducen el riesgo a un recuento de hallazgos, que es el error más habitual en la práctica: una lista de vulnerabilidades no es un registro de riesgos."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-2",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An organisation buys cyber-insurance covering the financial losses of a data breach. In risk management terms, what has it done, and what has it *not* done?",
+      "es": "Una organización contrata un ciberseguro que cubre las pérdidas económicas de una filtración de datos. En términos de gestión de riesgos, ¿qué ha hecho y qué *no* ha hecho?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It has avoided the risk, and it no longer needs technical controls.",
+          "es": "Ha evitado el riesgo y ya no necesita controles técnicos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It has transferred part of the financial consequence of the risk; it has not transferred accountability for the breach, nor reduced its likelihood.",
+          "es": "Ha transferido parte de la consecuencia económica del riesgo; no ha transferido la responsabilidad por la filtración ni ha reducido su probabilidad."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Insurance transfers financial consequence, not accountability, and it does nothing to reduce the probability of the incident. Regulators and data subjects still hold the organisation responsible. Treating a transferred risk as an avoided or mitigated one is the trap.",
+          "es": "El seguro transfiere la consecuencia económica, no la responsabilidad, y no hace nada por reducir la probabilidad del incidente. Los reguladores y los interesados siguen considerando responsable a la organización. La trampa está en tratar un riesgo transferido como si estuviera evitado o mitigado."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It has accepted the risk, and accountability now sits with the insurer.",
+          "es": "Ha aceptado el riesgo y la responsabilidad recae ahora en la aseguradora."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It has mitigated the risk, because insurance reduces the probability of an incident.",
+          "es": "Ha mitigado el riesgo, porque el seguro reduce la probabilidad de que ocurra un incidente."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-3",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the relationship between ISO/IEC 27001 and ISO/IEC 27002?",
+      "es": "¿Cuál es la relación entre ISO/IEC 27001 e ISO/IEC 27002?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "27001 specifies the requirements for an information security management system and is certifiable; 27002 provides guidance on implementing controls and is not certifiable.",
+          "es": "La 27001 especifica los requisitos de un sistema de gestión de la seguridad de la información y es certificable; la 27002 ofrece orientación para implantar controles y no es certificable."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "27001 states the requirements for a management system and is what an organisation is certified against; 27002 is guidance on implementing controls and is not certifiable. Getting this pair the wrong way round is a classic reversed-pair distractor.",
+          "es": "La 27001 fija los requisitos de un sistema de gestión y es aquello contra lo que se certifica una organización; la 27002 es orientación para implantar controles y no es certificable. Confundir el par en el sentido contrario es un distractor de par invertido clásico."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "27002 specifies the requirements and is certifiable; 27001 is the guidance document.",
+          "es": "La 27002 especifica los requisitos y es certificable; la 27001 es el documento de orientación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Both are certifiable; 27001 covers technical controls and 27002 covers physical controls.",
+          "es": "Ambas son certificables; la 27001 cubre controles técnicos y la 27002 controles físicos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "27001 applies to public bodies and 27002 to private companies.",
+          "es": "La 27001 se aplica a organismos públicos y la 27002 a empresas privadas."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-4",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "In the NIST Cybersecurity Framework 2.0, which function was added relative to version 1.1, and what does it cover?",
+      "es": "En el NIST Cybersecurity Framework 2.0, ¿qué función se añadió respecto de la versión 1.1 y qué abarca?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Recover, covering restoration of services after an incident.",
+          "es": "Recuperar, que abarca la restauración de los servicios tras un incidente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Detect, covering the discovery of cybersecurity events.",
+          "es": "Detectar, que abarca el descubrimiento de eventos de ciberseguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Govern, covering how the organisation establishes and monitors its cybersecurity risk management strategy, expectations and policy.",
+          "es": "Gobernar, que abarca cómo la organización establece y supervisa su estrategia, sus expectativas y su política de gestión del riesgo de ciberseguridad."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Version 2.0 added Govern, covering how the organisation establishes, communicates and monitors its cybersecurity risk-management strategy, expectations and policy. Identify, Protect, Detect, Respond and Recover were already present in 1.1.",
+          "es": "La versión 2.0 añadió Gobernar, que abarca cómo la organización establece, comunica y supervisa su estrategia, sus expectativas y su política de gestión del riesgo de ciberseguridad. Identificar, Proteger, Detectar, Responder y Recuperar ya estaban en la 1.1."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Protect, covering safeguards for critical services.",
+          "es": "Proteger, que abarca las salvaguardas de los servicios críticos."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-5",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A security team reports \"1,240 patches deployed this quarter\" as its principal metric to the management body. What is the main weakness of this metric?",
+      "es": "Un equipo de seguridad presenta al órgano de dirección «1.240 parches desplegados este trimestre» como métrica principal. ¿Cuál es la principal debilidad de esa métrica?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It is too small a number to be meaningful at management level.",
+          "es": "Es una cifra demasiado pequeña para ser significativa a nivel directivo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It measures activity rather than an outcome, and says nothing about whether the risks that mattered were reduced or how much exposure remains.",
+          "es": "Mide actividad y no un resultado, y no dice nada sobre si se redujeron los riesgos que importaban ni sobre cuánta exposición queda."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Patch counts measure activity. They do not say whether the exposures that mattered were closed, how much exposure remains, or how quickly it was closed relative to the risk. A useful management metric is tied to an outcome and comparable over time.\n\n### Topic 2 — Vulnerability Management and Security Testing",
+          "es": "El recuento de parches mide actividad. No dice si se cerraron las exposiciones que importaban, cuánta queda ni con qué rapidez se cerraron en relación con el riesgo. Una métrica útil para la dirección está ligada a un resultado y es comparable en el tiempo.\n\n### Topic 2 — Gestión de vulnerabilidades y pruebas de seguridad"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Patch counts are confidential and should not be reported outside the security team.",
+          "es": "El número de parches es confidencial y no debe comunicarse fuera del equipo de seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Nothing — patch volume is the standard measure of security effectiveness.",
+          "es": "Ninguna: el volumen de parches es la medida estándar de la eficacia en seguridad."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-6",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A CVSS base score of 9.8 is reported for a vulnerability in a component running on an isolated laboratory network with no sensitive data. Which statement best reflects sound prioritisation practice?",
+      "es": "Se informa de una puntuación base CVSS de 9,8 para una vulnerabilidad en un componente que se ejecuta en una red de laboratorio aislada y sin datos sensibles. ¿Qué afirmación refleja mejor una buena práctica de priorización?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The CVSS base score is definitive; anything at 9.0 or above must be patched before anything else, regardless of context.",
+          "es": "La puntuación base CVSS es definitiva; todo lo que esté en 9,0 o por encima debe parchearse antes que nada, con independencia del contexto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The CVSS base score deliberately excludes environmental context, so it must be combined with exposure, asset value and exploitation signals such as EPSS or a known-exploited-vulnerabilities catalogue before prioritising.",
+          "es": "La puntuación base CVSS excluye deliberadamente el contexto del entorno, así que hay que combinarla con la exposición, el valor del activo y señales de explotación como EPSS o un catálogo de vulnerabilidades explotadas conocidas antes de priorizar."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The CVSS base score is deliberately context-free: it describes intrinsic severity, not your exposure. Prioritisation requires combining it with reachability, asset value and evidence of real-world exploitation such as EPSS or a known-exploited catalogue. Treating the base score as a work queue wastes effort on unreachable systems while internet-facing medium-severity flaws wait.",
+          "es": "La puntuación base CVSS es deliberadamente independiente del contexto: describe la gravedad intrínseca, no tu exposición. Priorizar exige combinarla con la accesibilidad, el valor del activo y la evidencia de explotación real, como EPSS o un catálogo de vulnerabilidades explotadas. Tratar la puntuación base como una cola de trabajo desperdicia esfuerzo en sistemas inalcanzables mientras esperan fallos de gravedad media expuestos a internet."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "CVSS scores below 10.0 can safely be deferred to the next annual maintenance window.",
+          "es": "Las puntuaciones CVSS inferiores a 10,0 pueden posponerse sin riesgo a la siguiente ventana de mantenimiento anual."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because the score is high, the finding is certainly a false positive and should be closed.",
+          "es": "Como la puntuación es alta, el hallazgo es con seguridad un falso positivo y debe cerrarse."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-7",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the difference between a CVE identifier and a CWE identifier?",
+      "es": "¿Cuál es la diferencia entre un identificador CVE y uno CWE?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A CVE identifies the class of weakness; a CWE identifies a specific instance in a specific product.",
+          "es": "Un CVE identifica la clase de debilidad; un CWE identifica una instancia concreta en un producto concreto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are two names for the same catalogue, maintained in different regions.",
+          "es": "Son dos nombres del mismo catálogo, mantenidos en regiones distintas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A CVE identifies a specific vulnerability in a specific product or version; a CWE identifies the underlying class of weakness that such vulnerabilities belong to.",
+          "es": "Un CVE identifica una vulnerabilidad concreta en un producto o versión concretos; un CWE identifica la clase de debilidad subyacente a la que pertenecen esas vulnerabilidades."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A CVE names one vulnerability in one product; a CWE names the class of weakness — for example, a specific SQL injection flaw has a CVE, and SQL injection as a category is a CWE. Reversing the two is the trap.",
+          "es": "Un CVE nombra una vulnerabilidad en un producto; un CWE nombra la clase de debilidad: un fallo concreto de inyección SQL tiene un CVE, y la inyección SQL como categoría es un CWE. Invertirlos es la trampa."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A CVE is assigned by the vendor and a CWE by the finder, but both describe the same single flaw.",
+          "es": "El CVE lo asigna el fabricante y el CWE quien encuentra el fallo, pero ambos describen el mismo defecto."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-8",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement best distinguishes a penetration test from a red team exercise?",
+      "es": "¿Qué afirmación distingue mejor una prueba de penetración de un ejercicio de red team?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They are the same activity; \"red team\" is simply the commercial term.",
+          "es": "Son la misma actividad; «red team» es simplemente el término comercial."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A penetration test is scoped to find and demonstrate exploitable weaknesses in a defined target within a time box; a red team exercise emulates a realistic adversary against an objective and tests the organisation's detection and response as much as its technology.",
+          "es": "Una prueba de penetración se acota a encontrar y demostrar debilidades explotables en un objetivo definido dentro de un plazo; un ejercicio de red team emula a un adversario realista frente a un objetivo y pone a prueba la detección y la respuesta de la organización tanto como su tecnología."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A penetration test answers \"is this exploitable, and what is the impact?\" within a defined scope and time box. A red team exercise answers \"would we detect and respond to a realistic adversary pursuing an objective?\" and therefore tests people and process as much as technology.",
+          "es": "Una prueba de penetración responde a «¿es esto explotable y cuál es el impacto?» dentro de un alcance y un plazo definidos. Un ejercicio de red team responde a «¿detectaríamos y responderíamos a un adversario realista que persigue un objetivo?» y, por tanto, pone a prueba a las personas y los procesos tanto como a la tecnología."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A penetration test is always automated; a red team exercise is always manual.",
+          "es": "Una prueba de penetración siempre es automatizada; un ejercicio de red team siempre es manual."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A red team exercise is limited to physical security, while a penetration test covers only networks.",
+          "es": "Un ejercicio de red team se limita a la seguridad física, mientras que una prueba de penetración cubre solo redes."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-9",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "In coordinated vulnerability disclosure, what is the intended sequence?",
+      "es": "En la divulgación coordinada de vulnerabilidades, ¿cuál es la secuencia prevista?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The finder reports privately to the vendor or a coordinator, the vendor is given an agreed period to remediate, and details are published afterwards — balancing user protection against the need for eventual transparency.",
+          "es": "Quien la encuentra informa en privado al fabricante o a un coordinador, se concede al fabricante un plazo acordado para corregirla y los detalles se publican después, equilibrando la protección de los usuarios con la necesidad de transparencia posterior."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Coordinated disclosure gives the vendor a remediation window before publication, balancing the protection of users against the public interest in eventual transparency. Immediate full publication exposes users while no fix exists; indefinite silence removes the vendor's incentive to fix.",
+          "es": "La divulgación coordinada concede al fabricante un plazo para corregir antes de la publicación, equilibrando la protección de los usuarios con el interés público en que finalmente se sepa. La publicación inmediata y completa expone a los usuarios cuando aún no hay solución; el silencio indefinido elimina el incentivo del fabricante para corregir."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The finder publishes full technical details immediately to force a rapid fix.",
+          "es": "Quien la encuentra publica de inmediato todos los detalles técnicos para forzar una corrección rápida."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The finder sells the vulnerability to the highest bidder and notifies the vendor afterwards.",
+          "es": "Quien la encuentra la vende al mejor postor y avisa al fabricante después."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The vendor discovers the flaw internally and is under no obligation ever to disclose it.",
+          "es": "El fabricante descubre el fallo internamente y no tiene obligación alguna de divulgarlo nunca."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-10",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An automated vulnerability scan reports that a web server is vulnerable to a flaw that was patched in a backported vendor package. What is this an example of, and what is the appropriate response?",
+      "es": "Un escaneo automatizado informa de que un servidor web es vulnerable a un fallo que ya fue corregido mediante un paquete con parche retroportado por el proveedor. ¿De qué es esto un ejemplo y cuál es la respuesta adecuada?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A false negative; the scanner should be reconfigured to scan more aggressively.",
+          "es": "De un falso negativo; habría que reconfigurar el escáner para que analice de forma más agresiva."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A false positive arising from version-banner inference; the finding should be validated against the actual package state before remediation effort is spent.",
+          "es": "De un falso positivo derivado de inferir la versión por el banner del servicio; el hallazgo debe validarse contra el estado real del paquete antes de invertir esfuerzo en remediarlo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Scanners often infer a version from a service banner, and backported security fixes leave the banner unchanged. This produces a false positive. Validating against the actual installed package state before spending remediation effort is what separates a vulnerability management programme from a scan report.\n\n### Topic 3 — Security Architecture and Controls",
+          "es": "Los escáneres a menudo infieren la versión del banner de un servicio, y las correcciones de seguridad retroportadas dejan el banner intacto. Eso produce un falso positivo. Validar contra el estado real del paquete antes de gastar esfuerzo en remediar es lo que separa un programa de gestión de vulnerabilidades de un informe de escaneo.\n\n### Topic 3 — Arquitectura de seguridad y controles"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Proof that the patch failed; the server should be rebuilt immediately.",
+          "es": "De que el parche ha fallado; el servidor debe reconstruirse de inmediato."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A zero-day; the finding should be reported to the national CSIRT within 24 hours.",
+          "es": "De un día cero; el hallazgo debe comunicarse al CSIRT nacional en 24 horas."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-11",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which of the following best describes zero trust architecture?",
+      "es": "¿Cuál de las siguientes opciones describe mejor una arquitectura de confianza cero (zero trust)?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A model in which no user or system is ever granted access to anything without a manual approval.",
+          "es": "Un modelo en el que ningún usuario ni sistema obtiene acceso a nada sin una aprobación manual."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A product category consisting mainly of next-generation firewalls deployed at the network perimeter.",
+          "es": "Una categoría de producto compuesta principalmente por cortafuegos de nueva generación desplegados en el perímetro de la red."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An architecture in which all internal traffic is unencrypted because the internal network is considered trusted.",
+          "es": "Una arquitectura en la que todo el tráfico interno va sin cifrar porque la red interna se considera de confianza."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The removal of implicit trust based on network location, replaced by continuous verification of identity, device posture and context on every request, with least-privilege authorisation.",
+          "es": "La eliminación de la confianza implícita basada en la ubicación de red, sustituida por la verificación continua de la identidad, el estado del dispositivo y el contexto en cada petición, con autorización de mínimo privilegio."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Zero trust removes implicit trust derived from network location and replaces it with continuous verification of identity, device posture and context, with least-privilege authorisation on every request. It is an architectural approach, not a product, and it does not mean requiring manual approvals.",
+          "es": "El zero trust elimina la confianza implícita derivada de la ubicación de red y la sustituye por la verificación continua de la identidad, el estado del dispositivo y el contexto, con autorización de mínimo privilegio en cada petición. Es un enfoque arquitectónico, no un producto, y no significa exigir aprobaciones manuales."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-12",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A control cannot be implemented as designed because the legacy application does not support it, so the organisation puts additional monitoring and network restrictions around the system instead. What kind of control is this?",
+      "es": "Un control no puede implantarse tal como se diseñó porque la aplicación heredada no lo admite, así que la organización rodea el sistema de monitorización adicional y restricciones de red. ¿Qué tipo de control es este?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A deterrent control.",
+          "es": "Un control disuasorio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A corrective control.",
+          "es": "Un control correctivo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A compensating control, which provides comparable risk reduction where the primary control is not feasible.",
+          "es": "Un control compensatorio, que aporta una reducción de riesgo comparable allí donde el control principal no es viable."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A compensating control provides comparable risk reduction where the primary control cannot be implemented. The key requirement is that it is deliberate, documented and demonstrably equivalent in effect — not simply whatever was easy to add.",
+          "es": "Un control compensatorio aporta una reducción de riesgo comparable allí donde el principal no puede implantarse. El requisito clave es que sea deliberado, esté documentado y sea demostrablemente equivalente en efecto, no simplemente lo que resultó fácil de añadir."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A preventive control, because it prevents the legacy system from being used.",
+          "es": "Un control preventivo, porque impide que el sistema heredado se utilice."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-13",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement correctly distinguishes a SIEM from a SOAR?",
+      "es": "¿Qué afirmación distingue correctamente un SIEM de un SOAR?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A SIEM automates response workflows across tools; a SOAR aggregates and correlates log data.",
+          "es": "Un SIEM automatiza flujos de respuesta entre herramientas; un SOAR agrega y correlaciona datos de registro."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are the same class of tool under two vendor marketing names.",
+          "es": "Son la misma clase de herramienta bajo dos nombres comerciales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A SIEM is for cloud environments only; a SOAR is for on-premises environments only.",
+          "es": "Un SIEM es solo para entornos en la nube; un SOAR es solo para entornos locales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A SIEM collects, correlates and retains log and event data to support detection, investigation and compliance; a SOAR orchestrates and automates the response actions and case workflow that follow.",
+          "es": "Un SIEM recopila, correlaciona y conserva registros y eventos para apoyar la detección, la investigación y el cumplimiento; un SOAR orquesta y automatiza las acciones de respuesta y el flujo de trabajo del caso que vienen después."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A SIEM is about seeing: collecting, correlating and retaining events for detection, investigation and compliance. A SOAR is about acting: orchestrating and automating the response and case workflow. They are complementary, and confusing them is a category error.",
+          "es": "Un SIEM trata de ver: recopilar, correlacionar y conservar eventos para detección, investigación y cumplimiento. Un SOAR trata de actuar: orquestar y automatizar la respuesta y el flujo del caso. Son complementarios, y confundirlos es un error de categoría."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-14",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the essential difference between EDR and XDR?",
+      "es": "¿Cuál es la diferencia esencial entre EDR y XDR?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "EDR provides detection and response on endpoints; XDR extends that by correlating telemetry across multiple domains — endpoint, network, identity, email and cloud — to detect activity that is invisible in any single domain.",
+          "es": "EDR aporta detección y respuesta en los equipos finales; XDR lo amplía correlacionando telemetría de varios dominios —equipo final, red, identidad, correo y nube— para detectar actividad que resulta invisible en cualquiera de ellos por separado."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "EDR is endpoint-scoped. XDR correlates telemetry across endpoint, network, identity, email and cloud, which is what allows it to surface an attack chain that looks innocuous in any single domain. The distractor reverses the scope.",
+          "es": "EDR se limita a los equipos finales. XDR correlaciona telemetría de equipo, red, identidad, correo y nube, y eso es lo que le permite sacar a la luz una cadena de ataque que parece inocua en cualquier dominio aislado. El distractor invierte el alcance."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "EDR correlates telemetry across endpoints, network, identity and cloud; XDR is limited to endpoints.",
+          "es": "EDR correlaciona telemetría de equipos, red, identidad y nube; XDR se limita a los equipos finales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "XDR is EDR with the response capability removed.",
+          "es": "XDR es EDR al que se le ha quitado la capacidad de respuesta."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "EDR is agentless and XDR requires an agent on every device.",
+          "es": "EDR no necesita agente y XDR requiere un agente en cada dispositivo."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-15",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Under the principle of separation of duties, which arrangement is correct?",
+      "es": "Según el principio de separación de funciones, ¿qué disposición es la correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The same administrator both requests and approves privileged access changes, to keep the process fast.",
+          "es": "El mismo administrador solicita y aprueba los cambios de acceso privilegiado, para que el proceso sea rápido."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The person who develops a change is not the person who approves its deployment to production, so that no single individual can complete a sensitive action alone.",
+          "es": "Quien desarrolla un cambio no es quien aprueba su despliegue en producción, de modo que ninguna persona pueda completar en solitario una acción sensible."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Separation of duties means no single individual can complete a sensitive action end to end — the developer of a change is not its approver. Shared privileged accounts destroy attribution and are the opposite of the principle.\n\n### Topic 4 — Cryptography, Secure Development and DevSecOps",
+          "es": "Separación de funciones significa que nadie puede completar de principio a fin una acción sensible: quien desarrolla un cambio no es quien lo aprueba. Las cuentas privilegiadas compartidas destruyen la atribución y son justo lo contrario del principio.\n\n### Topic 4 — Criptografía, desarrollo seguro y DevSecOps"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "All administrators share a single privileged account so that actions cannot be attributed to an individual.",
+          "es": "Todos los administradores comparten una única cuenta privilegiada para que las acciones no puedan atribuirse a una persona concreta."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Duties are separated by shift, so that each administrator has full rights during their own hours.",
+          "es": "Las funciones se separan por turnos, de modo que cada administrador tiene plenos derechos durante su horario."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-16",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which combination correctly describes what a digital signature provides and how it is produced?",
+      "es": "¿Qué combinación describe correctamente lo que aporta una firma digital y cómo se genera?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It provides confidentiality, and is produced with the recipient's public key.",
+          "es": "Aporta confidencialidad y se genera con la clave pública del destinatario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It provides integrity only, and is produced by hashing the message with a shared secret known to both parties.",
+          "es": "Aporta solo integridad y se genera aplicando un hash al mensaje con un secreto compartido conocido por ambas partes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It provides availability, and is produced by the certificate authority on the signer's behalf.",
+          "es": "Aporta disponibilidad y la genera la autoridad de certificación en nombre del firmante."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It provides integrity, authentication of origin and non-repudiation, and is produced with the signer's private key and verified with the signer's public key.",
+          "es": "Aporta integridad, autenticación de origen y no repudio, y se genera con la clave privada del firmante y se verifica con su clave pública."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A signature is produced with the signer's *private* key and verified with the signer's *public* key, and it provides integrity, authentication of origin and non-repudiation — not confidentiality. Reversing the key direction is the most frequent distractor in cryptography items.",
+          "es": "Una firma se genera con la clave *privada* del firmante y se verifica con su clave *pública*, y aporta integridad, autenticación de origen y no repudio, no confidencialidad. Invertir la dirección de las claves es el distractor más frecuente en criptografía."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-17",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why do real-world protocols such as TLS use both asymmetric and symmetric cryptography rather than one or the other?",
+      "es": "¿Por qué los protocolos reales como TLS usan criptografía asimétrica y simétrica en lugar de una sola?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because asymmetric cryptography cannot encrypt data at all, only sign it.",
+          "es": "Porque la criptografía asimétrica no puede cifrar datos en absoluto, solo firmarlos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because symmetric cryptography is considered insecure and is retained only for backward compatibility.",
+          "es": "Porque la criptografía simétrica se considera insegura y solo se mantiene por compatibilidad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because export regulations require both to be present in any protocol.",
+          "es": "Porque la normativa de exportación exige que ambas estén presentes en cualquier protocolo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because asymmetric cryptography solves key establishment between parties that have never met but is computationally expensive, so it is used to agree a session key, after which fast symmetric encryption protects the bulk of the traffic.",
+          "es": "Porque la criptografía asimétrica resuelve el establecimiento de claves entre partes que nunca se han visto pero es costosa en cómputo, así que se usa para acordar una clave de sesión y después el cifrado simétrico, mucho más rápido, protege el grueso del tráfico."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Asymmetric cryptography solves key establishment between parties with no prior shared secret but is computationally expensive; symmetric cryptography is fast but cannot solve distribution alone. Real protocols therefore use asymmetric key agreement followed by symmetric bulk encryption.",
+          "es": "La criptografía asimétrica resuelve el establecimiento de clave entre partes sin secreto previo pero es costosa en cómputo; la simétrica es rápida pero no resuelve por sí sola la distribución. Los protocolos reales usan, por tanto, acuerdo asimétrico de clave seguido de cifrado simétrico del grueso del tráfico."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-18",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What does perfect forward secrecy guarantee?",
+      "es": "¿Qué garantiza el secreto hacia adelante perfecto (perfect forward secrecy)?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "That compromise of a long-term private key does not allow an attacker to decrypt previously recorded sessions, because each session used an independent ephemeral key.",
+          "es": "Que comprometer una clave privada de larga duración no permite a un atacante descifrar sesiones grabadas anteriormente, porque cada sesión usó una clave efímera independiente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Forward secrecy means each session uses an independent ephemeral key, so compromising a long-term private key later does not decrypt previously recorded traffic. It says nothing about resistance to quantum computers, which is a separate concern.",
+          "es": "El secreto hacia adelante significa que cada sesión usa una clave efímera independiente, así que comprometer después una clave privada de larga duración no descifra el tráfico grabado antes. No dice nada sobre la resistencia a los ordenadores cuánticos, que es una preocupación distinta."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "That the encryption cannot be broken by any future computer, including quantum computers.",
+          "es": "Que el cifrado no podrá romperlo ningún ordenador futuro, incluidos los cuánticos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "That the same session key is reused forwards across all future sessions for efficiency.",
+          "es": "Que la misma clave de sesión se reutiliza hacia adelante en todas las sesiones futuras por eficiencia."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "That the certificate authority retains a copy of every session key for lawful access.",
+          "es": "Que la autoridad de certificación conserva una copia de cada clave de sesión para el acceso legal."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-19",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement correctly distinguishes SAST from DAST?",
+      "es": "¿Qué afirmación distingue correctamente SAST de DAST?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "SAST tests the running application from the outside without access to source; DAST analyses source code at rest.",
+          "es": "SAST prueba la aplicación en ejecución desde fuera sin acceso al código; DAST analiza el código fuente en reposo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Both require production access and are run only after release.",
+          "es": "Ambos requieren acceso a producción y se ejecutan solo después del lanzamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "SAST analyses source code or binaries without executing the application, giving broad coverage early but more false positives; DAST tests the running application from the outside, producing fewer false positives but only for the parts it can reach.",
+          "es": "SAST analiza el código fuente o los binarios sin ejecutar la aplicación, lo que da una cobertura amplia y temprana pero más falsos positivos; DAST prueba la aplicación en ejecución desde fuera, con menos falsos positivos pero solo en las partes que alcanza."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "SAST reads code without running it: early, broad, noisier. DAST exercises the running application from outside: fewer false positives, but blind to code paths it cannot reach. They are complementary rather than alternatives.",
+          "es": "SAST lee el código sin ejecutarlo: temprano, amplio, más ruidoso. DAST ejercita la aplicación en marcha desde fuera: menos falsos positivos, pero ciego a las rutas de código que no alcanza. Son complementarios, no alternativos."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SAST is for web applications and DAST is for embedded firmware.",
+          "es": "SAST es para aplicaciones web y DAST para firmware embebido."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-20",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An organisation maintains a software bill of materials for every application it deploys. What is the principal operational benefit when a critical vulnerability is announced in a widely used open-source library?",
+      "es": "Una organización mantiene un inventario de componentes de software (SBOM) de cada aplicación que despliega. ¿Cuál es el principal beneficio operativo cuando se anuncia una vulnerabilidad crítica en una biblioteca de código abierto muy utilizada?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It proves to auditors that the software was developed securely.",
+          "es": "Demuestra a los auditores que el software se desarrolló de forma segura."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It automatically patches the affected library across the estate.",
+          "es": "Parchea automáticamente la biblioteca afectada en todo el parque."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It allows the organisation to determine quickly and reliably which of its systems contain the affected component and version, turning an open-ended investigation into a targeted one.",
+          "es": "Permite determinar rápidamente y con fiabilidad qué sistemas contienen el componente y la versión afectados, convirtiendo una investigación abierta en una búsqueda dirigida."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The SBOM's operational value is answering \"am I affected, and where?\" in hours rather than weeks when a critical library vulnerability is announced. It is an inventory, not a remediation mechanism and not a liability transfer.\n\n### Topic 5 — Security Monitoring, Detection and Threat Intelligence",
+          "es": "El valor operativo del SBOM es responder «¿me afecta y dónde?» en horas en lugar de semanas cuando se anuncia una vulnerabilidad crítica en una biblioteca. Es un inventario, no un mecanismo de remediación ni una transferencia de responsabilidad.\n\n### Topic 5 — Monitorización, detección e inteligencia de amenazas"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It transfers liability for the vulnerability to the library's maintainers.",
+          "es": "Transfiere la responsabilidad por la vulnerabilidad a quienes mantienen la biblioteca."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-21",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "According to the Pyramid of Pain, why are detections built on adversary TTPs more valuable than detections built on file hashes or IP addresses?",
+      "es": "Según la pirámide del dolor, ¿por qué son más valiosas las detecciones basadas en las TTP del adversario que las basadas en hashes de fichero o direcciones IP?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because hashes and addresses are trivial and cheap for an adversary to change, whereas changing tactics, techniques and procedures forces a costly change in how they operate — so behaviour-based detections survive far longer.",
+          "es": "Porque los hashes y las direcciones son triviales y baratos de cambiar para un adversario, mientras que cambiar tácticas, técnicas y procedimientos le obliga a modificar de forma costosa su manera de operar, así que las detecciones basadas en comportamiento duran mucho más."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Hashes and IP addresses cost an adversary almost nothing to change; tools and behaviours cost far more. Detections anchored to tactics, techniques and procedures therefore keep working across campaigns, which is the whole argument of the Pyramid of Pain.",
+          "es": "Los hashes y las direcciones IP le cuestan al adversario casi nada de cambiar; las herramientas y los comportamientos, mucho más. Las detecciones ancladas en tácticas, técnicas y procedimientos siguen funcionando entre campañas, y ese es todo el argumento de la pirámide del dolor."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because hashes and IP addresses are harder to collect than TTPs.",
+          "es": "Porque los hashes y las direcciones IP son más difíciles de recopilar que las TTP."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because TTP-based detections generate no false positives.",
+          "es": "Porque las detecciones basadas en TTP no generan falsos positivos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because hashes and IP addresses cannot legally be stored under the GDPR.",
+          "es": "Porque los hashes y las direcciones IP no pueden almacenarse legalmente conforme al RGPD."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-22",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What distinguishes threat hunting from security monitoring?",
+      "es": "¿Qué distingue la caza de amenazas de la monitorización de seguridad?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Threat hunting is the automated triage of the alert queue; monitoring is manual.",
+          "es": "La caza de amenazas es el triaje automatizado de la cola de alertas; la monitorización es manual."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Threat hunting is a proactive, hypothesis-driven search for adversary activity that existing detections have not alerted on; monitoring is the ongoing review and triage of alerts that detections have already generated.",
+          "es": "La caza de amenazas es una búsqueda proactiva y guiada por hipótesis de actividad adversaria sobre la que las detecciones existentes no han alertado; la monitorización es la revisión y el triaje continuos de las alertas que las detecciones ya han generado."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Hunting is proactive and hypothesis-driven: it looks for what the detections did not catch. Monitoring is the triage of alerts that detections already produced. A hunt that only reviews the alert queue is not a hunt.",
+          "es": "La caza es proactiva y guiada por hipótesis: busca lo que las detecciones no atraparon. La monitorización es el triaje de las alertas que las detecciones ya produjeron. Una caza que solo revisa la cola de alertas no es una caza."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Threat hunting is performed only after an incident has been declared.",
+          "es": "La caza de amenazas solo se realiza una vez declarado un incidente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They are the same activity, performed by different teams.",
+          "es": "Son la misma actividad, realizada por equipos distintos."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-23",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Under the Traffic Light Protocol, what does TLP:AMBER mean?",
+      "es": "En el Traffic Light Protocol, ¿qué significa TLP:AMBER?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The information may be shared publicly without restriction.",
+          "es": "La información puede compartirse públicamente sin restricción."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The information may be shared with anyone in the wider security community but not published.",
+          "es": "La información puede compartirse con cualquiera de la comunidad de seguridad en general, pero no publicarse."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The information may not be shared with anyone at all, including within the recipient's own organisation.",
+          "es": "La información no puede compartirse con nadie, ni siquiera dentro de la organización del destinatario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Recipients may share the information only with members of their own organisation and its clients, on a need-to-know basis; TLP:AMBER+STRICT restricts it to the organisation only.",
+          "es": "Los destinatarios solo pueden compartir la información con miembros de su propia organización y con sus clientes, según la necesidad de conocer; TLP:AMBER+STRICT la restringe únicamente a la organización."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "TLP:AMBER limits sharing to the recipient's organisation and its clients on a need-to-know basis; AMBER+STRICT drops the clients. TLP:GREEN is community-wide, TLP:CLEAR unrestricted, and TLP:RED named recipients only.",
+          "es": "TLP:AMBER limita la difusión a la organización del destinatario y a sus clientes según la necesidad de conocer; AMBER+STRICT excluye a los clientes. TLP:GREEN alcanza a toda la comunidad, TLP:CLEAR no tiene restricción y TLP:RED se limita a destinatarios nominales."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-24",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "In the MITRE ATT&CK framework, what is the relationship between a tactic and a technique?",
+      "es": "En el marco MITRE ATT&CK, ¿cuál es la relación entre una táctica y una técnica?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A tactic represents the adversary's tactical goal at a stage of the intrusion (the *why*); a technique describes how that goal is achieved (the *how*).",
+          "es": "Una táctica representa el objetivo táctico del adversario en una etapa de la intrusión (el *por qué*); una técnica describe cómo se logra ese objetivo (el *cómo*)."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A tactic is the adversary's goal at a stage of the intrusion — the *why*, such as credential access or lateral movement. A technique is *how* that goal is achieved. Procedures are the specific implementations observed in the wild.",
+          "es": "Una táctica es el objetivo del adversario en una etapa de la intrusión —el *por qué*, como el acceso a credenciales o el movimiento lateral—. Una técnica es *cómo* se logra ese objetivo. Los procedimientos son las implementaciones concretas observadas en la práctica."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A tactic is the specific way an action is carried out; a technique is the adversary's overall objective.",
+          "es": "Una táctica es la forma concreta en que se ejecuta una acción; una técnica es el objetivo global del adversario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Tactics apply to nation-state actors and techniques to criminal groups.",
+          "es": "Las tácticas se aplican a actores estatales y las técnicas a grupos criminales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A tactic is a detection rule and a technique is the log source it uses.",
+          "es": "Una táctica es una regla de detección y una técnica es la fuente de registro que utiliza."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-25",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why is accurate and synchronised time across log sources an essential prerequisite for investigation?",
+      "es": "¿Por qué es un requisito imprescindible para investigar que la hora sea exacta y esté sincronizada en todas las fuentes de registro?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because regulators require all logs to be timestamped in UTC.",
+          "es": "Porque los reguladores exigen que todos los registros lleven marca de tiempo en UTC."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because reconstructing the sequence of events across systems depends on correlating timestamps; drift between sources makes causality impossible to establish and undermines the evidentiary value of the logs.",
+          "es": "Porque reconstruir la secuencia de sucesos entre sistemas depende de correlacionar marcas de tiempo; la desviación entre fuentes hace imposible establecer la causalidad y merma el valor probatorio de los registros."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Investigation is the reconstruction of a sequence across systems, and that depends entirely on comparable timestamps. Clock drift between sources makes ordering — and therefore causality — unprovable, and weakens the evidentiary value of the logs.\n\n### Topic 6 — Incident Response and Digital Forensics",
+          "es": "Investigar es reconstruir una secuencia entre sistemas, y eso depende por completo de que las marcas de tiempo sean comparables. La desviación de reloj entre fuentes hace que el orden —y por tanto la causalidad— no pueda demostrarse, y debilita el valor probatorio de los registros.\n\n### Topic 6 — Respuesta a incidentes y análisis forense digital"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because SIEM licensing is calculated per unit of time.",
+          "es": "Porque las licencias de SIEM se calculan por unidad de tiempo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because unsynchronised clocks prevent log files from being compressed.",
+          "es": "Porque los relojes no sincronizados impiden comprimir los ficheros de registro."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-26",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What are the four phases of the incident response lifecycle in NIST SP 800-61, in order?",
+      "es": "¿Cuáles son, en orden, las cuatro fases del ciclo de vida de respuesta a incidentes de NIST SP 800-61?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Detection; Containment; Eradication; Recovery.",
+          "es": "Detección; contención; erradicación; recuperación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Preparation; Detection and Analysis; Containment, Eradication and Recovery; Post-Incident Activity.",
+          "es": "Preparación; detección y análisis; contención, erradicación y recuperación; actividad posterior al incidente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "NIST SP 800-61 defines four phases: Preparation; Detection and Analysis; Containment, Eradication and Recovery; and Post-Incident Activity. The distractor listing Identify/Protect/Detect/Respond belongs to the NIST Cybersecurity Framework, which is a different model for a different purpose.",
+          "es": "NIST SP 800-61 define cuatro fases: preparación; detección y análisis; contención, erradicación y recuperación; y actividad posterior al incidente. El distractor que enumera Identificar/Proteger/Detectar/Responder pertenece al NIST Cybersecurity Framework, que es otro modelo con otra finalidad."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Identify; Protect; Detect; Respond.",
+          "es": "Identificar; proteger; detectar; responder."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Triage; Escalation; Remediation; Closure.",
+          "es": "Triaje; escalado; remediación; cierre."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-27",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Following the order of volatility, in which sequence should evidence be collected from a running compromised host?",
+      "es": "Siguiendo el orden de volatilidad, ¿en qué secuencia debe recogerse la evidencia de un equipo comprometido que está encendido?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Volatile data first — CPU registers and cache, then memory, then network state and running processes — before non-volatile disk and archival media, because volatile evidence is lost on power loss.",
+          "es": "Primero los datos volátiles —registros y caché de la CPU, después la memoria, después el estado de red y los procesos en ejecución— antes que el disco no volátil y los soportes de archivo, porque la evidencia volátil se pierde al cortar la corriente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The order of volatility runs from the most ephemeral to the most durable: registers and cache, memory, network state and running processes, then disk and archival media. Memory holds encryption keys, injected code and live connections, all of which vanish on power loss.",
+          "es": "El orden de volatilidad va de lo más efímero a lo más duradero: registros y caché, memoria, estado de red y procesos en ejecución, y después disco y soportes de archivo. La memoria contiene claves de cifrado, código inyectado y conexiones vivas, y todo eso desaparece al cortar la corriente."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Disk images first, then archived backups, then memory, then network connections.",
+          "es": "Primero las imágenes de disco, después las copias de seguridad archivadas, después la memoria y por último las conexiones de red."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Whatever order is fastest, since hashing guarantees integrity regardless.",
+          "es": "En el orden que sea más rápido, ya que el hash garantiza la integridad en cualquier caso."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Archival media first, because it holds the longest history.",
+          "es": "Primero los soportes de archivo, porque contienen el histórico más largo."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-28",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why is chain of custody documentation essential in a forensic investigation?",
+      "es": "¿Por qué es esencial documentar la cadena de custodia en una investigación forense?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because it records who handled each item of evidence, when, and for what purpose, establishing that the evidence was not altered — without which the findings may be challenged or ruled inadmissible.",
+          "es": "Porque deja constancia de quién manipuló cada elemento de evidencia, cuándo y con qué fin, acreditando que no fue alterada — sin ello los hallazgos pueden impugnarse o declararse inadmisibles."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Chain of custody records who held each item, when and why, demonstrating that the evidence was not altered between seizure and analysis. Without it, findings can be challenged and may be ruled inadmissible, regardless of how sound the technical analysis was.",
+          "es": "La cadena de custodia deja constancia de quién tuvo cada elemento, cuándo y por qué, demostrando que la evidencia no fue alterada entre la incautación y el análisis. Sin ella, los hallazgos pueden impugnarse y declararse inadmisibles, por sólido que fuera el análisis técnico."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because it speeds up the imaging process.",
+          "es": "Porque acelera el proceso de obtención de imágenes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because it is required before a SIEM can ingest the logs.",
+          "es": "Porque es requisito previo para que un SIEM pueda ingerir los registros."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because it determines the CVSS score of the exploited vulnerability.",
+          "es": "Porque determina la puntuación CVSS de la vulnerabilidad explotada."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-29",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which pair correctly defines RPO and RTO?",
+      "es": "¿Qué par define correctamente el RPO y el RTO?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "RPO is the maximum tolerable amount of data loss, measured backwards from the incident, and drives backup frequency; RTO is the maximum tolerable time to restore service, measured forwards, and drives recovery capability.",
+          "es": "El RPO es la cantidad máxima tolerable de pérdida de datos, medida hacia atrás desde el incidente, y determina la frecuencia de las copias; el RTO es el tiempo máximo tolerable para restaurar el servicio, medido hacia adelante, y determina la capacidad de recuperación."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "RPO looks backwards and asks how much data you can afford to lose, which sets backup frequency. RTO looks forwards and asks how long you can afford to be down, which sets recovery capability. Reversing them is one of the most common errors in continuity items.",
+          "es": "El RPO mira hacia atrás y pregunta cuántos datos puedes permitirte perder, lo que fija la frecuencia de las copias. El RTO mira hacia adelante y pregunta cuánto tiempo puedes estar caído, lo que fija la capacidad de recuperación. Invertirlos es uno de los errores más comunes en preguntas de continuidad."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "RPO is the maximum tolerable time to restore service; RTO is the maximum tolerable data loss.",
+          "es": "El RPO es el tiempo máximo tolerable para restaurar el servicio; el RTO es la pérdida máxima tolerable de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Both describe the same interval, expressed in different units.",
+          "es": "Ambos describen el mismo intervalo, expresado en unidades distintas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "RPO applies to hardware failures and RTO to cyberattacks.",
+          "es": "El RPO se aplica a fallos de hardware y el RTO a ciberataques."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-30",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An organisation's ransomware playbook relies on nightly backups to the same network file share used by production systems. What is the principal flaw?",
+      "es": "El playbook de ransomware de una organización se apoya en copias de seguridad nocturnas al mismo recurso compartido de red que usan los sistemas de producción. ¿Cuál es el fallo principal?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Nightly frequency is too high and will exhaust storage.",
+          "es": "La frecuencia nocturna es demasiado alta y agotará el almacenamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Backups should never be automated.",
+          "es": "Las copias de seguridad nunca deberían automatizarse."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "There is no flaw, provided the backups are encrypted at rest.",
+          "es": "No hay ningún fallo, siempre que las copias estén cifradas en reposo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Backups reachable over the network with production credentials are a primary target for ransomware and are likely to be encrypted along with the production data; at least one copy must be immutable or offline, and restoration must be tested.",
+          "es": "Unas copias accesibles por red con credenciales de producción son un objetivo prioritario del ransomware y es probable que se cifren junto con los datos de producción; al menos una copia debe ser inmutable o estar desconectada, y la restauración debe probarse."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Backups reachable over the network with production credentials are encrypted along with everything else, which is precisely how ransomware defeats recovery plans. At least one copy must be immutable or offline, and restoration has to be tested — an untested backup is an assumption, not a control.\n\n### Topic 7 — EU Cybersecurity Law, Policy and Governance",
+          "es": "Unas copias accesibles por red con credenciales de producción se cifran junto con todo lo demás, y así es precisamente como el ransomware derrota a los planes de recuperación. Al menos una copia debe ser inmutable o estar desconectada, y la restauración tiene que probarse: una copia sin probar es una suposición, no un control.\n\n### Topic 7 — Derecho, política y gobernanza de la ciberseguridad en la UE"
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-31",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Under NIS2 (Directive (EU) 2022/2555), what is the incident reporting timeline for a significant incident?",
+      "es": "Conforme a la NIS2 (Directiva (UE) 2022/2555), ¿cuál es el calendario de notificación de un incidente significativo?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A single full report within 72 hours of detection.",
+          "es": "Un único informe completo en 72 horas desde la detección."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Notification within 30 days, with no interim obligation.",
+          "es": "Notificación en 30 días, sin obligación intermedia."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An early warning within 24 hours of becoming aware, an incident notification within 72 hours, and a final report within one month.",
+          "es": "Alerta temprana en 24 horas desde que se tiene conocimiento, notificación del incidente en 72 horas e informe final en un mes."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "NIS2 sets a staged timeline: an early warning within 24 hours of becoming aware, an incident notification within 72 hours, and a final report within one month. The staging exists because useful detail rarely exists in the first day.",
+          "es": "La NIS2 fija un calendario escalonado: alerta temprana en 24 horas desde que se tiene conocimiento, notificación del incidente en 72 horas e informe final en un mes. El escalonamiento existe porque el primer día rara vez hay detalle útil."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Immediate notification within one hour, followed by a final report within one week.",
+          "es": "Notificación inmediata en una hora, seguida de un informe final en una semana."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-32",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "How do \"essential\" and \"important\" entities differ under NIS2?",
+      "es": "¿En qué se diferencian las entidades «esenciales» de las «importantes» en la NIS2?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Essential entities have stricter security requirements; important entities have none.",
+          "es": "Las entidades esenciales tienen requisitos de seguridad más estrictos; las importantes no tienen ninguno."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The security risk-management obligations are broadly the same, but the supervisory regime differs: essential entities are subject to proactive, ex ante supervision, whereas important entities are supervised reactively, ex post, following evidence of non-compliance.",
+          "es": "Las obligaciones de gestión del riesgo son en lo esencial las mismas, pero difiere el régimen de supervisión: las entidades esenciales están sujetas a supervisión proactiva, ex ante, mientras que las importantes se supervisan de forma reactiva, ex post, tras indicios de incumplimiento."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Both categories carry substantially the same risk-management and reporting obligations; what differs is supervision. Essential entities face proactive, ex ante supervision; important entities are supervised ex post, on evidence of non-compliance. The split is about supervisory intensity, not about who must be secure.",
+          "es": "Ambas categorías soportan en lo esencial las mismas obligaciones de gestión del riesgo y de notificación; lo que cambia es la supervisión. Las esenciales se supervisan de forma proactiva, ex ante; las importantes, ex post, ante indicios de incumplimiento. La división es sobre la intensidad de la supervisión, no sobre quién debe ser seguro."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Essential entities are public bodies and important entities are private companies.",
+          "es": "Las entidades esenciales son organismos públicos y las importantes empresas privadas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Only essential entities must report incidents.",
+          "es": "Solo las entidades esenciales deben notificar incidentes."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-33",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What did Regulation (EU) 2019/881, the Cybersecurity Act, establish?",
+      "es": "¿Qué estableció el Reglamento (UE) 2019/881, el Reglamento de Ciberseguridad?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A directly applicable set of security obligations on all operators of essential services, replacing NIS1.",
+          "es": "Un conjunto de obligaciones de seguridad directamente aplicables a todos los operadores de servicios esenciales, que sustituyó a la NIS1."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The European Digital Identity Wallet.",
+          "es": "La Cartera Europea de Identidad Digital."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The obligation for manufacturers to provide security updates throughout a product's support period.",
+          "es": "La obligación de los fabricantes de proporcionar actualizaciones de seguridad durante todo el periodo de soporte de un producto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A permanent mandate for ENISA and a European cybersecurity certification framework with assurance levels basic, substantial and high.",
+          "es": "Un mandato permanente para ENISA y un marco europeo de certificación de la ciberseguridad con niveles de garantía básico, sustancial y alto."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The Cybersecurity Act gave ENISA a permanent mandate and created the European cybersecurity certification framework with assurance levels basic, substantial and high. Product security requirements came later, with the Cyber Resilience Act; the Digital Identity Wallet belongs to the eIDAS amendment.",
+          "es": "El Reglamento de Ciberseguridad dio a ENISA un mandato permanente y creó el marco europeo de certificación de la ciberseguridad con niveles básico, sustancial y alto. Los requisitos de seguridad de producto llegaron después, con el Reglamento de Ciberresiliencia; la Cartera de Identidad Digital pertenece a la modificación de eIDAS."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-34",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A cyberattack on a company in scope of NIS2 also compromises a database of customers' personal data. Which statement is correct?",
+      "es": "Un ciberataque a una empresa incluida en el ámbito de la NIS2 compromete además una base de datos con datos personales de clientes. ¿Qué afirmación es correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Only the NIS2 notification is required, because it supersedes the GDPR for cyber incidents.",
+          "es": "Solo se exige la notificación de la NIS2, porque desplaza al RGPD en los incidentes cibernéticos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Only the GDPR notification is required, because personal data is involved.",
+          "es": "Solo se exige la notificación del RGPD, porque hay datos personales implicados."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Two distinct obligations can arise in parallel: the NIS2 incident notification to the competent authority or CSIRT, and the GDPR personal data breach notification to the supervisory authority within 72 hours of awareness — with communication to the individuals themselves only where the risk to them is high.",
+          "es": "Pueden surgir en paralelo dos obligaciones distintas: la notificación del incidente conforme a la NIS2 a la autoridad competente o al CSIRT, y la notificación de la violación de datos personales conforme al RGPD a la autoridad de control en 72 horas desde que se tiene conocimiento — con comunicación a los propios interesados solo cuando el riesgo para ellos sea alto."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The two regimes are independent triggers with different authorities and different thresholds. A single attack can require both a NIS2 incident notification and a GDPR breach notification, and communication to the individuals themselves is required only where the risk to them is high.",
+          "es": "Los dos regímenes son desencadenantes independientes, con autoridades y umbrales distintos. Un mismo ataque puede exigir a la vez una notificación de incidente conforme a la NIS2 y una notificación de violación conforme al RGPD, y la comunicación a los propios interesados solo procede cuando el riesgo para ellos es alto."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Neither is required if the attack was successfully contained.",
+          "es": "No se exige ninguna si el ataque fue contenido con éxito."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-35",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the role of ENISA, as distinct from CERT-EU?",
+      "es": "¿Cuál es el papel de ENISA, en contraste con el de CERT-EU?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "ENISA is the operational incident response team for the EU institutions; CERT-EU is the policy agency.",
+          "es": "ENISA es el equipo operativo de respuesta a incidentes de las instituciones de la UE; CERT-EU es la agencia de políticas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Both are operational incident response teams, split by geography.",
+          "es": "Ambos son equipos operativos de respuesta a incidentes, repartidos por geografía."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "ENISA is the Union agency for cybersecurity, with advisory, capacity-building, certification and coordination roles; CERT-EU is the cybersecurity service for the Union's own institutions, bodies, offices and agencies, providing operational support to them.",
+          "es": "ENISA es la agencia de la Unión para la ciberseguridad, con funciones de asesoramiento, desarrollo de capacidades, certificación y coordinación; CERT-EU es el servicio de ciberseguridad de las propias instituciones, órganos y organismos de la Unión, al que presta apoyo operativo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "ENISA is the Union's cybersecurity agency: advice, capacity building, certification, coordination. CERT-EU is the operational cybersecurity service for the Union's own institutions, bodies, offices and agencies. Treating ENISA as an incident response team is the trap.\n\n### Topic 8 — Identity, Access Management and Trust Services",
+          "es": "ENISA es la agencia de ciberseguridad de la Unión: asesoramiento, desarrollo de capacidades, certificación, coordinación. CERT-EU es el servicio operativo de ciberseguridad de las propias instituciones, órganos y organismos de la Unión. Tomar a ENISA por un equipo de respuesta a incidentes es la trampa.\n\n### Topic 8 — Identidad, gestión de accesos y servicios de confianza"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "ENISA supervises national CSIRTs and issues binding fines under NIS2.",
+          "es": "ENISA supervisa a los CSIRT nacionales e impone multas vinculantes conforme a la NIS2."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-36",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement correctly distinguishes authentication from authorisation?",
+      "es": "¿Qué afirmación distingue correctamente la autenticación de la autorización?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Authentication determines what a subject is permitted to do; authorisation verifies the subject's claimed identity.",
+          "es": "La autenticación determina qué se le permite hacer a un sujeto; la autorización verifica la identidad que dice tener."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are the same process, described at different layers of the stack.",
+          "es": "Son el mismo proceso, descrito en capas distintas de la pila."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Authentication applies to users and authorisation applies only to service accounts.",
+          "es": "La autenticación se aplica a usuarios y la autorización solo a cuentas de servicio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Authentication verifies the subject's claimed identity; authorisation determines what that authenticated subject is permitted to do.",
+          "es": "La autenticación verifica la identidad que el sujeto dice tener; la autorización determina qué se le permite hacer a ese sujeto ya autenticado."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Authentication answers \"who are you?\"; authorisation answers \"what may you do?\". They run in that order and are separate decisions — an authenticated user may still be authorised for nothing. Reversing them is the most common distractor in this area.",
+          "es": "La autenticación responde a «¿quién eres?»; la autorización, a «¿qué puedes hacer?». Van en ese orden y son decisiones separadas: un usuario autenticado puede no estar autorizado para nada. Invertirlas es el distractor más común de esta área."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-37",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A system requires a password and, additionally, the answer to a security question. Does this constitute multi-factor authentication?",
+      "es": "Un sistema exige una contraseña y, además, la respuesta a una pregunta de seguridad. ¿Constituye eso autenticación multifactor?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Yes, because two separate credentials are required.",
+          "es": "Sí, porque se exigen dos credenciales distintas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "No — both are \"something you know\", and multi-factor authentication requires factors from different categories (knowledge, possession, inherence).",
+          "es": "No: ambas son «algo que sabes», y la autenticación multifactor exige factores de categorías distintas (conocimiento, posesión, inherencia)."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A password and a security question are both knowledge factors. Multi-factor authentication requires factors from different categories — knowledge, possession, inherence — because the point is that one attack cannot capture both.",
+          "es": "Una contraseña y una pregunta de seguridad son ambas factores de conocimiento. La autenticación multifactor exige factores de categorías distintas —conocimiento, posesión, inherencia— porque de lo que se trata es de que un mismo ataque no pueda capturar los dos."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Yes, provided the security question answer is stored hashed.",
+          "es": "Sí, siempre que la respuesta a la pregunta de seguridad se almacene con hash."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "No, because multi-factor authentication requires at least three factors.",
+          "es": "No, porque la autenticación multifactor exige al menos tres factores."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-38",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement correctly describes the relationship between OAuth 2.0 and OpenID Connect?",
+      "es": "¿Qué afirmación describe correctamente la relación entre OAuth 2.0 y OpenID Connect?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "OpenID Connect is an authorisation framework and OAuth 2.0 is the identity layer built on top of it.",
+          "es": "OpenID Connect es un marco de autorización y OAuth 2.0 es la capa de identidad construida sobre él."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are competing standards for the same purpose, and only one can be used at a time.",
+          "es": "Son estándares competidores para el mismo fin, y solo puede usarse uno de los dos a la vez."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "OAuth 2.0 is an authorisation framework for delegated access that issues access tokens and does not itself authenticate the user; OpenID Connect is an identity layer built on OAuth 2.0 that adds the ID token to convey authenticated identity.",
+          "es": "OAuth 2.0 es un marco de autorización para acceso delegado que emite tokens de acceso y no autentica por sí mismo al usuario; OpenID Connect es una capa de identidad construida sobre OAuth 2.0 que añade el token de identidad para transmitir la identidad autenticada."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "OAuth 2.0 delegates *authorisation* and issues access tokens; it does not tell the relying party who the user is. OpenID Connect adds the identity layer on top, with the ID token. Using bare OAuth as an authentication protocol is a well-known design error.",
+          "es": "OAuth 2.0 delega *autorización* y emite tokens de acceso; no le dice a la parte que confía quién es el usuario. OpenID Connect añade encima la capa de identidad, con el token de identidad. Usar OAuth a secas como protocolo de autenticación es un error de diseño bien conocido."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "OAuth 2.0 replaced OpenID Connect after the latter was deprecated.",
+          "es": "OAuth 2.0 sustituyó a OpenID Connect después de que este quedara obsoleto."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-39",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Under eIDAS, what distinguishes a qualified electronic signature from an advanced electronic signature?",
+      "es": "Conforme a eIDAS, ¿qué distingue una firma electrónica cualificada de una firma electrónica avanzada?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Nothing; the two terms are interchangeable.",
+          "es": "Nada; los dos términos son intercambiables."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A qualified electronic signature is an advanced electronic signature that is additionally created by a qualified signature creation device and based on a qualified certificate, and it alone has legal effect equivalent to a handwritten signature across all Member States.",
+          "es": "Una firma electrónica cualificada es una firma avanzada que además se crea con un dispositivo cualificado de creación de firma y se basa en un certificado cualificado, y es la única que tiene efecto jurídico equivalente al de una firma manuscrita en todos los Estados miembros."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A qualified electronic signature is an advanced signature plus two additional requirements: a qualified signature creation device and a qualified certificate. Only that tier carries legal effect equivalent to a handwritten signature across all Member States.",
+          "es": "Una firma electrónica cualificada es una firma avanzada más dos requisitos adicionales: un dispositivo cualificado de creación de firma y un certificado cualificado. Solo ese nivel tiene efecto jurídico equivalente al de una firma manuscrita en todos los Estados miembros."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An advanced electronic signature requires a qualified certificate; a qualified one does not.",
+          "es": "Una firma electrónica avanzada exige un certificado cualificado; la cualificada no."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A qualified electronic signature can only be used by legal persons, and an advanced one only by natural persons.",
+          "es": "Una firma electrónica cualificada solo pueden usarla las personas jurídicas, y una avanzada solo las personas físicas."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-40",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which access control model bases decisions on attributes of the subject, the resource, the action and the environment?",
+      "es": "¿Qué modelo de control de acceso basa las decisiones en atributos del sujeto, el recurso, la acción y el entorno?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "RBAC (role-based access control).",
+          "es": "RBAC (control de acceso basado en roles)."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "MAC (mandatory access control).",
+          "es": "MAC (control de acceso obligatorio)."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "DAC (discretionary access control).",
+          "es": "DAC (control de acceso discrecional)."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "ABAC (attribute-based access control), which supports fine-grained, context-dependent policy such as time of day, device posture or data classification.",
+          "es": "ABAC (control de acceso basado en atributos), que permite políticas de grano fino y dependientes del contexto, como la hora del día, el estado del dispositivo o la clasificación del dato."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "ABAC decides from attributes of subject, resource, action and environment, which is what allows context-dependent policy such as device posture or time of day. RBAC binds permissions to roles and is coarser; MAC and DAC are different models again.\n\n### Topic 1 — Risk Management, Assurance and Maturity",
+          "es": "ABAC decide a partir de atributos del sujeto, el recurso, la acción y el entorno, que es lo que permite políticas dependientes del contexto como el estado del dispositivo o la hora del día. RBAC vincula permisos a roles y es más grueso; MAC y DAC son modelos distintos.\n\n### Topic 1 — Gestión de riesgos, aseguramiento y madurez"
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-41",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "After implementing agreed controls, an organisation records the risk that remains. What is this called, and who should decide whether it is acceptable?",
+      "es": "Tras implantar los controles acordados, una organización registra el riesgo que queda. ¿Cómo se llama y quién debe decidir si es aceptable?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Inherent risk, decided by the security team.",
+          "es": "Riesgo inherente, y lo decide el equipo de seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Transferred risk, decided by the insurer.",
+          "es": "Riesgo transferido, y lo decide la aseguradora."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Zero risk, since the controls have been implemented.",
+          "es": "Riesgo cero, puesto que los controles ya se han implantado."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Residual risk, and its acceptance is a business decision that must be taken by the accountable risk owner at an appropriate level of authority, not by the security function alone.",
+          "es": "Riesgo residual, y su aceptación es una decisión de negocio que debe tomar el responsable del riesgo al nivel de autoridad que corresponda, no la función de seguridad por su cuenta."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "What remains after treatment is residual risk, and accepting it is a business decision belonging to the accountable risk owner at an appropriate level of authority. A security team that accepts risk on the organisation's behalf has exceeded its mandate.",
+          "es": "Lo que queda tras el tratamiento es riesgo residual, y aceptarlo es una decisión de negocio que corresponde al responsable del riesgo con la autoridad adecuada. Un equipo de seguridad que acepta riesgo en nombre de la organización se ha excedido de su mandato."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-42",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What does a capability maturity assessment tell you that a risk assessment does not?",
+      "es": "¿Qué te dice una evaluación de madurez de capacidades que no te diga una evaluación de riesgos?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The monetary value of the organisation's assets.",
+          "es": "El valor monetario de los activos de la organización."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "How consistently, repeatably and measurably a practice is performed across the organisation — a statement about process capability, not about how much risk currently remains.",
+          "es": "Con qué consistencia, repetibilidad y capacidad de medición se ejecuta una práctica en la organización — una afirmación sobre la capacidad del proceso, no sobre cuánto riesgo queda actualmente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Maturity describes how consistently and repeatably a practice is performed. It is a statement about process capability, not about current exposure: a highly mature organisation can still carry substantial risk, and an immature one may happen to be lightly exposed.",
+          "es": "La madurez describe con qué consistencia y repetibilidad se ejecuta una práctica. Es una afirmación sobre la capacidad del proceso, no sobre la exposición actual: una organización muy madura puede seguir soportando un riesgo considerable, y una inmadura puede estar poco expuesta por pura casualidad."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Which specific vulnerabilities are present on which hosts.",
+          "es": "Qué vulnerabilidades concretas hay en qué equipos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The likelihood that a given threat actor will attack.",
+          "es": "La probabilidad de que un determinado actor de amenaza ataque."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-43",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which of the following is the best example of a key risk indicator rather than a key performance indicator?",
+      "es": "¿Cuál de los siguientes es el mejor ejemplo de indicador clave de riesgo y no de indicador clave de rendimiento?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The percentage of internet-facing systems carrying vulnerabilities known to be actively exploited — a leading measure of exposure that signals rising risk before an incident occurs.",
+          "es": "El porcentaje de sistemas expuestos a internet con vulnerabilidades que se sabe que se están explotando activamente — una medida adelantada de la exposición que avisa de que el riesgo sube antes de que ocurra un incidente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A key risk indicator is leading and points at exposure — unpatched actively-exploited vulnerabilities on internet-facing systems tells you risk is rising before anything happens. Counting awareness sessions or tickets closed measures process throughput, which is a performance indicator.",
+          "es": "Un indicador clave de riesgo es adelantado y apunta a la exposición: las vulnerabilidades explotadas activamente sin parchear en sistemas expuestos a internet te dicen que el riesgo sube antes de que ocurra nada. Contar sesiones de concienciación o tickets cerrados mide el rendimiento de un proceso."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The number of security awareness sessions delivered this quarter.",
+          "es": "El número de sesiones de concienciación impartidas este trimestre."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The mean time taken by the service desk to close a ticket.",
+          "es": "El tiempo medio que tarda el servicio de atención en cerrar un ticket."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The number of SIEM rules written by the detection engineering team.",
+          "es": "El número de reglas de SIEM escritas por el equipo de ingeniería de detección."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-44",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An organisation's statement of applicability under ISO/IEC 27001 excludes a control. What must accompany that exclusion?",
+      "es": "La declaración de aplicabilidad de una organización conforme a ISO/IEC 27001 excluye un control. ¿Qué debe acompañar a esa exclusión?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Nothing; controls may be excluded freely at the organisation's discretion.",
+          "es": "Nada; los controles pueden excluirse libremente a discreción de la organización."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A documented justification for the exclusion, consistent with the results of risk assessment and risk treatment, so that the decision is traceable and reviewable.",
+          "es": "Una justificación documentada de la exclusión, coherente con los resultados de la evaluación y el tratamiento del riesgo, para que la decisión sea trazable y revisable."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Exclusions are permitted but must be justified and traceable to the risk assessment and treatment decisions. An undocumented exclusion is precisely what an audit is designed to catch, because it hides an unmanaged risk behind a certificate.",
+          "es": "Las exclusiones están permitidas, pero deben justificarse y ser trazables hasta las decisiones de evaluación y tratamiento del riesgo. Una exclusión sin documentar es justo lo que una auditoría existe para detectar, porque esconde un riesgo no gestionado tras un certificado."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Approval from the national supervisory authority.",
+          "es": "La aprobación de la autoridad nacional de control."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A compensating control certified to the same standard.",
+          "es": "Un control compensatorio certificado conforme a la misma norma."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-45",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement best captures the relationship between compliance and security?",
+      "es": "¿Qué afirmación recoge mejor la relación entre cumplimiento y seguridad?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They are equivalent: a compliant organisation is by definition secure.",
+          "es": "Son equivalentes: una organización que cumple es, por definición, segura."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Security is a subset of compliance and is fully determined by it.",
+          "es": "La seguridad es un subconjunto del cumplimiento y queda enteramente determinada por él."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Compliance demonstrates that defined requirements were met at a point in time; security is an ongoing property of the system, so compliance is evidence of diligence but not proof of resilience against a motivated adversary.",
+          "es": "El cumplimiento demuestra que se satisficieron unos requisitos definidos en un momento dado; la seguridad es una propiedad continua del sistema, de modo que el cumplimiento es prueba de diligencia pero no de resistencia frente a un adversario motivado."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Compliance evidences that defined requirements were met at a point in time; security is a continuing property of a system under attack. Compliance is useful evidence of diligence, and it is not proof of resilience — the substitution of one for the other is a recurring trap.\n\n### Topic 2 — Vulnerability Management and Security Testing",
+          "es": "El cumplimiento acredita que unos requisitos definidos se satisficieron en un momento dado; la seguridad es una propiedad continua de un sistema bajo ataque. El cumplimiento es prueba útil de diligencia, y no es prueba de resistencia — sustituir uno por otro es una trampa recurrente.\n\n### Topic 2 — Gestión de vulnerabilidades y pruebas de seguridad"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Compliance is irrelevant to security and should be treated purely as a legal cost.",
+          "es": "El cumplimiento es irrelevante para la seguridad y debe tratarse como un mero coste legal."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Risk Management, Assurance and Maturity"
+    ]
+  },
+  {
+    "id": "field-cyber-46",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What does the EPSS score express, and how does it complement CVSS?",
+      "es": "¿Qué expresa la puntuación EPSS y en qué complementa al CVSS?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The financial impact of exploitation, complementing CVSS by adding a cost dimension.",
+          "es": "El impacto económico de la explotación, complementando al CVSS al añadir una dimensión de coste."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The number of systems in the organisation affected by the vulnerability.",
+          "es": "El número de sistemas de la organización afectados por la vulnerabilidad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The vendor's confidence that the patch will not cause a regression.",
+          "es": "La confianza del fabricante en que el parche no provocará una regresión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The estimated probability that a vulnerability will be exploited in the wild in the near term, complementing CVSS — which expresses severity if exploited — by adding likelihood.",
+          "es": "La probabilidad estimada de que una vulnerabilidad se explote realmente a corto plazo, complementando al CVSS —que expresa la gravedad si se explota— al añadir la probabilidad."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "EPSS estimates the probability of exploitation in the wild in the near term. CVSS says how bad it would be; EPSS says how likely it is. Used together they give a far better queue than either alone.",
+          "es": "EPSS estima la probabilidad de explotación real a corto plazo. El CVSS dice cómo de grave sería; el EPSS, cómo de probable es. Usados juntos dan una cola de trabajo mucho mejor que cualquiera por separado."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-47",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why does a catalogue of known exploited vulnerabilities change remediation priorities so sharply?",
+      "es": "¿Por qué un catálogo de vulnerabilidades explotadas conocidas cambia tan bruscamente las prioridades de remediación?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because it lists only vulnerabilities with a CVSS score above 9.0.",
+          "es": "Porque solo recoge vulnerabilidades con una puntuación CVSS superior a 9,0."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because it removes the speculation from prioritisation: these vulnerabilities are confirmed to be exploited in practice, so the theoretical question of whether an attack is feasible has already been answered.",
+          "es": "Porque elimina la especulación de la priorización: se ha confirmado que esas vulnerabilidades se explotan en la práctica, así que la cuestión teórica de si el ataque es viable ya está respondida."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A known-exploited catalogue removes the speculation: exploitation is no longer a theoretical question because it has been observed. That is why such entries jump the queue regardless of their nominal severity score.",
+          "es": "Un catálogo de vulnerabilidades explotadas elimina la especulación: la explotación ya no es una cuestión teórica porque se ha observado. Por eso esas entradas se saltan la cola con independencia de su puntuación nominal de gravedad."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because vulnerabilities on the list are automatically patched by operating system vendors.",
+          "es": "Porque los fabricantes de sistemas operativos parchean automáticamente las vulnerabilidades de la lista."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because inclusion on the list voids the vendor's liability.",
+          "es": "Porque figurar en la lista exime de responsabilidad al fabricante."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-48",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is purple teaming?",
+      "es": "¿Qué es el purple teaming?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A red team exercise conducted without the knowledge of the organisation's management.",
+          "es": "Un ejercicio de red team realizado sin conocimiento de la dirección de la organización."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A penetration test performed by two vendors simultaneously for comparison.",
+          "es": "Una prueba de penetración realizada por dos proveedores a la vez para poder compararlos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A collaborative exercise in which offensive and defensive teams work together in real time, so that each attack technique is immediately used to improve detection and response coverage.",
+          "es": "Un ejercicio colaborativo en el que los equipos ofensivo y defensivo trabajan juntos en tiempo real, de modo que cada técnica de ataque se aprovecha de inmediato para mejorar la cobertura de detección y respuesta."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Purple teaming is deliberate collaboration between offensive and defensive teams, where each technique executed is immediately used to build or tune a detection. It trades the realism of an unannounced red team for a much faster improvement loop.",
+          "es": "El purple teaming es la colaboración deliberada entre los equipos ofensivo y defensivo, donde cada técnica ejecutada se aprovecha de inmediato para construir o ajustar una detección. Cambia el realismo de un red team no anunciado por un ciclo de mejora mucho más rápido."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The practice of alternating red and blue team members between roles each quarter.",
+          "es": "La práctica de intercambiar cada trimestre a los miembros de los equipos rojo y azul."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-49",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A scan of a production database server must be scheduled. Which consideration is most relevant to choosing between an authenticated and an unauthenticated scan?",
+      "es": "Hay que programar un escaneo de un servidor de base de datos en producción. ¿Qué consideración es más relevante para elegir entre un escaneo autenticado y uno no autenticado?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Unauthenticated scans always produce more accurate results because they simulate a real attacker.",
+          "es": "Los escaneos no autenticados siempre dan resultados más precisos porque simulan a un atacante real."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Authenticated scans inspect the actual installed package and configuration state, giving far fewer false positives and better coverage of local weaknesses; unauthenticated scans show only what is exposed to an unprivileged network attacker.",
+          "es": "Los escaneos autenticados inspeccionan el estado real de los paquetes instalados y de la configuración, con muchísimos menos falsos positivos y mejor cobertura de las debilidades locales; los no autenticados solo muestran lo expuesto a un atacante de red sin privilegios."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "An authenticated scan sees the actual installed packages and configuration, which drastically reduces false positives and reveals local weaknesses. An unauthenticated scan sees only the external attack surface — useful, but a different question.",
+          "es": "Un escaneo autenticado ve los paquetes instalados y la configuración reales, lo que reduce drásticamente los falsos positivos y revela debilidades locales. Uno no autenticado ve solo la superficie de ataque externa: útil, pero responde a otra pregunta."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Authenticated scans cannot be run against databases.",
+          "es": "Los escaneos autenticados no pueden ejecutarse contra bases de datos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The choice makes no difference to results, only to scan duration.",
+          "es": "La elección no cambia los resultados, solo la duración del escaneo."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-50",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "In a penetration testing engagement, what is the purpose of the rules of engagement document?",
+      "es": "En un encargo de pruebas de penetración, ¿cuál es la finalidad del documento de reglas de compromiso (rules of engagement)?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To transfer legal liability for any damage to the testing provider.",
+          "es": "Transferir al proveedor de las pruebas la responsabilidad legal por cualquier daño."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To specify the CVSS scores that findings must be assigned.",
+          "es": "Especificar las puntuaciones CVSS que deben asignarse a los hallazgos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To define scope, permitted techniques, timing, escalation contacts and handling of sensitive findings — establishing the authorisation without which the testing would be unlawful access.",
+          "es": "Definir el alcance, las técnicas permitidas, los plazos, los contactos de escalado y el tratamiento de los hallazgos sensibles, estableciendo la autorización sin la cual las pruebas serían un acceso ilícito."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The rules of engagement define scope, permitted techniques, timing, escalation contacts and handling of findings, and they constitute the authorisation. Without that authorisation the same activity is unlawful access, which is why the document is a legal prerequisite and not paperwork.\n\n### Topic 3 — Security Architecture and Controls",
+          "es": "Las reglas de compromiso definen alcance, técnicas permitidas, plazos, contactos de escalado y tratamiento de los hallazgos, y constituyen la autorización. Sin esa autorización la misma actividad es un acceso ilícito, y por eso el documento es un requisito jurídico previo y no papeleo.\n\n### Topic 3 — Arquitectura de seguridad y controles"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To guarantee that no vulnerabilities will be found in out-of-scope systems.",
+          "es": "Garantizar que no se encontrarán vulnerabilidades en sistemas fuera de alcance."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Vulnerability Management and Security Testing"
+    ]
+  },
+  {
+    "id": "field-cyber-51",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What does the principle of \"secure by default\", as required of products with digital elements under the Cyber Resilience Act, actually require?",
+      "es": "¿Qué exige realmente el principio de «seguro por defecto» que el Reglamento de Ciberresiliencia impone a los productos con elementos digitales?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "That the product ships with all security features disabled so as not to impede installation.",
+          "es": "Que el producto se entregue con todas las funciones de seguridad desactivadas para no entorpecer la instalación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "That the product is certified at assurance level high.",
+          "es": "Que el producto esté certificado en el nivel de garantía alto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "That the product's source code is published.",
+          "es": "Que se publique el código fuente del producto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "That the product is delivered in a secure configuration out of the box — for example without default passwords and with unnecessary services and interfaces disabled — so that a user who changes nothing is still in a safe state.",
+          "es": "Que el producto se entregue con una configuración segura de fábrica —por ejemplo, sin contraseñas por defecto y con los servicios e interfaces innecesarios desactivados—, de modo que quien no cambie nada siga estando protegido."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Secure by default means the shipped configuration is already the safe one: no default passwords, unnecessary services and interfaces off. The test is whether a user who changes nothing is still protected — which is exactly the user the requirement exists for.",
+          "es": "Seguro por defecto significa que la configuración entregada ya es la segura: sin contraseñas por defecto y con los servicios e interfaces innecesarios apagados. La prueba es si quien no cambia nada sigue protegido, que es exactamente el usuario para el que existe el requisito."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-52",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An architecture review finds that a single firewall rule is the only control preventing access from a guest network to a database holding personal data. Which principle is being violated?",
+      "es": "Una revisión de arquitectura detecta que una única regla de cortafuegos es el único control que impide el acceso desde la red de invitados a una base de datos con datos personales. ¿Qué principio se está incumpliendo?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Least privilege.",
+          "es": "Mínimo privilegio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Separation of duties.",
+          "es": "Separación de funciones."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Defence in depth: a single point of failure protects the asset, so one misconfiguration or bypass fully exposes it, whereas independent layered controls would contain the failure.",
+          "es": "Defensa en profundidad: un único punto de fallo protege el activo, así que un error de configuración o una elusión lo exponen por completo, mientras que unos controles independientes en capas contendrían el fallo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "One control standing between a guest network and personal data is a single point of failure: one rule error or bypass and the asset is exposed. Defence in depth requires independent layers so that a single failure is contained.",
+          "es": "Un único control entre la red de invitados y unos datos personales es un punto único de fallo: basta un error en la regla o una elusión para exponer el activo. La defensa en profundidad exige capas independientes que contengan el fallo."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Fail-safe defaults.",
+          "es": "Valores por defecto seguros."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-53",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the function of privileged access management, and what outcome should it aim for?",
+      "es": "¿Cuál es la función de la gestión de accesos privilegiados y qué resultado debe perseguir?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To issue every administrator a permanent second account with standing domain administrator rights.",
+          "es": "Dar a cada administrador una segunda cuenta permanente con derechos fijos de administrador de dominio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To replace multi-factor authentication for administrators.",
+          "es": "Sustituir a la autenticación multifactor para los administradores."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To grant privileges based on seniority within the organisation.",
+          "es": "Conceder privilegios en función de la antigüedad en la organización."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To control, monitor and time-limit privileged access — vaulting credentials, recording sessions and granting elevation just in time — with the aim of eliminating standing privilege.",
+          "es": "Controlar, vigilar y limitar en el tiempo el acceso privilegiado —custodiando credenciales, grabando sesiones y concediendo la elevación justo a tiempo— con el objetivo de eliminar el privilegio permanente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "PAM vaults credentials, records sessions and grants elevation just in time, and its goal is the elimination of standing privilege. Permanent administrator accounts are the condition PAM exists to remove, not a form of it.",
+          "es": "El PAM custodia credenciales, graba sesiones y concede elevación justo a tiempo, y su objetivo es eliminar el privilegio permanente. Las cuentas de administrador permanentes son la condición que el PAM existe para suprimir, no una forma de PAM."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-54",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement about network micro-segmentation is correct?",
+      "es": "¿Qué afirmación sobre la microsegmentación de red es correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It replaces the need for identity-based access controls.",
+          "es": "Sustituye la necesidad de controles de acceso basados en identidad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It is a synonym for zero trust.",
+          "es": "Es sinónimo de zero trust."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It applies only to physical networks and cannot be implemented in virtualised or cloud environments.",
+          "es": "Solo se aplica a redes físicas y no puede implantarse en entornos virtualizados o en la nube."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It limits lateral movement by enforcing fine-grained policy between workloads rather than only at the network perimeter, so a compromise of one workload does not grant reachability to the rest.",
+          "es": "Limita el movimiento lateral aplicando políticas de grano fino entre cargas de trabajo y no solo en el perímetro de la red, de modo que comprometer una carga de trabajo no da alcance al resto."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Micro-segmentation enforces policy between workloads rather than only at the perimeter, so compromising one workload does not yield reachability to the rest. It is a means towards zero trust, not a synonym for it, and it applies as much in cloud as on physical networks.",
+          "es": "La microsegmentación aplica política entre cargas de trabajo y no solo en el perímetro, así que comprometer una carga no da alcance al resto. Es un medio para el zero trust, no un sinónimo, y se aplica tanto en la nube como en redes físicas."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-55",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A control that records administrator actions to an append-only log falls into which category?",
+      "es": "Un control que registra las acciones de los administradores en un registro de solo anexado, ¿en qué categoría entra?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A detective control, because it enables unauthorised or erroneous actions to be discovered after the fact; it does not by itself stop them.",
+          "es": "Control detectivo, porque permite descubrir a posteriori acciones no autorizadas o erróneas; por sí mismo no las impide."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Logging is detective: it enables discovery after the fact and supports investigation, but it does not itself stop the action. Assuming that recording an action prevents it is a category error between control types.\n\n### Topic 4 — Cryptography, Secure Development and DevSecOps",
+          "es": "El registro es detectivo: permite descubrir a posteriori y sustenta la investigación, pero no impide por sí mismo la acción. Suponer que registrar una acción la previene es un error de categoría entre tipos de control.\n\n### Topic 4 — Criptografía, desarrollo seguro y DevSecOps"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A preventive control, because administrators will behave better.",
+          "es": "Control preventivo, porque los administradores se comportarán mejor."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A corrective control, because it restores the previous state.",
+          "es": "Control correctivo, porque restaura el estado anterior."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A physical control.",
+          "es": "Control físico."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Architecture and Controls"
+    ]
+  },
+  {
+    "id": "field-cyber-56",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "How should user passwords be stored?",
+      "es": "¿Cómo deben almacenarse las contraseñas de los usuarios?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Hashed with a deliberately slow, salted, memory-hard function such as Argon2, scrypt or bcrypt, so that offline cracking of a stolen database is computationally expensive and identical passwords do not produce identical hashes.",
+          "es": "Con un hash generado por una función deliberadamente lenta, con sal y de uso intensivo de memoria, como Argon2, scrypt o bcrypt, de modo que descifrarlas sin conexión desde una base de datos robada resulte costoso y dos contraseñas iguales no produzcan el mismo hash."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Passwords must be hashed — never reversibly encrypted, since recovery is not a requirement — with a salted, deliberately slow, memory-hard function such as Argon2, scrypt or bcrypt. Salting defeats precomputation and ensures identical passwords do not share a hash; slowness makes offline cracking expensive.",
+          "es": "Las contraseñas deben almacenarse con hash —nunca cifradas de forma reversible, ya que recuperarlas no es un requisito— usando una función con sal, deliberadamente lenta y de uso intensivo de memoria, como Argon2, scrypt o bcrypt. La sal derrota al cálculo previo y evita que dos contraseñas iguales compartan hash; la lentitud encarece el descifrado sin conexión."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Encrypted with AES using a key held in the application configuration, so they can be recovered if a user forgets.",
+          "es": "Cifradas con AES usando una clave guardada en la configuración de la aplicación, para poder recuperarlas si un usuario las olvida."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Hashed with a single pass of a fast general-purpose hash such as SHA-256, without salt.",
+          "es": "Con un hash de una sola pasada de una función rápida de propósito general como SHA-256, sin sal."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "In plaintext, protected by database access controls alone.",
+          "es": "En texto claro, protegidas únicamente por los controles de acceso de la base de datos."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-57",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the primary security motivation behind current post-quantum cryptography migration efforts?",
+      "es": "¿Cuál es la principal motivación de seguridad detrás de los actuales trabajos de migración a criptografía poscuántica?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The \"harvest now, decrypt later\" risk: adversaries can record encrypted traffic today and decrypt it once a cryptographically relevant quantum computer exists, so data with a long confidentiality lifetime is at risk now.",
+          "es": "El riesgo de «recolectar ahora, descifrar después»: un adversario puede grabar hoy tráfico cifrado y descifrarlo cuando exista un ordenador cuántico criptográficamente relevante, de modo que los datos con una vida útil larga de confidencialidad ya están en riesgo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The driver is \"harvest now, decrypt later\": traffic recorded today can be decrypted once a cryptographically relevant quantum computer exists. Anything with a long confidentiality lifetime is therefore already exposed, which is why migration is starting well before such machines exist.",
+          "es": "El motor es «recolectar ahora, descifrar después»: el tráfico grabado hoy puede descifrarse cuando exista un ordenador cuántico criptográficamente relevante. Todo lo que tenga una vida útil larga de confidencialidad ya está expuesto, y por eso la migración empieza mucho antes de que existan esas máquinas."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Quantum computers already break AES-256 in practice.",
+          "es": "Los ordenadores cuánticos ya rompen AES-256 en la práctica."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Post-quantum algorithms are faster than classical ones, improving performance.",
+          "es": "Los algoritmos poscuánticos son más rápidos que los clásicos y mejoran el rendimiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Regulators have prohibited the use of elliptic curve cryptography.",
+          "es": "Los reguladores han prohibido el uso de criptografía de curva elíptica."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-58",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why are hardware security modules used for key management?",
+      "es": "¿Por qué se usan módulos de seguridad hardware (HSM) para la gestión de claves?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because they encrypt data faster than software implementations in all cases.",
+          "es": "Porque cifran datos más rápido que las implementaciones en software en todos los casos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because they eliminate the need for key rotation.",
+          "es": "Porque eliminan la necesidad de rotar las claves."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because they are required for TLS 1.3.",
+          "es": "Porque son obligatorios para TLS 1.3."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because they generate, store and use private keys inside tamper-resistant hardware from which the key material cannot be exported in plaintext, so compromise of the host operating system does not yield the keys.",
+          "es": "Porque generan, almacenan y utilizan las claves privadas dentro de un hardware resistente a manipulaciones del que el material de clave no puede exportarse en claro, de modo que comprometer el sistema operativo del anfitrión no entrega las claves."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "An HSM generates and uses keys inside tamper-resistant hardware and does not export key material in plaintext, so compromising the host operating system does not yield the keys. It does not remove the need for rotation or for the rest of the key lifecycle.",
+          "es": "Un HSM genera y usa las claves dentro de hardware resistente a manipulaciones y no exporta el material de clave en claro, así que comprometer el sistema operativo del anfitrión no entrega las claves. No suprime la necesidad de rotación ni del resto del ciclo de vida de la clave."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-59",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is threat modelling, and when in the software lifecycle does it deliver most value?",
+      "es": "¿Qué es el modelado de amenazas y en qué momento del ciclo de vida del software aporta más valor?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A penetration test performed immediately before release.",
+          "es": "Una prueba de penetración realizada justo antes del lanzamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The process of assigning CVSS scores to discovered vulnerabilities.",
+          "es": "El proceso de asignar puntuaciones CVSS a las vulnerabilidades descubiertas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A review of the threat intelligence feed carried out monthly by the SOC.",
+          "es": "Una revisión mensual del canal de inteligencia de amenazas por parte del SOC."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A structured analysis of what could go wrong with a design — its assets, entry points, trust boundaries and abuse cases, often using STRIDE — performed at design time, when architectural fixes are still cheap.",
+          "es": "Un análisis estructurado de qué puede salir mal en un diseño —sus activos, puntos de entrada, fronteras de confianza y casos de abuso, a menudo con STRIDE— realizado en fase de diseño, cuando una corrección arquitectónica todavía es barata."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Threat modelling is a design-time analysis of assets, entry points, trust boundaries and abuse cases, commonly structured with STRIDE. Its value is highest before code exists, because that is when an architectural fix costs least.",
+          "es": "El modelado de amenazas es un análisis en fase de diseño de activos, puntos de entrada, fronteras de confianza y casos de abuso, habitualmente estructurado con STRIDE. Su valor es máximo antes de que exista el código, porque es cuando una corrección arquitectónica cuesta menos."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-60",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A CI/CD pipeline stores its cloud deployment credentials as plaintext environment variables in the build configuration file, which is committed to the repository. What is the principal risk?",
+      "es": "Una cadena de integración y despliegue continuos guarda sus credenciales de despliegue en la nube como variables de entorno en texto claro dentro del fichero de configuración de la construcción, que está en el repositorio. ¿Cuál es el riesgo principal?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Build performance is degraded by reading environment variables.",
+          "es": "El rendimiento de la construcción se degrada al leer variables de entorno."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Environment variables cannot be used by deployment tooling.",
+          "es": "Las variables de entorno no pueden usarlas las herramientas de despliegue."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Anyone with read access to the repository — including its history, forks and any future public exposure — obtains credentials that grant deployment rights; secrets must be held in a dedicated secret manager and injected at run time, and any exposed credential must be rotated, not merely deleted.",
+          "es": "Cualquiera con acceso de lectura al repositorio —incluido su histórico, sus bifurcaciones y cualquier exposición pública futura— obtiene credenciales con derechos de despliegue; los secretos deben residir en un gestor de secretos e inyectarse en tiempo de ejecución, y toda credencial expuesta debe rotarse, no solo borrarse."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Committed secrets are exposed to everyone with repository access and remain in history, forks and clones. They must live in a secret manager and be injected at run time — and once exposed, a credential must be rotated, since deleting the file does not undo the disclosure.\n\n### Topic 5 — Security Monitoring, Detection and Threat Intelligence",
+          "es": "Los secretos versionados quedan expuestos a todo el que tenga acceso al repositorio y permanecen en el histórico, las bifurcaciones y los clones. Deben vivir en un gestor de secretos e inyectarse en tiempo de ejecución y, una vez expuesta, una credencial debe rotarse, porque borrar el fichero no deshace la divulgación.\n\n### Topic 5 — Monitorización, detección e inteligencia de amenazas"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "There is no risk provided the repository is private today.",
+          "es": "No hay riesgo siempre que el repositorio sea privado a día de hoy."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Cryptography, Secure Development and DevSecOps"
+    ]
+  },
+  {
+    "id": "field-cyber-61",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A detection rule is tuned so aggressively that it almost never fires. Which risk has increased, and why does it matter?",
+      "es": "Una regla de detección se ajusta de forma tan agresiva que casi nunca se dispara. ¿Qué riesgo ha aumentado y por qué importa?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "False negatives — genuine attacks now pass unnoticed — and the harm is compounded because the absence of alerts is easily mistaken for the absence of attacks.",
+          "es": "Los falsos negativos —los ataques reales pasan ahora inadvertidos— y el daño se agrava porque la ausencia de alertas se confunde fácilmente con la ausencia de ataques."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Over-tuning raises false negatives: real attacks now pass silently. The compounding harm is that silence is easily read as safety, so an over-tuned rule looks like a well-behaved one on every dashboard that counts alerts.",
+          "es": "Ajustar de más eleva los falsos negativos: los ataques reales pasan ahora en silencio. El daño se agrava porque el silencio se lee fácilmente como seguridad, así que una regla sobreajustada parece una regla ejemplar en cualquier panel que cuente alertas."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "False positives, because analysts will be overwhelmed.",
+          "es": "Los falsos positivos, porque los analistas quedarán desbordados."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Log storage cost, because fewer alerts means more raw logs retained.",
+          "es": "El coste de almacenamiento de registros, porque menos alertas implica conservar más registros en bruto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "None; a quiet rule is a well-tuned rule.",
+          "es": "Ninguno; una regla silenciosa es una regla bien ajustada."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-62",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which pair correctly distinguishes an indicator of compromise from a tactic, technique or procedure?",
+      "es": "¿Qué par distingue correctamente un indicador de compromiso de una táctica, técnica o procedimiento?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "An IoC describes how an adversary operates; a TTP is a specific artefact such as a file hash.",
+          "es": "Un IoC describe cómo opera un adversario; una TTP es un artefacto concreto como el hash de un fichero."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are the same thing at different levels of confidence.",
+          "es": "Son lo mismo con distintos niveles de confianza."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An IoC is an observable artefact associated with a compromise, such as a hash, domain or registry key; a TTP describes the adversary's behaviour and method, which is far more stable across campaigns.",
+          "es": "Un IoC es un artefacto observable asociado a un compromiso, como un hash, un dominio o una clave del registro; una TTP describe el comportamiento y el método del adversario, que es mucho más estable entre campañas."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "An IoC is an artefact of a past compromise — a hash, a domain, a registry key. A TTP describes how the adversary operates. Indicators expire quickly; behaviour is durable, which is why intelligence programmes that only consume indicator feeds plateau.",
+          "es": "Un IoC es un artefacto de un compromiso pasado: un hash, un dominio, una clave del registro. Una TTP describe cómo opera el adversario. Los indicadores caducan enseguida; el comportamiento es duradero, y por eso los programas de inteligencia que solo consumen canales de indicadores se estancan."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "IoCs are used by strategic intelligence and TTPs by technical intelligence.",
+          "es": "Los IoC los usa la inteligencia estratégica y las TTP la inteligencia técnica."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-63",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Threat intelligence is being prepared for the management body to inform next year's investment priorities. Which type is appropriate?",
+      "es": "Se está preparando inteligencia de amenazas para que el órgano de dirección oriente las prioridades de inversión del año que viene. ¿Qué tipo es el adecuado?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Technical intelligence: current indicator feeds for ingestion into detection tooling.",
+          "es": "Inteligencia técnica: canales de indicadores actuales para ingerir en las herramientas de detección."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Tactical intelligence: detailed TTP breakdowns mapped to ATT&CK.",
+          "es": "Inteligencia táctica: desglose detallado de TTP mapeado sobre ATT&CK."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Operational intelligence: details of a specific ongoing campaign.",
+          "es": "Inteligencia operativa: detalles de una campaña concreta en curso."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Strategic intelligence: analysis of the threat landscape, actor motivations and trends relevant to the organisation's sector and risk exposure, expressed in business terms.",
+          "es": "Inteligencia estratégica: análisis del panorama de amenazas, de las motivaciones de los actores y de las tendencias relevantes para el sector y la exposición al riesgo de la organización, expresado en términos de negocio."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A management body deciding investment needs strategic intelligence: threat landscape, actor motivation and trend analysis in business terms. Indicator feeds and ATT&CK breakdowns are the right product for tooling and defenders, not for an investment decision.",
+          "es": "Un órgano de dirección que decide inversiones necesita inteligencia estratégica: panorama de amenazas, motivación de los actores y análisis de tendencias en términos de negocio. Los canales de indicadores y los desgloses de ATT&CK son el producto adecuado para las herramientas y los defensores, no para una decisión de inversión."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-64",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What are STIX and TAXII?",
+      "es": "¿Qué son STIX y TAXII?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Two competing threat intelligence platforms sold by different vendors.",
+          "es": "Dos plataformas de inteligencia de amenazas de la competencia, vendidas por fabricantes distintos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "STIX is an encryption standard and TAXII an authentication protocol.",
+          "es": "STIX es un estándar de cifrado y TAXII un protocolo de autenticación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "STIX is a structured language for representing threat intelligence; TAXII is the protocol for exchanging it — together enabling automated, machine-readable sharing between organisations.",
+          "es": "STIX es un lenguaje estructurado para representar inteligencia de amenazas; TAXII es el protocolo para intercambiarla — juntos permiten compartirla de forma automatizada y legible por máquina entre organizaciones."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "STIX is the structured language for describing threat intelligence; TAXII is the protocol for transporting it. Together they make automated machine-to-machine sharing possible, which is the point of standardising both representation and exchange.",
+          "es": "STIX es el lenguaje estructurado para describir inteligencia de amenazas; TAXII es el protocolo para transportarla. Juntos hacen posible el intercambio automatizado de máquina a máquina, que es el objetivo de normalizar tanto la representación como el intercambio."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Two assurance levels defined by the Cybersecurity Act.",
+          "es": "Dos niveles de garantía definidos por el Reglamento de Ciberseguridad."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-65",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An adversary compromises a host, then uses valid stolen credentials and built-in system administration tools to move to other hosts. Why is this technique — often called \"living off the land\" — particularly difficult to detect?",
+      "es": "Un adversario compromete un equipo y después usa credenciales robadas válidas y herramientas de administración propias del sistema para moverse a otros equipos. ¿Por qué es esta técnica —conocida como «vivir de la tierra»— especialmente difícil de detectar?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because no malicious binary is introduced: the activity uses legitimate credentials and administrative utilities that administrators also use routinely, so detection must rest on behavioural context rather than on identifying malicious files.",
+          "es": "Porque no se introduce ningún binario malicioso: la actividad usa credenciales legítimas y utilidades de administración que los propios administradores emplean a diario, así que la detección debe apoyarse en el contexto del comportamiento y no en identificar ficheros maliciosos."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Living off the land introduces no malicious binary: valid credentials and legitimate administrative tooling do the work, so file-based detection has nothing to match. Detection has to rest on behavioural context — who, from where, at what hour, doing what that they never do.\n\n### Topic 6 — Incident Response and Digital Forensics",
+          "es": "Vivir de la tierra no introduce ningún binario malicioso: el trabajo lo hacen credenciales válidas y herramientas de administración legítimas, así que la detección basada en ficheros no tiene nada con qué comparar. La detección tiene que apoyarse en el contexto del comportamiento: quién, desde dónde, a qué hora y haciendo qué que nunca hace.\n\n### Topic 6 — Respuesta a incidentes y análisis forense digital"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because the tools used are always encrypted.",
+          "es": "Porque las herramientas empleadas están siempre cifradas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because such activity generates no logs of any kind.",
+          "es": "Porque esa actividad no genera registro alguno."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because antivirus software is disabled by default on servers.",
+          "es": "Porque el antivirus viene desactivado por defecto en los servidores."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Monitoring, Detection and Threat Intelligence"
+    ]
+  },
+  {
+    "id": "field-cyber-66",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement correctly distinguishes an event, an alert and an incident?",
+      "es": "¿Qué afirmación distingue correctamente un evento, una alerta y un incidente?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They are three words for the same thing, used by different teams.",
+          "es": "Son tres palabras para lo mismo, usadas por equipos distintos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "An incident is any event recorded in a log; an alert is an incident that has been closed.",
+          "es": "Un incidente es cualquier evento registrado en un log; una alerta es un incidente ya cerrado."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An event is always malicious; an alert is always benign.",
+          "es": "Un evento es siempre malicioso; una alerta es siempre benigna."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "An event is any observable occurrence in a system or network; an alert is an event that a detection has flagged for human attention; an incident is an occurrence that actually or imminently jeopardises confidentiality, integrity or availability and requires response.",
+          "es": "Un evento es cualquier suceso observable en un sistema o una red; una alerta es un evento que una detección ha señalado para que lo mire una persona; un incidente es un suceso que compromete, real o inminentemente, la confidencialidad, la integridad o la disponibilidad y exige respuesta."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "An event is any observable occurrence; an alert is an event a detection flagged for attention; an incident actually or imminently jeopardises confidentiality, integrity or availability. Collapsing the three is what produces both alert fatigue and under-declared incidents.",
+          "es": "Un evento es cualquier suceso observable; una alerta es un evento que una detección ha señalado; un incidente compromete, real o inminentemente, la confidencialidad, la integridad o la disponibilidad. Fundir los tres es lo que produce a la vez fatiga de alertas e incidentes sin declarar."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-67",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "During containment, what is the principal trade-off in immediately powering off a compromised server?",
+      "es": "Durante la contención, ¿cuál es la disyuntiva principal de apagar de inmediato un servidor comprometido?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It stops the damage but destroys volatile evidence — memory contents, encryption keys, running processes and network connections — and may alert the adversary, so the decision must weigh evidential and intelligence value against ongoing harm.",
+          "es": "Detiene el daño pero destruye la evidencia volátil —contenido de la memoria, claves de cifrado, procesos en ejecución y conexiones de red— y puede alertar al adversario, así que la decisión debe sopesar el valor probatorio y de inteligencia frente al perjuicio en curso."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Powering off stops the damage but destroys memory-resident evidence — keys, injected code, live connections — and can tip off the adversary. The decision is a genuine trade-off between limiting harm and preserving the ability to understand what happened.",
+          "es": "Apagar detiene el daño pero destruye la evidencia residente en memoria —claves, código inyectado, conexiones vivas— y puede alertar al adversario. La decisión es una disyuntiva real entre limitar el perjuicio y conservar la capacidad de entender qué ocurrió."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "There is none; powering off is always the correct first action.",
+          "es": "No hay ninguna; apagar es siempre la primera acción correcta."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It preserves all evidence but allows the attack to continue.",
+          "es": "Preserva toda la evidencia pero permite que el ataque continúe."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It is prohibited by the GDPR.",
+          "es": "Está prohibido por el RGPD."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-68",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why is forensic analysis performed on a verified image rather than on the original media?",
+      "es": "¿Por qué el análisis forense se realiza sobre una imagen verificada y no sobre el soporte original?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because images are faster to search than physical disks.",
+          "es": "Porque las imágenes son más rápidas de buscar que los discos físicos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because original media cannot be connected to forensic workstations.",
+          "es": "Porque los soportes originales no pueden conectarse a estaciones de trabajo forenses."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because analysis alters the medium it examines, so working on a bit-for-bit copy — with cryptographic hashes taken before and after to prove the copy is faithful and unaltered — preserves the original as evidence.",
+          "es": "Porque el análisis altera el soporte que examina, de modo que trabajar sobre una copia bit a bit —con hashes tomados antes y después para demostrar que la copia es fiel y no ha sido alterada— preserva el original como evidencia."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Analysis alters what it touches, so work is done on a bit-for-bit image with hashes taken before and after to prove fidelity. The original is preserved untouched as evidence; imaging is a preservation step, not a cleaning step.",
+          "es": "El análisis altera lo que toca, así que se trabaja sobre una imagen bit a bit con hashes tomados antes y después para demostrar su fidelidad. El original se conserva intacto como evidencia; obtener la imagen es un paso de preservación, no de limpieza."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because imaging automatically removes malware from the copy.",
+          "es": "Porque el proceso de obtener la imagen elimina automáticamente el malware de la copia."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-69",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the purpose of the post-incident activity phase, and why is it the phase most often neglected?",
+      "es": "¿Cuál es la finalidad de la fase posterior al incidente y por qué es la que más se descuida?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To assign disciplinary responsibility for the incident; it is neglected because it is unpopular.",
+          "es": "Determinar responsabilidades disciplinarias por el incidente; se descuida porque es impopular."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To calculate the financial loss for the insurer; it is neglected because insurers rarely ask.",
+          "es": "Calcular la pérdida económica para la aseguradora; se descuida porque las aseguradoras rara vez lo piden."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To review what happened and how the response performed, and to feed concrete improvements back into preparation — detections, playbooks, architecture and training; it is neglected because it happens after the pressure has lifted and produces no visible immediate output.",
+          "es": "Revisar qué ocurrió y cómo funcionó la respuesta, y devolver mejoras concretas a la fase de preparación —detecciones, playbooks, arquitectura y formación—; se descuida porque llega cuando la presión ya ha pasado y no produce ningún resultado visible inmediato."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Post-incident activity converts an incident into improvements to detections, playbooks, architecture and training. It is skipped because it happens once the pressure is off and produces nothing visible — which is exactly why the same incident recurs.",
+          "es": "La actividad posterior al incidente convierte un incidente en mejoras de detecciones, playbooks, arquitectura y formación. Se omite porque llega cuando la presión ya ha pasado y no produce nada visible, que es exactamente la razón por la que el mismo incidente se repite."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To notify the regulator; it is neglected because notification is voluntary.",
+          "es": "Notificar al regulador; se descuida porque la notificación es voluntaria."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-70",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A tabletop exercise is scheduled for the ransomware playbook. What is it, and what does it validate?",
+      "es": "Se programa un ejercicio de mesa para el playbook de ransomware. ¿Qué es y qué valida?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A full failover of production systems to the disaster recovery site, validating technical recovery capability.",
+          "es": "Una conmutación completa de los sistemas de producción al centro de recuperación, que valida la capacidad técnica de recuperación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "An automated replay of attack traffic against the production network.",
+          "es": "Una reproducción automatizada de tráfico de ataque contra la red de producción."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A compliance audit of backup retention periods.",
+          "es": "Una auditoría de cumplimiento de los periodos de retención de las copias de seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A discussion-based walkthrough of a scenario with the people who would actually respond, validating decision-making, roles, escalation paths and the practicality of the playbook — without touching production systems.",
+          "es": "Un recorrido del escenario, basado en la discusión, con las personas que responderían de verdad, que valida la toma de decisiones, los roles, las vías de escalado y la viabilidad práctica del playbook — sin tocar los sistemas de producción."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A tabletop is a discussion-based walkthrough with the people who would actually respond, validating decisions, roles, escalation and whether the playbook survives contact with reality. It deliberately does not touch production, which is what makes it cheap enough to run often.\n\n### Topic 7 — EU Cybersecurity Law, Policy and Governance",
+          "es": "Un ejercicio de mesa es un recorrido basado en la discusión con quienes responderían de verdad, y valida decisiones, roles, escalado y si el playbook sobrevive al contacto con la realidad. Deliberadamente no toca producción, y eso es lo que lo hace lo bastante barato como para repetirlo a menudo.\n\n### Topic 7 — Derecho, política y gobernanza de la ciberseguridad en la UE"
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Incident Response and Digital Forensics"
+    ]
+  },
+  {
+    "id": "field-cyber-71",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the principal subject matter of Regulation (EU) 2024/2847, the Cyber Resilience Act?",
+      "es": "¿Cuál es el objeto principal del Reglamento (UE) 2024/2847, el Reglamento de Ciberresiliencia?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Horizontal cybersecurity requirements for products with digital elements placed on the Union market — including secure-by-default configuration, vulnerability handling with security updates over a defined support period, an SBOM, and reporting of actively exploited vulnerabilities.",
+          "es": "Requisitos horizontales de ciberseguridad para los productos con elementos digitales introducidos en el mercado de la Unión — incluida la configuración segura por defecto, el tratamiento de vulnerabilidades con actualizaciones de seguridad durante un periodo de soporte definido, un SBOM y la notificación de las vulnerabilidades explotadas activamente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The Cyber Resilience Act is horizontal product regulation: essential cybersecurity requirements for products with digital elements, secure-by-default configuration, vulnerability handling with updates over a defined support period, an SBOM, and reporting of actively exploited vulnerabilities. NIS2 covers entities; the CRA covers products.",
+          "es": "El Reglamento de Ciberresiliencia es regulación horizontal de producto: requisitos esenciales de ciberseguridad para productos con elementos digitales, configuración segura por defecto, tratamiento de vulnerabilidades con actualizaciones durante un periodo de soporte definido, un SBOM y notificación de las vulnerabilidades explotadas activamente. La NIS2 cubre entidades; el Reglamento de Ciberresiliencia cubre productos."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The security obligations of operators of essential services in critical sectors.",
+          "es": "Las obligaciones de seguridad de los operadores de servicios esenciales en sectores críticos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The processing of personal data by online platforms.",
+          "es": "El tratamiento de datos personales por parte de las plataformas en línea."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The certification of cloud service providers at assurance level high.",
+          "es": "La certificación de los proveedores de servicios en la nube en el nivel de garantía alto."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-72",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement about NIS2 and management bodies is correct?",
+      "es": "¿Qué afirmación sobre la NIS2 y los órganos de dirección es correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "NIS2 addresses only technical staff and creates no obligation at management level.",
+          "es": "La NIS2 se dirige solo al personal técnico y no crea ninguna obligación a nivel directivo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Management bodies must approve the cybersecurity risk-management measures, oversee their implementation and follow training, and can be held liable for infringements — deliberately placing accountability at board level.",
+          "es": "Los órganos de dirección deben aprobar las medidas de gestión del riesgo de ciberseguridad, supervisar su aplicación y recibir formación, y pueden ser considerados responsables de los incumplimientos — situando deliberadamente la responsabilidad en el consejo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "NIS2 deliberately places accountability at management level: the management body approves the risk-management measures, oversees implementation, must follow training, and can be held liable. Treating it as a purely technical obligation misses its central design choice.",
+          "es": "La NIS2 sitúa deliberadamente la responsabilidad en el nivel directivo: el órgano de dirección aprueba las medidas de gestión del riesgo, supervisa su aplicación, debe recibir formación y puede ser considerado responsable. Tratarla como una obligación puramente técnica pasa por alto su decisión de diseño central."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Management bodies are required to hold a recognised technical certification.",
+          "es": "Los órganos de dirección deben poseer una certificación técnica reconocida."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Liability under NIS2 falls exclusively on the chief information security officer.",
+          "es": "La responsabilidad conforme a la NIS2 recae exclusivamente en el responsable de seguridad de la información."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-73",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An EU institution — as opposed to a Member State entity — is subject to which instrument for its own internal cybersecurity?",
+      "es": "Una institución de la UE —a diferencia de una entidad de un Estado miembro— está sujeta a qué instrumento para su propia ciberseguridad interna?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "NIS2, directly and without transposition.",
+          "es": "A la NIS2, directamente y sin transposición."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Regulation (EU, Euratom) 2023/2841, which lays down measures for a high common level of cybersecurity across the Union's institutions, bodies, offices and agencies, and puts CERT-EU on a permanent footing.",
+          "es": "Al Reglamento (UE, Euratom) 2023/2841, que establece medidas destinadas a garantizar un elevado nivel común de ciberseguridad en las instituciones, órganos y organismos de la Unión y da carácter permanente a CERT-EU."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Regulation (EU, Euratom) 2023/2841 governs cybersecurity within the Union's own institutions, bodies, offices and agencies and puts CERT-EU on a permanent footing. NIS2 addresses entities in the Member States and requires national transposition.",
+          "es": "El Reglamento (UE, Euratom) 2023/2841 rige la ciberseguridad dentro de las propias instituciones, órganos y organismos de la Unión y da carácter permanente a CERT-EU. La NIS2 se dirige a las entidades de los Estados miembros y requiere transposición nacional."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The Cyber Resilience Act, as a manufacturer of digital products.",
+          "es": "Al Reglamento de Ciberresiliencia, en calidad de fabricante de productos digitales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "DORA, as a financial entity.",
+          "es": "A DORA, en calidad de entidad financiera."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-74",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Under the GDPR, when must a personal data breach be communicated to the affected individuals themselves?",
+      "es": "Conforme al RGPD, ¿cuándo debe comunicarse una violación de datos personales a los propios afectados?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Always, within 72 hours, in every case.",
+          "es": "Siempre, en 72 horas, en todos los casos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Only if the supervisory authority orders it after its investigation.",
+          "es": "Solo si la autoridad de control lo ordena tras su investigación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "When the breach is likely to result in a *high* risk to the rights and freedoms of natural persons — a higher threshold than the one triggering notification to the supervisory authority — and without undue delay.",
+          "es": "Cuando sea probable que la violación entrañe un *alto* riesgo para los derechos y libertades de las personas físicas —un umbral más elevado que el que activa la notificación a la autoridad de control— y sin dilación indebida."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Notification to the supervisory authority is triggered unless the breach is unlikely to result in risk; communication to the individuals is triggered only by *high* risk. The two thresholds are different, and conflating them either over-notifies people or under-notifies the regulator.",
+          "es": "La notificación a la autoridad de control se activa salvo que sea improbable que la violación entrañe un riesgo; la comunicación a los interesados solo se activa ante un riesgo *alto*. Los dos umbrales son distintos, y confundirlos lleva a avisar de más a las personas o de menos al regulador."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Never; communication is made solely to the supervisory authority.",
+          "es": "Nunca; la comunicación se hace únicamente a la autoridad de control."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-75",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the function of the CSIRTs Network and of EU-CyCLONe?",
+      "es": "¿Cuál es la función de la red de CSIRT y la de EU-CyCLONe?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Both are operational teams that respond to incidents inside the EU institutions.",
+          "es": "Ambas son equipos operativos que responden a incidentes dentro de las instituciones de la UE."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The CSIRTs Network certifies products, and EU-CyCLONe supervises essential entities.",
+          "es": "La red de CSIRT certifica productos y EU-CyCLONe supervisa a las entidades esenciales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The CSIRTs Network links national computer security incident response teams for operational cooperation and information sharing, while EU-CyCLONe supports coordinated management of large-scale cybersecurity incidents and crises at the political–operational level.",
+          "es": "La red de CSIRT conecta a los equipos nacionales de respuesta a incidentes de seguridad informática para la cooperación operativa y el intercambio de información, mientras que EU-CyCLONe apoya la gestión coordinada de incidentes y crisis de ciberseguridad a gran escala en el nivel político-operativo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The CSIRTs Network is operational cooperation between national response teams. EU-CyCLONe operates at the political–operational level for large-scale incidents and crises. They sit at different altitudes of the same coordination architecture.\n\n### Topic 8 — Identity, Access Management and Trust Services",
+          "es": "La red de CSIRT es cooperación operativa entre equipos nacionales de respuesta. EU-CyCLONe opera en el nivel político-operativo para incidentes y crisis a gran escala. Están a alturas distintas de la misma arquitectura de coordinación.\n\n### Topic 8 — Identidad, gestión de accesos y servicios de confianza"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They are the former and current names of the same body.",
+          "es": "Son el nombre antiguo y el actual del mismo organismo."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Cybersecurity Law, Policy and Governance"
+    ]
+  },
+  {
+    "id": "field-cyber-76",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why are FIDO2/WebAuthn credentials described as phishing-resistant, whereas SMS one-time codes are not?",
+      "es": "¿Por qué se dice que las credenciales FIDO2/WebAuthn son resistentes al phishing y los códigos de un solo uso por SMS no?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because FIDO2 codes are longer and therefore harder to guess.",
+          "es": "Porque los códigos FIDO2 son más largos y, por tanto, más difíciles de adivinar."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because the FIDO2 credential is cryptographically bound to the origin of the legitimate site, so a proxied phishing page cannot obtain a usable assertion; an SMS code is a shared secret the victim can be induced to type into an attacker's page, and is additionally exposed to SIM swapping and interception.",
+          "es": "Porque la credencial FIDO2 está vinculada criptográficamente al origen del sitio legítimo, de modo que una página de phishing intermediaria no puede obtener una aserción utilizable; un código SMS es un secreto compartido que se puede inducir a la víctima a teclear en la página del atacante, y además está expuesto al intercambio de SIM y a la interceptación."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A FIDO2 credential is cryptographically bound to the legitimate site's origin, so a proxied phishing page cannot obtain a usable assertion. An SMS code is a shared secret the victim can be talked into typing anywhere, and is additionally exposed to SIM swapping and interception.",
+          "es": "Una credencial FIDO2 está vinculada criptográficamente al origen del sitio legítimo, de modo que una página de phishing intermediaria no puede obtener una aserción utilizable. Un código SMS es un secreto compartido que se puede convencer a la víctima de teclear en cualquier sitio, y además está expuesto al intercambio de SIM y a la interceptación."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because SMS messages are transmitted unencrypted while FIDO2 uses TLS.",
+          "es": "Porque los mensajes SMS se transmiten sin cifrar mientras que FIDO2 usa TLS."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because FIDO2 requires biometric verification in all cases.",
+          "es": "Porque FIDO2 exige verificación biométrica en todos los casos."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-77",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Modern password guidance has moved away from forced periodic rotation for user accounts. Why?",
+      "es": "Las recomendaciones actuales sobre contraseñas se han alejado de la rotación periódica obligatoria para las cuentas de usuario. ¿Por qué?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because mandatory frequent rotation drives predictable, weaker passwords and reuse patterns without meaningfully reducing risk; the effort is better spent on length, screening against known-breached passwords, and multi-factor authentication — with rotation reserved for evidence of compromise.",
+          "es": "Porque la rotación frecuente obligatoria induce contraseñas predecibles y más débiles y patrones de reutilización sin reducir el riesgo de forma apreciable; el esfuerzo rinde más en longitud, cotejo con contraseñas comprometidas conocidas y autenticación multifactor, reservando la rotación para cuando haya indicios de compromiso."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Forced frequent rotation produces predictable variations and reuse without measurably reducing risk. Current guidance favours length, screening against known-breached passwords and multi-factor authentication, reserving rotation for evidence of compromise.",
+          "es": "La rotación frecuente obligatoria produce variaciones predecibles y reutilización sin reducir el riesgo de forma medible. Las recomendaciones actuales favorecen la longitud, el cotejo con contraseñas comprometidas conocidas y la autenticación multifactor, reservando la rotación para cuando haya indicios de compromiso."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because password databases are no longer attacked.",
+          "es": "Porque las bases de datos de contraseñas ya no son objeto de ataque."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because rotation is incompatible with single sign-on.",
+          "es": "Porque la rotación es incompatible con el inicio de sesión único."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because regulators have prohibited it.",
+          "es": "Porque los reguladores la han prohibido."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-78",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the essential difference between an electronic signature and an electronic seal under eIDAS?",
+      "es": "¿Cuál es la diferencia esencial entre una firma electrónica y un sello electrónico conforme a eIDAS?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "An electronic signature is created by a natural person and expresses their intent; an electronic seal is created by a legal person and serves to guarantee the origin and integrity of a document attributed to that organisation.",
+          "es": "Una firma electrónica la crea una persona física y expresa su voluntad; un sello electrónico lo crea una persona jurídica y sirve para garantizar el origen y la integridad de un documento atribuido a esa organización."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A signature belongs to a natural person and expresses intent; a seal belongs to a legal person and guarantees the origin and integrity of a document attributed to that organisation. Both can be qualified.",
+          "es": "Una firma pertenece a una persona física y expresa su voluntad; un sello pertenece a una persona jurídica y garantiza el origen y la integridad de un documento atribuido a esa organización. Ambos pueden ser cualificados."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A seal is a weaker form of signature with no legal effect.",
+          "es": "Un sello es una forma más débil de firma sin efecto jurídico alguno."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A signature applies to documents and a seal to network traffic.",
+          "es": "Una firma se aplica a documentos y un sello al tráfico de red."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Only seals may be qualified; signatures may not.",
+          "es": "Solo los sellos pueden ser cualificados; las firmas no."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-79",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "In a federated single sign-on architecture, what does the identity provider do that the service provider does not?",
+      "es": "En una arquitectura federada de inicio de sesión único, ¿qué hace el proveedor de identidad que no hace el proveedor de servicio?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Authenticate the user and issue a signed assertion or token attesting to that authentication, which the service provider consumes and trusts rather than collecting the user's credentials itself.",
+          "es": "Autenticar al usuario y emitir una aserción o token firmado que acredita esa autenticación, que el proveedor de servicio consume y acepta en lugar de recoger él mismo las credenciales del usuario."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The identity provider authenticates the user and issues a signed assertion or token; the service provider consumes and trusts it instead of handling credentials itself. Concentrating authentication in one place is the security benefit of federation — and the reason the identity provider becomes a high-value target.",
+          "es": "El proveedor de identidad autentica al usuario y emite una aserción o token firmado; el proveedor de servicio lo consume y confía en él en vez de manejar credenciales. Concentrar la autenticación en un único punto es el beneficio de seguridad de la federación, y también la razón por la que el proveedor de identidad se convierte en un objetivo de alto valor."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Store the application's business data.",
+          "es": "Almacenar los datos de negocio de la aplicación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Enforce the application's authorisation rules.",
+          "es": "Aplicar las reglas de autorización de la aplicación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Terminate the TLS connection from the user's browser.",
+          "es": "Terminar la conexión TLS procedente del navegador del usuario."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-80",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An organisation grants a contractor access by adding their account to an existing group that carries broad permissions, because creating a tailored role would take time. Which principle does this violate, and what is the concrete risk?",
+      "es": "Una organización da acceso a un contratista añadiendo su cuenta a un grupo existente con permisos amplios, porque crear un rol a medida llevaría tiempo. ¿Qué principio incumple y cuál es el riesgo concreto?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Separation of duties; the risk is that the contractor cannot complete their work.",
+          "es": "Separación de funciones; el riesgo es que el contratista no pueda completar su trabajo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Least privilege; the contractor holds standing access far beyond what the task requires, enlarging the blast radius if the account is compromised and making the excess access likely to persist after the engagement ends.",
+          "es": "Mínimo privilegio; el contratista mantiene un acceso permanente muy superior al que la tarea requiere, lo que amplía el alcance del daño si le comprometen la cuenta y hace probable que ese exceso persista una vez terminado el encargo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Adding a contractor to a broad existing group grants standing access far beyond the task, enlarging the blast radius if the account is compromised and leaving excess rights in place after the engagement ends. Least privilege is about both the scope and the duration of access.\n\n### Topic 9 — EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841",
+          "es": "Añadir a un contratista a un grupo amplio existente le concede un acceso permanente muy superior a la tarea, amplía el alcance del daño si le comprometen la cuenta y deja derechos sobrantes una vez terminado el encargo. El mínimo privilegio va tanto del alcance del acceso como de su duración.\n\n### Topic 9 — Ciberseguridad institucional de la UE: CERT-EU, el IICB y el Reglamento 2023/2841"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Fail-safe defaults; the risk is that the group is deleted.",
+          "es": "Valores por defecto seguros; el riesgo es que se borre el grupo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Defence in depth; the risk is that the group has no password policy.",
+          "es": "Defensa en profundidad; el riesgo es que el grupo no tenga política de contraseñas."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Identity, Access Management and Trust Services"
+    ]
+  },
+  {
+    "id": "field-cyber-81",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Directive (EU) 2022/2555 (NIS2) obliges essential and important entities across a list of sectors to manage cybersecurity risk and report significant incidents. Which instrument places comparable obligations on the institutions, bodies, offices and agencies of the Union themselves, and why is a separate instrument needed?",
+      "es": "La Directiva (UE) 2022/2555 (SRI2 / NIS2) obliga a las entidades esenciales e importantes de una lista de sectores a gestionar el riesgo de ciberseguridad y a notificar los incidentes significativos. ¿Qué instrumento impone obligaciones equivalentes a las propias instituciones, órganos y organismos de la Unión, y por qué hace falta un instrumento separado?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "None. NIS2 applies directly to the Union institutions once each Member State has transposed it, so no separate instrument is required.",
+          "es": "Ninguno. NIS2 se aplica directamente a las instituciones de la Unión una vez que cada Estado miembro la ha transpuesto, así que no hace falta ningún instrumento aparte."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Regulation (EU) 2019/881, the Cybersecurity Act, which extends NIS2 to the Union entities through the European cybersecurity certification framework.",
+          "es": "El Reglamento (UE) 2019/881, Reglamento de Ciberseguridad, que extiende NIS2 a las entidades de la Unión a través del marco europeo de certificación de la ciberseguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Regulation (EU, Euratom) 2023/2841, laying down measures for a high common level of cybersecurity at the institutions, bodies, offices and agencies of the Union — a separate instrument because NIS2 binds the Member States and does not cover the Union's own administration.",
+          "es": "El Reglamento (UE, Euratom) 2023/2841, por el que se establecen medidas destinadas a garantizar un elevado nivel común de ciberseguridad en las instituciones, órganos y organismos de la Unión: es un instrumento separado porque NIS2 vincula a los Estados miembros y no cubre la propia administración de la Unión."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "NIS2 is addressed to the Member States and applies to entities within their jurisdiction; it does not cover the Union's own administration. Regulation (EU, Euratom) 2023/2841 fills that gap with an equivalent framework for the institutions, bodies, offices and agencies of the Union, which is why it exists as a separate instrument rather than as an extension of NIS2.",
+          "es": "NIS2 se dirige a los Estados miembros y se aplica a entidades sujetas a su jurisdicción; no cubre la administración propia de la Unión. El Reglamento (UE, Euratom) 2023/2841 llena ese hueco con un marco equivalente para las instituciones, órganos y organismos de la Unión, y por eso existe como instrumento separado y no como una extensión de NIS2."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Regulation (EU) 2024/2847, the Cyber Resilience Act, because Union entities place products with digital elements on the internal market.",
+          "es": "El Reglamento (UE) 2024/2847, Reglamento de Ciberresiliencia, porque las entidades de la Unión introducen productos con elementos digitales en el mercado interior."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-82",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the Interinstitutional Cybersecurity Board (IICB) established by Regulation (EU, Euratom) 2023/2841?",
+      "es": "¿Qué es la Junta Interinstitucional de Ciberseguridad (IICB) creada por el Reglamento (UE, Euratom) 2023/2841?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The body that monitors and supports the implementation of the Regulation by Union entities and exercises general direction over CERT-EU — adopting guidelines and recommendations, and following up where an entity fails to comply.",
+          "es": "El órgano que supervisa y apoya la aplicación del Reglamento por parte de las entidades de la Unión y ejerce la dirección general de CERT-EU, adoptando directrices y recomendaciones y dando seguimiento a los casos de incumplimiento."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The IICB is the governance body of the framework: it monitors and supports implementation by the Union entities, exercises general direction over CERT-EU, and adopts guidelines and recommendations, with a follow-up path where an entity does not comply. It is not an operational team — that is CERT-EU — and it is not ENISA, which is a Union agency with its own certification and advisory mandate.",
+          "es": "El IICB es el órgano de gobernanza del marco: supervisa y apoya la aplicación por parte de las entidades de la Unión, ejerce la dirección general de CERT-EU y adopta directrices y recomendaciones, con una vía de seguimiento cuando una entidad no cumple. No es un equipo operativo —eso es CERT-EU— ni es ENISA, que es una agencia de la Unión con su propio mandato de certificación y asesoramiento."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The operational team that carries out incident response on behalf of all Union entities.",
+          "es": "El equipo operativo que ejecuta la respuesta a incidentes en nombre de todas las entidades de la Unión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An agency with legal personality that certifies ICT products, services and processes under European certification schemes.",
+          "es": "Una agencia con personalidad jurídica que certifica productos, servicios y procesos de TIC conforme a los esquemas europeos de certificación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A committee of Member State representatives that supervises the national CSIRTs.",
+          "es": "Un comité de representantes de los Estados miembros que supervisa a los CSIRT nacionales."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-83",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Under the Regulation, CERT-EU is the Cybersecurity Service for the Union institutions, bodies, offices and agencies. Which description of its role is correct?",
+      "es": "Con arreglo al Reglamento, CERT-EU es el Servicio de Ciberseguridad de las instituciones, órganos y organismos de la Unión. ¿Qué descripción de su papel es correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It is the Union's cybersecurity regulator and may impose administrative fines on entities that fail to report incidents.",
+          "es": "Es el regulador de ciberseguridad de la Unión y puede imponer multas administrativas a las entidades que no notifiquen incidentes."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It certifies ICT products, services and processes under the European cybersecurity certification framework.",
+          "es": "Certifica productos, servicios y procesos de TIC conforme al marco europeo de certificación de la ciberseguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It replaces the internal security function of each Union entity, which is therefore relieved of its own risk-management duties.",
+          "es": "Sustituye a la función de seguridad interna de cada entidad de la Unión, que queda por tanto liberada de sus propias obligaciones de gestión del riesgo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It is the entities' common threat intelligence, incident response and advisory service: it receives their incident reports, coordinates response, and issues guidance and calls for action, while each entity remains responsible for its own cybersecurity.",
+          "es": "Es el servicio común de inteligencia de amenazas, respuesta a incidentes y asesoramiento de las entidades: recibe sus notificaciones de incidentes, coordina la respuesta y emite orientaciones y llamamientos a la acción, mientras que cada entidad sigue siendo responsable de su propia ciberseguridad."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "CERT-EU is a service, not a supervisor. It pools threat intelligence, receives significant-incident reports, coordinates response across entities and issues guidance and calls for action; certification belongs to the framework operated under the Cybersecurity Act, and accountability for each entity's own cybersecurity stays with that entity.",
+          "es": "CERT-EU es un servicio, no un supervisor. Agrupa la inteligencia de amenazas, recibe las notificaciones de incidentes significativos, coordina la respuesta entre entidades y emite orientaciones y llamamientos a la acción; la certificación pertenece al marco que opera bajo el Reglamento de Ciberseguridad, y la responsabilidad sobre la ciberseguridad de cada entidad sigue siendo de esa entidad."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-84",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "The Regulation requires each Union entity to designate a Local Cybersecurity Officer or an equivalent function. What is the purpose of that role?",
+      "es": "El Reglamento exige a cada entidad de la Unión designar un responsable local de ciberseguridad (o una función equivalente). ¿Cuál es el sentido de ese papel?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To act as CERT-EU's employee inside the entity, reporting to CERT-EU rather than to the entity's own management.",
+          "es": "Actuar como empleado de CERT-EU dentro de la entidad, rindiendo cuentas ante CERT-EU y no ante la dirección de la propia entidad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To be the entity's identified focal point for cybersecurity — driving the internal framework, the cybersecurity plan and the maturity assessment, and acting as counterpart for CERT-EU and for the interinstitutional networks.",
+          "es": "Ser el punto focal identificado de la entidad en materia de ciberseguridad: impulsar el marco interno, el plan de ciberseguridad y la evaluación de madurez, y servir de interlocutor ante CERT-EU y ante las redes interinstitucionales."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The role exists so that every entity has one identifiable, empowered focal point: it drives the internal framework, the plan and the maturity assessment and is the counterpart for CERT-EU and for the network of local cybersecurity officers set up under the Regulation. It does not absorb management's accountability, and it does not report outside its own entity's hierarchy.",
+          "es": "El papel existe para que cada entidad tenga un punto focal identificable y con capacidad de actuación: impulsa el marco interno, el plan y la evaluación de madurez, y es el interlocutor ante CERT-EU y ante la red de responsables locales de ciberseguridad creada al amparo del Reglamento. No absorbe la responsabilidad de la dirección ni rinde cuentas fuera de la jerarquía de su propia entidad."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To personally approve every change to the entity's ICT systems before it is deployed.",
+          "es": "Aprobar personalmente todo cambio en los sistemas TIC de la entidad antes de su despliegue."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To assume the accountability of the entity's highest level of management for cybersecurity risk.",
+          "es": "Asumir la responsabilidad que corresponde al nivel más alto de dirección de la entidad respecto del riesgo de ciberseguridad."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-85",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An entity has just passed an ISO/IEC 27001 certification audit. Management asks whether that satisfies the Regulation's requirement for a periodic cybersecurity maturity assessment. What is the correct answer?",
+      "es": "Una entidad acaba de superar una auditoría de certificación ISO/IEC 27001. La dirección pregunta si eso satisface el requisito del Reglamento de realizar evaluaciones periódicas de madurez en ciberseguridad. ¿Cuál es la respuesta correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "No. A certification audit judges conformity with a standard's requirements at a point in time, whereas a maturity assessment measures how consistently and capably the entity's cybersecurity practices are actually performed, and is repeated periodically — at least every two years — so that progress is visible over time.",
+          "es": "No. Una auditoría de certificación juzga la conformidad con los requisitos de una norma en un momento dado, mientras que una evaluación de madurez mide con qué constancia y capacidad se ejecutan realmente las prácticas de ciberseguridad de la entidad, y se repite periódicamente —al menos cada dos años— para que el avance sea visible en el tiempo."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The two instruments answer different questions. Certification asks whether the management system conforms to a standard at the moment of audit; a maturity assessment asks how capably and consistently practices are performed, and is repeated — at least every two years — so that trend and progress are visible. A certificate is useful input to an assessment, never a substitute for it.",
+          "es": "Los dos instrumentos responden a preguntas distintas. La certificación pregunta si el sistema de gestión se ajusta a una norma en el momento de la auditoría; la evaluación de madurez pregunta con qué capacidad y constancia se ejecutan las prácticas, y se repite —al menos cada dos años— para que la tendencia y el avance sean visibles. Un certificado es una entrada útil para una evaluación, nunca su sustituto."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Yes. Certification and maturity measure the same thing, so the certificate can be filed as the assessment.",
+          "es": "Sí. Certificación y madurez miden lo mismo, así que el certificado puede archivarse como evaluación."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Yes, provided the certificate was issued by a body accredited in the entity's host Member State.",
+          "es": "Sí, siempre que el certificado lo haya emitido un organismo acreditado en el Estado miembro de acogida de la entidad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "No, because maturity assessments may only be performed by CERT-EU, never by the entity itself or by an external party.",
+          "es": "No, porque las evaluaciones de madurez solo puede realizarlas CERT-EU, nunca la propia entidad ni un tercero."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-86",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A Union entity becomes aware of a significant incident. What reporting sequence to CERT-EU does the Regulation lay down?",
+      "es": "Una entidad de la Unión tiene conocimiento de un incidente significativo. ¿Qué secuencia de notificación a CERT-EU establece el Reglamento?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A single full report, including root-cause analysis, within 72 hours.",
+          "es": "Un único informe completo, con análisis de causa raíz, en un plazo de 72 horas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "An immediate telephone notification, and nothing further unless CERT-EU asks.",
+          "es": "Una notificación telefónica inmediata y nada más, salvo que CERT-EU lo solicite."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A notification within 72 hours and a final report within six months.",
+          "es": "Una notificación en un plazo de 72 horas y un informe final en un plazo de seis meses."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A staged sequence: an early warning without undue delay and in any event within 24 hours, an incident notification within 72 hours, and a final report within one month, with intermediate updates where these are requested or where the situation changes materially.",
+          "es": "Una secuencia escalonada: una alerta temprana sin demora indebida y, en todo caso, en un plazo de 24 horas; una notificación del incidente en un plazo de 72 horas; y un informe final en el plazo de un mes, con informes intermedios cuando se soliciten o cuando la situación cambie de forma sustancial."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The Regulation uses the same staged model as NIS2: an early warning within 24 hours so that CERT-EU can warn other entities, a fuller incident notification within 72 hours, and a final report within one month once the analysis is complete. The staging exists because early speed and later completeness are incompatible in a single report.",
+          "es": "El Reglamento utiliza el mismo modelo escalonado que NIS2: una alerta temprana en 24 horas para que CERT-EU pueda avisar a las demás entidades, una notificación más completa en 72 horas y un informe final en el plazo de un mes, cuando el análisis ha concluido. El escalonamiento existe porque la rapidez inicial y la exhaustividad posterior son incompatibles en un único informe."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-87",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which pairing of body and function is correct?",
+      "es": "¿Qué correspondencia entre organismo y función es correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "ENISA operates the incident response service for the Union institutions, while CERT-EU is the Union's advisory and certification agency.",
+          "es": "ENISA opera el servicio de respuesta a incidentes de las instituciones de la Unión, y CERT-EU es la agencia de asesoramiento y certificación de la Unión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "ENISA is the Union agency for cybersecurity, with advisory, capacity-building and certification tasks; CERT-EU is the operational cybersecurity service of the Union entities; the CSIRTs network links the Member States' national CSIRTs for operational cooperation; EU-CyCLONe coordinates the management of large-scale incidents and crises.",
+          "es": "ENISA es la agencia de la Unión para la ciberseguridad, con funciones de asesoramiento, desarrollo de capacidades y certificación; CERT-EU es el servicio operativo de ciberseguridad de las entidades de la Unión; la red de CSIRT conecta a los CSIRT nacionales de los Estados miembros para la cooperación operativa; y EU-CyCLONe coordina la gestión de incidentes y crisis a gran escala."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Each body has a distinct role, and distractors in this area work by swapping them. ENISA advises, builds capacity and runs the certification framework; CERT-EU is the operational service of the Union entities; the CSIRTs network is the Member States' operational cooperation forum; EU-CyCLONe handles large-scale incident and crisis coordination. Supervision and penalties under NIS2 belong to the national competent authorities, not to ENISA.",
+          "es": "Cada organismo tiene un papel distinto, y los distractores de esta área funcionan intercambiándolos. ENISA asesora, desarrolla capacidades y gestiona el marco de certificación; CERT-EU es el servicio operativo de las entidades de la Unión; la red de CSIRT es el foro de cooperación operativa de los Estados miembros; EU-CyCLONe se ocupa de la coordinación de incidentes y crisis a gran escala. La supervisión y las sanciones bajo NIS2 corresponden a las autoridades nacionales competentes, no a ENISA."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "EU-CyCLONe is the network of national CSIRTs, and the CSIRTs network is the political crisis-management body.",
+          "es": "EU-CyCLONe es la red de CSIRT nacionales y la red de CSIRT es el órgano político de gestión de crisis."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "ENISA supervises essential entities under NIS2 and may impose penalties on them.",
+          "es": "ENISA supervisa a las entidades esenciales con arreglo a NIS2 y puede imponerles sanciones."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-88",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is a cybersecurity plan under the Regulation, and what should drive its content?",
+      "es": "¿Qué es un plan de ciberseguridad con arreglo al Reglamento y qué debe determinar su contenido?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The list of security products the entity intends to purchase during the next budget year.",
+          "es": "La lista de productos de seguridad que la entidad piensa adquirir durante el próximo ejercicio presupuestario."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The entity's business continuity plan, renamed to satisfy the Regulation.",
+          "es": "El plan de continuidad de negocio de la entidad, rebautizado para cumplir el Reglamento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The entity's documented set of objectives and measures for managing its cybersecurity risks, drawn from the outcome of its risk management and of its maturity assessment, and endorsed at the entity's highest level of management.",
+          "es": "El conjunto documentado de objetivos y medidas de la entidad para gestionar sus riesgos de ciberseguridad, derivado del resultado de su gestión del riesgo y de su evaluación de madurez, y respaldado por el nivel más alto de dirección de la entidad."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The plan is the bridge between assessment and action: it states what the entity will do about its risks, informed by the risk-management process and by the maturity assessment, and it is endorsed at the top of the entity so that resources follow. A purchasing list has no risk rationale, and continuity planning answers a different question.",
+          "es": "El plan es el puente entre la evaluación y la acción: enuncia qué hará la entidad respecto de sus riesgos, a partir del proceso de gestión del riesgo y de la evaluación de madurez, y se respalda en la cúpula de la entidad para que los recursos lo acompañen. Una lista de compras no tiene justificación de riesgo, y la continuidad de negocio responde a otra pregunta."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The incident response playbook that CERT-EU maintains centrally on behalf of all entities.",
+          "es": "El manual de respuesta a incidentes que CERT-EU mantiene de forma centralizada en nombre de todas las entidades."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-89",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "The Regulation, like NIS2, places cybersecurity risk management explicitly at the entity's highest level of management. What does that accountability mean in practice?",
+      "es": "El Reglamento, igual que NIS2, sitúa la gestión del riesgo de ciberseguridad explícitamente en el nivel más alto de dirección de la entidad. ¿Qué significa esa responsabilidad en la práctica?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The highest level of management approves the risk-management framework, oversees its implementation, follows cybersecurity training and can be held accountable for non-compliance — an accountability that is not discharged by appointing a security officer or by outsourcing operations.",
+          "es": "El nivel más alto de dirección aprueba el marco de gestión del riesgo, supervisa su aplicación, sigue formación en ciberseguridad y puede responder por los incumplimientos: una responsabilidad que no se descarga nombrando a un responsable de seguridad ni externalizando las operaciones."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Management-body accountability is the deliberate structural change in both NIS2 and the Union entities' Regulation: approval of the framework, oversight of implementation, mandatory training, and exposure to follow-up for non-compliance. Delegating execution is normal and expected; delegating accountability is not, and outsourcing operations does not move it to the supplier.",
+          "es": "La responsabilidad del órgano de dirección es el cambio estructural deliberado tanto en NIS2 como en el Reglamento de las entidades de la Unión: aprobación del marco, supervisión de su aplicación, formación obligatoria y exposición al seguimiento por incumplimiento. Delegar la ejecución es normal y esperable; delegar la responsabilidad no lo es, y externalizar las operaciones no la traslada al proveedor."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The highest level of management must personally carry out the entity's risk assessments and maturity assessments.",
+          "es": "El nivel más alto de dirección debe realizar personalmente las evaluaciones de riesgo y de madurez de la entidad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Accountability passes to the ICT service provider once operations are outsourced under a contract containing security clauses.",
+          "es": "La responsabilidad pasa al proveedor de servicios TIC en cuanto las operaciones se externalizan mediante un contrato con cláusulas de seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It is a declaratory provision with no practical effect, since the Regulation provides no mechanism for following up non-compliance.",
+          "es": "Es una disposición declarativa sin efecto práctico, ya que el Reglamento no prevé ningún mecanismo de seguimiento del incumplimiento."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-90",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "You represent your institution in an interinstitutional technical working group. The group is about to adopt a common baseline measure that your institution cannot meet on the proposed timeline, because of a documented technical dependency. What is the appropriate professional response?",
+      "es": "Representa usted a su institución en un grupo de trabajo técnico interinstitucional. El grupo está a punto de adoptar una medida de base común que su institución no puede cumplir en el calendario propuesto, por una dependencia técnica documentada. ¿Cuál es la respuesta profesional adecuada?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Support the baseline and say nothing about the dependency, so as not to weaken the common position.",
+          "es": "Apoyar la medida y no mencionar la dependencia, para no debilitar la posición común."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Oppose the baseline, since a measure your institution cannot meet immediately would leave it non-compliant.",
+          "es": "Oponerse a la medida, ya que una exigencia que su institución no puede cumplir de inmediato la dejaría en situación de incumplimiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Abstain, and resolve the difficulty afterwards through a unilateral internal exemption.",
+          "es": "Abstenerse y resolver después la dificultad mediante una exención interna unilateral."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Support the objective while putting the dependency on the record, and negotiate a transition period or an interim compensating measure with a committed end date — so that the common baseline holds and your institution's path to it stays transparent and monitored.",
+          "es": "Apoyar el objetivo dejando constancia de la dependencia y negociar un período transitorio o una medida compensatoria provisional con una fecha final comprometida, de modo que la base común se mantenga y el camino de su institución hacia ella siga siendo transparente y supervisado."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Interinstitutional work assumes that constraints are stated where they can be handled. Concealing the dependency produces a baseline that is quietly not met; blocking it sacrifices a common standard for a local problem; a unilateral exemption hides the gap from the body responsible for monitoring it. Supporting the objective while negotiating a time-bound transition keeps the standard intact and the deviation visible.\n\n### Topic 10 — Emerging Technologies: AI, Machine Learning and Post-Quantum",
+          "es": "El trabajo interinstitucional presupone que las restricciones se declaran donde pueden tratarse. Ocultar la dependencia produce una base que discretamente no se cumple; bloquearla sacrifica un estándar común por un problema local; una exención unilateral esconde la brecha ante el órgano encargado de supervisarla. Apoyar el objetivo negociando una transición con plazo mantiene intacto el estándar y visible la desviación.\n\n### Topic 10 — Tecnologías emergentes: IA, aprendizaje automático y poscuántica"
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841"
+    ]
+  },
+  {
+    "id": "field-cyber-91",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An adversary with no access to your training pipeline crafts inputs that a deployed malware-classification model labels benign, although an analyst would still recognise them as malicious. Which class of attack is this?",
+      "es": "Un adversario sin acceso a su cadena de entrenamiento elabora entradas que un modelo de clasificación de malware en producción etiqueta como benignas, aunque un analista seguiría reconociéndolas como maliciosas. ¿De qué clase de ataque se trata?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Data poisoning, because the model's training data has been manipulated.",
+          "es": "Envenenamiento de datos, porque se han manipulado los datos de entrenamiento del modelo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "An evasion attack using adversarial examples: the model is unchanged and the attack happens at inference time, with inputs crafted to fall on the wrong side of its decision boundary.",
+          "es": "Un ataque de evasión mediante ejemplos adversarios: el modelo no se ha modificado y el ataque se produce en el momento de la inferencia, con entradas diseñadas para caer al otro lado de su frontera de decisión."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Evasion attacks operate at inference time on an unmodified model, exploiting the gap between its decision boundary and the true concept. Poisoning happens during training, inversion reconstructs training data, and extraction recovers the model itself — the four are routinely swapped in distractors, and the discriminator here is that the attacker touches only the input.",
+          "es": "Los ataques de evasión operan en la inferencia sobre un modelo no modificado, explotando la distancia entre su frontera de decisión y el concepto real. El envenenamiento ocurre durante el entrenamiento, la inversión reconstruye datos de entrenamiento y la extracción recupera el propio modelo: los cuatro se intercambian habitualmente en los distractores, y aquí lo que discrimina es que el atacante solo toca la entrada."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Model inversion, because the attacker is reconstructing the training data.",
+          "es": "Inversión del modelo, porque el atacante está reconstruyendo los datos de entrenamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Model extraction, because the attacker is recovering the model's parameters.",
+          "es": "Extracción del modelo, porque el atacante está recuperando sus parámetros."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-92",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An internal assistant built on a large language model is given tools that can read mailboxes and send messages on a user's behalf, and it summarises documents supplied by third parties. What is the principal security risk, and what actually mitigates it?",
+      "es": "Un asistente interno construido sobre un gran modelo de lenguaje dispone de herramientas capaces de leer buzones y enviar mensajes en nombre del usuario, y resume documentos aportados por terceros. ¿Cuál es el riesgo principal de seguridad y qué lo mitiga realmente?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Hallucination, mitigated by lowering the sampling temperature.",
+          "es": "Las alucinaciones, mitigadas bajando la temperatura de muestreo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Training-data leakage, mitigated by fine-tuning only on internal data.",
+          "es": "La fuga de datos de entrenamiento, mitigada ajustando el modelo solo con datos internos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Denial of service through very long documents, mitigated by a token limit.",
+          "es": "La denegación de servicio mediante documentos muy largos, mitigada con un límite de tokens."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Indirect prompt injection: instructions hidden in third-party content are consumed as though they came from the user. The mitigation is architectural — treat model output as untrusted input, require human confirmation for consequential tool calls, and give the assistant least-privilege access — not an instruction telling the model to ignore malicious text.",
+          "es": "La inyección indirecta de instrucciones: las órdenes ocultas en el contenido de terceros se consumen como si vinieran del usuario. La mitigación es arquitectónica —tratar la salida del modelo como entrada no confiable, exigir confirmación humana para las llamadas a herramientas con consecuencias y dar al asistente acceso de mínimo privilegio—, no una instrucción que pida al modelo ignorar el texto malicioso."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The model cannot distinguish data it is asked to process from instructions it is asked to follow, so text inside a third-party document can direct the tools attached to it. Because the flaw is in the trust boundary rather than in the wording of the prompt, the mitigations are architectural: constrain what the assistant is allowed to do, require confirmation for consequential actions, and never treat model output as trusted input to another system.",
+          "es": "El modelo no puede distinguir los datos que se le pide procesar de las instrucciones que se le pide seguir, así que el texto dentro de un documento de un tercero puede dirigir las herramientas conectadas a él. Como el fallo está en la frontera de confianza y no en la redacción del *prompt*, las mitigaciones son arquitectónicas: limitar lo que el asistente puede hacer, exigir confirmación para las acciones con consecuencias y no tratar nunca la salida del modelo como entrada confiable de otro sistema."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-93",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why is \"harvest now, decrypt later\" a reason to begin post-quantum migration before a cryptographically relevant quantum computer exists?",
+      "es": "¿Por qué «cosechar ahora, descifrar después» es una razón para empezar la migración poscuántica antes de que exista un ordenador cuántico criptográficamente relevante?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because an adversary can record encrypted traffic today and decrypt it once the capability arrives, so any data whose confidentiality must outlast that arrival is already exposed.",
+          "es": "Porque un adversario puede grabar hoy el tráfico cifrado y descifrarlo cuando llegue esa capacidad, de modo que cualquier dato cuya confidencialidad deba sobrevivir a esa llegada ya está expuesto."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The exposure is retrospective. Traffic and stored ciphertext captured today can be decrypted whenever the capability arrives, so the question is not when quantum computers appear but how long the confidentiality of the data has to last. Data with a long confidentiality horizon is therefore already at risk, which is what makes migration planning urgent now.",
+          "es": "La exposición es retrospectiva. El tráfico y el texto cifrado capturados hoy pueden descifrarse cuando llegue la capacidad, así que la pregunta no es cuándo aparecen los ordenadores cuánticos, sino cuánto tiempo debe durar la confidencialidad de los datos. Los datos con un horizonte de confidencialidad largo ya están en riesgo, y eso es lo que hace urgente planificar la migración ahora."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because the key-establishment algorithms in use today are already broken by classical computers.",
+          "es": "Porque los algoritmos de establecimiento de claves que se usan hoy ya están rotos por ordenadores clásicos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because post-quantum algorithms are faster, so migrating early is a performance gain.",
+          "es": "Porque los algoritmos poscuánticos son más rápidos, así que migrar pronto es una ganancia de rendimiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because European certification schemes already refuse to certify products that use RSA or elliptic-curve cryptography.",
+          "es": "Porque los esquemas europeos de certificación ya se niegan a certificar productos que utilicen RSA o criptografía de curva elíptica."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-94",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Which statement about the standardised post-quantum algorithms is correct?",
+      "es": "¿Qué afirmación sobre los algoritmos poscuánticos normalizados es correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They form a single algorithm that replaces both key establishment and digital signatures.",
+          "es": "Forman un único algoritmo que sustituye tanto al establecimiento de claves como a las firmas digitales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are symmetric algorithms intended to replace AES.",
+          "es": "Son algoritmos simétricos destinados a sustituir a AES."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "ML-KEM is the standardised key-encapsulation mechanism, while ML-DSA and SLH-DSA are standardised signature schemes; they are commonly deployed in hybrid mode alongside a classical algorithm, so that security holds if either component is later broken.",
+          "es": "ML-KEM es el mecanismo de encapsulación de claves normalizado, mientras que ML-DSA y SLH-DSA son esquemas de firma normalizados; suelen desplegarse en modo híbrido junto a un algoritmo clásico, de forma que la seguridad se mantenga si alguno de los dos componentes se rompe más adelante."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The standardised set separates key establishment from signatures: ML-KEM for key encapsulation, ML-DSA and SLH-DSA for signatures. Hybrid deployment — a post-quantum algorithm combined with a classical one — is the recommended transitional posture precisely because it survives the failure of either component.",
+          "es": "El conjunto normalizado separa el establecimiento de claves de las firmas: ML-KEM para encapsulación de claves, ML-DSA y SLH-DSA para firmas. El despliegue híbrido —un algoritmo poscuántico combinado con uno clásico— es la postura de transición recomendada precisamente porque sobrevive al fallo de cualquiera de los dos componentes."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They concern signatures only, since key establishment is unaffected by quantum computing.",
+          "es": "Solo afectan a las firmas, ya que el establecimiento de claves no se ve afectado por la computación cuántica."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-95",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Your institution asks you to prepare it for the post-quantum transition. Which first step gives the most leverage?",
+      "es": "Su institución le pide que la prepare para la transición poscuántica. ¿Qué primer paso ofrece más palanca?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Replacing every RSA certificate with a post-quantum certificate immediately.",
+          "es": "Sustituir de inmediato todos los certificados RSA por certificados poscuánticos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Procuring a quantum key distribution link between the two main data centres.",
+          "es": "Contratar un enlace de distribución cuántica de claves entre los dos centros de datos principales."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Waiting until vendors ship support, to avoid rework.",
+          "es": "Esperar a que los fabricantes incorporen el soporte, para evitar rehacer el trabajo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Building an inventory of where cryptography is used — protocols, algorithms, key sizes, certificate lifetimes, hard-coded and third-party dependencies — together with the data whose confidentiality horizon exceeds the expected migration window, because nothing can be prioritised or migrated before it has been mapped.",
+          "es": "Construir un inventario de dónde se usa criptografía —protocolos, algoritmos, tamaños de clave, vigencia de los certificados, dependencias codificadas y de terceros— junto con los datos cuyo horizonte de confidencialidad supera la ventana de migración prevista, porque nada puede priorizarse ni migrarse antes de haberlo cartografiado."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Every subsequent decision depends on the inventory: which systems are affected, which can be upgraded by their vendor, which embed cryptography that cannot be changed without redesign, and which data must be protected beyond the migration window. Buying hardware or swapping certificates before that map exists spends effort without reducing the risk that matters.",
+          "es": "Toda decisión posterior depende del inventario: qué sistemas están afectados, cuáles puede actualizar su proveedor, cuáles incorporan criptografía que no puede cambiarse sin rediseño y qué datos deben protegerse más allá de la ventana de migración. Comprar equipamiento o sustituir certificados antes de tener ese mapa gasta esfuerzo sin reducir el riesgo que importa."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-96",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "How does Regulation (EU) 2024/1689 (the AI Act) relate to the cybersecurity of an AI system?",
+      "es": "¿Qué relación guarda el Reglamento (UE) 2024/1689 (Reglamento de Inteligencia Artificial) con la ciberseguridad de un sistema de IA?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It replaces NIS2 for any entity that operates an AI system.",
+          "es": "Sustituye a NIS2 para cualquier entidad que opere un sistema de IA."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It is a risk-tiered product regulation: among other requirements, high-risk AI systems must achieve an appropriate level of accuracy, robustness and cybersecurity throughout their lifecycle, including resilience against attempts to manipulate their behaviour — but it is not itself a certification scheme for security products.",
+          "es": "Es un reglamento de producto escalonado por riesgo: entre otros requisitos, los sistemas de IA de alto riesgo deben alcanzar un nivel adecuado de precisión, solidez y ciberseguridad a lo largo de su ciclo de vida, incluida la resistencia a los intentos de manipular su comportamiento, pero no es en sí mismo un esquema de certificación de productos de seguridad."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The AI Act regulates AI systems by risk tier, and for high-risk systems it requires an appropriate level of accuracy, robustness and cybersecurity across the lifecycle, including resilience to attempts at manipulating the system's behaviour. It sits alongside NIS2 and the Cyber Resilience Act rather than replacing them, and it is not a security certification scheme.",
+          "es": "El Reglamento de IA regula los sistemas de IA por niveles de riesgo y, para los de alto riesgo, exige un nivel adecuado de precisión, solidez y ciberseguridad a lo largo del ciclo de vida, incluida la resistencia a los intentos de manipular el comportamiento del sistema. Convive con NIS2 y con el Reglamento de Ciberresiliencia en vez de sustituirlos, y no es un esquema de certificación de seguridad."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It prohibits machine learning in security tooling unless the model is fully explainable.",
+          "es": "Prohíbe el aprendizaje automático en herramientas de seguridad salvo que el modelo sea plenamente explicable."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It concerns generative AI only and imposes no obligations on other AI systems.",
+          "es": "Solo afecta a la IA generativa y no impone obligaciones a los demás sistemas de IA."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-97",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A behavioural model flags compromised accounts with a 99 % true-positive rate and a 1 % false-positive rate. Of 100 000 accounts, 10 are actually compromised on a given day. Roughly what share of that day's alerts are true positives, and what follows?",
+      "es": "Un modelo de comportamiento señala cuentas comprometidas con una tasa de verdaderos positivos del 99 % y una tasa de falsos positivos del 1 %. De 100 000 cuentas, 10 están realmente comprometidas ese día. ¿Qué proporción aproximada de las alertas del día son verdaderos positivos y qué se deduce de ello?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "About 99 %, so the model can be trusted to disable flagged accounts automatically.",
+          "es": "En torno al 99 %, así que puede confiarse en el modelo para desactivar automáticamente las cuentas señaladas."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "About 50 %, so a second analyst review would halve the workload.",
+          "es": "En torno al 50 %, así que una segunda revisión por un analista reduciría el trabajo a la mitad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "About 1 % — some 10 true positives against roughly 1 000 false positives — because at very low prevalence even a small false-positive rate dominates the alert volume. The false-positive rate must be driven far lower, or the model's output must be correlated and enriched before it becomes an actionable alert.",
+          "es": "En torno al 1 %: unos 10 verdaderos positivos frente a unos 1 000 falsos positivos, porque con una prevalencia muy baja incluso una tasa pequeña de falsos positivos domina el volumen de alertas. Hay que reducir mucho esa tasa, o correlacionar y enriquecer la salida del modelo antes de convertirla en una alerta accionable."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "With 10 true cases, a 99 % true-positive rate yields about 10 detections; with 99 990 clean accounts, a 1 % false-positive rate yields about 1 000 alerts. Precision is therefore around 1 %. This is the base-rate problem that makes otherwise impressive model metrics unusable in security operations, and it is why detections are enriched, correlated and risk-scored before they reach an analyst.",
+          "es": "Con 10 casos reales, una tasa de verdaderos positivos del 99 % produce unas 10 detecciones; con 99 990 cuentas limpias, una tasa de falsos positivos del 1 % produce unas 1 000 alertas. La precisión ronda por tanto el 1 %. Es el problema de la tasa base que vuelve inservibles en operaciones de seguridad unas métricas de modelo por lo demás excelentes, y por eso las detecciones se enriquecen, correlacionan y puntúan por riesgo antes de llegar a un analista."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It cannot be estimated without knowing the model's architecture.",
+          "es": "No puede estimarse sin conocer la arquitectura del modelo."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-98",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A data scientist proposes downloading a pre-trained model from a public hub and loading it into a production pipeline. Which concern is most specific to that practice?",
+      "es": "Un científico de datos propone descargar un modelo preentrenado de un repositorio público y cargarlo en una cadena de producción. ¿Qué preocupación es más específica de esa práctica?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A model artefact is code as well as data: some serialisation formats execute arbitrary code when loaded, and weights can carry a backdoor that behaves normally except on an attacker-chosen trigger — so provenance, integrity verification and a safe loading format matter as much as for any third-party dependency.",
+          "es": "Un artefacto de modelo es código además de datos: algunos formatos de serialización ejecutan código arbitrario al cargarse, y los pesos pueden contener una puerta trasera que se comporta con normalidad salvo ante un disparador elegido por el atacante, de modo que la procedencia, la verificación de integridad y un formato de carga seguro importan tanto como en cualquier otra dependencia de terceros."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A model is a supply-chain artefact with two distinct risks: the loading path can execute code, depending on the serialisation format, and the weights themselves can encode a backdoor that is invisible in normal evaluation. Provenance, signature or hash verification and a format that does not execute on load are the controls, exactly as for any other third-party component.",
+          "es": "Un modelo es un artefacto de la cadena de suministro con dos riesgos distintos: la ruta de carga puede ejecutar código, según el formato de serialización, y los propios pesos pueden codificar una puerta trasera invisible en la evaluación normal. La procedencia, la verificación de firma o hash y un formato que no ejecute al cargarse son los controles, exactamente igual que en cualquier otro componente de terceros."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Pre-trained models always perform worse than models trained in house, so accuracy is the concern.",
+          "es": "Los modelos preentrenados siempre rinden peor que los entrenados internamente, así que el problema es la precisión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The model's licence may not permit institutional use, which is the principal security risk.",
+          "es": "La licencia del modelo puede no permitir el uso institucional, y ese es el principal riesgo de seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Public models cannot be scanned by antivirus software, so they should be stored encrypted.",
+          "es": "Los modelos públicos no pueden analizarse con antivirus, así que deben almacenarse cifrados."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-99",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A model was trained on personal data. An external party who can query it is able to determine, better than chance, whether a particular individual's record was in the training set. What is this, and which class of defence addresses it?",
+      "es": "Un modelo se entrenó con datos personales. Un tercero que puede consultarlo consigue determinar, mejor que el azar, si el registro de una persona concreta estaba en el conjunto de entrenamiento. ¿Qué es esto y qué clase de defensa lo aborda?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Model extraction, addressed by rate-limiting the API.",
+          "es": "Extracción del modelo, que se aborda limitando la tasa de consultas de la API."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A membership inference attack, addressed by limiting what the model memorises — differential privacy during training, regularisation, restricting output detail such as raw confidence scores, and minimising the personal data used in the first place.",
+          "es": "Un ataque de inferencia de pertenencia, que se aborda limitando lo que el modelo memoriza: privacidad diferencial durante el entrenamiento, regularización, restricción del detalle de la salida (por ejemplo, las puntuaciones de confianza en bruto) y, ante todo, minimización de los datos personales utilizados."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Membership inference exploits the fact that a model behaves measurably differently on data it was trained on. The defences all reduce memorisation or the information released per query: differential privacy, regularisation, coarser outputs, and — first of all — not training on personal data that the purpose does not require.",
+          "es": "La inferencia de pertenencia explota que un modelo se comporta de forma mensurablemente distinta con los datos con los que se entrenó. Todas las defensas reducen la memorización o la información revelada por consulta: privacidad diferencial, regularización, salidas menos detalladas y, antes que nada, no entrenar con datos personales que la finalidad no requiere."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Data poisoning, addressed by validating the training data.",
+          "es": "Envenenamiento de datos, que se aborda validando los datos de entrenamiento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "An evasion attack, addressed by adversarial training.",
+          "es": "Un ataque de evasión, que se aborda con entrenamiento adversario."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-100",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is the expected impact of large-scale quantum computing on symmetric cryptography and hashing, as opposed to public-key cryptography?",
+      "es": "¿Cuál es el impacto previsto de la computación cuántica a gran escala sobre la criptografía simétrica y las funciones hash, frente a la criptografía de clave pública?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Both are broken equally: AES and SHA-2 become as unusable as RSA.",
+          "es": "Ambas quedan rotas por igual: AES y SHA-2 resultarán tan inutilizables como RSA."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Neither is affected; the concern applies only to quantum key distribution.",
+          "es": "Ninguna se ve afectada; el problema solo atañe a la distribución cuántica de claves."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Public-key schemes based on factoring and discrete logarithms — RSA, Diffie–Hellman, elliptic curve — are broken by Shor's algorithm, while symmetric ciphers and hashes are weakened rather than broken by Grover's algorithm, so the practical response there is to use adequate key and digest sizes such as AES-256 and SHA-384 or above.",
+          "es": "Los esquemas de clave pública basados en la factorización y el logaritmo discreto —RSA, Diffie–Hellman, curva elíptica— quedan rotos por el algoritmo de Shor, mientras que los cifradores simétricos y las funciones hash quedan debilitados, no rotos, por el algoritmo de Grover, por lo que la respuesta práctica ahí es usar tamaños de clave y de resumen adecuados, como AES-256 y SHA-384 o superior."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Shor's algorithm breaks factoring and discrete-logarithm problems, which removes the basis of RSA, Diffie–Hellman and elliptic-curve cryptography. Grover's algorithm gives only a quadratic speedup against symmetric primitives, which is handled by increasing key and digest sizes. Treating the two families as equally affected is the standard trap in this area.\n\n### Topic 11 — Security Strategy, Programme and Portfolio Management",
+          "es": "El algoritmo de Shor rompe la factorización y el logaritmo discreto, lo que elimina la base de RSA, Diffie–Hellman y la criptografía de curva elíptica. El algoritmo de Grover solo aporta una aceleración cuadrática frente a las primitivas simétricas, lo que se resuelve aumentando los tamaños de clave y de resumen. Tratar ambas familias como igualmente afectadas es la trampa clásica de esta área.\n\n### Topic 11 — Estrategia, programas y cartera de proyectos de seguridad"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Symmetric cryptography is broken while public-key cryptography is unaffected, which is why AES must be replaced first.",
+          "es": "La criptografía simétrica queda rota y la de clave pública no se ve afectada, y por eso hay que sustituir AES primero."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Emerging Technologies: AI, Machine Learning and Post-Quantum"
+    ]
+  },
+  {
+    "id": "field-cyber-101",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "You need budget approval for a privileged access management programme. Which framing is most likely to succeed with a non-technical management board, and why?",
+      "es": "Necesita la aprobación presupuestaria de un programa de gestión de accesos privilegiados. ¿Qué planteamiento tiene más probabilidades de prosperar ante un consejo de dirección no técnico, y por qué?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The exposure it removes, expressed in the organisation's own terms: how many standing administrative accounts exist today, what an attacker reaching one could do, which regulatory obligations and audit findings depend on it, and what residual risk remains after the investment.",
+          "es": "La exposición que elimina, expresada en los términos de la propia organización: cuántas cuentas administrativas permanentes existen hoy, qué podría hacer un atacante que alcanzara una de ellas, qué obligaciones normativas y hallazgos de auditoría dependen de ello y qué riesgo residual queda tras la inversión."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A board decides between competing uses of money, so the case must be stated in the currency of decisions: exposure today, what changes, what obligations depend on it, and what is left afterwards. Feature lists, activity counts and analyst rankings describe the product rather than the problem, and none of them tells the board what it is buying down.",
+          "es": "Un consejo decide entre usos alternativos del dinero, así que el argumento debe formularse en la moneda de las decisiones: exposición actual, qué cambia, qué obligaciones dependen de ello y qué queda después. Las listas de funcionalidades, los recuentos de actividad y las clasificaciones de analistas describen el producto, no el problema, y ninguna dice al consejo qué está comprando de menos riesgo."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The feature list of the shortlisted product, since the board must understand what it is buying.",
+          "es": "La lista de funcionalidades del producto preseleccionado, ya que el consejo debe entender qué está comprando."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The number of privileged sessions the tool will record per month, as a measure of activity.",
+          "es": "El número de sesiones privilegiadas que la herramienta grabará al mes, como medida de actividad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A comparison of vendor market share and analyst rankings, since these are objective third-party evidence.",
+          "es": "Una comparación de cuota de mercado y de valoraciones de analistas de los fabricantes, por tratarse de evidencia objetiva de terceros."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-102",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Your institution runs a project to deploy multi-factor authentication, a project to redesign the joiner-mover-leaver process and a project to introduce privileged access management. Management asks you to organise them. Which structure is correct?",
+      "es": "Su institución tiene en marcha un proyecto para desplegar autenticación multifactor, otro para rediseñar el proceso de altas, cambios y bajas, y otro para introducir la gestión de accesos privilegiados. La dirección le pide que los organice. ¿Qué estructura es la correcta?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Three portfolios, because each has its own budget line.",
+          "es": "Tres carteras, porque cada uno tiene su propia línea presupuestaria."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A single project with three work packages, because they share a delivery team.",
+          "es": "Un único proyecto con tres paquetes de trabajo, porque comparten equipo de ejecución."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A programme, because the three projects serve one outcome — reducing identity-related risk — and their benefits depend on being coordinated; the portfolio is the level above, where this programme competes with every other investment for funding.",
+          "es": "Un programa, porque los tres proyectos sirven a un mismo resultado —reducir el riesgo asociado a la identidad— y sus beneficios dependen de su coordinación; la cartera es el nivel superior, donde ese programa compite por financiación con el resto de inversiones."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A project delivers an output within a scope; a programme coordinates several projects towards a single outcome whose benefits depend on that coordination; a portfolio is the whole set of investments competing for funding and aligned to strategy. Three identity projects sharing one outcome are the textbook case of a programme.",
+          "es": "Un proyecto entrega un producto dentro de un alcance; un programa coordina varios proyectos hacia un único resultado cuyos beneficios dependen de esa coordinación; una cartera es el conjunto de inversiones que compiten por financiación y se alinean con la estrategia. Tres proyectos de identidad que comparten un mismo resultado son el caso de manual de un programa."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A portfolio, because a portfolio is any group of related projects delivering a common outcome.",
+          "es": "Una cartera, porque una cartera es cualquier conjunto de proyectos relacionados que entregan un resultado común."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-103",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A business unit wants to keep an unsupported application running for another year. The CISO advises against it. Who can accept that risk, and how should the acceptance be recorded?",
+      "es": "Una unidad de negocio quiere mantener otro año en funcionamiento una aplicación sin soporte. El CISO lo desaconseja. ¿Quién puede aceptar ese riesgo y cómo debe documentarse la aceptación?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The CISO, since cybersecurity risk is the CISO's responsibility.",
+          "es": "El CISO, ya que el riesgo de ciberseguridad es responsabilidad suya."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The business owner accountable for the process the application supports, at the level of authority the severity of the risk requires — recorded in the risk register with the rationale, the compensating controls, an expiry date and a named owner, and reported upward.",
+          "es": "El responsable de negocio del proceso al que da servicio la aplicación, en el nivel de autoridad que exija la gravedad del riesgo, y con constancia en el registro de riesgos de la justificación, los controles compensatorios, una fecha de caducidad y un titular con nombre, además de reporte al nivel superior."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The risk belongs to whoever owns the process it threatens, not to the adviser who identified it, and severity determines the level of authority required to accept it. A defensible acceptance is written down, justified, compensated, time-limited, owned by name and reported upward — an acceptance without an expiry date is simply a permanent gap.",
+          "es": "El riesgo pertenece a quien es responsable del proceso amenazado, no a quien lo detecta y asesora, y la gravedad determina el nivel de autoridad necesario para aceptarlo. Una aceptación defendible está escrita, justificada, compensada, limitada en el tiempo, con titular nombrado y elevada al nivel superior: una aceptación sin fecha de caducidad no es más que una brecha permanente."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The ICT operations team, since it is the team that will keep the application running.",
+          "es": "El equipo de operaciones TIC, ya que es quien mantendrá la aplicación en marcha."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Nobody: an unsupported application is a policy violation, and its risk cannot be accepted in any circumstances.",
+          "es": "Nadie: una aplicación sin soporte es una infracción de la política y su riesgo no puede aceptarse en ninguna circunstancia."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-104",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What distinguishes a rolling multiannual cybersecurity strategy from an annual implementation plan?",
+      "es": "¿Qué distingue una estrategia plurianual renovable de ciberseguridad de un plan anual de aplicación?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Nothing of substance; the strategy is the plan written for a longer period.",
+          "es": "Nada sustancial; la estrategia es el plan redactado para un período más largo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The strategy lists the projects and their deadlines, while the plan states the objectives.",
+          "es": "La estrategia enumera los proyectos y sus plazos, mientras que el plan enuncia los objetivos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The strategy is internal, while the plan is published.",
+          "es": "La estrategia es interna y el plan se publica."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The strategy sets the objectives, the target capability and the guiding principles over several years and is revisited as the threat and business context change; the annual plan turns the current slice of it into funded, scheduled and owned deliverables with measurable outcomes.",
+          "es": "La estrategia fija los objetivos, la capacidad objetivo y los principios rectores a varios años y se revisa a medida que cambian la amenaza y el contexto de la organización; el plan anual convierte el tramo vigente de esa estrategia en entregables financiados, calendarizados y con responsable, y con resultados medibles."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Strategy sets direction and target capability over several years and is refreshed as context changes; the annual plan is where that direction becomes budget, schedule and named owners. Collapsing the two — a strategy that is only a project list, or a plan with no objectives behind it — is the common failure this distinction is designed to expose.",
+          "es": "La estrategia fija dirección y capacidad objetivo a varios años y se refresca cuando cambia el contexto; el plan anual es donde esa dirección se convierte en presupuesto, calendario y responsables con nombre. Colapsar ambas —una estrategia que es solo una lista de proyectos, o un plan sin objetivos detrás— es el fallo habitual que esta distinción sirve para detectar."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-105",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A fixed budget cannot fund every proposed security initiative. Which basis for prioritising is most defensible?",
+      "es": "Un presupuesto cerrado no permite financiar todas las iniciativas de seguridad propuestas. ¿Qué criterio de priorización es más defendible?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Fund the initiatives addressing the highest CVSS scores first, since severity is objective.",
+          "es": "Financiar primero las iniciativas que atienden las puntuaciones CVSS más altas, ya que la gravedad es objetiva."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Fund the initiatives requested by the largest number of business units.",
+          "es": "Financiar las iniciativas solicitadas por el mayor número de unidades de negocio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Fund by expected risk reduction per unit of cost against the entity's assessed risks, while treating regulatory obligations as non-optional and respecting dependencies where one initiative is a prerequisite for others.",
+          "es": "Financiar según la reducción de riesgo esperada por unidad de coste frente a los riesgos evaluados de la entidad, tratando las obligaciones normativas como no opcionales y respetando las dependencias en las que una iniciativa es requisito previo de otras."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Prioritisation is an economic judgement about risk reduction per unit of cost, bounded by obligations that are not discretionary and by technical dependencies between initiatives. Ranking by CVSS ignores exposure and context, ranking by demand rewards the loudest stakeholder, and equal splits guarantee that the highest-value work is underfunded.",
+          "es": "Priorizar es un juicio económico sobre reducción de riesgo por unidad de coste, acotado por obligaciones que no son discrecionales y por dependencias técnicas entre iniciativas. Ordenar por CVSS ignora la exposición y el contexto, ordenar por demanda premia al interlocutor más insistente y el reparto igualitario garantiza que el trabajo de mayor valor quede infrafinanciado."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Split the budget equally across the topic areas, so that no domain is neglected.",
+          "es": "Repartir el presupuesto a partes iguales entre las áreas temáticas, para que ningún ámbito quede desatendido."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-106",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A project is running late. The remaining scope contains a security control required by a legal obligation and a set of usability improvements. The sponsor asks you to protect the go-live date. What do you propose?",
+      "es": "Un proyecto va con retraso. El alcance pendiente incluye un control de seguridad exigido por una obligación legal y un conjunto de mejoras de usabilidad. El patrocinador le pide que proteja la fecha de puesta en producción. ¿Qué propone?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Deliver the mandatory control and defer the usability improvements, because a legal obligation is a constraint on the project rather than an item to be traded against time — and record the deferral, its owner and its new date in writing.",
+          "es": "Entregar el control obligatorio y aplazar las mejoras de usabilidad, porque una obligación legal es una restricción del proyecto y no un elemento que pueda intercambiarse por tiempo, dejando por escrito el aplazamiento, su responsable y su nueva fecha."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Scope, time and cost can be traded; a legal obligation cannot, because it is a constraint the project operates under rather than a deliverable competing for room. The professional answer keeps the mandatory item, defers what is genuinely discretionary, and records the deferral with an owner and a date so that it does not disappear.",
+          "es": "Alcance, plazo y coste se pueden intercambiar; una obligación legal no, porque es una restricción bajo la que opera el proyecto y no un entregable que compita por espacio. La respuesta profesional conserva el elemento obligatorio, aplaza lo que es genuinamente discrecional y registra el aplazamiento con responsable y fecha para que no se evapore."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Deliver the usability improvements and defer the control, documenting a risk acceptance signed by the project manager.",
+          "es": "Entregar las mejoras de usabilidad y aplazar el control, documentando una aceptación de riesgo firmada por el jefe de proyecto."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Deliver both by removing the testing phase, since testing does not change what is delivered.",
+          "es": "Entregar ambas cosas suprimiendo la fase de pruebas, ya que las pruebas no cambian lo que se entrega."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Slip the date without discussion, since security is never negotiable.",
+          "es": "Retrasar la fecha sin discusión, ya que la seguridad nunca es negociable."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-107",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "When is the most effective moment to impose security requirements on an outsourced service, and why?",
+      "es": "¿Cuál es el momento más eficaz para imponer requisitos de seguridad a un servicio externalizado y por qué?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "At the first security review after go-live, when the real architecture is known.",
+          "es": "En la primera revisión de seguridad posterior a la puesta en producción, cuando se conoce la arquitectura real."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "At contract renewal, when there is commercial leverage.",
+          "es": "En la renovación del contrato, cuando existe palanca comercial."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "During the incident that reveals the gap, when the supplier is most cooperative.",
+          "es": "Durante el incidente que revela la carencia, cuando el proveedor es más colaborador."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "In the tender specification and the resulting contract, because that is the only point at which the requirements — security measures, audit and assurance rights, incident notification deadlines, sub-contracting rules, data location and exit provisions — are priced into the offer and become enforceable rather than negotiable favours.",
+          "es": "En el pliego de licitación y en el contrato resultante, porque es el único momento en que los requisitos —medidas de seguridad, derechos de auditoría y aseguramiento, plazos de notificación de incidentes, reglas de subcontratación, ubicación de los datos y cláusulas de salida— se incorporan al precio de la oferta y pasan a ser exigibles en vez de favores negociables."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Requirements written into the specification are priced by bidders and become contractual obligations; the same requirements raised after award are change requests with a cost and a negotiation. Audit rights, notification deadlines, sub-contracting rules, data location and exit provisions are almost impossible to obtain later, which is why the tender stage is the decisive one.",
+          "es": "Los requisitos escritos en el pliego los valoran los licitadores y se convierten en obligaciones contractuales; esos mismos requisitos planteados tras la adjudicación son peticiones de cambio con coste y negociación. Los derechos de auditoría, los plazos de notificación, las reglas de subcontratación, la ubicación de los datos y las cláusulas de salida son casi imposibles de obtener después, y por eso la fase de licitación es la decisiva."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-108",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Management asks you for \"one number that tells us whether we are getting safer\". What do you give them, and how do you explain it?",
+      "es": "La dirección le pide «una sola cifra que nos diga si estamos más seguros». ¿Qué les entrega y cómo lo explica?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The number of security incidents per month: if it falls, the organisation is safer.",
+          "es": "El número de incidentes de seguridad al mes: si baja, la organización está más segura."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A small set of indicators that separates performance from exposure — for instance mean time to detect and to contain, and the share of critical internet-facing vulnerabilities remediated within the agreed window, reported alongside exposure indicators such as the count of unsupported systems or of standing privileged accounts — because a single figure cannot distinguish a quiet month from a blind one.",
+          "es": "Un conjunto reducido de indicadores que separe el rendimiento de la exposición —por ejemplo, el tiempo medio de detección y de contención y el porcentaje de vulnerabilidades críticas expuestas a internet corregidas dentro del plazo acordado, junto a indicadores de exposición como el número de sistemas sin soporte o de cuentas privilegiadas permanentes—, porque una cifra única no distingue un mes tranquilo de un mes ciego."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Security is not reducible to a single figure, and the honest answer explains why: incident counts confound frequency with detection capability, and training completion measures attendance. A short, stable set that separates how well the process performs from how much exposure remains gives management something it can act on and compare over time.",
+          "es": "La seguridad no se reduce a una cifra única, y la respuesta honesta explica por qué: el recuento de incidentes confunde frecuencia con capacidad de detección, y la finalización de la formación mide asistencia. Un conjunto corto y estable que separe el rendimiento del proceso de la exposición remanente da a la dirección algo sobre lo que actuar y comparable en el tiempo."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The percentage of staff who completed the annual awareness course, since it covers the whole organisation.",
+          "es": "El porcentaje de personal que completó el curso anual de concienciación, ya que abarca a toda la organización."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The security budget as a share of the ICT budget, benchmarked against comparable institutions.",
+          "es": "El presupuesto de seguridad como porcentaje del presupuesto TIC, comparado con instituciones semejantes."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-109",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Your institution outsources the operation of a business-critical system to a supplier certified against ISO/IEC 27001. What is the effect on the institution's own responsibility?",
+      "es": "Su institución externaliza la operación de un sistema crítico para el negocio en un proveedor certificado conforme a ISO/IEC 27001. ¿Qué efecto tiene eso sobre la responsabilidad de la propia institución?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "None in substance: the institution remains accountable for the risk to its own processes and data, so the certificate is evidence to be assessed — its scope and statement of applicability may not even cover the service in question — and must be backed by contractual security requirements, monitoring and a right to assurance.",
+          "es": "Ninguno en lo sustancial: la institución sigue respondiendo del riesgo para sus propios procesos y datos, de modo que el certificado es una evidencia que hay que valorar —su alcance y su declaración de aplicabilidad pueden ni siquiera cubrir el servicio contratado— y debe respaldarse con requisitos contractuales de seguridad, supervisión y derecho a obtener aseguramiento."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Outsourcing moves the work, not the accountability. A certificate is evidence whose scope has to be checked — it frequently covers a different service or site than the one contracted — and it says nothing about performance between audits. The institution keeps the risk in its register and secures it through requirements, monitoring and assurance rights.",
+          "es": "Externalizar traslada el trabajo, no la responsabilidad. Un certificado es evidencia cuyo alcance hay que comprobar —con frecuencia cubre un servicio o una sede distintos de los contratados— y no dice nada sobre lo que ocurre entre auditorías. La institución mantiene el riesgo en su registro y lo asegura mediante requisitos, supervisión y derechos de aseguramiento."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Responsibility transfers to the supplier for as long as the certificate remains valid.",
+          "es": "La responsabilidad se transfiere al proveedor mientras el certificado siga vigente."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The institution may remove the system from its own risk register, since the supplier maintains one.",
+          "es": "La institución puede retirar el sistema de su propio registro de riesgos, ya que el proveedor mantiene uno."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Responsibility is shared equally by law, so each party bears half of any resulting liability.",
+          "es": "La responsabilidad se comparte a partes iguales por ley, así que cada parte soporta la mitad de la responsabilidad resultante."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-110",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "After a major incident, the review finds that an alert existed but went unhandled for nine days. Which follow-up best embodies continual improvement?",
+      "es": "Tras un incidente grave, la revisión concluye que existía una alerta que quedó sin atender durante nueve días. ¿Qué seguimiento encarna mejor la mejora continua?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Retraining the analyst who missed the alert, and closing the action.",
+          "es": "Volver a formar al analista que pasó por alto la alerta y cerrar la acción."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Adding a new detection rule for the same technique, so the event is caught next time.",
+          "es": "Añadir una nueva regla de detección para la misma técnica, de modo que el evento se capture la próxima vez."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Fixing the systemic cause — why the alert's priority, ownership and escalation path allowed it to sit for nine days — then adding a measurable control such as an ageing threshold on unhandled alerts, assigning an owner to it, and verifying at the next review that the change worked.",
+          "es": "Corregir la causa sistémica —por qué la prioridad, la titularidad y la vía de escalado de la alerta permitieron que se quedara nueve días sin atender—, añadir después un control medible como un umbral de antigüedad para las alertas sin atender, asignarle un responsable y verificar en la siguiente revisión que el cambio se sostiene."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The nine days are the finding; the cause is whatever made nine days possible. Retraining an individual and adding a rule both leave the process that swallowed the alert untouched. Continual improvement means changing the system, giving the change a measurable indicator and an owner, and verifying at the next review that it held.\n\n### Topic 12 — Awareness, Training and Specialist Advisory",
+          "es": "Los nueve días son el hallazgo; la causa es aquello que hizo posibles nueve días. Volver a formar a una persona y añadir una regla dejan intacto el proceso que se tragó la alerta. Mejora continua significa cambiar el sistema, dotar al cambio de un indicador medible y de un responsable, y verificar en la siguiente revisión que se ha sostenido.\n\n### Topic 12 — Concienciación, formación y asesoramiento especializado"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Recording the finding in the incident report and revisiting it at the annual management review.",
+          "es": "Recoger el hallazgo en el informe del incidente y retomarlo en la revisión anual por la dirección."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Security Strategy, Programme and Portfolio Management"
+    ]
+  },
+  {
+    "id": "field-cyber-111",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Your phishing simulation programme reports that the click rate has fallen from 12 % to 4 % over a year. What does that tell you, and what should be measured alongside it?",
+      "es": "Su programa de simulación de phishing informa de que la tasa de clics ha caído del 12 % al 4 % en un año. ¿Qué le dice eso y qué debe medirse junto a ello?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "That the workforce is now resistant to phishing, so the programme can be scaled back.",
+          "es": "Que la plantilla ya es resistente al phishing, así que el programa puede reducirse."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "That the simulations have become too easy, so difficulty is the only thing worth tracking.",
+          "es": "Que las simulaciones se han vuelto demasiado fáciles, así que la dificultad es lo único que merece seguirse."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Nothing useful: click rate is meaningless and should be dropped.",
+          "es": "Nada útil: la tasa de clics carece de sentido y debería abandonarse."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It is one signal, easily distorted by the difficulty of the simulation and by staff who simply stop opening mail. It has to be read together with the reporting rate and the median time to report, because a fast report is the outcome that actually helps the defenders — and a low click rate with a near-zero reporting rate is a worse position than a higher click rate with prompt reporting.",
+          "es": "Es una señal, fácilmente distorsionada por la dificultad de la simulación y por quienes sencillamente dejan de abrir el correo. Hay que leerla junto con la tasa de notificación y la mediana del tiempo hasta notificar, porque lo que realmente ayuda a los defensores es un aviso rápido: una tasa de clics baja con una tasa de notificación casi nula es peor posición que una tasa de clics mayor con notificación diligente."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Click rate is easy to move without improving anything: make the lure easier, or measure a population that has learned to ignore mail. What defenders actually need is a fast report, so the reporting rate and the time to report are the outcome measures, and the click rate is interpreted alongside them rather than on its own.",
+          "es": "La tasa de clics es fácil de mover sin mejorar nada: basta con hacer el señuelo más sencillo, o medir a una población que ha aprendido a ignorar el correo. Lo que los defensores necesitan es un aviso rápido, así que la tasa de notificación y el tiempo hasta notificar son las medidas de resultado, y la tasa de clics se interpreta junto a ellas y no por sí sola."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-112",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A manager proposes publishing the names of staff who click on simulated phishing messages. What is the objection?",
+      "es": "Un directivo propone publicar los nombres del personal que pica en los mensajes de phishing simulado. ¿Cuál es la objeción?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "There is none, provided the practice is announced in advance.",
+          "es": "No hay ninguna, siempre que la práctica se anuncie de antemano."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It optimises for concealment rather than for reporting: people who fear exposure hide their mistakes, real compromises included, which is exactly the behaviour that turns a containable incident into a major one. Simulations should be framed as a measurement and teaching instrument, with results reported in aggregate.",
+          "es": "Optimiza el ocultamiento en lugar de la notificación: quien teme quedar expuesto esconde sus errores, incluidos los compromisos reales, que es justamente la conducta que convierte un incidente contenible en uno grave. Las simulaciones deben plantearse como instrumento de medición y de enseñanza, con resultados agregados."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Naming individuals teaches concealment. The behaviour a security programme most needs is the fast, unembarrassed report — including from the person who clicked — because that is what converts a potential breach into a contained one. Aggregate reporting keeps the measurement while preserving the willingness to report.",
+          "es": "Señalar a personas concretas enseña a ocultar. La conducta que más necesita un programa de seguridad es el aviso rápido y sin vergüenza —incluido el de quien hizo clic—, porque es lo que convierte una brecha potencial en un incidente contenido. El reporte agregado conserva la medición sin destruir la disposición a notificar."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It is inefficient, because the training material would then have to be personalised.",
+          "es": "Es ineficiente, porque obligaría a personalizar el material formativo."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Only that it duplicates the annual awareness course.",
+          "es": "Únicamente que duplica el curso anual de concienciación."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-113",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Why is a single annual awareness course insufficient for an entity's software developers?",
+      "es": "¿Por qué un único curso anual de concienciación resulta insuficiente para las personas que desarrollan software en la entidad?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because developers already know more about security than such a course covers.",
+          "es": "Porque quienes desarrollan ya saben de seguridad más de lo que cubre un curso así."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because any course is effective only if repeated quarterly, whoever the audience is.",
+          "es": "Porque cualquier curso solo es eficaz si se repite trimestralmente, sea cual sea el público."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because awareness aims at recognising and reporting threats across the whole workforce, whereas developers need role-specific competence — threat modelling, secure coding for their language and framework, dependency and secrets management, and interpreting SAST and SCA findings — which is training in a skill rather than general awareness.",
+          "es": "Porque la concienciación busca que toda la plantilla sepa reconocer y notificar amenazas, mientras que el personal de desarrollo necesita competencia específica de su función —modelado de amenazas, codificación segura en su lenguaje y su marco de trabajo, gestión de dependencias y de secretos e interpretación de los hallazgos de SAST y SCA—, que es formación en una destreza y no concienciación general."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Awareness and training are different objectives. Awareness makes the whole workforce able to recognise and report; training builds a competence in a specific role. Developers make design and implementation decisions that awareness material cannot reach, so they need threat modelling, language-specific secure coding, dependency and secrets management, and the ability to triage tool findings.",
+          "es": "Concienciación y formación persiguen objetivos distintos. La concienciación hace que toda la plantilla sepa reconocer y notificar; la formación construye una competencia en una función concreta. Quien desarrolla toma decisiones de diseño e implementación a las que el material de concienciación no llega, así que necesita modelado de amenazas, codificación segura en su lenguaje, gestión de dependencias y secretos y capacidad de triar los hallazgos de las herramientas."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because developers fall outside the scope of the entity's security policy.",
+          "es": "Porque el personal de desarrollo queda fuera del ámbito de la política de seguridad de la entidad."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-114",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A directorate asks you to approve an exception: a legacy system cannot support multi-factor authentication before its replacement in 14 months. How do you advise?",
+      "es": "Una dirección general le pide que apruebe una excepción: un sistema heredado no puede admitir autenticación multifactor antes de su sustitución dentro de 14 meses. ¿Cómo asesora?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Neither approve nor refuse it yourself. Document it as a time-bound risk acceptance with compensating controls proportionate to the exposure — restricting access to a managed network path, tightly limiting and monitoring the accounts concerned, alerting on anomalous use — with an expiry date tied to the replacement, sign-off by the accountable risk owner at the appropriate level, and a review before expiry.",
+          "es": "Ni apruebe ni deniegue usted mismo. Documéntelo como una aceptación de riesgo con plazo, con controles compensatorios proporcionados a la exposición —restringir el acceso a una vía de red gestionada, limitar y vigilar estrictamente las cuentas afectadas, alertar ante usos anómalos—, con una fecha de caducidad ligada a la sustitución, la firma del responsable del riesgo en el nivel que corresponda y una revisión antes del vencimiento."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "An adviser's job here is neither to block the business nor to sign away the risk personally. It is to convert an informal request into a documented, time-bound acceptance with proportionate compensating controls, owned by the person accountable for the process and reviewed before it expires. Open-ended exceptions and email approvals are how temporary gaps become permanent ones.",
+          "es": "El papel de quien asesora no es bloquear al negocio ni firmar personalmente la asunción del riesgo. Es convertir una petición informal en una aceptación documentada y con plazo, con controles compensatorios proporcionados, en manos de quien responde del proceso y revisada antes de vencer. Las excepciones sin fecha y las aprobaciones por correo son el modo en que una brecha temporal se vuelve permanente."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Refuse: exceptions undermine the policy and should never be granted.",
+          "es": "Denegarla: las excepciones socavan la política y no deberían concederse nunca."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Approve it informally by email, so that the replacement project is not delayed by paperwork.",
+          "es": "Aprobarla informalmente por correo, para que el papeleo no retrase el proyecto de sustitución."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Approve it for the lifetime of the system, since a fixed replacement date already limits the exposure.",
+          "es": "Aprobarla para toda la vida del sistema, ya que una fecha fija de sustitución ya limita la exposición."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-115",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "What is a security champions network, and what does it achieve that a central security function cannot?",
+      "es": "¿Qué es una red de «campeones de seguridad» y qué consigue que una función central de seguridad no puede conseguir?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A rotation in which security staff are embedded full time in each business unit.",
+          "es": "Una rotación en la que personal de seguridad se integra a tiempo completo en cada unidad de negocio."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A network of volunteers inside delivery teams who keep their own role and act as the first point of contact, spreading practice and surfacing decisions early — it extends the reach of the security function and puts advice where design decisions are actually made, without replacing the accountable security function or its assurance activities.",
+          "es": "Una red de personas voluntarias dentro de los equipos de entrega que conservan su propio puesto y actúan como primer punto de contacto, difundiendo la práctica y sacando a la luz las decisiones a tiempo: amplía el alcance de la función de seguridad y sitúa el asesoramiento donde realmente se toman las decisiones de diseño, sin sustituir a la función de seguridad responsable ni a sus actividades de aseguramiento."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Champions scale reach, not authority. Volunteers who stay in their own teams catch security-relevant decisions at the moment they are made, which no central function can do at that scale — but they carry no accountability, and assurance, policy and risk decisions remain with the security function.",
+          "es": "Los campeones amplían el alcance, no la autoridad. Personas voluntarias que permanecen en sus equipos captan las decisiones relevantes para la seguridad en el momento en que se toman, algo que ninguna función central puede hacer a esa escala; pero no cargan con responsabilidad formal, y el aseguramiento, la política y las decisiones de riesgo siguen en la función de seguridad."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The group of managers who sign the annual security policy.",
+          "es": "El grupo de directivos que firma la política anual de seguridad."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A recognition scheme in which staff earn badges for completing training modules.",
+          "es": "Un esquema de reconocimiento en el que el personal gana insignias por completar módulos de formación."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-116",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "An evaluation report claims a campaign succeeded because 96 % of staff completed the module and rated it 4.5 out of 5. What is the weakness of that claim?",
+      "es": "Un informe de evaluación sostiene que una campaña fue un éxito porque el 96 % de la plantilla completó el módulo y lo valoró con 4,5 sobre 5. ¿Cuál es la debilidad de esa afirmación?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "None: completion and satisfaction are the standard measures of effectiveness.",
+          "es": "Ninguna: la finalización y la satisfacción son las medidas habituales de eficacia."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "That the sample is too small to be representative.",
+          "es": "Que la muestra es demasiado pequeña para ser representativa."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "That satisfaction should have been measured on a ten-point scale.",
+          "es": "Que la satisfacción debería haberse medido en una escala de diez puntos."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "That both figures measure participation and reaction, not learning, behaviour or outcome. A defensible evaluation shows what changed — knowledge tested after the fact, and above all observable behaviour such as reporting rates, misconfiguration rates or credential-sharing incidents.",
+          "es": "Que ambas cifras miden participación y reacción, no aprendizaje, conducta ni resultado. Una evaluación defendible muestra qué cambió: conocimiento verificado después y, sobre todo, conducta observable como las tasas de notificación, los errores de configuración o los incidentes de credenciales compartidas."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Completion and satisfaction are the first two levels of any evaluation model and the least informative: they show that people attended and enjoyed it. Effectiveness is demonstrated by tested knowledge and, above all, by behaviour that can be observed independently of the training — reporting rates, misconfigurations, credential sharing.",
+          "es": "La finalización y la satisfacción son los dos primeros niveles de cualquier modelo de evaluación y los menos informativos: muestran que la gente asistió y que le gustó. La eficacia se demuestra con conocimiento verificado y, sobre todo, con conducta observable con independencia de la formación: tasas de notificación, errores de configuración, credenciales compartidas."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-117",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "A Union entity wants to sign a decision electronically so that it has, in every Member State, the legal effect equivalent to a handwritten signature. Which advice is correct under Regulation (EU) 910/2014, as amended?",
+      "es": "Una entidad de la Unión quiere firmar electrónicamente una decisión de modo que tenga, en todos los Estados miembros, el efecto jurídico equivalente al de una firma manuscrita. ¿Qué asesoramiento es correcto con arreglo al Reglamento (UE) 910/2014, en su versión modificada?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It needs a qualified electronic signature — an advanced electronic signature created by a qualified signature creation device and based on a qualified certificate issued by a qualified trust service provider — because only that tier carries equivalence to a handwritten signature and must be recognised in all Member States.",
+          "es": "Necesita una firma electrónica cualificada —una firma electrónica avanzada creada mediante un dispositivo cualificado de creación de firma y basada en un certificado cualificado expedido por un prestador cualificado de servicios de confianza—, porque solo ese nivel tiene equivalencia con la firma manuscrita y debe reconocerse en todos los Estados miembros."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Only a qualified electronic signature has the legal effect equivalent to a handwritten signature and must be recognised across all Member States; the qualification comes from the combination of a qualified certificate and a qualified signature creation device. An advanced signature meets the technical criteria without that legal equivalence, and an electronic seal serves a legal person's origin and integrity guarantee rather than a natural person's signature.",
+          "es": "Solo la firma electrónica cualificada tiene el efecto jurídico equivalente al de una firma manuscrita y debe reconocerse en todos los Estados miembros; la cualificación resulta de combinar un certificado cualificado con un dispositivo cualificado de creación de firma. Una firma avanzada cumple los criterios técnicos sin esa equivalencia jurídica, y un sello electrónico sirve a la garantía de origen e integridad de una persona jurídica, no a la firma de una persona física."
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Any advanced electronic signature suffices, since it is uniquely linked to the signatory.",
+          "es": "Basta cualquier firma electrónica avanzada, ya que está vinculada de manera única al firmante."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A scanned image of a handwritten signature suffices, provided the document is then encrypted.",
+          "es": "Basta con la imagen escaneada de una firma manuscrita, siempre que después se cifre el documento."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "An electronic seal is the correct instrument, since the entity is a legal person and a seal always carries the same effect as a signature.",
+          "es": "El instrumento correcto es un sello electrónico, ya que la entidad es una persona jurídica y un sello tiene siempre el mismo efecto que una firma."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-118",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Access reviews at your institution keep finding staff who still hold rights from previous roles. Which corrective measure addresses the cause rather than the symptom?",
+      "es": "Las revisiones de accesos de su institución siguen encontrando personal que conserva derechos de puestos anteriores. ¿Qué medida correctora ataca la causa en vez del síntoma?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Increasing the frequency of the access review from annual to quarterly.",
+          "es": "Aumentar la frecuencia de la revisión de accesos de anual a trimestral."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Requiring managers to justify each right in writing at the review.",
+          "es": "Exigir a los responsables que justifiquen por escrito cada derecho durante la revisión."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Fixing the \"mover\" step of the joiner-mover-leaver process, so that a change of role triggers removal of the rights attached to the previous one — driven by authoritative HR data rather than by ad hoc requests — while the review is kept as a detective control that verifies it worked.",
+          "es": "Corregir el paso de «cambio» del proceso de altas, cambios y bajas, de modo que un cambio de puesto dispare la retirada de los derechos asociados al puesto anterior —a partir de datos autorizados de recursos humanos y no de peticiones ad hoc—, dejando la revisión como control detectivo que verifica que funcionó."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "Repeated review findings are a symptom of a process that grants rights well but never withdraws them. Fixing the mover event — role change triggers revocation of the previous role's rights, driven by authoritative HR data — removes the accumulation at source, after which the periodic review becomes what it should be: a detective control confirming the preventive one works.",
+          "es": "Un hallazgo que se repite en las revisiones es el síntoma de un proceso que concede derechos bien pero nunca los retira. Corregir el evento de cambio —que un cambio de puesto dispare la revocación de los derechos del puesto anterior, a partir de datos autorizados de recursos humanos— elimina la acumulación en origen, y a partir de ahí la revisión periódica pasa a ser lo que debe ser: un control detectivo que confirma que el preventivo funciona."
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Replacing role-based access control with discretionary access control, so that resource owners decide.",
+          "es": "Sustituir el control de acceso basado en roles por control de acceso discrecional, para que decidan los propietarios de los recursos."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-119",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "During a confirmed ransomware incident you must brief the entity's senior management, who are not technical, while the investigation is still running. What should the briefing contain?",
+      "es": "Durante un incidente confirmado de ransomware debe informar a la alta dirección de la entidad, que no es técnica, mientras la investigación sigue en curso. ¿Qué debe contener esa comunicación?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The full technical timeline, including every indicator recovered so far, so that management has complete information.",
+          "es": "La cronología técnica completa, con todos los indicadores recuperados hasta el momento, para que la dirección tenga información completa."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Reassurance that the situation is under control, deferring all detail until the facts are confirmed.",
+          "es": "La garantía de que la situación está bajo control, aplazando todo detalle hasta que los hechos estén confirmados."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Only the estimated financial impact, since that is management's decision domain.",
+          "es": "Únicamente el impacto económico estimado, ya que ese es el ámbito de decisión de la dirección."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "What is known, what is not yet known and what is being done: the services affected and the impact on the entity's work, the decisions needed from management now, the notification obligations and their deadlines, and the time of the next update — with confidence levels stated and speculation labelled as such.",
+          "es": "Qué se sabe, qué no se sabe todavía y qué se está haciendo: los servicios afectados y el impacto en el trabajo de la entidad, las decisiones que la dirección debe tomar ahora, las obligaciones de notificación y sus plazos, y la hora de la próxima actualización, indicando el nivel de confianza y señalando con claridad lo que es especulación."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "A senior audience needs decisions, obligations and timing, not indicators. The briefing states what is established, what is still unknown, and what is being done, together with the impact on the entity's work, what management must decide now, the reporting deadlines that are already running, and when the next update comes — with uncertainty labelled honestly rather than smoothed over.",
+          "es": "Un público directivo necesita decisiones, obligaciones y plazos, no indicadores. La comunicación expone lo establecido, lo que sigue siendo desconocido y lo que se está haciendo, junto con el impacto en el trabajo de la entidad, lo que la dirección debe decidir ahora, los plazos de notificación que ya corren y cuándo llegará la próxima actualización, etiquetando la incertidumbre con honestidad en vez de suavizarla."
+        }
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  },
+  {
+    "id": "field-cyber-120",
+    "phase": "field-mcq",
+    "prompt": {
+      "en": "Callers claiming to be locked-out staff repeatedly persuade your service desk to reset multi-factor authentication enrolments. Which control addresses this most directly?",
+      "es": "Personas que dicen ser empleados bloqueados consiguen repetidamente que su servicio de atención restablezca los registros de autenticación multifactor. ¿Qué control aborda esto de forma más directa?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Requiring a longer password at reset, so that a compromised account is harder to reuse.",
+          "es": "Exigir una contraseña más larga en el restablecimiento, para que una cuenta comprometida sea más difícil de reutilizar."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A defined identity-proofing procedure for account recovery that does not rely on knowledge an attacker can gather — verification through the line manager, or an in-person or video check against an identity document — made mandatory, logged and never waived for urgency, with recovery of high-privilege accounts requiring two people.",
+          "es": "Un procedimiento definido de comprobación de identidad para la recuperación de cuentas que no dependa de datos que un atacante pueda reunir —verificación a través del superior jerárquico, o comprobación presencial o por vídeo contra un documento de identidad—, obligatorio, registrado y sin excepciones por urgencia, y con la recuperación de cuentas privilegiadas sujeta a la intervención de dos personas."
+        },
+        "isCorrect": true,
+        "explanation": {
+          "en": "The attack works because recovery is the weakest identity check in most organisations: the caller supplies knowledge, and the agent is under pressure to help. The fix is a defined proofing procedure that does not depend on gatherable knowledge, applied without exception and logged, with two-person handling for privileged accounts. An awareness bulletin addresses the wrong audience, and disabling MFA rewards the attacker.",
+          "es": "El ataque funciona porque la recuperación es la comprobación de identidad más débil de casi cualquier organización: quien llama aporta datos conocidos y el agente está bajo presión por ayudar. La solución es un procedimiento de comprobación que no dependa de información reunible, aplicado sin excepciones y registrado, con intervención de dos personas para las cuentas privilegiadas. Un boletín de concienciación se dirige al público equivocado, y desactivar la MFA premia al atacante."
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Publishing an awareness bulletin telling staff not to share their codes with callers.",
+          "es": "Publicar un boletín de concienciación pidiendo al personal que no comparta sus códigos con quien llame."
+        },
+        "isCorrect": false
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Disabling MFA for staff who are locked out frequently, so that the service desk receives fewer such calls.",
+          "es": "Desactivar la MFA al personal que se bloquea con frecuencia, para que el servicio de atención reciba menos llamadas de ese tipo."
+        },
+        "isCorrect": false
+      }
+    ],
+    "field": "cybersecurity",
+    "tags": [
+      "ai-generated",
+      "Awareness, Training and Specialist Advisory"
+    ]
+  }
+]
 
 export const THEORY_DOCS: TheoryDoc[] = [
+  {
+    "id": "theory-field-cybersecurity-guide",
+    "phase": "field-mcq",
+    "title": {
+      "en": "Succeeding in the Cybersecurity Field-Related MCQ Test",
+      "es": "Cómo superar el test de opción múltiple específico del ámbito de Ciberseguridad"
+    },
+    "summaryMd": {
+      "en": "The Field-Related Multiple Choice Test is the second hurdle in the EPSO/AD/430/26 competition, and the first one that is specific to the Cybersecurity field rather than to general cognitive aptitude. Where the reasoning tests of Phase 1 measure how you think, this test measures what you know: your professional command of the concepts, trade-offs and vocabulary a security practitioner works with day to day, at the level expected of an AD 8 administrator advising, designing and governing security for the European institutions.\n\nFormat, in brief: **30 questions, 40 minutes, scored 0–30, pass mark 15/30**. Passing the mark is necessary but not sufficient — because this stage is classifying rather than purely eliminatory, EPSO only carries forward the best-scoring candidates in the Cybersecurity field, up to a multiple of the number of posts available (254 posts in this field, per the competition notice). In practice 15/30 is a floor to clear comfortably, not the target; your real goal is a score that holds up against your competitor pool. The test is taken in your **Language 2**, not your strongest language, which adds terminology pressure on top of the technical content.\n\nUnlike the verbal reasoning test, there is **no passage of text** to analyse: each item is self-contained and draws on your own subject-matter knowledge.\n\n> **Scope.** The twelve topic areas below are derived from Annex II of the competition notice — the official list of typical duties for this field, reproduced verbatim in `7.- AD8 - Cybersecurity (scope).md`. The notice groups the work into five categories (risk management and assurance; architecture, design and technology; security operations and incident response; governance, policy and coordination; awareness, skills and advisory); the twelve areas here split those into units small enough to study and self-assess, and between them they cover every duty the notice lists. EPSO publishes sample tests for the three reasoning tests only — there is no official sample for the field-related MCQ — so Annex II is the authoritative statement of what this test may cover, and it is what this bank is built from.\n\nIn the following, we will cover:\n\n- How field-related MCQ items are typically designed, and the shapes wrong answers tend to take\n- A concise primer on the eight topic areas the test draws on\n- A 120-question practice bank, organised by topic, with full answers and explanations\n\n## How These Questions Are Designed\n\nWell-constructed technical MCQ items rarely rely on obscure trivia or product-version detail — that would be unfair across such a broad field, and easy for a genuine expert to get wrong. Instead they test whether you can tell apart two concepts that are genuinely easy to confuse under time pressure. Recognising the typical shapes wrong answers take will save you time:\n\n- **The reversed pair.** Two related concepts (authentication/authorisation, vulnerability/threat, IDS/IPS, symmetric/asymmetric) are swapped, so the distractor describes concept B correctly but attaches concept A's name to it.\n- **The half-truth.** A statement that starts out correct and then quietly overreaches — \"MFA eliminates the risk of account compromise\", \"encryption at rest protects against a compromised application\".\n- **The outdated best practice.** Guidance that used to be standard and has since been qualified or reversed: forced periodic password rotation, relying on the network perimeter as the primary control, treating a signed certificate as proof of trustworthiness.\n- **The category error.** An answer that correctly describes a real concept, just not the one asked about — describing disaster recovery when asked about incident response, or a SIEM when asked about a SOAR.\n- **The compliance-for-security substitution.** An answer that treats an audit artefact as if it were a security outcome: \"the system is secure because it is certified\".\n\nWhen torn between two options, ask which one names the actual mechanism or root cause and which one only sounds plausible. In a well-designed item the correct answer is both technically precise and addresses the real underlying issue, not a symptom.\n\n## The Twelve Topic Areas\n\n1. Risk Management, Assurance and Maturity\n2. Vulnerability Management and Security Testing\n3. Security Architecture and Controls\n4. Cryptography, Secure Development and DevSecOps\n5. Security Monitoring, Detection and Threat Intelligence\n6. Incident Response and Digital Forensics\n7. EU Cybersecurity Law, Policy and Governance\n8. Identity, Access Management and Trust Services\n9. EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841\n10. Emerging Technologies: AI, Machine Learning and Post-Quantum\n11. Security Strategy, Programme and Portfolio Management\n12. Awareness, Training and Specialist Advisory\n\nAreas 1 to 8 are the technical core. Areas 9 to 12 cover the duties an AD 8 administrator carries in an EU institution that a generic security syllabus omits — the Union's own cybersecurity regulation, the emerging technologies the notice names, the management of security programmes, and the awareness and advisory work of the last Annex II category.\n\nA number of paired distinctions recur across these areas and are worth being able to explain in your own words: threat vs. vulnerability vs. risk, authentication vs. authorisation, detection vs. prevention, IoC vs. TTP, RTO vs. RPO, encryption vs. hashing vs. signing, and compliance vs. security. Each is addressed below.\n\n## 1. Risk Management, Assurance and Maturity\n\nRisk work rests on a vocabulary that MCQ items exploit relentlessly. A **threat** is a potential cause of an unwanted incident; a **vulnerability** is a weakness that a threat can exploit; **risk** is the effect of uncertainty on objectives, conventionally estimated as a function of likelihood and impact. An **asset** is what you are protecting, and a **control** is what reduces risk. The single most common trap is to describe a vulnerability and call it a risk.\n\nRisk treatment has four canonical options: **mitigate** (reduce likelihood or impact), **transfer** (insurance, contractual allocation — note that transferring financial consequences never transfers accountability), **avoid** (stop doing the risky activity) and **accept** (retain the risk knowingly, at the right level of authority). *Residual risk* is what remains after treatment, and accepting it is a business decision, not a technical one.\n\nThe reference frameworks differ in purpose, which is itself examinable. **ISO/IEC 27001** specifies requirements for an Information Security Management System and is certifiable; **ISO/IEC 27002** is a code of practice giving guidance on controls and is not certifiable. **ISO/IEC 27005** covers information security risk management. The **NIST Cybersecurity Framework 2.0** organises outcomes into six functions — Govern, Identify, Protect, Detect, Respond, Recover — where Govern was added in version 2.0. Maturity models (CMMI-style capability levels, C2M2) describe how consistently and repeatably a practice is performed; they are not a measure of how much risk remains.\n\nMetrics deserve care. A good security metric is decision-useful, comparable over time, and tied to an outcome; counting alerts or patches installed measures activity, not effectiveness. **Key risk indicators** are leading measures of risk exposure; **key performance indicators** measure how well a process runs.\n\n## 2. Vulnerability Management and Security Testing\n\nVulnerability management is a continuous cycle: discover assets, identify weaknesses, prioritise, remediate or mitigate, verify, and report. Prioritisation is where judgement shows. **CVSS** provides a severity score, and the base score deliberately excludes your environment — a CVSS 9.8 on a system with no network exposure may be less urgent than a 6.5 on an internet-facing service holding personal data. That is why CVSS is combined with exploitability and asset-context signals: **EPSS** estimates the probability of exploitation in the wild, and the **KEV** catalogue lists vulnerabilities known to be actively exploited. The identifiers also differ in kind: a **CVE** identifies a specific vulnerability in a specific product, while a **CWE** identifies the class of weakness behind it.\n\nTesting activities are frequently confused with one another. A **vulnerability scan** is automated, broad and shallow, and produces findings that need validation. A **penetration test** is a scoped, time-boxed, manual-led attempt to exploit weaknesses and demonstrate impact. A **red team exercise** is objective-based and adversary-emulating, testing detection and response as much as the technology, usually without the defenders' knowledge; when red and blue teams work together deliberately, it is called **purple teaming**. **Bug bounty** programmes crowdsource findings continuously. Knowing which one answers a given question — \"are we exploitable?\" vs. \"would we notice?\" — is the point.\n\nCoordinated vulnerability disclosure governs what happens when someone finds a flaw in someone else's product: the finder reports privately, the vendor is given a remediation window, and details are published afterwards. In the EU this is now underpinned by obligations in NIS2 and the Cyber Resilience Act.\n\n## 3. Security Architecture and Controls\n\nArchitecture is where principles become structure. **Defence in depth** layers independent controls so that one failure is not fatal. **Least privilege** grants the minimum access needed for the shortest time. **Separation of duties** ensures no single person can complete a sensitive transaction alone. **Fail-safe defaults** deny unless explicitly permitted. **Secure by design** and **secure by default** — now legal requirements for many products under the Cyber Resilience Act — mean security is built in from the start and the out-of-the-box configuration is the safe one.\n\n**Zero trust** is the most frequently misdescribed concept in this area. It is not a product and not \"no trust\"; it is the removal of implicit trust based on network location, replaced by continuous, per-request verification of identity, device posture and context, with least-privilege authorisation. Micro-segmentation and strong identity are means to it, not synonyms for it.\n\nControl types are examinable: **preventive** (stop it happening), **detective** (notice it happened), **corrective** (restore afterwards), plus **deterrent** and **compensating** controls where a primary control is not feasible. Cutting across these, controls are **administrative**, **technical** or **physical**.\n\nThe tooling vocabulary matters. A **SIEM** aggregates, correlates and retains log and event data for detection, investigation and compliance. A **SOAR** orchestrates and automates response workflows. **EDR** watches endpoints; **XDR** correlates telemetry across endpoints, network, identity and cloud. **CDR** does detection and response for cloud workloads and control planes. A **CASB** brokers access to SaaS. **DLP** targets data exfiltration. **PAM/PIM** govern privileged accounts and just-in-time elevation.\n\n## 4. Cryptography, Secure Development and DevSecOps\n\nThree operations are routinely swapped in distractors. **Encryption** provides confidentiality and is reversible with a key. **Hashing** is one-way and provides integrity; password storage additionally requires a slow, salted, memory-hard function such as Argon2, scrypt or bcrypt, never a bare fast hash. **Digital signatures** provide integrity, authentication of origin and non-repudiation, and are produced with a private key and verified with the corresponding public key — note the direction, which distractors love to reverse.\n\n**Symmetric** cryptography (AES) is fast and uses one shared key, so key distribution is the problem it cannot solve alone; **asymmetric** cryptography (RSA, elliptic curve) solves distribution but is slower, which is why real protocols are hybrid: asymmetric key establishment, symmetric bulk encryption. **Perfect forward secrecy** ensures that compromise of a long-term key does not expose past sessions, which is why ephemeral Diffie–Hellman is mandatory in TLS 1.3. Authenticated encryption (AES-GCM, ChaCha20-Poly1305) provides confidentiality and integrity together, which is why \"encrypt-then-ignore-integrity\" designs fail.\n\n**Key management** is where cryptography usually breaks in practice: generation, distribution, rotation, escrow, revocation and destruction, with keys held in an HSM or managed KMS and never in source code. **Post-quantum** migration is now an active work item — the concern is \"harvest now, decrypt later\", and the standardised algorithms (ML-KEM for key encapsulation, ML-DSA and SLH-DSA for signatures) are being deployed in hybrid mode alongside classical ones.\n\nOn the software side, **DevSecOps** shifts security left into the pipeline. **SAST** analyses source without running it (good coverage, more false positives); **DAST** tests the running application from outside (fewer false positives, only what it can reach); **SCA** inventories third-party and open-source dependencies and their known vulnerabilities; **IAST** instruments the running application. An **SBOM** is a machine-readable inventory of components, and its value is in answering \"am I affected?\" within hours of the next Log4Shell. **Threat modelling** (STRIDE) is done at design time, when fixing is cheapest.\n\n## 5. Security Monitoring, Detection and Threat Intelligence\n\nDetection engineering is a discipline with its own economics. Every rule trades **false positives** (wasted analyst time, alert fatigue) against **false negatives** (missed attacks), and tuning is continuous. Signature-based detection catches the known precisely; anomaly and behaviour-based detection can catch the unknown at the cost of noise. **Threat hunting** is the hypothesis-driven search for adversaries that existing detections have missed — it is proactive and human-led, which is precisely what distinguishes it from monitoring an alert queue.\n\n**MITRE ATT&CK** is a knowledge base of adversary tactics (the *why*), techniques (the *how*) and procedures (specific implementations), and is the common language for expressing coverage. The **Pyramid of Pain** explains why: hash values and IP addresses are trivial for an adversary to change, while TTPs are expensive — so detections built on behaviour survive longer than detections built on indicators. **IoCs** are artefacts of a past compromise; **TTPs** describe how the adversary operates. The **cyber kill chain** models an intrusion as sequential stages, which is useful for describing where you interrupted an attack.\n\nIntelligence is graded by audience: **strategic** (risk and trends, for executives), **operational** (campaigns and actors), **tactical** (TTPs, for defenders) and **technical** (indicators, for tooling). It is shared in **STIX** format over **TAXII** transport, and handling is governed by the **Traffic Light Protocol** — where TLP:CLEAR is unrestricted, TLP:GREEN is for the community, TLP:AMBER is limited to the organisation and its clients (AMBER+STRICT excludes clients), and TLP:RED is for named recipients only.\n\nLog integrity underpins all of it: centralised, time-synchronised (NTP), tamper-evident and retained long enough to investigate an intrusion that went unnoticed for months.\n\n## 6. Incident Response and Digital Forensics\n\nThe **NIST SP 800-61** lifecycle has four phases: Preparation; Detection and Analysis; Containment, Eradication and Recovery; and Post-Incident Activity. Preparation is the phase that determines how the other three go, and post-incident activity — the lessons-learned review — is the phase most often skipped and most often asked about. Note the distinction between an **event** (any observable occurrence), an **alert** (an event flagged for attention) and an **incident** (an event that actually or imminently jeopardises confidentiality, integrity or availability).\n\nContainment is usually short-term (isolate the host) then long-term (rebuild clean), and it involves a real trade-off: pulling the plug destroys volatile evidence and tips off the adversary, while waiting risks further damage. **Eradication** removes the adversary's foothold; **recovery** restores service and monitors for recurrence. A **playbook** is the pre-agreed procedure for a scenario; a **tabletop exercise** rehearses it without touching production.\n\nForensics adds evidentiary discipline. **Chain of custody** documents who handled evidence, when and why, without which findings may be inadmissible. The **order of volatility** dictates collection sequence: CPU registers and cache, then memory, then network state, then disk, then archival media — memory first, because it disappears on power loss and holds keys, injected code and live connections. Work is performed on verified bit-for-bit **images**, with hashes taken before and after to prove integrity; the original is never the working copy.\n\nRecovery objectives are frequently reversed in distractors: **RPO** is how much data you can afford to lose, measured backwards from the incident (it drives backup frequency); **RTO** is how long you can afford to be down, measured forwards (it drives recovery capability). Backups should follow 3-2-1 with at least one immutable or offline copy, because ransomware targets backups first, and restoration must be tested — an untested backup is a hypothesis.\n\n## 7. EU Cybersecurity Law, Policy and Governance\n\nFor a post in the European institutions, the legal framework is not background reading; it is the job. **Directive (EU) 2022/2555 (NIS2)** replaced NIS1, widened the scope to many more sectors, split entities into *essential* and *important* (which differ in supervision — proactive for essential, reactive for important), imposed management-body accountability with personal liability, and set a staged incident reporting timeline: an **early warning within 24 hours**, an **incident notification within 72 hours**, and a **final report within one month**. Being a directive, it requires national transposition.\n\n**Regulation (EU) 2019/881 (the Cybersecurity Act)** gave ENISA a permanent mandate and created the European cybersecurity certification framework, with assurance levels *basic*, *substantial* and *high*. **Regulation (EU) 2024/2847 (the Cyber Resilience Act)** is the horizontal product regulation: it imposes essential cybersecurity requirements on products with digital elements, requires security updates across a defined support period, mandates an SBOM, and obliges manufacturers to report actively exploited vulnerabilities and severe incidents to ENISA and the national CSIRT — with a 24-hour early warning. **Regulation (EU) 2022/2554 (DORA)** does the equivalent for the financial sector, including oversight of critical ICT third-party providers. **Regulation (EU) 2024/1689 (the AI Act)** is risk-tiered and requires high-risk AI systems to be accurate, robust and cybersecure.\n\n**GDPR** intersects but is not the same thing: a **personal data breach** must be notified to the supervisory authority within **72 hours** of awareness unless unlikely to result in risk to individuals, and communicated to the data subjects themselves only when the risk is *high*. A NIS2 incident and a GDPR breach are different triggers with different regulators, and one event can require both.\n\nInstitutionally, **ENISA** is the Union agency for cybersecurity — advisory, certification and coordination, not an operational incident responder. **CERT-EU** is the cybersecurity service for the Union's own institutions, bodies and agencies, now on a permanent footing under **Regulation (EU, Euratom) 2023/2841**, which lays down measures for a high common level of cybersecurity across the EU institutions themselves. **CSIRTs Network** links national response teams; the **EU-CyCLONe** network handles crisis-level coordination.\n\n## 8. Identity, Access Management and Trust Services\n\n**Authentication** establishes who you are; **authorisation** determines what you may do; **accounting** records what you did. Reversing the first two is the single most common distractor in this area. Authentication factors are grouped as something you know, something you have and something you are — **multi-factor** authentication requires factors from *different* groups, so a password plus a security question is not MFA. Not all factors are equal: SMS one-time codes are vulnerable to SIM swapping and interception, while phishing-resistant factors (FIDO2/WebAuthn passkeys, smart cards) bind the credential to the origin so a proxied phishing site cannot replay it.\n\nAccess control models: **RBAC** assigns permissions to roles and users to roles; **ABAC** decides from attributes of subject, resource, action and environment, which scales better for fine-grained and context-dependent policy; **MAC** enforces system-wide labels; **DAC** lets the resource owner decide. **PAM** covers privileged accounts — vaulting, session recording, just-in-time elevation — and eliminating standing privilege is the goal.\n\nFederation protocols differ in purpose and are routinely confused. **SAML 2.0** is XML-based and long-established in enterprise SSO. **OAuth 2.0** is an *authorisation* framework for delegated access — it issues access tokens and says nothing about who the user is. **OpenID Connect** is the identity layer built on top of OAuth 2.0 and adds the ID token, which is what actually authenticates the user. Using bare OAuth as an authentication protocol is a classic design error.\n\n**Regulation (EU) 910/2014 (eIDAS)**, as amended by **Regulation (EU) 2024/1183** establishing the European Digital Identity Wallet, defines the trust services layer. Electronic signatures come in three tiers: *simple*, *advanced* (uniquely linked to and capable of identifying the signatory, under their sole control, detecting subsequent changes) and *qualified* — where a qualified electronic signature is created by a qualified signature creation device with a qualified certificate, and is the only tier with legal effect equivalent to a handwritten signature across all Member States. Related qualified trust services include electronic seals (for legal persons rather than natural ones), timestamps, and registered electronic delivery.\n\n## 9. EU Institutional Cybersecurity: CERT-EU, the IICB and Regulation 2023/2841\n\nTopic 7 covers the law the Union makes for others; this area covers the law the Union applies to itself, which is the framework you would actually work under. NIS2 binds the Member States and does not reach the Union's own administration, so **Regulation (EU, Euratom) 2023/2841** was adopted to lay down measures for a high common level of cybersecurity at the institutions, bodies, offices and agencies of the Union. It entered into force on 7 January 2024.\n\nIts governance has two poles. The **Interinstitutional Cybersecurity Board (IICB)** monitors and supports implementation, exercises general direction over CERT-EU, and adopts guidelines and recommendations, with a follow-up path where an entity does not comply. **CERT-EU**, formally the *Cybersecurity Service for the Union institutions, bodies, offices and agencies*, is the operational side: shared threat intelligence, incident response coordination, guidance and calls for action. Note the division carefully — the IICB governs, CERT-EU serves, ENISA advises and certifies, and none of the three supervises Member State entities under NIS2, which is the job of the national competent authorities.\n\nEach Union entity carries its own obligations: an **internal cybersecurity risk-management, governance and control framework**; a **cybersecurity maturity assessment**, repeated at least every two years; a **cybersecurity plan** endorsed at the highest level of management; **baseline measures**; and a designated **Local Cybersecurity Officer** or equivalent function, who is the entity's focal point and the counterpart for CERT-EU and the interinstitutional networks. As in NIS2, cybersecurity risk management is placed explicitly with the entity's highest level of management, which approves the framework, oversees implementation and follows training — accountability that appointing a security officer or outsourcing operations does not discharge.\n\nIncident reporting mirrors NIS2's staged model: an **early warning within 24 hours**, an **incident notification within 72 hours**, and a **final report within one month**, with intermediate updates as required.\n\n## 10. Emerging Technologies: AI, Machine Learning and Post-Quantum\n\nAnnex II lists studying, coordinating and piloting artificial intelligence, machine learning and quantum computing in security work, so this area is examinable in both directions: securing AI, and using it.\n\nAttacks on machine learning divide cleanly by what the attacker touches. **Poisoning** manipulates training data or the training process; **evasion** crafts inputs at inference time to cross the decision boundary of an unmodified model; **model inversion** and **membership inference** recover information about the training data; **model extraction** recovers the model itself. For systems built on large language models, the characteristic flaw is **prompt injection** — the model cannot separate data it is asked to process from instructions it is asked to follow — and its indirect form, where the payload arrives inside content the model was asked to summarise. Because the flaw sits in the trust boundary rather than in the wording, the mitigations are architectural: least-privilege tool access, human confirmation for consequential actions, and treating model output as untrusted input. Models are also supply-chain artefacts: some serialisation formats execute code on load, and weights can carry a backdoor, so provenance and integrity verification apply as they would to any dependency.\n\nUsing AI defensively runs into the **base rate**. A detector with an excellent false-positive rate still drowns an analyst when the prevalence of true events is very low, which is why model output is enriched, correlated and risk-scored rather than alerted on directly.\n\nOn quantum, keep two facts apart. **Shor's algorithm** breaks factoring and discrete logarithms, so RSA, Diffie–Hellman and elliptic-curve cryptography fall; **Grover's algorithm** only weakens symmetric primitives, which adequate key and digest sizes handle. The urgency comes from **harvest now, decrypt later**: traffic recorded today is decrypted when the capability arrives, so data with a long confidentiality horizon is already exposed. The standardised replacements are **ML-KEM** for key encapsulation and **ML-DSA** and **SLH-DSA** for signatures, usually deployed **hybrid** alongside a classical algorithm. The first practical step is not a purchase but an inventory: where cryptography is used, in what form, with what lifetimes and dependencies — **crypto-agility** is the real objective.\n\n## 11. Security Strategy, Programme and Portfolio Management\n\nAn AD 8 post is as much about directing security work as performing it, and Annex II says so explicitly: analysis, proposals, cost estimation, resourcing, scheduling, change management and reporting across projects, programmes and portfolios, plus team coordination, multiannual strategy and continual improvement.\n\nThe three delivery levels are distinct and routinely confused. A **project** produces a defined output within a scope; a **programme** coordinates several projects towards a single outcome whose benefits depend on that coordination; a **portfolio** is the whole set of investments competing for funding and aligned to strategy. Above them, a **rolling multiannual strategy** sets objectives, target capability and principles over several years and is refreshed as context changes, while the **annual plan** turns the current slice into funded, scheduled, owned deliverables.\n\nTwo governance points recur. First, **risk ownership**: the risk belongs to the business owner accountable for the process, not to the security adviser who identified it, and an acceptance is only defensible if it is written down, justified, compensated, time-limited, owned by name and reported upward. Second, **accountability does not outsource**: a supplier's ISO/IEC 27001 certificate is evidence whose scope must be checked, not a transfer of responsibility, which is why security requirements, audit and assurance rights, notification deadlines, sub-contracting rules, data location and exit provisions belong in the tender and the contract — the only point at which they are priced in and enforceable.\n\nPrioritisation under a fixed budget is an economic judgement: expected risk reduction per unit of cost, bounded by non-discretionary obligations and by dependencies between initiatives. Reporting upward separates **performance** from **exposure** — mean time to detect and to contain against counts of unsupported systems or standing privileged accounts — because a single figure cannot distinguish a quiet month from a blind one. And **continual improvement** means changing the system that produced a failure, giving the change an indicator and an owner, and verifying it later; retraining an individual and closing the action does not.\n\n## 12. Awareness, Training and Specialist Advisory\n\nThe last Annex II category covers proposing, implementing and evaluating awareness measures, campaigns and training, and providing expert advice in specialised domains — identity and access management, electronic signature and trust services are named explicitly.\n\nDistinguish the objectives: **awareness** makes the whole workforce able to recognise and report; **training** builds competence in a specific role, which is why a single annual course cannot serve developers, who need threat modelling, secure coding, dependency and secrets management and the ability to triage tool findings. Evaluation is where campaigns are usually oversold — completion and satisfaction measure participation and reaction, not learning, behaviour or outcome. In phishing simulations, the click rate is easily moved without improving anything; the **reporting rate** and the **time to report** are the measures that matter, and naming individuals who click teaches concealment, which is the opposite of what the programme needs. A **security champions network** extends reach into delivery teams without transferring accountability.\n\nAdvisory work has its own discipline. An exception request is neither approved informally nor refused on principle: it becomes a **time-bound risk acceptance** with proportionate compensating controls, an expiry tied to the fix, sign-off by the accountable owner and a review before expiry. Recurrent access-review findings are treated at the **mover** step of joiner-mover-leaver rather than by reviewing more often. Account recovery needs identity proofing that does not rely on gatherable knowledge, since the service desk is where MFA is most often defeated. And on trust services, only a **qualified electronic signature** — a qualified certificate plus a qualified signature creation device — carries the legal effect equivalent to a handwritten signature across all Member States; an advanced signature does not, and an electronic seal serves a legal person's origin and integrity guarantee rather than a natural person's signature.\n\n## Preparing for the Test\n\nWork topic by topic rather than sequentially through the bank: the areas are independent, and knowing which one you are weakest in is worth more than an overall percentage. When you get an item wrong, write down in one sentence *why* the correct answer is correct — if you cannot, you recognised the answer rather than knowing it. Pay particular attention to the paired distinctions listed above; they generate a disproportionate share of items. Finally, do at least one run of 30 questions in 40 minutes to calibrate pace: that is 80 seconds per question, which is enough to read carefully once and decide, but not enough to deliberate at length.",
+      "es": "El test de opción múltiple de ámbito es el segundo obstáculo de la oposición EPSO/AD/430/26 y el primero específico del ámbito de Ciberseguridad y no de la aptitud cognitiva general. Donde las pruebas de razonamiento de la fase 1 miden cómo piensas, este test mide lo que sabes: tu dominio profesional de los conceptos, las disyuntivas y el vocabulario con los que trabaja a diario un profesional de la seguridad, al nivel que se espera de un administrador AD 8 que asesora, diseña y gobierna la seguridad de las instituciones europeas.\n\nEl formato, en resumen: **30 preguntas, 40 minutos, puntuación 0–30, nota de corte 15/30**. Superar la nota de corte es necesario pero no suficiente: como esta fase es clasificatoria y no meramente eliminatoria, EPSO solo hace avanzar a los candidatos mejor puntuados del ámbito, hasta un múltiplo del número de plazas disponibles (254 plazas en este ámbito, según la convocatoria). En la práctica, 15/30 es un suelo que hay que superar con holgura, no el objetivo; tu meta real es una puntuación que aguante frente a la de tus competidores. El test se hace en tu **Lengua 2**, no en tu lengua más fuerte, lo que añade presión terminológica sobre el contenido técnico.\n\nA diferencia del test de razonamiento verbal, aquí **no hay ningún texto** que analizar: cada pregunta es autónoma y se apoya en tu propio conocimiento de la materia.\n\n> **Alcance.** Las doce áreas temáticas que siguen se derivan del anexo II de la convocatoria, la lista oficial de funciones habituales de este ámbito, reproducida literalmente en `7.- AD8 - Ciberseguridad (ámbito).md`. La convocatoria agrupa el trabajo en cinco categorías (gestión de riesgos y garantía de la seguridad; arquitectura, diseño y tecnología; operaciones de seguridad y respuesta a incidentes; gobernanza, política y coordinación; concienciación, capacidades y asesoramiento); las doce áreas de aquí las dividen en unidades lo bastante pequeñas para estudiarlas y autoevaluarse, y entre todas cubren cada una de las funciones que enumera la convocatoria. EPSO publica exámenes de muestra únicamente de las tres pruebas de razonamiento: no existe muestra oficial del test de ámbito, así que el anexo II es la declaración autorizada de lo que este test puede cubrir, y es la base de este banco.\n\nA continuación veremos:\n\n- Cómo se diseñan habitualmente las preguntas de ámbito y qué formas suelen adoptar las respuestas incorrectas\n- Un resumen conciso de las ocho áreas temáticas de las que bebe el test\n- Un banco de práctica de 120 preguntas, organizado por tema, con respuestas y explicaciones completas\n\n## Cómo se diseñan estas preguntas\n\nLas preguntas técnicas bien construidas rara vez dependen de datos oscuros o del detalle de una versión concreta de un producto: sería injusto en un campo tan amplio y fácil de fallar incluso para un experto. Lo que hacen es comprobar si sabes distinguir dos conceptos que de verdad se confunden bajo presión de tiempo. Reconocer las formas que suelen adoptar las respuestas incorrectas te ahorrará tiempo:\n\n- **El par invertido.** Dos conceptos relacionados (autenticación/autorización, vulnerabilidad/amenaza, IDS/IPS, simétrico/asimétrico) aparecen intercambiados, de modo que el distractor describe correctamente el concepto B pero le pone el nombre del concepto A.\n- **La media verdad.** Una afirmación que empieza bien y luego se excede sin avisar: «la autenticación multifactor elimina el riesgo de que roben una cuenta», «el cifrado en reposo protege frente a una aplicación comprometida».\n- **La buena práctica caducada.** Una recomendación que fue estándar y que después se ha matizado o revertido: la rotación periódica obligatoria de contraseñas, apoyarse en el perímetro de red como control principal, o tomar un certificado firmado como prueba de que algo es de fiar.\n- **El error de categoría.** Una respuesta que describe correctamente un concepto real, pero no el que se preguntaba: describir la recuperación ante desastres cuando se pregunta por la respuesta a incidentes, o un SIEM cuando se pregunta por un SOAR.\n- **La sustitución de seguridad por cumplimiento.** Una respuesta que trata un artefacto de auditoría como si fuera un resultado de seguridad: «el sistema es seguro porque está certificado».\n\nCuando dudes entre dos opciones, pregúntate cuál nombra el mecanismo o la causa raíz y cuál se limita a sonar plausible. En una pregunta bien diseñada, la respuesta correcta es a la vez técnicamente precisa y va al problema de fondo, no a un síntoma.\n\n## Las doce áreas temáticas\n\n1. Gestión de riesgos, aseguramiento y madurez\n2. Gestión de vulnerabilidades y pruebas de seguridad\n3. Arquitectura de seguridad y controles\n4. Criptografía, desarrollo seguro y DevSecOps\n5. Monitorización, detección e inteligencia de amenazas\n6. Respuesta a incidentes y análisis forense digital\n7. Derecho, política y gobernanza de la ciberseguridad en la UE\n8. Identidad, gestión de accesos y servicios de confianza\n9. Ciberseguridad institucional de la UE: CERT-EU, el IICB y el Reglamento 2023/2841\n10. Tecnologías emergentes: IA, aprendizaje automático y poscuántica\n11. Estrategia, programas y cartera de proyectos de seguridad\n12. Concienciación, formación y asesoramiento especializado\n\nLas áreas 1 a 8 son el núcleo técnico. Las áreas 9 a 12 cubren las funciones que un administrador AD 8 desempeña en una institución europea y que un temario genérico de seguridad omite: el reglamento de ciberseguridad de la propia Unión, las tecnologías emergentes que nombra la convocatoria, la gestión de programas de seguridad y el trabajo de concienciación y asesoramiento de la última categoría del anexo II.\n\nVarias distinciones por pares se repiten en todas estas áreas y conviene saber explicarlas con tus propias palabras: amenaza frente a vulnerabilidad frente a riesgo, autenticación frente a autorización, detección frente a prevención, IoC frente a TTP, RTO frente a RPO, cifrado frente a hash frente a firma, y cumplimiento frente a seguridad. Todas se tratan a continuación.\n\n## 1. Gestión de riesgos, aseguramiento y madurez\n\nEl trabajo de riesgos descansa sobre un vocabulario que las preguntas explotan sin piedad. Una **amenaza** es una causa potencial de un incidente no deseado; una **vulnerabilidad** es una debilidad que una amenaza puede explotar; el **riesgo** es el efecto de esa incertidumbre sobre los objetivos, estimado convencionalmente en función de probabilidad e impacto. Un **activo** es lo que proteges y un **control** es lo que reduce el riesgo. La trampa más común, con diferencia, es describir una vulnerabilidad y llamarla riesgo.\n\nEl tratamiento del riesgo tiene cuatro opciones canónicas: **mitigar** (reducir probabilidad o impacto), **transferir** (seguros, reparto contractual — ojo: transferir la consecuencia económica nunca transfiere la responsabilidad), **evitar** (dejar de hacer la actividad arriesgada) y **aceptar** (retener el riesgo a sabiendas, al nivel de autoridad correcto). El *riesgo residual* es lo que queda tras el tratamiento, y aceptarlo es una decisión de negocio, no técnica.\n\nLos marcos de referencia difieren en su propósito, y eso mismo es examinable. **ISO/IEC 27001** especifica los requisitos de un sistema de gestión de la seguridad de la información y es certificable; **ISO/IEC 27002** es un código de buenas prácticas con orientación sobre controles y no es certificable. **ISO/IEC 27005** cubre la gestión del riesgo de seguridad de la información. El **NIST Cybersecurity Framework 2.0** organiza los resultados en seis funciones —Gobernar, Identificar, Proteger, Detectar, Responder, Recuperar—, donde Gobernar se añadió en la versión 2.0. Los modelos de madurez (niveles de capacidad al estilo CMMI, C2M2) describen con qué consistencia y repetibilidad se ejecuta una práctica; no son una medida de cuánto riesgo queda.\n\nLas métricas merecen cuidado. Una buena métrica de seguridad es útil para decidir, comparable en el tiempo y ligada a un resultado; contar alertas o parches instalados mide actividad, no eficacia. Los **indicadores clave de riesgo** son medidas adelantadas de la exposición; los **indicadores clave de rendimiento** miden lo bien que funciona un proceso.\n\n## 2. Gestión de vulnerabilidades y pruebas de seguridad\n\nLa gestión de vulnerabilidades es un ciclo continuo: descubrir activos, identificar debilidades, priorizar, remediar o mitigar, verificar e informar. La priorización es donde se ve el criterio. **CVSS** da una puntuación de gravedad, y la puntuación base excluye deliberadamente tu entorno: un CVSS 9,8 en un sistema sin exposición de red puede ser menos urgente que un 6,5 en un servicio expuesto a internet con datos personales. Por eso el CVSS se combina con señales de explotabilidad y de contexto del activo: **EPSS** estima la probabilidad de explotación real, y los catálogos de vulnerabilidades **explotadas conocidas** listan las que se están explotando activamente. Los identificadores también difieren en naturaleza: un **CVE** identifica una vulnerabilidad concreta en un producto concreto, mientras que un **CWE** identifica la clase de debilidad que hay detrás.\n\nLas actividades de prueba se confunden con frecuencia entre sí. Un **escaneo de vulnerabilidades** es automatizado, amplio y superficial, y produce hallazgos que hay que validar. Una **prueba de penetración** es un intento acotado y con límite de tiempo, dirigido por personas, de explotar debilidades y demostrar impacto. Un **ejercicio de red team** se basa en objetivos y emula a un adversario, y pone a prueba la detección y la respuesta tanto como la tecnología, normalmente sin que los defensores lo sepan; cuando los equipos rojo y azul trabajan juntos de forma deliberada se llama **purple teaming**. Los programas de **bug bounty** externalizan los hallazgos de forma continua. Saber cuál responde a cada pregunta —«¿somos explotables?» frente a «¿nos daríamos cuenta?»— es de lo que va todo esto.\n\nLa divulgación coordinada de vulnerabilidades rige lo que ocurre cuando alguien encuentra un fallo en el producto de otro: quien lo encuentra lo comunica en privado, el fabricante dispone de un plazo para corregirlo y los detalles se publican después. En la UE esto se sustenta ya en obligaciones de la NIS2 y del Reglamento de Ciberresiliencia.\n\n## 3. Arquitectura de seguridad y controles\n\nLa arquitectura es donde los principios se convierten en estructura. La **defensa en profundidad** superpone controles independientes para que un fallo no sea fatal. El **mínimo privilegio** concede el acceso mínimo necesario durante el menor tiempo posible. La **separación de funciones** garantiza que nadie pueda completar en solitario una operación sensible. Los **valores por defecto seguros** deniegan salvo permiso explícito. **Seguro por diseño** y **seguro por defecto** —ya requisitos legales para muchos productos con el Reglamento de Ciberresiliencia— significan que la seguridad se construye desde el principio y que la configuración de fábrica es la segura.\n\nEl **zero trust** es el concepto peor descrito de esta área. No es un producto ni significa «no confiar en nada»: es la eliminación de la confianza implícita basada en la ubicación de red, sustituida por la verificación continua, petición a petición, de la identidad, el estado del dispositivo y el contexto, con autorización de mínimo privilegio. La microsegmentación y una identidad sólida son medios para lograrlo, no sinónimos.\n\nLos tipos de control son examinables: **preventivos** (impedir que ocurra), **detectivos** (darse cuenta de que ha ocurrido), **correctivos** (restaurar después), más los **disuasorios** y los **compensatorios**, para cuando el control principal no es viable. De forma transversal, los controles son **administrativos**, **técnicos** o **físicos**.\n\nEl vocabulario de herramientas importa. Un **SIEM** agrega, correlaciona y conserva registros y eventos para detección, investigación y cumplimiento. Un **SOAR** orquesta y automatiza los flujos de respuesta. El **EDR** vigila los equipos finales; el **XDR** correlaciona telemetría de equipos, red, identidad y nube. El **CDR** hace detección y respuesta sobre cargas de trabajo y planos de control en la nube. Un **CASB** intermedia el acceso a SaaS. El **DLP** ataca la exfiltración de datos. **PAM/PIM** gobiernan las cuentas privilegiadas y la elevación justo a tiempo.\n\n## 4. Criptografía, desarrollo seguro y DevSecOps\n\nHay tres operaciones que los distractores intercambian sistemáticamente. El **cifrado** aporta confidencialidad y es reversible con una clave. El **hash** es unidireccional y aporta integridad; el almacenamiento de contraseñas exige además una función lenta, con sal y de uso intensivo de memoria, como Argon2, scrypt o bcrypt, nunca un hash rápido a secas. Las **firmas digitales** aportan integridad, autenticación de origen y no repudio, y se generan con una clave privada y se verifican con la pública correspondiente; fíjate en la dirección, que los distractores adoran invertir.\n\nLa criptografía **simétrica** (AES) es rápida y usa una única clave compartida, de modo que la distribución de claves es el problema que no puede resolver sola; la **asimétrica** (RSA, curva elíptica) resuelve la distribución pero es más lenta, y por eso los protocolos reales son híbridos: establecimiento asimétrico de clave y cifrado simétrico del grueso del tráfico. El **secreto hacia adelante perfecto** garantiza que comprometer una clave de larga duración no exponga las sesiones pasadas, razón por la que el Diffie-Hellman efímero es obligatorio en TLS 1.3. El cifrado autenticado (AES-GCM, ChaCha20-Poly1305) aporta confidencialidad e integridad a la vez, y por eso fracasan los diseños que cifran e ignoran la integridad.\n\nLa **gestión de claves** es donde la criptografía suele romperse en la práctica: generación, distribución, rotación, depósito, revocación y destrucción, con las claves en un HSM o un KMS gestionado y nunca en el código fuente. La migración **poscuántica** es ya un trabajo en curso: la preocupación es «recolectar ahora, descifrar después», y los algoritmos normalizados (ML-KEM para encapsulado de claves, ML-DSA y SLH-DSA para firmas) se están desplegando en modo híbrido junto a los clásicos.\n\nDel lado del software, **DevSecOps** desplaza la seguridad hacia la izquierda, dentro de la cadena de construcción. El **SAST** analiza el código sin ejecutarlo (buena cobertura, más falsos positivos); el **DAST** prueba la aplicación en ejecución desde fuera (menos falsos positivos, solo lo que alcanza); el **SCA** inventaría las dependencias de terceros y de código abierto y sus vulnerabilidades conocidas; el **IAST** instrumenta la aplicación en ejecución. Un **SBOM** es un inventario legible por máquina de los componentes, y su valor está en responder «¿me afecta?» en cuestión de horas cuando aparezca el próximo Log4Shell. El **modelado de amenazas** (STRIDE) se hace en fase de diseño, cuando corregir es más barato.\n\n## 5. Monitorización, detección e inteligencia de amenazas\n\nLa ingeniería de detección es una disciplina con su propia economía. Cada regla intercambia **falsos positivos** (tiempo de analista desperdiciado, fatiga de alertas) por **falsos negativos** (ataques que pasan), y el ajuste es continuo. La detección por firmas atrapa lo conocido con precisión; la basada en anomalías y comportamiento puede atrapar lo desconocido a costa de ruido. La **caza de amenazas** es la búsqueda proactiva y guiada por hipótesis de adversarios que las detecciones existentes no han visto: es proactiva y la dirigen personas, y eso es justamente lo que la distingue de vigilar una cola de alertas.\n\n**MITRE ATT&CK** es una base de conocimiento de tácticas (el *por qué*), técnicas (el *cómo*) y procedimientos (implementaciones concretas) del adversario, y es el idioma común para expresar cobertura. La **pirámide del dolor** explica por qué: los valores hash y las direcciones IP son triviales de cambiar para un adversario, mientras que las TTP son caras, de modo que las detecciones basadas en comportamiento duran mucho más que las basadas en indicadores. Los **IoC** son artefactos de un compromiso pasado; las **TTP** describen cómo opera el adversario. La **cadena de eliminación** (kill chain) modela una intrusión como etapas sucesivas, lo que resulta útil para describir en qué punto se interrumpió un ataque.\n\nLa inteligencia se clasifica por destinatario: **estratégica** (riesgo y tendencias, para la dirección), **operativa** (campañas y actores), **táctica** (TTP, para los defensores) y **técnica** (indicadores, para las herramientas). Se comparte en formato **STIX** sobre transporte **TAXII**, y su manejo se rige por el **Traffic Light Protocol**, donde TLP:CLEAR no tiene restricción, TLP:GREEN es para la comunidad, TLP:AMBER se limita a la organización y sus clientes (AMBER+STRICT excluye a los clientes) y TLP:RED es solo para destinatarios nominales.\n\nLa integridad de los registros lo sustenta todo: centralizados, sincronizados en el tiempo (NTP), a prueba de manipulación y conservados el tiempo suficiente para investigar una intrusión que pasó meses inadvertida.\n\n## 6. Respuesta a incidentes y análisis forense digital\n\nEl ciclo de vida de **NIST SP 800-61** tiene cuatro fases: preparación; detección y análisis; contención, erradicación y recuperación; y actividad posterior al incidente. La preparación es la fase que determina cómo irán las otras tres, y la actividad posterior —la revisión de lecciones aprendidas— es la que más se omite y sobre la que más se pregunta. Fíjate en la distinción entre un **evento** (cualquier suceso observable), una **alerta** (un evento señalado para que alguien lo mire) y un **incidente** (un suceso que compromete, real o inminentemente, la confidencialidad, la integridad o la disponibilidad).\n\nLa contención suele ser primero a corto plazo (aislar el equipo) y luego a largo plazo (reconstruir limpio), y encierra una disyuntiva real: desenchufar destruye la evidencia volátil y avisa al adversario, mientras que esperar arriesga más daño. La **erradicación** elimina el punto de apoyo del adversario; la **recuperación** restaura el servicio y vigila que no reaparezca. Un **playbook** es el procedimiento acordado de antemano para un escenario; un **ejercicio de mesa** lo ensaya sin tocar producción.\n\nEl análisis forense añade disciplina probatoria. La **cadena de custodia** documenta quién manipuló la evidencia, cuándo y por qué, y sin ella los hallazgos pueden ser inadmisibles. El **orden de volatilidad** dicta la secuencia de recogida: registros y caché de la CPU, después memoria, después estado de red, después disco y por último soportes de archivo; la memoria primero, porque desaparece al cortar la corriente y contiene claves, código inyectado y conexiones vivas. Se trabaja sobre **imágenes** verificadas bit a bit, con hashes tomados antes y después para demostrar la integridad; el original nunca es la copia de trabajo.\n\nLos objetivos de recuperación se invierten con frecuencia en los distractores: el **RPO** es cuántos datos puedes permitirte perder, medido hacia atrás desde el incidente (y determina la frecuencia de las copias); el **RTO** es cuánto tiempo puedes permitirte estar caído, medido hacia adelante (y determina la capacidad de recuperación). Las copias deben seguir el 3-2-1 con al menos una copia inmutable o desconectada, porque el ransomware ataca primero las copias, y la restauración debe probarse: una copia sin probar es una hipótesis.\n\n## 7. Derecho, política y gobernanza de la ciberseguridad en la UE\n\nPara un puesto en las instituciones europeas, el marco jurídico no es lectura de fondo: es el trabajo. La **Directiva (UE) 2022/2555 (NIS2)** sustituyó a la NIS1, amplió el ámbito a muchos más sectores, dividió a las entidades en *esenciales* e *importantes* (que difieren en la supervisión: proactiva para las esenciales, reactiva para las importantes), impuso la responsabilidad del órgano de dirección con responsabilidad personal y fijó un calendario escalonado de notificación de incidentes: **alerta temprana en 24 horas**, **notificación del incidente en 72 horas** e **informe final en un mes**. Al ser una directiva, requiere transposición nacional.\n\nEl **Reglamento (UE) 2019/881 (Reglamento de Ciberseguridad)** dio a ENISA un mandato permanente y creó el marco europeo de certificación de la ciberseguridad, con niveles de garantía *básico*, *sustancial* y *alto*. El **Reglamento (UE) 2024/2847 (Reglamento de Ciberresiliencia)** es el reglamento horizontal de producto: impone requisitos esenciales de ciberseguridad a los productos con elementos digitales, exige actualizaciones de seguridad durante un periodo de soporte definido, obliga a un SBOM y obliga a los fabricantes a notificar a ENISA y al CSIRT nacional las vulnerabilidades explotadas activamente y los incidentes graves, con alerta temprana en 24 horas. El **Reglamento (UE) 2022/2554 (DORA)** hace lo equivalente para el sector financiero, incluida la supervisión de los proveedores TIC terceros críticos. El **Reglamento (UE) 2024/1689 (Reglamento de IA)** está escalonado por riesgo y exige que los sistemas de IA de alto riesgo sean precisos, robustos y ciberseguros.\n\nEl **RGPD** se cruza con todo esto pero no es lo mismo: una **violación de datos personales** debe notificarse a la autoridad de control en **72 horas** desde que se tiene conocimiento, salvo que sea improbable que entrañe un riesgo para las personas, y comunicarse a los propios interesados solo cuando el riesgo sea *alto*. Un incidente NIS2 y una violación del RGPD son desencadenantes distintos, con reguladores distintos, y un mismo suceso puede exigir ambos.\n\nEn lo institucional, **ENISA** es la agencia de la Unión para la ciberseguridad: asesora, certifica y coordina, pero no es un equipo operativo de respuesta a incidentes. **CERT-EU** es el servicio de ciberseguridad de las propias instituciones, órganos y organismos de la Unión, ya con carácter permanente en virtud del **Reglamento (UE, Euratom) 2023/2841**, que establece medidas para un elevado nivel común de ciberseguridad en las propias instituciones de la UE. La **red de CSIRT** conecta a los equipos nacionales de respuesta; la red **EU-CyCLONe** se ocupa de la coordinación en crisis de gran escala.\n\n## 8. Identidad, gestión de accesos y servicios de confianza\n\nLa **autenticación** establece quién eres; la **autorización** determina qué puedes hacer; la **contabilidad** (accounting) registra qué hiciste. Invertir las dos primeras es el distractor más común de esta área. Los factores de autenticación se agrupan en algo que sabes, algo que tienes y algo que eres: la autenticación **multifactor** exige factores de grupos *distintos*, así que una contraseña más una pregunta de seguridad no es multifactor. Y no todos los factores son iguales: los códigos de un solo uso por SMS son vulnerables al intercambio de SIM y a la interceptación, mientras que los factores resistentes al phishing (claves de acceso FIDO2/WebAuthn, tarjetas inteligentes) vinculan la credencial al origen, de modo que un sitio de phishing intermediario no puede reutilizarla.\n\nModelos de control de acceso: **RBAC** asigna permisos a roles y usuarios a roles; **ABAC** decide a partir de atributos del sujeto, el recurso, la acción y el entorno, lo que escala mejor para políticas de grano fino y dependientes del contexto; **MAC** impone etiquetas a nivel de sistema; **DAC** deja decidir al propietario del recurso. El **PAM** cubre las cuentas privilegiadas —custodia en bóveda, grabación de sesiones, elevación justo a tiempo— y el objetivo es eliminar el privilegio permanente.\n\nLos protocolos de federación difieren en propósito y se confunden constantemente. **SAML 2.0** se basa en XML y lleva mucho tiempo asentado en el SSO corporativo. **OAuth 2.0** es un marco de *autorización* para acceso delegado: emite tokens de acceso y no dice nada sobre quién es el usuario. **OpenID Connect** es la capa de identidad construida sobre OAuth 2.0 y añade el token de identidad (ID token), que es lo que realmente autentica al usuario. Usar OAuth a secas como protocolo de autenticación es un error de diseño clásico.\n\nEl **Reglamento (UE) 910/2014 (eIDAS)**, modificado por el **Reglamento (UE) 2024/1183** que crea la Cartera Europea de Identidad Digital, define la capa de servicios de confianza. Las firmas electrónicas tienen tres niveles: *simple*, *avanzada* (vinculada de manera única al firmante y capaz de identificarlo, bajo su control exclusivo, y que detecta cambios posteriores) y *cualificada*, donde una firma electrónica cualificada se crea con un dispositivo cualificado de creación de firma y un certificado cualificado, y es el único nivel con efecto jurídico equivalente a la firma manuscrita en todos los Estados miembros. Entre los servicios de confianza cualificados relacionados están los sellos electrónicos (para personas jurídicas, no físicas), los sellos de tiempo y la entrega electrónica certificada.\n\n## 9. Ciberseguridad institucional de la UE: CERT-EU, el IICB y el Reglamento 2023/2841\n\nEl tema 7 cubre el derecho que la Unión hace para los demás; esta área cubre el que la Unión se aplica a sí misma, que es el marco bajo el que realmente trabajarías. NIS2 vincula a los Estados miembros y no alcanza a la administración propia de la Unión, así que se adoptó el **Reglamento (UE, Euratom) 2023/2841**, por el que se establecen medidas destinadas a garantizar un elevado nivel común de ciberseguridad en las instituciones, órganos y organismos de la Unión. Entró en vigor el 7 de enero de 2024.\n\nSu gobernanza tiene dos polos. La **Junta Interinstitucional de Ciberseguridad (IICB)** supervisa y apoya la aplicación, ejerce la dirección general de CERT-EU y adopta directrices y recomendaciones, con una vía de seguimiento cuando una entidad no cumple. **CERT-EU**, formalmente el *Servicio de Ciberseguridad de las instituciones, órganos y organismos de la Unión*, es el lado operativo: inteligencia de amenazas compartida, coordinación de la respuesta a incidentes, orientaciones y llamamientos a la acción. Fíjate bien en el reparto: el IICB gobierna, CERT-EU presta servicio, ENISA asesora y certifica, y ninguno de los tres supervisa a las entidades de los Estados miembros bajo NIS2, que es tarea de las autoridades nacionales competentes.\n\nCada entidad de la Unión asume sus propias obligaciones: un **marco interno de gestión, gobernanza y control del riesgo de ciberseguridad**; una **evaluación de madurez en ciberseguridad**, repetida al menos cada dos años; un **plan de ciberseguridad** respaldado por el nivel más alto de dirección; **medidas de base**; y un **responsable local de ciberseguridad** designado o función equivalente, que es el punto focal de la entidad y el interlocutor ante CERT-EU y las redes interinstitucionales. Como en NIS2, la gestión del riesgo de ciberseguridad se sitúa explícitamente en el nivel más alto de dirección de la entidad, que aprueba el marco, supervisa su aplicación y recibe formación: una responsabilidad que no se descarga nombrando a un responsable de seguridad ni externalizando las operaciones.\n\nLa notificación de incidentes reproduce el modelo escalonado de NIS2: **alerta temprana en 24 horas**, **notificación del incidente en 72 horas** e **informe final en el plazo de un mes**, con informes intermedios cuando procedan.\n\n## 10. Tecnologías emergentes: IA, aprendizaje automático y poscuántica\n\nEl anexo II menciona estudiar, coordinar y pilotar la inteligencia artificial, el aprendizaje automático y la computación cuántica en el trabajo de seguridad, así que esta área es examinable en las dos direcciones: asegurar la IA y usarla.\n\nLos ataques al aprendizaje automático se separan con nitidez según qué toca el atacante. El **envenenamiento** manipula los datos o el proceso de entrenamiento; la **evasión** fabrica entradas en la inferencia para cruzar la frontera de decisión de un modelo no modificado; la **inversión del modelo** y la **inferencia de pertenencia** recuperan información sobre los datos de entrenamiento; la **extracción** recupera el modelo mismo. En los sistemas construidos sobre grandes modelos de lenguaje, el fallo característico es la **inyección de instrucciones**: el modelo no puede separar los datos que se le pide procesar de las órdenes que se le pide seguir; su forma indirecta llega dentro del contenido que se le pidió resumir. Como el fallo está en la frontera de confianza y no en la redacción, las mitigaciones son arquitectónicas: acceso de mínimo privilegio a las herramientas, confirmación humana para las acciones con consecuencias y tratar la salida del modelo como entrada no confiable. Los modelos son además artefactos de la cadena de suministro: algunos formatos de serialización ejecutan código al cargarse y los pesos pueden llevar una puerta trasera, así que la procedencia y la verificación de integridad se aplican igual que a cualquier dependencia.\n\nUsar IA en defensa choca con la **tasa base**. Un detector con una tasa de falsos positivos excelente ahoga igualmente a un analista cuando la prevalencia de eventos reales es muy baja, y por eso la salida del modelo se enriquece, correlaciona y puntúa por riesgo en vez de alertar directamente.\n\nSobre lo cuántico, mantén separados dos hechos. El **algoritmo de Shor** rompe la factorización y el logaritmo discreto, así que caen RSA, Diffie–Hellman y la criptografía de curva elíptica; el **algoritmo de Grover** solo debilita las primitivas simétricas, lo que se resuelve con tamaños adecuados de clave y de resumen. La urgencia viene de **cosechar ahora, descifrar después**: el tráfico grabado hoy se descifra cuando llegue la capacidad, así que los datos con un horizonte de confidencialidad largo ya están expuestos. Los sustitutos normalizados son **ML-KEM** para encapsulación de claves y **ML-DSA** y **SLH-DSA** para firmas, desplegados normalmente en modo **híbrido** junto a un algoritmo clásico. El primer paso práctico no es una compra sino un inventario: dónde se usa criptografía, de qué forma, con qué vigencias y dependencias. La **agilidad criptográfica** es el objetivo real.\n\n## 11. Estrategia, programas y cartera de proyectos de seguridad\n\nUn puesto AD 8 consiste tanto en dirigir el trabajo de seguridad como en ejecutarlo, y el anexo II lo dice explícitamente: análisis, propuestas, estimación de costes, obtención de recursos, planificación, gestión del cambio y reporte en proyectos, programas y carteras, además de coordinación de equipos, estrategia plurianual y mejora continua.\n\nLos tres niveles de ejecución son distintos y se confunden constantemente. Un **proyecto** produce un resultado definido dentro de un alcance; un **programa** coordina varios proyectos hacia un único resultado cuyos beneficios dependen de esa coordinación; una **cartera** es el conjunto de inversiones que compiten por financiación y se alinean con la estrategia. Por encima, una **estrategia plurianual renovable** fija objetivos, capacidad objetivo y principios a varios años y se refresca cuando cambia el contexto, mientras que el **plan anual** convierte el tramo vigente en entregables financiados, calendarizados y con responsable.\n\nSe repiten dos puntos de gobernanza. Primero, la **titularidad del riesgo**: el riesgo pertenece al responsable de negocio del proceso, no a quien asesora y lo detectó, y una aceptación solo es defendible si está escrita, justificada, compensada, limitada en el tiempo, con titular nombrado y elevada al nivel superior. Segundo, **la responsabilidad no se externaliza**: el certificado ISO/IEC 27001 de un proveedor es una evidencia cuyo alcance hay que comprobar, no una transferencia de responsabilidad, y por eso los requisitos de seguridad, los derechos de auditoría y aseguramiento, los plazos de notificación, las reglas de subcontratación, la ubicación de los datos y las cláusulas de salida van en el pliego y en el contrato: el único momento en que se incorporan al precio y resultan exigibles.\n\nPriorizar con presupuesto cerrado es un juicio económico: reducción de riesgo esperada por unidad de coste, acotada por obligaciones no discrecionales y por las dependencias entre iniciativas. El reporte hacia arriba separa **rendimiento** de **exposición** —tiempo medio de detección y de contención frente al número de sistemas sin soporte o de cuentas privilegiadas permanentes—, porque una cifra única no distingue un mes tranquilo de un mes ciego. Y **mejora continua** significa cambiar el sistema que produjo el fallo, dotar al cambio de un indicador y un responsable y verificarlo después; volver a formar a una persona y cerrar la acción, no.\n\n## 12. Concienciación, formación y asesoramiento especializado\n\nLa última categoría del anexo II abarca proponer, aplicar y evaluar medidas de concienciación, campañas y formación, y prestar asesoramiento experto en dominios especializados, entre los que menciona expresamente la gestión de identidades y accesos, la firma electrónica y los servicios de confianza.\n\nDistingue los objetivos: la **concienciación** logra que toda la plantilla sepa reconocer y notificar; la **formación** construye competencia en una función concreta, y por eso un único curso anual no sirve para quien desarrolla, que necesita modelado de amenazas, codificación segura, gestión de dependencias y secretos y capacidad de triar los hallazgos de las herramientas. La evaluación es donde más se sobrevenden las campañas: la finalización y la satisfacción miden participación y reacción, no aprendizaje, conducta ni resultado. En las simulaciones de phishing, la tasa de clics se mueve fácilmente sin mejorar nada; lo que importa es la **tasa de notificación** y el **tiempo hasta notificar**, y señalar con nombre a quien pica enseña a ocultar, que es justo lo contrario de lo que el programa necesita. Una **red de campeones de seguridad** amplía el alcance dentro de los equipos de entrega sin transferir responsabilidad.\n\nEl trabajo de asesoramiento tiene su propia disciplina. Una petición de excepción ni se aprueba informalmente ni se deniega por principio: se convierte en una **aceptación de riesgo con plazo**, con controles compensatorios proporcionados, caducidad ligada a la solución, firma del responsable y revisión antes de vencer. Los hallazgos recurrentes en las revisiones de accesos se tratan en el paso de **cambio** del proceso de altas, cambios y bajas, y no revisando más a menudo. La recuperación de cuentas necesita una comprobación de identidad que no dependa de información reunible, porque el servicio de atención es donde más a menudo se derrota la MFA. Y en servicios de confianza, solo la **firma electrónica cualificada** —certificado cualificado más dispositivo cualificado de creación de firma— tiene el efecto jurídico equivalente al de la firma manuscrita en todos los Estados miembros; una firma avanzada no lo tiene, y un sello electrónico sirve a la garantía de origen e integridad de una persona jurídica, no a la firma de una persona física.\n\n## Cómo prepararse para el test\n\nTrabaja tema por tema en lugar de recorrer el banco en orden: las áreas son independientes, y saber en cuál estás más flojo vale más que un porcentaje global. Cuando falles una pregunta, escribe en una frase *por qué* la respuesta correcta lo es; si no puedes, la reconociste en vez de saberla. Presta especial atención a las distinciones por pares de más arriba: generan una proporción desmesurada de las preguntas. Por último, haz al menos una tanda de 30 preguntas en 40 minutos para calibrar el ritmo: son 80 segundos por pregunta, suficiente para leer con atención una vez y decidir, pero no para deliberar largo rato."
+    },
+    "sourceFile": "4.- Field-Related MCQ - Cybersecurity.md"
+  },
   {
     "id": "theory-field-cybersecurity",
     "phase": "field-mcq",
@@ -15,8 +6149,8 @@ export const THEORY_DOCS: TheoryDoc[] = [
       "es": "Ámbito 2 — Ciberseguridad: alcance oficial"
     },
     "summaryMd": {
-      "en": "# EPSO/AD/430/26 — Field 2 – Cybersecurity\n\nOfficial scope of the field: Annex II (“Typical duties”) of the competition\nnotice, copied verbatim. This is the ground the field-related multiple-choice\ntest is drawn from — 30 questions, 40 minutes, pass mark 15/30, in Language 2.\n\n> Source: Official Journal C/2026/4668 of 8.9.2026 —\n> https://eur-lex.europa.eu/eli/C/2026/4668/oj\n> **The notice text prevails over anything summarised in this platform.**\n\nThe duties outlined below, grouped into categories 1 to 5, largely reflect those typically associated with roles related to cybersecurity in both private and public contexts. The performance of any of the categories of duties listed requires technical expertise. The successful candidates may be assigned any of the duties listed below, either individually or in combination, depending on the needs of the service. Similar or related duties may be assigned if required by the needs of the service.\n\n\n### 1. Risk management and security assurance\n\n- Risk management processes: reviewing and improving ICT security and cybersecurity risk management frameworks, integrating them in organisational processes, and developing or supporting risk identification, analysis, mitigation, and monitoring.\n- Maturity assessments: developing, reviewing, and applying capability and maturity models for ICT security, cybersecurity, and risk management practices.\n- Security assessment operations: planning, managing, and executing security assessments, vulnerability management, penetration testing, and identity and access management reviews, in order to ensure that risks are identified and addressed.\n- Metrics and reporting: developing and maintaining tools for monitoring and reporting on the implementation and performance of ICT security and cybersecurity controls and risk mitigation measures.\n\n### 2. Architecture, design, and technology\n\n- Security architecture: designing, analysing, and integrating ICT security architecture in the lifecycle of IT systems, including cloud-based and hybrid solutions.\n- Security controls and tools: identifying, assessing, implementing and integrating ICT security products; designing, managing or enhancing security controls or associated tooling in on premises and cloud environments, such as network security devices, Security Information and Event Management (SIEM), Modern endpoint protection tooling (XDR), Cloud Detection and Response tooling (CDR), Authentication, Authorisation, and Accounting / Identity and Access Management (AAA/IAM) and Privileged Identity Management / Privileged Access Management (PIM/PAM); and ensuring controls are tailored to risk levels and organisational needs.\n- Secure development: developing and/or applying secure coding and secure system development practices; conducting code and system reviews; managing cryptography and associated algorithms, protocols and key management systems and supporting secure software engineering and DevSecOps (Development, Security and Operations).\n- Emerging technologies: studying, coordinating, and piloting applications of artificial intelligence, machine learning, quantum computing, and other innovative technologies in ICT security, cybersecurity, and risk management.\n\n### 3. Security operations and incident response\n\n- Monitoring and detection: overseeing or executing security monitoring, threat detection, and threat hunting operations, in order to ensure proactive identification of threats.\n- Digital forensics and incident response (DFIR): managing and supporting incident response, analysis, and forensic investigations (e.g. networks analysis, system forensic analysis, log analysis), in order to ensure timely containment, recovery, and lessons learned.\n- Security operations: researching, contributing to the continuous improvement of Security Operations Centre (SOC) services, including engineering, threat intelligence automation, red teaming, penetration testing and optimisation of detection engineering, monitoring, and response capabilities.\n- CSIRC services: conceptualising, delivering, and supporting Computer Security Incident Response Capability (CSIRC) services, in order to foster preparedness and rapid/effective response to cyber incidents and associated lessons learnt.\n\n### 4. Governance, policy, and coordination\n\n- Project, programme and portfolio management: conducting analysis, drafting proposals, designing, estimating costs, identifying and acquiring resources, scheduling activities, ensuring follow-up on implementation, managing changes, and reporting, in projects, programmes and portfolios in ICT security and cybersecurity.\n- Team leadership and coordination: participating in, coordinating, or leading project teams and service delivery teams, in order to ensure timely and effective execution of ICT security and cybersecurity initiatives.\n- Strategy planning: contributing to the development of a rolling multiannual ICT security and cybersecurity strategy for an organisation, along with associated implementation planning, and the associated coordination, monitoring and reporting.\n- Policy and standards development: drafting, reviewing, and updating ICT security and cybersecurity policies, standards, guidelines, and procedures in line with applicable frameworks and regulations.\n- Compliance and governance: ensuring alignment of ICT security and cybersecurity frameworks with applicable regulations, standards, and best practices; performing or supporting security analyses, audits, compliance attestations, compliance reporting and other assurance activities, in order to detect anomalies and deficiencies, improve defences and integrate security best practices into organisational IT processes.\n- Representation and collaboration: participating in functional and technical working groups, reviewing technical proposals, and representing the organisation on the interinstitutional level and in expert fora, in order to ensure coherence with internal and external cybersecurity policies.\n- Continual improvement: developing and/or supporting ICT security and cybersecurity continual improvement processes, including associated metrics, measurement and performance reporting.\n\n### 5. Awareness, skills, and advisory\n\n- Awareness and training: proposing, implementing, and evaluating awareness-raising measures, cybersecurity campaigns, and ICT security trainings.\n- Specialist advisory: providing expert advice in specialised domains such as identity and access management, electronic signature, and trust services. End of ANNEX II, click here to return to main text",
-      "es": "# EPSO/AD/430/26 — Ámbito 2: ciberseguridad\n\nÁmbito oficial: anexo II («Funciones habituales») de la convocatoria, copiado\nliteralmente. Es el terreno del que sale el test de opción múltiple de ámbito\n— 30 preguntas, 40 minutos, nota de corte 15/30, en Lengua 2.\n\n> Fuente: Diario Oficial C/2026/4668 de 8.9.2026 —\n> https://eur-lex.europa.eu/eli/C/2026/4668/oj\n> **El texto de la convocatoria prevalece sobre cualquier resumen de esta plataforma.**\n\nLas funciones que se describen a continuación reflejan aquellas que suelen asociarse a las funciones relativas al ámbito de la ciberseguridad tanto en contextos privados como públicos. Se presentan agrupadas en cinco categorías. El desempeño de todas estas categorías de funciones requiere conocimientos técnicos. A las personas seleccionadas se les podrá asignar cualquiera de las funciones que figuran a continuación, ya sea de forma individual o conjunta, en función de las necesidades del servicio. Podrán asignarse funciones similares o conexas si así lo exigen las necesidades del servicio.\n\n\n### 1. Gestión de riesgos y garantía de la seguridad\n\n- Procesos de gestión de riesgos: revisar y mejorar los marcos de gestión de riesgos de ciberseguridad y seguridad de las TIC, integrarlos en los procesos organizativos y desarrollar o apoyar la detección, el análisis, la mitigación y el seguimiento de los riesgos.\n- Evaluaciones de madurez: desarrollar, revisar y aplicar modelos de capacidad y madurez de la seguridad de las TIC, la ciberseguridad y las prácticas de gestión de riesgos.\n- Operaciones de evaluación de la seguridad: planificar, gestionar y llevar a cabo evaluaciones de seguridad, gestión de vulnerabilidades, pruebas de penetración y revisiones de la gestión de identidades y accesos, con el fin de garantizar que se detecten y aborden los riesgos.\n- Mediciones e informes: desarrollar y mantener herramientas para el seguimiento y la presentación de informes sobre la implementación y el rendimiento de los controles y las medidas de mitigación de riesgos de ciberseguridad y seguridad de las TIC.\n\n### 2. Arquitectura, diseño y tecnología\n\n- Arquitectura de seguridad: diseñar, analizar e integrar la arquitectura de seguridad de las TIC en el ciclo de vida de los sistemas informáticos, incluidas las soluciones híbridas y basadas en la nube.\n- Controles y herramientas de seguridad: detectar, analizar, implementar e integrar productos de seguridad de las TIC; diseñar, gestionar o mejorar los controles de seguridad o las herramientas asociadas en entornos locales y en la nube, como los dispositivos de seguridad de la red, los sistemas de gestión de información y eventos de seguridad (SIEM), las herramientas modernas de protección de puntos finales (XDR), las herramientas de detección y respuesta en la nube (CDR), la autenticación, la autorización y la gestión de contabilidad/identidad y acceso (AAA/IAM) y la gestión de identidades privilegiadas/gestión de accesos privilegiados (PIM/PAM); y garantizar que los controles se ajustan a los niveles de riesgo y las necesidades organizacionales.\n- Desarrollo seguro: desarrollar o aplicar prácticas de codificación segura y desarrollo seguro de sistemas; llevar a cabo evaluaciones del código y los sistemas; gestionar la criptografía y los algoritmos, protocolos y sistemas de gestión de claves asociados, y contribuir a la ingeniería de software y el Desarrollo, Seguridad y Operaciones (DevSecOps) seguros.\n- Tecnologías emergentes: estudiar, coordinar y probar aplicaciones de inteligencia artificial, aprendizaje automático, computación cuántica y otras tecnologías innovadoras de seguridad de las TIC, ciberseguridad y gestión del riesgo.\n\n### 3. Operaciones de seguridad y respuesta a incidentes\n\n- Detección y seguimiento: supervisar o llevar a cabo el seguimiento de la seguridad, la detección de amenazas y las operaciones de caza de amenazas, para garantizar su detección proactiva.\n- Criminalística digital y respuesta a incidentes (DFIR): gestionar y apoyar la respuesta a incidentes, el análisis y la investigación forense (por ejemplo, análisis de redes, análisis forense de sistemas, análisis de registros) para garantizar la contención oportuna, la recuperación y el aprendizaje de la experiencia.\n- Operaciones de seguridad: investigar y contribuir a la mejora continua de los servicios del Centro de Operaciones de Seguridad (SOC), incluida la ingeniería, la automatización de la inteligencia sobre amenazas, los ataques simulados, las pruebas de penetración y la optimización de las capacidades de ingeniería de detección, seguimiento y respuesta.\n- Servicios de capacidad de respuesta a incidentes de seguridad informática (CSIRC): conceptualización, prestación y gestión de los servicios de capacidad de respuesta a incidentes de seguridad informática (CSIRC), con el fin de fomentar la preparación y la respuesta rápida y eficaz a los ciberincidentes y el aprendizaje de la experiencia asociado.\n\n### 4. Gobernanza, política y coordinación\n\n- Gestión de proyectos, programas y carteras: llevar a cabo análisis, elaborar propuestas, diseñar, estimar costes, identificar y adquirir recursos, programar actividades, garantizar el seguimiento de la ejecución, gestionar cambios e informar sobre proyectos, programas y carteras en materia de ciberseguridad y seguridad de las TIC.\n- Liderazgo y coordinación de equipos: participar en equipos de proyectos y de prestación de servicios, coordinarlos o dirigirlos, con el fin de garantizar la ejecución oportuna y eficaz de las iniciativas de ciberseguridad y seguridad de las TIC.\n- Planificación estratégica: contribuir al desarrollo de una estrategia plurianual continua de ciberseguridad y seguridad de las TIC para la organización, a la planificación de su ejecución y a la coordinación, el seguimiento y la presentación de informes relacionados con esta.\n- Elaboración de políticas y normas: elaborar, revisar y actualizar las políticas, normas, directrices y procedimientos en materia de ciberseguridad y seguridad de las TIC en consonancia con los marcos y la normativa aplicables.\n- Cumplimiento y gobernanza: garantizar la armonización de los marcos de ciberseguridad y seguridad de las TIC con la normativa, las normas y las mejores prácticas aplicables; realizar análisis de seguridad, auditorías, certificaciones de cumplimiento, informes de cumplimiento y otras actividades de garantía o contribuir a estos, con el fin de detectar anomalías y deficiencias, mejorar las defensas e integrar las mejores prácticas de seguridad en los procesos informáticos de la organización.\n- Representación y colaboración: participar en grupos de trabajo funcionales y técnicos, revisar las propuestas técnicas y representar a la organización a nivel interinstitucional y en foros de expertos, a fin de garantizar la coherencia con las políticas internas y externas de ciberseguridad.\n- Mejora continua: desarrollar o apoyar procesos de mejora continua de la ciberseguridad y la seguridad de las TIC, incluidos los parámetros, la medición y la notificación del rendimiento asociados.\n\n### 5. Sensibilización, capacidades y asesoramiento\n\n- Sensibilización y formación: proponer, llevar a cabo y evaluar medidas de sensibilización, campañas de ciberseguridad y formación en materia de seguridad de las TIC.\n- Asesoramiento especializado: proporcionar asesoramiento experto en ámbitos especializados como la gestión de identidades y accesos, firmas electrónicas y servicios de confianza. Fin del anexo II: pulse aquí para regresar al texto principal"
+      "en": "# EPSO/AD/430/26 — Field 2 – Cybersecurity\n\nOfficial scope of the field: Annex II (“Typical duties”) of the competition\nnotice, copied verbatim. This is the ground the field-related multiple-choice\ntest is drawn from — 30 questions, 40 minutes, pass mark 15/30, in Language 2.\n\n> Source: Official Journal C/2026/4668 of 8.9.2026 —\n> https://eur-lex.europa.eu/eli/C/2026/4668/oj\n> **The notice text prevails over anything summarised in this platform.**\n\nThe duties outlined below, grouped into categories 1 to 5, largely reflect those typically associated with roles related to cybersecurity in both private and public contexts. The performance of any of the categories of duties listed requires technical expertise. The successful candidates may be assigned any of the duties listed below, either individually or in combination, depending on the needs of the service. Similar or related duties may be assigned if required by the needs of the service.\n\n\n### 1. Risk management and security assurance\n\n- Risk management processes: reviewing and improving ICT security and cybersecurity risk management frameworks, integrating them in organisational processes, and developing or supporting risk identification, analysis, mitigation, and monitoring.\n- Maturity assessments: developing, reviewing, and applying capability and maturity models for ICT security, cybersecurity, and risk management practices.\n- Security assessment operations: planning, managing, and executing security assessments, vulnerability management, penetration testing, and identity and access management reviews, in order to ensure that risks are identified and addressed.\n- Metrics and reporting: developing and maintaining tools for monitoring and reporting on the implementation and performance of ICT security and cybersecurity controls and risk mitigation measures.\n\n### 2. Architecture, design, and technology\n\n- Security architecture: designing, analysing, and integrating ICT security architecture in the lifecycle of IT systems, including cloud-based and hybrid solutions.\n- Security controls and tools: identifying, assessing, implementing and integrating ICT security products; designing, managing or enhancing security controls or associated tooling in on premises and cloud environments, such as network security devices, Security Information and Event Management (SIEM), Modern endpoint protection tooling (XDR), Cloud Detection and Response tooling (CDR), Authentication, Authorisation, and Accounting / Identity and Access Management (AAA/IAM) and Privileged Identity Management / Privileged Access Management (PIM/PAM); and ensuring controls are tailored to risk levels and organisational needs.\n- Secure development: developing and/or applying secure coding and secure system development practices; conducting code and system reviews; managing cryptography and associated algorithms, protocols and key management systems and supporting secure software engineering and DevSecOps (Development, Security and Operations).\n- Emerging technologies: studying, coordinating, and piloting applications of artificial intelligence, machine learning, quantum computing, and other innovative technologies in ICT security, cybersecurity, and risk management.\n\n### 3. Security operations and incident response\n\n- Monitoring and detection: overseeing or executing security monitoring, threat detection, and threat hunting operations, in order to ensure proactive identification of threats.\n- Digital forensics and incident response (DFIR): managing and supporting incident response, analysis, and forensic investigations (e.g. networks analysis, system forensic analysis, log analysis), in order to ensure timely containment, recovery, and lessons learned.\n- Security operations: researching, contributing to the continuous improvement of Security Operations Centre (SOC) services, including engineering, threat intelligence automation, red teaming, penetration testing and optimisation of detection engineering, monitoring, and response capabilities.\n- CSIRC services: conceptualising, delivering, and supporting Computer Security Incident Response Capability (CSIRC) services, in order to foster preparedness and rapid/effective response to cyber incidents and associated lessons learnt.\n\n### 4. Governance, policy, and coordination\n\n- Project, programme and portfolio management: conducting analysis, drafting proposals, designing, estimating costs, identifying and acquiring resources, scheduling activities, ensuring follow-up on implementation, managing changes, and reporting, in projects, programmes and portfolios in ICT security and cybersecurity.\n- Team leadership and coordination: participating in, coordinating, or leading project teams and service delivery teams, in order to ensure timely and effective execution of ICT security and cybersecurity initiatives.\n- Strategy planning: contributing to the development of a rolling multiannual ICT security and cybersecurity strategy for an organisation, along with associated implementation planning, and the associated coordination, monitoring and reporting.\n- Policy and standards development: drafting, reviewing, and updating ICT security and cybersecurity policies, standards, guidelines, and procedures in line with applicable frameworks and regulations.\n- Compliance and governance: ensuring alignment of ICT security and cybersecurity frameworks with applicable regulations, standards, and best practices; performing or supporting security analyses, audits, compliance attestations, compliance reporting and other assurance activities, in order to detect anomalies and deficiencies, improve defences and integrate security best practices into organisational IT processes.\n- Representation and collaboration: participating in functional and technical working groups, reviewing technical proposals, and representing the organisation on the interinstitutional level and in expert fora, in order to ensure coherence with internal and external cybersecurity policies.\n- Continual improvement: developing and/or supporting ICT security and cybersecurity continual improvement processes, including associated metrics, measurement and performance reporting.\n\n### 5. Awareness, skills, and advisory\n\n- Awareness and training: proposing, implementing, and evaluating awareness-raising measures, cybersecurity campaigns, and ICT security trainings.\n- Specialist advisory: providing expert advice in specialised domains such as identity and access management, electronic signature, and trust services.",
+      "es": "# EPSO/AD/430/26 — Ámbito 2: ciberseguridad\n\nÁmbito oficial: anexo II («Funciones habituales») de la convocatoria, copiado\nliteralmente. Es el terreno del que sale el test de opción múltiple de ámbito\n— 30 preguntas, 40 minutos, nota de corte 15/30, en Lengua 2.\n\n> Fuente: Diario Oficial C/2026/4668 de 8.9.2026 —\n> https://eur-lex.europa.eu/eli/C/2026/4668/oj\n> **El texto de la convocatoria prevalece sobre cualquier resumen de esta plataforma.**\n\nLas funciones que se describen a continuación reflejan aquellas que suelen asociarse a las funciones relativas al ámbito de la ciberseguridad tanto en contextos privados como públicos. Se presentan agrupadas en cinco categorías. El desempeño de todas estas categorías de funciones requiere conocimientos técnicos. A las personas seleccionadas se les podrá asignar cualquiera de las funciones que figuran a continuación, ya sea de forma individual o conjunta, en función de las necesidades del servicio. Podrán asignarse funciones similares o conexas si así lo exigen las necesidades del servicio.\n\n\n### 1. Gestión de riesgos y garantía de la seguridad\n\n- Procesos de gestión de riesgos: revisar y mejorar los marcos de gestión de riesgos de ciberseguridad y seguridad de las TIC, integrarlos en los procesos organizativos y desarrollar o apoyar la detección, el análisis, la mitigación y el seguimiento de los riesgos.\n- Evaluaciones de madurez: desarrollar, revisar y aplicar modelos de capacidad y madurez de la seguridad de las TIC, la ciberseguridad y las prácticas de gestión de riesgos.\n- Operaciones de evaluación de la seguridad: planificar, gestionar y llevar a cabo evaluaciones de seguridad, gestión de vulnerabilidades, pruebas de penetración y revisiones de la gestión de identidades y accesos, con el fin de garantizar que se detecten y aborden los riesgos.\n- Mediciones e informes: desarrollar y mantener herramientas para el seguimiento y la presentación de informes sobre la implementación y el rendimiento de los controles y las medidas de mitigación de riesgos de ciberseguridad y seguridad de las TIC.\n\n### 2. Arquitectura, diseño y tecnología\n\n- Arquitectura de seguridad: diseñar, analizar e integrar la arquitectura de seguridad de las TIC en el ciclo de vida de los sistemas informáticos, incluidas las soluciones híbridas y basadas en la nube.\n- Controles y herramientas de seguridad: detectar, analizar, implementar e integrar productos de seguridad de las TIC; diseñar, gestionar o mejorar los controles de seguridad o las herramientas asociadas en entornos locales y en la nube, como los dispositivos de seguridad de la red, los sistemas de gestión de información y eventos de seguridad (SIEM), las herramientas modernas de protección de puntos finales (XDR), las herramientas de detección y respuesta en la nube (CDR), la autenticación, la autorización y la gestión de contabilidad/identidad y acceso (AAA/IAM) y la gestión de identidades privilegiadas/gestión de accesos privilegiados (PIM/PAM); y garantizar que los controles se ajustan a los niveles de riesgo y las necesidades organizacionales.\n- Desarrollo seguro: desarrollar o aplicar prácticas de codificación segura y desarrollo seguro de sistemas; llevar a cabo evaluaciones del código y los sistemas; gestionar la criptografía y los algoritmos, protocolos y sistemas de gestión de claves asociados, y contribuir a la ingeniería de software y el Desarrollo, Seguridad y Operaciones (DevSecOps) seguros.\n- Tecnologías emergentes: estudiar, coordinar y probar aplicaciones de inteligencia artificial, aprendizaje automático, computación cuántica y otras tecnologías innovadoras de seguridad de las TIC, ciberseguridad y gestión del riesgo.\n\n### 3. Operaciones de seguridad y respuesta a incidentes\n\n- Detección y seguimiento: supervisar o llevar a cabo el seguimiento de la seguridad, la detección de amenazas y las operaciones de caza de amenazas, para garantizar su detección proactiva.\n- Criminalística digital y respuesta a incidentes (DFIR): gestionar y apoyar la respuesta a incidentes, el análisis y la investigación forense (por ejemplo, análisis de redes, análisis forense de sistemas, análisis de registros) para garantizar la contención oportuna, la recuperación y el aprendizaje de la experiencia.\n- Operaciones de seguridad: investigar y contribuir a la mejora continua de los servicios del Centro de Operaciones de Seguridad (SOC), incluida la ingeniería, la automatización de la inteligencia sobre amenazas, los ataques simulados, las pruebas de penetración y la optimización de las capacidades de ingeniería de detección, seguimiento y respuesta.\n- Servicios de capacidad de respuesta a incidentes de seguridad informática (CSIRC): conceptualización, prestación y gestión de los servicios de capacidad de respuesta a incidentes de seguridad informática (CSIRC), con el fin de fomentar la preparación y la respuesta rápida y eficaz a los ciberincidentes y el aprendizaje de la experiencia asociado.\n\n### 4. Gobernanza, política y coordinación\n\n- Gestión de proyectos, programas y carteras: llevar a cabo análisis, elaborar propuestas, diseñar, estimar costes, identificar y adquirir recursos, programar actividades, garantizar el seguimiento de la ejecución, gestionar cambios e informar sobre proyectos, programas y carteras en materia de ciberseguridad y seguridad de las TIC.\n- Liderazgo y coordinación de equipos: participar en equipos de proyectos y de prestación de servicios, coordinarlos o dirigirlos, con el fin de garantizar la ejecución oportuna y eficaz de las iniciativas de ciberseguridad y seguridad de las TIC.\n- Planificación estratégica: contribuir al desarrollo de una estrategia plurianual continua de ciberseguridad y seguridad de las TIC para la organización, a la planificación de su ejecución y a la coordinación, el seguimiento y la presentación de informes relacionados con esta.\n- Elaboración de políticas y normas: elaborar, revisar y actualizar las políticas, normas, directrices y procedimientos en materia de ciberseguridad y seguridad de las TIC en consonancia con los marcos y la normativa aplicables.\n- Cumplimiento y gobernanza: garantizar la armonización de los marcos de ciberseguridad y seguridad de las TIC con la normativa, las normas y las mejores prácticas aplicables; realizar análisis de seguridad, auditorías, certificaciones de cumplimiento, informes de cumplimiento y otras actividades de garantía o contribuir a estos, con el fin de detectar anomalías y deficiencias, mejorar las defensas e integrar las mejores prácticas de seguridad en los procesos informáticos de la organización.\n- Representación y colaboración: participar en grupos de trabajo funcionales y técnicos, revisar las propuestas técnicas y representar a la organización a nivel interinstitucional y en foros de expertos, a fin de garantizar la coherencia con las políticas internas y externas de ciberseguridad.\n- Mejora continua: desarrollar o apoyar procesos de mejora continua de la ciberseguridad y la seguridad de las TIC, incluidos los parámetros, la medición y la notificación del rendimiento asociados.\n\n### 5. Sensibilización, capacidades y asesoramiento\n\n- Sensibilización y formación: proponer, llevar a cabo y evaluar medidas de sensibilización, campañas de ciberseguridad y formación en materia de seguridad de las TIC.\n- Asesoramiento especializado: proporcionar asesoramiento experto en ámbitos especializados como la gestión de identidades y accesos, firmas electrónicas y servicios de confianza."
     },
     "sourceFile": "7.- AD8 - Cybersecurity (scope).md"
   }

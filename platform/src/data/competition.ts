@@ -17,6 +17,10 @@ export interface FieldInfo {
   id: Field
   label: Localized
   posts: number
+  /** El ámbito está convocado pero su banco de preguntas todavía no está
+   * escrito: la página muestra el alcance oficial y lo dice claramente, en vez
+   * de aparentar un banco vacío. */
+  bankPending?: boolean
 }
 
 export interface CompetitionInfo {
@@ -93,6 +97,7 @@ export const COMPETITIONS: Record<CompetitionId, CompetitionInfo> = {
         id: 'artificial-intelligence',
         label: { es: 'Inteligencia artificial (IA)', en: 'Artificial intelligence (AI)' },
         posts: 240,
+        bankPending: true,
       },
       { id: 'cybersecurity', label: { es: 'Ciberseguridad', en: 'Cybersecurity' }, posts: 254 },
     ],

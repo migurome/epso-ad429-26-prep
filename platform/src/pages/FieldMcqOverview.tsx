@@ -21,9 +21,7 @@ export function FieldMcqOverview() {
             key={field.id}
             to={`/campo/${field.id}`}
             title={pick(locale, field.label)}
-            description={
-              competition.key === 'ad8' ? t('field_card_scope_only') : t('field_card_description')
-            }
+            description={field.bankPending ? t('field_card_scope_only') : t('field_card_description')}
             meta={
               field.id === competition.userField
                 ? `${field.posts} ${locale === 'es' ? 'plazas' : 'posts'} · ${t('your_field_suffix')}`

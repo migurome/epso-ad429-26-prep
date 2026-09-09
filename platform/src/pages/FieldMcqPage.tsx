@@ -77,16 +77,14 @@ export function FieldMcqPage() {
             label: `${t('tab_practice_bank')} (${questions.length})`,
             content:
               questions.length === 0 ? (
-                // Los ámbitos de la AD8 no están sin banco por descuido, sino
-                // porque su convocatoria es de septiembre de 2026: conviene
-                // decirlo y remitir al alcance oficial, que sí está.
+                // Un ámbito sin banco no lo está por descuido: la convocatoria
+                // AD8 es de septiembre de 2026 y su banco aún no está escrito.
+                // Conviene decirlo y remitir al alcance oficial, que sí está.
                 <EmptyState
                   icon={<ClipboardList size={28} />}
-                  title={owner.key === 'ad8' ? t('empty_ad8_bank_title') : t('empty_bank_title')}
+                  title={field.bankPending ? t('empty_ad8_bank_title') : t('empty_bank_title')}
                   description={
-                    owner.key === 'ad8'
-                      ? t('empty_ad8_bank_description')
-                      : t('empty_field_bank_description')
+                    field.bankPending ? t('empty_ad8_bank_description') : t('empty_field_bank_description')
                   }
                 />
               ) : (

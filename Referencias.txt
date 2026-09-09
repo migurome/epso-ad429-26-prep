@@ -33,3 +33,14 @@ https://eutraining.eu/content/usage-calculator-during-numerical-reasoning-tests
 https://www.passepso.com/blog/epso-computer-based-test-cbt-tips-2026/
 https://www.epsogenius.com/en/blog/epso-test-centre-exam-day
 https://yasemoseuropeos.com/wp-content/uploads/2024/05/2024-05-yse-dudas-mas-comunes-oposiciones_es-webinar.pdf
+
+# Docs/4.- Field-Related MCQ - Cybersecurity.md — temas 9 a 12 (AD8, ciberseguridad)
+# Nota: EPSO solo publica exámenes de muestra de razonamiento verbal, numérico y
+# abstracto. NO hay muestra oficial del test de ámbito, así que el alcance
+# autorizado es el anexo II de la convocatoria; el resto de bancos que circulan
+# son imitaciones comerciales de terceros y no se copian aquí.
+https://eur-lex.europa.eu/eli/C/2026/4668/oj
+https://eur-lex.europa.eu/eli/reg/2023/2841/oj
+https://www.cert.europa.eu/blog/first-year-in-the-bag-many-more-to-come
+https://www.enisa.europa.eu/topics/skills-and-competences/skills-development/european-cybersecurity-skills-framework-ecsf
+https://www.enisa.europa.eu/sites/default/files/publications/European%20Cybersecurity%20Skills%20Framework%20Role%20Profiles.pdf
