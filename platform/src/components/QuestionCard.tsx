@@ -18,6 +18,10 @@ interface QuestionCardProps {
   revealed: boolean
   onSelect: (optionId: string) => void
   size?: 'default' | 'large'
+  // El banco de práctica ya enseña el enunciado completo en la cabecera de
+  // cada pregunta y despliega sólo las respuestas. Repetirlo aquí dejaría el
+  // mismo texto dos veces, una encima de otra.
+  hidePrompt?: boolean
 }
 
 export function QuestionCard({
@@ -27,6 +31,7 @@ export function QuestionCard({
   revealed,
   onSelect,
   size = 'default',
+  hidePrompt = false,
 }: QuestionCardProps) {
   const t = useT()
   const testLocale = useTestLocaleStore((s) => s.locale)
@@ -98,7 +103,7 @@ export function QuestionCard({
           {t('question_n', { n: index + 1 })}
         </p>
       )}
-      {scanned ? (
+      {hidePrompt ? null : scanned ? (
         <div className="mb-4 space-y-3">
           {/* Del enunciado se conserva la prosa (la regla que hay que
               descubrir) y se descarta la transcripción de la secuencia: el

@@ -114,6 +114,9 @@ export const DICT = {
   filter_ai_bank: { es: 'Bonus (generado)', en: 'Bonus (generated)' },
   filter_all: { es: 'Todo', en: 'All' },
   n_questions: { es: '{n} preguntas', en: '{n} questions' },
+  // El color solo no sirve: quien no lo distingue necesita leer el veredicto.
+  answered_correct: { es: 'Acertada', en: 'Answered correctly' },
+  answered_wrong: { es: 'Fallada', en: 'Answered wrongly' },
 
   // TimedTest
   no_questions_available: {
@@ -375,6 +378,11 @@ export const DICT = {
     en: 'Clear the usage-time log? The calendar will lose the study hours, though tests and essays stay. This cannot be undone.',
   },
   settings_log_size: { es: '{days} días con tiempo registrado.', en: '{days} days with logged time.' },
+  settings_save: { es: 'Guardar cambios', en: 'Save changes' },
+  settings_discard: { es: 'Descartar', en: 'Discard' },
+  settings_unsaved: { es: 'Hay cambios sin guardar.', en: 'You have unsaved changes.' },
+  settings_saved: { es: 'Cambios guardados.', en: 'Changes saved.' },
+  settings_no_changes: { es: 'No hay cambios pendientes.', en: 'No pending changes.' },
 
   // Selector de idioma
   language_selector_label: { es: 'Idioma', en: 'Language' },

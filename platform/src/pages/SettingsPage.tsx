@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { Download, RotateCcw, Trash2 } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { Check, Download, RotateCcw, Trash2, Undo2 } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { useProgressStore } from '../lib/progressStore'
 import { useStudyStore } from '../lib/studyStore'
@@ -31,9 +31,51 @@ export function SettingsPage() {
   const essays = useProgressStore((s) => s.essayAttempts)
   const activeCompetition = useCompetitionStore((s) => s.competition)
 
+  // Los campos editan un borrador, no el almacén. Antes cada pulsación se
+  // guardaba sola y sin decir nada: no había forma de saber si un cambio había
+  // entrado, ni de deshacerlo antes de que contara.
+  const [draftProfile, setDraftProfile] = useState(profile)
+  const [draftSettings, setDraftSettings] = useState(settings)
+  const [justSaved, setJustSaved] = useState(false)
+
+  // Si el almacén cambia por otra vía —restaurar ajustes, otra pestaña— el
+  // borrador vuelve a partir de lo guardado.
+  useEffect(() => setDraftProfile(profile), [profile])
+  useEffect(() => setDraftSettings(settings), [settings])
+
+  // Comparación por serialización: los dos objetos salen del mismo sitio y se
+  // construyen extendiéndolo, así que el orden de claves coincide.
+  const dirty =
+    JSON.stringify(draftProfile) !== JSON.stringify(profile) ||
+    JSON.stringify(draftSettings) !== JSON.stringify(settings)
+
+  function editProfile(patch: Partial<typeof profile>) {
+    setJustSaved(false)
+    setDraftProfile((prev) => ({ ...prev, ...patch }))
+  }
+
+  function editSettings(patch: Partial<typeof settings>) {
+    setJustSaved(false)
+    setDraftSettings((prev) => ({ ...prev, ...patch }))
+  }
+
+  function save() {
+    updateProfile(draftProfile)
+    updateSettings(draftSettings)
+    setJustSaved(true)
+  }
+
+  function discard() {
+    setJustSaved(false)
+    setDraftProfile(profile)
+    setDraftSettings(settings)
+  }
+
+  // La previsión sigue al borrador: enseña lo que el objetivo pasaría a ser,
+  // que es justamente lo que hay que ver antes de confirmar.
   const input: CalendarInput = useMemo(
-    () => ({ tests, essays, dayLog, weeklyGoalHours: settings.weeklyGoalHours }),
-    [tests, essays, dayLog, settings.weeklyGoalHours],
+    () => ({ tests, essays, dayLog, weeklyGoalHours: draftSettings.weeklyGoalHours }),
+    [tests, essays, dayLog, draftSettings.weeklyGoalHours],
   )
   const week = useMemo(() => currentWeek(input), [input])
 
@@ -70,8 +112,8 @@ export function SettingsPage() {
             <FormField label={t('settings_name')}>
               <input
                 type="text"
-                value={profile.displayName}
-                onChange={(e) => updateProfile({ displayName: e.target.value })}
+                value={draftProfile.displayName}
+                onChange={(e) => editProfile({ displayName: e.target.value })}
                 placeholder={t('settings_name_placeholder')}
                 className={inputClass}
               />
@@ -79,8 +121,8 @@ export function SettingsPage() {
             <FormField label={t('settings_email')}>
               <input
                 type="email"
-                value={profile.email}
-                onChange={(e) => updateProfile({ email: e.target.value })}
+                value={draftProfile.email}
+                onChange={(e) => editProfile({ email: e.target.value })}
                 placeholder="nombre@ejemplo.eu"
                 className={inputClass}
               />
@@ -88,8 +130,8 @@ export function SettingsPage() {
             <FormField label={t('settings_exam_date')} hint={t('settings_exam_date_hint')}>
               <input
                 type="date"
-                value={profile.targetExamDate}
-                onChange={(e) => updateProfile({ targetExamDate: e.target.value })}
+                value={draftProfile.targetExamDate}
+                onChange={(e) => editProfile({ targetExamDate: e.target.value })}
                 className={inputClass}
               />
             </FormField>
@@ -103,7 +145,7 @@ export function SettingsPage() {
           <div className="space-y-4">
             {COMPETITION_ORDER.map((key) => {
               const competition = COMPETITIONS[key]
-              const value = profile.preferredFields[key] ?? competition.userField
+              const value = draftProfile.preferredFields[key] ?? competition.userField
               return (
                 <FormField
                   key={key}
@@ -113,9 +155,9 @@ export function SettingsPage() {
                   <select
                     value={value}
                     onChange={(e) =>
-                      updateProfile({
+                      editProfile({
                         preferredFields: {
-                          ...profile.preferredFields,
+                          ...draftProfile.preferredFields,
                           [key]: e.target.value as Field,
                         },
                       })
@@ -144,17 +186,17 @@ export function SettingsPage() {
                   min={MIN_GOAL_HOURS}
                   max={MAX_GOAL_HOURS}
                   step={1}
-                  value={settings.weeklyGoalHours}
-                  onChange={(e) => updateSettings({ weeklyGoalHours: Number(e.target.value) })}
+                  value={draftSettings.weeklyGoalHours}
+                  onChange={(e) => editSettings({ weeklyGoalHours: Number(e.target.value) })}
                   className="h-1.5 w-48 cursor-pointer accent-[var(--color-accent)]"
                 />
                 <input
                   type="number"
                   min={MIN_GOAL_HOURS}
                   max={MAX_GOAL_HOURS}
-                  value={settings.weeklyGoalHours}
+                  value={draftSettings.weeklyGoalHours}
                   onChange={(e) =>
-                    updateSettings({
+                    editSettings({
                       weeklyGoalHours: clamp(Number(e.target.value), MIN_GOAL_HOURS, MAX_GOAL_HOURS),
                     })
                   }
@@ -167,7 +209,7 @@ export function SettingsPage() {
 
           <p className="mt-4 text-sm text-slate-600">
             {t('settings_goal_daily', {
-              daily: formatDuration((settings.weeklyGoalHours * 3600) / 7, locale),
+              daily: formatDuration((draftSettings.weeklyGoalHours * 3600) / 7, locale),
             })}
           </p>
           <p className="mt-1 text-xs text-slate-400 tabular-nums">
@@ -184,8 +226,8 @@ export function SettingsPage() {
           <label className="flex items-start gap-3">
             <input
               type="checkbox"
-              checked={settings.trackUsage}
-              onChange={(e) => updateSettings({ trackUsage: e.target.checked })}
+              checked={draftSettings.trackUsage}
+              onChange={(e) => editSettings({ trackUsage: e.target.checked })}
               className="mt-0.5 h-4 w-4 accent-[var(--color-accent)]"
             />
             <span className="text-sm text-slate-700">{t('settings_track_usage')}</span>
@@ -197,11 +239,11 @@ export function SettingsPage() {
                 type="number"
                 min={1}
                 max={60}
-                value={settings.idleTimeoutMinutes}
+                value={draftSettings.idleTimeoutMinutes}
                 onChange={(e) =>
-                  updateSettings({ idleTimeoutMinutes: clamp(Number(e.target.value), 1, 60) })
+                  editSettings({ idleTimeoutMinutes: clamp(Number(e.target.value), 1, 60) })
                 }
-                disabled={!settings.trackUsage}
+                disabled={!draftSettings.trackUsage}
                 className={`${inputClass} w-24 tabular-nums disabled:opacity-50`}
               />
             </FormField>
@@ -240,6 +282,34 @@ export function SettingsPage() {
             {t('settings_log_size', { days: Object.keys(dayLog).length })}
           </p>
         </Card>
+
+        {/* ── Confirmar ─────────────────────────────────────────────────────
+            Pegada abajo: la página es larga y el candidato no debería tener
+            que buscar dónde se confirma lo que acaba de escribir. */}
+        <div className="sticky bottom-0 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white/95 px-5 py-3 backdrop-blur">
+          <button
+            type="button"
+            onClick={save}
+            disabled={!dirty}
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-dark disabled:opacity-40"
+          >
+            <Check size={15} />
+            {t('settings_save')}
+          </button>
+          {dirty && (
+            <button type="button" onClick={discard} className={buttonClass}>
+              <Undo2 size={15} />
+              {t('settings_discard')}
+            </button>
+          )}
+          <span
+            className={
+              dirty ? 'text-xs font-medium text-amber-700' : 'text-xs text-slate-400'
+            }
+          >
+            {dirty ? t('settings_unsaved') : justSaved ? t('settings_saved') : t('settings_no_changes')}
+          </span>
+        </div>
       </div>
     </div>
   )

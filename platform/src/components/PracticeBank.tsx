@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { Check, ChevronDown, X } from 'lucide-react'
 import clsx from 'clsx'
 import { QuestionCard } from './QuestionCard'
+import { Markdown } from './Markdown'
 import { TestLocaleSelector } from './TestLocaleSelector'
+import { extractPromptFigures } from '../lib/abstractFigure'
 import { pick } from '../lib/localeStore'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
 import { useT } from '../lib/useT'
@@ -19,12 +21,24 @@ function sourceLabel(tags: string[] | undefined): 'real' | 'ai-generated' | null
   return null
 }
 
-function stripMarkdown(text: string): string {
-  return text
-    .replace(/\|.*\|/g, ' ')
-    .replace(/[#>*_`]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
+// El enunciado de la cabecera. Va entero: cortarlo a mitad de frase obligaba a
+// abrir la pregunta sólo para saber cuál era, y dejaba la lista llena de
+// oraciones truncadas.
+//
+// La excepción es el razonamiento abstracto, donde el enunciado no es texto
+// sino la secuencia de figuras: ahí la cabecera lleva la prosa que describe la
+// regla —lo que identifica la pregunta— y las figuras se quedan en la tarjeta,
+// que es donde se pueden dibujar.
+function headerPrompt(question: Question, prompt: string): string {
+  if (question.skill !== 'abstract') return prompt
+  const prose = extractPromptFigures(prompt)?.remainderMd?.trim()
+  return prose ? prose : prompt
+}
+
+// null mientras no se ha respondido; después, si la opción elegida era la buena.
+function verdictOf(question: Question, answer: string | undefined): boolean | null {
+  if (answer == null) return null
+  return question.options.find((o) => o.id === answer)?.isCorrect === true
 }
 
 export function PracticeBank({ questions }: PracticeBankProps) {
@@ -77,29 +91,65 @@ export function PracticeBank({ questions }: PracticeBankProps) {
         {filtered.map((q, i) => {
           const isOpen = expandedId === q.id
           const answered = answers[q.id]
+          const verdict = verdictOf(q, answered)
+          const isAbstract = q.skill === 'abstract'
+          const toggle = () => setExpandedId(isOpen ? null : q.id)
           return (
-            <div key={q.id} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-              <button
-                type="button"
-                onClick={() => setExpandedId(isOpen ? null : q.id)}
-                className="flex w-full items-center gap-3 px-4 py-3 text-left"
+            <div
+              key={q.id}
+              className={clsx(
+                'overflow-hidden rounded-xl border bg-white',
+                verdict === true && 'border-emerald-300',
+                verdict === false && 'border-red-300',
+                verdict === null && 'border-slate-200',
+              )}
+            >
+              {/* Un <button> sólo admite contenido de frase, y el enunciado
+                  entero trae párrafos y tablas. De ahí el div con role. */}
+              <div
+                role="button"
+                tabIndex={0}
+                aria-expanded={isOpen}
+                onClick={toggle}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggle()
+                  }
+                }}
+                className="flex w-full cursor-pointer items-start gap-3 px-4 py-3 text-left"
               >
                 <span
                   className={clsx(
-                    'flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold',
-                    answered ? 'bg-accent/10 text-accent' : 'bg-slate-100 text-slate-500',
+                    'mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold',
+                    verdict === true && 'bg-emerald-100 text-emerald-700',
+                    verdict === false && 'bg-red-100 text-red-700',
+                    verdict === null && 'bg-slate-100 text-slate-500',
                   )}
                 >
                   {i + 1}
                 </span>
-                <span className="flex-1 truncate text-sm text-slate-700">
-                  {stripMarkdown(pick(testLocale, q.prompt)).slice(0, 110)}
-                </span>
+                <Markdown className="min-w-0 flex-1 text-sm">
+                  {headerPrompt(q, pick(testLocale, q.prompt))}
+                </Markdown>
+                {verdict === true && (
+                  <span className="mt-0.5 flex shrink-0 items-center text-emerald-600">
+                    <Check size={16} aria-hidden="true" />
+                    <span className="sr-only">{t('answered_correct')}</span>
+                  </span>
+                )}
+                {verdict === false && (
+                  <span className="mt-0.5 flex shrink-0 items-center text-red-600">
+                    <X size={16} aria-hidden="true" />
+                    <span className="sr-only">{t('answered_wrong')}</span>
+                  </span>
+                )}
                 <ChevronDown
                   size={16}
-                  className={clsx('shrink-0 text-slate-400 transition-transform', isOpen && 'rotate-180')}
+                  aria-hidden="true"
+                  className={clsx('mt-0.5 shrink-0 text-slate-400 transition-transform', isOpen && 'rotate-180')}
                 />
-              </button>
+              </div>
               {isOpen && (
                 <div className="border-t border-slate-100 px-4 py-4">
                   <QuestionCard
@@ -107,6 +157,7 @@ export function PracticeBank({ questions }: PracticeBankProps) {
                     selectedOptionId={answered ?? null}
                     revealed={Boolean(answered)}
                     onSelect={(optionId) => setAnswers((prev) => ({ ...prev, [q.id]: optionId }))}
+                    hidePrompt={!isAbstract}
                   />
                 </div>
               )}
