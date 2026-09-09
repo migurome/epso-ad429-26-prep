@@ -101,7 +101,7 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 419 tests en 21 archivos
+### 3. `unit` — 469 tests en 22 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
@@ -239,7 +239,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 42 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 59 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
@@ -287,6 +287,16 @@ Conviene tenerlo claro para no confiar de más:
   respuesta correcta, no que sea la correcta. Eso lo garantiza el origen: el
   anexo II de la convocatoria y las fuentes de `Referencias.txt`.
 - **Rendimiento y accesibilidad**, más allá de que exista un `<nav>`.
+- **El vaciado del selector de fichero** en Ajustes (`e.target.value = ''`, en
+  `pickFile`). El navegador real no dispara `change` al reelegir el fichero que
+  el input ya tiene, así que sin vaciarlo el segundo intento no haría nada;
+  jsdom no modela nada de eso —dispara `change` siempre y Testing Library define
+  `files` por encima del accessor— y la línea es literalmente invisible desde
+  vitest. No tiene mutación por eso: una que ningún test puede matar sólo enseña
+  a ignorar el informe. Se comprobó con Playwright durante el desarrollo
+  —quitando la línea, al reelegir el mismo fichero el navegador no emite
+  `change`, no aparece la vista previa y no hay botón que pulsar— pero esa
+  capa no vive en el repositorio, así que día a día se comprueba mirando.
 
 Lo que faltaría para cerrar los dos primeros es una capa con Playwright que
 recorriera la interfaz pulsando. Se dejó fuera a propósito: añade una

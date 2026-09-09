@@ -323,6 +323,130 @@ MUTATIONS = [
         "            {t('app_version', { version: '0.0' })}",
         "src/App.routes.test.tsx",
     ),
+    (
+        "el calendario suma los dos dispositivos en vez de quedarse con el mayor",
+        "src/lib/backup.ts",
+        "    merged[day] = Math.max(merged[day] ?? 0, seconds)",
+        "    merged[day] = (merged[day] ?? 0) + seconds",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "importar reescribe las respuestas que ya había en este dispositivo",
+        "src/lib/backup.ts",
+        "  return { ...incoming, ...local }",
+        "  return { ...local, ...incoming }",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "combinar duplica los intentos que ya estaban",
+        "src/lib/backup.ts",
+        "  const byId = new Map<string, T>()",
+        "  if (true) return [...local, ...incoming]\n  const byId = new Map<string, T>()",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "combinar arrastra también los ajustes del otro dispositivo",
+        "src/lib/backup.ts",
+        "  useStudyStore.setState({ dayLog })",
+        "  useStudyStore.setState({ dayLog, settings: snapshot.settings })",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "combinar reordena un banco que ya se estaba trabajando",
+        "src/lib/backup.ts",
+        "  const orderSeed = { ...snapshot.practiceOrder, ...practice.orderSeed }",
+        "  const orderSeed = { ...practice.orderSeed, ...snapshot.practiceOrder }",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "un fichero de otra aplicación pasa por bueno",
+        "src/lib/backup.ts",
+        "  if (!isRecord(raw) || raw.app !== SNAPSHOT_APP) return { ok: false, reason: 'foreign' }",
+        "  if (!isRecord(raw)) return { ok: false, reason: 'foreign' }",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "el fichero elegido se aplica solo, sin enseñar antes qué trae",
+        "src/pages/SettingsPage.tsx",
+        "    setPending(result.ok ? result.snapshot : null)",
+        "    if (result.ok) applySnapshot(result.snapshot, 'merge')\n    setPending(result.ok ? result.snapshot : null)",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "el fichero descargado pierde la fecha del nombre",
+        "src/pages/SettingsPage.tsx",
+        "    a.download = snapshotFilename()",
+        "    a.download = 'epso-prep.json'",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "la descarga deja la URL temporal sin liberar",
+        "src/pages/SettingsPage.tsx",
+        "    URL.revokeObjectURL(url)",
+        "    // MUTADO",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "el botón de compartir sale también donde no funciona",
+        "src/pages/SettingsPage.tsx",
+        "    setCanShare(typeof navigator.canShare === 'function' && navigator.canShare({ files: [probe] }))",
+        "    setCanShare(true)",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    # `e.target.value = ''` no tiene mutación aquí a propósito: jsdom no modela
+    # el value de un input de fichero (Testing Library define `files` por encima
+    # de su accessor), así que quitar esa línea no cambia nada observable desde
+    # vitest. Una mutación que ningún test puede matar sólo enseña a ignorar el
+    # informe. Queda anotado en TESTPLAN.md, en «Qué NO cubre».
+    (
+        "reemplazar destruye el progreso sin avisar",
+        "src/pages/SettingsPage.tsx",
+        "    if (mode === 'replace' && !window.confirm(t('settings_sync_replace_confirm'))) return",
+        "    // MUTADO",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "el fichero se guarda en una sola línea ilegible",
+        "src/lib/backup.ts",
+        "  return JSON.stringify(snapshot, null, 2)",
+        "  return JSON.stringify(snapshot)",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "el calendario acepta valores que no son números",
+        "src/lib/backup.ts",
+        "    if (typeof raw === 'number' && Number.isFinite(raw)) out[key] = raw",
+        "    out[key] = raw as number",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "las respuestas aceptan cualquier cosa que traiga el fichero",
+        "src/lib/backup.ts",
+        "    if (typeof raw === 'string') out[key] = raw",
+        "    out[key] = raw as string",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "un idioma inventado entra tal cual",
+        "src/lib/backup.ts",
+        "  return value === 'en' ? 'en' : 'es'",
+        "  return value as Locale",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "una lista que viene como objeto entra sin comprobar",
+        "src/lib/backup.ts",
+        "  return Array.isArray(value) ? (value as T[]) : []",
+        "  return (value ?? []) as T[]",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "reemplazar se comporta como combinar y no borra nada",
+        "src/lib/backup.ts",
+        "  if (mode === 'replace') {",
+        "  if (false) {",
+        "src/lib/backup.test.ts",
+    ),
 ]
 
 

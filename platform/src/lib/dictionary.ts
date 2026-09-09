@@ -391,10 +391,67 @@ export const DICT = {
   },
   settings_data: { es: 'Tus datos', en: 'Your data' },
   settings_data_description: {
-    es: 'Todo vive en este navegador. Expórtalo si vas a cambiar de equipo o a limpiar los datos de navegación.',
-    en: 'Everything lives in this browser. Export it if you are changing machines or clearing browsing data.',
+    es: 'Deshacer la configuración o vaciar el registro de tiempo. Para llevártelo a otro sitio, usa el apartado de arriba.',
+    en: 'Undo your configuration or empty the time log. To take it elsewhere, use the section above.',
   },
-  settings_export: { es: 'Exportar todo (JSON)', en: 'Export everything (JSON)' },
+  settings_sync: {
+    es: 'Llevar tu progreso a otro dispositivo',
+    en: 'Move your progress to another device',
+  },
+  settings_sync_description: {
+    es: 'Nada se sincroniza solo: el PC y el móvil guardan sus datos por separado y no se ven entre sí. Exporta aquí un fichero, pásalo al otro dispositivo como pasarías cualquier otro e impórtalo allí. Te sirve además de copia de seguridad.',
+    en: 'Nothing syncs by itself: your computer and your phone keep their data separately and never see each other. Export a file here, move it to the other device the way you move any file, and import it there. It doubles as a backup.',
+  },
+  settings_sync_export: { es: 'Exportar fichero', en: 'Export file' },
+  settings_sync_share: { es: 'Compartir', en: 'Share' },
+  settings_sync_import: { es: 'Importar fichero', en: 'Import file' },
+  settings_sync_from: {
+    es: 'Exportado el {date}, versión {version}.',
+    en: 'Exported on {date}, version {version}.',
+  },
+  settings_sync_contents: {
+    es: 'Tests: {tests} · Redacciones: {essays} · Días de calendario: {days} · Respuestas de práctica: {practice}',
+    en: 'Tests: {tests} · Essays: {essays} · Calendar days: {days} · Practice answers: {practice}',
+  },
+  settings_sync_merge: { es: 'Combinar', en: 'Merge' },
+  settings_sync_merge_hint: {
+    es: 'Añade lo del fichero a lo que ya hay aquí. No borra nada y deja tus ajustes como están.',
+    en: 'Adds the file to what is already here. Deletes nothing and leaves your settings alone.',
+  },
+  settings_sync_replace: { es: 'Reemplazar', en: 'Replace' },
+  settings_sync_replace_hint: {
+    es: 'Este dispositivo pasa a ser una copia exacta del fichero. Lo que hubiera aquí y no esté en él se pierde.',
+    en: 'This device becomes an exact copy of the file. Anything here that is not in it is lost.',
+  },
+  settings_sync_replace_confirm: {
+    es: '¿Reemplazar todo lo de este dispositivo por el contenido del fichero? Lo que no esté en el fichero se pierde, y no se puede deshacer.',
+    en: 'Replace everything on this device with the file? Anything not in the file is lost, and this cannot be undone.',
+  },
+  settings_sync_cancel: { es: 'Cancelar', en: 'Cancel' },
+  settings_sync_added: {
+    es: 'Añadido — tests: {tests}, redacciones: {essays}, días: {days}, respuestas de práctica: {practice}.',
+    en: 'Added — tests: {tests}, essays: {essays}, days: {days}, practice answers: {practice}.',
+  },
+  settings_sync_nothing_new: {
+    es: 'El fichero no traía nada que no estuviera ya aquí.',
+    en: 'The file had nothing that was not already here.',
+  },
+  settings_sync_replaced: {
+    es: 'Este dispositivo es ahora una copia exacta del fichero.',
+    en: 'This device is now an exact copy of the file.',
+  },
+  settings_sync_error_unreadable: {
+    es: 'Ese fichero no se puede leer: no es un JSON válido.',
+    en: 'That file cannot be read: it is not valid JSON.',
+  },
+  settings_sync_error_foreign: {
+    es: 'Ese fichero no es una copia de esta plataforma.',
+    en: 'That file is not a copy from this platform.',
+  },
+  settings_sync_error_newer: {
+    es: 'Ese fichero lo escribió una versión posterior de la plataforma. Actualiza ésta y vuelve a intentarlo.',
+    en: 'That file was written by a newer version of the platform. Update this one and try again.',
+  },
   settings_reset: { es: 'Restaurar ajustes', en: 'Reset settings' },
   settings_reset_confirm: {
     es: '¿Restaurar los ajustes a sus valores por defecto? Tus intentos y tu registro de uso no se tocan.',

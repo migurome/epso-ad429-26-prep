@@ -179,8 +179,42 @@ tamaño:
 | **Mayor** | Cambia la forma de usar la plataforma: navegación, entrada, una fase que aparece o desaparece, o algo que obliga al candidato a reaprender dónde está lo que ya usaba. |
 | **Menor** | Se añade material o una funcionalidad dentro de la forma que ya había: un banco nuevo, un módulo de curso, una pantalla más colgando de lo existente, una corrección. |
 
-`1.0` es la primera versión con el esquema en marcha. Al tocar el repositorio,
+`1.0` fue la primera versión con el esquema en marcha. Al tocar el repositorio,
 subir el número en `package.json` es parte del cambio, no un trámite posterior.
+
+| Versión | Qué entró |
+| --- | --- |
+| `1.1` | Exportar e importar el progreso, para llevarlo entre el ordenador y el móvil. |
+| `1.0` | Primera versión con el esquema de versionado en marcha. |
+
+## Llevar el progreso a otro dispositivo
+
+Todo el progreso vive en el `localStorage` del navegador, que es privado de ese
+navegador y de ese dispositivo: **el ordenador y el móvil no comparten nada**.
+Tampoco lo arregla estar con la misma cuenta en los dos, porque ni Chrome ni
+Firefox sincronizan `localStorage` (sincronizan marcadores, contraseñas y
+pestañas). Y no puede arreglarlo la propia web: es un sitio estático servido por
+GitHub Pages, sin servidor ni cuentas — la portada de acceso compara contra dos
+constantes del paquete y no identifica a nadie (ver `src/lib/authStore.ts`).
+
+Así que el puente es un fichero, en **Ajustes → Llevar tu progreso a otro
+dispositivo**. Se exporta aquí, se pasa al otro dispositivo por donde se pasen
+los ficheros (en el móvil aparece además un botón *Compartir*, que lo manda
+directo a WhatsApp o Drive sin pasar por la carpeta de descargas) y allí se
+importa, con dos maneras de entrar:
+
+| | Qué hace |
+| --- | --- |
+| **Combinar** | Suma lo del fichero a lo que ya hay. No borra nada y no toca los ajustes, el perfil, la convocatoria ni los idiomas de este dispositivo. |
+| **Reemplazar** | Deja el dispositivo como copia exacta del fichero, ajustes incluidos. Para restaurar sobre un navegador limpio. |
+
+Elegir un fichero no aplica nada: primero enseña de cuándo es y qué trae. La
+regla que gobierna el resto es que **importar el mismo fichero dos veces tiene
+que dejar el dispositivo igual que importarlo una**, porque el flujo real es ir
+y venir muchas veces. De ahí que el calendario se quede, día a día, con el mayor
+de los dos valores en vez de sumarlos: sumar sería más fiel el día que de verdad
+se estudie en los dos sitios, pero inflaría el calendario en cada pasada. Los
+detalles y el porqué de cada regla están en `src/lib/backup.ts`.
 
 ## Estado actual
 
