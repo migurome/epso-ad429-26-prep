@@ -1,7 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Field } from '../types/content'
-import type { CompetitionId } from '../data/competition'
+import { COMPETITIONS, type CompetitionId } from '../data/competition'
+import { useCompetitionStore } from './competitionStore'
 import { dayKey, type DayLog } from './studyCalendar'
 
 // Ajustes del candidato y registro de uso de la plataforma.
@@ -122,4 +123,13 @@ export function preferredFieldFor(
   const chosen = profile.preferredFields[competition.key]
   if (chosen && competition.fields.some((f) => f.id === chosen)) return chosen
   return competition.userField
+}
+
+/** El ámbito elegido en la convocatoria activa. Field-Related MCQ y Formación
+ * se ciñen a él: enseñar los demás ámbitos era material que el candidato no va
+ * a examinar, compitiendo por su atención con el que sí. */
+export function usePreferredField(): Field {
+  const key = useCompetitionStore((s) => s.competition)
+  const profile = useStudyStore((s) => s.profile)
+  return preferredFieldFor(profile, COMPETITIONS[key])
 }

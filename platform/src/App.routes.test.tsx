@@ -17,6 +17,8 @@ import { COMPETITIONS, COMPETITION_ORDER } from './data/competition'
 import { useCompetitionStore } from './lib/competitionStore'
 import { useLocaleStore } from './lib/localeStore'
 import { useProgressStore } from './lib/progressStore'
+import { DEFAULT_PROFILE, useStudyStore } from './lib/studyStore'
+import { hasCourse } from './data/contentLoader'
 import { DICT } from './lib/dictionary'
 
 const FIELDS = COMPETITION_ORDER.flatMap((key) => COMPETITIONS[key].fields)
@@ -72,6 +74,10 @@ async function waitForContent(container: HTMLElement, locale: 'es' | 'en') {
       // El chunk verbal ronda 1 MB; 5 s dan margen sin tapar un fallo real.
       expect(container.textContent?.trim()).toBeTruthy()
       expect(container.textContent).not.toContain(loading)
+      // El marco (barra lateral, cabecera) pinta antes que la ruta, y una ruta
+      // que redirige tarda un render más. Sin esperar al contenido de `main`,
+      // la comprobación pasaría mirando sólo el marco.
+      expect(mainText(container)).toBeTruthy()
     },
     { timeout: 5000 },
   )
@@ -149,4 +155,85 @@ describe('un ámbito todavía sin banco lo dice, en vez de fingir estar vacío',
       expect(mainText(container).length).toBeGreaterThan(400)
     },
   )
+})
+
+describe('Field-Related MCQ y Formación se ciñen al ámbito elegido', () => {
+  // El candidato se presenta por un ámbito. Los demás son material que no va a
+  // examinar, y ocupaban la portada de la fase y un enlace en la navegación.
+  beforeEach(() => {
+    useStudyStore.setState({ profile: { ...DEFAULT_PROFILE } })
+  })
+
+  it.each(COMPETITION_ORDER.flatMap((key) => COMPETITIONS[key].fields.map((f) => [key, f.id] as const)))(
+    '/campo lleva directamente al ámbito elegido (%s → %s)',
+    async (key, fieldId) => {
+      useCompetitionStore.setState({ competition: key })
+      useStudyStore.setState({
+        profile: { ...DEFAULT_PROFILE, preferredFields: { [key]: fieldId } },
+      })
+      const { container } = await visit('/campo')
+      await waitForContent(container, 'es')
+
+      await waitFor(() => expect(window.location.hash).toBe(`#/campo/${fieldId}`))
+      const field = COMPETITIONS[key].fields.find((f) => f.id === fieldId)!
+      expect(container.textContent).toContain(field.label.es)
+    },
+  )
+
+  it('sin ámbito elegido cae en el de la convocatoria, no en una portada vacía', async () => {
+    useCompetitionStore.setState({ competition: 'ad8' })
+    const { container } = await visit('/campo')
+    await waitForContent(container, 'es')
+    await waitFor(() => expect(window.location.hash).toBe(`#/campo/${COMPETITIONS.ad8.userField}`))
+  })
+
+  it('los demás ámbitos ya no se enlazan desde la fase', async () => {
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: 'cybersecurity' } },
+    })
+    const { container } = await visit('/campo')
+    await waitForContent(container, 'es')
+
+    const others = COMPETITIONS.ad8.fields.filter((f) => f.id !== 'cybersecurity')
+    for (const other of others) {
+      expect(container.querySelector(`a[href$="/campo/${other.id}"]`)).toBeNull()
+    }
+  })
+
+  it('un ámbito sin curso no encuentra en Formación el temario de otro', async () => {
+    // Enseñar aquí el curso de ciberseguridad a quien se presenta por IA sería
+    // material equivocado presentado como suyo.
+    const noCourse = COMPETITIONS.ad8.fields.find((f) => !hasCourse(f.id))!
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: noCourse.id } },
+    })
+    const { container } = await visit('/formacion')
+    await waitForContent(container, 'es')
+
+    expect(container.textContent).toContain(DICT.course_other_field.es)
+    expect(container.textContent).not.toContain(DICT.nav_course.es + ' —')
+  })
+
+  it('y tampoco lo enlaza la navegación', async () => {
+    const noCourse = COMPETITIONS.ad8.fields.find((f) => !hasCourse(f.id))!
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: noCourse.id } },
+    })
+    const { container } = await visit('/')
+    await waitForContent(container, 'es')
+    expect(container.querySelector('a[href$="/formacion"]')).toBeNull()
+  })
+
+  it('con un ámbito que sí tiene curso, el enlace vuelve', async () => {
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: 'cybersecurity' } },
+    })
+    const { container } = await visit('/')
+    await waitForContent(container, 'es')
+    expect(container.querySelector('a[href$="/formacion"]')).toBeTruthy()
+  })
 })

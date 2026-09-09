@@ -4,23 +4,45 @@ import { BookOpen, GraduationCap } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { EmptyState } from '../components/EmptyState'
 import { Markdown } from '../components/Markdown'
-import { COURSE_FIELDS, loadCourseContent } from '../data/contentLoader'
+import { hasCourse, loadCourseContent, type CourseField } from '../data/contentLoader'
 import { COMPETITIONS, COMPETITION_ORDER } from '../data/competition'
 import { useLocaleStore, pick } from '../lib/localeStore'
+import { usePreferredField } from '../lib/studyStore'
 import { useT } from '../lib/useT'
 import { courseModules, moduleNumber } from '../lib/course'
 
-/** El curso existe hoy sólo para ciberseguridad. Se toma de COURSE_FIELDS en
- * vez de fijarlo aquí, para que añadir otro no obligue a tocar la página. */
-const FIELD = COURSE_FIELDS[0]
-
+// El curso se ciñe al ámbito elegido en Ajustes. Hoy sólo existe para
+// ciberseguridad, así que quien se presente por otro ámbito no debe encontrarse
+// aquí un temario que no le toca: se le dice que todavía no hay curso para el
+// suyo. La comprobación va fuera del componente que carga el contenido para no
+// descargar un bloque de cientos de kilobytes que no se va a enseñar.
 export function CoursePage() {
   const t = useT()
+  const field = usePreferredField()
+
+  if (!hasCourse(field)) {
+    return (
+      <div>
+        <PageHeader eyebrow={t('course_eyebrow')} title={t('course_title')} />
+        <EmptyState
+          icon={<GraduationCap size={28} />}
+          title={t('course_empty_title')}
+          description={t('course_other_field')}
+        />
+      </div>
+    )
+  }
+
+  return <CourseContents courseField={field} />
+}
+
+function CourseContents({ courseField }: { courseField: CourseField }) {
+  const t = useT()
   const locale = useLocaleStore((s) => s.locale)
-  const { QUESTIONS: questions, THEORY_DOCS: theory } = use(loadCourseContent(FIELD))
+  const { QUESTIONS: questions, THEORY_DOCS: theory } = use(loadCourseContent(courseField))
 
   const field = COMPETITION_ORDER.flatMap((key) => COMPETITIONS[key].fields).find(
-    (f) => f.id === FIELD,
+    (f) => f.id === courseField,
   )
   const intro = theory.find((doc) => doc.id.endsWith('-intro'))
   const modules = courseModules(theory, questions)

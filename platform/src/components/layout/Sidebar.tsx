@@ -6,17 +6,14 @@ import {
   ListChecks,
   GraduationCap,
   PenLine,
-  Video,
   Link2,
-  BarChart3,
-  CalendarDays,
-  Settings,
-  ShieldCheck,
   X,
 } from 'lucide-react'
 import { CompetitionSelector } from '../CompetitionSelector'
 import { useCompetition } from '../../lib/competitionStore'
 import { useLocaleStore } from '../../lib/localeStore'
+import { usePreferredField } from '../../lib/studyStore'
+import { hasCourse } from '../../data/contentLoader'
 import { useT } from '../../lib/useT'
 
 interface SidebarProps {
@@ -29,25 +26,23 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const locale = useLocaleStore((s) => s.locale)
   const setLocale = useLocaleStore((s) => s.setLocale)
   const competition = useCompetition()
+  const field = usePreferredField()
 
   const NAV_ITEMS = [
     { to: '/', label: t('nav_dashboard'), icon: LayoutDashboard, end: true },
     { to: '/razonamiento', label: t('nav_reasoning'), icon: BrainCircuit },
     { to: '/campo', label: t('nav_field_mcq'), icon: ListChecks },
-    { to: '/formacion', label: t('nav_course'), icon: GraduationCap },
+    // La formación existe hoy sólo para ciberseguridad. Enseñar el enlace a
+    // quien se presenta por otro ámbito sería prometer un temario que no le
+    // toca, así que aparece únicamente cuando su ámbito tiene curso.
+    ...(hasCourse(field) ? [{ to: '/formacion', label: t('nav_course'), icon: GraduationCap }] : []),
     { to: '/eufte', label: t('nav_eufte'), icon: PenLine },
-    { to: '/dia-del-examen', label: t('nav_test_day'), icon: Video },
     { to: '/recursos', label: t('nav_resources'), icon: Link2 },
-    { to: '/progreso', label: t('nav_progress'), icon: BarChart3 },
-    { to: '/calendario', label: t('nav_calendar'), icon: CalendarDays },
   ]
 
-  // Utilidades: van al pie y no en la navegación principal, para no competir
-  // con las fases de la oposición.
-  const FOOTER_LINKS = [
-    { to: '/ajustes', label: t('nav_settings'), icon: Settings },
-    { to: '/verificacion', label: t('nav_selfcheck'), icon: ShieldCheck },
-  ]
+  // Lo del candidato —progreso, calendario, día del examen, ajustes y la
+  // verificación— vive en el menú de usuario de la barra superior. Aquí se
+  // quedan sólo las fases de la oposición, que es lo que se abre a diario.
 
   return (
     <>
@@ -128,26 +123,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               fields: competition.fields.length,
             })}
           </p>
-          {/* Utilidad de diagnóstico, no material de estudio: va en el pie y
-              no en la navegación principal, para no competir con las fases. */}
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-            {FOOTER_LINKS.map(({ to, label, icon: Icon }) => (
-              <NavLink
-                key={to}
-                to={to}
-                onClick={onClose}
-                className={({ isActive }) =>
-                  clsx(
-                    'flex items-center gap-1.5 text-xs transition-colors',
-                    isActive ? 'font-semibold text-accent' : 'text-slate-400 hover:text-slate-600',
-                  )
-                }
-              >
-                <Icon size={14} />
-                {label}
-              </NavLink>
-            ))}
-          </div>
         </div>
       </aside>
     </>

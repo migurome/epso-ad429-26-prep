@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { Sidebar } from './Sidebar'
+import { UserMenu } from './UserMenu'
 import { LoadingFallback } from '../LoadingFallback'
 import { useCompetitionStore } from '../../lib/competitionStore'
 import { useStudyTracker } from '../../lib/useStudyTracker'
@@ -36,16 +37,22 @@ export function Layout() {
       <Sidebar isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
 
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
-        <header className="flex shrink-0 items-center gap-3 border-b border-slate-200 bg-white px-4 py-3 md:hidden">
+        {/* La barra superior existe en todos los tamaños porque la sección de
+            usuario vive en ella. En móvil lleva además el botón del menú y el
+            nombre, que en escritorio ya los da la barra lateral. */}
+        <header className="flex shrink-0 items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5">
           <button
             type="button"
             onClick={() => setMobileNavOpen(true)}
             aria-label={t('open_menu')}
-            className="-ml-1.5 rounded-lg p-1.5 text-slate-600 hover:bg-slate-100"
+            className="-ml-1.5 rounded-lg p-1.5 text-slate-600 hover:bg-slate-100 md:hidden"
           >
             <Menu size={22} />
           </button>
-          <span className="text-sm font-semibold text-slate-800">{t('app_name')}</span>
+          <span className="text-sm font-semibold text-slate-800 md:hidden">{t('app_name')}</span>
+          <div className="ml-auto">
+            <UserMenu />
+          </div>
         </header>
 
         <main className="flex-1 overflow-y-auto">

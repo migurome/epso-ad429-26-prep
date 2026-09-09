@@ -16,6 +16,9 @@ export const DICT = {
   sidebar_footer: { es: '{posts} plazas · {fields} ámbitos', en: '{posts} posts · {fields} fields' },
   competition_selector_label: { es: 'Convocatoria', en: 'Competition' },
   open_menu: { es: 'Abrir menú', en: 'Open menu' },
+  user_menu_label: { es: 'Tu cuenta', en: 'Your account' },
+  user_menu_anonymous: { es: 'Candidato', en: 'Candidate' },
+  user_menu_set_name: { es: 'Pon tu nombre en Ajustes', en: 'Add your name in Settings' },
   close_menu: { es: 'Cerrar menú', en: 'Close menu' },
   loading: { es: 'Cargando…', en: 'Loading…' },
 
@@ -117,6 +120,10 @@ export const DICT = {
   // El color solo no sirve: quien no lo distingue necesita leer el veredicto.
   answered_correct: { es: 'Acertada', en: 'Answered correctly' },
   answered_wrong: { es: 'Fallada', en: 'Answered wrongly' },
+  practice_answered: { es: '{done} de {total} respondidas', en: '{done} of {total} answered' },
+  practice_reactivate_one: { es: 'Reactivar esta pregunta', en: 'Reset this question' },
+  practice_reactivate_all: { es: 'Reactivar todas', en: 'Reset all' },
+  practice_reshuffled: { es: 'Orden barajado para esta vuelta.', en: 'Order shuffled for this pass.' },
 
   // TimedTest
   no_questions_available: {
@@ -269,6 +276,10 @@ export const DICT = {
   course_module_meta: { es: '{questions} preguntas', en: '{questions} questions' },
   course_all_modules: { es: 'Todos los módulos', en: 'All modules' },
   course_empty_title: { es: 'El curso todavía no está disponible', en: 'The course is not available yet' },
+  course_other_field: {
+    es: 'La formación cubre por ahora el ámbito de ciberseguridad. El tuyo, elegido en Ajustes, todavía no tiene curso.',
+    en: 'The course covers the cybersecurity field for now. Yours, chosen in Settings, does not have one yet.',
+  },
   course_empty_description: {
     es: 'Aquí aparecerán los módulos de estudio con su teoría y sus preguntas.',
     en: 'The study modules, with their theory and questions, will appear here.',

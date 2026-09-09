@@ -1,17 +1,22 @@
 import { useMemo, useState } from 'react'
-import { Check, ChevronDown, X } from 'lucide-react'
+import { Check, ChevronDown, RotateCcw, X } from 'lucide-react'
 import clsx from 'clsx'
 import { QuestionCard } from './QuestionCard'
 import { Markdown } from './Markdown'
 import { TestLocaleSelector } from './TestLocaleSelector'
 import { extractPromptFigures } from '../lib/abstractFigure'
 import { pick } from '../lib/localeStore'
+import { usePracticeStore, type PracticeBankRef } from '../lib/practiceStore'
+import { shuffleWithSeed } from '../lib/shuffle'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
 import { useT } from '../lib/useT'
 import type { Question } from '../types/content'
 
 interface PracticeBankProps {
   questions: Question[]
+  /** Identifica el banco para guardar aparte su orden. Ámbito, destreza o
+   * módulo del curso: lo que distinga a este banco de los demás. */
+  bankId: string
 }
 
 function sourceLabel(tags: string[] | undefined): 'real' | 'ai-generated' | null {
@@ -41,9 +46,19 @@ function verdictOf(question: Question, answer: string | undefined): boolean | nu
   return question.options.find((o) => o.id === answer)?.isCorrect === true
 }
 
-export function PracticeBank({ questions }: PracticeBankProps) {
+export function PracticeBank({ questions, bankId }: PracticeBankProps) {
   const t = useT()
   const testLocale = useTestLocaleStore((s) => s.locale)
+
+  // Las respuestas se guardan en el navegador. Antes vivían en el estado del
+  // componente: bastaba recargar para que todo volviera a aparecer sin marcar
+  // y no hubiera forma de saber qué se había trabajado ya.
+  const answers = usePracticeStore((s) => s.answers)
+  const recordAnswer = usePracticeStore((s) => s.answer)
+  const reactivate = usePracticeStore((s) => s.reactivate)
+  const reactivateAll = usePracticeStore((s) => s.reactivateAll)
+  const seed = usePracticeStore((s) => s.orderSeed[bankId] ?? 0)
+
   const hasSourceSplit = useMemo(
     () => questions.some((q) => sourceLabel(q.tags) === 'real') && questions.some((q) => sourceLabel(q.tags) === 'ai-generated'),
     [questions],
@@ -51,12 +66,23 @@ export function PracticeBank({ questions }: PracticeBankProps) {
 
   const [sourceFilter, setSourceFilter] = useState<'all' | 'real' | 'ai-generated'>(hasSourceSplit ? 'real' : 'all')
   const [expandedId, setExpandedId] = useState<string | null>(null)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
+
+  const bank: PracticeBankRef = useMemo(
+    () => ({ id: bankId, questionIds: questions.map((q) => q.id) }),
+    [bankId, questions],
+  )
+
+  const ordered = useMemo(() => shuffleWithSeed(questions, seed), [questions, seed])
 
   const filtered = useMemo(() => {
-    if (sourceFilter === 'all') return questions
-    return questions.filter((q) => sourceLabel(q.tags) === sourceFilter)
-  }, [questions, sourceFilter])
+    if (sourceFilter === 'all') return ordered
+    return ordered.filter((q) => sourceLabel(q.tags) === sourceFilter)
+  }, [ordered, sourceFilter])
+
+  const answeredCount = useMemo(
+    () => questions.filter((q) => answers[q.id] != null).length,
+    [questions, answers],
+  )
 
   return (
     <div>
@@ -85,7 +111,27 @@ export function PracticeBank({ questions }: PracticeBankProps) {
         </div>
       )}
 
-      <p className="mb-3 text-xs text-slate-400">{t('n_questions', { n: filtered.length })}</p>
+      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <p className="text-xs text-slate-400">{t('n_questions', { n: filtered.length })}</p>
+        {answeredCount > 0 && (
+          <>
+            <p className="text-xs text-slate-500 tabular-nums">
+              {t('practice_answered', { done: answeredCount, total: questions.length })}
+            </p>
+            <button
+              type="button"
+              onClick={() => reactivateAll(bank)}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50"
+            >
+              <RotateCcw size={13} />
+              {t('practice_reactivate_all')}
+            </button>
+          </>
+        )}
+        {answeredCount === 0 && seed !== 0 && (
+          <p className="text-xs text-slate-400">{t('practice_reshuffled')}</p>
+        )}
+      </div>
 
       <div className="space-y-2">
         {filtered.map((q, i) => {
@@ -112,6 +158,9 @@ export function PracticeBank({ questions }: PracticeBankProps) {
                 aria-expanded={isOpen}
                 onClick={toggle}
                 onKeyDown={(e) => {
+                  // Sin esta guarda, pulsar Intro sobre el botón de reactivar
+                  // plegaría además la pregunta, porque el evento sube.
+                  if (e.target !== e.currentTarget) return
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
                     toggle()
@@ -144,6 +193,20 @@ export function PracticeBank({ questions }: PracticeBankProps) {
                     <span className="sr-only">{t('answered_wrong')}</span>
                   </span>
                 )}
+                {verdict !== null && (
+                  <button
+                    type="button"
+                    aria-label={t('practice_reactivate_one')}
+                    title={t('practice_reactivate_one')}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      reactivate(q.id, bank)
+                    }}
+                    className="mt-0.5 shrink-0 rounded p-0.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
+                  >
+                    <RotateCcw size={14} />
+                  </button>
+                )}
                 <ChevronDown
                   size={16}
                   aria-hidden="true"
@@ -156,7 +219,7 @@ export function PracticeBank({ questions }: PracticeBankProps) {
                     question={q}
                     selectedOptionId={answered ?? null}
                     revealed={Boolean(answered)}
-                    onSelect={(optionId) => setAnswers((prev) => ({ ...prev, [q.id]: optionId }))}
+                    onSelect={(optionId) => recordAnswer(q.id, optionId)}
                     hidePrompt={!isAbstract}
                   />
                 </div>

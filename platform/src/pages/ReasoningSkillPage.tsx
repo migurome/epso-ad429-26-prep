@@ -61,7 +61,7 @@ export function ReasoningSkillPage() {
               ) : skillTyped === 'abstract' ? (
                 <FullscreenPractice questions={questions} />
               ) : (
-                <PracticeBank questions={questions} />
+                <PracticeBank questions={questions} bankId={`reasoning:${skillTyped}`} />
               ),
           },
           {

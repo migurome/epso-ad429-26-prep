@@ -101,24 +101,25 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 364 tests en 19 archivos
+### 3. `unit` — 402 tests en 20 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
-| `src/App.routes.test.tsx` | 56 | Cada ruta, en dos idiomas y dos convocatorias |
+| `src/App.routes.test.tsx` | 67 | Cada ruta, en dos idiomas y dos convocatorias, y el ceñido al ámbito elegido |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
+| `src/components/PracticeBank.test.tsx` | 30 | Filtro, enunciado entero, marca de evaluada, persistencia y reactivación |
 | `src/lib/selfCheck.test.ts` | 30 | Que **las comprobaciones de contenido detecten** lo que prometen |
 | `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
 | `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
-| `src/components/PracticeBank.test.tsx` | 20 | Filtro, enunciado entero en la cabecera y marca de pregunta evaluada |
+| `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
-| `src/lib/shuffle.test.ts` | 15 | Que el simulacro baraje de verdad, y el reloj |
 | `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
+| `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
 | `src/pages/SettingsPage.test.tsx` | 8 | Que los ajustes **no se guarden sin confirmar**, y que se pueda descartar |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
@@ -237,7 +238,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 26 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 35 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en

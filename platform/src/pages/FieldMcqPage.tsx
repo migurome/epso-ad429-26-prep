@@ -88,7 +88,7 @@ export function FieldMcqPage() {
                   }
                 />
               ) : (
-                <PracticeBank questions={questions} />
+                <PracticeBank questions={questions} bankId={`field:${fieldTyped}`} />
               ),
           },
           {

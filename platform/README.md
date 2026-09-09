@@ -77,27 +77,33 @@ src/
                           use() de React 19 (ver "Code-splitting" abajo)
   lib/
     progressStore.ts     Store de progreso (zustand + localStorage)
+    practiceStore.ts      Lo respondido en los bancos de práctica y su
+                          orden, persistidos: recargar ya no borra el rastro
     localeStore.ts        Store de idioma (es/en, zustand + localStorage) +
                           tipo Localized y helper pick(locale, valor)
     dictionary.ts, useT.ts   Diccionario de textos de interfaz y hook t()
     useCountdown.ts, time.ts, shuffle.ts   Utilidades para tests cronometrados
   components/
-    layout/               Sidebar + shell de la app
+    layout/               Sidebar (fases), barra superior y menú de usuario
     PageHeader, PhaseCard, Tabs, EmptyState, FormatBadges
     Markdown.tsx           Render de Markdown (teoría, enunciados, tablas)
     QuestionCard.tsx       Una pregunta con opciones y corrección
-    PracticeBank.tsx       Banco de práctica sin cronometrar (acordeón)
+    PracticeBank.tsx       Banco de práctica sin cronometrar: enunciado
+                           entero en la cabecera, veredicto al plegar y
+                           reactivación (que rebaraja al vaciarse)
     TimedTest.tsx          Simulacro cronometrado (setup → test → resultados)
     EssayRunner.tsx         Editor cronometrado para prompts EUFTE
     AttemptHistory.tsx, EssayHistory.tsx   Historial de intentos guardados
   pages/
     Dashboard.tsx
     ReasoningOverview.tsx / ReasoningSkillPage.tsx   (Fase 1: verbal/numérico/abstracto)
-    FieldMcqOverview.tsx / FieldMcqPage.tsx           (Fase 2: MCQ de campo)
+    FieldMcqOverview.tsx / FieldMcqPage.tsx           (Fase 2: MCQ de campo;
+                           la portada redirige al ámbito elegido en Ajustes)
     EuftePage.tsx                                     (Fase 3: redacción EUFTE)
     TestDayPage.tsx                                   (logística del examen remoto)
     ResourcesPage.tsx                                 (convocatoria + referencias)
     ProgressPage.tsx                                  (estadísticas)
+    CalendarPage.tsx, SettingsPage.tsx, SelfCheckPage.tsx  (menú de usuario)
 
 scripts/
   build_content.py        Parsea ../Docs/*.md (+ ../Docs/es/*.md para la

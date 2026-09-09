@@ -6,19 +6,26 @@ import { Tabs } from '../components/Tabs'
 import { Markdown } from '../components/Markdown'
 import { PracticeBank } from '../components/PracticeBank'
 import { TimedTest } from '../components/TimedTest'
-import { COURSE_FIELDS, loadCourseContent } from '../data/contentLoader'
+import { hasCourse, loadCourseContent, type CourseField } from '../data/contentLoader'
 import { FIELD_MCQ_FORMAT } from '../data/competition'
 import { useLocaleStore, pick } from '../lib/localeStore'
+import { usePreferredField } from '../lib/studyStore'
 import { useT } from '../lib/useT'
 import { courseModules, moduleNumber } from '../lib/course'
 
-const FIELD = COURSE_FIELDS[0]
-
+// Igual que la portada de formación: si el ámbito elegido no tiene curso,
+// aquí no hay nada que enseñar y se vuelve, que es donde se explica por qué.
 export function CourseModulePage() {
+  const field = usePreferredField()
+  if (!hasCourse(field)) return <Navigate to="/formacion" replace />
+  return <CourseModule courseField={field} />
+}
+
+function CourseModule({ courseField }: { courseField: CourseField }) {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
   const { moduleId } = useParams<{ moduleId: string }>()
-  const { QUESTIONS: questions, THEORY_DOCS: theory } = use(loadCourseContent(FIELD))
+  const { QUESTIONS: questions, THEORY_DOCS: theory } = use(loadCourseContent(courseField))
 
   const modules = courseModules(theory, questions)
   const index = modules.findIndex((m) => moduleNumber(m.doc.id) === Number(moduleId))
@@ -64,7 +71,7 @@ export function CourseModulePage() {
           {
             id: 'preguntas',
             label: `${t('tab_practice_bank')} (${module.questions.length})`,
-            content: <PracticeBank questions={module.questions} />,
+            content: <PracticeBank questions={module.questions} bankId={`course:${module.doc.id}`} />,
           },
           {
             id: 'test',
@@ -74,7 +81,7 @@ export function CourseModulePage() {
                 questions={module.questions}
                 format={moduleFormat}
                 phase="field-mcq"
-                field={FIELD}
+                field={courseField}
               />
             ),
           },

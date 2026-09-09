@@ -3,7 +3,7 @@
 // siempre con las mismas. Las tres cosas invalidan el simulacro sin romper nada
 // visible, así que se comprueban como invariantes y no de vista.
 import { describe, it, expect } from 'vitest'
-import { shuffle } from './shuffle'
+import { shuffle, shuffleWithSeed } from './shuffle'
 import { formatClock } from './time'
 
 const ITEMS = Array.from({ length: 12 }, (_, i) => i)
@@ -68,6 +68,54 @@ describe('shuffle', () => {
     expect(ratio, `permutación más frecuente / menos frecuente = ${ratio.toFixed(2)}`).toBeLessThan(
       1.5,
     )
+  })
+})
+
+describe('shuffleWithSeed', () => {
+  // El banco de práctica baraja al empezar una vuelta nueva y ese orden tiene
+  // que sobrevivir a recargar la página. Con Math.random no puede: hace falta
+  // que la misma semilla dé siempre el mismo orden.
+  it('la misma semilla da siempre el mismo orden', () => {
+    expect(shuffleWithSeed(ITEMS, 42)).toEqual(shuffleWithSeed(ITEMS, 42))
+  })
+
+  it('semillas distintas dan órdenes distintos', () => {
+    // Con doce elementos, dos semillas que coincidieran serían un fallo del
+    // generador, no mala suerte.
+    const seen = new Set(
+      Array.from({ length: 30 }, (_, i) => shuffleWithSeed(ITEMS, i + 1).join(',')),
+    )
+    expect(seen.size).toBeGreaterThan(25)
+  })
+
+  it('la semilla cero deja el orden del documento', () => {
+    expect(shuffleWithSeed(ITEMS, 0)).toEqual(ITEMS)
+  })
+
+  it('sigue siendo una permutación, no una selección', () => {
+    for (let seed = 1; seed <= 50; seed += 1) {
+      const out = shuffleWithSeed(ITEMS, seed)
+      expect([...out].sort((a, b) => a - b)).toEqual(ITEMS)
+    }
+  })
+
+  it('no modifica el array original', () => {
+    const original = [...ITEMS]
+    shuffleWithSeed(ITEMS, 7)
+    expect(ITEMS).toEqual(original)
+  })
+
+  it('reparte cada elemento por todas las posiciones', () => {
+    // Un generador con poca entropía puede dar «órdenes distintos» que en
+    // realidad dejan casi todo en su sitio. Aquí se mira la distribución.
+    const counts = ITEMS.map(() => new Array(ITEMS.length).fill(0))
+    for (let seed = 1; seed <= 2000; seed += 1) {
+      shuffleWithSeed(ITEMS, seed).forEach((value, position) => {
+        counts[value][position] += 1
+      })
+    }
+    const flat = counts.flat()
+    expect(Math.max(...flat) / Math.min(...flat)).toBeLessThan(1.5)
   })
 })
 
