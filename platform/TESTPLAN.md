@@ -101,15 +101,26 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 185 tests en 8 archivos
+### 3. `unit` — 364 tests en 19 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
 | `src/App.routes.test.tsx` | 56 | Cada ruta, en dos idiomas y dos convocatorias |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
+| `src/lib/selfCheck.test.ts` | 30 | Que **las comprobaciones de contenido detecten** lo que prometen |
+| `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
+| `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
+| `src/components/PracticeBank.test.tsx` | 20 | Filtro, enunciado entero en la cabecera y marca de pregunta evaluada |
+| `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
+| `src/lib/shuffle.test.ts` | 15 | Que el simulacro baraje de verdad, y el reloj |
+| `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
+| `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
+| `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
+| `src/pages/SettingsPage.test.tsx` | 8 | Que los ajustes **no se guarden sin confirmar**, y que se pueda descartar |
+| `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
@@ -193,10 +204,62 @@ que sólo un navegador de verdad puede comprobar:
 
 ---
 
+## Cobertura, y por qué no basta
+
+```bash
+npm run coverage      # informe por archivo + HTML en platform/coverage/
+```
+
+Estado actual: **84 % de sentencias, 72 % de ramas**. El contenido generado
+queda fuera del cálculo —son cientos de miles de líneas de datos que ninguna
+prueba «recorre», e incluirlas hundiría el porcentaje sin decir nada del
+código—; de su corrección se ocupa `contentIntegrity`.
+
+Pero la cobertura mide qué líneas se **ejecutan**, no qué comportamiento se
+**comprueba**. Un test que recorre una función sin afirmar nada sobre su
+resultado da cobertura y cero garantías. Por eso hay una segunda herramienta:
+
+```bash
+npm run mutation      # ~2 min
+```
+
+`scripts/mutation_check.py` rompe el código a propósito, una cosa cada vez, y
+exige que algún test falle. Cada mutación es exactamente el daño que un test
+dice detectar. Si la suite sigue en verde, ese test es decorativo.
+
+**Esto no es teórico.** La primera vez que se pasó, **4 de 16 mutaciones
+sobrevivieron**:
+
+| Mutación que no se detectaba | Por qué el test no servía |
+| --- | --- |
+| `shuffle` sesgado (sortear sobre todo el array) | El test comprobaba que salía una permutación, y una barajada sesgada también lo es |
+| Una pregunta sin responder cuenta como acertada | El test miraba la pantalla, y la puntuación se calcula **dos veces**: para la pantalla y para el intento guardado |
+| El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
+| Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
+
+Los cuatro tests se reescribieron. Hoy **las 26 mutaciones se detectan**, y el
+script restaura siempre el código, incluso si una ejecución falla.
+
+Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
+cada commit: tarda un par de minutos porque ejecuta la suite una vez por
+mutación.
+
+### Lo que sigue con poca cobertura, a propósito
+
+- `ShapeIcon.tsx` (18 %) dibuja las figuras de razonamiento abstracto en SVG.
+  El banco real se sirve hoy como recortes del libro, y el intérprete que lo
+  alimenta (`abstractFigure.ts`) está al 97 %: cubrir el dibujo serían
+  aserciones sobre píxeles con poco valor.
+- `SelfCheckPage` y `SettingsPage` (76 % y 62 %) son sobre todo interfaz sobre
+  lógica que ya está cubierta en `selfCheck.ts` y `studyStore.ts`.
+
+---
+
 ## Comprobado que falla cuando debe
 
-Un test que no puede fallar no vale nada. Cada capa se validó introduciendo el
-daño que pretende detectar y confirmando el fallo:
+Un test que no puede fallar no vale nada. Las capas del script se validaron
+introduciendo el daño que pretenden detectar; lo equivalente para la suite de
+tests está automatizado en `npm run mutation`, descrito arriba.
 
 | Daño introducido | Capa que lo cazó | Mensaje |
 | --- | --- | --- |
@@ -241,3 +304,4 @@ imágenes se descarguen bajo la ruta base real— ya lo cierra la página
 | Una ruta nueva | Añadirla a `ROUTES` en `src/App.routes.test.tsx` |
 | Un banco nuevo | Nada: hereda las invariantes de reparto de letras y de traducción |
 | Una invariante nueva | Escribirla en `src/lib/selfCheck.ts`; test y página la ejecutan las dos |
+| Un test nuevo | Añadir su mutación a `scripts/mutation_check.py` y confirmar que la caza |

@@ -21,3 +21,6 @@ platform/scripts/_debug/
 Docs/*.pdf
 Docs/*.docx
 Docs/_staging/
+
+# Informes de cobertura (regenerados por `npm run coverage`)
+platform/coverage/

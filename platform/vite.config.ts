@@ -18,5 +18,14 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      // El contenido generado son cientos de miles de líneas de datos que
+      // ninguna prueba «recorre»; incluirlo hundiría el porcentaje sin decir
+      // nada sobre el código. Su corrección la vigila contentIntegrity.
+      include: ['src/**'],
+      exclude: ['src/data/*.generated.ts', 'src/**/*.test.*', 'src/main.tsx'],
+    },
   },
 })

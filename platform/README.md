@@ -22,6 +22,8 @@ npm run build    # compila a dist/
 npm run lint     # oxlint
 npm run test     # vitest
 npm run verify   # verificación completa: contenido, tipos, tests, build y dist
+npm run coverage # informe de cobertura
+npm run mutation # rompe el código a propósito y exige que los tests lo cacen
 ```
 
 El curso de fundamentos de ciberseguridad (`Docs/8.- *`) se redacta consultando
