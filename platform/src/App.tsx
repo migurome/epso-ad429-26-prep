@@ -9,6 +9,8 @@ import { EuftePage } from './pages/EuftePage'
 import { TestDayPage } from './pages/TestDayPage'
 import { ResourcesPage } from './pages/ResourcesPage'
 import { ProgressPage } from './pages/ProgressPage'
+import { CalendarPage } from './pages/CalendarPage'
+import { SettingsPage } from './pages/SettingsPage'
 import { SelfCheckPage } from './pages/SelfCheckPage'
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/dia-del-examen" element={<TestDayPage />} />
           <Route path="/recursos" element={<ResourcesPage />} />
           <Route path="/progreso" element={<ProgressPage />} />
+          <Route path="/calendario" element={<CalendarPage />} />
+          <Route path="/ajustes" element={<SettingsPage />} />
           <Route path="/verificacion" element={<SelfCheckPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>

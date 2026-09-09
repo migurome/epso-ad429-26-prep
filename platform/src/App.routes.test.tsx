@@ -33,6 +33,8 @@ const ROUTES = [
   '/dia-del-examen',
   '/recursos',
   '/progreso',
+  '/calendario',
+  '/ajustes',
   '/verificacion',
   '/esta-ruta-no-existe',
 ]

@@ -254,6 +254,111 @@ export const DICT = {
     en: 'This page checks the site as published, on this device and under the real base path. Every run downloads the 240 real-bank images again — about 6 MB, deliberately bypassing the cache — because a check served from cache checks nothing; that is why it takes a few seconds and why the transferred bytes are shown. It does not replace the repository verification (types, tests and build), run with “node scripts/verify.mjs” or “verificar.cmd” and described in platform/TESTPLAN.md.',
   },
 
+  // Calendario de estudio (/calendario)
+  nav_calendar: { es: 'Calendario', en: 'Calendar' },
+  calendar_eyebrow: { es: 'Constancia', en: 'Consistency' },
+  calendar_title: { es: 'Calendario de estudio', en: 'Study calendar' },
+  calendar_description: {
+    es: 'Cuánto has dedicado cada día y qué hiciste. Pulsa un día para ver su detalle; cada semana se da por cumplida al alcanzar el objetivo de horas.',
+    en: 'How long you put in each day and what you did. Click a day for its detail; a week counts as met once it reaches the hours goal.',
+  },
+  calendar_previous_month: { es: 'Mes anterior', en: 'Previous month' },
+  calendar_next_month: { es: 'Mes siguiente', en: 'Next month' },
+  calendar_week_complete: { es: 'Semana cumplida', en: 'Week complete' },
+  calendar_week_remaining: {
+    es: 'Te faltan {time} para cumplir esta semana',
+    en: '{time} left to complete this week',
+  },
+  calendar_week_progress: {
+    es: '{done} de {goal} · {percent} %',
+    en: '{done} of {goal} · {percent}%',
+  },
+  calendar_streak: { es: '{n} semanas seguidas', en: '{n} weeks in a row' },
+  calendar_legend: {
+    es: 'La intensidad de cada día es su tiempo frente a la parte proporcional del objetivo semanal. El punto marca los días con test o redacción.',
+    en: 'A day’s shading is its time against the weekly goal’s daily share. The dot marks days with a test or an essay.',
+  },
+  calendar_pick_a_day: { es: 'Elige un día del calendario.', en: 'Pick a day from the calendar.' },
+  calendar_time_total: { es: 'Tiempo del día', en: 'Time that day' },
+  calendar_time_usage: { es: 'Uso de la plataforma', en: 'Platform usage' },
+  calendar_time_tests: { es: 'Tests y redacciones', en: 'Tests and essays' },
+  calendar_activity_heading: { es: 'Qué se hizo', en: 'What was done' },
+  calendar_only_usage: {
+    es: 'Estudio sin test ni redacción: teoría o banco de práctica.',
+    en: 'Study with no test or essay: theory or practice bank.',
+  },
+  calendar_nothing_that_day: { es: 'Ese día no hubo actividad.', en: 'No activity that day.' },
+
+  // Configuración (/ajustes)
+  nav_settings: { es: 'Ajustes', en: 'Settings' },
+  settings_eyebrow: { es: 'Panel de control', en: 'Control panel' },
+  settings_title: { es: 'Ajustes del candidato', en: 'Candidate settings' },
+  settings_description: {
+    es: 'Tus datos, el ámbito por el que te presentas y el ritmo de estudio que quieres sostener.',
+    en: 'Your details, the field you are applying for, and the study pace you want to keep.',
+  },
+  settings_candidate: { es: 'Datos del candidato', en: 'Candidate details' },
+  settings_name: { es: 'Nombre', en: 'Name' },
+  settings_name_placeholder: { es: 'Cómo quieres que te llame', en: 'What to call you' },
+  settings_email: { es: 'Correo electrónico', en: 'Email' },
+  settings_exam_date: { es: 'Fecha prevista de examen', en: 'Expected exam date' },
+  settings_exam_date_hint: {
+    es: 'Solo para tu referencia; no la publica EPSO todavía.',
+    en: 'For your reference only; EPSO has not published it yet.',
+  },
+  settings_local_note: {
+    es: 'Estos datos se guardan únicamente en este navegador. No se envían a ningún sitio ni salen de tu equipo.',
+    en: 'These details are stored in this browser only. Nothing is sent anywhere or leaves your machine.',
+  },
+  settings_fields: { es: 'Ámbito por convocatoria', en: 'Field per competition' },
+  settings_fields_description: {
+    es: 'El ámbito por el que te presentas en cada una. Se destaca en las listas y decide qué banco se abre por defecto.',
+    en: 'The field you are applying for in each one. It is highlighted in the lists and decides which bank opens by default.',
+  },
+  settings_active_competition: { es: 'Convocatoria activa ahora mismo', en: 'Currently active competition' },
+  settings_goal: { es: 'Objetivo semanal', en: 'Weekly goal' },
+  settings_goal_description: {
+    es: 'Horas de estudio que hay que alcanzar para dar una semana por cumplida en el calendario.',
+    en: 'Study hours needed for a week to count as met in the calendar.',
+  },
+  settings_goal_hours: { es: 'Horas por semana', en: 'Hours per week' },
+  settings_hours_per_week: { es: 'h / semana', en: 'h / week' },
+  settings_goal_daily: {
+    es: 'Equivale a unos {daily} al día si repartes la semana en siete.',
+    en: 'That is about {daily} a day if you spread the week over seven.',
+  },
+  settings_tracking: { es: 'Registro de uso', en: 'Usage tracking' },
+  settings_tracking_description: {
+    es: 'Sin esto solo contaría el tiempo de los tests cronometrados, y leer teoría o responder el banco de práctica no sumaría nada.',
+    en: 'Without this only timed-test time would count, and reading theory or working the practice bank would add nothing.',
+  },
+  settings_track_usage: {
+    es: 'Contar el tiempo que paso en la plataforma',
+    en: 'Count the time I spend on the platform',
+  },
+  settings_idle: { es: 'Minutos de inactividad', en: 'Idle minutes' },
+  settings_idle_hint: {
+    es: 'Pasado ese tiempo sin tocar nada se deja de contar, para que una pestaña olvidada no cuente como estudio.',
+    en: 'After that long without touching anything the counter stops, so a forgotten tab does not count as study.',
+  },
+  settings_data: { es: 'Tus datos', en: 'Your data' },
+  settings_data_description: {
+    es: 'Todo vive en este navegador. Expórtalo si vas a cambiar de equipo o a limpiar los datos de navegación.',
+    en: 'Everything lives in this browser. Export it if you are changing machines or clearing browsing data.',
+  },
+  settings_export: { es: 'Exportar todo (JSON)', en: 'Export everything (JSON)' },
+  settings_reset: { es: 'Restaurar ajustes', en: 'Reset settings' },
+  settings_reset_confirm: {
+    es: '¿Restaurar los ajustes a sus valores por defecto? Tus intentos y tu registro de uso no se tocan.',
+    en: 'Reset settings to their defaults? Your attempts and usage log are left alone.',
+  },
+  settings_clear_log: { es: 'Borrar registro de uso', en: 'Clear usage log' },
+  settings_clear_log_confirm: {
+    es: '¿Borrar el registro de tiempo de uso? El calendario perderá las horas de estudio, aunque los tests y redacciones seguirán ahí. No se puede deshacer.',
+    en: 'Clear the usage-time log? The calendar will lose the study hours, though tests and essays stay. This cannot be undone.',
+  },
+  settings_log_size: { es: '{days} días con tiempo registrado.', en: '{days} days with logged time.' },
+
   // Selector de idioma
   language_selector_label: { es: 'Idioma', en: 'Language' },
   test_language_label: {

@@ -4,6 +4,7 @@ import { Menu } from 'lucide-react'
 import { Sidebar } from './Sidebar'
 import { LoadingFallback } from '../LoadingFallback'
 import { useCompetitionStore } from '../../lib/competitionStore'
+import { useStudyTracker } from '../../lib/useStudyTracker'
 import { useT } from '../../lib/useT'
 
 export function Layout() {
@@ -11,6 +12,11 @@ export function Layout() {
   const location = useLocation()
   const competition = useCompetitionStore((s) => s.competition)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+
+  // Cuenta el tiempo de uso de la plataforma, que es lo que alimenta el
+  // objetivo semanal del calendario. Va aquí y no en cada página para que
+  // siga contando al navegar entre ellas.
+  useStudyTracker()
 
   // El color de acento de toda la interfaz cuelga de este atributo (ver
   // src/index.css): azul para la AD7, rojo para la AD8. Va en <html> y no en un

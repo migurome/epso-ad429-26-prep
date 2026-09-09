@@ -67,7 +67,7 @@ está toda declarada en datos, no escrita a mano en los tests:
 
 | Eje | Valores | De dónde sale |
 | --- | --- | --- |
-| Rutas | 10 rutas + comodín | `src/App.tsx` |
+| Rutas | 12 rutas + comodín | `src/App.tsx` |
 | Ámbitos | 6 (4 de la AD7 + 2 de la AD8) | `COMPETITIONS` en `src/data/competition.ts` |
 | Convocatorias | AD7, AD8 | `COMPETITION_ORDER` |
 | Idiomas | es, en | `localeStore` |
@@ -97,17 +97,27 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 140 tests en 7 archivos
+### 3. `unit` — 178 tests en 8 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
+| `src/App.routes.test.tsx` | 50 | Cada ruta, en dos idiomas y dos convocatorias |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
-| `src/App.routes.test.tsx` | 46 | Cada ruta, en dos idiomas y dos convocatorias |
+| `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
 | `src/data/contentIntegrity.test.ts` | 16 | Invariantes de **todo** el contenido |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
+
+**`studyCalendar`** cubre la aritmética de fechas, que es donde se esconden los
+errores que nadie ve hasta que el dato ya está mal: que las semanas empiecen en
+lunes y que un domingo pertenezca a la que acaba, no a la que empieza; que la
+actividad de las 23:30 se registre en el día que se ha vivido y no en el
+siguiente por usar UTC; que subir el objetivo pueda descumplir una semana que
+estaba cumplida; que la racha no se rompa por una semana en curso todavía a
+medias; y sobre todo que el tiempo de un test **no se sume** al tiempo de uso,
+porque el test ocurre dentro de ese tiempo y sumarlos lo contaría dos veces.
 
 **Las invariantes del contenido viven en `src/lib/selfCheck.ts`**, no dentro del
 archivo de test, porque la página de verificación ejecuta exactamente las
