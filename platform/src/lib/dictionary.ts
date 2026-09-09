@@ -244,11 +244,14 @@ export const DICT = {
     es: '{issues} incidencia(s) en {checks} comprobación(es)',
     en: '{issues} issue(s) across {checks} check(s)',
   },
-  selfcheck_elapsed: { es: 'Completado en {seconds} s', en: 'Completed in {seconds} s' },
+  selfcheck_elapsed: {
+    es: 'Completado en {seconds} s · {bytes} descargados',
+    en: 'Completed in {seconds} s · {bytes} downloaded',
+  },
   selfcheck_rerun: { es: 'Repetir', en: 'Run again' },
   selfcheck_footnote: {
-    es: 'Esta página comprueba la web tal como está publicada: descarga de verdad los bloques de contenido y las imágenes, en este dispositivo y bajo la ruta base real. No sustituye a la verificación del repositorio (tipos, tests y construcción), que se lanza con «node scripts/verify.mjs» y está descrita en platform/TESTPLAN.md.',
-    en: 'This page checks the site as published: it really downloads the content bundles and the images, on this device and under the real base path. It does not replace the repository verification (types, tests and build), run with “node scripts/verify.mjs” and described in platform/TESTPLAN.md.',
+    es: 'Esta página comprueba la web tal como está publicada, en este dispositivo y bajo la ruta base real. Cada pasada vuelve a descargar las 240 imágenes del banco real —unos 6 MB, saltándose la caché a propósito— porque una comprobación servida de caché no comprueba nada; por eso tarda unos segundos y por eso se muestran los bytes transferidos. No sustituye a la verificación del repositorio (tipos, tests y construcción), que se lanza con «node scripts/verify.mjs» o «verificar.cmd» y está descrita en platform/TESTPLAN.md.',
+    en: 'This page checks the site as published, on this device and under the real base path. Every run downloads the 240 real-bank images again — about 6 MB, deliberately bypassing the cache — because a check served from cache checks nothing; that is why it takes a few seconds and why the transferred bytes are shown. It does not replace the repository verification (types, tests and build), run with “node scripts/verify.mjs” or “verificar.cmd” and described in platform/TESTPLAN.md.',
   },
 
   // Selector de idioma

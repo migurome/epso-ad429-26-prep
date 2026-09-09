@@ -37,16 +37,37 @@ interface Group {
 
 type Phase = 'idle' | 'running' | 'done'
 
+interface Fetched {
+  ok: boolean
+  /** Bytes que han viajado por la red. 0 significa servido de caché, y por
+   * tanto que esta comprobación no ha comprobado nada. */
+  bytes: number
+}
+
 /** Descarga una imagen de verdad y responde si el navegador ha podido
  * decodificarla. Un 404 bajo la ruta base, un .webp truncado o un archivo de
- * 0 bytes se manifiestan todos aquí, y en ningún otro sitio. */
-function loadImage(src: string): Promise<boolean> {
+ * 0 bytes se manifiestan todos aquí, y en ningún otro sitio.
+ *
+ * Los bytes transferidos se leen de la Resource Timing API y se enseñan en la
+ * interfaz: sin ese dato, una pasada que se sirva entera de caché termina en
+ * cero segundos y anuncia un éxito que no ha verificado nada. */
+function loadImage(src: string): Promise<Fetched> {
   return new Promise((resolve) => {
     const img = new Image()
-    img.onload = () => resolve(img.naturalWidth > 0 && img.naturalHeight > 0)
-    img.onerror = () => resolve(false)
+    const finish = (ok: boolean) => {
+      const entry = performance.getEntriesByName(img.src).at(-1) as PerformanceResourceTiming | undefined
+      resolve({ ok, bytes: entry?.transferSize ?? 0 })
+    }
+    img.onload = () => finish(img.naturalWidth > 0 && img.naturalHeight > 0)
+    img.onerror = () => finish(false)
     img.src = src
   })
+}
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} kB`
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
 
 /** Las figuras se comprueban por tandas: 240 descargas simultáneas saturan la
@@ -66,13 +87,24 @@ export function SelfCheckPage() {
   const [groups, setGroups] = useState<Group[]>([])
   const [progress, setProgress] = useState({ done: 0, total: 0 })
   const [elapsed, setElapsed] = useState(0)
+  const [bytes, setBytes] = useState(0)
   const cancelled = useRef(false)
+  /** Cambia en cada pasada y se cuela en la URL de las imágenes, para que el
+   * navegador las pida de verdad en lugar de servirlas de su caché en memoria.
+   * Sin esto, «Repetir» terminaba en 0,0 s sin una sola petición de red y aun
+   * así anunciaba que las 240 imágenes estaban bien. */
+  const runToken = useRef(0)
 
   const run = useCallback(async () => {
     cancelled.current = false
+    runToken.current += 1
     setPhase('running')
     setGroups([])
     setElapsed(0)
+    setBytes(0)
+    // Por defecto el buffer guarda 250 entradas y aquí se piden 240 imágenes
+    // más los chunks: sin ampliarlo se perderían los bytes de casi todas.
+    performance.setResourceTimingBufferSize(3000)
     const started = performance.now()
 
     const collected: Group[] = []
@@ -139,13 +171,18 @@ export function SelfCheckPage() {
     const sources = [...SCANNED_FIGURES].flatMap((id) =>
       (['prompt', 'options'] as const).map((kind) => ({
         id: `${id}-${kind}`,
-        url: `${import.meta.env.BASE_URL}figures/abstract/${id}-${kind}.webp`,
+        url: `${import.meta.env.BASE_URL}figures/abstract/${id}-${kind}.webp?v=${runToken.current}`,
       })),
     )
     const broken: string[] = []
+    let transferred = 0
+    let served = 0
     await inBatches(sources, 12, async (source) => {
-      const ok = await loadImage(source.url)
+      const { ok, bytes: n } = await loadImage(source.url)
       if (!ok) broken.push(source.id)
+      transferred += n
+      if (n > 0) served += 1
+      setBytes(transferred)
       setProgress({ done: (done += 1), total: totalSteps })
     })
 
@@ -160,13 +197,28 @@ export function SelfCheckPage() {
             es: 'Las figuras se descargan y se decodifican',
             en: 'Figures download and decode',
           },
-          issues: broken.map((id) => ({
-            where: id,
-            problem: { es: 'no se ha podido cargar', en: 'failed to load' },
-          })),
+          issues: [
+            ...broken.map((id) => ({
+              where: id,
+              problem: { es: 'no se ha podido cargar', en: 'failed to load' },
+            })),
+            // Si nada ha viajado por la red, la pasada no ha comprobado nada y
+            // hay que decirlo en vez de dar un visto bueno vacío.
+            ...(served === 0
+              ? [
+                  {
+                    where: 'red',
+                    problem: {
+                      es: 'ninguna imagen ha llegado a descargarse: se han servido todas de caché, así que esta pasada no verifica nada',
+                      en: 'no image was actually downloaded: all served from cache, so this run verifies nothing',
+                    },
+                  },
+                ]
+              : []),
+          ],
           detail: {
-            es: `${sources.length - broken.length} de ${sources.length} imágenes correctas`,
-            en: `${sources.length - broken.length} of ${sources.length} images fine`,
+            es: `${sources.length - broken.length} de ${sources.length} imágenes correctas · ${formatBytes(transferred)} descargados`,
+            en: `${sources.length - broken.length} of ${sources.length} images fine · ${formatBytes(transferred)} downloaded`,
           },
         },
       ],
@@ -205,6 +257,7 @@ export function SelfCheckPage() {
         issues={totalIssues}
         progress={progress}
         elapsed={elapsed}
+        bytes={bytes}
         onRerun={() => void run()}
       />
 
@@ -227,6 +280,7 @@ function Summary({
   issues,
   progress,
   elapsed,
+  bytes,
   onRerun,
 }: {
   phase: Phase
@@ -236,6 +290,7 @@ function Summary({
   issues: number
   progress: { done: number; total: number }
   elapsed: number
+  bytes: number
   onRerun: () => void
 }) {
   const t = useT()
@@ -268,10 +323,13 @@ function Summary({
                 ? t('selfcheck_all_good', { checks })
                 : t('selfcheck_failed', { issues, checks: failing })}
           </p>
-          <p className="mt-0.5 text-xs text-slate-500">
+          <p className="mt-0.5 text-xs text-slate-500 tabular-nums">
             {running
-              ? `${progress.done} / ${progress.total} (${percent} %)`
-              : t('selfcheck_elapsed', { seconds: elapsed.toFixed(1) })}
+              ? `${progress.done} / ${progress.total} (${percent} %) · ${formatBytes(bytes)}`
+              : t('selfcheck_elapsed', {
+                  seconds: elapsed.toFixed(1),
+                  bytes: formatBytes(bytes),
+                })}
           </p>
         </div>
 
