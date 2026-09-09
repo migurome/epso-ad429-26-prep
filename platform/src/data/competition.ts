@@ -46,7 +46,7 @@ export interface CompetitionInfo {
 export const COMPETITIONS: Record<CompetitionId, CompetitionInfo> = {
   ad7: {
     key: 'ad7',
-    id: 'EPSO/AD/429/26 (4)',
+    id: 'EPSO/AD/429/26',
     grade: 'AD 7',
     title: {
       es: 'Administradores AD7 — Perfiles ICT',

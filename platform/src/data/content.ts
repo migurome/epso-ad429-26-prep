@@ -93,7 +93,7 @@ export const REFERENCE_LINKS: ReferenceLink[] = [
   },
   {
     id: 'ref-notice',
-    title: 'Convocatoria oficial EPSO/AD/429/26 (4) — DOUE C/2026/02425',
+    title: 'Convocatoria oficial EPSO/AD/429/26 — DOUE C/2026/02425',
     url: 'https://eur-lex.europa.eu/eli/C/2026/2425/oj',
     category: 'Oficial — convocatoria',
     notes: 'Fuente jurídica. Prevalece sobre cualquier resumen de esta plataforma.',
