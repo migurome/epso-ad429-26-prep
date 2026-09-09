@@ -1,0 +1,229 @@
+# Plan de verificación de la plataforma
+
+Hay dos verificaciones, y responden a preguntas distintas:
+
+| | Pregunta que responde | Cómo se lanza |
+| --- | --- | --- |
+| **Repositorio** | ¿Está bien el código que voy a subir? | `verificar.cmd` o `node scripts/verify.mjs` |
+| **Sitio publicado** | ¿Funciona de verdad lo que hay desplegado? | Abrir **Verificación** en la web (`#/verificacion`) |
+
+La primera cubre tipos, tests y construcción. La segunda descarga de verdad los
+bloques de contenido y las 240 imágenes, en el navegador y bajo la ruta base
+real — lo único que ninguna prueba en jsdom puede comprobar.
+
+---
+
+## Cómo se lanza (Windows)
+
+**Doble clic** en `verificar.cmd`, en la raíz del repositorio. Es la vía sin
+terminal.
+
+**Desde PowerShell.** El envoltorio `npm.ps1` puede estar bloqueado por la
+política de ejecución (`SecurityError ... la ejecución de scripts está
+deshabilitada`). Estas tres formas lo esquivan, porque `node.exe` y los `.cmd`
+no son scripts de PowerShell:
+
+```powershell
+cd C:\Users\migur\Desktop\EPSO_Test\platform
+
+node scripts\verify.mjs      # la más directa
+npm.cmd run verify           # el atajo .cmd
+```
+
+Para que `npm run verify` a secas vuelva a funcionar, una sola vez:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+**Etapas sueltas**, cuando ya sabes dónde estás tocando:
+
+```powershell
+node scripts\verify.mjs --only=unit
+node scripts\verify.mjs --skip=build,dist
+.\verificar.cmd --only=dist --no-pause
+```
+
+Tarda unos 12 segundos, no necesita red y termina con código de salida 1 si
+algo falla, así que vale tal cual para un hook de git o para CI.
+
+```
+▸ content    El contenido generado corresponde a los Docs/*.md actuales
+▸ typecheck  TypeScript compila sin errores
+▸ lint       El linter no encuentra problemas
+▸ unit       Tests: contenido, rutas, componentes y utilidades
+▸ build      La construcción de producción termina
+▸ dist       Lo publicado en dist/ está completo y bien enlazado
+
+Resumen  ✔ content  ✔ typecheck  – lint  ✔ unit  ✔ build  ✔ dist
+```
+
+---
+
+## Qué se entiende por «los campos de la web»
+
+La superficie que hay que cubrir es el producto cartesiano de cuatro cosas, y
+está toda declarada en datos, no escrita a mano en los tests:
+
+| Eje | Valores | De dónde sale |
+| --- | --- | --- |
+| Rutas | 10 rutas + comodín | `src/App.tsx` |
+| Ámbitos | 6 (4 de la AD7 + 2 de la AD8) | `COMPETITIONS` en `src/data/competition.ts` |
+| Convocatorias | AD7, AD8 | `COMPETITION_ORDER` |
+| Idiomas | es, en | `localeStore` |
+
+Los tests recorren esas listas, no copias suyas. **Añadir un ámbito o una
+convocatoria no requiere tocar ningún test**: aparece cubierto solo. Lo único
+que hay que hacer al añadir contenido es volver a generar
+(`python scripts/build_content.py`), y si se olvida, la etapa `content` lo dice.
+
+---
+
+## Las capas, y qué caza cada una
+
+### 1. `content` — sincronía entre los documentos y el código generado
+
+Las preguntas no se escriben en TypeScript: salen de `Docs/*.md` y
+`Docs/es/*.md` a través de `scripts/build_content.py`. La etapa regenera y
+comprueba que no cambia nada versionado.
+
+**Caza:** alguien editó un documento y no reconstruyó, así que la web sirve
+contenido distinto del que dice el repositorio.
+
+### 2. `typecheck` y `lint` — el código está bien formado
+
+`tsc -b` sobre todo el proyecto y `oxlint`. En equipos con Control de
+aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
+directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
+no es un hallazgo sobre el código.
+
+### 3. `unit` — 140 tests en 7 archivos
+
+| Archivo | Tests | Qué asegura |
+| --- | ---: | --- |
+| `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
+| `src/App.routes.test.tsx` | 46 | Cada ruta, en dos idiomas y dos convocatorias |
+| `src/data/contentIntegrity.test.ts` | 16 | Invariantes de **todo** el contenido |
+| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
+| `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
+| `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
+| `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
+
+**Las invariantes del contenido viven en `src/lib/selfCheck.ts`**, no dentro del
+archivo de test, porque la página de verificación ejecuta exactamente las
+mismas en el navegador. Una comprobación que sólo existiera en el test no diría
+nada del sitio desplegado, y una que sólo existiera en la página no frenaría un
+commit malo. Cada bloque de contenido pasa cuatro:
+
+- **Forma y traducción.** Toda pregunta tiene enunciado y todas sus opciones en
+  los dos idiomas, sin cadenas vacías; entre 2 y 5 opciones con ids `A`–`E`
+  únicos; **exactamente una** correcta; y la fase, la destreza y el ámbito
+  coinciden con el bloque en el que vive.
+- **Volumen.** Hay banco suficiente para un simulacro completo (≥ 30 preguntas
+  por ámbito), o el ámbito está marcado `bankPending` y entonces trae 0
+  preguntas y su alcance oficial como teoría.
+- **Reparto de la respuesta correcta.** Ninguna letra supera el 45 % del banco, y
+  toda letra que se ofrece es la correcta alguna vez. Éste es el guardarraíl del
+  fallo de `4414216`, donde un banco llegó a tener la B correcta 77 veces de 80.
+- **Explicaciones.** 100 % en los bancos de ámbito, ≥ 85 % en los de
+  razonamiento, que arrastran preguntas oficiales de EPSO publicadas sin
+  solución.
+
+Y transversalmente: ningún id de pregunta se repite entre bloques, los
+enunciados de EUFTE y la guía del día del examen están completos, cada pregunta
+del banco real declara su figura, y los metadatos de convocatoria cuadran (las
+plazas por ámbito suman el total anunciado, el plazo cierra después de abrirse,
+los justificantes vencen después del cierre, el ámbito del usuario está
+convocado).
+
+**`App.routes`** monta la aplicación entera (`<App />`, con su `Layout`,
+`Suspense`, barra lateral y selector de convocatoria) y navega por el hash como
+lo haría el navegador. Por cada ruta y cada idioma comprueba que aparece
+contenido real —ni el indicador de carga, ni un `main` vacío— y además:
+
+- Abrir `/campo/<ámbito>` **arrastra la convocatoria a la que pertenece**, para
+  que no se lean las plazas y los plazos de la otra.
+- El atributo `data-competition` de `<html>`, del que cuelga el color de toda la
+  interfaz, sigue a la convocatoria activa.
+- Cambiar de idioma cambia el texto **entero**: no queda ni un resto del otro.
+
+### 4. `build` y `dist` — lo que se publica
+
+`vite build` y después una auditoría de los archivos reales, que es lo que
+jsdom no puede hacer: en un DOM simulado nada se descarga, así que los tests de
+rutas pasarían igual con la carpeta de figuras vacía.
+
+- `dist/index.html` existe, referencia la ruta base de GitHub Pages
+  (`/epso-ad429-26-prep/`) y carga un módulo JavaScript.
+- Todo lo que `index.html` enlaza existe en disco.
+- Hay un chunk de contenido por bloque generado (11), es decir que Rollup los
+  sigue separando y la carga inicial no arrastra las 968 preguntas de golpe.
+- Las **240 imágenes** de las 120 preguntas ilustradas están publicadas, en
+  enunciado y opciones.
+- No hay ningún archivo de 0 bytes.
+
+### 5. La página `/verificacion` — el sitio ya desplegado
+
+Enlace **Verificación** al pie de la barra lateral. Se ejecuta sola al abrirla y
+no necesita terminal ni servidor: es parte de la propia web, así que sirve
+igual en local y sobre GitHub Pages, desde el móvil o desde otro equipo.
+
+Ejecuta las mismas invariantes de contenido de `selfCheck.ts` y añade dos cosas
+que sólo un navegador de verdad puede comprobar:
+
+- **Los bloques de contenido se descargan.** Un `import()` dinámico que falla
+  por una ruta base equivocada se ve aquí y en ningún otro sitio.
+- **Las 240 imágenes se descargan y se decodifican.** Un 404, un `.webp`
+  truncado o un archivo de 0 bytes se manifiestan todos como
+  `naturalWidth === 0`.
+
+---
+
+## Comprobado que falla cuando debe
+
+Un test que no puede fallar no vale nada. Cada capa se validó introduciendo el
+daño que pretende detectar y confirmando el fallo:
+
+| Daño introducido | Capa que lo cazó | Mensaje |
+| --- | --- | --- |
+| Vaciar una traducción al español | `unit` | `field-cyber-1 · opción A: vacío en 'es'` |
+| Poner la correcta en la B en las 120 preguntas | `unit` | `la letra B es la correcta en 120 de 120` |
+| Hacer que `EuftePage` lance al renderizar | `unit` | falla `/eufte` en los dos idiomas |
+| Editar un `Docs/*.md` sin reconstruir | `content` | `los Docs/*.md y src/data/*.generated.ts estaban desincronizados` |
+| Borrar una figura de `dist/` | `dist` | `falta una figura en dist/: figures/abstract/abs-real-42-options.webp` |
+| Borrar una figura y truncar otra a 0 bytes | `/verificacion` | `abs-real-7-prompt no se ha podido cargar` |
+
+---
+
+## Qué NO cubre
+
+Conviene tenerlo claro para no confiar de más:
+
+- **Nada visual.** Ni jsdom ni la página de verificación miran la maquetación:
+  un desastre de diseño, un contraste ilegible o un menú que tapa el contenido
+  pasan todas las pruebas. Eso se ve mirando.
+- **Interacción real.** Que el foco recorra el formulario con el teclado, que el
+  cronómetro sobreviva a un cambio de pestaña, que el diseño responda al ancho.
+- **La corrección del contenido.** Se comprueba que hay exactamente una
+  respuesta correcta, no que sea la correcta. Eso lo garantiza el origen: el
+  anexo II de la convocatoria y las fuentes de `Referencias.txt`.
+- **Rendimiento y accesibilidad**, más allá de que exista un `<nav>`.
+
+Lo que faltaría para cerrar los dos primeros es una capa con Playwright que
+recorriera la interfaz pulsando. Se dejó fuera a propósito: añade una
+dependencia pesada y selectores frágiles a componentes que hoy no tienen
+`data-testid`, y el hueco que de verdad importaba —que los chunks y las 240
+imágenes se descarguen bajo la ruta base real— ya lo cierra la página
+`/verificacion`, que además comprueba el sitio publicado y no una copia local.
+
+---
+
+## Al añadir cosas
+
+| Si añades… | Tienes que… |
+| --- | --- |
+| Preguntas o teoría en `Docs/` | `python scripts/build_content.py` y commitear lo generado |
+| Un ámbito nuevo | Darlo de alta en `COMPETITIONS` y en `contentLoader.ts`; los tests lo cubren solos |
+| Una ruta nueva | Añadirla a `ROUTES` en `src/App.routes.test.tsx` |
+| Un banco nuevo | Nada: hereda las invariantes de reparto de letras y de traducción |
+| Una invariante nueva | Escribirla en `src/lib/selfCheck.ts`; test y página la ejecutan las dos |

@@ -227,6 +227,30 @@ export const DICT = {
     en: 'Verified against the official text of {notice}. In case of doubt, the official text prevails — see detail and sources in',
   },
 
+  // Verificación de la web (/verificacion)
+  nav_selfcheck: { es: 'Verificación', en: 'Self-check' },
+  selfcheck_eyebrow: { es: 'Diagnóstico', en: 'Diagnostics' },
+  selfcheck_title: { es: 'Verificación de la plataforma', en: 'Platform self-check' },
+  selfcheck_description: {
+    es: 'Comprueba, desde este mismo navegador, que el contenido publicado está completo y que todo se descarga bien. Se ejecuta sola al abrir la página.',
+    en: 'Checks, from this very browser, that the published content is complete and that everything downloads correctly. It runs on its own when the page opens.',
+  },
+  selfcheck_running: { es: 'Comprobando…', en: 'Checking…' },
+  selfcheck_all_good: {
+    es: 'Todo correcto — {checks} comprobaciones superadas',
+    en: 'All good — {checks} checks passed',
+  },
+  selfcheck_failed: {
+    es: '{issues} incidencia(s) en {checks} comprobación(es)',
+    en: '{issues} issue(s) across {checks} check(s)',
+  },
+  selfcheck_elapsed: { es: 'Completado en {seconds} s', en: 'Completed in {seconds} s' },
+  selfcheck_rerun: { es: 'Repetir', en: 'Run again' },
+  selfcheck_footnote: {
+    es: 'Esta página comprueba la web tal como está publicada: descarga de verdad los bloques de contenido y las imágenes, en este dispositivo y bajo la ruta base real. No sustituye a la verificación del repositorio (tipos, tests y construcción), que se lanza con «node scripts/verify.mjs» y está descrita en platform/TESTPLAN.md.',
+    en: 'This page checks the site as published: it really downloads the content bundles and the images, on this device and under the real base path. It does not replace the repository verification (types, tests and build), run with “node scripts/verify.mjs” and described in platform/TESTPLAN.md.',
+  },
+
   // Selector de idioma
   language_selector_label: { es: 'Idioma', en: 'Language' },
   test_language_label: {

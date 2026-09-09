@@ -8,6 +8,7 @@ import {
   Video,
   Link2,
   BarChart3,
+  ShieldCheck,
   X,
 } from 'lucide-react'
 import { CompetitionSelector } from '../CompetitionSelector'
@@ -115,6 +116,21 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               fields: competition.fields.length,
             })}
           </p>
+          {/* Utilidad de diagnóstico, no material de estudio: va en el pie y
+              no en la navegación principal, para no competir con las fases. */}
+          <NavLink
+            to="/verificacion"
+            onClick={onClose}
+            className={({ isActive }) =>
+              clsx(
+                'mt-3 flex items-center gap-2 text-xs transition-colors',
+                isActive ? 'font-semibold text-accent' : 'text-slate-400 hover:text-slate-600',
+              )
+            }
+          >
+            <ShieldCheck size={14} />
+            {t('nav_selfcheck')}
+          </NavLink>
         </div>
       </aside>
     </>

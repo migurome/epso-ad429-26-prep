@@ -20,7 +20,33 @@ npm install
 npm run dev      # servidor de desarrollo
 npm run build    # compila a dist/
 npm run lint     # oxlint
+npm run test     # vitest
+npm run verify   # verificación completa: contenido, tipos, tests, build y dist
 ```
+
+`npm run verify` es la comprobación que hay que pasar antes de subir nada:
+encadena las seis etapas en unos 12 segundos y termina con código 1 si algo
+falla.
+
+Si PowerShell tiene deshabilitada la ejecución de scripts, `npm run verify` no
+arranca (`SecurityError` sobre `npm.ps1`). Estas vías lo esquivan, porque no
+son scripts de PowerShell:
+
+```powershell
+node scripts\verify.mjs      # desde platform/
+npm.cmd run verify           # el atajo .cmd
+```
+
+o doble clic en **`verificar.cmd`**, en la raíz del repositorio, para no tocar
+la terminal.
+
+Aparte, la propia web trae una página de **Verificación** (enlace al pie de la
+barra lateral, ruta `#/verificacion`) que comprueba el sitio *ya publicado*:
+descarga de verdad los bloques de contenido y las 240 imágenes del banco real.
+Es lo único que no se puede comprobar fuera de un navegador.
+
+Qué cubre cada capa, qué NO cubre y cómo se validó que fallan cuando deben está
+en [TESTPLAN.md](TESTPLAN.md).
 
 ## Estructura
 
