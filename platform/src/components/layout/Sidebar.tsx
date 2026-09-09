@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 import {
   LayoutDashboard,
@@ -7,6 +8,7 @@ import {
   GraduationCap,
   PenLine,
   Link2,
+  ChevronRight,
   X,
 } from 'lucide-react'
 import { CompetitionSelector } from '../CompetitionSelector'
@@ -27,15 +29,28 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const setLocale = useLocaleStore((s) => s.setLocale)
   const competition = useCompetition()
   const field = usePreferredField()
+  const location = useLocation()
+
+  // La formación no es una fase de la oposición: es material de apoyo del test
+  // de ámbito, así que cuelga de él en vez de competir a su altura. Existe hoy
+  // sólo para ciberseguridad; con cualquier otro ámbito, Field-Related MCQ no
+  // tiene nada dentro y se comporta como un enlace normal, sin desplegable.
+  const fieldChildren = hasCourse(field)
+    ? [{ to: '/formacion', label: t('nav_course'), icon: GraduationCap }]
+    : []
+  const inFieldSection =
+    location.pathname.startsWith('/campo') || location.pathname.startsWith('/formacion')
+  const [fieldOpen, setFieldOpen] = useState(inFieldSection)
+  // Entrar en la sección la abre; salir no la cierra, para no deshacer al
+  // navegar lo que el candidato haya abierto a mano.
+  useEffect(() => {
+    if (inFieldSection) setFieldOpen(true)
+  }, [inFieldSection])
 
   const NAV_ITEMS = [
     { to: '/', label: t('nav_dashboard'), icon: LayoutDashboard, end: true },
     { to: '/razonamiento', label: t('nav_reasoning'), icon: BrainCircuit },
-    { to: '/campo', label: t('nav_field_mcq'), icon: ListChecks },
-    // La formación existe hoy sólo para ciberseguridad. Enseñar el enlace a
-    // quien se presenta por otro ámbito sería prometer un temario que no le
-    // toca, así que aparece únicamente cuando su ámbito tiene curso.
-    ...(hasCourse(field) ? [{ to: '/formacion', label: t('nav_course'), icon: GraduationCap }] : []),
+    { to: '/campo', label: t('nav_field_mcq'), icon: ListChecks, children: fieldChildren },
     { to: '/eufte', label: t('nav_eufte'), icon: PenLine },
     { to: '/recursos', label: t('nav_resources'), icon: Link2 },
   ]
@@ -80,24 +95,66 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         </div>
 
         <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
-          {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              onClick={onClose}
-              className={({ isActive }) =>
-                clsx(
-                  'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-                  isActive
-                    ? 'bg-accent text-white'
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
-                )
-              }
-            >
-              <Icon size={18} />
-              {label}
-            </NavLink>
+          {NAV_ITEMS.map(({ to, label, icon: Icon, end, children }) => (
+            <div key={to}>
+              <div className="flex items-center gap-1">
+                <NavLink
+                  to={to}
+                  end={end}
+                  onClick={onClose}
+                  className={({ isActive }) =>
+                    clsx(
+                      'flex flex-1 items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                      isActive
+                        ? 'bg-accent text-white'
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
+                    )
+                  }
+                >
+                  <Icon size={18} />
+                  {label}
+                </NavLink>
+                {children && children.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setFieldOpen((v) => !v)}
+                    aria-expanded={fieldOpen}
+                    aria-label={t('toggle_subsection', { section: label })}
+                    className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+                  >
+                    <ChevronRight
+                      size={15}
+                      className={clsx('transition-transform', fieldOpen && 'rotate-90')}
+                    />
+                  </button>
+                )}
+              </div>
+
+              {children && children.length > 0 && fieldOpen && (
+                // La sangría y la guía vertical dicen a qué cuelga esto, sin
+                // necesidad de repetir el nombre del padre en cada hijo.
+                <div className="mt-1 ml-5 space-y-1 border-l border-slate-200 pl-3">
+                  {children.map((child) => (
+                    <NavLink
+                      key={child.to}
+                      to={child.to}
+                      onClick={onClose}
+                      className={({ isActive }) =>
+                        clsx(
+                          'flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-sm transition-colors',
+                          isActive
+                            ? 'bg-accent/10 font-semibold text-accent'
+                            : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900',
+                        )
+                      }
+                    >
+                      <child.icon size={16} />
+                      {child.label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -117,11 +174,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               </button>
             ))}
           </div>
-          <p className="text-xs text-slate-400">
-            {t('sidebar_footer', {
-              posts: competition.postsTotal,
-              fields: competition.fields.length,
-            })}
+          {/* La versión, no el recuento de plazas: las plazas ya están en la
+              cabecera de cada ámbito, y lo que aquí hace falta saber es qué
+              versión de la plataforma se está usando. */}
+          <p className="text-xs tabular-nums text-slate-400">
+            {t('app_version', { version: __APP_VERSION__ })}
           </p>
         </div>
       </aside>

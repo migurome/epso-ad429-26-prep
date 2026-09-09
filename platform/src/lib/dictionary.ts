@@ -19,7 +19,24 @@ export const DICT = {
   user_menu_label: { es: 'Tu cuenta', en: 'Your account' },
   user_menu_anonymous: { es: 'Candidato', en: 'Candidate' },
   user_menu_set_name: { es: 'Pon tu nombre en Ajustes', en: 'Add your name in Settings' },
+  user_menu_sign_out: { es: 'Cerrar sesión', en: 'Sign out' },
+  toggle_subsection: { es: 'Desplegar {section}', en: 'Expand {section}' },
+  selfcheck_pending: { es: 'pendiente', en: 'pending' },
+  app_version: { es: 'Versión {version}', en: 'Version {version}' },
   close_menu: { es: 'Cerrar menú', en: 'Close menu' },
+
+  // LoginPage
+  login_subtitle: { es: 'Acceso a tu preparación', en: 'Access to your preparation' },
+  login_user: { es: 'Usuario', en: 'Username' },
+  login_password: { es: 'Contraseña', en: 'Password' },
+  login_submit: { es: 'Entrar', en: 'Sign in' },
+  login_checking: { es: 'Comprobando…', en: 'Checking…' },
+  login_wait: { es: 'Espera un momento…', en: 'Hold on a moment…' },
+  login_error: { es: 'Usuario o contraseña incorrectos.', en: 'Wrong username or password.' },
+  login_note: {
+    es: 'Esta puerta no protege nada secreto: son apuntes de oposición y la aplicación es estática. Sirve para que la página no se abra sola.',
+    en: 'This door protects nothing secret: these are study notes and the app is static. It just stops the page opening on its own.',
+  },
   loading: { es: 'Cargando…', en: 'Loading…' },
 
   // Dashboard

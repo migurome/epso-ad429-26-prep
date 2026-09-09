@@ -207,8 +207,8 @@ MUTATIONS = [
     (
         "la navegación enlaza la formación aunque el ámbito no tenga curso",
         "src/components/layout/Sidebar.tsx",
-        "    ...(hasCourse(field) ? [{ to: '/formacion', label: t('nav_course'), icon: GraduationCap }] : []),",
-        "    { to: '/formacion', label: t('nav_course'), icon: GraduationCap },",
+        "  const fieldChildren = hasCourse(field)",
+        "  const fieldChildren = true",
         "src/App.routes.test.tsx",
     ),
     (
@@ -273,6 +273,55 @@ MUTATIONS = [
         "    setDraftProfile(profile)\n    setDraftSettings(settings)",
         "    // MUTADO",
         "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "cualquier contraseña abre la aplicación",
+        "src/lib/authStore.ts",
+        "        if (!credentialsMatch(user, password)) return false",
+        "        if (false) return false",
+        "src/pages/LoginPage.test.tsx",
+    ),
+    (
+        "fallar deja de costar los tres segundos",
+        "src/pages/LoginPage.tsx",
+        "    }, FAILED_ATTEMPT_DELAY_MS)",
+        "    }, 0)",
+        "src/pages/LoginPage.test.tsx",
+    ),
+    (
+        "se puede reintentar durante la penalización",
+        "src/pages/LoginPage.tsx",
+        "    if (checking) return",
+        "    // MUTADO",
+        "src/pages/LoginPage.test.tsx",
+    ),
+    (
+        "la aplicación se abre sin pasar por la portada de acceso",
+        "src/App.tsx",
+        "  if (!user) return <LoginPage />",
+        "  // MUTADO",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "el selector de convocatoria vuelve a quedarse muerto en el test de ámbito",
+        "src/pages/FieldMcqPage.tsx",
+        "    const switchedByHand = lastCompetition.current !== competition.key",
+        "    const switchedByHand = false",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "el guion de la verificación se deja fuera los bloques de contenido",
+        "src/pages/SelfCheckPage.tsx",
+        "    ...CONTENT_TARGETS.map(",
+        "    ...[].map(",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "la barra lateral enseña una versión inventada",
+        "src/components/layout/Sidebar.tsx",
+        "            {t('app_version', { version: __APP_VERSION__ })}",
+        "            {t('app_version', { version: '0.0' })}",
+        "src/App.routes.test.tsx",
     ),
 ]
 

@@ -1,5 +1,5 @@
-import { use, useEffect } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { use, useEffect, useRef } from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { BookOpen, ClipboardList } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { Tabs } from '../components/Tabs'
@@ -13,6 +13,7 @@ import { COMPETITIONS, COMPETITION_ORDER, FIELD_MCQ_FORMAT } from '../data/compe
 import { useCompetition, useCompetitionStore } from '../lib/competitionStore'
 import { loadFieldContent } from '../data/contentLoader'
 import { useProgressStore } from '../lib/progressStore'
+import { usePreferredField } from '../lib/studyStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
 import type { Field } from '../types/content'
@@ -21,8 +22,10 @@ export function FieldMcqPage() {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
   const { fieldId } = useParams<{ fieldId: string }>()
+  const navigate = useNavigate()
   const competition = useCompetition()
   const setCompetition = useCompetitionStore((s) => s.setCompetition)
+  const preferredField = usePreferredField()
 
   // El ámbito de la URL manda sobre la convocatoria activa: cada ámbito
   // pertenece a una sola, así que llegar por enlace directo a uno de la otra
@@ -35,9 +38,20 @@ export function FieldMcqPage() {
 
   const testAttempts = useProgressStore((s) => s.testAttempts)
 
+  // ...pero si es el candidato quien cambia de convocatoria en el selector
+  // estando en un ámbito de la otra, manda el selector: se le lleva al ámbito
+  // que tenga elegido en la nueva. Sin distinguir quién ha cambiado qué, el
+  // efecto devolvía la convocatoria a la del ámbito de la URL en el mismo
+  // render, y el selector no servía para nada dentro de toda esta fase.
+  const lastCompetition = useRef(competition.key)
   useEffect(() => {
-    if (owner && owner.key !== competition.key) setCompetition(owner.key)
-  }, [owner, competition.key, setCompetition])
+    if (!owner) return
+    const switchedByHand = lastCompetition.current !== competition.key
+    lastCompetition.current = competition.key
+    if (owner.key === competition.key) return
+    if (switchedByHand) navigate(`/campo/${preferredField}`, { replace: true })
+    else setCompetition(owner.key)
+  }, [owner, competition.key, preferredField, navigate, setCompetition])
 
   if (!field || !owner) return <Navigate to="/campo" replace />
 

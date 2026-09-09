@@ -14,8 +14,15 @@ import { CourseModulePage } from './pages/CourseModulePage'
 import { CalendarPage } from './pages/CalendarPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { SelfCheckPage } from './pages/SelfCheckPage'
+import { LoginPage } from './pages/LoginPage'
+import { useAuthStore } from './lib/authStore'
 
 function App() {
+  // Sin sesión no se monta nada más: ni el armazón, ni las rutas, ni los
+  // bloques de contenido que cuelgan de ellas.
+  const user = useAuthStore((s) => s.user)
+  if (!user) return <LoginPage />
+
   return (
     <HashRouter>
       <Routes>

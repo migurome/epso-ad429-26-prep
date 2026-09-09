@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
-import { BarChart3, CalendarDays, Settings, ShieldCheck, User, Video } from 'lucide-react'
+import { BarChart3, CalendarDays, LogOut, Settings, ShieldCheck, User, Video } from 'lucide-react'
+import { useAuthStore } from '../../lib/authStore'
 import { useStudyStore } from '../../lib/studyStore'
 import { useT } from '../../lib/useT'
 
@@ -24,6 +25,7 @@ export function UserMenu() {
   const t = useT()
   const location = useLocation()
   const profile = useStudyStore((s) => s.profile)
+  const signOut = useAuthStore((s) => s.signOut)
   const [open, setOpen] = useState(false)
   const container = useRef<HTMLDivElement>(null)
   const trigger = useRef<HTMLButtonElement>(null)
@@ -121,6 +123,18 @@ export function UserMenu() {
               ))}
             </div>
           ))}
+
+          <div className="border-t border-slate-100 p-1.5">
+            <button
+              type="button"
+              role="menuitem"
+              onClick={signOut}
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
+            >
+              <LogOut size={16} />
+              {t('user_menu_sign_out')}
+            </button>
+          </div>
         </div>
       )}
     </div>

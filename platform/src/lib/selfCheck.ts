@@ -326,14 +326,35 @@ export function checkExplanations(target: ContentTarget, mod: Bundle): Check {
 }
 
 /** Todas las comprobaciones de un bloque de contenido. */
-export async function checkTarget(target: ContentTarget): Promise<Check[]> {
+/** Las comprobaciones que se le hacen a cada bloque de contenido, en orden.
+ * Una sola lista: `checkTarget` las corre de golpe y la página de verificación
+ * las recorre una a una para irlas marcando, así que no pueden divergir. */
+const TARGET_CHECKS: ((target: ContentTarget, mod: Bundle) => Check)[] = [
+  checkWellFormed,
+  checkVolume,
+  checkAnswerSpread,
+  checkExplanations,
+]
+
+/** Como `checkTarget`, pero avisando de cada comprobación en cuanto termina.
+ * El callback puede ser asíncrono: la página lo aprovecha para dejar pintar la
+ * marca antes de seguir con la siguiente. */
+export async function checkTargetStepwise(
+  target: ContentTarget,
+  onCheck: (check: Check) => void | Promise<void>,
+): Promise<Check[]> {
   const mod = await target.load()
-  return [
-    checkWellFormed(target, mod),
-    checkVolume(target, mod),
-    checkAnswerSpread(target, mod),
-    checkExplanations(target, mod),
-  ]
+  const checks: Check[] = []
+  for (const run of TARGET_CHECKS) {
+    const check = run(target, mod)
+    checks.push(check)
+    await onCheck(check)
+  }
+  return checks
+}
+
+export async function checkTarget(target: ContentTarget): Promise<Check[]> {
+  return checkTargetStepwise(target, () => {})
 }
 
 /** Ningún identificador de pregunta puede repetirse entre bloques: el

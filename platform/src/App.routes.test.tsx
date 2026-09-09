@@ -17,6 +17,9 @@ import { COMPETITIONS, COMPETITION_ORDER } from './data/competition'
 import { useCompetitionStore } from './lib/competitionStore'
 import { useLocaleStore } from './lib/localeStore'
 import { useProgressStore } from './lib/progressStore'
+import { useAuthStore } from './lib/authStore'
+import { CONTENT_TARGETS } from './lib/selfCheck'
+import pkg from '../package.json'
 import { DEFAULT_PROFILE, useStudyStore } from './lib/studyStore'
 import { hasCourse } from './data/contentLoader'
 import { DICT } from './lib/dictionary'
@@ -49,6 +52,9 @@ beforeEach(() => {
   // abrir un ámbito de la AD8 cambia la convocatoria activa, así que sin este
   // reinicio el orden de los tests decidiría el resultado.
   useLocaleStore.setState({ locale: 'es' })
+  // La aplicación entera vive detrás de la portada de acceso; sin sesión no se
+  // monta ninguna ruta y todas estas pruebas mirarían el formulario de entrada.
+  useAuthStore.setState({ user: 'migurome' })
   useCompetitionStore.setState({ competition: 'ad7' })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
 })
@@ -216,24 +222,122 @@ describe('Field-Related MCQ y Formación se ciñen al ámbito elegido', () => {
     expect(container.textContent).not.toContain(DICT.nav_course.es + ' —')
   })
 
-  it('y tampoco lo enlaza la navegación', async () => {
+  it('y tampoco lo enlaza la navegación, ni dentro de su sección', async () => {
     const noCourse = COMPETITIONS.ad8.fields.find((f) => !hasCourse(f.id))!
     useCompetitionStore.setState({ competition: 'ad8' })
     useStudyStore.setState({
       profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: noCourse.id } },
     })
-    const { container } = await visit('/')
+    const { container } = await visit(`/campo/${noCourse.id}`)
     await waitForContent(container, 'es')
     expect(container.querySelector('a[href$="/formacion"]')).toBeNull()
   })
 
-  it('con un ámbito que sí tiene curso, el enlace vuelve', async () => {
+  it('con un ámbito que sí tiene curso, cuelga del test de ámbito', async () => {
+    // Ya no es una fase a la misma altura: es material de apoyo del test de
+    // ámbito, así que sólo aparece con esa sección abierta.
     useCompetitionStore.setState({ competition: 'ad8' })
     useStudyStore.setState({
       profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: 'cybersecurity' } },
     })
-    const { container } = await visit('/')
+    const { container } = await visit('/campo/cybersecurity')
     await waitForContent(container, 'es')
     expect(container.querySelector('a[href$="/formacion"]')).toBeTruthy()
+  })
+})
+
+describe('la aplicación entera vive detrás de la portada de acceso', () => {
+  it('sin sesión no se monta ninguna ruta', async () => {
+    useAuthStore.setState({ user: null })
+    const { container } = await visit('/progreso')
+    expect(container.querySelector('nav')).toBeNull()
+    expect(container.textContent).toContain(DICT.login_submit.es)
+  })
+})
+
+describe('la barra lateral', () => {
+  it('cuelga la formación del test de ámbito, no a su altura', async () => {
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: 'cybersecurity' } },
+    })
+    const { container } = await visit('/campo/cybersecurity')
+    await waitForContent(container, 'es')
+
+    const course = container.querySelector('a[href$="/formacion"]')!
+    const field = container.querySelector('a[href$="/campo"]')!
+    // El hijo vive dentro del bloque del padre, no como hermano suyo.
+    expect(field.closest('div')?.parentElement?.contains(course)).toBe(true)
+  })
+
+  it('el desplegable se puede cerrar', async () => {
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: { ...DEFAULT_PROFILE, preferredFields: { ad8: 'cybersecurity' } },
+    })
+    const { container } = await visit('/campo/cybersecurity')
+    await waitForContent(container, 'es')
+
+    const toggle = container.querySelector<HTMLButtonElement>(
+      `button[aria-label="${DICT.toggle_subsection.es.replace('{section}', DICT.nav_field_mcq.es)}"]`,
+    )!
+    await act(async () => {
+      toggle.click()
+    })
+    expect(container.querySelector('a[href$="/formacion"]')).toBeNull()
+  })
+
+  it('el pie enseña la versión de la plataforma', async () => {
+    const { container } = await visit('/')
+    await waitForContent(container, 'es')
+    expect(container.textContent).toContain(DICT.app_version.es.replace('{version}', pkg.version))
+    // Y ya no el recuento de plazas, que estaba de adorno.
+    expect(container.textContent).not.toContain('ámbitos')
+  })
+})
+
+describe('el selector de convocatoria funciona dentro del test de ámbito', () => {
+  // La URL de un ámbito arrastra su convocatoria, y eso dejaba el selector
+  // muerto en toda esta fase: pulsarlo se deshacía en el mismo render.
+  it('cambiar de convocatoria lleva al ámbito elegido en la otra', async () => {
+    useCompetitionStore.setState({ competition: 'ad8' })
+    useStudyStore.setState({
+      profile: {
+        ...DEFAULT_PROFILE,
+        preferredFields: { ad8: 'cybersecurity', ad7: 'data-science' },
+      },
+    })
+    const { container } = await visit('/campo/cybersecurity')
+    await waitForContent(container, 'es')
+
+    const ad7 = container.querySelector<HTMLButtonElement>(
+      `button[aria-pressed="false"]`,
+    )!
+    await act(async () => {
+      ad7.click()
+    })
+    await waitFor(() => expect(window.location.hash).toBe('#/campo/data-science'))
+    await waitFor(() => expect(useCompetitionStore.getState().competition).toBe('ad7'))
+  })
+})
+
+describe('la verificación enseña el guion antes de correrlo', () => {
+  it('lista todas sus secciones desde el primer momento', async () => {
+    // Antes aparecían una a una según terminaban, así que no había forma de
+    // saber cuántas faltaban ni distinguir «va bien» de «no ha llegado ahí».
+    const { container } = await visit('/verificacion')
+    const sections = container.querySelectorAll('main [aria-expanded]')
+    // Convocatorias + cada bloque de contenido + transversales + imágenes.
+    expect(sections.length).toBe(CONTENT_TARGETS.length + 3)
+  })
+
+  it('las que todavía no ha corrido salen sin marcar', async () => {
+    // Contar secciones no basta: si aparecieran ya marcadas, el panel volvería
+    // a no distinguir «ha pasado» de «no ha llegado a hacerse». Las imágenes
+    // son la última sección y aquí no llegan a descargarse nunca, así que
+    // siguen pendientes de forma determinista.
+    const { container } = await visit('/verificacion')
+    const figures = [...container.querySelectorAll('main [aria-expanded]')].at(-1)!
+    expect(figures.textContent).toContain(DICT.selfcheck_pending.es)
   })
 })

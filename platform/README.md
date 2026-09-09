@@ -1,7 +1,7 @@
-# Preparación EPSO/AD/429/26 (4) — AD7
+# Preparación EPSO/AD/429/26 — AD7
 
 Plataforma local (sin backend, sin login) para preparar la prueba de acceso a la
-oposición EPSO/AD/429/26 (4) — Administradores AD7, perfiles ICT.
+oposición EPSO/AD/429/26 — Administradores AD7, perfiles ICT.
 
 ## Stack
 
@@ -77,6 +77,8 @@ src/
                           use() de React 19 (ver "Code-splitting" abajo)
   lib/
     progressStore.ts     Store de progreso (zustand + localStorage)
+    authStore.ts          La puerta de entrada. Ver el aviso del propio
+                          archivo: NO es seguridad, es un cerrojo
     practiceStore.ts      Lo respondido en los bancos de práctica y su
                           orden, persistidos: recargar ya no borra el rastro
     localeStore.ts        Store de idioma (es/en, zustand + localStorage) +
@@ -84,7 +86,8 @@ src/
     dictionary.ts, useT.ts   Diccionario de textos de interfaz y hook t()
     useCountdown.ts, time.ts, shuffle.ts   Utilidades para tests cronometrados
   components/
-    layout/               Sidebar (fases), barra superior y menú de usuario
+    layout/               Sidebar (fases, con la formación colgando del
+                          test de ámbito), barra superior y menú de usuario
     PageHeader, PhaseCard, Tabs, EmptyState, FormatBadges
     Markdown.tsx           Render de Markdown (teoría, enunciados, tablas)
     QuestionCard.tsx       Una pregunta con opciones y corrección
@@ -104,6 +107,7 @@ src/
     ResourcesPage.tsx                                 (convocatoria + referencias)
     ProgressPage.tsx                                  (estadísticas)
     CalendarPage.tsx, SettingsPage.tsx, SelfCheckPage.tsx  (menú de usuario)
+    LoginPage.tsx                                     (portada de acceso)
 
 scripts/
   build_content.py        Parsea ../Docs/*.md (+ ../Docs/es/*.md para la
@@ -159,6 +163,24 @@ completando con las fuentes oficiales):
    Science), en la segunda lengua del candidato.
 3. **EUFTE**: redacción/ensayo de razonamiento sobre asuntos de la UE a partir
    de documentación proporcionada.
+
+## Versionado
+
+La versión sale de `package.json` y de ningún otro sitio: Vite la inyecta como
+`__APP_VERSION__` (ver `vite.config.ts`) y la barra lateral la enseña abajo a la
+izquierda. Dos números que hubiera que subir a mano se desincronizarían a la
+primera.
+
+Son dos cifras, `MAYOR.MENOR`, y lo que las mueve es el tipo de cambio, no su
+tamaño:
+
+| | Cuándo sube |
+| --- | --- |
+| **Mayor** | Cambia la forma de usar la plataforma: navegación, entrada, una fase que aparece o desaparece, o algo que obliga al candidato a reaprender dónde está lo que ya usaba. |
+| **Menor** | Se añade material o una funcionalidad dentro de la forma que ya había: un banco nuevo, un módulo de curso, una pantalla más colgando de lo existente, una corrección. |
+
+`1.0` es la primera versión con el esquema en marcha. Al tocar el repositorio,
+subir el número en `package.json` es parte del cambio, no un trámite posterior.
 
 ## Estado actual
 

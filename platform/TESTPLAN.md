@@ -101,11 +101,11 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 402 tests en 20 archivos
+### 3. `unit` — 419 tests en 21 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
-| `src/App.routes.test.tsx` | 67 | Cada ruta, en dos idiomas y dos convocatorias, y el ceñido al ámbito elegido |
+| `src/App.routes.test.tsx` | 74 | Cada ruta, la portada de acceso, el ceñido al ámbito y la navegación |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
 | `src/components/PracticeBank.test.tsx` | 30 | Filtro, enunciado entero, marca de evaluada, persistencia y reactivación |
@@ -115,14 +115,15 @@ no es un hallazgo sobre el código.
 | `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
-| `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
+| `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
 | `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
-| `src/pages/SettingsPage.test.tsx` | 8 | Que los ajustes **no se guarden sin confirmar**, y que se pueda descartar |
-| `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
+| `src/pages/LoginPage.test.tsx` | 10 | Credenciales y la penalización de tres segundos al fallar |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
+| `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
+| `src/pages/SettingsPage.test.tsx` | 8 | Que los ajustes **no se guarden sin confirmar**, y que se pueda descartar |
 | `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
 
@@ -238,7 +239,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 35 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 42 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en

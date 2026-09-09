@@ -2,10 +2,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { readFileSync } from 'node:fs'
+
+// La versión sale de package.json y de ningún otro sitio: dos números que
+// haya que subir a mano se desincronizan a la primera. `define` la sustituye
+// en el paquete, así que el package.json no llega al navegador.
+const { version } = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf-8'))
 
 // https://vite.dev/config/
 export default defineConfig({
   base: '/epso-ad429-26-prep/',
+  define: { __APP_VERSION__: JSON.stringify(version) },
   plugins: [react(), tailwindcss()],
   build: {
     // Content is code-split per reasoning skill/field/EUFTE (see
