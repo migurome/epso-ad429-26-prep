@@ -55,8 +55,18 @@ const STAGES = [
 
       // Si regenerar cambia algo, es que alguien editó un documento y no
       // volvió a construir: lo que hay en src/data no es lo que dicen los Docs.
-      const diff = run('git diff --name-only -- src/data', { cwd: ROOT })
-      const dirty = diff.output.split('\n').map((s) => s.trim()).filter(Boolean)
+      //
+      // Sólo se miran los archivos GENERADOS. En src/data conviven con ellos
+      // piezas escritas a mano —contentLoader.ts, content.ts— y compararlas
+      // aquí convertiría cualquier edición legítima de esas piezas en un fallo
+      // de sincronía que no lo es.
+      const diff = run('git diff --name-only -- "src/data/*.generated.ts"', { cwd: ROOT })
+      const dirty = diff.output
+        .split('\n')
+        .map((s) => s.trim())
+        // git avisa por stderr del cambio de fin de línea en Windows; eso no es
+        // un archivo y no debe aparecer en la lista de problemas.
+        .filter((line) => line && !line.startsWith('warning:'))
       if (dirty.length) {
         return {
           error:

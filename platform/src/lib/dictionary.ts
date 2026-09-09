@@ -254,6 +254,23 @@ export const DICT = {
     en: 'This page checks the site as published, on this device and under the real base path. Every run downloads the 240 real-bank images again — about 6 MB, deliberately bypassing the cache — because a check served from cache checks nothing; that is why it takes a few seconds and why the transferred bytes are shown. It does not replace the repository verification (types, tests and build), run with “node scripts/verify.mjs” or “verificar.cmd” and described in platform/TESTPLAN.md.',
   },
 
+  // Curso de fundamentos (/formacion)
+  nav_course: { es: 'Formación', en: 'Course' },
+  course_eyebrow: { es: 'Estudio', en: 'Study' },
+  course_title: { es: 'Fundamentos de ciberseguridad', en: 'Cybersecurity foundations' },
+  course_description: {
+    es: '{modules} módulos y {questions} preguntas que construyen la materia desde los cimientos, por debajo del test de ámbito de {field}.',
+    en: '{modules} modules and {questions} questions building the subject from the ground up, underneath the {field} field test.',
+  },
+  course_module_eyebrow: { es: 'Módulo {n} de {total}', en: 'Module {n} of {total}' },
+  course_module_meta: { es: '{questions} preguntas', en: '{questions} questions' },
+  course_all_modules: { es: 'Todos los módulos', en: 'All modules' },
+  course_empty_title: { es: 'El curso todavía no está disponible', en: 'The course is not available yet' },
+  course_empty_description: {
+    es: 'Aquí aparecerán los módulos de estudio con su teoría y sus preguntas.',
+    en: 'The study modules, with their theory and questions, will appear here.',
+  },
+
   // Calendario de estudio (/calendario)
   nav_calendar: { es: 'Calendario', en: 'Calendar' },
   calendar_eyebrow: { es: 'Constancia', en: 'Consistency' },

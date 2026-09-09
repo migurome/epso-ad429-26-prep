@@ -9,6 +9,8 @@ import { EuftePage } from './pages/EuftePage'
 import { TestDayPage } from './pages/TestDayPage'
 import { ResourcesPage } from './pages/ResourcesPage'
 import { ProgressPage } from './pages/ProgressPage'
+import { CoursePage } from './pages/CoursePage'
+import { CourseModulePage } from './pages/CourseModulePage'
 import { CalendarPage } from './pages/CalendarPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { SelfCheckPage } from './pages/SelfCheckPage'
@@ -23,6 +25,8 @@ function App() {
           <Route path="/razonamiento/:skillId" element={<ReasoningSkillPage />} />
           <Route path="/campo" element={<FieldMcqOverview />} />
           <Route path="/campo/:fieldId" element={<FieldMcqPage />} />
+          <Route path="/formacion" element={<CoursePage />} />
+          <Route path="/formacion/:moduleId" element={<CourseModulePage />} />
           <Route path="/eufte" element={<EuftePage />} />
           <Route path="/dia-del-examen" element={<TestDayPage />} />
           <Route path="/recursos" element={<ResourcesPage />} />

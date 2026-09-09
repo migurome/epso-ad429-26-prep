@@ -67,7 +67,7 @@ está toda declarada en datos, no escrita a mano en los tests:
 
 | Eje | Valores | De dónde sale |
 | --- | --- | --- |
-| Rutas | 12 rutas + comodín | `src/App.tsx` |
+| Rutas | 14 rutas + comodín | `src/App.tsx` |
 | Ámbitos | 6 (4 de la AD7 + 2 de la AD8) | `COMPETITIONS` en `src/data/competition.ts` |
 | Convocatorias | AD7, AD8 | `COMPETITION_ORDER` |
 | Idiomas | es, en | `localeStore` |
@@ -85,7 +85,11 @@ que hay que hacer al añadir contenido es volver a generar
 
 Las preguntas no se escriben en TypeScript: salen de `Docs/*.md` y
 `Docs/es/*.md` a través de `scripts/build_content.py`. La etapa regenera y
-comprueba que no cambia nada versionado.
+comprueba que no cambia ningún `src/data/*.generated.ts` versionado. Se ciñe a
+los archivos **generados** a propósito: en `src/data` conviven con ellos piezas
+escritas a mano —`contentLoader.ts`, `content.ts`— y compararlas también
+convertiría cualquier edición legítima de esas piezas en un falso fallo de
+sincronía.
 
 **Caza:** alguien editó un documento y no reconstruyó, así que la web sirve
 contenido distinto del que dice el repositorio.
@@ -97,14 +101,14 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 178 tests en 8 archivos
+### 3. `unit` — 185 tests en 8 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
-| `src/App.routes.test.tsx` | 50 | Cada ruta, en dos idiomas y dos convocatorias |
+| `src/App.routes.test.tsx` | 56 | Cada ruta, en dos idiomas y dos convocatorias |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
-| `src/data/contentIntegrity.test.ts` | 16 | Invariantes de **todo** el contenido |
+| `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
@@ -166,8 +170,8 @@ rutas pasarían igual con la carpeta de figuras vacía.
 - `dist/index.html` existe, referencia la ruta base de GitHub Pages
   (`/epso-ad429-26-prep/`) y carga un módulo JavaScript.
 - Todo lo que `index.html` enlaza existe en disco.
-- Hay un chunk de contenido por bloque generado (11), es decir que Rollup los
-  sigue separando y la carga inicial no arrastra las 968 preguntas de golpe.
+- Hay un chunk de contenido por bloque generado (12), es decir que Rollup los
+  sigue separando y la carga inicial no arrastra las 1088 preguntas de golpe.
 - Las **240 imágenes** de las 120 preguntas ilustradas están publicadas, en
   enunciado y opciones.
 - No hay ningún archivo de 0 bytes.

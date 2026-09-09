@@ -51,6 +51,28 @@ export function loadFieldContent(field: Field) {
   })
 }
 
+/** Ámbitos que tienen curso de fundamentos. Se declara aparte para que la
+ * interfaz pueda ofrecerlo sólo donde existe, en vez de cargar un chunk y
+ * descubrir que está vacío. */
+export const COURSE_FIELDS = ['cybersecurity'] as const
+export type CourseField = (typeof COURSE_FIELDS)[number]
+
+export function hasCourse(field: Field): field is CourseField {
+  return (COURSE_FIELDS as readonly string[]).includes(field)
+}
+
+/** El curso de fundamentos: teoría por módulos y su propio banco. Vive en un
+ * chunk aparte del banco de examen del ámbito porque es material de estudio,
+ * mucho más extenso, y sólo hace falta al entrar en la sección de formación. */
+export function loadCourseContent(field: CourseField) {
+  return cached(`course:${field}`, () => {
+    switch (field) {
+      case 'cybersecurity':
+        return import('./content.course-cybersecurity.generated')
+    }
+  })
+}
+
 export function loadEufteContent() {
   return cached('eufte', () => import('./content.eufte.generated'))
 }

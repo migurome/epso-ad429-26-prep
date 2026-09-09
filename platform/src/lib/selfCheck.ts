@@ -18,6 +18,8 @@ import type { EssayPrompt, Field, LocalizedText, Question, TheoryDoc } from '../
 import { COMPETITIONS, COMPETITION_ORDER, FIELD_MCQ_FORMAT } from '../data/competition'
 import { SCANNED_FIGURES } from '../data/scannedFigures.generated'
 import {
+  COURSE_FIELDS,
+  loadCourseContent,
   loadEufteContent,
   loadFieldContent,
   loadReasoningContent,
@@ -82,6 +84,18 @@ export const CONTENT_TARGETS: ContentTarget[] = [
       phase: 'field-mcq',
       field: f.id,
       bankPending: f.bankPending,
+    }),
+  ),
+  // El curso de fundamentos: material de estudio con su propio banco. Pasa las
+  // mismas invariantes que el resto — traducción completa, una sola respuesta
+  // correcta, reparto de letras, explicaciones — porque se usa igual.
+  ...COURSE_FIELDS.map(
+    (field): ContentTarget => ({
+      id: `course:${field}`,
+      label: { es: 'Curso de fundamentos', en: 'Foundations course' },
+      load: () => loadCourseContent(field) as Promise<Bundle>,
+      phase: 'field-mcq',
+      field,
     }),
   ),
 ]

@@ -24,6 +24,11 @@ npm run test     # vitest
 npm run verify   # verificación completa: contenido, tipos, tests, build y dist
 ```
 
+El curso de fundamentos de ciberseguridad (`Docs/8.- *`) se redacta consultando
+el manual de referencia con `python scripts/read_book.py --section 1.4`. El
+libro es material con derechos, vive en `Docs/` y lo excluye `.gitignore`: lo
+que se versiona es texto propio.
+
 `npm run verify` es la comprobación que hay que pasar antes de subir nada:
 encadena las seis etapas en unos 12 segundos y termina con código 1 si algo
 falla.
@@ -94,7 +99,7 @@ src/
 
 scripts/
   build_content.py        Parsea ../Docs/*.md (+ ../Docs/es/*.md para la
-                          teoría en español) y regenera los 9 chunks
+                          teoría en español) y regenera los 12 chunks
                           src/data/content.<nombre>.generated.ts. Volver a
                           ejecutar (`python scripts/build_content.py`) tras
                           editar cualquier Docs/*.md o Docs/es/*.md.
@@ -109,14 +114,14 @@ combinado. Las páginas que necesitan ese contenido (`ReasoningSkillPage`,
 `src/data/contentLoader.ts` y lo leen con `use()` (React 19), suspendiendo
 bajo el `<Suspense>` que envuelve el `<Outlet/>` en `Layout.tsx` mientras
 el chunk se descarga. Esto mantiene el bundle inicial pequeño (~142 KB
-gzip) en vez de cargar las ~850 preguntas de toda la plataforma de golpe;
+gzip) en vez de cargar las ~1100 preguntas de toda la plataforma de golpe;
 cada chunk de contenido solo se descarga la primera vez que el usuario
 visita esa página en concreto, y queda cacheado por el propio navegador
 después.
 
 ## Idioma (ES/EN)
 
-La interfaz, los 9 documentos de teoría, los bancos de preguntas y los 14
+La interfaz, los 25 documentos de teoría, los bancos de preguntas y los 14
 prompts EUFTE están disponibles en español e inglés. Hay dos selectores
 independientes: el idioma de la interfaz (barra lateral) y el idioma del
 contenido del examen (`TestLocaleSelector`, dentro de cada pestaña de
@@ -149,14 +154,15 @@ completando con las fuentes oficiales):
 
 ## Estado actual
 
-Plataforma funcional con contenido real: 848 preguntas (200 verbal + 170
-numérico + 156 abstracto + 322 field-MCQ — 82 Ciencia de Datos + 80 cada
-una de Infraestructura TIC / Gestión de Proyectos TIC / Nubes y Redes),
-9 documentos de teoría (incluida la logística del examen remoto) y 14
-prompts de práctica EUFTE, generados desde `Docs/*.md` en 9 chunks
+Plataforma funcional con contenido real: 1088 preguntas (200 verbal + 170
+numérico + 156 abstracto + 442 field-MCQ — 120 Ciberseguridad, 82 Ciencia de
+Datos y 80 cada una de Infraestructura TIC / Gestión de Proyectos TIC / Nubes y
+Redes — más 120 del curso de fundamentos de ciberseguridad), 25 documentos de
+teoría y 14 prompts de práctica EUFTE, generados desde `Docs/*.md` en 12 chunks
 `src/data/content.<nombre>.generated.ts` cargados bajo demanda (ver
-"Code-splitting del contenido" más abajo). Los 4 campos de especialización
-tienen ya banco de preguntas propio, con profundidad comparable entre ellos.
+"Code-splitting del contenido" más abajo). Los ámbitos de la AD7 y la
+ciberseguridad de la AD8 tienen banco propio; el de inteligencia artificial
+publica de momento su alcance oficial (anexo II) sin banco.
 
 Cada prueba de razonamiento y el field-MCQ tienen: pestaña de teoría
 (Markdown), banco de práctica sin cronometrar con corrección explicada

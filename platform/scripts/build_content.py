@@ -34,7 +34,8 @@ GEN_DIR = Path(__file__).resolve().parent.parent / "src" / "data"
 QNUM_RE = re.compile(r'^\*\*(\d+)\.\*\*(.*?)(?=^\*\*\d+\.\*\*|\Z)', re.MULTILINE | re.DOTALL)
 ANUM_RE = re.compile(r'^\*\*(\d+)\.\s*([A-Ea-e])\*\*(.*?)(?=^\*\*\d+\.\s*[A-Ea-e]\*\*|\Z)', re.MULTILINE | re.DOTALL)
 OPTION_RE = re.compile(r'^([A-Ea-e])[.)]\s+(.*)$', re.MULTILINE)
-TOPIC_RE = re.compile(r'^### Topic \d+\s*[—-]\s*(.+?)(?:\s*\(Q[\d–\-]+\))?\s*$', re.MULTILINE)
+SECTION_WORDS = r'(?:Topic|Module|Tema|Módulo)'
+TOPIC_RE = re.compile(rf'^### {SECTION_WORDS} \d+\s*[—-]\s*(.+?)(?:\s*\(Q[\d–\-]+\))?\s*$', re.MULTILINE)
 TOPLEVEL_RE = re.compile(r'^# (.+)$', re.MULTILINE)
 
 
@@ -66,7 +67,7 @@ def split_toplevel_chapters(text: str):
 
 
 def strip_topic_headers(block: str) -> str:
-    return re.sub(r'^### Topic .*$', '', block, flags=re.MULTILINE).strip()
+    return re.sub(rf'^### {SECTION_WORDS} .*$', '', block, flags=re.MULTILINE).strip()
 
 
 def parse_bank_raw(questions_text, answers_text, *, topic_tracking=False):
@@ -389,6 +390,103 @@ def build_field_mcq_one(cfg):
     return questions, theory
 
 
+# ── Curso de fundamentos ────────────────────────────────────────────────────
+# El curso es material de ESTUDIO, no de examen: sale del manual de referencia
+# (Stallings & Brown, *Computer Security: Principles and Practice*), que es de
+# Pearson, está fuera del repositorio y lo excluye .gitignore. Lo que se
+# versiona es texto propio que explica esa materia y la conecta con el anexo II
+# de la convocatoria; el libro se consulta con scripts/read_book.py.
+#
+# Vive en su propio chunk, aparte del banco de examen del ámbito: son cientos
+# de kilobytes que sólo hacen falta al abrir la sección de formación.
+
+MODULE_RE = re.compile(r'^## (?:Module|Módulo) (\d+)\s*[—-]\s*(.+?)\s*$', re.MULTILINE)
+
+COURSE_CONFIGS = [
+    {
+        'field': 'cybersecurity',
+        'id_prefix': 'course-cyber',
+        'en_file': '8.- Cybersecurity Foundations Course.md',
+        'es_file': '8.- Curso de fundamentos de ciberseguridad.md',
+    },
+]
+
+
+def split_modules(body):
+    """Parte el capítulo de módulos en (número, título, cuerpo)."""
+    marks = list(MODULE_RE.finditer(body))
+    modules = []
+    for i, m in enumerate(marks):
+        start = m.end()
+        end = marks[i + 1].start() if i + 1 < len(marks) else len(body)
+        modules.append((int(m.group(1)), m.group(2).strip(), body[start:end].strip()))
+    return modules
+
+
+def build_course(cfg):
+    en_intro_title, en_intro, en_modules, en_bank_body = _course_parts(read(cfg['en_file']))
+    es_intro_title, es_intro, es_modules, es_bank_body = _course_parts(read_es(cfg['es_file']))
+
+    if len(en_modules) != len(es_modules):
+        raise ValueError(
+            f"{cfg['id_prefix']}: {len(en_modules)} módulos en inglés y {len(es_modules)} en español"
+        )
+
+    theory = [{
+        'id': f"{cfg['id_prefix']}-intro",
+        'phase': 'field-mcq',
+        'field': cfg['field'],
+        'title': {'en': en_intro_title, 'es': es_intro_title},
+        'summaryMd': {'en': en_intro, 'es': es_intro},
+        'sourceFile': cfg['en_file'],
+    }]
+    for (num, en_title, en_body), (es_num, es_title, es_body) in zip(en_modules, es_modules):
+        if num != es_num:
+            raise ValueError(f"{cfg['id_prefix']}: módulo {num} en inglés frente a {es_num} en español")
+        theory.append({
+            'id': f"{cfg['id_prefix']}-m{num}",
+            'phase': 'field-mcq',
+            'field': cfg['field'],
+            'title': {'en': en_title, 'es': es_title},
+            'summaryMd': {'en': en_body, 'es': es_body},
+            'sourceFile': cfg['en_file'],
+        })
+
+    en_q, en_rest = split_bank(en_bank_body)
+    es_q, es_rest = split_bank(es_bank_body)
+    questions = parse_question_bank_bilingual(
+        en_q, en_rest, es_q, es_rest, id_prefix=cfg['id_prefix'], phase='field-mcq',
+        field=cfg['field'], extra_tags=['course', 'ai-generated'], topic_tracking=True,
+    )
+
+    # Cada pregunta lleva como etiqueta el título de su módulo. Si esa etiqueta
+    # no coincide con ningún módulo, la interfaz no sabría a cuál adjuntarla y
+    # las preguntas desaparecerían del curso sin que nada fallase.
+    titles = {en_title for _, en_title, _ in en_modules}
+    for q in questions:
+        module_tags = [tag for tag in q['tags'] if tag not in ('course', 'ai-generated')]
+        unknown = [tag for tag in module_tags if tag not in titles]
+        if unknown:
+            raise ValueError(f"{q['id']}: módulo desconocido en el banco: {unknown}")
+        if not module_tags:
+            raise ValueError(f"{q['id']}: sin módulo — falta el encabezado '### Module N — …'")
+
+    return questions, theory
+
+
+def _course_parts(text):
+    """(título de la introducción, introducción, módulos, banco)."""
+    chapters = split_toplevel_chapters(text)
+    if len(chapters) != 3:
+        raise ValueError(
+            f"el curso necesita tres capítulos de primer nivel (introducción, módulos, banco); hay {len(chapters)}"
+        )
+    intro_title, intro_body = chapters[0]
+    _, modules_body = chapters[1]
+    _, bank_body = chapters[2]
+    return intro_title, intro_body, split_modules(modules_body), bank_body
+
+
 ESSAY_PROMPT_RE = re.compile(
     r'^### Practice Prompt (\d+) — (.+?)\s*$(.*?)(?=^### Practice Prompt \d+|\Z)',
     re.MULTILINE | re.DOTALL,
@@ -625,6 +723,19 @@ def main():
         total_q += len(questions)
         total_theory += len(docs)
 
+    for cfg in COURSE_CONFIGS:
+        try:
+            questions, theory = build_course(cfg)
+        except Exception as e:
+            print(f"ERROR in build_course[{cfg['field']}]: {e}", file=sys.stderr)
+            raise
+        print(f"build_course[{cfg['field']}]: {len(questions)} questions, {len(theory)} theory doc(s)")
+        emit_chunk(f"content.course-{cfg['field']}.generated.ts", questions=questions, theory=theory)
+        all_questions += questions
+        all_theory += theory
+        total_q += len(questions)
+        total_theory += len(theory)
+
     for field, theory_doc in scope_docs.items():
         print(f"build_ad8_scope[{field}]: 0 questions, 1 theory doc(s)")
         emit_chunk(f"content.field-{field}.generated.ts", theory=[theory_doc])
@@ -645,7 +756,7 @@ def main():
     total_theory += len(theory)
 
     print(f"\nTOTAL: {total_q} questions, {total_theory} theory docs, {len(all_essays)} essay prompts")
-    print(f"Wrote 11 chunk files to {GEN_DIR}")
+    print(f"Wrote {len(list(GEN_DIR.glob('content.*.generated.ts')))} chunk files to {GEN_DIR}")
 
     debug_dir = Path(__file__).resolve().parent / "_debug"
     debug_dir.mkdir(exist_ok=True)
