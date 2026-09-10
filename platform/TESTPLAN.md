@@ -101,29 +101,35 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 469 tests en 22 archivos
+### 3. `unit` — 658 tests en 27 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
+| `src/components/ShapeIcon.test.tsx` | 98 | Que **toda** forma declarada se dibuje, y que relleno, tamaño y giro se distingan |
 | `src/App.routes.test.tsx` | 74 | Cada ruta, la portada de acceso, el ceñido al ámbito y la navegación |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
+| `src/components/FigurePanelView.test.tsx` | 36 | Rejilla, bandas, filas y marco: cómo se lee una figura |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
 | `src/components/PracticeBank.test.tsx` | 30 | Filtro, enunciado entero, marca de evaluada, persistencia y reactivación |
+| `src/lib/backup.test.ts` | 30 | El fichero que cruza de un dispositivo a otro, y sus reglas de fusión |
 | `src/lib/selfCheck.test.ts` | 30 | Que **las comprobaciones de contenido detecten** lo que prometen |
+| `src/pages/SettingsPage.test.tsx` | 28 | Que nada se guarde sin confirmar, y la descarga y carga del progreso |
 | `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
+| `src/pages/CoursePage.test.tsx` | 22 | Formación: guardas de ámbito y de módulo, y el simulacro proporcional |
 | `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
 | `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
-| `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
+| `src/components/FullscreenPractice.test.tsx` | 19 | La vista de abstracto: navegación, filtro y el índice fuera de rango |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
+| `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
+| `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
-| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
 | `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
+| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/pages/LoginPage.test.tsx` | 10 | Credenciales y la penalización de tres segundos al fallar |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
-| `src/pages/SettingsPage.test.tsx` | 8 | Que los ajustes **no se guarden sin confirmar**, y que se pueda descartar |
 | `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
 
@@ -212,7 +218,7 @@ que sólo un navegador de verdad puede comprobar:
 npm run coverage      # informe por archivo + HTML en platform/coverage/
 ```
 
-Estado actual: **84 % de sentencias, 72 % de ramas**. El contenido generado
+Estado actual: **93 % de sentencias, 84 % de ramas**. El contenido generado
 queda fuera del cálculo —son cientos de miles de líneas de datos que ninguna
 prueba «recorre», e incluirlas hundiría el porcentaje sin decir nada del
 código—; de su corrección se ocupa `contentIntegrity`.
@@ -239,21 +245,39 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 59 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 78 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
 cada commit: tarda un par de minutos porque ejecuta la suite una vez por
 mutación.
 
+### Un cambio de criterio sobre el dibujo de figuras
+
+Aquí decía que `ShapeIcon.tsx` (entonces al 18 %) se dejaba sin cubrir a
+propósito, porque comprobar un dibujo serían «aserciones sobre píxeles con poco
+valor». Era un razonamiento equivocado, y por un detalle concreto: **el `switch`
+de `ShapeIcon` no tiene rama por defecto**. Una forma añadida a `ShapeKind` pero
+olvidada allí compila sin una queja y produce un SVG vacío — o sea, un panel en
+blanco en una pregunta de examen, sin que el candidato pueda saber si la
+pregunta es así o si la web se ha roto.
+
+Eso no son píxeles: es una omisión que ninguna otra prueba veía. Para poder
+comprobarlo, la lista de formas pasó a existir en tiempo de ejecución
+(`SHAPE_KINDS`) y el tipo se deriva de ella, así que las dos no pueden divergir;
+un test las recorre todas y exige geometría. Hoy está al 99 %.
+
+Lo mismo con `FigurePanelView` (31 % de ramas): decide si una figura se lee como
+rejilla 3×3, como bandas o como filas, y esa decisión **es** el ejercicio — dos
+opciones que se dibujen igual dejan la pregunta sin respuesta.
+
 ### Lo que sigue con poca cobertura, a propósito
 
-- `ShapeIcon.tsx` (18 %) dibuja las figuras de razonamiento abstracto en SVG.
-  El banco real se sirve hoy como recortes del libro, y el intérprete que lo
-  alimenta (`abstractFigure.ts`) está al 97 %: cubrir el dibujo serían
-  aserciones sobre píxeles con poco valor.
-- `SelfCheckPage` y `SettingsPage` (76 % y 62 %) son sobre todo interfaz sobre
-  lógica que ya está cubierta en `selfCheck.ts` y `studyStore.ts`.
+- `SelfCheckPage` (59 %) es interfaz sobre `selfCheck.ts`, que está al 90 % y es
+  donde viven las comprobaciones de verdad. Lo que la página añade —pintar los
+  ticks de uno en uno— ya tiene su test en `App.routes`.
+- `CalendarPage` (54 % de ramas) y `Markdown.tsx` (50 %) son presentación sobre
+  lógica cubierta: `studyCalendar.ts` está al 95 %.
 
 ---
 
@@ -280,7 +304,9 @@ Conviene tenerlo claro para no confiar de más:
 
 - **Nada visual.** Ni jsdom ni la página de verificación miran la maquetación:
   un desastre de diseño, un contraste ilegible o un menú que tapa el contenido
-  pasan todas las pruebas. Eso se ve mirando.
+  pasan todas las pruebas. Eso se ve mirando. Sí se comprueba la GEOMETRÍA de
+  las figuras abstractas —qué forma, en qué celda, a qué tamaño—, que es
+  contenido de examen y no estética.
 - **Interacción real.** Que el foco recorra el formulario con el teclado, que el
   cronómetro sobreviva a un cambio de pestaña, que el diseño responda al ancho.
 - **La corrección del contenido.** Se comprueba que hay exactamente una

@@ -4,20 +4,33 @@
 // geometría que no esté en el texto: lo que no reconoce, lo deja como caption
 // de texto en vez de forzar una forma incorrecta.
 
-export type ShapeKind =
-  | 'circle' | 'triangle' | 'square' | 'star' | 'diamond' | 'heart' | 'arrow'
-  | 'pentagon' | 'hexagon' | 'rectangle'
-  | 'smiley-happy' | 'smiley-sad' | 'smiley-neutral'
-  | 'quarter-circle' | 'half-circle' | 'three-quarter-circle' | 'circle-quartered'
-  | 'circled-plus' | 'circled-x' | 'circled-minus'
-  | 'sun' | 'cloud' | 'snowflake' | 'lightning' | 'four-point-star' | 'moon'
-  | 'spiked-circle'
+/**
+ * Todas las formas que ShapeIcon sabe dibujar.
+ *
+ * Existe en tiempo de ejecución, y el tipo se deriva de ella, porque el
+ * `switch` de ShapeIcon no tiene rama por defecto: una forma añadida al tipo
+ * pero olvidada allí no da error de compilación — sale un SVG vacío, o sea una
+ * figura en blanco en una pregunta de examen. Con la lista aquí, un test las
+ * recorre todas y esa omisión deja de poder colarse. Si fueran dos listas
+ * distintas volverían a poder divergir, así que es una sola.
+ */
+export const SHAPE_KINDS = [
+  'circle', 'triangle', 'square', 'star', 'diamond', 'heart', 'arrow',
+  'pentagon', 'hexagon', 'rectangle',
+  'smiley-happy', 'smiley-sad', 'smiley-neutral',
+  'quarter-circle', 'half-circle', 'three-quarter-circle', 'circle-quartered',
+  'circled-plus', 'circled-x', 'circled-minus',
+  'sun', 'cloud', 'snowflake', 'lightning', 'four-point-star', 'moon',
+  'spiked-circle',
   // Elementos de «escenario» del banco real: una línea que cruza el marco, una
   // rampa, una onda y una cruz. No son adornos — son el sujeto del panel en
   // decenas de preguntas, y sin ellos esas preguntas no tenían figura que
   // dibujar y se quedaban en notación cruda.
-  | 'line' | 'bent-line' | 'slope' | 'wave' | 'wave-trough' | 'cross'
-  | 'polygon' | 'tally' | 'double-arrow' | 'rotate-cw' | 'rotate-ccw' | 'ellipse'
+  'line', 'bent-line', 'slope', 'wave', 'wave-trough', 'cross',
+  'polygon', 'tally', 'double-arrow', 'rotate-cw', 'rotate-ccw', 'ellipse',
+] as const
+
+export type ShapeKind = (typeof SHAPE_KINDS)[number]
 export type FillKind = 'filled' | 'empty' | 'grey' | 'hatched'
 export type SizeKind = 'small' | 'medium' | 'large' | 'extra-large'
 export type Position =
