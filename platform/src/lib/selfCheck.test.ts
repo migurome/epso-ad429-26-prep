@@ -294,3 +294,114 @@ describe('metadatos de convocatoria', () => {
     }
   })
 })
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Ejercicios del motor de figuras abstractas. La figura ES la pregunta: una
+// opción sin figura, un tablero sin casilla por adivinar o un SVG que no ha
+// salido del motor tal cual dejan una pregunta imposible de responder, y no hay
+// texto de apoyo que la salve.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const ABSTRACT_TARGET: ContentTarget = { ...TARGET, phase: 'reasoning', skill: 'abstract', field: undefined }
+
+const figure = (label: string) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><title>${label}</title><circle cx="50" cy="50" r="30"/></svg>`
+
+/** Un ejercicio del motor bien formado, sobre el que cada caso rompe una cosa. */
+function engineQuestion(overrides: Partial<Question> = {}): Question {
+  return {
+    id: 'abs-gen-00ff',
+    phase: 'reasoning',
+    skill: 'abstract',
+    prompt: { es: '¿Qué figura continúa la serie?', en: 'Which figure continues the series?' },
+    figureOnly: true,
+    board: { cellSize: 100, rows: [[figure('casilla-1'), figure('casilla-2'), null]] },
+    options: ['A', 'B', 'C', 'D', 'E'].map((id) => ({
+      id,
+      text: { es: `Figura ${id}`, en: `Figure ${id}` },
+      isCorrect: id === 'C',
+      explanation: { es: `Explicación ${id}`, en: `Explanation ${id}` },
+      figure: figure(`opcion-${id}`),
+    })),
+    tags: ['engine', 'series'],
+    provenance: {
+      family: 'series',
+      seed: 's1',
+      difficulty: 4,
+      contentHash: '00ff',
+      engineVersion: '0.1.0',
+    },
+    ...overrides,
+  }
+}
+
+const engineProblems = (q: Question) =>
+  checkWellFormed(ABSTRACT_TARGET, { QUESTIONS: [q], THEORY_DOCS: [], ESSAY_PROMPTS: [] })
+    .issues.map((i) => `${i.where} — ${i.problem.es}`)
+    .join('\n')
+
+describe('ejercicios del motor de figuras', () => {
+  it('uno bien formado pasa limpio', () => {
+    expect(engineProblems(engineQuestion())).toBe('')
+  })
+
+  it('sin tablero —buscar la que sobra— también pasa limpio', () => {
+    expect(engineProblems(engineQuestion({ board: { cellSize: 100, rows: [] } }))).toBe('')
+  })
+
+  it('detecta una opción que se ha quedado sin figura', () => {
+    const q = engineQuestion()
+    delete q.options[3].figure
+    expect(engineProblems(q)).toMatch(/4 de 5 opciones traen figura/)
+  })
+
+  it('detecta un figureOnly que contradice a las figuras', () => {
+    expect(engineProblems(engineQuestion({ figureOnly: false }))).toMatch(/figureOnly/)
+  })
+
+  it('detecta figuras en todas las opciones sin que el exportador lo afirme', () => {
+    const q = engineQuestion()
+    delete q.figureOnly
+    expect(engineProblems(q)).toMatch(/figureOnly/)
+  })
+
+  it('detecta un ejercicio sin procedencia, que nadie podría regenerar', () => {
+    const q = engineQuestion()
+    delete q.provenance
+    expect(engineProblems(q)).toMatch(/procedencia/)
+  })
+
+  it('detecta un SVG de opción que no ha salido del motor tal cual', () => {
+    const q = engineQuestion()
+    q.options[1].figure = figure('x').replace('<circle', '<script>alert(1)</script><circle')
+    expect(engineProblems(q)).toMatch(/opción B — contiene <script>/)
+  })
+
+  it('detecta una casilla del tablero rota', () => {
+    const q = engineQuestion({ board: { cellSize: 100, rows: [['<div>no</div>', figure('c2'), null]] } })
+    expect(engineProblems(q)).toMatch(/casilla 1/)
+  })
+
+  it('detecta un tablero sin casilla por adivinar', () => {
+    const q = engineQuestion({ board: { cellSize: 100, rows: [[figure('c1'), figure('c2'), figure('c3')]] } })
+    expect(engineProblems(q)).toMatch(/0 casillas por adivinar/)
+  })
+
+  it('detecta un tablero con dos casillas por adivinar', () => {
+    const q = engineQuestion({ board: { cellSize: 100, rows: [[figure('c1'), null, null]] } })
+    expect(engineProblems(q)).toMatch(/2 casillas por adivinar/)
+  })
+
+  it('detecta una figura que no es XML bien formado, aunque pase todo lo demás', () => {
+    const q = engineQuestion()
+    q.options[4].figure = figure('x').replace('<circle', '<circle fill="#000" fill="none"')
+    expect(engineProblems(q)).toMatch(/opción E — no es XML válido/)
+  })
+
+  it('una pregunta que no es del motor no pasa por estas comprobaciones', () => {
+    // Las del banco real y del bonus no llevan figura ni tablero: exigírselos
+    // marcaría como rotas todas las que hoy están bien.
+    const normal = question('abs-real-1', 'A', { phase: 'reasoning', field: undefined, skill: 'abstract' })
+    expect(engineProblems(normal)).toBe('')
+  })
+})

@@ -10,6 +10,7 @@ import { pick } from '../lib/localeStore'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
 import { useT } from '../lib/useT'
 import type { Question } from '../types/content'
+import { EngineBoardView, EngineSvg } from './EngineFigure'
 
 interface QuestionCardProps {
   question: Question
@@ -49,12 +50,19 @@ export function QuestionCard({
   // examen, así que no hay nada que el parser pueda perder por el camino.
   // El banco bonus no tiene libro detrás y se sigue dibujando.
   const scanned = isAbstract && SCANNED_FIGURES.has(question.id)
+  // Ejercicio del motor de figuras abstractas: cada opción trae su SVG y la
+  // figura ES la opción. Se decide por la presencia de la figura, no por
+  // `figureOnly`, que es una afirmación del exportador que selfCheck
+  // contrasta. Ni recorte ni notación: el texto de sus opciones es un rótulo
+  // ('Figura A') y, leído como notación, se dibujaría como pie de texto.
+  const engine =
+    question.options.length > 0 && question.options.every((o) => typeof o.figure === 'string')
   // Con recorte, del enunciado sobra la transcripción de la secuencia (el
   // recorte la enseña mejor) pero NO la prosa de alrededor: ahí está descrito
   // el atributo que cambia, que es la mitad de la pregunta.
   const promptProse = scanned ? (extractPromptFigures(prompt)?.remainderMd ?? prompt) : null
   const optionPanels =
-    isAbstract && !scanned
+    isAbstract && !scanned && !engine
       ? question.options.map((opt) => parsePanel(pick(testLocale, opt.text)))
       : null
   // Si dos opciones se dibujarían con las MISMAS figuras pero su texto dice
@@ -84,7 +92,7 @@ export function QuestionCard({
   // secuencias mitad iconos mitad párrafos, con el sujeto de la figura
   // escondido en un pie de texto. Si algún panel del enunciado o alguna
   // opción no se puede dibujar entera, la pregunta entera va como texto.
-  const promptFigures = isAbstract && !scanned ? extractPromptFigures(prompt) : null
+  const promptFigures = isAbstract && !scanned && !engine ? extractPromptFigures(prompt) : null
   // Si UNA opción coloca sus figuras en la rejilla 3×3 y las demás no, unas
   // salen enmarcadas y otras sueltas: parecen preguntas distintas. El marco es
   // decisión del grupo entero.
@@ -103,7 +111,21 @@ export function QuestionCard({
           {t('question_n', { n: index + 1 })}
         </p>
       )}
-      {hidePrompt ? null : scanned ? (
+      {engine ? (
+        <div className="mb-4 space-y-4">
+          {/* El tablero se enseña aunque el enunciado vaya en la cabecera:
+              es la figura, no el texto. */}
+          {!hidePrompt && <Markdown className={clsx(large && '[&_p]:text-lg')}>{prompt}</Markdown>}
+          {question.board && question.board.rows.length > 0 && (
+            <EngineBoardView
+              board={question.board}
+              large={large}
+              cellAlt={(row, col) => t('figure_board_cell_alt', { row, col })}
+              unknownAlt={t('figure_board_unknown_alt')}
+            />
+          )}
+        </div>
+      ) : hidePrompt ? null : scanned ? (
         <div className="mb-4 space-y-3">
           {/* Del enunciado se conserva la prosa (la regla que hay que
               descubrir) y se descarta la transcripción de la secuencia: el
@@ -130,11 +152,16 @@ export function QuestionCard({
       )}
       <div
         className={clsx(
-          large ? 'space-y-3' : 'space-y-2',
+          // El espaciado vertical es sólo para la lista de opciones de texto. En
+          // Tailwind 4, `space-y-*` pone margen inferior a todas las tarjetas
+          // menos la última, y el `space-y-0` de las filas de figuras no lo
+          // anulaba: al estirarse la fila, la última salía más alta.
+          !(drawFigures || scanned || engine) && (large ? 'space-y-3' : 'space-y-2'),
           drawFigures && 'flex flex-wrap justify-center gap-3 space-y-0',
           // Con recorte, la opción ya está dibujada dentro de la imagen: aquí
           // solo hace falta la letra con la que se responde.
           scanned && 'flex flex-wrap justify-center gap-2 space-y-0',
+          engine && 'flex flex-wrap justify-center gap-3 space-y-0',
         )}
       >
         {question.options.map((opt, i) => {
@@ -172,6 +199,39 @@ export function QuestionCard({
               {opt.id}
             </span>
           )
+
+          if (engine) {
+            // La figura es la opción entera; su rótulo de texto no se enseña.
+            return (
+              <button
+                key={opt.id}
+                type="button"
+                onClick={() => !revealed && onSelect(opt.id)}
+                disabled={revealed}
+                className={clsx(
+                  'flex flex-col items-center rounded-xl border p-2.5 transition-colors',
+                  stateClasses,
+                )}
+              >
+                {badge}
+                {/* Del tamaño de las casillas de una serie. A 96 px las cinco
+                    no cabían en la tarjeta de escritorio y la E bajaba sola a
+                    otra fila; en el examen se comparan las cinco de un vistazo. */}
+                <EngineSvg
+                  svg={opt.figure!}
+                  alt={t('figure_option_alt', { id: opt.id })}
+                  className={clsx('mt-1', large ? 'w-16 sm:w-20' : 'w-14 sm:w-16')}
+                />
+                {showCorrect && <Check size={large ? 20 : 16} className="mt-1 shrink-0 text-emerald-600" />}
+                {showWrong && <X size={large ? 20 : 16} className="mt-1 shrink-0 text-red-600" />}
+                {showExplanation && (
+                  <span className="mt-2 max-w-[10rem] text-center text-xs leading-relaxed text-slate-600">
+                    {optExplanation}
+                  </span>
+                )}
+              </button>
+            )
+          }
 
           if (scanned) {
             // La figura de la opción está dentro del recorte, con su letra

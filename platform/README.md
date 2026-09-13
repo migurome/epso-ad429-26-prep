@@ -184,6 +184,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.2` | Figuras generadas por el motor en razonamiento abstracto, con su propia procedencia en el filtro; fuera el banco bonus de IA de esa sección. |
 | `1.1` | Exportar e importar el progreso, para llevarlo entre el ordenador y el móvil. |
 | `1.0` | Primera versión con el esquema de versionado en marcha. |
 
@@ -216,10 +217,78 @@ de los dos valores en vez de sumarlos: sumar sería más fiel el día que de ver
 se estudie en los dos sitios, pero inflaría el calendario en cada pasada. Los
 detalles y el porqué de cada regla están en `src/lib/backup.ts`.
 
+## Figuras generadas por el motor
+
+El razonamiento abstracto tiene dos procedencias: el **banco real** (el libro,
+servido con sus recortes escaneados) y las **generadas**. Las construye el motor de figuras
+abstractas, un proyecto aparte y público,
+[`migurome/abstract-reasoning-engine`](https://github.com/migurome/abstract-reasoning-engine)
+(en local, `Abstract figures Gen`): cada ejercicio nace de un programa de
+reglas, se pinta en SVG y lleva la prueba de que tiene una sola respuesta.
+
+La plataforma no genera nada ni vuelve a pintar las figuras: consume un banco ya
+exportado. Volver a pintarlas enseñaría al candidato algo distinto de aquello
+sobre lo que se demostró que la respuesta es única.
+
+Hasta la 1.2 hubo un tercer banco, el **bonus** redactado por IA, que describía
+las figuras con palabras. Ya no se importa: la prueba real se ve dibujada, y
+leer la descripción de una figura entrena otra cosa. El capítulo sigue en
+`Docs/3.- Abstract reasoning.md` por si hiciera falta recuperarlo.
+
+El banco vive en `Docs/engine/abstract-bank.json` y entra así. Desde el
+repositorio del motor:
+
+```bash
+npm run -s are -- export --out "<EPSO>/Docs/engine/abstract-bank.json"   # se niega con cambios sin commitear
+npm run -s are -- validate "<EPSO>/Docs/engine/abstract-bank.json" --deep
+```
+
+Con rutas absolutas: npm resuelve las relativas desde donde se lance, no desde
+el repositorio del motor. Y nunca `--allow-dirty` para un banco que se vaya a
+commitear: sin commit limpio, nadie podría regenerarlo después. El
+`engine.commit` que registra el banco pertenece a ese repositorio público:
+cualquiera puede clonarlo en ese commit y volver a sacar el mismo fichero.
+
+El banco de ahora son 282 ejercicios, pedidos de 40 en 40 por familia
+(`--per-family 40 --budget 1500`). Seis familias llegaron a 40; setgrid se quedó
+en 30 y countgrid en 12, y el informe lo dice como `shortfall` en vez de bajar
+el rigor para rellenar el cupo.
+
+Y desde `platform/`:
+
+```bash
+python scripts/build_content.py
+node scripts/verify.mjs
+```
+
+Y después, en un navegador de verdad: Razonamiento abstracto → Banco de práctica
+→ «Generadas», recorriendo las preguntas. jsdom no decodifica imágenes, así que
+ninguna prueba automática dice si un SVG se pinta de verdad. El primer banco del
+motor pasó todas y tenía 30 figuras en blanco (ver TESTPLAN, «Qué NO cubre»).
+
+`validate --deep` vuelve a generar cada pregunta desde su procedencia y exige el
+mismo `contentHash`: demuestra que el fichero no se tocó a mano y que cada ítem
+sigue pasando las comprobaciones del motor actual. Para eso el JSON conserva
+`provenance.config` y `provenance.program`, que `build_content.py` deja fuera
+del bloque que descarga el navegador: no se usan allí y suponen casi la cuarta
+parte del peso. El orden de las opciones, el
+reparto de la letra correcta y cada explicación vienen del motor y **no se
+retocan al importar**: reordenar una opción la separaría de su explicación.
+
+En EPSO lo vigilan tres capas:
+
+| Dónde | Qué hace |
+| --- | --- |
+| `build_content.py` | Rechaza un formato distinto de 1, un banco exportado sin commit limpio del motor (`engine.dirty`), ids sin `abs-gen-`, preguntas que no son de abstracto o sin la etiqueta `engine` |
+| `selfCheck.ts` (en el build y en el sitio publicado) | Rechaza opciones sin figura, un `figureOnly` que contradice a las figuras, la falta de procedencia, SVG que no es XML bien formado —un atributo repetido basta para que el navegador no pinte la figura— o que lleva `<script>`, `<foreignObject>`, atributos `on…` o enlaces externos, y tableros sin exactamente una casilla por adivinar |
+| `QuestionCard` | Pinta cada figura dentro de una `<img>`: el SVG no ejecuta nada, sus estilos no se escapan y sus ids no chocan con los de otra figura |
+
+Sin fichero, `build_content.py` no añade ninguna pregunta, y no es un error.
+
 ## Estado actual
 
-Plataforma funcional con contenido real: 1088 preguntas (200 verbal + 170
-numérico + 156 abstracto + 442 field-MCQ — 120 Ciberseguridad, 82 Ciencia de
+Plataforma funcional con contenido real: 1334 preguntas (200 verbal + 170
+numérico + 402 abstracto + 442 field-MCQ — 120 Ciberseguridad, 82 Ciencia de
 Datos y 80 cada una de Infraestructura TIC / Gestión de Proyectos TIC / Nubes y
 Redes — más 120 del curso de fundamentos de ciberseguridad), 25 documentos de
 teoría y 14 prompts de práctica EUFTE, generados desde `Docs/*.md` en 12 chunks

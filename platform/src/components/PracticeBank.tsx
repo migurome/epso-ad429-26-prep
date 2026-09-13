@@ -11,19 +11,13 @@ import { shuffleWithSeed } from '../lib/shuffle'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
 import { useT } from '../lib/useT'
 import type { Question } from '../types/content'
+import { SOURCE_LABEL_KEY, defaultSource, sourceOf, sourcesIn, type QuestionSource } from '../lib/questionSource'
 
 interface PracticeBankProps {
   questions: Question[]
   /** Identifica el banco para guardar aparte su orden. Ámbito, destreza o
    * módulo del curso: lo que distinga a este banco de los demás. */
   bankId: string
-}
-
-function sourceLabel(tags: string[] | undefined): 'real' | 'ai-generated' | null {
-  if (!tags) return null
-  if (tags.includes('real')) return 'real'
-  if (tags.includes('ai-generated')) return 'ai-generated'
-  return null
 }
 
 // El enunciado de la cabecera. Va entero: cortarlo a mitad de frase obligaba a
@@ -59,12 +53,9 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
   const reactivateAll = usePracticeStore((s) => s.reactivateAll)
   const seed = usePracticeStore((s) => s.orderSeed[bankId] ?? 0)
 
-  const hasSourceSplit = useMemo(
-    () => questions.some((q) => sourceLabel(q.tags) === 'real') && questions.some((q) => sourceLabel(q.tags) === 'ai-generated'),
-    [questions],
-  )
+  const sources = useMemo(() => sourcesIn(questions), [questions])
 
-  const [sourceFilter, setSourceFilter] = useState<'all' | 'real' | 'ai-generated'>(hasSourceSplit ? 'real' : 'all')
+  const [sourceFilter, setSourceFilter] = useState<QuestionSource | 'all'>(defaultSource(sources))
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   const bank: PracticeBankRef = useMemo(
@@ -76,7 +67,7 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
 
   const filtered = useMemo(() => {
     if (sourceFilter === 'all') return ordered
-    return ordered.filter((q) => sourceLabel(q.tags) === sourceFilter)
+    return ordered.filter((q) => sourceOf(q.tags) === sourceFilter)
   }, [ordered, sourceFilter])
 
   const answeredCount = useMemo(
@@ -87,21 +78,18 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
   return (
     <div>
       <TestLocaleSelector />
-      {hasSourceSplit && (
-        <div className="mb-4 flex gap-1 rounded-lg bg-slate-100 p-1 text-sm">
-          {(
-            [
-              ['real', t('filter_real_bank')],
-              ['ai-generated', t('filter_ai_bank')],
-              ['all', t('filter_all')],
-            ] as const
-          ).map(([value, label]) => (
+      {sources.length >= 2 && (
+        <div className="mb-4 flex gap-1 rounded-lg bg-slate-100 p-1 text-xs sm:text-sm">
+          {[
+            ...sources.map((source) => [source, t(SOURCE_LABEL_KEY[source])] as const),
+            ['all', t('filter_all')] as const,
+          ].map(([value, label]) => (
             <button
               key={value}
               type="button"
               onClick={() => setSourceFilter(value)}
               className={clsx(
-                'flex-1 rounded-md px-3 py-1.5 font-medium transition-colors',
+                'flex-1 rounded-md px-2 py-1.5 font-medium transition-colors sm:px-3',
                 sourceFilter === value ? 'bg-white text-accent shadow-sm' : 'text-slate-500 hover:text-slate-700',
               )}
             >

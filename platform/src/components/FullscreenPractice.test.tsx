@@ -201,3 +201,50 @@ describe('idioma del contenido', () => {
     expect(screen.getByText(/Prompt for p1/)).toBeTruthy()
   })
 })
+
+describe('con figuras generadas por el motor', () => {
+  const REAL = [question('real1', ['real']), question('real2', ['real'])]
+  const ENGINE = [question('gen1', ['engine', 'series']), question('gen2', ['engine', 'grid3x3'])]
+  const FILTER_NAMES = [
+    es('filter_real_bank'),
+    es('filter_ai_bank'),
+    es('filter_engine_bank'),
+    es('filter_all'),
+  ]
+  /** Los botones del filtro, en el orden en que salen en pantalla. */
+  const filterButtons = () =>
+    screen
+      .getAllByRole('button')
+      .map((b) => b.textContent ?? '')
+      .filter((text) => FILTER_NAMES.includes(text))
+
+  it('un banco de una sola procedencia no ofrece filtro', () => {
+    // Con una procedencia, cada botón enseñaría lo mismo que «Todo».
+    render(<FullscreenPractice questions={REAL} />)
+    expect(filterButtons()).toEqual([])
+  })
+
+  it('real y generadas: ofrece las dos y arranca en el real', () => {
+    render(<FullscreenPractice questions={[...ENGINE, ...REAL]} />)
+    expect(filterButtons()).toEqual([es('filter_real_bank'), es('filter_engine_bank'), es('filter_all')])
+    expect(screen.getByText(counter(1, 2))).toBeTruthy()
+    expect(screen.getByText(/Enunciado de real1/)).toBeTruthy()
+  })
+
+  it('«Generadas» enseña sólo las del motor', () => {
+    render(<FullscreenPractice questions={[...REAL, ...ENGINE]} />)
+    clickButton(es('filter_engine_bank'))
+    expect(screen.getByText(counter(1, 2))).toBeTruthy()
+    expect(screen.getByText(/Enunciado de gen1/)).toBeTruthy()
+  })
+
+  it('las tres procedencias se ofrecen en orden, con «Todo» al final', () => {
+    render(<FullscreenPractice questions={[...ENGINE, ...MIXED]} />)
+    expect(filterButtons()).toEqual(FILTER_NAMES)
+  })
+
+  it('sin banco real arranca en «Todo», aunque haya dos procedencias', () => {
+    render(<FullscreenPractice questions={[question('bonus1', ['ai-generated']), ...ENGINE]} />)
+    expect(screen.getByText(counter(1, 3))).toBeTruthy()
+  })
+})

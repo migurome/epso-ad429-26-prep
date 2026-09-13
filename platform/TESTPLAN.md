@@ -101,36 +101,39 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 658 tests en 27 archivos
+### 3. `unit` — 733 tests en 30 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
 | `src/components/ShapeIcon.test.tsx` | 98 | Que **toda** forma declarada se dibuje, y que relleno, tamaño y giro se distingan |
 | `src/App.routes.test.tsx` | 74 | Cada ruta, la portada de acceso, el ceñido al ámbito y la navegación |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
+| `src/lib/selfCheck.test.ts` | 42 | Que **las comprobaciones de contenido detecten** lo que prometen, figuras del motor incluidas |
 | `src/components/FigurePanelView.test.tsx` | 36 | Rejilla, bandas, filas y marco: cómo se lee una figura |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
-| `src/components/PracticeBank.test.tsx` | 30 | Filtro, enunciado entero, marca de evaluada, persistencia y reactivación |
+| `src/components/PracticeBank.test.tsx` | 32 | Filtro de tres procedencias, enunciado entero, marca de evaluada, persistencia y reactivación |
 | `src/lib/backup.test.ts` | 30 | El fichero que cruza de un dispositivo a otro, y sus reglas de fusión |
-| `src/lib/selfCheck.test.ts` | 30 | Que **las comprobaciones de contenido detecten** lo que prometen |
 | `src/pages/SettingsPage.test.tsx` | 28 | Que nada se guarde sin confirmar, y la descarga y carga del progreso |
+| `src/components/FullscreenPractice.test.tsx` | 24 | La vista de abstracto: navegación, filtro de tres procedencias y el índice fuera de rango |
 | `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
 | `src/pages/CoursePage.test.tsx` | 22 | Formación: guardas de ámbito y de módulo, y el simulacro proporcional |
 | `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
 | `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
-| `src/components/FullscreenPractice.test.tsx` | 19 | La vista de abstracto: navegación, filtro y el índice fuera de rango |
+| `src/lib/engineFigure.test.ts` | 21 | Que no entre un SVG que no haya salido del motor tal cual ni uno que no sea XML bien formado, y su URL de datos |
+| `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
 | `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
+| `src/lib/questionSource.test.ts` | 13 | De qué banco viene cada pregunta y dónde arranca el filtro |
 | `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
+| `src/components/EngineFigure.test.tsx` | 11 | El tablero del motor: la serie cabe en un móvil y el «?» mide lo mismo que las figuras |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
 | `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/pages/LoginPage.test.tsx` | 10 | Credenciales y la penalización de tres segundos al fallar |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
-| `src/components/QuestionCard.test.tsx` | 6 | Selección, corrección y explicación |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
 
 **`studyCalendar`** cubre la aritmética de fechas, que es donde se esconden los
@@ -190,7 +193,7 @@ rutas pasarían igual con la carpeta de figuras vacía.
   (`/epso-ad429-26-prep/`) y carga un módulo JavaScript.
 - Todo lo que `index.html` enlaza existe en disco.
 - Hay un chunk de contenido por bloque generado (12), es decir que Rollup los
-  sigue separando y la carga inicial no arrastra las 1088 preguntas de golpe.
+  sigue separando y la carga inicial no arrastra las 1334 preguntas de golpe.
 - Las **240 imágenes** de las 120 preguntas ilustradas están publicadas, en
   enunciado y opciones.
 - No hay ningún archivo de 0 bytes.
@@ -245,7 +248,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 78 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 97 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
@@ -295,6 +298,7 @@ tests está automatizado en `npm run mutation`, descrito arriba.
 | Editar un `Docs/*.md` sin reconstruir | `content` | `los Docs/*.md y src/data/*.generated.ts estaban desincronizados` |
 | Borrar una figura de `dist/` | `dist` | `falta una figura en dist/: figures/abstract/abs-real-42-options.webp` |
 | Borrar una figura y truncar otra a 0 bytes | `/verificacion` | `abs-real-7-prompt no se ha podido cargar` |
+| Importar el primer banco del motor, con un `fill` repetido en 30 figuras (commit `9de1797`; `0bb87a4` en la historia original del motor) | `unit` | `abs-gen-fabb4a7650fb404e · opción A: no es XML válido (1:346: duplicate attribute: fill.)` |
 
 ---
 
@@ -323,6 +327,17 @@ Conviene tenerlo claro para no confiar de más:
   —quitando la línea, al reelegir el mismo fichero el navegador no emite
   `change`, no aparece la vista previa y no hay botón que pulsar— pero esa
   capa no vive en el repositorio, así que día a día se comprueba mirando.
+- **Que una figura del motor se PINTE.** jsdom no decodifica imágenes: una
+  figura puede pasar todos los tests y salir en blanco en el navegador. Pasó
+  con el primer banco del motor: 30 de 790 SVG llevaban un atributo `fill`
+  repetido, Chromium se negaba a decodificarlos y ninguna comprobación lo veía,
+  porque el marcado parecía correcto y `--deep` regeneraba los mismos bytes
+  rotos. Hoy `svgProblem` parsea cada SVG como XML y rechaza el mal formado, en
+  el build y en el sitio publicado, así que ese defecto concreto ya no pasa.
+  Pero que un SVG bien formado se pinte como se espera sólo lo dice un
+  navegador: al importar un banco nuevo se decodifican las 790 figuras en
+  Chromium y se recorren las 80 preguntas (ver README, «Figuras generadas por
+  el motor»).
 
 Lo que faltaría para cerrar los dos primeros es una capa con Playwright que
 recorriera la interfaz pulsando. Se dejó fuera a propósito: añade una

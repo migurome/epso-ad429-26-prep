@@ -5,16 +5,10 @@ import { QuestionCard } from './QuestionCard'
 import { TestLocaleSelector } from './TestLocaleSelector'
 import { useT } from '../lib/useT'
 import type { Question } from '../types/content'
+import { SOURCE_LABEL_KEY, defaultSource, sourceOf, sourcesIn, type QuestionSource } from '../lib/questionSource'
 
 interface FullscreenPracticeProps {
   questions: Question[]
-}
-
-function sourceLabel(tags: string[] | undefined): 'real' | 'ai-generated' | null {
-  if (!tags) return null
-  if (tags.includes('real')) return 'real'
-  if (tags.includes('ai-generated')) return 'ai-generated'
-  return null
 }
 
 // Vista de práctica "una pregunta a pantalla completa": una sola pregunta
@@ -23,26 +17,21 @@ function sourceLabel(tags: string[] | undefined): 'real' | 'ai-generated' | null
 // contenido (figuras/símbolos) se beneficia de más tamaño y foco visual.
 export function FullscreenPractice({ questions }: FullscreenPracticeProps) {
   const t = useT()
-  const hasSourceSplit = useMemo(
-    () =>
-      questions.some((q) => sourceLabel(q.tags) === 'real') &&
-      questions.some((q) => sourceLabel(q.tags) === 'ai-generated'),
-    [questions],
-  )
+  const sources = useMemo(() => sourcesIn(questions), [questions])
 
-  const [sourceFilter, setSourceFilter] = useState<'all' | 'real' | 'ai-generated'>(hasSourceSplit ? 'real' : 'all')
+  const [sourceFilter, setSourceFilter] = useState<QuestionSource | 'all'>(defaultSource(sources))
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
 
   const filtered = useMemo(() => {
     if (sourceFilter === 'all') return questions
-    return questions.filter((q) => sourceLabel(q.tags) === sourceFilter)
+    return questions.filter((q) => sourceOf(q.tags) === sourceFilter)
   }, [questions, sourceFilter])
 
   const safeIndex = Math.min(index, Math.max(0, filtered.length - 1))
   const current = filtered[safeIndex]
 
-  function changeFilter(next: 'all' | 'real' | 'ai-generated') {
+  function changeFilter(next: QuestionSource | 'all') {
     setSourceFilter(next)
     setIndex(0)
   }
@@ -52,21 +41,18 @@ export function FullscreenPractice({ questions }: FullscreenPracticeProps) {
   return (
     <div>
       <TestLocaleSelector />
-      {hasSourceSplit && (
-        <div className="mx-auto mb-4 flex max-w-md gap-1 rounded-lg bg-slate-100 p-1 text-sm">
-          {(
-            [
-              ['real', t('filter_real_bank')],
-              ['ai-generated', t('filter_ai_bank')],
-              ['all', t('filter_all')],
-            ] as const
-          ).map(([value, label]) => (
+      {sources.length >= 2 && (
+        <div className="mx-auto mb-4 flex max-w-md gap-1 rounded-lg bg-slate-100 p-1 text-xs sm:text-sm">
+          {[
+            ...sources.map((source) => [source, t(SOURCE_LABEL_KEY[source])] as const),
+            ['all', t('filter_all')] as const,
+          ].map(([value, label]) => (
             <button
               key={value}
               type="button"
               onClick={() => changeFilter(value)}
               className={clsx(
-                'flex-1 rounded-md px-3 py-1.5 font-medium transition-colors',
+                'flex-1 rounded-md px-2 py-1.5 font-medium transition-colors sm:px-3',
                 sourceFilter === value ? 'bg-white text-accent shadow-sm' : 'text-slate-500 hover:text-slate-700',
               )}
             >

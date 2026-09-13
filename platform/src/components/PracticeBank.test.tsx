@@ -329,3 +329,20 @@ describe('idioma del contenido', () => {
     expect(screen.queryByText(/Enunciado de real1/)).toBeNull()
   })
 })
+
+describe('con figuras generadas por el motor', () => {
+  const BANK = [question('r1', ['real']), question('g1', ['engine']), question('g2', ['engine'])]
+
+  it('real y generadas: ofrece «Generadas» y arranca en el real', () => {
+    render(<PracticeBank questions={BANK} bankId="test" />)
+    expect(screen.getByRole('button', { name: es('filter_engine_bank') })).toBeTruthy()
+    expect(screen.queryByRole('button', { name: es('filter_ai_bank') })).toBeNull()
+    expect(screen.getByText(count(1))).toBeTruthy()
+  })
+
+  it('«Generadas» enseña sólo las del motor', () => {
+    render(<PracticeBank questions={BANK} bankId="test" />)
+    clickButton(es('filter_engine_bank'))
+    expect(screen.getByText(count(2))).toBeTruthy()
+  })
+})

@@ -282,12 +282,69 @@ def build_numerical():
     return real_questions + ai_questions + epso_questions, [theory]
 
 
+ENGINE_BANK = DOCS / "engine" / "abstract-bank.json"
+ENGINE_FORMAT = 1
+
+
+def load_engine_bank():
+    """Ejercicios del motor de figuras abstractas (repo «Abstract figures Gen»).
+
+    El motor los exporta ya montados —figura SVG, opciones A-E con una sola
+    correcta, explicación bilingüe en todas y la letra correcta repartida por
+    cupo— y este script no toca sus textos, sus figuras ni el orden de sus
+    opciones: los lee, comprueba lo que sólo se puede comprobar aquí (formato,
+    commit limpio, prefijo de id, etiqueta) y los añade al bloque de abstracto.
+    Reordenar opciones o retocar textos separaría cada explicación de su
+    opción. El resto de invariantes los vigila selfCheck.ts, igual que para
+    cualquier otra pregunta.
+
+    Sin fichero no se añade nada, y no es un error: el banco entra cuando el
+    motor publica una versión estable y pasa `are validate --deep`.
+    """
+    if not ENGINE_BANK.exists():
+        return []
+    data = json.loads(ENGINE_BANK.read_text(encoding='utf-8'))
+    name = ENGINE_BANK.name
+    if data.get('format') != ENGINE_FORMAT:
+        raise ValueError(f"{name}: formato {data.get('format')!r}, se espera {ENGINE_FORMAT}")
+    engine = data.get('engine') or {}
+    # Un banco commiteado aquí tiene que apuntar a un commit real del motor. Si
+    # se exportó con cambios sin commitear, nadie podría regenerarlo después y
+    # `validate --deep` dejaría de demostrar nada.
+    if engine.get('dirty') is not False or not engine.get('commit'):
+        raise ValueError(f"{name}: exportado sin commit limpio del motor ({engine!r})")
+    questions = data.get('questions') or []
+    if not questions:
+        raise ValueError(f"{name}: el banco está vacío")
+    for q in questions:
+        qid = q.get('id', '')
+        if not qid.startswith('abs-gen-'):
+            raise ValueError(f"{name}: id {qid!r} no empieza por 'abs-gen-'")
+        if q.get('phase') != 'reasoning' or q.get('skill') != 'abstract':
+            raise ValueError(f"{name}: {qid} no es de razonamiento abstracto")
+        if 'engine' not in (q.get('tags') or []):
+            raise ValueError(f"{name}: {qid} sin la etiqueta 'engine'")
+        # `config` y `program` son lo que `are validate --deep` necesita para
+        # regenerar la pregunta, y se quedan en el JSON commiteado. En el
+        # navegador no se usan nunca, y en las familias cuyos programas llevan
+        # escenas dentro pesan 6-10 KB por pregunta: fuera del bloque que se
+        # descarga. `seed` y `contentHash` no están dentro de ninguno de los dos.
+        provenance = q.get('provenance') or {}
+        provenance.pop('config', None)
+        provenance.pop('program', None)
+    return questions
+
+
 def build_abstract():
     text = read("3.- Abstract reasoning.md")
     chapters = split_toplevel_chapters(text)
     theory_title, theory_body = chapters[0]
     real_title, real_body = chapters[1]
-    ai_title, ai_body = chapters[2]
+    # El capítulo 3 del Docs —el banco «bonus» redactado por IA en notación de
+    # texto— ya no entra. En abstracto, la práctica que no sale del libro la dan
+    # las figuras del motor: se ven dibujadas, como en el examen, y cada una
+    # llega con la prueba de que tiene una sola respuesta. El capítulo se queda
+    # en Docs/ por si hiciera falta recuperarlo.
 
     en_q, en_a = split_bank(real_body)
     es_q, es_a = es_bank_chapter("3.- Razonamiento abstracto (banco real).md", 0)
@@ -295,12 +352,6 @@ def build_abstract():
         en_q, en_a, es_q, es_a, id_prefix='abs-real', phase='reasoning', skill='abstract',
         source='Abstract Reasoning Test — 120 Questions (real published book)',
         extra_tags=['real'],
-    )
-    en_q, en_a = split_bank(ai_body)
-    es_q, es_a = es_bank_chapter("3.- Razonamiento abstracto (banco bonus).md", 0)
-    ai_questions = parse_question_bank_bilingual(
-        en_q, en_a, es_q, es_a, id_prefix='abs-ai', phase='reasoning', skill='abstract',
-        extra_tags=['ai-generated'],
     )
     es_title, es_body = es_theory_chapter("3.- Razonamiento abstracto (teoría).md")
     theory = {
@@ -311,7 +362,7 @@ def build_abstract():
         'summaryMd': {'en': theory_body, 'es': es_body},
         'sourceFile': '3.- Abstract reasoning.md',
     }
-    return real_questions + ai_questions, [theory]
+    return real_questions + load_engine_bank(), [theory]
 
 
 FIELD_MCQ_CONFIGS = [

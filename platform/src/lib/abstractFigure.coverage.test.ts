@@ -10,7 +10,16 @@ import { pick, type Locale } from './localeStore'
 // preservarse intacta en la traducción al español (solo cambia el texto
 // explicativo alrededor).
 describe('abstract figure parser coverage against real content', () => {
-  const abstractQuestions = QUESTIONS.filter((q) => q.skill === 'abstract')
+  // Sólo las preguntas en NOTACIÓN de texto. Las del motor de figuras llegan
+  // con la figura ya pintada en SVG y sus opciones se llaman 'Figura A': no hay
+  // notación que interpretar, QuestionCard nunca las pasa por el parser (decide
+  // por la presencia de `figure`, con esta misma regla) y contarlas aquí sólo
+  // diluiría la proporción —80 preguntas bastaban para bajarla del 87 % al
+  // 56 %—. Sus garantías propias viven en selfCheck y en los tests de
+  // EngineFigure y QuestionCard.
+  const abstractQuestions = QUESTIONS.filter(
+    (q) => q.skill === 'abstract' && !q.options.every((o) => typeof o.figure === 'string'),
+  )
 
   it('has questions to check', () => {
     expect(abstractQuestions.length).toBeGreaterThan(100)

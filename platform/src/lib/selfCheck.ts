@@ -25,6 +25,7 @@ import {
   loadReasoningContent,
   loadTestDayContent,
 } from '../data/contentLoader'
+import { svgProblem } from './engineFigure'
 
 export interface Bundle {
   QUESTIONS: Question[]
@@ -116,6 +117,72 @@ function issue(where: string, es: string, en: string): Issue {
   return { where, problem: { es, en } }
 }
 
+/** Ejercicios del motor de figuras abstractas. La figura ES la pregunta: un
+ * SVG roto, una opción sin figura o un tablero sin casilla por adivinar dejan
+ * una pregunta que no se puede responder, y no hay texto que la salve. */
+function engineFigureIssues(q: Question, at: string): Issue[] {
+  const withFigure = q.options.filter((o) => o.figure !== undefined)
+  const isEngine = withFigure.length > 0 || q.board !== undefined || q.figureOnly !== undefined
+  if (!isEngine) return []
+
+  const issues: Issue[] = []
+  const allFigures = q.options.length > 0 && withFigure.length === q.options.length
+
+  if (!allFigures) {
+    issues.push(
+      issue(
+        at,
+        `${withFigure.length} de ${q.options.length} opciones traen figura`,
+        `${withFigure.length} of ${q.options.length} options carry a figure`,
+      ),
+    )
+  }
+  // La interfaz decide por la presencia de la figura; el indicador del
+  // exportador tiene que decir lo mismo, o uno de los dos miente.
+  if ((q.figureOnly === true) !== allFigures) {
+    issues.push(
+      issue(
+        at,
+        `figureOnly=${q.figureOnly} no cuadra con las figuras de las opciones`,
+        `figureOnly=${q.figureOnly} does not match the options' figures`,
+      ),
+    )
+  }
+  // Sin semilla ni contentHash no hay forma de volver a encontrar este
+  // ejercicio en el banco del motor, ni de saber que es el que se validó.
+  if (!q.provenance?.contentHash || !q.provenance.seed) {
+    issues.push(issue(at, 'sin procedencia (seed y contentHash)', 'no provenance (seed and contentHash)'))
+  }
+
+  for (const o of withFigure) {
+    const problem = svgProblem(o.figure!)
+    if (problem) issues.push({ where: `${at} · opción ${o.id}`, problem })
+  }
+
+  if (q.board) {
+    const cells = q.board.rows.flat()
+    const unknown = cells.filter((cell) => cell === null).length
+    // Sin tablero —buscar la que sobra— no hay casilla que adivinar; con
+    // tablero tiene que haber exactamente una, o no se sabe qué se pregunta.
+    if (cells.length > 0 && unknown !== 1) {
+      issues.push(
+        issue(
+          at,
+          `el tablero tiene ${unknown} casillas por adivinar (se espera 1)`,
+          `the board has ${unknown} cells to guess (1 expected)`,
+        ),
+      )
+    }
+    cells.forEach((svg, i) => {
+      if (svg === null) return
+      const problem = svgProblem(svg)
+      if (problem) issues.push({ where: `${at} · casilla ${i + 1}`, problem })
+    })
+  }
+
+  return issues
+}
+
 function questionIssues(q: Question, target: ContentTarget): Issue[] {
   const at = `${target.id} / ${q.id}`
   const issues: Issue[] = []
@@ -155,6 +222,8 @@ function questionIssues(q: Question, target: ContentTarget): Issue[] {
       issue(at, `${correct.length} opciones correctas (se espera 1)`, `${correct.length} correct options (1 expected)`),
     )
   }
+
+  issues.push(...engineFigureIssues(q, at))
 
   for (const o of q.options) {
     issues.push(...localizedIssues(o.text, `${at} · opción ${o.id}`))

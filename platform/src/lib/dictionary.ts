@@ -131,8 +131,15 @@ export const DICT = {
 
   // PracticeBank
   filter_real_bank: { es: 'Banco real', en: 'Real bank' },
-  filter_ai_bank: { es: 'Bonus (generado)', en: 'Bonus (generated)' },
+  // Era «Bonus (generado)». Con las figuras del motor en el mismo filtro
+  // habría dos procedencias «generadas», y el candidato no tendría forma de
+  // saber cuál es cuál.
+  filter_ai_bank: { es: 'Bonus (IA)', en: 'Bonus (AI)' },
+  filter_engine_bank: { es: 'Generadas', en: 'Generated' },
   filter_all: { es: 'Todo', en: 'All' },
+  figure_board_cell_alt: { es: 'Fila {row}, casilla {col} del tablero', en: 'Board row {row}, cell {col}' },
+  figure_board_unknown_alt: { es: 'Casilla que falta', en: 'Missing cell' },
+  figure_option_alt: { es: 'Figura {id}', en: 'Figure {id}' },
   n_questions: { es: '{n} preguntas', en: '{n} questions' },
   // El color solo no sirve: quien no lo distingue necesita leer el veredicto.
   answered_correct: { es: 'Acertada', en: 'Answered correctly' },
