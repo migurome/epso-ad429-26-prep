@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Check, Download, RotateCcw, Share2, Trash2, Undo2, Upload } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
+import { DriveSyncCard } from '../components/DriveSyncCard'
 import { useProgressStore } from '../lib/progressStore'
 import { useStudyStore } from '../lib/studyStore'
 import { useCompetitionStore } from '../lib/competitionStore'
@@ -315,6 +316,11 @@ export function SettingsPage() {
               />
             </FormField>
           </div>
+        </Card>
+
+        {/* ── Sincronización automática con Drive ───────────────────────── */}
+        <Card title={t('settings_drive')} description={t('settings_drive_description')}>
+          <DriveSyncCard />
         </Card>
 
         {/* ── Llevar el progreso a otro dispositivo ─────────────────────── */}

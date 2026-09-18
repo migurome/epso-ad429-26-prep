@@ -482,6 +482,88 @@ export const DICT = {
     es: 'Idioma del enunciado y las opciones',
     en: 'Language of the question and options',
   },
+  // Tablón de convocatorias
+  nav_board: { es: 'Tablón', en: 'Noticeboard' },
+  board_eyebrow: { es: 'Convocatorias', en: 'Competitions' },
+  board_title: { es: 'Tablón de convocatorias', en: 'Competition noticeboard' },
+  board_description: {
+    es: 'Todas las oposiciones de personal permanente que EPSO ha publicado este año, abiertas o no, y cualquiera que esté abierta ahora mismo. Un bot revisa los listados de EPSO todos los días.',
+    en: 'Every competition for permanent staff EPSO has published this year, open or not, plus anything open right now. A bot checks the EPSO listings every day.',
+  },
+  board_fresh_legend: {
+    es: 'En verde, las publicadas en el último mes.',
+    en: 'In green, the ones published in the last month.',
+  },
+  board_opened_on: { es: 'Publicada el {date}', en: 'Published on {date}' },
+  board_stage_open: { es: 'Abiertas ahora', en: 'Open now' },
+  board_stage_in_progress: {
+    es: 'En curso, con el plazo ya cerrado',
+    en: 'In progress, applications closed',
+  },
+  board_stage_closed: { es: 'Terminadas', en: 'Finished' },
+  board_sources: { es: 'Listados que vigila el bot', en: 'Listings the bot watches' },
+  board_never_checked: {
+    es: 'El bot no ha revisado la web todavía.',
+    en: 'The bot has not checked the website yet.',
+  },
+  board_year: { es: 'Año publicado entero', en: 'Year published in full' },
+  board_watching_since: { es: 'Vigilando desde', en: 'Watching since' },
+  board_last_news: { es: 'Última novedad', en: 'Latest change' },
+  board_new: { es: 'Nueva', en: 'New' },
+  board_updated: { es: 'Algo cambió el {date}', en: 'Something changed on {date}' },
+  board_stage_changed: { es: 'Cambió de fase el {date}', en: 'Stage changed on {date}' },
+  board_days_left: { es: 'quedan {days} días', en: '{days} days left' },
+  board_day_left: { es: 'queda 1 día', en: '1 day left' },
+  board_deadline_passed: { es: 'plazo terminado', en: 'deadline passed' },
+  board_apply: { es: 'Ver en EPSO', en: 'View on EPSO' },
+  board_empty_title: {
+    es: 'El tablón todavía está vacío',
+    en: 'The noticeboard is still empty',
+  },
+  board_empty_body: {
+    es: 'El bot no ha encontrado ninguna convocatoria que publicar. Sigue mirando cada día.',
+    en: 'The bot has not found any competition to publish. It keeps checking every day.',
+  },
+  board_source_note: {
+    es: 'Los títulos, los números de convocatoria, las sedes y los plazos se copian tal cual de los listados de EPSO, con su horario de Bruselas.',
+    en: 'Titles, reference numbers, locations and deadlines are copied verbatim from the EPSO listings, in its Brussels time.',
+  },
+  // Sincronización con Google Drive
+  settings_drive: { es: 'Sincronizar con Google Drive', en: 'Sync with Google Drive' },
+  settings_drive_description: {
+    es: 'El progreso se guarda en una carpeta de tu Drive cada cinco minutos y se recoge al abrir la sesión, así que el ordenador y el móvil van solos. El fichero manual de abajo sigue estando, para copias de seguridad.',
+    en: 'Your progress is saved to a folder in your Drive every five minutes and picked up when the session starts, so computer and phone keep themselves in step. The manual file below is still there, for backups.',
+  },
+  drive_status_off: { es: 'Sin configurar', en: 'Not configured' },
+  drive_status_disconnected: { es: 'Sin conectar', en: 'Not connected' },
+  drive_status_connecting: { es: 'Conectando…', en: 'Connecting…' },
+  drive_status_ready: { es: 'Al día', en: 'Up to date' },
+  drive_status_syncing: { es: 'Sincronizando…', en: 'Syncing…' },
+  drive_status_error: { es: 'Con un problema', en: 'Something went wrong' },
+  drive_last_sync: { es: 'Última vez: {when}', en: 'Last time: {when}' },
+  drive_never_synced: { es: 'Todavía no se ha sincronizado', en: 'Not synced yet' },
+  drive_connect: { es: 'Conectar con Drive', en: 'Connect to Drive' },
+  drive_sync_now: { es: 'Sincronizar ahora', en: 'Sync now' },
+  drive_disconnect: { es: 'Desconectar', en: 'Disconnect' },
+  drive_auto: { es: 'Guardar cada cinco minutos', en: 'Save every five minutes' },
+  drive_auto_hint: {
+    es: 'Sólo mientras esta pestaña esté abierta, y también al cambiar de pestaña. Google pide permiso otra vez cada hora, con un clic.',
+    en: 'Only while this tab is open, and also when you switch tabs. Google asks for permission again every hour, with one click.',
+  },
+  drive_where: { es: 'Carpeta «{folder}» de tu Drive, fichero {file}.', en: 'Folder "{folder}" in your Drive, file {file}.' },
+  drive_client_label: {
+    es: 'Identificador de cliente de Google',
+    en: 'Google client ID',
+  },
+  drive_client_hint: {
+    es: 'Se crea una vez en Google Cloud, en Credenciales → ID de cliente de OAuth → Aplicación web, autorizando este sitio como origen.',
+    en: 'Created once in Google Cloud, under Credentials → OAuth client ID → Web application, authorising this site as an origin.',
+  },
+  drive_client_save: { es: 'Guardar identificador', en: 'Save client ID' },
+  drive_client_not_secret: {
+    es: 'No es una contraseña: va a la vista en cualquier web que use Drive.',
+    en: 'It is not a password: it is visible in any site that uses Drive.',
+  },
 } satisfies Record<string, Localized>
 
 export type DictKey = keyof typeof DICT

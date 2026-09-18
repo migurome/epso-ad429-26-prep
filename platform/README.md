@@ -184,6 +184,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.3` | Tablón de convocatorias: un bot revisa los listados de EPSO a diario. Y el progreso se sincroniza con Google Drive, sin ficheros a mano. |
 | `1.2` | Figuras generadas por el motor en razonamiento abstracto, con su propia procedencia en el filtro; fuera el banco bonus de IA de esa sección. |
 | `1.1` | Exportar e importar el progreso, para llevarlo entre el ordenador y el móvil. |
 | `1.0` | Primera versión con el esquema de versionado en marcha. |
@@ -284,6 +285,86 @@ En EPSO lo vigilan tres capas:
 | `QuestionCard` | Pinta cada figura dentro de una `<img>`: el SVG no ejecuta nada, sus estilos no se escapan y sus ids no chocan con los de otra figura |
 
 Sin fichero, `build_content.py` no añade ninguna pregunta, y no es un error.
+
+## Tablón de convocatorias
+
+La pestaña **Tablón** publica las oposiciones de personal permanente que EPSO ha
+publicado este año —abiertas o no— y cualquiera que esté abierta ahora mismo.
+En verde, las publicadas en el último mes.
+
+EPSO no tiene feed ni API: sus listados son tablas de una vista de Drupal, y el
+bot se agarra a los nombres de campo (`field-epso-deadline`), no a la
+maquetación. Lee tres, porque cada uno sabe algo que los otros no:
+
+| Listado | Lo que aporta |
+| --- | --- |
+| `open-competition-permanent-staff` | grado, sedes y plazo de presentación |
+| `job-opportunities/in-progress` | el número oficial (`EPSO/AD/429/26 - 1`) |
+| `job-opportunities/closed` | el número de lo ya terminado, paginado |
+
+Y entra **una sola vez** en la ficha de cada convocatoria para leer su
+calendario («Application period: 08/09/2026 - …»): los listados no publican
+fecha de publicación, y sin ella «nueva» sólo podría significar «la vimos hoy»,
+que el primer día es verdad para todas.
+
+```bash
+node scripts/board_fetch.mjs                 # lee EPSO y guarda Docs/board/notices.json
+node scripts/board_fetch.mjs --dry-run       # lee y cuenta, sin escribir
+node scripts/board_fetch.mjs --from carpeta  # lee páginas guardadas, sin red
+python scripts/build_content.py              # el JSON pasa a src/data/board.generated.ts
+```
+
+**La regla que manda sobre todas:** si un listado deja de tener la forma que el
+lector espera, el bot **falla y no escribe nada**. Un raspador que ante un
+cambio de plantilla devuelve cero en silencio haría que el tablón dijera «no hay
+convocatorias» justo el día que salga la que importa. Una lista vacía de verdad
+sí es legítima, y se distingue porque la cabecera de la tabla sigue estando.
+
+`.github/workflows/board.yml` lo ejecuta a diario (06:20 UTC), regenera el
+contenido, commitea **sólo si algo cambió** y pide el despliegue a mano: un push
+hecho con el `GITHUB_TOKEN` no dispara otros workflows. El fichero no guarda
+ninguna marca de «revisado hoy», que crearía un commit vacío cada día; que la
+revisión se hizo lo cuenta el historial de ejecuciones. Y GitHub desactiva los
+workflows programados tras 60 días sin actividad en el repositorio.
+
+## Sincronización con Google Drive
+
+El progreso se guarda en una carpeta del Drive del candidato cada cinco minutos,
+al cambiar de pestaña y al abrir la sesión, para que el ordenador y el móvil
+vayan solos. Se configura en **Ajustes → Sincronizar con Google Drive**.
+
+| Pieza | Papel |
+| --- | --- |
+| `driveSync.ts` | Todas las decisiones: cuándo bajar, cuándo fusionar, cuándo subir. Sin red, probado entero |
+| `driveApi.ts` | Las cuatro llamadas a Drive: buscar carpeta, buscar fichero, bajar, subir |
+| `googleAuth.ts` | El permiso de Google. El token vive en memoria, nunca en disco |
+| `driveSyncEngine.ts` | El reloj. Lo arranca el armazón, una vez por pestaña |
+
+Tres decisiones protegen el trabajo del candidato:
+
+- **Al arrancar se fusiona, no se sustituye**, con la misma fusión del fichero
+  manual (`backup.ts`): el calendario se queda con el máximo de cada día y los
+  intentos se unen por id. Es idempotente, y eso importa porque el reloj va a
+  bajar el mismo fichero muchas veces.
+- **Sólo se sube si el estado cambió de verdad.** La huella ignora la hora de
+  exportación; con ella dentro, cada ciclo subiría una copia idéntica y el Drive
+  del candidato acabaría con cientos de versiones.
+- **Un fallo al subir no deshace lo fusionado**, y el ciclo siguiente reintenta.
+  Y si Drive no contesta al leer, no se sube nada a ciegas: sobrescribiría lo
+  que hubiera allí.
+
+El identificador de cliente OAuth va en `googleConfig.ts` o pegado en Ajustes.
+**No es un secreto**: en una aplicación que vive entera en el navegador no hay
+dónde esconder nada, y lo que impide que otro sitio lo use es la lista de
+orígenes autorizados que se configura junto a él en Google Cloud. El permiso que
+se pide es `drive.file`, el más estrecho que existe: sólo alcanza a lo que la
+propia web crea —la carpeta `EPSO_savedata` y su `epso-prep-estado.json`—, y el
+resto del Drive es invisible para ella.
+
+Dos límites que la interfaz no esconde, porque si no el candidato creerá que la
+web se ha roto: el permiso de Google **caduca cada hora** (se renueva con un
+clic) y el guardado automático **sólo corre con la pestaña abierta**. El fichero
+manual de Ajustes sigue existiendo para copias de seguridad.
 
 ## Estado actual
 

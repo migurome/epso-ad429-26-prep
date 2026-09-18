@@ -1,0 +1,75 @@
+# Revisión diaria de las convocatorias de EPSO para el tablón.
+#
+# El bot lee la página de oposiciones permanentes y actualiza
+# `Docs/board/notices.json`. Si no hay novedades no commitea nada: el fichero
+# no lleva marca de «revisado hoy» justamente para que el repositorio no se
+# llene de commits vacíos. Que la revisión se hizo lo cuenta el historial de
+# ejecuciones de aquí.
+#
+# Si EPSO cambia la plantilla de su listado, el bot sale con error y esta
+# ejecución aparece como fallida (y GitHub te avisa por correo). Eso es
+# deliberado: preferimos un fallo visible a un tablón que diga «no hay
+# convocatorias» porque dejó de entender la página.
+name: 'Tablón: convocatorias de EPSO'
+
+on:
+  schedule:
+    # 06:20 UTC a diario. EPSO publica en horario de Bruselas, así que a esta
+    # hora ya está en la página cualquier cambio del día anterior.
+    - cron: '20 6 * * *'
+  workflow_dispatch:
+
+# Escribe en el repositorio (el fichero del tablón) y pide el despliegue.
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: board
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Sin `npm ci`: el bot solo usa la librería estándar de Node.
+      - name: Leer el listado de EPSO
+        working-directory: platform
+        run: node scripts/board_fetch.mjs
+
+      # La web no lee el JSON: lee `src/data/board.generated.ts`. Sin este
+      # paso el tablón publicado se quedaría con el listado de ayer.
+      - name: Regenerar el contenido del tablón
+        working-directory: platform
+        run: python scripts/build_content.py
+
+      - name: Subir las novedades y desplegar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- Docs/board/notices.json platform/src/data/board.generated.ts; then
+            echo 'Sin novedades: el fichero del tablón no ha cambiado.'
+            exit 0
+          fi
+          git config user.name 'epso-board-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Docs/board/notices.json platform/src/data/board.generated.ts
+          git commit -m 'Tablón: novedades en las convocatorias de EPSO'
+          git push
+          # Un push hecho con el GITHUB_TOKEN no dispara otros workflows, así
+          # que el despliegue hay que pedirlo a mano o la web publicada se
+          # quedaría con el tablón de ayer.
+          gh workflow run 'Deploy to GitHub Pages' --ref main

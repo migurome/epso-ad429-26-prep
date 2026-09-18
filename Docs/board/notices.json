@@ -1,0 +1,125 @@
+{
+  "format": 2,
+  "sources": [
+    {
+      "stage": "open",
+      "url": "https://eu-careers.europa.eu/en/open-competition-permanent-staff"
+    },
+    {
+      "stage": "in-progress",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/in-progress"
+    },
+    {
+      "stage": "closed",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/closed"
+    }
+  ],
+  "year": 2026,
+  "since": "2026-09-18",
+  "notices": [
+    {
+      "id": "epso-ad-430-26-2",
+      "title": "Cybersecurity",
+      "url": "https://eu-careers.europa.eu/en/apply-ict-competition-ad8",
+      "reference": "EPSO/AD/430/26 - 2",
+      "stage": "open",
+      "year": 2026,
+      "grade": "AD 8",
+      "locations": [
+        "Brussels (Belgium)",
+        "Luxembourg (Luxembourg)",
+        "Strasbourg (France)"
+      ],
+      "deadline": "2026-10-13T10:00:00Z",
+      "deadlineText": "13/10/2026 - 12:00",
+      "firstSeen": "2026-09-18",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/cybersecurity",
+      "openedOn": "2026-09-08"
+    },
+    {
+      "id": "epso-ad-430-26-1",
+      "title": "Artificial intelligence (AI)",
+      "url": "https://eu-careers.europa.eu/en/apply-ict-competition-ad8",
+      "reference": "EPSO/AD/430/26 - 1",
+      "stage": "open",
+      "year": 2026,
+      "grade": "AD 8",
+      "locations": [
+        "Brussels (Belgium)",
+        "Luxembourg (Luxembourg)",
+        "Strasbourg (France)"
+      ],
+      "deadline": "2026-10-13T10:00:00Z",
+      "deadlineText": "13/10/2026 - 12:00",
+      "firstSeen": "2026-09-18",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/artificial-intelligence-ai",
+      "openedOn": "2026-09-08"
+    },
+    {
+      "id": "epso-ad-429-26-4",
+      "title": "Data science",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/data-science",
+      "reference": "EPSO/AD/429/26 - 4",
+      "stage": "in-progress",
+      "year": 2026,
+      "firstSeen": "2026-09-18",
+      "openedOn": "2026-05-06",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/data-science"
+    },
+    {
+      "id": "epso-ad-429-26-3",
+      "title": "Clouds and networks",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/clouds-and-networks",
+      "reference": "EPSO/AD/429/26 - 3",
+      "stage": "in-progress",
+      "year": 2026,
+      "firstSeen": "2026-09-18",
+      "openedOn": "2026-05-06",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/clouds-and-networks"
+    },
+    {
+      "id": "epso-ad-429-26-2",
+      "title": "ICT project management",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/ict-project-management",
+      "reference": "EPSO/AD/429/26 - 2",
+      "stage": "in-progress",
+      "year": 2026,
+      "firstSeen": "2026-09-18",
+      "openedOn": "2026-05-06",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/ict-project-management"
+    },
+    {
+      "id": "epso-ad-429-26-1",
+      "title": "ICT infrastructure",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/ict-infrastructure",
+      "reference": "EPSO/AD/429/26 - 1",
+      "stage": "in-progress",
+      "year": 2026,
+      "firstSeen": "2026-09-18",
+      "openedOn": "2026-05-06",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/ict-infrastructure"
+    },
+    {
+      "id": "epso-ad-428-26",
+      "title": "Administrators in the field of Audit",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/administrators-field-audit-2",
+      "reference": "EPSO/AD/428/26",
+      "stage": "in-progress",
+      "year": 2026,
+      "firstSeen": "2026-09-18",
+      "openedOn": "2026-04-14",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/administrators-field-audit-2"
+    },
+    {
+      "id": "epso-ad-427-26",
+      "title": "Graduate administrators",
+      "url": "https://eu-careers.europa.eu/en/job-opportunities/graduate-administrators",
+      "reference": "EPSO/AD/427/26",
+      "stage": "in-progress",
+      "year": 2026,
+      "firstSeen": "2026-09-18",
+      "openedOn": "2026-02-05",
+      "infoUrl": "https://eu-careers.europa.eu/en/job-opportunities/graduate-administrators"
+    }
+  ]
+}

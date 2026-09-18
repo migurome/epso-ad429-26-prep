@@ -67,7 +67,7 @@ está toda declarada en datos, no escrita a mano en los tests:
 
 | Eje | Valores | De dónde sale |
 | --- | --- | --- |
-| Rutas | 14 rutas + comodín | `src/App.tsx` |
+| Rutas | 15 rutas + comodín | `src/App.tsx` |
 | Ámbitos | 6 (4 de la AD7 + 2 de la AD8) | `COMPETITIONS` en `src/data/competition.ts` |
 | Convocatorias | AD7, AD8 | `COMPETITION_ORDER` |
 | Idiomas | es, en | `localeStore` |
@@ -101,14 +101,15 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 733 tests en 30 archivos
+### 3. `unit` — 841 tests en 35 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
 | `src/components/ShapeIcon.test.tsx` | 98 | Que **toda** forma declarada se dibuje, y que relleno, tamaño y giro se distingan |
-| `src/App.routes.test.tsx` | 74 | Cada ruta, la portada de acceso, el ceñido al ámbito y la navegación |
+| `src/App.routes.test.tsx` | 76 | Cada ruta, la portada de acceso, el ceñido al ámbito y la navegación |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/selfCheck.test.ts` | 42 | Que **las comprobaciones de contenido detecten** lo que prometen, figuras del motor incluidas |
+| `scripts/epsoBoard.test.mjs` | 38 | Que un cambio de plantilla en EPSO **reviente** en vez de devolver cero convocatorias, y que juntar sus tres listados no cuelgue a una el número de otra |
 | `src/components/FigurePanelView.test.tsx` | 36 | Rejilla, bandas, filas y marco: cómo se lee una figura |
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
 | `src/components/PracticeBank.test.tsx` | 32 | Filtro de tres procedencias, enunciado entero, marca de evaluada, persistencia y reactivación |
@@ -117,20 +118,24 @@ no es un hallazgo sobre el código.
 | `src/components/FullscreenPractice.test.tsx` | 24 | La vista de abstracto: navegación, filtro de tres procedencias y el índice fuera de rango |
 | `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
 | `src/pages/CoursePage.test.tsx` | 22 | Formación: guardas de ámbito y de módulo, y el simulacro proporcional |
-| `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
-| `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
+| `src/lib/board.test.ts` | 21 | Qué cuenta como «nueva» en el tablón —la fecha de EPSO, no el día en que la vimos— y el orden por fase |
 | `src/lib/engineFigure.test.ts` | 21 | Que no entre un SVG que no haya salido del motor tal cual ni uno que no sea XML bien formado, y su URL de datos |
-| `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
+| `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
+| `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
+| `src/components/BoardView.test.tsx` | 19 | El tablón: el verde del último mes, el plazo con la hora de Bruselas y el año entero, no sólo lo abierto |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
+| `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
+| `src/lib/driveSync.test.ts` | 16 | Drive: que al bajar se **fusione**, que no se suba lo que no ha cambiado y que un fallo al subir no deshaga lo fusionado |
 | `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
-| `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/lib/questionSource.test.ts` | 13 | De qué banco viene cada pregunta y dónde arranca el filtro |
 | `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
+| `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
+| `src/components/DriveSyncCard.test.tsx` | 12 | La tarjeta de Drive: en qué punto está la sincronización y qué puede hacer el candidato |
+| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/EngineFigure.test.tsx` | 11 | El tablero del motor: la serie cabe en un móvil y el «?» mide lo mismo que las figuras |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
 | `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
-| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/pages/LoginPage.test.tsx` | 10 | Credenciales y la penalización de tres segundos al fallar |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
@@ -248,7 +253,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 97 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 113 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
@@ -317,6 +322,17 @@ Conviene tenerlo claro para no confiar de más:
   respuesta correcta, no que sea la correcta. Eso lo garantiza el origen: el
   anexo II de la convocatoria y las fuentes de `Referencias.txt`.
 - **Rendimiento y accesibilidad**, más allá de que exista un `<nav>`.
+- **La ventana de permiso de Google.** Pedir el token, la caducidad a la hora y
+  la llamada real a Drive necesitan un navegador de verdad y una cuenta; ningún
+  test los toca. Lo que sí está probado entero, sin red, es **qué se decide**:
+  cuándo se baja, cuándo se fusiona y cuándo se sube (`driveSync.test.ts`, con
+  un Drive de mentira). La frontera está en `driveApi.ts` y `googleAuth.ts`,
+  que son deliberadamente tontos y no deciden nada.
+- **Que los listados de EPSO sigan teniendo la forma de hoy.** Las pruebas del
+  tablón usan páginas guardadas el 18/09/2026; si EPSO cambia su plantilla, los
+  tests seguirán en verde y lo que fallará es el cron, que para eso sale con
+  error en vez de escribir un tablón vacío. Ésa es la comprobación de verdad, y
+  vive en el historial de ejecuciones del workflow, no aquí.
 - **El vaciado del selector de fichero** en Ajustes (`e.target.value = ''`, en
   `pickFile`). El navegador real no dispara `change` al reelegir el fichero que
   el input ya tiene, así que sin vaciarlo el segundo intento no haría nada;

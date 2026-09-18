@@ -8,6 +8,7 @@ import {
   GraduationCap,
   PenLine,
   Link2,
+  Megaphone,
   ChevronRight,
   X,
 } from 'lucide-react'
@@ -53,6 +54,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     { to: '/campo', label: t('nav_field_mcq'), icon: ListChecks, children: fieldChildren },
     { to: '/eufte', label: t('nav_eufte'), icon: PenLine },
     { to: '/recursos', label: t('nav_resources'), icon: Link2 },
+    // El tablón no es una fase de la oposición: es lo que pasa fuera, en la
+    // web de EPSO. Va al final porque se consulta de vez en cuando, no a
+    // diario como el estudio.
+    { to: '/tablon', label: t('nav_board'), icon: Megaphone },
   ]
 
   // Lo del candidato —progreso, calendario, día del examen, ajustes y la
