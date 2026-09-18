@@ -843,8 +843,19 @@ MUTATIONS = [
     (
         "un acceso fallido deja escrita la contraseña equivocada",
         "src/components/LoginForm.tsx",
-        "      setPassword('')",
-        "      // MUTADO",
+        # Con la sangría exacta y la línea siguiente pegada. Sin eso el patrón
+        # encajaba también dentro de la rama de crear cuenta —seis espacios son
+        # subcadena de ocho—, mutaba la otra y dejaba a este test sin nada que
+        # detectar. Sobrevivió una vez por esto, y el hueco que destapó era real.
+        "      setError(result.message)\n      setPassword('')\n    }\n  }",
+        "      setError(result.message)\n    }\n  }",
+        "src/components/LoginForm.test.tsx",
+    ),
+    (
+        "crear la cuenta con una contraseña rechazada la deja escrita",
+        "src/components/LoginForm.tsx",
+        "        setError(result.message)\n        setPassword('')\n        return",
+        "        setError(result.message)\n        return",
         "src/components/LoginForm.test.tsx",
     ),
     (
@@ -974,6 +985,105 @@ MUTATIONS = [
         "  URL.revokeObjectURL(url)",
         "  // MUTADO",
         "src/lib/download.test.ts",
+    ),
+    # ── Pedir acceso antes de tener cuenta ────────────────────────────────
+    (
+        "el correo repetido delata a quien ya había pedido acceso",
+        "src/lib/access.ts",
+        "  if (error.code === '23505') return { ok: true }",
+        "  // MUTADO",
+        "src/lib/access.test.ts",
+    ),
+    (
+        "el correo viaja tal como se escribió, y el mismo entra dos veces",
+        "src/lib/access.ts",
+        "  return raw.trim().toLowerCase()",
+        "  return raw",
+        "src/lib/access.test.ts",
+    ),
+    (
+        "se decide sobre la solicitud de quien ya tiene cuenta, y no hace nada",
+        "src/lib/access.ts",
+        "  if (hasAccount) return { ok: false, reason: 'account' }",
+        "  // MUTADO",
+        "src/components/AdminPanel.test.tsx",
+    ),
+    (
+        "cualquier cosa pasa por correo",
+        "src/lib/access.ts",
+        "  if (!SHAPE.test(email)) return { ok: false, reason: 'shape' }",
+        "  // MUTADO",
+        "src/lib/access.test.ts",
+    ),
+    (
+        "la cola deja de poner primero lo que espera decisión",
+        "src/lib/access.ts",
+        "      RANK[a.status] - RANK[b.status] ||",
+        "",
+        "src/lib/access.test.ts",
+    ),
+    (
+        "un estado desconocido de la cola se da por aprobado",
+        "src/lib/access.ts",
+        "    status: status === 'approved' || status === 'rejected' ? status : 'pending',",
+        "    status: 'approved',",
+        "src/lib/access.test.ts",
+    ),
+    (
+        "el número de arriba olvida las solicitudes",
+        "src/components/AdminPanel.tsx",
+        "  const waiting = pendingCount(accounts) + waitingRequests(requests)",
+        "  const waiting = pendingCount(accounts)",
+        "src/components/AdminPanel.test.tsx",
+    ),
+    (
+        "quitar una solicitud no pregunta antes",
+        "src/components/AdminPanel.tsx",
+        "            onClick={() =>\n"
+        "              window.confirm(t('admin_req_confirm_remove', { email: request.email })) &&\n"
+        "              onRemove(request)\n"
+        "            }\n",
+        "            onClick={() => onRemove(request)}\n",
+        "src/components/AdminPanel.test.tsx",
+    ),
+    (
+        "se dice que la solicitud está enviada aunque el servidor la rechace",
+        "src/components/LoginForm.tsx",
+        "      if (result.ok) setPanel('asked')",
+        "      setPanel('asked')",
+        "src/components/LoginForm.test.tsx",
+    ),
+    (
+        "crear la cuenta sin quedar dentro no avisa de nada",
+        "src/components/LoginForm.tsx",
+        "      if (!result.inside) setPanel('created')",
+        "      // MUTADO",
+        "src/components/LoginForm.test.tsx",
+    ),
+    (
+        "pedir acceso vuelve a pedir una contraseña que todavía no protege nada",
+        "src/components/LoginForm.tsx",
+        "        {!asking && (",
+        "        {true && (",
+        "src/components/LoginForm.test.tsx",
+    ),
+    (
+        "el navegador vuelve a tragarse el aviso del correo mal escrito",
+        "src/components/LoginForm.tsx",
+        "        noValidate\n",
+        "",
+        "src/components/LoginForm.test.tsx",
+    ),
+    (
+        "un correo con mala forma llega hasta la base",
+        "src/components/LoginForm.tsx",
+        "      const read = checkEmail(email)\n"
+        "      if (!read.ok) {\n"
+        "        setError(t('login_ask_bad_email'))\n"
+        "        return\n"
+        "      }\n",
+        "      const read = { ok: true, email } as const\n",
+        "src/components/LoginForm.test.tsx",
     ),
 ]
 

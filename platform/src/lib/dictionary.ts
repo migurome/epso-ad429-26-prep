@@ -30,12 +30,34 @@ export const DICT = {
   login_password: { es: 'Contraseña', en: 'Password' },
   login_submit: { es: 'Entrar', en: 'Sign in' },
   login_checking: { es: 'Comprobando…', en: 'Checking…' },
-  login_create: { es: 'Crear una cuenta', en: 'Create an account' },
-  login_create_submit: { es: 'Crear la cuenta', en: 'Create the account' },
+  login_ask: { es: 'Pedir acceso', en: 'Request access' },
+  login_ask_submit: { es: 'Enviar la solicitud', en: 'Send the request' },
+  login_ask_note: {
+    es: 'Sólo hace falta tu correo. La contraseña la elegirás tú después, cuando el administrador te dé el visto bueno.',
+    en: 'Your email is all it takes. You will choose the password later, once the administrator gives you the go-ahead.',
+  },
+  login_ask_sent_title: { es: 'Solicitud enviada', en: 'Request sent' },
+  login_ask_sent_body: {
+    es: 'Queda en la lista del administrador. Cuando te dé el visto bueno, vuelve aquí, elige «Ya me han dado acceso» y pon tu contraseña.',
+    en: 'It is now on the administrator’s list. Once they give you the go-ahead, come back here, choose “I have been given access” and set your password.',
+  },
+  login_ask_bad_email: { es: 'Eso no parece un correo.', en: 'That does not look like an email address.' },
+  login_ask_back: { es: 'Volver a entrar', en: 'Back to signing in' },
+  login_create: { es: 'Ya me han dado acceso', en: 'I have been given access' },
+  login_create_submit: { es: 'Crear mi contraseña', en: 'Set my password' },
+  login_create_note: {
+    es: 'Escribe el mismo correo con el que pediste acceso y elige una contraseña. Si todavía no te han dado el visto bueno, la cuenta se creará igual pero se quedará esperando.',
+    en: 'Use the same email you requested access with and choose a password. If you have not been given the go-ahead yet, the account will still be created, but it will wait.',
+  },
+  login_created_title: { es: 'Mira tu correo', en: 'Check your email' },
+  login_created_body: {
+    es: 'Si el correo era nuevo, la cuenta ya está creada y puede que haya que confirmarla desde tu buzón antes de poder entrar. Si ya tenías cuenta, entra con la contraseña de siempre.',
+    en: 'If the email was new, the account now exists and may need confirming from your inbox before you can sign in. If you already had an account, sign in with your usual password.',
+  },
   login_have_account: { es: 'Ya tengo cuenta', en: 'I already have an account' },
   login_note: {
-    es: 'Una cuenta por persona, y el progreso de cada una es sólo suyo. Crear una cuenta no da acceso: la tiene que aprobar el administrador.',
-    en: 'One account per person, and each one’s progress is theirs alone. Creating an account does not grant access: the administrator has to approve it.',
+    es: 'Una cuenta por persona, y el progreso de cada una es sólo suyo. Aquí no se entra sin que el administrador lo apruebe.',
+    en: 'One account per person, and each one’s progress is theirs alone. Nobody gets in without the administrator approving it.',
   },
   access_pending_title: { es: 'Tu cuenta está pendiente de aprobación', en: 'Your account is waiting for approval' },
   access_pending_body: {
@@ -554,6 +576,42 @@ export const DICT = {
   admin_bad_file: {
     es: 'Ese fichero no sirve: no es una copia de progreso de esta aplicación.',
     en: 'That file is no good: it is not a progress backup from this application.',
+  },
+
+  // La cola de solicitudes de acceso
+  admin_requests_title: { es: 'Solicitudes de acceso', en: 'Access requests' },
+  admin_accounts_title: { es: 'Cuentas', en: 'Accounts' },
+  admin_requests_empty: {
+    es: 'Nadie ha pedido acceso todavía.',
+    en: 'Nobody has requested access yet.',
+  },
+  admin_req_status_pending: { es: 'Esperando', en: 'Waiting' },
+  admin_req_status_approved: { es: 'Con el visto bueno', en: 'Given the go-ahead' },
+  admin_req_status_rejected: { es: 'Rechazada', en: 'Rejected' },
+  admin_req_unclaimed: {
+    es: 'Todavía no ha creado su contraseña',
+    en: 'Has not set their password yet',
+  },
+  admin_req_claimed: { es: 'Ya ha creado su cuenta', en: 'Has created their account' },
+  admin_req_approve: { es: 'Dar el visto bueno', en: 'Give the go-ahead' },
+  admin_req_reject: { es: 'Rechazar', en: 'Reject' },
+  admin_req_remove: { es: 'Quitar de la lista', en: 'Remove from the list' },
+  admin_req_account_note: {
+    es: 'Esta persona ya tiene cuenta: su acceso se decide abajo, en las cuentas.',
+    en: 'This person already has an account: their access is decided below, under accounts.',
+  },
+  admin_req_confirm_remove: {
+    es: '¿Quitar la solicitud de {email}? Si vuelve a pedir acceso aparecerá otra vez.',
+    en: 'Remove {email}’s request? If they ask again it will come back.',
+  },
+  admin_done_req_approve: {
+    es: '{email} ya puede crear su contraseña.',
+    en: '{email} can set their password now.',
+  },
+  admin_done_req_reject: { es: 'Solicitud de {email} rechazada.', en: '{email}’s request rejected.' },
+  admin_done_req_remove: {
+    es: 'Solicitud de {email} quitada de la lista.',
+    en: '{email}’s request removed from the list.',
   },
   // El botón de la cabecera
   sync_ago_never: { es: 'Sin guardar', en: 'Not saved' },

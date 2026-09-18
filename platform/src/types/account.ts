@@ -30,3 +30,22 @@ export interface SignedInUser {
   id: string
   email: string
 }
+
+/**
+ * Una solicitud de acceso: un correo que ha llamado a la puerta antes de que
+ * exista ninguna cuenta.
+ *
+ * `claimedAt` es lo que separa «le dije que sí y todavía no ha venido» de «le
+ * dije que sí y ya está dentro». Son dos situaciones que un administrador
+ * atiende de manera distinta, y sin esa fecha se leen igual.
+ */
+export type RequestStatus = 'pending' | 'approved' | 'rejected'
+
+export interface AccessRequest {
+  id: string
+  email: string
+  status: RequestStatus
+  createdAt: string
+  decidedAt: string | null
+  claimedAt: string | null
+}

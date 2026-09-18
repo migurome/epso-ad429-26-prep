@@ -13,7 +13,7 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { AdminPanel } from './AdminPanel'
 import { DICT } from '../lib/dictionary'
 import { useLocaleStore } from '../lib/localeStore'
-import type { Account } from '../types/account'
+import type { AccessRequest, Account } from '../types/account'
 
 const es = (key: keyof typeof DICT) => DICT[key].es
 
@@ -29,6 +29,16 @@ const account = (over: Partial<Account> = {}): Account => ({
 
 const yo = account({ userId: 'admin', email: 'jefe@ejemplo.es', role: 'admin' })
 
+const solicitud = (over: Partial<AccessRequest> = {}): AccessRequest => ({
+  id: 'r1',
+  email: 'llama@ejemplo.es',
+  status: 'pending',
+  createdAt: '2026-09-18T07:00:00.000Z',
+  decidedAt: null,
+  claimedAt: null,
+  ...over,
+})
+
 function show(accounts: Account[], over: Record<string, unknown> = {}) {
   const spies = {
     onApprove: vi.fn(),
@@ -37,9 +47,21 @@ function show(accounts: Account[], over: Record<string, unknown> = {}) {
     onWipe: vi.fn(),
     onDownload: vi.fn(),
     onRestore: vi.fn(),
+    onApproveRequest: vi.fn(),
+    onRejectRequest: vi.fn(),
+    onRemoveRequest: vi.fn(),
   }
   render(
-    <AdminPanel me={yo} accounts={accounts} busy={false} error={null} notice={null} {...spies} {...over} />,
+    <AdminPanel
+      me={yo}
+      accounts={accounts}
+      requests={[]}
+      busy={false}
+      error={null}
+      notice={null}
+      {...spies}
+      {...over}
+    />,
   )
   return spies
 }
@@ -252,5 +274,69 @@ describe('en inglés', () => {
     useLocaleStore.setState({ locale: 'en' })
     show([account({ userId: 'otro', email: 'otro@x.es', status: 'pending' })])
     expect(screen.getByText(DICT.admin_status_pending.en)).toBeTruthy()
+  })
+})
+
+describe('la cola de solicitudes', () => {
+  it('lo que espera se puede aprobar y rechazar', () => {
+    const { onApproveRequest, onRejectRequest } = show([yo], { requests: [solicitud()] })
+    const fila = cardOf('llama@ejemplo.es')
+
+    fireEvent.click(within(fila).getByRole('button', { name: es('admin_req_approve') }))
+    expect(onApproveRequest).toHaveBeenCalledWith(expect.objectContaining({ id: 'r1' }))
+
+    fireEvent.click(within(fila).getByRole('button', { name: es('admin_req_reject') }))
+    expect(onRejectRequest).toHaveBeenCalledWith(expect.objectContaining({ id: 'r1' }))
+  })
+
+  it('de quien ya tiene cuenta no se decide aquí, y se dice por qué', () => {
+    // La guarda que más importa de esta lista: la base lee el visto bueno una
+    // sola vez, al registrarse. Aprobar después no daría acceso a nadie, y el
+    // administrador se quedaría creyendo que sí.
+    const dentro = account({ userId: 'u9', email: 'llama@ejemplo.es', status: 'pending' })
+    show([yo, dentro], { requests: [solicitud()] })
+    const fila = screen.getAllByText('llama@ejemplo.es')[0].closest('li')!
+
+    expect(within(fila).queryByRole('button', { name: es('admin_req_approve') })).toBeNull()
+    expect(within(fila).queryByRole('button', { name: es('admin_req_reject') })).toBeNull()
+    expect(within(fila).getByText(es('admin_req_account_note'))).toBeTruthy()
+  })
+
+  it('un sí dado no se confunde con un sí usado', () => {
+    // Mientras esa persona no vuelva a poner su contraseña no hay cuenta
+    // ninguna, y las dos situaciones se atienden distinto.
+    show([yo], { requests: [solicitud({ status: 'approved' })] })
+    expect(screen.getByText(es('admin_req_unclaimed'))).toBeTruthy()
+
+    cleanup()
+    show([yo], { requests: [solicitud({ status: 'approved', claimedAt: 'ya' })] })
+    expect(screen.getByText(es('admin_req_claimed'))).toBeTruthy()
+  })
+
+  it('quitar una solicitud pregunta antes', () => {
+    const { onRemoveRequest } = show([yo], { requests: [solicitud()] })
+    fireEvent.click(screen.getByRole('button', { name: es('admin_req_remove') }))
+
+    expect(confirmar).toHaveBeenCalled()
+    expect(onRemoveRequest).toHaveBeenCalled()
+  })
+
+  it('y si se contesta que no, no se quita', () => {
+    confirmar.mockReturnValue(false)
+    const { onRemoveRequest } = show([yo], { requests: [solicitud()] })
+    fireEvent.click(screen.getByRole('button', { name: es('admin_req_remove') }))
+
+    expect(onRemoveRequest).not.toHaveBeenCalled()
+  })
+
+  it('sin solicitudes, lo dice en vez de dejar un hueco', () => {
+    show([yo])
+    expect(screen.getByText(es('admin_requests_empty'))).toBeTruthy()
+  })
+
+  it('el número de arriba suma las dos colas', () => {
+    // A quien mira le da igual de cuál viene: quiere saber si tiene trabajo.
+    show([yo, account({ userId: 'u2', status: 'pending' })], { requests: [solicitud()] })
+    expect(screen.getByText('2 esperando tu decisión')).toBeTruthy()
   })
 })

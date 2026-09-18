@@ -2,11 +2,13 @@ import { useCallback, useEffect, useState } from 'react'
 import { PageHeader } from '../components/PageHeader'
 import { AdminPanel } from '../components/AdminPanel'
 import { adminRows } from '../lib/adminApi'
+import { accessRows } from '../lib/accessApi'
 import { decisionFor, progressFilename } from '../lib/admin'
+import { requestDecision } from '../lib/access'
 import { useAccountStore } from '../lib/accountStore'
 import { readSnapshot } from '../lib/backup'
 import { downloadText } from '../lib/download'
-import type { Account } from '../types/account'
+import type { AccessRequest, Account } from '../types/account'
 import { useT } from '../lib/useT'
 
 // El cableado del perfil de administrador con la base de datos.
@@ -24,18 +26,24 @@ import { useT } from '../lib/useT'
 // este navegador se quedan como están.
 
 const rows = adminRows()
+const queue = accessRows()
 
 export function AdminPage() {
   const t = useT()
   const me = useAccountStore((s) => s.account)
   const [accounts, setAccounts] = useState<Account[] | null>(null)
+  const [requests, setRequests] = useState<AccessRequest[] | null>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [notice, setNotice] = useState<string | null>(null)
 
   const reload = useCallback(async () => {
     try {
-      setAccounts(await rows.list())
+      // Las dos listas a la vez: se leen juntas porque se miran juntas, y una
+      // sola de ellas cuenta la mitad de la historia.
+      const [cuentas, cola] = await Promise.all([rows.list(), queue.list()])
+      setAccounts(cuentas)
+      setRequests(cola)
       setError(null)
     } catch (e) {
       setError(message(e))
@@ -68,7 +76,7 @@ export function AdminPage() {
     <div>
       <PageHeader title={t('admin_title')} description={t('admin_description')} />
 
-      {accounts === null ? (
+      {accounts === null || requests === null ? (
         <p className="text-sm text-slate-500">{error ?? t('admin_loading')}</p>
       ) : (
         <AdminPanel
@@ -111,6 +119,25 @@ export function AdminPage() {
               }
               downloadText(text, progressFilename(target.email, new Date()))
             }, '')
+          }
+          requests={requests}
+          onApproveRequest={(target) =>
+            void run(
+              () => queue.decide(target.id, requestDecision('approved', me, new Date())),
+              t('admin_done_req_approve', { email: target.email }),
+            )
+          }
+          onRejectRequest={(target) =>
+            void run(
+              () => queue.decide(target.id, requestDecision('rejected', me, new Date())),
+              t('admin_done_req_reject', { email: target.email }),
+            )
+          }
+          onRemoveRequest={(target) =>
+            void run(
+              () => queue.remove(target.id),
+              t('admin_done_req_remove', { email: target.email }),
+            )
           }
           onRestore={(target, file) =>
             void run(async () => {

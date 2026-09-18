@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
 | `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
 | `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
 | `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
@@ -124,6 +125,49 @@ Tres cosas que el trabajo pidió y el plan no:
   escribe en Ajustes. El menú de usuario intentaba servir a los dos. Ahora
   enseña el de la cuenta, que es la identidad de verdad.
 
+### Fase 3 bis — Pedir acceso antes de tener cuenta — **hecha** (`1.8`)
+
+Fuera de orden, y por una razón: en cuanto la Fase 3 estuvo en pie se vio que el
+alta empezaba por el sitio equivocado. Para entrar en la cola había que **crear
+la cuenta entera** —correo y contraseña— y esperar. Eso pide una contraseña para
+algo que quizá nunca exista, que es justo la que la gente reutiliza y olvida, y
+deja en `auth.users` una cuenta muerta por cada persona a la que se diga que no.
+
+Ahora el orden es el natural: **se pide acceso dejando el correo y nada más**, y
+la contraseña se elige después, cuando ya hay un sí.
+
+- Tabla `access_requests`, con la única política de toda la base que deja
+  escribir **sin haberse identificado**. Por eso es estrecha: sólo admite filas
+  en espera, así que nadie se cuela aprobándose a sí mismo en el propio insert,
+  y la forma del correo la impone un `CHECK` de la tabla, no la web.
+- **El correo repetido se contesta como un envío correcto.** Hay un índice
+  único, así que pedirlo dos veces responde `23505`; enseñar ese fallo
+  convertiría la puerta en un detector de quién ha pedido acceso antes —se
+  prueba un correo y la respuesta dice si está en la lista—.
+- El disparador del registro consulta la cola: quien tiene el visto bueno entra
+  ya aprobado, y queda apuntado quién se lo dio. Lo que **no** cambia es lo de
+  siempre: registrarse sin haberlo pedido sigue sin dar acceso a nada. Eso es lo
+  que permite dejar el registro abierto sin abrir la puerta.
+- En `/admin`, dos colas y un solo número arriba: al administrador le da igual
+  de cuál viene lo que le espera.
+
+Tres cosas que el trabajo pidió y el plan no:
+
+- **Crear la cuenta puede salir bien y aun así no dejarte dentro.** Supabase
+  contesta que sí y no devuelve sesión en dos casos: si el proyecto exige
+  confirmar el correo, y —callándoselo, para no delatar quién está registrado—
+  si esa cuenta ya existía. La puerta se lo callaba también: se pulsaba y no
+  ocurría nada, que es la manera más rápida de creer que la web está rota. Justo
+  en el camino más importante del nuevo flujo, el de quien vuelve con un sí.
+- **Sobre quien ya tiene cuenta, la cola no manda.** El visto bueno lo lee el
+  disparador una sola vez, en el instante del registro. Aprobar después una
+  solicitud ya usada no daría acceso a nadie, y el administrador se quedaría
+  creyendo que sí. Ahora esas filas no ofrecen botón y dicen dónde se decide.
+- **La validación nativa del navegador estorbaba.** Con `type="email"` el
+  navegador rechaza el formulario antes de que la web mire nada, con un globo en
+  el idioma del navegador y una regla más floja que la nuestra —acepta `a@b`,
+  sin punto—. El aviso lo da ahora la web, traducido, y así además se prueba.
+
 ### Fase 4 — Roadmap e historial dentro de la web — **siguiente**
 
 La página `/roadmap` que enseña este documento, generada por
@@ -134,10 +178,18 @@ La página `/roadmap` que enseña este documento, generada por
 Conviene tenerlos escritos, porque son consecuencia de que la web sea estática y
 volverán a aparecer cada vez que se pida algo parecido.
 
-- **Dar de alta una cuenta desde la web no se puede.** Crear un usuario en
+- **Crear la cuenta de otra persona desde la web no se puede.** Escribir en
   `auth.users` exige la clave `service_role`, que se salta el RLS entero y por
-  tanto no puede vivir en un navegador. El flujo real es: la persona se
-  registra, y el administrador aprueba. Eso es el «alta manual».
+  tanto no puede vivir en un navegador. De ahí el reparto: el administrador da
+  el visto bueno a un correo, y la cuenta la crea esa persona poniendo su
+  contraseña. Eso es el «alta manual», y es también la razón de que la web no
+  pueda avisar por correo de que ya puede entrar: mandar correo desde una web
+  estática pide un servidor. Se avisa por donde se hable con esa persona.
+- **El correo de una solicitud no está demostrado.** Cualquiera puede escribir
+  el de otro. Mientras la cuenta no se crea eso no da acceso a nada, pero quien
+  llegue primero a poner la contraseña se queda con el visto bueno dado a ese
+  correo. Quien quiera cerrar esa rendija tiene el interruptor **Confirm email**
+  en Supabase, que exige abrir el buzón antes de poder entrar.
 - **Borrar la cuenta del todo, tampoco.** Por lo mismo. El administrador revoca
   el acceso y borra el progreso —eso sí son filas y las gobierna el RLS—, y la
   cuenta inerte se elimina con dos clics en el panel de Supabase. Se valoró una
@@ -159,6 +211,10 @@ volverán a aparecer cada vez que se pida algo parecido.
   ese campo sigue en el perfil local y en el fichero de estado porque quitarlo
   cambia el formato del `snapshot`, y eso pide una migración. Mientras tanto,
   pide un dato que no se usa en ninguna parte.
+- **La cola se puede llenar desde fuera.** Cualquiera puede insertar
+  solicitudes: una por correo y con forma válida, pero sin límite de ritmo, y
+  ponerlo pide un servidor. No dan acceso a nada y se quitan con un clic; si
+  algún día molesta, se cierra la política y las altas vuelven al panel.
 - **Borrar una cuenta desde `/admin` borra su perfil, no su acceso.** La cuenta
   de `auth.users` sigue existiendo y hay que eliminarla desde el panel de
   Supabase. Está dicho en el propio aviso de confirmación, pero es media

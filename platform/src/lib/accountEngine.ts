@@ -22,6 +22,15 @@ import { isSupabaseConfigured } from './supabaseConfig'
 
 export type SignInResult = { ok: true } | { ok: false; message: string }
 
+/**
+ * Crear la cuenta puede salir bien y aun así no dejarte dentro, e `inside` es
+ * lo que distingue las dos cosas. Pasa en dos situaciones: si el proyecto exige
+ * confirmar el correo, y —sin decirlo, para no delatar quién está registrado—
+ * si esa cuenta ya existía. Sin este dato la puerta se calla, la persona pulsa
+ * y no ocurre nada.
+ */
+export type SignUpResult = { ok: true; inside: boolean } | { ok: false; message: string }
+
 /** El acceso a la tabla. Se puede sustituir en los tests. */
 let rows: AccountRows = accountRows()
 
@@ -81,13 +90,13 @@ export async function signIn(email: string, password: string): Promise<SignInRes
  * correo, Supabase tampoco devuelve sesión; en los dos casos lo que toca es
  * decirlo, no dejar la pantalla girando.
  */
-export async function signUp(email: string, password: string): Promise<SignInResult> {
+export async function signUp(email: string, password: string): Promise<SignUpResult> {
   const { data, error } = await supabase().auth.signUp({ email: email.trim(), password })
   if (error) return { ok: false, message: error.message }
-  if (!data.session) return { ok: true }
+  if (!data.session) return { ok: true, inside: false }
   rememberSession(await currentUser())
   await loadAccount()
-  return { ok: true }
+  return { ok: true, inside: true }
 }
 
 export async function signOut(): Promise<void> {

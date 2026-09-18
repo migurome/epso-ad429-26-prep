@@ -2,10 +2,17 @@ import { useRef } from 'react'
 import { Check, Download, Trash2, Upload, UserX } from 'lucide-react'
 import clsx from 'clsx'
 import { can, pendingCount, sortAccounts, type AdminAction } from '../lib/admin'
+import {
+  canRequest,
+  hasAccountFor,
+  sortRequests,
+  waitingRequests,
+  type RequestAction,
+} from '../lib/access'
 
 /** Todo lo que un administrador puede hacer sobre una cuenta ajena. */
 const ACTIONS: AdminAction[] = ['approve', 'revoke', 'delete', 'wipe', 'download', 'restore']
-import type { Account, AccountStatus } from '../types/account'
+import type { AccessRequest, Account, AccountStatus, RequestStatus } from '../types/account'
 import { useT } from '../lib/useT'
 import type { DictKey } from '../lib/dictionary'
 
@@ -52,6 +59,10 @@ interface Props {
   onWipe: (target: Account) => void
   onDownload: (target: Account) => void
   onRestore: (target: Account, file: File) => void
+  requests: AccessRequest[]
+  onApproveRequest: (request: AccessRequest) => void
+  onRejectRequest: (request: AccessRequest) => void
+  onRemoveRequest: (request: AccessRequest) => void
 }
 
 export function AdminPanel({
@@ -66,10 +77,16 @@ export function AdminPanel({
   onWipe,
   onDownload,
   onRestore,
+  requests,
+  onApproveRequest,
+  onRejectRequest,
+  onRemoveRequest,
 }: Props) {
   const t = useT()
   const sorted = sortAccounts(accounts)
-  const waiting = pendingCount(accounts)
+  // Dos colas y un solo número: a quien mira le da igual de cuál de las dos
+  // viene; lo que quiere saber al abrir la página es si tiene algo que hacer.
+  const waiting = pendingCount(accounts) + waitingRequests(requests)
 
   return (
     <div>
@@ -82,7 +99,27 @@ export function AdminPanel({
         <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-800">{notice}</p>
       )}
 
-      <ul className="mt-5 flex flex-col gap-3">
+      <h2 className={headingClass}>{t('admin_requests_title')}</h2>
+      {requests.length === 0 ? (
+        <p className="mt-2 text-sm text-slate-500">{t('admin_requests_empty')}</p>
+      ) : (
+        <ul className="mt-3 flex flex-col gap-3">
+          {sortRequests(requests).map((request) => (
+            <RequestCard
+              key={request.id}
+              request={request}
+              hasAccount={hasAccountFor(request.email, accounts)}
+              busy={busy}
+              onApprove={onApproveRequest}
+              onReject={onRejectRequest}
+              onRemove={onRemoveRequest}
+            />
+          ))}
+        </ul>
+      )}
+
+      <h2 className={headingClass}>{t('admin_accounts_title')}</h2>
+      <ul className="mt-3 flex flex-col gap-3">
         {sorted.map((account) => (
           <AccountRow
             key={account.userId}
@@ -114,7 +151,10 @@ function AccountRow({
   onWipe,
   onDownload,
   onRestore,
-}: { account: Account; me: Account } & Omit<Props, 'me' | 'accounts' | 'error' | 'notice'>) {
+}: { account: Account; me: Account } & Omit<
+  Props,
+  'me' | 'accounts' | 'error' | 'notice' | 'requests' | 'onApproveRequest' | 'onRejectRequest' | 'onRemoveRequest'
+>) {
   const t = useT()
   const file = useRef<HTMLInputElement>(null)
   const isMe = me.userId === account.userId
@@ -247,3 +287,100 @@ const base =
 const plainClass = `${base} border-slate-200 text-slate-700 hover:border-accent hover:text-accent`
 const okClass = `${base} border-emerald-300 bg-emerald-50 text-emerald-800 hover:border-emerald-500`
 const dangerClass = `${base} border-red-200 text-red-700 hover:border-red-500`
+
+// La cola de solicitudes: correos que han llamado a la puerta antes de que
+// exista ninguna cuenta.
+//
+// El color no repite el de las cuentas a propósito. «Con el visto bueno» no es
+// «con acceso»: es un sí que todavía no ha usado nadie, y mientras esa persona
+// no vuelva a poner su contraseña no hay cuenta ninguna. Pintarlo del mismo
+// verde haría creer que ya está dentro.
+const REQ_STATUS_TEXT: Record<RequestStatus, DictKey> = {
+  pending: 'admin_req_status_pending',
+  approved: 'admin_req_status_approved',
+  rejected: 'admin_req_status_rejected',
+}
+
+const REQ_STATUS_TONE: Record<RequestStatus, string> = {
+  pending: 'bg-amber-100 text-amber-800',
+  approved: 'bg-sky-100 text-sky-800',
+  rejected: 'bg-slate-200 text-slate-600',
+}
+
+function RequestCard({
+  request,
+  hasAccount,
+  busy,
+  onApprove,
+  onReject,
+  onRemove,
+}: {
+  request: AccessRequest
+  hasAccount: boolean
+  busy: boolean
+  onApprove: (request: AccessRequest) => void
+  onReject: (request: AccessRequest) => void
+  onRemove: (request: AccessRequest) => void
+}) {
+  const t = useT()
+  // Igual que en las cuentas: lo que se puede hacer lo dice el módulo puro y
+  // sólo él. Una segunda opinión aquí dejaría su guarda sin proteger nada.
+  const allowed = (action: RequestAction) => canRequest(action, request, hasAccount).ok
+
+  return (
+    <li className="rounded-xl border border-slate-200 bg-white p-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="break-all text-sm font-medium text-slate-800">{request.email}</span>
+        <span
+          className={clsx(
+            'rounded-full px-2 py-0.5 text-xs font-medium',
+            REQ_STATUS_TONE[request.status],
+          )}
+        >
+          {t(REQ_STATUS_TEXT[request.status])}
+        </span>
+      </div>
+
+      {/* Un sí dado no es un sí usado, y saber en cuál de las dos está esa
+          persona es lo que distingue «se le olvidó volver» de «ya está dentro». */}
+      {request.status === 'approved' && (
+        <p className="mt-2 text-xs text-slate-500">
+          {request.claimedAt ? t('admin_req_claimed') : t('admin_req_unclaimed')}
+        </p>
+      )}
+
+      {hasAccount && <p className="mt-2 text-xs text-slate-500">{t('admin_req_account_note')}</p>}
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        {allowed('approve') && (
+          <button type="button" onClick={() => onApprove(request)} disabled={busy} className={okClass}>
+            <Check size={14} />
+            {t('admin_req_approve')}
+          </button>
+        )}
+        {allowed('reject') && (
+          <button type="button" onClick={() => onReject(request)} disabled={busy} className={plainClass}>
+            <UserX size={14} />
+            {t('admin_req_reject')}
+          </button>
+        )}
+        {allowed('remove') && (
+          <button
+            type="button"
+            onClick={() =>
+              window.confirm(t('admin_req_confirm_remove', { email: request.email })) &&
+              onRemove(request)
+            }
+            disabled={busy}
+            className={dangerClass}
+          >
+            <Trash2 size={14} />
+            {t('admin_req_remove')}
+          </button>
+        )}
+      </div>
+    </li>
+  )
+}
+
+const headingClass = 'mt-6 text-xs font-semibold uppercase tracking-wide text-slate-500'

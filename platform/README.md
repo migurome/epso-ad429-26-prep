@@ -95,8 +95,8 @@ src/
                           test de ámbito), barra superior y menú de usuario
     PageHeader, PhaseCard, Tabs, EmptyState, FormatBadges
     Markdown.tsx           Render de Markdown (teoría, enunciados, tablas)
-    LoginForm.tsx          La puerta, sin cablear: entrar y registrarse
-                           entran por props y se prueban sin red
+    LoginForm.tsx          La puerta, sin cablear: entrar, pedir acceso y
+                           poner la contraseña entran por props
     AccessNotice.tsx       Hay sesión pero no se entra: pendiente,
                            revocado, o no se ha podido comprobar
     QuestionCard.tsx       Una pregunta con opciones y corrección
@@ -193,6 +193,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
 | `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
 | `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
 | `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
@@ -333,8 +334,20 @@ workflows programados tras 60 días sin actividad en el repositorio.
 ## Quién entra
 
 Se entra con una cuenta de verdad: correo y contraseña, una fila en la base de
-datos y un progreso propio. Registrarse **no da acceso** — deja la cuenta en
-`pending`, y hace falta que un administrador la apruebe.
+datos y un progreso propio. La puerta hace tres cosas distintas:
+
+- **Entrar**, con correo y contraseña.
+- **Pedir acceso**, dejando sólo el correo. No crea ninguna cuenta: deja una
+  fila en la cola del administrador. Pedir una contraseña aquí sería pedirla
+  para una cuenta que quizá nunca se apruebe —la que la gente reutiliza y
+  olvida— y dejar en `auth.users` una cuenta muerta por cada negativa.
+- **Poner la contraseña**, cuando ya hay un sí. Esto sí crea la cuenta, y la
+  base la deja aprobada de entrada porque encuentra la solicitud con el visto
+  bueno dado.
+
+Registrarse por libre sigue **sin dar acceso**: la cuenta cae en `pending` y
+hace falta que un administrador la apruebe. Eso es lo que permite dejar el
+registro abierto sin abrir la puerta.
 
 Hasta la versión `1.4` la puerta era otra cosa: un usuario y una contraseña
 compilados en el paquete, iguales para todos, y el propio archivo lo decía sin
@@ -348,7 +361,9 @@ autenticación de verdad»*.
 | `account.ts` | La decisión: dada una situación, qué pantalla toca. Pura, sin red, probada entera |
 | `accountStore.ts` | Quién ha entrado. **No se persiste**, a propósito |
 | `accountEngine.ts` | La sesión: entrar, salir, y vigilar los cambios |
-| `components/LoginForm.tsx` | La puerta, con entrar y registrarse por props |
+| `access.ts` | La cola de solicitudes: la forma del correo, el orden y qué se puede decidir. Pura |
+| `accessApi.ts` | Cuatro llamadas a la base y ninguna decisión |
+| `components/LoginForm.tsx` | La puerta, con las tres acciones por props |
 | `components/AccessNotice.tsx` | Hay sesión pero no se entra, en sus tres variantes |
 
 Cuatro decisiones, y ninguna es cosmética:
@@ -391,8 +406,16 @@ a quien es administrador. La interfaz aporta no ofrecer lo que va a fallar.
 | `components/AdminPanel.tsx` | Lo visible, con las acciones por props |
 | `pages/AdminPage.tsx` | El cableado y la validación de lo que se restaura |
 
-Qué se puede hacer: aprobar y revocar el acceso, borrar el progreso de alguien,
-borrar su perfil, y bajarse o restaurar el progreso de una persona concreta.
+Qué se puede hacer: dar el visto bueno a un correo que ha pedido acceso,
+aprobar y revocar el acceso de una cuenta, borrar el progreso de alguien, borrar
+su perfil, y bajarse o restaurar el progreso de una persona concreta.
+
+Son **dos colas y un solo número** arriba: a quien mira le da igual de cuál de
+las dos viene lo que le espera. Arriba, los correos que han llamado a la puerta
+y todavía no tienen cuenta; abajo, las cuentas que ya existen. Una solicitud con
+el visto bueno dado no se pinta del mismo verde que una cuenta con acceso: es un
+sí que nadie ha usado aún, y mientras esa persona no vuelva a poner su
+contraseña no hay cuenta ninguna.
 
 Cuatro decisiones que no son cosméticas:
 
