@@ -101,12 +101,12 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 855 tests en 36 archivos
+### 3. `unit` — 881 tests en 38 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
 | `src/components/ShapeIcon.test.tsx` | 98 | Que **toda** forma declarada se dibuje, y que relleno, tamaño y giro se distingan |
-| `src/App.routes.test.tsx` | 76 | Cada ruta, la portada de acceso, el ceñido al ámbito y la navegación |
+| `src/App.routes.test.tsx` | 79 | Cada ruta, las cinco caras de la puerta, el ceñido al ámbito y la navegación |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/selfCheck.test.ts` | 42 | Que **las comprobaciones de contenido detecten** lo que prometen, figuras del motor incluidas |
 | `scripts/epsoBoard.test.mjs` | 38 | Que un cambio de plantilla en EPSO **reviente** en vez de devolver cero convocatorias, y que juntar sus tres listados no cuelgue a una el número de otra |
@@ -122,21 +122,23 @@ no es un hallazgo sobre el código.
 | `src/lib/engineFigure.test.ts` | 21 | Que no entre un SVG que no haya salido del motor tal cual ni uno que no sea XML bien formado, y su URL de datos |
 | `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
 | `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
+| `src/lib/account.test.ts` | 19 | Quién entra: las seis situaciones de acceso y, sobre todo, que un fallo de la base **no** sea una negativa |
 | `src/components/BoardView.test.tsx` | 19 | El tablón: el verde del último mes, el plazo con la hora de Bruselas y el año entero, no sólo lo abierto |
-| `src/components/SyncCard.test.tsx` | 19 | La tarjeta de sincronización: en qué punto está y qué puede hacer el candidato en cada una de sus tres caras |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
 | `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
 | `src/lib/remoteSync.test.ts` | 16 | Sincronización: que al bajar se **fusione**, que no se suba lo que no ha cambiado y que un fallo al subir no deshaga lo fusionado |
 | `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
 | `src/lib/questionSource.test.ts` | 13 | De qué banco viene cada pregunta y dónde arranca el filtro |
-| `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
+| `src/pages/ProgressPage.test.tsx` | 13 |
+| `src/components/SyncCard.test.tsx` | 12 | La tarjeta de sincronización: en qué punto está y qué puede forzar el candidato |
+| `src/components/AccessNotice.test.tsx` | 11 | Las tres pantallas de «hay sesión pero no entras», y que no digan lo mismo |
+| `src/components/LoginForm.test.tsx` | 10 | La puerta: que registrarse avise de que no da acceso, y el fallo tal cual | Las estadísticas que el candidato usa para juzgarse |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/EngineFigure.test.tsx` | 11 | El tablero del motor: la serie cabe en un móvil y el «?» mide lo mismo que las figuras |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
 | `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
-| `src/pages/LoginPage.test.tsx` | 10 | Credenciales y la penalización de tres segundos al fallar |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
 | `src/lib/supabaseState.test.ts` | 7 | La traducción de la fila de Supabase a estado y de vuelta, con una tabla de mentira |
@@ -254,7 +256,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 118 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 121 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
@@ -332,9 +334,17 @@ Conviene tenerlo claro para no confiar de más:
   `supabaseClient.ts` y en `stateRows`, que son deliberadamente tontos y no
   deciden nada.
 - **Que las políticas por fila de la base de datos hagan lo que dicen.** Que
-  una cuenta no pueda leer la fila de otra lo garantiza el RLS de Supabase, no
-  un test de aquí; comprobarlo exige dos cuentas de verdad. El SQL que lo
-  establece está en la cabecera de `supabaseState.ts`.
+  una cuenta no pueda leer la fila de otra, o que un candidato no pueda
+  aprobarse a sí mismo, lo garantiza el RLS de Supabase y no un test de aquí;
+  comprobarlo exige dos cuentas de verdad. El SQL que lo establece está en
+  `Docs/sql/`. Lo que sí está comprobado desde fuera, y anotado ahí, es que un
+  anónimo con la clave del paquete recibe `42501` al intentar escribir.
+- **Entrar, registrarse y renovar la sesión.** Hablan con el servidor de
+  autenticación y necesitan cuenta y red. Lo que sí está probado entero es la
+  **decisión** de acceso (`account.test.ts`): dada una situación —hay sesión o
+  no, se pudo leer la cuenta o no, en qué estado está— qué pantalla toca. Por
+  eso `App` no arranca la vigilancia de la sesión: la arranca `main.tsx`, y así
+  la puerta se prueba fijando el almacén, sin red.
 - **Que los listados de EPSO sigan teniendo la forma de hoy.** Las pruebas del
   tablón usan páginas guardadas el 18/09/2026; si EPSO cambia su plantilla, los
   tests seguirán en verde y lo que fallará es el cron, que para eso sale con

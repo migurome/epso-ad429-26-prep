@@ -36,3 +36,19 @@ export function supabase(): SupabaseClient {
 export function resetSupabaseClientForTests(): void {
   client = null
 }
+
+/**
+ * El fallo de Supabase, tal cual, para poder pegarlo en una consulta.
+ *
+ * El `code` y el `hint` son lo que distingue «no hay tabla» de «la política te
+ * lo prohíbe», y sin ellos los dos fallos se leen igual. Vive aquí porque lo
+ * necesitan todos los módulos que hablan con la base, y escribirlo dos veces
+ * acabaría en dos formatos distintos para el mismo error.
+ */
+export function describeDbError(error: {
+  message: string
+  code?: string
+  hint?: string | null
+}): string {
+  return [error.code, error.message, error.hint].filter(Boolean).join(' — ')
+}

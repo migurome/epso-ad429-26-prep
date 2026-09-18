@@ -25,18 +25,36 @@ export const DICT = {
   app_version: { es: 'Versión {version}', en: 'Version {version}' },
   close_menu: { es: 'Cerrar menú', en: 'Close menu' },
 
-  // LoginPage
+  // LoginPage y las pantallas de acceso
   login_subtitle: { es: 'Acceso a tu preparación', en: 'Access to your preparation' },
-  login_user: { es: 'Usuario', en: 'Username' },
+  login_email: { es: 'Correo', en: 'Email' },
   login_password: { es: 'Contraseña', en: 'Password' },
   login_submit: { es: 'Entrar', en: 'Sign in' },
   login_checking: { es: 'Comprobando…', en: 'Checking…' },
-  login_wait: { es: 'Espera un momento…', en: 'Hold on a moment…' },
-  login_error: { es: 'Usuario o contraseña incorrectos.', en: 'Wrong username or password.' },
+  login_create: { es: 'Crear una cuenta', en: 'Create an account' },
+  login_create_submit: { es: 'Crear la cuenta', en: 'Create the account' },
+  login_have_account: { es: 'Ya tengo cuenta', en: 'I already have an account' },
   login_note: {
-    es: 'Esta puerta no protege nada secreto: son apuntes de oposición y la aplicación es estática. Sirve para que la página no se abra sola.',
-    en: 'This door protects nothing secret: these are study notes and the app is static. It just stops the page opening on its own.',
+    es: 'Una cuenta por persona, y el progreso de cada una es sólo suyo. Crear una cuenta no da acceso: la tiene que aprobar el administrador.',
+    en: 'One account per person, and each one’s progress is theirs alone. Creating an account does not grant access: the administrator has to approve it.',
   },
+  access_pending_title: { es: 'Tu cuenta está pendiente de aprobación', en: 'Your account is waiting for approval' },
+  access_pending_body: {
+    es: 'La cuenta ya existe. Falta que el administrador le dé el visto bueno; hasta entonces no hay nada que estudiar aquí. Vuelve a entrar más tarde.',
+    en: 'The account exists. It is waiting for the administrator to approve it; until then there is nothing to study here. Sign in again later.',
+  },
+  access_revoked_title: { es: 'Tu cuenta ya no tiene acceso', en: 'Your account no longer has access' },
+  access_revoked_body: {
+    es: 'El administrador ha retirado el acceso a esta cuenta. Tu progreso no se ha borrado por eso: si vuelven a darte el alta, seguirá donde lo dejaste.',
+    en: 'The administrator has withdrawn this account’s access. Your progress has not been deleted because of it: if you are let back in, it will be where you left it.',
+  },
+  access_unavailable_title: { es: 'No se ha podido comprobar tu cuenta', en: 'Your account could not be checked' },
+  access_unavailable_body: {
+    es: 'No es que no tengas acceso: es que ahora mismo no se sabe. No se ha podido preguntar a la base de datos, así que no se te deja entrar a ciegas.',
+    en: 'It is not that you have no access: it is that right now nobody knows. The database could not be asked, so you are not let in blindly.',
+  },
+  access_retry: { es: 'Volver a comprobar', en: 'Check again' },
+  access_signed_in_as: { es: 'Has entrado como {email}', en: 'Signed in as {email}' },
   loading: { es: 'Cargando…', en: 'Loading…' },
 
   // Dashboard
@@ -535,19 +553,12 @@ export const DICT = {
     en: 'Your progress is saved every five minutes and picked up when the session starts, so computer and phone keep themselves in step. You need to sign in once per browser. The manual file below is still there, for backups.',
   },
   sync_status_off: { es: 'Sin configurar', en: 'Not configured' },
-  sync_status_signed_out: { es: 'Sin entrar', en: 'Not signed in' },
-  sync_status_signing_in: { es: 'Entrando…', en: 'Signing in…' },
+  sync_status_idle: { es: 'Sin sincronizar todavía', en: 'Not synced yet' },
   sync_status_ready: { es: 'Al día', en: 'Up to date' },
   sync_status_syncing: { es: 'Sincronizando…', en: 'Syncing…' },
   sync_status_error: { es: 'Con un problema', en: 'Something went wrong' },
   sync_last: { es: 'Última vez: {when}', en: 'Last time: {when}' },
   sync_never: { es: 'Todavía no se ha sincronizado', en: 'Not synced yet' },
-  sync_who: { es: 'Dentro como {email}', en: 'Signed in as {email}' },
-  sync_email: { es: 'Correo', en: 'Email' },
-  sync_password: { es: 'Contraseña', en: 'Password' },
-  sync_in: { es: 'Entrar', en: 'Sign in' },
-  sync_up: { es: 'Crear la cuenta', en: 'Create the account' },
-  sync_out: { es: 'Salir', en: 'Sign out' },
   sync_now: { es: 'Sincronizar ahora', en: 'Sync now' },
   sync_auto: { es: 'Guardar cada cinco minutos', en: 'Save every five minutes' },
   sync_auto_hint: {

@@ -17,7 +17,7 @@ import { COMPETITIONS, COMPETITION_ORDER } from './data/competition'
 import { useCompetitionStore } from './lib/competitionStore'
 import { useLocaleStore } from './lib/localeStore'
 import { useProgressStore } from './lib/progressStore'
-import { useAuthStore } from './lib/authStore'
+import { useAccountStore } from './lib/accountStore'
 import { CONTENT_TARGETS } from './lib/selfCheck'
 import pkg from '../package.json'
 import { DEFAULT_PROFILE, useStudyStore } from './lib/studyStore'
@@ -55,7 +55,23 @@ beforeEach(() => {
   useLocaleStore.setState({ locale: 'es' })
   // La aplicación entera vive detrás de la portada de acceso; sin sesión no se
   // monta ninguna ruta y todas estas pruebas mirarían el formulario de entrada.
-  useAuthStore.setState({ user: 'migurome' })
+  // Dentro: sesión resuelta y cuenta aprobada. `App` es una función pura de
+  // esto —la vigilancia de la sesión la arranca `main.tsx`—, así que fijar el
+  // almacén basta y no sale ninguna petición a Supabase.
+  useAccountStore.setState({
+    started: true,
+    userId: 'u1',
+    email: 'yo@ejemplo.es',
+    account: {
+      userId: 'u1',
+      email: 'yo@ejemplo.es',
+      role: 'candidate',
+      status: 'approved',
+      createdAt: '2026-09-18T07:00:00.000Z',
+      decidedAt: '2026-09-18T07:00:00.000Z',
+    },
+    failure: null,
+  })
   useCompetitionStore.setState({ competition: 'ad7' })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
 })
@@ -247,12 +263,44 @@ describe('Field-Related MCQ y Formación se ciñen al ámbito elegido', () => {
   })
 })
 
-describe('la aplicación entera vive detrás de la portada de acceso', () => {
+describe('la aplicación entera vive detrás de la puerta', () => {
+  const sinCuenta = { started: true, userId: null, email: null, account: null, failure: null }
+
   it('sin sesión no se monta ninguna ruta', async () => {
-    useAuthStore.setState({ user: null })
+    useAccountStore.setState(sinCuenta)
     const { container } = await visit('/progreso')
     expect(container.querySelector('nav')).toBeNull()
     expect(container.textContent).toContain(DICT.login_submit.es)
+  })
+
+  it('con la cuenta pendiente tampoco, aunque haya sesión', async () => {
+    // Registrarse no da acceso: el contenido no llega a montarse.
+    useAccountStore.setState({ ...sinCuenta, userId: 'u9', email: 'nuevo@ejemplo.es' })
+    const { container } = await visit('/progreso')
+    expect(container.querySelector('nav')).toBeNull()
+    expect(container.textContent).toContain(DICT.access_pending_title.es)
+  })
+
+  it('si no se puede comprobar la cuenta, no se entra a ciegas', async () => {
+    useAccountStore.setState({
+      ...sinCuenta,
+      userId: 'u9',
+      email: 'yo@ejemplo.es',
+      failure: "Could not find the table 'public.profiles'",
+    })
+    const { container } = await visit('/progreso')
+    expect(container.querySelector('nav')).toBeNull()
+    expect(container.textContent).toContain(DICT.access_unavailable_title.es)
+    // Y se dice por qué, que es lo único que permite arreglarlo.
+    expect(container.textContent).toContain("Could not find the table 'public.profiles'")
+  })
+
+  it('mientras se averigua si hay sesión no se enseña la puerta', async () => {
+    // Enseñarla aquí la haría parpadear en cada recarga a quien ya está dentro.
+    useAccountStore.setState({ ...sinCuenta, started: false })
+    const { container } = await visit('/progreso')
+    expect(container.querySelector('nav')).toBeNull()
+    expect(container.textContent).not.toContain(DICT.login_submit.es)
   })
 })
 

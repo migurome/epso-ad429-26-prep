@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 import { BarChart3, CalendarDays, LogOut, Settings, ShieldCheck, User, Video } from 'lucide-react'
-import { useAuthStore } from '../../lib/authStore'
+import { signOut } from '../../lib/accountEngine'
+import { useAccountStore } from '../../lib/accountStore'
 import { useStudyStore } from '../../lib/studyStore'
 import { useT } from '../../lib/useT'
 
@@ -25,7 +26,7 @@ export function UserMenu() {
   const t = useT()
   const location = useLocation()
   const profile = useStudyStore((s) => s.profile)
-  const signOut = useAuthStore((s) => s.signOut)
+  const accountEmail = useAccountStore((s) => s.email)
   const [open, setOpen] = useState(false)
   const container = useRef<HTMLDivElement>(null)
   const trigger = useRef<HTMLButtonElement>(null)
@@ -97,7 +98,7 @@ export function UserMenu() {
               {profile.displayName || t('user_menu_anonymous')}
             </p>
             <p className="truncate text-xs text-slate-400">
-              {profile.email || t('user_menu_set_name')}
+              {accountEmail || profile.email || t('user_menu_set_name')}
             </p>
           </div>
 
@@ -128,7 +129,7 @@ export function UserMenu() {
             <button
               type="button"
               role="menuitem"
-              onClick={signOut}
+              onClick={() => void signOut()}
               className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
             >
               <LogOut size={16} />

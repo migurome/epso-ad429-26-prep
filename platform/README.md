@@ -1,7 +1,7 @@
 # Preparación EPSO/AD/429/26 — AD7
 
-Plataforma local (sin backend, sin login) para preparar la prueba de acceso a la
-oposición EPSO/AD/429/26 — Administradores AD7, perfiles ICT.
+Plataforma para preparar la prueba de acceso a la oposición EPSO/AD/429/26 —
+Administradores AD7, perfiles ICT.
 
 ## Stack
 
@@ -10,8 +10,11 @@ oposición EPSO/AD/429/26 — Administradores AD7, perfiles ICT.
 - Tailwind CSS v4 (estilos)
 - Zustand + `persist` (progreso guardado en `localStorage` del navegador)
 
-No hay servidor ni base de datos: todo el contenido vive en el propio código
-como datos estáticos, y el progreso del usuario se guarda en el navegador.
+No hay servidor propio: el sitio es estático y todo el contenido vive en el
+propio código como datos estáticos. Lo único que sale fuera es el progreso del
+candidato, que se guarda en su navegador y se sincroniza con una fila de
+Supabase para que el ordenador y el móvil vayan solos. Se entra con una cuenta,
+y las cuentas las aprueba una persona.
 
 ## Poner en marcha
 
@@ -77,8 +80,10 @@ src/
                           use() de React 19 (ver "Code-splitting" abajo)
   lib/
     progressStore.ts     Store de progreso (zustand + localStorage)
-    authStore.ts          La puerta de entrada. Ver el aviso del propio
-                          archivo: NO es seguridad, es un cerrojo
+    account.ts            Quién entra: la decisión de acceso, pura y
+                          sin red. Un fallo de la base NO es una negativa
+    accountStore.ts       Quién ha entrado. No se persiste a propósito
+    accountEngine.ts      La sesión: entrar, salir y vigilar los cambios
     practiceStore.ts      Lo respondido en los bancos de práctica y su
                           orden, persistidos: recargar ya no borra el rastro
     localeStore.ts        Store de idioma (es/en, zustand + localStorage) +
@@ -90,6 +95,10 @@ src/
                           test de ámbito), barra superior y menú de usuario
     PageHeader, PhaseCard, Tabs, EmptyState, FormatBadges
     Markdown.tsx           Render de Markdown (teoría, enunciados, tablas)
+    LoginForm.tsx          La puerta, sin cablear: entrar y registrarse
+                           entran por props y se prueban sin red
+    AccessNotice.tsx       Hay sesión pero no se entra: pendiente,
+                           revocado, o no se ha podido comprobar
     QuestionCard.tsx       Una pregunta con opciones y corrección
     PracticeBank.tsx       Banco de práctica sin cronometrar: enunciado
                            entero en la cabecera, veredicto al plegar y
@@ -107,7 +116,7 @@ src/
     ResourcesPage.tsx                                 (convocatoria + referencias)
     ProgressPage.tsx                                  (estadísticas)
     CalendarPage.tsx, SettingsPage.tsx, SelfCheckPage.tsx  (menú de usuario)
-    LoginPage.tsx                                     (portada de acceso)
+    LoginPage.tsx                                     (cablea LoginForm)
 
 scripts/
   build_content.py        Parsea ../Docs/*.md (+ ../Docs/es/*.md para la
@@ -184,6 +193,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
 | `1.4` | El progreso se sincroniza en una base de datos (Supabase) en vez de Google Drive: sin consola de Google Cloud, sin nada que pegar en cada navegador y sin volver a autorizar cada hora. |
 | `1.3` | Tablón de convocatorias: un bot revisa los listados de EPSO a diario. Y el progreso se sincroniza con Google Drive, sin ficheros a mano. |
 | `1.2` | Figuras generadas por el motor en razonamiento abstracto, con su propia procedencia en el filtro; fuera el banco bonus de IA de esa sección. |
@@ -197,11 +207,14 @@ navegador y de ese dispositivo: **el ordenador y el móvil no comparten nada**.
 Tampoco lo arregla estar con la misma cuenta en los dos, porque ni Chrome ni
 Firefox sincronizan `localStorage` (sincronizan marcadores, contraseñas y
 pestañas). Y no puede arreglarlo la propia web: es un sitio estático servido por
-GitHub Pages, sin servidor ni cuentas — la portada de acceso compara contra dos
-constantes del paquete y no identifica a nadie (ver `src/lib/authStore.ts`).
+GitHub Pages y no puede guardar nada por sí mismo.
 
-Así que el puente es un fichero, en **Ajustes → Llevar tu progreso a otro
-dispositivo**. Se exporta aquí, se pasa al otro dispositivo por donde se pasen
+Eso lo resuelve hoy la sincronización automática: hay cuentas de verdad y el
+progreso vive en una fila de base de datos, así que el ordenador y el móvil van
+solos. Lo que sigue aquí abajo es el puente manual, que se mantiene porque
+funciona **sin cuenta y sin internet** y sirve de copia de seguridad.
+
+El puente es un fichero, en **Ajustes → Llevar tu progreso a mano**. Se exporta aquí, se pasa al otro dispositivo por donde se pasen
 los ficheros (en el móvil aparece además un botón *Compartir*, que lo manda
 directo a WhatsApp o Drive sin pasar por la carpeta de descargas) y allí se
 importa, con dos maneras de entrar:
@@ -327,6 +340,53 @@ hecho con el `GITHUB_TOKEN` no dispara otros workflows. El fichero no guarda
 ninguna marca de «revisado hoy», que crearía un commit vacío cada día; que la
 revisión se hizo lo cuenta el historial de ejecuciones. Y GitHub desactiva los
 workflows programados tras 60 días sin actividad en el repositorio.
+
+## Quién entra
+
+Se entra con una cuenta de verdad: correo y contraseña, una fila en la base de
+datos y un progreso propio. Registrarse **no da acceso** — deja la cuenta en
+`pending`, y hace falta que un administrador la apruebe.
+
+Hasta la versión `1.4` la puerta era otra cosa: un usuario y una contraseña
+compilados en el paquete, iguales para todos, y el propio archivo lo decía sin
+rodeos —era un cerrojo de puerta mosquitera, no una cerradura—. Con cuentas de
+verdad esa puerta sobraba, y su comentario ya anticipaba el día: *«si algún día
+hubiera datos que sí importara proteger, esto habría que sustituirlo por
+autenticación de verdad»*.
+
+| Pieza | Papel |
+| --- | --- |
+| `account.ts` | La decisión: dada una situación, qué pantalla toca. Pura, sin red, probada entera |
+| `accountStore.ts` | Quién ha entrado. **No se persiste**, a propósito |
+| `accountEngine.ts` | La sesión: entrar, salir, y vigilar los cambios |
+| `components/LoginForm.tsx` | La puerta, con entrar y registrarse por props |
+| `components/AccessNotice.tsx` | Hay sesión pero no se entra, en sus tres variantes |
+
+Cuatro decisiones, y ninguna es cosmética:
+
+- **Un fallo de la base de datos no es una negativa.** Si no se puede leer la
+  cuenta —la tabla no existe, no hay red, la política está mal puesta— la web
+  dice que *no se sabe* y ofrece reintentar. Tratarlo como «no estás aprobado»
+  dejaría al administrador fuera de su propia aplicación por un problema de red,
+  y encima mintiéndole sobre la causa.
+- **Mientras no se sabe si hay sesión no se enseña la puerta.** Recuperarla del
+  disco tarda un instante, y enseñar el acceso en ese instante la haría
+  parpadear en cada recarga a quien ya está dentro.
+- **La cuenta no se guarda en el navegador.** Un «aprobado» en disco
+  sobreviviría a una revocación: el administrador quitaría el acceso y el
+  interesado seguiría entrando hasta vaciar su almacenamiento. Se pregunta al
+  arrancar y en cada cambio de sesión, siempre.
+- **Un papel o un estado que no se reconozcan se degradan**, a candidato y a
+  pendiente. La alternativa —dejarlos pasar— haría que una errata en la base de
+  datos concediera accesos.
+
+Y una consecuencia de todo lo anterior que conviene tener presente: la vigilancia
+de la sesión se arranca en `main.tsx` y no dentro de `App`, de modo que `App` es
+una función pura de lo que hay en el almacén. Eso es lo que permite probar las
+cinco pantallas de la puerta fijando el almacén, sin que ningún efecto salga a
+preguntarle a Supabase por detrás.
+
+El SQL que crea las cuentas y sus políticas está en [`../Docs/sql/`](../Docs/sql/).
 
 ## Sincronización entre dispositivos
 

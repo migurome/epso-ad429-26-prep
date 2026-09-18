@@ -1,5 +1,5 @@
 import type { RemoteBackend } from './remoteSync'
-import { supabase } from './supabaseClient'
+import { describeDbError as describe, supabase } from './supabaseClient'
 
 // El progreso guardado en Supabase: una fila por cuenta.
 //
@@ -91,15 +91,4 @@ export function remoteBackend(userId: string, rows: StateRows): RemoteBackend {
       return { ref: userId, version: updatedAt }
     },
   }
-}
-
-/**
- * El fallo de Supabase, tal cual, para poder pegarlo en una consulta.
- *
- * El `code` y el `hint` son lo que distingue «no hay tabla» de «la política te
- * lo prohíbe», y sin ellos los dos fallos se leen igual.
- */
-function describe(error: { message: string; code?: string; hint?: string | null }): string {
-  const parts = [error.code, error.message, error.hint].filter(Boolean)
-  return parts.join(' — ')
 }
