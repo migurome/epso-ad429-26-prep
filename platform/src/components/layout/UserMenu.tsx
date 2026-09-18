@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
-import { BarChart3, CalendarDays, LogOut, Settings, ShieldCheck, User, Video } from 'lucide-react'
+import { BarChart3, CalendarDays, LogOut, Settings, ShieldCheck, ShieldUser, User, Video } from 'lucide-react'
 import { signOut } from '../../lib/accountEngine'
 import { useAccountStore } from '../../lib/accountStore'
+import { isAdmin } from '../../lib/account'
 import { useStudyStore } from '../../lib/studyStore'
 import { useT } from '../../lib/useT'
 
@@ -27,6 +28,7 @@ export function UserMenu() {
   const location = useLocation()
   const profile = useStudyStore((s) => s.profile)
   const accountEmail = useAccountStore((s) => s.email)
+  const admin = isAdmin(useAccountStore((s) => s.account))
   const [open, setOpen] = useState(false)
   const container = useRef<HTMLDivElement>(null)
   const trigger = useRef<HTMLButtonElement>(null)
@@ -39,10 +41,16 @@ export function UserMenu() {
       { to: '/calendario', label: t('nav_calendar'), icon: CalendarDays },
       { to: '/dia-del-examen', label: t('nav_test_day'), icon: Video },
     ],
-    [
-      { to: '/ajustes', label: t('nav_settings'), icon: Settings },
-      { to: '/verificacion', label: t('nav_selfcheck'), icon: ShieldCheck },
-    ],
+    [{ to: '/ajustes', label: t('nav_settings'), icon: Settings }],
+    // La verificación y la administración son del administrador. Esconderlas
+    // no es la protección —esa la pone la base de datos y el guión de rutas—,
+    // es no ofrecerle a un candidato una puerta que se le va a cerrar.
+    ...(admin
+      ? [[
+          { to: '/admin', label: t('nav_admin'), icon: ShieldUser },
+          { to: '/verificacion', label: t('nav_selfcheck'), icon: ShieldCheck },
+        ]]
+      : []),
   ]
 
   // Al navegar el menú sobra: la página ya cambió.
@@ -97,9 +105,13 @@ export function UserMenu() {
             <p className="truncate text-sm font-semibold text-slate-800">
               {profile.displayName || t('user_menu_anonymous')}
             </p>
-            <p className="truncate text-xs text-slate-400">
-              {accountEmail || profile.email || t('user_menu_set_name')}
-            </p>
+            {/* El correo de la cuenta, que es la identidad de verdad. El de
+                Ajustes es otra cosa —algo que el candidato escribe para sí
+                mismo— y enseñar aquí uno u otro según el día sería tener dos
+                identidades a la vista sin decir cuál manda. */}
+            {accountEmail && (
+              <p className="truncate text-xs text-slate-400">{accountEmail}</p>
+            )}
           </div>
 
           {SECTIONS.map((section, i) => (

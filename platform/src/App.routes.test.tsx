@@ -99,6 +99,12 @@ async function visit(route: string) {
  * carrera. Con `act` síncrono los efectos se ejecutan hasta su primer `await` y
  * ahí se paran, que es exactamente el instante que se quiere fotografiar.
  */
+/** Pasa a mirar como administrador, que es quien alcanza /admin y /verificacion. */
+function comoAdmin() {
+  const account = useAccountStore.getState().account!
+  useAccountStore.setState({ account: { ...account, role: 'admin' } })
+}
+
 function visitFirstPaint(route: string) {
   window.location.hash = `#${route}`
   let result!: ReturnType<typeof render>
@@ -322,6 +328,37 @@ describe('la aplicación entera vive detrás de la puerta', () => {
   })
 })
 
+describe('lo del administrador no está para los demás', () => {
+  it('un candidato que escriba /admin acaba en el panel', async () => {
+    // No en una página vacía ni en un error: la ruta no existe para él.
+    await visit('/admin')
+    await waitFor(() => expect(window.location.hash).toBe('#/'))
+  })
+
+  it('y con /verificacion, igual', async () => {
+    await visit('/verificacion')
+    await waitFor(() => expect(window.location.hash).toBe('#/'))
+  })
+
+  it('al administrador sí le abren', async () => {
+    comoAdmin()
+    const { container } = await visit('/admin')
+    await waitFor(() => expect(container.textContent).toContain(DICT.admin_title.es))
+    expect(window.location.hash).toBe('#/admin')
+  })
+
+  it('un administrador revocado no llega ni al enrutador', async () => {
+    // El papel sin el estado no basta en ninguna parte. Y revocado ni siquiera
+    // se redirige al panel: no se monta ninguna ruta, se ve la pantalla de sin
+    // acceso, que es lo que corresponde.
+    const account = useAccountStore.getState().account!
+    useAccountStore.setState({ account: { ...account, role: 'admin', status: 'revoked' } })
+    const { container } = await visit('/admin')
+    expect(container.textContent).toContain(DICT.access_revoked_title.es)
+    expect(container.querySelector('nav')).toBeNull()
+  })
+})
+
 describe('la barra lateral', () => {
   it('cuelga la formación del test de ámbito, no a su altura', async () => {
     useCompetitionStore.setState({ competition: 'ad8' })
@@ -392,6 +429,7 @@ describe('la verificación enseña el guion antes de correrlo', () => {
   it('lista todas sus secciones desde el primer momento', async () => {
     // Antes aparecían una a una según terminaban, así que no había forma de
     // saber cuántas faltaban ni distinguir «va bien» de «no ha llegado ahí».
+    comoAdmin()
     const { container } = await visit('/verificacion')
     const sections = container.querySelectorAll('main [aria-expanded]')
     // Convocatorias + cada bloque de contenido + transversales + imágenes.
@@ -406,6 +444,7 @@ describe('la verificación enseña el guion antes de correrlo', () => {
     // por hecho que las imágenes «no llegan a descargarse nunca», y no era
     // verdad: la sección arranca igual y pasa a «0 / 240», así que el test
     // fallaba una de cada tres veces según lo que hubiera avanzado.
+    comoAdmin()
     const { container } = visitFirstPaint('/verificacion')
     const figures = [...container.querySelectorAll('main [aria-expanded]')].at(-1)!
     expect(figures.textContent).toContain(DICT.selfcheck_pending.es)

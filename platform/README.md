@@ -193,6 +193,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
 | `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
 | `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
 | `1.4` | El progreso se sincroniza en una base de datos (Supabase) en vez de Google Drive: sin consola de Google Cloud, sin nada que pegar en cada navegador y sin volver a autorizar cada hora. |
@@ -203,35 +204,22 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 ## Llevar el progreso a otro dispositivo
 
-Todo el progreso vive en el `localStorage` del navegador, que es privado de ese
-navegador y de ese dispositivo: **el ordenador y el móvil no comparten nada**.
-Tampoco lo arregla estar con la misma cuenta en los dos, porque ni Chrome ni
-Firefox sincronizan `localStorage` (sincronizan marcadores, contraseñas y
-pestañas). Y no puede arreglarlo la propia web: es un sitio estático servido por
-GitHub Pages y no puede guardar nada por sí mismo.
+Lo hace solo: hay cuentas de verdad y el progreso vive en una fila de base de
+datos, así que el ordenador y el móvil van solos en cuanto se entra en los dos.
+Ver «Sincronización entre dispositivos» más abajo.
 
-Eso lo resuelve hoy la sincronización automática: hay cuentas de verdad y el
-progreso vive en una fila de base de datos, así que el ordenador y el móvil van
-solos. Lo que sigue aquí abajo es el puente manual, que se mantiene porque
-funciona **sin cuenta y sin internet** y sirve de copia de seguridad.
+Hasta la versión `1.6` había además un puente manual en Ajustes —exportar un
+fichero y meterlo en el otro dispositivo—. Se retiró en la `1.7`: con la
+sincronización funcionando no aportaba nada al candidato, y bajar y restaurar un
+progreso pasó a ser cosa del administrador y sobre la cuenta de otra persona
+(ver «El perfil de administrador»).
 
-El puente es un fichero, en **Ajustes → Llevar tu progreso a mano**. Se exporta aquí, se pasa al otro dispositivo por donde se pasen
-los ficheros (en el móvil aparece además un botón *Compartir*, que lo manda
-directo a WhatsApp o Drive sin pasar por la carpeta de descargas) y allí se
-importa, con dos maneras de entrar:
+Lo que **no** se retiró es la lógica: `backup.ts` sigue siendo el corazón de la
+sincronización, y la regla que la gobierna sigue siendo que **fusionar dos veces
+lo mismo tiene que dejar el dispositivo igual que fusionarlo una**. El calendario
+se queda, día a día, con el mayor de los dos valores; los intentos se unen por
+id; y los ajustes, el perfil y los idiomas no se tocan nunca al fusionar.
 
-| | Qué hace |
-| --- | --- |
-| **Combinar** | Suma lo del fichero a lo que ya hay. No borra nada y no toca los ajustes, el perfil, la convocatoria ni los idiomas de este dispositivo. |
-| **Reemplazar** | Deja el dispositivo como copia exacta del fichero, ajustes incluidos. Para restaurar sobre un navegador limpio. |
-
-Elegir un fichero no aplica nada: primero enseña de cuándo es y qué trae. La
-regla que gobierna el resto es que **importar el mismo fichero dos veces tiene
-que dejar el dispositivo igual que importarlo una**, porque el flujo real es ir
-y venir muchas veces. De ahí que el calendario se quede, día a día, con el mayor
-de los dos valores en vez de sumarlos: sumar sería más fiel el día que de verdad
-se estudie en los dos sitios, pero inflaría el calendario en cada pasada. Los
-detalles y el porqué de cada regla están en `src/lib/backup.ts`.
 
 ## Figuras generadas por el motor
 
@@ -388,6 +376,48 @@ cinco pantallas de la puerta fijando el almacén, sin que ningún efecto salga a
 preguntarle a Supabase por detrás.
 
 El SQL que crea las cuentas y sus políticas está en [`../Docs/sql/`](../Docs/sql/).
+
+## El perfil de administrador
+
+La ruta `/admin` **no existe** para quien no manda: escribirla a mano lleva al
+panel, no a una página vacía. Y esconder el enlace no es la protección: la pone
+la base de datos, cuyas políticas sólo dejan leer y escribir la tabla de cuentas
+a quien es administrador. La interfaz aporta no ofrecer lo que va a fallar.
+
+| Pieza | Papel |
+| --- | --- |
+| `admin.ts` | Qué se puede hacer sobre quién, el orden de la lista y el nombre del fichero. Puro, probado entero |
+| `adminApi.ts` | Seis llamadas a la base y ninguna decisión |
+| `components/AdminPanel.tsx` | Lo visible, con las acciones por props |
+| `pages/AdminPage.tsx` | El cableado y la validación de lo que se restaura |
+
+Qué se puede hacer: aprobar y revocar el acceso, borrar el progreso de alguien,
+borrar su perfil, y bajarse o restaurar el progreso de una persona concreta.
+
+Cuatro decisiones que no son cosméticas:
+
+- **Nadie se desarma a sí mismo.** Sobre la fila propia no se ofrece ninguna
+  acción, y se dice por qué. La base de datos no lo impide —su política pregunta
+  si eres administrador, no a quién tocas—, así que lo impide `admin.ts`. Un
+  administrador que se revoca deja el sistema sin nadie capaz de aprobar a nadie
+  y sin forma de arreglarlo salvo desde el SQL.
+- **Quitar el acceso y borrar los datos están separados**, hasta en el color. De
+  lo primero se vuelve aprobando otra vez; de lo segundo no se vuelve. Un solo
+  botón que hiciera las dos acabaría haciendo la que no se quería.
+- **La pregunta de «¿seguro?» vive en el componente, no en el cableado.** No es
+  donde queda más limpio: es donde un test puede verla. Una confirmación que
+  ningún test mira es una confirmación que alguien quitará algún día sin que
+  nada falle, y el síntoma será un progreso borrado de verdad. Lleva dentro el
+  correo, porque un «¿estás seguro?» sin nombre se confirma sin leer.
+- **Restaurar el progreso de alguien no toca el de quien mira.** Se valida el
+  fichero y se escribe en la fila de esa persona; los almacenes de este
+  navegador se quedan como están. Un fichero que no sea una copia de esta
+  aplicación se rechaza antes de llegar a la base.
+
+Lo que **no** se puede hacer desde aquí, y consta en el aviso: borrar la cuenta
+de acceso. Eso exige la clave `service_role`, que no puede vivir en un
+navegador. `/admin` borra el perfil y con él el acceso; la cuenta inerte se
+elimina desde el panel de Supabase.
 
 ## Sincronización entre dispositivos
 

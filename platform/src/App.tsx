@@ -16,9 +16,11 @@ import { CourseModulePage } from './pages/CourseModulePage'
 import { CalendarPage } from './pages/CalendarPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { SelfCheckPage } from './pages/SelfCheckPage'
+import { AdminPage } from './pages/AdminPage'
 import { LoginPage } from './pages/LoginPage'
 import { AccessNotice } from './components/AccessNotice'
 import { useAccountStore } from './lib/accountStore'
+import { isAdmin } from './lib/account'
 import { loadAccount, signOut } from './lib/accountEngine'
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
   const phase = useAccountStore((s) => s.phase())
   const email = useAccountStore((s) => s.email)
   const failure = useAccountStore((s) => s.failure)
+  const admin = isAdmin(useAccountStore((s) => s.account))
 
   // `starting` no es «sin sesión»: es que todavía no se sabe. Enseñar la
   // puerta aquí la haría parpadear en cada recarga a quien ya está dentro.
@@ -66,7 +69,12 @@ function App() {
           <Route path="/progreso" element={<ProgressPage />} />
           <Route path="/calendario" element={<CalendarPage />} />
           <Route path="/ajustes" element={<SettingsPage />} />
-          <Route path="/verificacion" element={<SelfCheckPage />} />
+          {/* Del administrador. La ruta no existe para los demás, así que
+              escribirla a mano lleva al panel, no a una página vacía ni a un
+              error. La protección de verdad no es ésta: es que la base de
+              datos no deja leer ni escribir nada de esto sin ser admin. */}
+          {admin && <Route path="/admin" element={<AdminPage />} />}
+          {admin && <Route path="/verificacion" element={<SelfCheckPage />} />}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

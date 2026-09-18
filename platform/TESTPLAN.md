@@ -101,12 +101,12 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 901 tests en 40 archivos
+### 3. `unit` — 933 tests en 43 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
 | `src/components/ShapeIcon.test.tsx` | 98 | Que **toda** forma declarada se dibuje, y que relleno, tamaño y giro se distingan |
-| `src/App.routes.test.tsx` | 79 | Cada ruta, las cinco caras de la puerta, el ceñido al ámbito y la navegación |
+| `src/App.routes.test.tsx` | 83 | Cada ruta, las cinco caras de la puerta, el ceñido al ámbito y la navegación |
 | `src/lib/abstractFigure.test.ts` | 48 | El intérprete de figuras de razonamiento abstracto |
 | `src/lib/selfCheck.test.ts` | 42 | Que **las comprobaciones de contenido detecten** lo que prometen, figuras del motor incluidas |
 | `scripts/epsoBoard.test.mjs` | 38 | Que un cambio de plantilla en EPSO **reviente** en vez de devolver cero convocatorias, y que juntar sus tres listados no cuelgue a una el número de otra |
@@ -114,7 +114,7 @@ no es un hallazgo sobre el código.
 | `src/lib/studyCalendar.test.ts` | 34 | Fechas, semanas y objetivo del calendario |
 | `src/components/PracticeBank.test.tsx` | 32 | Filtro de tres procedencias, enunciado entero, marca de evaluada, persistencia y reactivación |
 | `src/lib/backup.test.ts` | 30 | El fichero que cruza de un dispositivo a otro, y sus reglas de fusión |
-| `src/pages/SettingsPage.test.tsx` | 28 | Que nada se guarde sin confirmar, y la descarga y carga del progreso |
+| `src/components/AdminPanel.test.tsx` | 25 | El perfil de administrador: que sobre la propia cuenta no se ofrezca nada, y que lo irreversible pregunte antes |
 | `src/components/FullscreenPractice.test.tsx` | 24 | La vista de abstracto: navegación, filtro de tres procedencias y el índice fuera de rango |
 | `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
 | `src/pages/CoursePage.test.tsx` | 22 | Formación: guardas de ámbito y de módulo, y el simulacro proporcional |
@@ -127,7 +127,9 @@ no es un hallazgo sobre el código.
 | `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
+| `src/lib/admin.test.ts` | 16 | Qué se puede hacer sobre quién, el orden de la cola y el nombre del fichero de progreso |
 | `src/lib/remoteSync.test.ts` | 16 | Sincronización: que al bajar se **fusione**, que no se suba lo que no ha cambiado y que un fallo al subir no deshaga lo fusionado |
+| `src/components/layout/UserMenu.test.tsx` | 15 | La sección de usuario: única puerta a cinco páginas |
 | `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/lib/questionSource.test.ts` | 13 | De qué banco viene cada pregunta y dónde arranca el filtro |
@@ -137,14 +139,15 @@ no es un hallazgo sobre el código.
 | `src/components/EngineFigure.test.tsx` | 11 | El tablero del motor: la serie cabe en un móvil y el «?» mide lo mismo que las figuras |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
 | `src/components/layout/SyncButton.test.tsx` | 11 | El botón de guardar de la cabecera: cuánto hace, que se refresque solo y que no prometa nada sin configurar |
-| `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/LoginForm.test.tsx` | 10 | La puerta: que registrarse avise de que no da acceso, y el fallo tal cual | Las estadísticas que el candidato usa para juzgarse |
 | `src/lib/time.test.ts` | 9 | Cuánto hace desde el último guardado: los umbrales y los relojes que no coinciden |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
+| `src/pages/SettingsPage.test.tsx` | 8 | Que nada se guarde sin confirmar, y la descarga y carga del progreso |
 | `src/lib/supabaseState.test.ts` | 7 | La traducción de la fila de Supabase a estado y de vuelta, con una tabla de mentira |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
+| `src/lib/download.test.ts` | 3 | Entregar un fichero sin servidor, y liberar la URL temporal |
 
 **`studyCalendar`** cubre la aritmética de fechas, que es donde se esconden los
 errores que nadie ve hasta que el dato ya está mal: que las semanas empiecen en
@@ -258,7 +261,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 126 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 133 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
@@ -352,8 +355,8 @@ Conviene tenerlo claro para no confiar de más:
   tests seguirán en verde y lo que fallará es el cron, que para eso sale con
   error en vez de escribir un tablón vacío. Ésa es la comprobación de verdad, y
   vive en el historial de ejecuciones del workflow, no aquí.
-- **El vaciado del selector de fichero** en Ajustes (`e.target.value = ''`, en
-  `pickFile`). El navegador real no dispara `change` al reelegir el fichero que
+- **El vaciado del selector de fichero** en el panel de administración (`e.target.value = ''`, en
+  `AdminPanel`). El navegador real no dispara `change` al reelegir el fichero que
   el input ya tiene, así que sin vaciarlo el segundo intento no haría nada;
   jsdom no modela nada de eso —dispara `change` siempre y Testing Library define
   `files` por encima del accessor— y la línea es literalmente invisible desde

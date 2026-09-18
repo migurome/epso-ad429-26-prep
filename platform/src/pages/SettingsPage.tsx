@@ -1,22 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Check, Download, RotateCcw, Share2, Trash2, Undo2, Upload } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { Check, RotateCcw, Trash2, Undo2 } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { SyncCard } from '../components/SyncCard'
 import { useProgressStore } from '../lib/progressStore'
 import { useStudyStore } from '../lib/studyStore'
 import { useCompetitionStore } from '../lib/competitionStore'
-import { usePracticeStore } from '../lib/practiceStore'
-import { useLocaleStore, pick, type Locale } from '../lib/localeStore'
-import {
-  applySnapshot,
-  createSnapshot,
-  describeSnapshot,
-  readSnapshot,
-  snapshotFilename,
-  snapshotText,
-  type ImportMode,
-  type Snapshot,
-} from '../lib/backup'
+import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
 import { COMPETITIONS, COMPETITION_ORDER } from '../data/competition'
 import { currentWeek, formatDuration, type CalendarInput } from '../lib/studyCalendar'
@@ -41,7 +30,6 @@ export function SettingsPage() {
 
   const tests = useProgressStore((s) => s.testAttempts)
   const essays = useProgressStore((s) => s.essayAttempts)
-  const practiceAnswers = usePracticeStore((s) => s.answers)
   const activeCompetition = useCompetitionStore((s) => s.competition)
 
   // Los campos editan un borrador, no el almacén. Antes cada pulsación se
@@ -91,79 +79,6 @@ export function SettingsPage() {
     [tests, essays, dayLog, draftSettings.weeklyGoalHours],
   )
   const week = useMemo(() => currentWeek(input), [input])
-
-  // ── Traslado a otro dispositivo ──────────────────────────────────────
-  //
-  // Un fichero elegido no se aplica solo: primero se enseña qué trae y desde
-  // cuándo, y el candidato decide si combinarlo o reemplazar con él. Importar a
-  // ciegas sobre semanas de trabajo es exactamente la operación que no admite
-  // un «vaya».
-  const fileInput = useRef<HTMLInputElement>(null)
-  const [pending, setPending] = useState<Snapshot | null>(null)
-  const [readError, setReadError] = useState<ReadError | null>(null)
-  const [outcome, setOutcome] = useState<string | null>(null)
-
-  // El móvil sabe mandar el fichero a WhatsApp o a Drive sin pasar por la
-  // carpeta de descargas, que es justo el paso incómodo. El escritorio no,
-  // así que el botón sólo aparece donde de verdad funciona.
-  const [canShare, setCanShare] = useState(false)
-  useEffect(() => {
-    const probe = new File(['{}'], 'epso-prep.json', { type: 'application/json' })
-    setCanShare(typeof navigator.canShare === 'function' && navigator.canShare({ files: [probe] }))
-  }, [])
-
-  function exportData() {
-    const blob = new Blob([snapshotText(createSnapshot())], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = snapshotFilename()
-    a.click()
-    URL.revokeObjectURL(url)
-  }
-
-  async function shareData() {
-    const file = new File([snapshotText(createSnapshot())], snapshotFilename(), {
-      type: 'application/json',
-    })
-    // Cerrar el diálogo de compartir lanza una excepción. No es un fallo:
-    // es el candidato cambiando de idea.
-    try {
-      await navigator.share({ files: [file], title: t('settings_sync') })
-    } catch {
-      /* cancelado */
-    }
-  }
-
-  async function pickFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    // Vaciar el input permite volver a elegir el mismo fichero: sin esto, el
-    // segundo intento no dispara `change` y parece que la página se ha colgado.
-    e.target.value = ''
-    if (!file) return
-    setOutcome(null)
-    const result = readSnapshot(await file.text())
-    setPending(result.ok ? result.snapshot : null)
-    setReadError(result.ok ? null : result.reason)
-  }
-
-  function applyPending(mode: ImportMode) {
-    if (!pending) return
-    if (mode === 'replace' && !window.confirm(t('settings_sync_replace_confirm'))) return
-    const added = applySnapshot(pending, mode)
-    setPending(null)
-    if (mode === 'replace') setOutcome(t('settings_sync_replaced'))
-    else if (added.tests + added.essays + added.days + added.practice === 0) {
-      setOutcome(t('settings_sync_nothing_new'))
-    } else setOutcome(t('settings_sync_added', { ...added }))
-  }
-
-  const localContents = {
-    tests: tests.length,
-    essays: essays.length,
-    days: Object.keys(dayLog).length,
-    practice: Object.keys(practiceAnswers).length,
-  }
 
   return (
     <div>
@@ -323,98 +238,6 @@ export function SettingsPage() {
           <SyncCard />
         </Card>
 
-        {/* ── Llevar el progreso a otro dispositivo ─────────────────────── */}
-        <Card title={t('settings_sync')} description={t('settings_sync_description')}>
-          <div className="flex flex-wrap gap-3">
-            <button type="button" onClick={exportData} className={buttonClass}>
-              <Download size={15} />
-              {t('settings_sync_export')}
-            </button>
-            {canShare && (
-              <button type="button" onClick={shareData} className={buttonClass}>
-                <Share2 size={15} />
-                {t('settings_sync_share')}
-              </button>
-            )}
-            <button type="button" onClick={() => fileInput.current?.click()} className={buttonClass}>
-              <Upload size={15} />
-              {t('settings_sync_import')}
-            </button>
-            <input
-              ref={fileInput}
-              type="file"
-              accept="application/json,.json"
-              onChange={pickFile}
-              aria-label={t('settings_sync_import')}
-              className="hidden"
-            />
-          </div>
-
-          <p className="mt-3 text-xs text-slate-400 tabular-nums">
-            {t('settings_sync_contents', localContents)}
-          </p>
-
-          {readError && (
-            <p role="alert" className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-              {t(`settings_sync_error_${readError}`)}
-            </p>
-          )}
-
-          {outcome && (
-            <p
-              role="status"
-              className="mt-4 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
-            >
-              {outcome}
-            </p>
-          )}
-
-          {pending && (
-            <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
-              <p className="text-xs text-slate-500">
-                {t('settings_sync_from', {
-                  date: formatExportDate(pending.exportedAt, locale),
-                  version: pending.appVersion || '—',
-                })}
-              </p>
-              <p className="mt-1 text-sm font-medium text-slate-700 tabular-nums">
-                {t('settings_sync_contents', describeSnapshot(pending))}
-              </p>
-
-              <div className="mt-4 space-y-3">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <button
-                    type="button"
-                    onClick={() => applyPending('merge')}
-                    className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
-                  >
-                    {t('settings_sync_merge')}
-                  </button>
-                  <span className="text-xs text-slate-500">{t('settings_sync_merge_hint')}</span>
-                </div>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <button
-                    type="button"
-                    onClick={() => applyPending('replace')}
-                    className={`${buttonClass} border-red-200 text-red-700 hover:bg-red-50`}
-                  >
-                    {t('settings_sync_replace')}
-                  </button>
-                  <span className="text-xs text-slate-500">{t('settings_sync_replace_hint')}</span>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setPending(null)}
-                className="mt-4 text-xs font-medium text-slate-500 underline-offset-2 hover:underline"
-              >
-                {t('settings_sync_cancel')}
-              </button>
-            </div>
-          )}
-        </Card>
-
         {/* ── Datos ─────────────────────────────────────────────────────── */}
         <Card title={t('settings_data')} description={t('settings_data_description')}>
           <div className="flex flex-wrap gap-3">
@@ -479,21 +302,6 @@ export function SettingsPage() {
 const inputClass =
   'rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-800 outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent'
 
-/** Motivos por los que un fichero elegido no vale. Cada uno tiene su texto:
- * «error» a secas no le dice al candidato si el fichero está roto, si se ha
- * equivocado de fichero o si le falta actualizar la plataforma. */
-type ReadError = 'unreadable' | 'foreign' | 'newer'
-
-/** La fecha del fichero en el formato del idioma activo. Un fichero viejo o
- * escrito a mano puede no traerla, y entonces no se inventa ninguna. */
-function formatExportDate(iso: string, locale: Locale): string {
-  const date = new Date(iso)
-  if (Number.isNaN(date.getTime())) return '—'
-  return date.toLocaleString(locale === 'es' ? 'es-ES' : 'en-GB', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  })
-}
 
 const buttonClass =
   'flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50'

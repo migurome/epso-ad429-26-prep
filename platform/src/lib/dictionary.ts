@@ -18,7 +18,6 @@ export const DICT = {
   open_menu: { es: 'Abrir menú', en: 'Open menu' },
   user_menu_label: { es: 'Tu cuenta', en: 'Your account' },
   user_menu_anonymous: { es: 'Candidato', en: 'Candidate' },
-  user_menu_set_name: { es: 'Pon tu nombre en Ajustes', en: 'Add your name in Settings' },
   user_menu_sign_out: { es: 'Cerrar sesión', en: 'Sign out' },
   toggle_subsection: { es: 'Desplegar {section}', en: 'Expand {section}' },
   selfcheck_pending: { es: 'pendiente', en: 'pending' },
@@ -419,64 +418,6 @@ export const DICT = {
     es: 'Deshacer la configuración o vaciar el registro de tiempo. Para llevártelo a otro sitio, usa el apartado de arriba.',
     en: 'Undo your configuration or empty the time log. To take it elsewhere, use the section above.',
   },
-  settings_sync: {
-    es: 'Llevar tu progreso a mano',
-    en: 'Move your progress by hand',
-  },
-  settings_sync_description: {
-    es: 'Exporta un fichero, pásalo al otro dispositivo como pasarías cualquier otro e impórtalo allí. Con la sincronización automática de arriba encendida no hace falta, pero sigue siendo tu copia de seguridad, y funciona sin cuenta y sin internet.',
-    en: 'Export a file, move it to the other device the way you move any file, and import it there. With automatic sync switched on above you do not need this, but it is still your backup, and it works with no account and no internet.',
-  },
-  settings_sync_export: { es: 'Exportar fichero', en: 'Export file' },
-  settings_sync_share: { es: 'Compartir', en: 'Share' },
-  settings_sync_import: { es: 'Importar fichero', en: 'Import file' },
-  settings_sync_from: {
-    es: 'Exportado el {date}, versión {version}.',
-    en: 'Exported on {date}, version {version}.',
-  },
-  settings_sync_contents: {
-    es: 'Tests: {tests} · Redacciones: {essays} · Días de calendario: {days} · Respuestas de práctica: {practice}',
-    en: 'Tests: {tests} · Essays: {essays} · Calendar days: {days} · Practice answers: {practice}',
-  },
-  settings_sync_merge: { es: 'Combinar', en: 'Merge' },
-  settings_sync_merge_hint: {
-    es: 'Añade lo del fichero a lo que ya hay aquí. No borra nada y deja tus ajustes como están.',
-    en: 'Adds the file to what is already here. Deletes nothing and leaves your settings alone.',
-  },
-  settings_sync_replace: { es: 'Reemplazar', en: 'Replace' },
-  settings_sync_replace_hint: {
-    es: 'Este dispositivo pasa a ser una copia exacta del fichero. Lo que hubiera aquí y no esté en él se pierde.',
-    en: 'This device becomes an exact copy of the file. Anything here that is not in it is lost.',
-  },
-  settings_sync_replace_confirm: {
-    es: '¿Reemplazar todo lo de este dispositivo por el contenido del fichero? Lo que no esté en el fichero se pierde, y no se puede deshacer.',
-    en: 'Replace everything on this device with the file? Anything not in the file is lost, and this cannot be undone.',
-  },
-  settings_sync_cancel: { es: 'Cancelar', en: 'Cancel' },
-  settings_sync_added: {
-    es: 'Añadido — tests: {tests}, redacciones: {essays}, días: {days}, respuestas de práctica: {practice}.',
-    en: 'Added — tests: {tests}, essays: {essays}, days: {days}, practice answers: {practice}.',
-  },
-  settings_sync_nothing_new: {
-    es: 'El fichero no traía nada que no estuviera ya aquí.',
-    en: 'The file had nothing that was not already here.',
-  },
-  settings_sync_replaced: {
-    es: 'Este dispositivo es ahora una copia exacta del fichero.',
-    en: 'This device is now an exact copy of the file.',
-  },
-  settings_sync_error_unreadable: {
-    es: 'Ese fichero no se puede leer: no es un JSON válido.',
-    en: 'That file cannot be read: it is not valid JSON.',
-  },
-  settings_sync_error_foreign: {
-    es: 'Ese fichero no es una copia de esta plataforma.',
-    en: 'That file is not a copy from this platform.',
-  },
-  settings_sync_error_newer: {
-    es: 'Ese fichero lo escribió una versión posterior de la plataforma. Actualiza ésta y vuelve a intentarlo.',
-    en: 'That file was written by a newer version of the platform. Update this one and try again.',
-  },
   settings_reset: { es: 'Restaurar ajustes', en: 'Reset settings' },
   settings_reset_confirm: {
     es: '¿Restaurar los ajustes a sus valores por defecto? Tus intentos y tu registro de uso no se tocan.',
@@ -564,6 +505,55 @@ export const DICT = {
   sync_auto_hint: {
     es: 'Sólo mientras esta pestaña esté abierta, y también al cambiar de pestaña. La sesión se renueva sola: no vuelve a pedir la contraseña.',
     en: 'Only while this tab is open, and also when you switch tabs. The session renews itself: it will not ask for the password again.',
+  },
+  // Perfil de administrador
+  nav_admin: { es: 'Administración', en: 'Administration' },
+  admin_title: { es: 'Administración', en: 'Administration' },
+  admin_description: {
+    es: 'Quién puede entrar y qué progreso tiene cada uno. Registrarse no da acceso: lo das tú.',
+    en: 'Who may sign in, and what progress each of them has. Registering grants nothing: you do.',
+  },
+  admin_waiting: { es: '{n} esperando tu decisión', en: '{n} waiting on your decision' },
+  admin_none_waiting: { es: 'Nadie espera decisión', en: 'Nobody is waiting for a decision' },
+  admin_empty: { es: 'Todavía no hay ninguna cuenta.', en: 'There are no accounts yet.' },
+  admin_loading: { es: 'Leyendo las cuentas…', en: 'Reading the accounts…' },
+  admin_status_pending: { es: 'Pendiente', en: 'Pending' },
+  admin_status_approved: { es: 'Con acceso', en: 'Has access' },
+  admin_status_revoked: { es: 'Sin acceso', en: 'No access' },
+  admin_role_admin: { es: 'Administrador', en: 'Administrator' },
+  admin_this_is_you: { es: '(eres tú)', en: '(this is you)' },
+  admin_self_note: {
+    es: 'Sobre tu propia cuenta no hay acciones: quitarte el acceso dejaría esto sin nadie capaz de aprobar a nadie, y eso sólo se arregla desde el SQL.',
+    en: 'No actions on your own account: taking away your access would leave nobody able to approve anyone, and that can only be undone from SQL.',
+  },
+  admin_approve: { es: 'Dar acceso', en: 'Grant access' },
+  admin_revoke: { es: 'Quitar acceso', en: 'Withdraw access' },
+  admin_download: { es: 'Bajar su progreso', en: 'Download their progress' },
+  admin_restore: { es: 'Restaurar progreso', en: 'Restore progress' },
+  admin_restore_for: { es: 'Fichero de progreso para {email}', en: 'Progress file for {email}' },
+  admin_wipe: { es: 'Borrar su progreso', en: 'Delete their progress' },
+  admin_delete: { es: 'Borrar la cuenta', en: 'Delete the account' },
+  admin_confirm_revoke: {
+    es: '¿Quitar el acceso a {email}? Su progreso no se borra: si vuelves a dárselo, seguirá donde lo dejó.',
+    en: 'Withdraw access for {email}? Their progress is not deleted: if you grant it again, it will be where they left it.',
+  },
+  admin_confirm_wipe: {
+    es: '¿Borrar el progreso de {email}? Esto no se puede deshacer. Bájatelo antes si quieres poder restaurarlo.',
+    en: 'Delete {email}’s progress? This cannot be undone. Download it first if you want to be able to restore it.',
+  },
+  admin_confirm_delete: {
+    es: '¿Borrar la cuenta de {email}? Desaparece de esta lista y pierde el acceso. Su cuenta de acceso sigue existiendo en Supabase: se borra desde su panel.',
+    en: 'Delete {email}’s account? It disappears from this list and loses access. Their sign-in account still exists in Supabase: delete it from its dashboard.',
+  },
+  admin_done_approve: { es: '{email} ya puede entrar.', en: '{email} can sign in now.' },
+  admin_done_revoke: { es: '{email} ya no puede entrar.', en: '{email} can no longer sign in.' },
+  admin_done_wipe: { es: 'Progreso de {email} borrado.', en: '{email}’s progress deleted.' },
+  admin_done_delete: { es: 'Cuenta de {email} borrada.', en: '{email}’s account deleted.' },
+  admin_done_restore: { es: 'Progreso de {email} restaurado.', en: '{email}’s progress restored.' },
+  admin_no_progress: { es: '{email} todavía no ha guardado nada.', en: '{email} has not saved anything yet.' },
+  admin_bad_file: {
+    es: 'Ese fichero no sirve: no es una copia de progreso de esta aplicación.',
+    en: 'That file is no good: it is not a progress backup from this application.',
   },
   // El botón de la cabecera
   sync_ago_never: { es: 'Sin guardar', en: 'Not saved' },

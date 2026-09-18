@@ -335,48 +335,13 @@ MUTATIONS = [
         "src/lib/backup.ts",
         "  if (!isRecord(raw) || raw.app !== SNAPSHOT_APP) return { ok: false, reason: 'foreign' }",
         "  if (!isRecord(raw)) return { ok: false, reason: 'foreign' }",
-        "src/pages/SettingsPage.test.tsx",
-    ),
-    (
-        "el fichero elegido se aplica solo, sin enseñar antes qué trae",
-        "src/pages/SettingsPage.tsx",
-        "    setPending(result.ok ? result.snapshot : null)",
-        "    if (result.ok) applySnapshot(result.snapshot, 'merge')\n    setPending(result.ok ? result.snapshot : null)",
-        "src/pages/SettingsPage.test.tsx",
-    ),
-    (
-        "el fichero descargado pierde la fecha del nombre",
-        "src/pages/SettingsPage.tsx",
-        "    a.download = snapshotFilename()",
-        "    a.download = 'epso-prep.json'",
-        "src/pages/SettingsPage.test.tsx",
-    ),
-    (
-        "la descarga deja la URL temporal sin liberar",
-        "src/pages/SettingsPage.tsx",
-        "    URL.revokeObjectURL(url)",
-        "    // MUTADO",
-        "src/pages/SettingsPage.test.tsx",
-    ),
-    (
-        "el botón de compartir sale también donde no funciona",
-        "src/pages/SettingsPage.tsx",
-        "    setCanShare(typeof navigator.canShare === 'function' && navigator.canShare({ files: [probe] }))",
-        "    setCanShare(true)",
-        "src/pages/SettingsPage.test.tsx",
+        "src/lib/backup.test.ts",
     ),
     # `e.target.value = ''` no tiene mutación aquí a propósito: jsdom no modela
     # el value de un input de fichero (Testing Library define `files` por encima
     # de su accessor), así que quitar esa línea no cambia nada observable desde
     # vitest. Una mutación que ningún test puede matar sólo enseña a ignorar el
     # informe. Queda anotado en TESTPLAN.md, en «Qué NO cubre».
-    (
-        "reemplazar destruye el progreso sin avisar",
-        "src/pages/SettingsPage.tsx",
-        "    if (mode === 'replace' && !window.confirm(t('settings_sync_replace_confirm'))) return",
-        "    // MUTADO",
-        "src/pages/SettingsPage.test.tsx",
-    ),
     (
         "el fichero se guarda en una sola línea ilegible",
         "src/lib/backup.ts",
@@ -924,6 +889,91 @@ MUTATIONS = [
         "  if (status === 'off') return null",
         "  // MUTADO",
         "src/components/layout/SyncButton.test.tsx",
+    ),
+    # ── El perfil de administrador ────────────────────────────────────────
+    (
+        "un administrador puede revocarse a sí mismo y dejar esto sin nadie",
+        "src/lib/admin.ts",
+        "  if (me.userId === target.userId) return { ok: false, reason: 'self' }",
+        "  // MUTADO",
+        "src/components/AdminPanel.test.tsx",
+    ),
+    (
+        "se compara por correo en vez de por identidad",
+        "src/lib/admin.ts",
+        "  if (me.userId === target.userId) return { ok: false, reason: 'self' }",
+        "  if (me.email === target.email) return { ok: false, reason: 'self' }",
+        "src/lib/admin.test.ts",
+    ),
+    (
+        "las solicitudes pendientes dejan de salir primero",
+        "src/lib/admin.ts",
+        "      RANK[a.status] - RANK[b.status] ||",
+        "",
+        "src/lib/admin.test.ts",
+    ),
+    (
+        "la lista se reordena en su sitio y baila bajo el ratón",
+        "src/lib/admin.ts",
+        "  return [...accounts].sort(",
+        "  return accounts.sort(",
+        "src/lib/admin.test.ts",
+    ),
+    (
+        "al decidir no queda escrito quién decidió",
+        "src/lib/admin.ts",
+        "  return { status, decided_at: now.toISOString(), decided_by: by.userId }",
+        "  return { status, decided_at: now.toISOString(), decided_by: '' }",
+        "src/lib/admin.test.ts",
+    ),
+    (
+        "el fichero de progreso sale sin saber de quién es",
+        "src/lib/admin.ts",
+        "  return `epso-progreso-${who || 'sin-correo'}-${day}.json`",
+        "  return `epso-progreso-${day}.json`",
+        "src/lib/admin.test.ts",
+    ),
+    (
+        "se ofrece aprobar a quien ya tiene acceso",
+        "src/lib/admin.ts",
+        "      return target.status === 'approved' ? { ok: false, reason: 'noop' } : { ok: true }",
+        "      return { ok: true }",
+        "src/lib/admin.test.ts",
+    ),
+    (
+        "un candidato ve la administración en su menú",
+        "src/components/layout/UserMenu.tsx",
+        "    ...(admin",
+        "    ...(true",
+        "src/components/layout/UserMenu.test.tsx",
+    ),
+    (
+        "cualquiera alcanza el panel de administración escribiendo la ruta",
+        "src/App.tsx",
+        "          {admin && <Route path=\"/admin\" element={<AdminPage />} />}",
+        "          <Route path=\"/admin\" element={<AdminPage />} />",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "borrar el progreso de alguien no pregunta antes",
+        "src/components/AdminPanel.tsx",
+        "              onClick={() => confirmed('admin_confirm_wipe') && onWipe(account)}",
+        "              onClick={() => onWipe(account)}",
+        "src/components/AdminPanel.test.tsx",
+    ),
+    (
+        "borrar una cuenta no pregunta antes",
+        "src/components/AdminPanel.tsx",
+        "              onClick={() => confirmed('admin_confirm_delete') && onDelete(account)}",
+        "              onClick={() => onDelete(account)}",
+        "src/components/AdminPanel.test.tsx",
+    ),
+    (
+        "la descarga deja la URL temporal sin liberar",
+        "src/lib/download.ts",
+        "  URL.revokeObjectURL(url)",
+        "  // MUTADO",
+        "src/lib/download.test.ts",
     ),
 ]
 

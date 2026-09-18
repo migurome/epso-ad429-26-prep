@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
 | `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
 | `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
 | `1.4` | El progreso se sincroniza en una base de datos (Supabase) en vez de Google Drive: sin consola de Google Cloud, sin nada que pegar en cada navegador y sin volver a autorizar cada hora. |
@@ -93,9 +94,9 @@ Tres cosas que el trabajo pidió y el plan no:
   una de cada tres veces según lo que hubiera avanzado. Ahora mira el primer
   pintado, que es el instante que de verdad quería comprobar.
 
-### Fase 3 — El perfil de administrador
+### Fase 3 — El perfil de administrador — **hecha** (`1.7`)
 
-Ruta `/admin`, visible sólo si el perfil es `admin`:
+Ruta `/admin`, que sólo existe si el perfil es `admin`:
 
 1. **La cola de solicitudes.** Quien se registre aparece aquí en pendiente.
    Aprobar o denegar es de una persona, nunca automático.
@@ -107,9 +108,23 @@ Ruta `/admin`, visible sólo si el perfil es `admin`:
    deja de estar en Ajustes y pasa aquí, operando sobre la fila de otra persona.
 5. **La verificación.** `/verificacion` —las comprobaciones de integridad que
    corren en el navegador sobre la web publicada— deja de ser pública y pasa a
-   ser sólo del administrador, con su log de fallos.
+   ser sólo del administrador.
 
-### Fase 4 — Roadmap e historial dentro de la web
+Tres cosas que el trabajo pidió y el plan no:
+
+- **La pregunta de «¿seguro?» vive en el componente, no en el cableado.** No es
+  donde más bonito queda: es donde un test puede verla. Una confirmación que
+  ningún test mira es una confirmación que alguien quitará algún día sin que
+  nada falle, y el síntoma será un progreso borrado de verdad.
+- **Quitar la tarjeta manual de Ajustes dejó dos cosas sin red**: liberar la URL
+  temporal de la descarga y confirmar antes de destruir. Las dos estaban
+  probadas y las dos se reconstruyeron sin tests al moverlas. La descarga se
+  sacó a `download.ts` con los suyos; las confirmaciones, al componente.
+- **Se destapó que había dos correos**: el de la cuenta y el que el candidato
+  escribe en Ajustes. El menú de usuario intentaba servir a los dos. Ahora
+  enseña el de la cuenta, que es la identidad de verdad.
+
+### Fase 4 — Roadmap e historial dentro de la web — **siguiente**
 
 La página `/roadmap` que enseña este documento, generada por
 `build_content.py` como el resto del contenido.
@@ -137,6 +152,17 @@ volverán a aparecer cada vez que se pida algo parecido.
 - **El administrador puede leer el progreso de todos.** Es inherente a poder
   bajar y restaurar el de un usuario concreto. No es un descuido: es el precio
   de esa función, y la política de la base de datos lo dice explícitamente.
+
+## Deuda que este trabajo deja anotada
+
+- **El correo de Ajustes ya no sirve para nada.** La identidad la da la cuenta;
+  ese campo sigue en el perfil local y en el fichero de estado porque quitarlo
+  cambia el formato del `snapshot`, y eso pide una migración. Mientras tanto,
+  pide un dato que no se usa en ninguna parte.
+- **Borrar una cuenta desde `/admin` borra su perfil, no su acceso.** La cuenta
+  de `auth.users` sigue existiendo y hay que eliminarla desde el panel de
+  Supabase. Está dicho en el propio aviso de confirmación, pero es media
+  operación en dos sitios.
 
 ## Lo que sigue pendiente de antes
 
