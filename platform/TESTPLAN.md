@@ -101,7 +101,7 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 881 tests en 38 archivos
+### 3. `unit` — 901 tests en 40 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
@@ -118,27 +118,29 @@ no es un hallazgo sobre el código.
 | `src/components/FullscreenPractice.test.tsx` | 24 | La vista de abstracto: navegación, filtro de tres procedencias y el índice fuera de rango |
 | `src/lib/stores.test.ts` | 23 | Los almacenes del progreso y los ajustes, y su rehidratación |
 | `src/pages/CoursePage.test.tsx` | 22 | Formación: guardas de ámbito y de módulo, y el simulacro proporcional |
+| `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
 | `src/lib/board.test.ts` | 21 | Qué cuenta como «nueva» en el tablón —la fecha de EPSO, no el día en que la vimos— y el orden por fase |
 | `src/lib/engineFigure.test.ts` | 21 | Que no entre un SVG que no haya salido del motor tal cual ni uno que no sea XML bien formado, y su URL de datos |
 | `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
-| `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
-| `src/lib/account.test.ts` | 19 | Quién entra: las seis situaciones de acceso y, sobre todo, que un fallo de la base **no** sea una negativa |
 | `src/components/BoardView.test.tsx` | 19 | El tablón: el verde del último mes, el plazo con la hora de Bruselas y el año entero, no sólo lo abierto |
+| `src/lib/account.test.ts` | 19 | Quién entra: las seis situaciones de acceso y, sobre todo, que un fallo de la base **no** sea una negativa |
+| `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
-| `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
 | `src/lib/remoteSync.test.ts` | 16 | Sincronización: que al bajar se **fusione**, que no se suba lo que no ha cambiado y que un fallo al subir no deshaga lo fusionado |
 | `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
+| `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
 | `src/lib/questionSource.test.ts` | 13 | De qué banco viene cada pregunta y dónde arranca el filtro |
 | `src/pages/ProgressPage.test.tsx` | 13 |
 | `src/components/SyncCard.test.tsx` | 12 | La tarjeta de sincronización: en qué punto está y qué puede forzar el candidato |
 | `src/components/AccessNotice.test.tsx` | 11 | Las tres pantallas de «hay sesión pero no entras», y que no digan lo mismo |
-| `src/components/LoginForm.test.tsx` | 10 | La puerta: que registrarse avise de que no da acceso, y el fallo tal cual | Las estadísticas que el candidato usa para juzgarse |
-| `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
-| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/EngineFigure.test.tsx` | 11 | El tablero del motor: la serie cabe en un móvil y el «?» mide lo mismo que las figuras |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
+| `src/components/layout/SyncButton.test.tsx` | 11 | El botón de guardar de la cabecera: cuánto hace, que se refresque solo y que no prometa nada sin configurar |
 | `src/components/layout/UserMenu.test.tsx` | 11 | La sección de usuario: única puerta a cinco páginas |
+| `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
+| `src/components/LoginForm.test.tsx` | 10 | La puerta: que registrarse avise de que no da acceso, y el fallo tal cual | Las estadísticas que el candidato usa para juzgarse |
+| `src/lib/time.test.ts` | 9 | Cuánto hace desde el último guardado: los umbrales y los relojes que no coinciden |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
 | `src/lib/supabaseState.test.ts` | 7 | La traducción de la fila de Supabase a estado y de vuelta, con una tabla de mentira |
@@ -256,7 +258,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 121 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 126 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en

@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { Sidebar } from './Sidebar'
+import { SyncButton } from './SyncButton'
 import { UserMenu } from './UserMenu'
 import { LoadingFallback } from '../LoadingFallback'
 import { useCompetitionStore } from '../../lib/competitionStore'
@@ -55,7 +56,8 @@ export function Layout() {
             <Menu size={22} />
           </button>
           <span className="text-sm font-semibold text-slate-800 md:hidden">{t('app_name')}</span>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-1">
+            <SyncButton />
             <UserMenu />
           </div>
         </header>

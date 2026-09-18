@@ -889,6 +889,42 @@ MUTATIONS = [
         "        {failure && (",
         "src/components/AccessNotice.test.tsx",
     ),
+    # ── El botón de guardar de la cabecera ────────────────────────────────
+    (
+        "un reloj adelantado hace decir «hace -3 min»",
+        "src/lib/time.ts",
+        "  if (elapsed < MINUTE) return { unit: 'now' }",
+        "  if (elapsed >= 0 && elapsed < MINUTE) return { unit: 'now' }",
+        "src/lib/time.test.ts",
+    ),
+    (
+        "una marca de tiempo ilegible se pinta igual",
+        "src/lib/time.ts",
+        "  if (Number.isNaN(then)) return { unit: 'never' }",
+        "  // MUTADO",
+        "src/lib/time.test.ts",
+    ),
+    (
+        "el tiempo transcurrido se redondea hacia arriba y exagera",
+        "src/lib/time.ts",
+        "  if (elapsed < DAY) return { unit: 'hours', value: Math.floor(elapsed / HOUR) }",
+        "  if (elapsed < DAY) return { unit: 'hours', value: Math.ceil(elapsed / HOUR) }",
+        "src/lib/time.test.ts",
+    ),
+    (
+        "el botón se queda diciendo «Guardado ahora» para siempre",
+        "src/components/layout/SyncButton.tsx",
+        "    const timer = setInterval(() => setNow(new Date()), TICK_MS)",
+        "    const timer = setInterval(() => {}, TICK_MS)",
+        "src/components/layout/SyncButton.test.tsx",
+    ),
+    (
+        "sin sincronización configurada el botón promete guardar igual",
+        "src/components/layout/SyncButton.tsx",
+        "  if (status === 'off') return null",
+        "  // MUTADO",
+        "src/components/layout/SyncButton.test.tsx",
+    ),
 ]
 
 

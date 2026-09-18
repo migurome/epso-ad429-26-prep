@@ -193,6 +193,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
 | `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
 | `1.4` | El progreso se sincroniza en una base de datos (Supabase) en vez de Google Drive: sin consola de Google Cloud, sin nada que pegar en cada navegador y sin volver a autorizar cada hora. |
 | `1.3` | Tablón de convocatorias: un bot revisa los listados de EPSO a diario. Y el progreso se sincroniza con Google Drive, sin ficheros a mano. |
@@ -453,6 +454,14 @@ La tabla se crea una vez, con RLS encendida y un disparador que pone
 guardado es más nuevo que lo que él ya fusionó; dejarla en manos del cliente
 sería fiarse del reloj de cada teléfono). El SQL está en la cabecera de
 `supabaseState.ts`.
+
+El botón de la cabecera, al lado del perfil, guarda ahora mismo y dice cuánto
+hace que se guardó por última vez. Está ahí y no sólo en Ajustes porque
+responde, sin que haya que ir a buscarla, a la única pregunta que se hace quien
+lleva una hora estudiando: ¿esto se ha guardado? Se recalcula solo cada medio
+minuto —nada vuelve a pintar la cabecera mientras se estudia— y una marca de
+tiempo en el futuro, que llega sola en cuanto dos relojes no coinciden, se lee
+como «ahora» en vez de como «hace -3 min».
 
 Queda **un** límite que la interfaz no esconde, porque si no el candidato creerá
 que la web se ha roto: el guardado automático **sólo corre con la pestaña

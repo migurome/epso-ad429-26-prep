@@ -90,6 +90,24 @@ async function visit(route: string) {
   return result
 }
 
+/**
+ * Monta sin dejar avanzar nada asíncrono: la foto del primer pintado.
+ *
+ * `visit` envuelve el montaje en un `act` asíncrono, que vacía microtareas y
+ * temporizadores; para una página que arranca trabajo sola —la verificación—
+ * eso convierte cualquier aserción sobre «todavía no ha corrido» en una
+ * carrera. Con `act` síncrono los efectos se ejecutan hasta su primer `await` y
+ * ahí se paran, que es exactamente el instante que se quiere fotografiar.
+ */
+function visitFirstPaint(route: string) {
+  window.location.hash = `#${route}`
+  let result!: ReturnType<typeof render>
+  act(() => {
+    result = render(<App />)
+  })
+  return result
+}
+
 async function waitForContent(container: HTMLElement, locale: 'es' | 'en') {
   const loading = DICT.loading[locale]
   await waitFor(
@@ -380,12 +398,15 @@ describe('la verificación enseña el guion antes de correrlo', () => {
     expect(sections.length).toBe(CONTENT_TARGETS.length + 3)
   })
 
-  it('las que todavía no ha corrido salen sin marcar', async () => {
+  it('las que todavía no ha corrido salen sin marcar', () => {
     // Contar secciones no basta: si aparecieran ya marcadas, el panel volvería
-    // a no distinguir «ha pasado» de «no ha llegado a hacerse». Las imágenes
-    // son la última sección y aquí no llegan a descargarse nunca, así que
-    // siguen pendientes de forma determinista.
-    const { container } = await visit('/verificacion')
+    // a no distinguir «ha pasado» de «no ha llegado a hacerse».
+    //
+    // Se mira el primer pintado. Antes se dejaba correr la comprobación dando
+    // por hecho que las imágenes «no llegan a descargarse nunca», y no era
+    // verdad: la sección arranca igual y pasa a «0 / 240», así que el test
+    // fallaba una de cada tres veces según lo que hubiera avanzado.
+    const { container } = visitFirstPaint('/verificacion')
     const figures = [...container.querySelectorAll('main [aria-expanded]')].at(-1)!
     expect(figures.textContent).toContain(DICT.selfcheck_pending.es)
   })

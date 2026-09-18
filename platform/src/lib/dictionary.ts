@@ -565,6 +565,20 @@ export const DICT = {
     es: 'Sólo mientras esta pestaña esté abierta, y también al cambiar de pestaña. La sesión se renueva sola: no vuelve a pedir la contraseña.',
     en: 'Only while this tab is open, and also when you switch tabs. The session renews itself: it will not ask for the password again.',
   },
+  // El botón de la cabecera
+  sync_ago_never: { es: 'Sin guardar', en: 'Not saved' },
+  sync_ago_now: { es: 'Guardado ahora', en: 'Saved just now' },
+  sync_ago_minutes: { es: 'Guardado hace {n} min', en: 'Saved {n} min ago' },
+  sync_ago_hours: { es: 'Guardado hace {n} h', en: 'Saved {n} h ago' },
+  sync_ago_days: { es: 'Guardado hace {n} d', en: 'Saved {n} d ago' },
+  sync_button_hint: {
+    es: 'Guardar ahora en el servidor. Última vez: {when}',
+    en: 'Save to the server now. Last time: {when}',
+  },
+  sync_button_hint_never: {
+    es: 'Guardar ahora en el servidor. Todavía no se ha guardado nada.',
+    en: 'Save to the server now. Nothing has been saved yet.',
+  },
   sync_private: {
     es: 'El progreso se guarda en una fila que es sólo tuya: la base de datos no deja leerla a nadie más, ni con la clave pública que lleva esta web.',
     en: 'Your progress is kept in a row that is yours alone: the database lets nobody else read it, not even with the public key this site carries.',

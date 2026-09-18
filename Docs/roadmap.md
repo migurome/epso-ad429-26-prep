@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
 | `1.5` | Cuentas de verdad: se entra con correo y contraseña, cada cuenta tiene su progreso, y registrarse no da acceso — lo aprueba un administrador. Fuera la contraseña compartida que iba compilada en el paquete. |
 | `1.4` | El progreso se sincroniza en una base de datos (Supabase) en vez de Google Drive: sin consola de Google Cloud, sin nada que pegar en cada navegador y sin volver a autorizar cada hora. |
 | `1.3` | Tablón de convocatorias: un bot revisa los listados de EPSO a diario. Y el progreso se sincroniza con Google Drive, sin ficheros a mano. |
@@ -72,12 +73,25 @@ La puerta es el acceso de Supabase: correo y contraseña de verdad.
   se partió en `LoginForm` (visible, con las acciones por props) y `LoginPage`
   (cableado), el mismo patrón de `BoardView`/`BoardPage`.
 
-### Fase 2 — Botón de sincronización en la cabecera — **siguiente**
+### Fase 2 — Botón de sincronización en la cabecera — **hecha** (`1.6`)
 
 Al lado del perfil de usuario, un botón que guarda ahora y dice cuándo fue la
-última vez que se habló con el servidor. Hoy eso está enterrado en Ajustes, que
-es el sitio donde nadie mira cuando quiere asegurarse de que su trabajo está a
-salvo.
+última vez que se habló con el servidor. Estaba enterrado en Ajustes, que es el
+sitio donde nadie mira cuando quiere asegurarse de que su trabajo está a salvo.
+
+Tres cosas que el trabajo pidió y el plan no:
+
+- **El texto se recalcula solo cada medio minuto.** Nada vuelve a pintar la
+  cabecera mientras se estudia, así que sin reloj propio diría «Guardado ahora»
+  una hora después, con la misma cara.
+- **Una marca de tiempo en el futuro se lee como «ahora».** La pone el
+  servidor y el reloj del navegador puede ir atrasado; sin eso saldría «hace -3
+  min», que parece una avería de la web cuando no lo es.
+- **Se destapó un test intermitente** en la página de verificación. Daba por
+  hecho que las imágenes «no llegan a descargarse nunca» y por tanto su sección
+  seguía pendiente; no era cierto —arranca igual y pasa a «0 / 240»— y fallaba
+  una de cada tres veces según lo que hubiera avanzado. Ahora mira el primer
+  pintado, que es el instante que de verdad quería comprobar.
 
 ### Fase 3 — El perfil de administrador
 
