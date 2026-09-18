@@ -184,6 +184,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.4` | El progreso se sincroniza en una base de datos (Supabase) en vez de Google Drive: sin consola de Google Cloud, sin nada que pegar en cada navegador y sin volver a autorizar cada hora. |
 | `1.3` | Tablón de convocatorias: un bot revisa los listados de EPSO a diario. Y el progreso se sincroniza con Google Drive, sin ficheros a mano. |
 | `1.2` | Figuras generadas por el motor en razonamiento abstracto, con su propia procedencia en el filtro; fuera el banco bonus de IA de esa sección. |
 | `1.1` | Exportar e importar el progreso, para llevarlo entre el ordenador y el móvil. |
@@ -327,44 +328,77 @@ ninguna marca de «revisado hoy», que crearía un commit vacío cada día; que 
 revisión se hizo lo cuenta el historial de ejecuciones. Y GitHub desactiva los
 workflows programados tras 60 días sin actividad en el repositorio.
 
-## Sincronización con Google Drive
+## Sincronización entre dispositivos
 
-El progreso se guarda en una carpeta del Drive del candidato cada cinco minutos,
-al cambiar de pestaña y al abrir la sesión, para que el ordenador y el móvil
-vayan solos. Se configura en **Ajustes → Sincronizar con Google Drive**.
+El progreso se guarda cada cinco minutos, al cambiar de pestaña y al abrir la
+sesión, para que el ordenador y el móvil vayan solos. Vive en una fila de
+Supabase, una por cuenta, y se configura en **Ajustes → Sincronizar entre
+dispositivos**: hace falta entrar una vez en cada navegador.
 
 | Pieza | Papel |
 | --- | --- |
-| `driveSync.ts` | Todas las decisiones: cuándo bajar, cuándo fusionar, cuándo subir. Sin red, probado entero |
-| `driveApi.ts` | Las cuatro llamadas a Drive: buscar carpeta, buscar fichero, bajar, subir |
-| `googleAuth.ts` | El permiso de Google. El token vive en memoria, nunca en disco |
-| `driveSyncEngine.ts` | El reloj. Lo arranca el armazón, una vez por pestaña |
+| `remoteSync.ts` | Todas las decisiones: cuándo bajar, cuándo fusionar, cuándo subir. Sin red, probado entero |
+| `supabaseState.ts` | La fila vista como almacén: cuatro llamadas a PostgREST y la traducción a estado |
+| `supabaseClient.ts` | El cliente, uno solo y creado tarde |
+| `syncEngine.ts` | El reloj y la sesión. Lo arranca el armazón, una vez por pestaña |
 
 Tres decisiones protegen el trabajo del candidato:
 
 - **Al arrancar se fusiona, no se sustituye**, con la misma fusión del fichero
   manual (`backup.ts`): el calendario se queda con el máximo de cada día y los
   intentos se unen por id. Es idempotente, y eso importa porque el reloj va a
-  bajar el mismo fichero muchas veces.
+  bajar lo mismo muchas veces.
 - **Sólo se sube si el estado cambió de verdad.** La huella ignora la hora de
-  exportación; con ella dentro, cada ciclo subiría una copia idéntica y el Drive
-  del candidato acabaría con cientos de versiones.
+  exportación; con ella dentro, cada ciclo subiría una copia idéntica.
 - **Un fallo al subir no deshace lo fusionado**, y el ciclo siguiente reintenta.
-  Y si Drive no contesta al leer, no se sube nada a ciegas: sobrescribiría lo
-  que hubiera allí.
+  Y si la lectura falla, no se sube nada a ciegas: sobrescribiría lo que hubiera
+  allí.
 
-El identificador de cliente OAuth va en `googleConfig.ts` o pegado en Ajustes.
-**No es un secreto**: en una aplicación que vive entera en el navegador no hay
-dónde esconder nada, y lo que impide que otro sitio lo use es la lista de
-orígenes autorizados que se configura junto a él en Google Cloud. El permiso que
-se pide es `drive.file`, el más estrecho que existe: sólo alcanza a lo que la
-propia web crea —la carpeta `EPSO_savedata` y su `epso-prep-estado.json`—, y el
-resto del Drive es invisible para ella.
+Y una cuarta que es la misma idea aplicada a la identidad: **al cambiar de
+cuenta se olvida lo recordado** —qué versión se fusionó, qué huella se subió—,
+porque habla de otra fila, y conservarlo dejaría el progreso sin subir.
 
-Dos límites que la interfaz no esconde, porque si no el candidato creerá que la
-web se ha roto: el permiso de Google **caduca cada hora** (se renueva con un
-clic) y el guardado automático **sólo corre con la pestaña abierta**. El fichero
-manual de Ajustes sigue existiendo para copias de seguridad.
+### Por qué la clave puede ir en el paquete
+
+`supabaseConfig.ts` lleva la URL del proyecto y la clave publicable, y las dos
+van compiladas a la vista. Esa clave está diseñada para vivir en el navegador: no
+da acceso a nada por sí misma. Lo que decide qué se puede leer y escribir son las
+políticas por fila (RLS) de la propia base de datos, que sólo dejan tocar la fila
+cuyo `user_id` coincide con el de la sesión. Quien copie la clave del paquete no
+puede leer el progreso de nadie: necesitaría además la contraseña de la cuenta, y
+eso no está aquí.
+
+Y está comprobado, no supuesto. Con esa clave y sin sesión, un intento de
+escribir en la tabla responde:
+
+```
+42501 — new row violates row-level security policy for table "study_state"
+```
+
+Ésa es la comprobación que hay que repetir si algún día se toca el SQL: si esa
+escritura anónima llegara a funcionar, la clave del paquete dejaría de ser
+inofensiva. La que **no** puede salir de Supabase es la `service_role` (o
+`sb_secret_…`), que se salta el RLS entero; no está en este repositorio y no
+debe estar nunca.
+
+Esto es lo que hace que **no haya nada que configurar en cada dispositivo**. La
+versión anterior sincronizaba con Google Drive y obligaba a crear un
+identificador OAuth en Google Cloud y a pegarlo en cada navegador; se cambió por
+esto para no depender de esa consola. El núcleo de decisiones —`remoteSync.ts` y
+sus tests— sobrevivió intacto al cambio, que era justamente la razón de tenerlo
+aislado detrás de una interfaz de dos métodos.
+
+La tabla se crea una vez, con RLS encendida y un disparador que pone
+`updated_at` en cada escritura (la marca con la que un dispositivo sabe si lo
+guardado es más nuevo que lo que él ya fusionó; dejarla en manos del cliente
+sería fiarse del reloj de cada teléfono). El SQL está en la cabecera de
+`supabaseState.ts`.
+
+Queda **un** límite que la interfaz no esconde, porque si no el candidato creerá
+que la web se ha roto: el guardado automático **sólo corre con la pestaña
+abierta**. La sesión, en cambio, se renueva sola y no vuelve a pedir la
+contraseña. El fichero manual de Ajustes sigue existiendo para copias de
+seguridad, y funciona sin cuenta y sin internet.
 
 ## Estado actual
 

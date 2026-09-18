@@ -402,12 +402,12 @@ export const DICT = {
     en: 'Undo your configuration or empty the time log. To take it elsewhere, use the section above.',
   },
   settings_sync: {
-    es: 'Llevar tu progreso a otro dispositivo',
-    en: 'Move your progress to another device',
+    es: 'Llevar tu progreso a mano',
+    en: 'Move your progress by hand',
   },
   settings_sync_description: {
-    es: 'Nada se sincroniza solo: el PC y el móvil guardan sus datos por separado y no se ven entre sí. Exporta aquí un fichero, pásalo al otro dispositivo como pasarías cualquier otro e impórtalo allí. Te sirve además de copia de seguridad.',
-    en: 'Nothing syncs by itself: your computer and your phone keep their data separately and never see each other. Export a file here, move it to the other device the way you move any file, and import it there. It doubles as a backup.',
+    es: 'Exporta un fichero, pásalo al otro dispositivo como pasarías cualquier otro e impórtalo allí. Con la sincronización automática de arriba encendida no hace falta, pero sigue siendo tu copia de seguridad, y funciona sin cuenta y sin internet.',
+    en: 'Export a file, move it to the other device the way you move any file, and import it there. With automatic sync switched on above you do not need this, but it is still your backup, and it works with no account and no internet.',
   },
   settings_sync_export: { es: 'Exportar fichero', en: 'Export file' },
   settings_sync_share: { es: 'Compartir', en: 'Share' },
@@ -528,41 +528,39 @@ export const DICT = {
     es: 'Los títulos, los números de convocatoria, las sedes y los plazos se copian tal cual de los listados de EPSO, con su horario de Bruselas.',
     en: 'Titles, reference numbers, locations and deadlines are copied verbatim from the EPSO listings, in its Brussels time.',
   },
-  // Sincronización con Google Drive
-  settings_drive: { es: 'Sincronizar con Google Drive', en: 'Sync with Google Drive' },
-  settings_drive_description: {
-    es: 'El progreso se guarda en una carpeta de tu Drive cada cinco minutos y se recoge al abrir la sesión, así que el ordenador y el móvil van solos. El fichero manual de abajo sigue estando, para copias de seguridad.',
-    en: 'Your progress is saved to a folder in your Drive every five minutes and picked up when the session starts, so computer and phone keep themselves in step. The manual file below is still there, for backups.',
+  // Sincronización automática del progreso
+  settings_autosync: { es: 'Sincronizar entre dispositivos', en: 'Sync across devices' },
+  settings_autosync_description: {
+    es: 'El progreso se guarda cada cinco minutos y se recoge al abrir la sesión, así que el ordenador y el móvil van solos. Hace falta entrar una vez en cada navegador. El fichero manual de abajo sigue estando, para copias de seguridad.',
+    en: 'Your progress is saved every five minutes and picked up when the session starts, so computer and phone keep themselves in step. You need to sign in once per browser. The manual file below is still there, for backups.',
   },
-  drive_status_off: { es: 'Sin configurar', en: 'Not configured' },
-  drive_status_disconnected: { es: 'Sin conectar', en: 'Not connected' },
-  drive_status_connecting: { es: 'Conectando…', en: 'Connecting…' },
-  drive_status_ready: { es: 'Al día', en: 'Up to date' },
-  drive_status_syncing: { es: 'Sincronizando…', en: 'Syncing…' },
-  drive_status_error: { es: 'Con un problema', en: 'Something went wrong' },
-  drive_last_sync: { es: 'Última vez: {when}', en: 'Last time: {when}' },
-  drive_never_synced: { es: 'Todavía no se ha sincronizado', en: 'Not synced yet' },
-  drive_connect: { es: 'Conectar con Drive', en: 'Connect to Drive' },
-  drive_sync_now: { es: 'Sincronizar ahora', en: 'Sync now' },
-  drive_disconnect: { es: 'Desconectar', en: 'Disconnect' },
-  drive_auto: { es: 'Guardar cada cinco minutos', en: 'Save every five minutes' },
-  drive_auto_hint: {
-    es: 'Sólo mientras esta pestaña esté abierta, y también al cambiar de pestaña. Google pide permiso otra vez cada hora, con un clic.',
-    en: 'Only while this tab is open, and also when you switch tabs. Google asks for permission again every hour, with one click.',
+  sync_status_off: { es: 'Sin configurar', en: 'Not configured' },
+  sync_status_signed_out: { es: 'Sin entrar', en: 'Not signed in' },
+  sync_status_signing_in: { es: 'Entrando…', en: 'Signing in…' },
+  sync_status_ready: { es: 'Al día', en: 'Up to date' },
+  sync_status_syncing: { es: 'Sincronizando…', en: 'Syncing…' },
+  sync_status_error: { es: 'Con un problema', en: 'Something went wrong' },
+  sync_last: { es: 'Última vez: {when}', en: 'Last time: {when}' },
+  sync_never: { es: 'Todavía no se ha sincronizado', en: 'Not synced yet' },
+  sync_who: { es: 'Dentro como {email}', en: 'Signed in as {email}' },
+  sync_email: { es: 'Correo', en: 'Email' },
+  sync_password: { es: 'Contraseña', en: 'Password' },
+  sync_in: { es: 'Entrar', en: 'Sign in' },
+  sync_up: { es: 'Crear la cuenta', en: 'Create the account' },
+  sync_out: { es: 'Salir', en: 'Sign out' },
+  sync_now: { es: 'Sincronizar ahora', en: 'Sync now' },
+  sync_auto: { es: 'Guardar cada cinco minutos', en: 'Save every five minutes' },
+  sync_auto_hint: {
+    es: 'Sólo mientras esta pestaña esté abierta, y también al cambiar de pestaña. La sesión se renueva sola: no vuelve a pedir la contraseña.',
+    en: 'Only while this tab is open, and also when you switch tabs. The session renews itself: it will not ask for the password again.',
   },
-  drive_where: { es: 'Carpeta «{folder}» de tu Drive, fichero {file}.', en: 'Folder "{folder}" in your Drive, file {file}.' },
-  drive_client_label: {
-    es: 'Identificador de cliente de Google',
-    en: 'Google client ID',
+  sync_private: {
+    es: 'El progreso se guarda en una fila que es sólo tuya: la base de datos no deja leerla a nadie más, ni con la clave pública que lleva esta web.',
+    en: 'Your progress is kept in a row that is yours alone: the database lets nobody else read it, not even with the public key this site carries.',
   },
-  drive_client_hint: {
-    es: 'Se crea una vez en Google Cloud, en Credenciales → ID de cliente de OAuth → Aplicación web, autorizando este sitio como origen.',
-    en: 'Created once in Google Cloud, under Credentials → OAuth client ID → Web application, authorising this site as an origin.',
-  },
-  drive_client_save: { es: 'Guardar identificador', en: 'Save client ID' },
-  drive_client_not_secret: {
-    es: 'No es una contraseña: va a la vista en cualquier web que use Drive.',
-    en: 'It is not a password: it is visible in any site that uses Drive.',
+  sync_off_hint: {
+    es: 'Faltan la URL del proyecto y la clave publicable en src/lib/supabaseConfig.ts. Las dos son públicas y se copian de Supabase, en Project Settings → API.',
+    en: 'The project URL and publishable key are missing from src/lib/supabaseConfig.ts. Both are public and are copied from Supabase, under Project Settings → API.',
   },
 } satisfies Record<string, Localized>
 

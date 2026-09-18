@@ -101,7 +101,7 @@ aplicaciones de Windows el binario nativo de oxlint viene bloqueado por
 directiva; la etapa lo detecta y se marca **omitida**, no fallida, porque eso
 no es un hallazgo sobre el código.
 
-### 3. `unit` — 841 tests en 35 archivos
+### 3. `unit` — 855 tests en 36 archivos
 
 | Archivo | Tests | Qué asegura |
 | --- | ---: | --- |
@@ -123,15 +123,15 @@ no es un hallazgo sobre el código.
 | `src/lib/shuffle.test.ts` | 21 | Que el simulacro baraje de verdad, el barajado con semilla y el reloj |
 | `src/components/TimedTest.test.tsx` | 21 | Puntuación y el intento que queda grabado |
 | `src/components/BoardView.test.tsx` | 19 | El tablón: el verde del último mes, el plazo con la hora de Bruselas y el año entero, no sólo lo abierto |
+| `src/components/SyncCard.test.tsx` | 19 | La tarjeta de sincronización: en qué punto está y qué puede hacer el candidato en cada una de sus tres caras |
 | `src/data/contentIntegrity.test.ts` | 17 | Invariantes de **todo** el contenido |
 | `src/lib/course.test.ts` | 17 | El emparejado de módulos del curso con sus preguntas |
 | `src/components/QuestionCard.test.tsx` | 17 | Selección, corrección y explicación; en los ejercicios del motor, cada figura en su sitio y nunca como marcado |
-| `src/lib/driveSync.test.ts` | 16 | Drive: que al bajar se **fusione**, que no se suba lo que no ha cambiado y que un fallo al subir no deshaga lo fusionado |
+| `src/lib/remoteSync.test.ts` | 16 | Sincronización: que al bajar se **fusione**, que no se suba lo que no ha cambiado y que un fallo al subir no deshaga lo fusionado |
 | `src/pages/EuftePage.test.tsx` | 14 | Que cerrar un tema **no tire el borrador** de la redacción |
 | `src/lib/questionSource.test.ts` | 13 | De qué banco viene cada pregunta y dónde arranca el filtro |
 | `src/pages/ProgressPage.test.tsx` | 13 | Las estadísticas que el candidato usa para juzgarse |
 | `src/components/EssayRunner.test.tsx` | 13 | Cronómetro, recuento de palabras y guardado del EUFTE |
-| `src/components/DriveSyncCard.test.tsx` | 12 | La tarjeta de Drive: en qué punto está la sincronización y qué puede hacer el candidato |
 | `src/smoke.test.tsx` | 11 | Cada página monta aislada de su marco |
 | `src/components/EngineFigure.test.tsx` | 11 | El tablero del motor: la serie cabe en un móvil y el «?» mide lo mismo que las figuras |
 | `src/components/History.test.tsx` | 11 | Los dos historiales: orden y puntuación |
@@ -139,6 +139,7 @@ no es un hallazgo sobre el código.
 | `src/pages/LoginPage.test.tsx` | 10 | Credenciales y la penalización de tres segundos al fallar |
 | `src/lib/abstractFigure.coverage.test.ts` | 8 | Paridad ES/EN de las figuras dibujadas |
 | `src/lib/useStudyTracker.test.tsx` | 8 | Las reglas de visibilidad e inactividad del contador |
+| `src/lib/supabaseState.test.ts` | 7 | La traducción de la fila de Supabase a estado y de vuelta, con una tabla de mentira |
 | `src/lib/useCountdown.test.tsx` | 5 | El cronómetro de las pruebas cronometradas |
 
 **`studyCalendar`** cubre la aritmética de fechas, que es donde se esconden los
@@ -253,7 +254,7 @@ sobrevivieron**:
 | El simulacro no recorta el banco al tamaño del examen | El test usaba un banco más pequeño que el examen, donde recortar no cambia nada |
 | Guardar el intento dos veces | No es alcanzable desde la interfaz; el test prometía algo que no comprobaba |
 
-Los cuatro tests se reescribieron. Hoy **las 113 mutaciones se detectan**, y el
+Los cuatro tests se reescribieron. Hoy **las 118 mutaciones se detectan**, y el
 script restaura siempre el código, incluso si una ejecución falla.
 
 Conviene lanzar `npm run mutation` al tocar tests o la lógica que vigilan, no en
@@ -322,12 +323,18 @@ Conviene tenerlo claro para no confiar de más:
   respuesta correcta, no que sea la correcta. Eso lo garantiza el origen: el
   anexo II de la convocatoria y las fuentes de `Referencias.txt`.
 - **Rendimiento y accesibilidad**, más allá de que exista un `<nav>`.
-- **La ventana de permiso de Google.** Pedir el token, la caducidad a la hora y
-  la llamada real a Drive necesitan un navegador de verdad y una cuenta; ningún
-  test los toca. Lo que sí está probado entero, sin red, es **qué se decide**:
-  cuándo se baja, cuándo se fusiona y cuándo se sube (`driveSync.test.ts`, con
-  un Drive de mentira). La frontera está en `driveApi.ts` y `googleAuth.ts`,
-  que son deliberadamente tontos y no deciden nada.
+- **Hablar con Supabase.** Entrar, crear la cuenta, renovar la sesión y las
+  llamadas reales a la tabla necesitan un navegador de verdad y una cuenta;
+  ningún test los toca. Lo que sí está probado entero, sin red, es **qué se
+  decide**: cuándo se baja, cuándo se fusiona y cuándo se sube
+  (`remoteSync.test.ts`, con un almacén de mentira) y la traducción de la fila
+  a estado en los dos sentidos (`supabaseState.test.ts`). La frontera está en
+  `supabaseClient.ts` y en `stateRows`, que son deliberadamente tontos y no
+  deciden nada.
+- **Que las políticas por fila de la base de datos hagan lo que dicen.** Que
+  una cuenta no pueda leer la fila de otra lo garantiza el RLS de Supabase, no
+  un test de aquí; comprobarlo exige dos cuentas de verdad. El SQL que lo
+  establece está en la cabecera de `supabaseState.ts`.
 - **Que los listados de EPSO sigan teniendo la forma de hoy.** Las pruebas del
   tablón usan páginas guardadas el 18/09/2026; si EPSO cambia su plantilla, los
   tests seguirán en verde y lo que fallará es el cron, que para eso sale con

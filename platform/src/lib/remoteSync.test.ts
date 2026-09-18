@@ -10,7 +10,7 @@
 //  · que un fallo al subir no deshaga lo que ya se fusionó.
 import { describe, it, expect, beforeEach } from 'vitest'
 import { SNAPSHOT_FORMAT, createSnapshot, snapshotText, type Snapshot } from './backup'
-import { fingerprint, syncOnce, type DriveBackend, type SyncState } from './driveSync'
+import { fingerprint, syncOnce, type RemoteBackend, type SyncState } from './remoteSync'
 import { useCompetitionStore } from './competitionStore'
 import { useLocaleStore } from './localeStore'
 import { usePracticeStore } from './practiceStore'
@@ -60,21 +60,21 @@ function fileFrom(extra: Partial<Snapshot> = {}): Snapshot {
 }
 
 /** Un Drive de mentira: recuerda un fichero y cuenta las escrituras. */
-function fakeDrive(initial?: Snapshot) {
+function fakeCloud(initial?: Snapshot) {
   const log = { writes: 0, reads: 0, clock: 1 }
   let file = initial
-    ? { fileId: 'file-1', modifiedTime: 'T1', text: snapshotText(initial) }
+    ? { ref: 'file-1', version: 'T1', text: snapshotText(initial) }
     : null
-  const backend: DriveBackend = {
+  const backend: RemoteBackend = {
     read: async () => {
       log.reads++
       return file
     },
-    write: async (text, fileId) => {
+    write: async (text, ref) => {
       log.writes++
       log.clock++
-      file = { fileId: fileId ?? 'file-1', modifiedTime: `T${log.clock}`, text }
-      return { fileId: file.fileId, modifiedTime: file.modifiedTime }
+      file = { ref: ref ?? 'file-1', version: `T${log.clock}`, text }
+      return { ref: file.ref, version: file.version }
     },
   }
   return { backend, log, current: () => file }
@@ -85,44 +85,44 @@ beforeEach(blank)
 describe('la primera vez', () => {
   it('sube el estado local, porque en Drive no hay nada', async () => {
     useProgressStore.setState({ testAttempts: [attempt('local-1', '2026-02-01T10:00:00Z')] })
-    const drive = fakeDrive()
+    const cloud = fakeCloud()
 
-    const result = await syncOnce(drive.backend, {})
+    const result = await syncOnce(cloud.backend, {})
 
     expect(result.ok).toBe(true)
     if (!result.ok) return
     expect([result.pushed, result.pulled]).toEqual([true, null])
-    expect(drive.log.writes).toBe(1)
-    expect(result.state).toMatchObject({ fileId: 'file-1', modifiedTime: 'T2' })
-    expect(JSON.parse(drive.current()!.text).testAttempts).toHaveLength(1)
+    expect(cloud.log.writes).toBe(1)
+    expect(result.state).toMatchObject({ ref: 'file-1', version: 'T2' })
+    expect(JSON.parse(cloud.current()!.text).testAttempts).toHaveLength(1)
   })
 })
 
 describe('cuando no ha cambiado nada', () => {
   it('no sube un fichero idéntico cada cinco minutos', async () => {
-    const drive = fakeDrive()
-    const first = await syncOnce(drive.backend, {})
+    const cloud = fakeCloud()
+    const first = await syncOnce(cloud.backend, {})
     expect(first.ok).toBe(true)
     if (!first.ok) return
 
-    const second = await syncOnce(drive.backend, first.state)
+    const second = await syncOnce(cloud.backend, first.state)
 
     expect(second.ok).toBe(true)
     if (!second.ok) return
     expect(second.pushed).toBe(false)
-    expect(drive.log.writes).toBe(1)
+    expect(cloud.log.writes).toBe(1)
   })
 
   it('tampoco vuelve a fusionar la versión de Drive que ya fusionó', async () => {
     // La huella cambia si se fusiona algo; que no cambie demuestra que no se
     // ha vuelto a aplicar lo mismo.
-    const drive = fakeDrive(fileFrom({ dayLog: { '2026-02-02': 600 } }))
-    const first = await syncOnce(drive.backend, {})
+    const cloud = fakeCloud(fileFrom({ dayLog: { '2026-02-02': 600 } }))
+    const first = await syncOnce(cloud.backend, {})
     expect(first.ok).toBe(true)
     if (!first.ok) return
     const antes = useStudyStore.getState().dayLog
 
-    const second = await syncOnce(drive.backend, first.state)
+    const second = await syncOnce(cloud.backend, first.state)
 
     expect(second.ok).toBe(true)
     if (!second.ok) return
@@ -134,9 +134,9 @@ describe('cuando no ha cambiado nada', () => {
 describe('cuando el otro dispositivo ha subido algo', () => {
   it('lo fusiona sin tirar lo de aquí, y sube la unión', async () => {
     useProgressStore.setState({ testAttempts: [attempt('del-pc', '2026-02-01T10:00:00Z')] })
-    const drive = fakeDrive(fileFrom({ testAttempts: [attempt('del-movil', '2026-02-03T10:00:00Z')] }))
+    const cloud = fakeCloud(fileFrom({ testAttempts: [attempt('del-movil', '2026-02-03T10:00:00Z')] }))
 
-    const result = await syncOnce(drive.backend, {})
+    const result = await syncOnce(cloud.backend, {})
 
     expect(result.ok).toBe(true)
     if (!result.ok) return
@@ -146,14 +146,14 @@ describe('cuando el otro dispositivo ha subido algo', () => {
       'del-movil',
     ])
     // Y lo que queda en Drive ya tiene los dos, para que el móvil vea el del PC.
-    expect(JSON.parse(drive.current()!.text).testAttempts).toHaveLength(2)
+    expect(JSON.parse(cloud.current()!.text).testAttempts).toHaveLength(2)
   })
 
   it('el calendario se queda con el máximo de cada día, no con la suma', async () => {
     useStudyStore.setState({ dayLog: { '2026-02-02': 900, '2026-02-03': 300 } })
-    const drive = fakeDrive(fileFrom({ dayLog: { '2026-02-02': 600, '2026-02-04': 1200 } }))
+    const cloud = fakeCloud(fileFrom({ dayLog: { '2026-02-02': 600, '2026-02-04': 1200 } }))
 
-    await syncOnce(drive.backend, {})
+    await syncOnce(cloud.backend, {})
 
     expect(useStudyStore.getState().dayLog).toEqual({
       '2026-02-02': 900,
@@ -163,12 +163,12 @@ describe('cuando el otro dispositivo ha subido algo', () => {
   })
 
   it('sincronizar dos veces seguidas no duplica nada', async () => {
-    const drive = fakeDrive(fileFrom({ testAttempts: [attempt('del-movil', '2026-02-03T10:00:00Z')] }))
+    const cloud = fakeCloud(fileFrom({ testAttempts: [attempt('del-movil', '2026-02-03T10:00:00Z')] }))
 
-    const first = await syncOnce(drive.backend, {})
+    const first = await syncOnce(cloud.backend, {})
     expect(first.ok).toBe(true)
     if (!first.ok) return
-    await syncOnce(drive.backend, first.state)
+    await syncOnce(cloud.backend, first.state)
 
     expect(useProgressStore.getState().testAttempts).toHaveLength(1)
   })
@@ -178,9 +178,9 @@ describe('cuando el otro dispositivo ha subido algo', () => {
     // preparando ni el idioma de la interfaz.
     useCompetitionStore.setState({ competition: 'ad7' })
     useLocaleStore.setState({ locale: 'en' })
-    const drive = fakeDrive(fileFrom({ competition: 'ad8', uiLocale: 'es' }))
+    const cloud = fakeCloud(fileFrom({ competition: 'ad8', uiLocale: 'es' }))
 
-    await syncOnce(drive.backend, {})
+    await syncOnce(cloud.backend, {})
 
     expect(useCompetitionStore.getState().competition).toBe('ad7')
     expect(useLocaleStore.getState().locale).toBe('en')
@@ -190,25 +190,25 @@ describe('cuando el otro dispositivo ha subido algo', () => {
 describe('cuando algo va mal', () => {
   it('un fichero que no es nuestro no se aplica, y se dice por qué', async () => {
     useProgressStore.setState({ testAttempts: [attempt('local-1', '2026-02-01T10:00:00Z')] })
-    const drive = fakeDrive()
+    const cloud = fakeCloud()
     // Un JSON cualquiera en el sitio del estado.
-    await drive.backend.write('{"algo":"otra cosa"}')
+    await cloud.backend.write('{"algo":"otra cosa"}')
 
-    const result = await syncOnce(drive.backend, {})
+    const result = await syncOnce(cloud.backend, {})
 
     expect(result).toMatchObject({ ok: false, reason: 'foreign' })
     expect(useProgressStore.getState().testAttempts).toHaveLength(1)
   })
 
   it('un fichero ilegible tampoco', async () => {
-    const drive = fakeDrive()
-    await drive.backend.write('esto no es JSON')
-    expect(await syncOnce(drive.backend, {})).toMatchObject({ ok: false, reason: 'unreadable' })
+    const cloud = fakeCloud()
+    await cloud.backend.write('esto no es JSON')
+    expect(await syncOnce(cloud.backend, {})).toMatchObject({ ok: false, reason: 'unreadable' })
   })
 
   it('si Drive no contesta al leer, no se sube nada a ciegas', async () => {
     // Subir sin haber podido leer sobrescribiría lo que hubiera allí.
-    const backend: DriveBackend = {
+    const backend: RemoteBackend = {
       read: async () => {
         throw new Error('sin conexión')
       },
@@ -217,17 +217,17 @@ describe('cuando algo va mal', () => {
       },
     }
 
-    const result = await syncOnce(backend, { fileId: 'file-1' })
+    const result = await syncOnce(backend, { ref: 'file-1' })
 
     expect(result).toMatchObject({ ok: false, reason: 'read', detail: 'sin conexión' })
   })
 
   it('si falla al subir, lo fusionado NO se deshace y el próximo intento reintenta', async () => {
     useProgressStore.setState({ testAttempts: [attempt('del-pc', '2026-02-01T10:00:00Z')] })
-    const backend: DriveBackend = {
+    const backend: RemoteBackend = {
       read: async () => ({
-        fileId: 'file-1',
-        modifiedTime: 'T1',
+        ref: 'file-1',
+        version: 'T1',
         text: snapshotText(fileFrom({ testAttempts: [attempt('del-movil', '2026-02-03T10:00:00Z')] })),
       }),
       write: async () => {
@@ -243,7 +243,7 @@ describe('cuando algo va mal', () => {
     // …y la huella se queda sin poner, para que el siguiente ciclo vuelva a
     // intentar subir.
     expect(result.state.fingerprint).toBeUndefined()
-    expect(result.state.modifiedTime).toBe('T1')
+    expect(result.state.version).toBe('T1')
   })
 })
 
@@ -274,19 +274,19 @@ describe('la huella del estado', () => {
 
 describe('el estado que se recuerda entre pasadas', () => {
   it('guarda el id del fichero, para no volver a buscarlo', async () => {
-    const drive = fakeDrive(fileFrom())
-    const result = await syncOnce(drive.backend, {})
+    const cloud = fakeCloud(fileFrom())
+    const result = await syncOnce(cloud.backend, {})
     expect(result.ok).toBe(true)
     if (!result.ok) return
-    expect(result.state.fileId).toBe('file-1')
+    expect(result.state.ref).toBe('file-1')
   })
 
   it('reutiliza el id que se le pasa al escribir', async () => {
-    const drive = fakeDrive()
-    const state: SyncState = { fileId: 'ya-existia' }
-    const result = await syncOnce(drive.backend, state)
+    const cloud = fakeCloud()
+    const state: SyncState = { ref: 'ya-existia' }
+    const result = await syncOnce(cloud.backend, state)
     expect(result.ok).toBe(true)
     if (!result.ok) return
-    expect(result.state.fileId).toBe('ya-existia')
+    expect(result.state.ref).toBe('ya-existia')
   })
 })

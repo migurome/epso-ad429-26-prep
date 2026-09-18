@@ -7,55 +7,54 @@ import {
   type SnapshotSummary,
 } from './backup'
 
-// Sincronización del progreso con un fichero en Google Drive.
+// Sincronización del progreso con un almacén remoto.
 //
 // Aquí está toda la decisión —cuándo bajar, cuándo fusionar, cuándo subir— y
-// nada del acceso a Drive: eso entra por `DriveBackend`, para que estas reglas
-// se puedan probar enteras sin red y sin cuenta de Google. La parte que habla
-// con Google vive en `driveApi.ts` y `googleAuth.ts`.
+// nada de cómo se llega al almacén: eso entra por `RemoteBackend`, para que
+// estas reglas se puedan probar enteras sin red y sin cuenta en ningún sitio.
+// La implementación que se usa de verdad vive en `supabaseState.ts`.
+//
+// Ese aislamiento no es decoración: el almacén ya ha cambiado una vez —de un
+// fichero en Google Drive a una fila en Supabase, para no depender de la
+// consola de Google Cloud— y estas reglas y sus tests sobrevivieron intactos.
 //
 // Dos decisiones gobiernan el resto:
 //
 //   · **Al arrancar se fusiona, no se sustituye.** Si el móvil subió algo y el
 //     PC tenía trabajo sin subir, sustituir tiraría uno de los dos. La fusión
-//     de `backup.ts` es idempotente, así que bajar el mismo fichero cien veces
-//     deja el progreso igual.
+//     de `backup.ts` es idempotente, así que bajar lo mismo cien veces deja el
+//     progreso igual.
 //   · **Sólo se sube si el estado ha cambiado de verdad.** La huella ignora la
-//     fecha de exportación; si no, cada cinco minutos subiría un fichero nuevo
-//     idéntico al anterior y el historial de Drive se llenaría de basura.
-
-/** Nombre del fichero dentro de la carpeta de Drive. */
-export const SNAPSHOT_FILE = 'epso-prep-estado.json'
-
-/** Carpeta que la aplicación crea en Drive si no existe. */
-export const DRIVE_FOLDER = 'EPSO_savedata'
+//     fecha de exportación; si no, cada cinco minutos se subiría un estado
+//     nuevo idéntico al anterior.
 
 /** Cada cuánto se guarda mientras la pestaña está abierta. */
 export const AUTO_SAVE_MS = 5 * 60 * 1000
 
-export interface RemoteFile {
-  fileId: string
-  /** `modifiedTime` de Drive: cambia en cada escritura, venga de donde venga. */
-  modifiedTime: string
+export interface RemoteSnapshot {
+  /** Qué es lo remoto: un fichero, una fila. El sincronizador no lo interpreta. */
+  ref: string
+  /** Marca de versión: cambia en cada escritura, venga del dispositivo que venga. */
+  version: string
   text: string
 }
 
 /**
- * Lo que el sincronizador necesita de Drive, y nada más.
+ * Lo que el sincronizador necesita del almacén, y nada más.
  *
- * `read` devuelve null cuando el fichero todavía no existe, que es lo normal la
+ * `read` devuelve null cuando todavía no hay nada guardado, que es lo normal la
  * primera vez y no un error.
  */
-export interface DriveBackend {
-  read(): Promise<RemoteFile | null>
-  write(text: string, fileId?: string): Promise<{ fileId: string; modifiedTime: string }>
+export interface RemoteBackend {
+  read(): Promise<RemoteSnapshot | null>
+  write(text: string, ref?: string): Promise<{ ref: string; version: string }>
 }
 
 /** Lo que hay que recordar entre sincronizaciones para no repetir trabajo. */
 export interface SyncState {
-  fileId?: string
-  /** La versión de Drive que este dispositivo ya ha fusionado. */
-  modifiedTime?: string
+  ref?: string
+  /** La versión remota que este dispositivo ya ha fusionado. */
+  version?: string
   /** Huella del estado local tal como se subió por última vez. */
   fingerprint?: string
 }
@@ -63,15 +62,15 @@ export interface SyncState {
 export type SyncOutcome =
   | {
       ok: true
-      /** Qué entró de Drive, si hubo algo que fusionar. */
+      /** Qué entró del servidor, si hubo algo que fusionar. */
       pulled: SnapshotSummary | null
       pushed: boolean
       state: SyncState
     }
   | {
       ok: false
-      /** `unreadable`/`foreign`/`newer`: lo de Drive no se puede usar.
-       *  `read`/`write`: Drive falló. Se distinguen porque el candidato no
+      /** `unreadable`/`foreign`/`newer`: lo remoto no se puede usar.
+       *  `read`/`write`: el servidor falló. Se distinguen porque el candidato no
        *  puede hacer nada con las primeras y sí reintentar las segundas. */
       reason: 'unreadable' | 'foreign' | 'newer' | 'read' | 'write'
       detail?: string
@@ -111,8 +110,8 @@ function stableStringify(value: unknown): string {
  * arranque y el guardado automático se comporten distinto, que es donde se
  * pierden progresos.
  */
-export async function syncOnce(backend: DriveBackend, state: SyncState): Promise<SyncOutcome> {
-  let remote: RemoteFile | null
+export async function syncOnce(backend: RemoteBackend, state: SyncState): Promise<SyncOutcome> {
+  let remote: RemoteSnapshot | null
   try {
     remote = await backend.read()
   } catch (error) {
@@ -123,18 +122,18 @@ export async function syncOnce(backend: DriveBackend, state: SyncState): Promise
   let next: SyncState = { ...state }
 
   if (remote) {
-    next = { ...next, fileId: remote.fileId }
-    // Si la versión de Drive es la misma que ya fusionamos, no hay nada que
+    next = { ...next, ref: remote.ref }
+    // Si la versión remota es la misma que ya fusionamos, no hay nada que
     // traer: lo de allí salió de aquí.
-    if (remote.modifiedTime !== state.modifiedTime) {
+    if (remote.version !== state.version) {
       const read = readSnapshot(remote.text)
       if (!read.ok) return { ok: false, reason: read.reason, state: next }
       pulled = applySnapshot(read.snapshot, 'merge')
-      next = { ...next, modifiedTime: remote.modifiedTime }
+      next = { ...next, version: remote.version }
     }
   }
 
-  // La huella se toma DESPUÉS de fusionar: si lo de Drive traía algo nuevo, el
+  // La huella se toma DESPUÉS de fusionar: si lo remoto traía algo nuevo, el
   // estado local ya lo incluye y lo que se sube es la unión de los dos.
   const snapshot = createSnapshot()
   const mark = fingerprint(snapshot)
@@ -143,17 +142,17 @@ export async function syncOnce(backend: DriveBackend, state: SyncState): Promise
   if (!mustPush) return { ok: true, pulled, pushed: false, state: next }
 
   try {
-    const written = await backend.write(snapshotText(snapshot), next.fileId)
+    const written = await backend.write(snapshotText(snapshot), next.ref)
     return {
       ok: true,
       pulled,
       pushed: true,
-      state: { fileId: written.fileId, modifiedTime: written.modifiedTime, fingerprint: mark },
+      state: { ref: written.ref, version: written.version, fingerprint: mark },
     }
   } catch (error) {
-    // Lo fusionado no se deshace: el progreso de Drive ya está en este
+    // Lo fusionado no se deshace: el progreso del servidor ya está en este
     // dispositivo, y lo único que falta es que el de aquí llegue allí. Se
-    // conserva `modifiedTime` para no volver a fusionar lo mismo, y no la
+    // conserva `version` para no volver a fusionar lo mismo, y no la
     // huella, para que el próximo intento vuelva a subir.
     return { ok: false, reason: 'write', detail: message(error), state: next }
   }

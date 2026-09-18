@@ -6,7 +6,7 @@ import { UserMenu } from './UserMenu'
 import { LoadingFallback } from '../LoadingFallback'
 import { useCompetitionStore } from '../../lib/competitionStore'
 import { useStudyTracker } from '../../lib/useStudyTracker'
-import { startDriveAutoSync } from '../../lib/driveSyncEngine'
+import { startAutoSync } from '../../lib/syncEngine'
 import { useT } from '../../lib/useT'
 
 export function Layout() {
@@ -22,7 +22,7 @@ export function Layout() {
 
   // La sincronización con Drive: una pasada al entrar y otra cada cinco
   // minutos. Va aquí, y sólo aquí, para que haya un único reloj por pestaña.
-  useEffect(() => startDriveAutoSync(), [])
+  useEffect(() => startAutoSync(), [])
 
   // El color de acento de toda la interfaz cuelga de este atributo (ver
   // src/index.css): azul para la AD7, rojo para la AD8. Va en <html> y no en un
