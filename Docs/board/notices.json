@@ -56,6 +56,42 @@
       "openedOn": "2026-09-08"
     },
     {
+      "id": "artificial-intelligence-ai",
+      "title": "Artificial intelligence (AI)",
+      "url": "https://eu-careers.europa.eu/en/apply-ict-competition-ad8",
+      "grade": "AD 8",
+      "locations": [
+        "Brussels (Belgium)",
+        "Luxembourg (Luxembourg)",
+        "Strasbourg (France)"
+      ],
+      "deadline": "2026-10-13T10:00:00Z",
+      "deadlineText": "13/10/2026 - 12:00",
+      "stage": "open",
+      "reference": null,
+      "year": null,
+      "firstSeen": "2026-09-24",
+      "openedOn": null
+    },
+    {
+      "id": "cybersecurity",
+      "title": "Cybersecurity",
+      "url": "https://eu-careers.europa.eu/en/apply-ict-competition-ad8",
+      "grade": "AD 8",
+      "locations": [
+        "Brussels (Belgium)",
+        "Luxembourg (Luxembourg)",
+        "Strasbourg (France)"
+      ],
+      "deadline": "2026-10-13T10:00:00Z",
+      "deadlineText": "13/10/2026 - 12:00",
+      "stage": "open",
+      "reference": null,
+      "year": null,
+      "firstSeen": "2026-09-24",
+      "openedOn": null
+    },
+    {
       "id": "epso-ad-429-26-4",
       "title": "Data science",
       "url": "https://eu-careers.europa.eu/en/job-opportunities/data-science",
