@@ -9,6 +9,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import type { EssayAttempt, TestAttempt } from '../types/content'
 import { useProgressStore } from './progressStore'
+import { usePracticeStore, type PracticeAnswer } from './practiceStore'
 import {
   DEFAULT_PROFILE,
   DEFAULT_SETTINGS,
@@ -194,6 +195,38 @@ describe('studyStore — rehidratación de datos antiguos', () => {
       expect(merged.settings).toEqual(DEFAULT_SETTINGS)
       expect(merged.dayLog).toEqual({})
     }
+  })
+})
+
+describe('practiceStore — respuestas de una versión anterior', () => {
+  // Hasta la 1.8 una respuesta era el id de la opción, una cadena pelada.
+  // Ahora lleva además cuándo se contestó. Esta conversión corre una sola vez
+  // sobre lo que el candidato ya tenía guardado: si se equivoca, se lleva por
+  // delante todo el rastro de lo trabajado, que no está en ningún otro sitio.
+  const migrate = usePracticeStore.persist.getOptions().migrate!
+  type Stored = { answers: Record<string, PracticeAnswer>; orderSeed: Record<string, number> }
+
+  it('convierte la forma vieja y no le inventa una fecha', () => {
+    // Ponerle la de hoy haría que el calendario contara como de esta tarde el
+    // estudio de hace un mes.
+    const migrated = migrate({ answers: { q1: 'A', q2: 'B' }, orderSeed: { banco: 7 } }, 0) as Stored
+
+    expect(migrated.answers).toEqual({
+      q1: { optionId: 'A', at: '' },
+      q2: { optionId: 'B', at: '' },
+    })
+    expect(migrated.orderSeed).toEqual({ banco: 7 })
+  })
+
+  it('no toca lo que ya está en la forma de ahora', () => {
+    const respuesta = { optionId: 'A', at: '2026-09-24T10:00:00.000Z', seconds: 64, done: true }
+    const migrated = migrate({ answers: { q1: respuesta }, orderSeed: {} }, 1) as Stored
+    expect(migrated.answers.q1).toEqual(respuesta)
+  })
+
+  it('sobrevive a un almacenamiento vacío o a medias', () => {
+    expect(() => migrate(undefined, 0)).not.toThrow()
+    expect(() => migrate({}, 0)).not.toThrow()
   })
 })
 

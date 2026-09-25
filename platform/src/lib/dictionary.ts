@@ -187,6 +187,26 @@ export const DICT = {
   practice_reactivate_one: { es: 'Reactivar esta pregunta', en: 'Reset this question' },
   practice_reactivate_all: { es: 'Reactivar todas', en: 'Reset all' },
   practice_reshuffled: { es: 'Orden barajado para esta vuelta.', en: 'Order shuffled for this pass.' },
+  // La lista de práctica: filtros, contador y el paso de darla por repasada
+  practice_filter_all: { es: 'Todas', en: 'All' },
+  practice_filter_answered: { es: 'Respondidas', en: 'Answered' },
+  practice_filter_pending: { es: 'Pendientes', en: 'Pending' },
+  practice_none_under_filter: {
+    es: 'Ninguna pregunta con este filtro.',
+    en: 'No questions under this filter.',
+  },
+  practice_expand: { es: 'Abrir la pregunta', en: 'Open the question' },
+  practice_collapse: { es: 'Plegar la pregunta', en: 'Collapse the question' },
+  practice_answered_on: { es: 'Contestada el {date}', en: 'Answered on {date}' },
+  practice_pace_hint: {
+    es: 'Ritmo de examen: {n} s por pregunta. Pasarse no cierra nada.',
+    en: 'Exam pace: {n} s per question. Going over closes nothing.',
+  },
+  practice_done: { es: 'Hecha', en: 'Done' },
+  practice_done_hint: {
+    es: 'Darla por repasada: se pliega y sale de pendientes.',
+    en: 'Mark it reviewed: it collapses and leaves the pending list.',
+  },
 
   // TimedTest
   no_questions_available: {

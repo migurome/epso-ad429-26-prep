@@ -84,8 +84,12 @@ src/
                           sin red. Un fallo de la base NO es una negativa
     accountStore.ts       Quién ha entrado. No se persiste a propósito
     accountEngine.ts      La sesión: entrar, salir y vigilar los cambios
-    practiceStore.ts      Lo respondido en los bancos de práctica y su
-                          orden, persistidos: recargar ya no borra el rastro
+    practiceStore.ts      Lo respondido en los bancos de práctica —con la
+                          fecha y lo que costó— y su orden, persistidos
+    practiceView.ts       Qué se enseña bajo cada filtro y cómo se lee el
+                          contador. Puro, probado entero
+    useStopwatch.ts       El contador de las preguntas sueltas. NO se para
+                          al llegar al ritmo: enseña cuánto se pasó
     localeStore.ts        Store de idioma (es/en, zustand + localStorage) +
                           tipo Localized y helper pick(locale, valor)
     dictionary.ts, useT.ts   Diccionario de textos de interfaz y hook t()
@@ -100,9 +104,10 @@ src/
     AccessNotice.tsx       Hay sesión pero no se entra: pendiente,
                            revocado, o no se ha podido comprobar
     QuestionCard.tsx       Una pregunta con opciones y corrección
-    PracticeBank.tsx       Banco de práctica sin cronometrar: enunciado
-                           entero en la cabecera, veredicto al plegar y
-                           reactivación (que rebaraja al vaciarse)
+    PracticeBank.tsx       Banco de práctica: enunciado entero en la
+                           cabecera, contador al ritmo de examen, filtro
+                           por estado, veredicto al plegar y reactivación
+                           (que rebaraja al vaciarse)
     TimedTest.tsx          Simulacro cronometrado (setup → test → resultados)
     EssayRunner.tsx         Editor cronometrado para prompts EUFTE
     AttemptHistory.tsx, EssayHistory.tsx   Historial de intentos guardados
@@ -193,6 +198,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
 | `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
 | `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
 | `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
@@ -442,6 +448,50 @@ de acceso. Eso exige la clave `service_role`, que no puede vivir en un
 navegador. `/admin` borra el perfil y con él el acceso; la cuenta inerte se
 elimina desde el panel de Supabase.
 
+## El banco de práctica
+
+Es donde se estudia sin simulacro: la lista entera de preguntas de un ámbito o
+una destreza, con su corrección explicada opción por opción. Lo que cambió en la
+`1.9` es que dejó de ser una lista de lectura para parecerse al examen.
+
+| Pieza | Papel |
+| --- | --- |
+| `practiceView.ts` | Qué se enseña bajo cada filtro y cómo se lee el contador. Puro, probado entero |
+| `useStopwatch.ts` | El contador. Gemelo de `useCountdown`, con una diferencia que manda |
+| `practiceStore.ts` | Lo respondido: opción, cuándo, cuánto costó y si ya se dio por repasada |
+| `components/PracticeBank.tsx` | La lista y la fila |
+
+Cuatro decisiones, y ninguna es cosmética:
+
+- **Responder no cierra nada.** La explicación aparece justo al marcar la
+  opción, y le hace falta sobre todo a quien acaba de fallar; plegar ahí la
+  pregunta sería cerrarle la puerta en el momento exacto en que se aprende. La
+  pregunta se queda abierta y sigue contando como pendiente hasta que el
+  candidato pulsa **Hecha**. Por eso «respondida» y «repasada» son dos estados
+  distintos y no uno.
+- **Sólo la flecha pliega.** Antes la fila entera era un botón, con un efecto
+  que nadie buscó: arrastrar el ratón para subrayar una palabra del enunciado
+  terminaba en un clic y cerraba la pregunta debajo. En razonamiento verbal
+  señalar con el dedo es parte de leer.
+- **El contador no se detiene al llegar a cero.** Cien segundos es el ritmo con
+  el que se entrena —el verbal real da 105: 20 preguntas en 35 minutos—, pero es
+  una referencia, no una guillotina. Pasado el ritmo sigue contando en rojo y en
+  negativo, porque lo que más dice de una pregunta difícil es justo el tiempo
+  que costó de más. Y corre por fila: con un contador único arriba, abrir la
+  segunda pregunta sin contestar la primera heredaba el tiempo de aquélla.
+- **Cada respuesta guarda su fecha**, y de ahí sale que el calendario cuente el
+  trabajo suelto. Lo respondido antes de la `1.9` se conserva **sin fecha**, en
+  blanco: ponerle la de hoy habría contado como de esta tarde el estudio de
+  semanas enteras. No aparece en la rejilla, y es la respuesta honrada.
+
+En el calendario las preguntas sueltas entran como **un apunte por día** —«12
+contestadas»—, no uno por pregunta, que llenaría la ficha del día y taparía el
+test que de verdad se hizo esa tarde. **No aportan tiempo**: el día vale el mayor
+entre el uso registrado y el de las pruebas, nunca la suma, porque contestar
+ocurre *dentro* del tiempo de uso. Sumar aquí los segundos del contador inflaría
+la semana el día que alguien deje una pregunta abierta y se vaya a comer, y el
+objetivo semanal dejaría de decir la verdad justo donde más se mira.
+
 ## Sincronización entre dispositivos
 
 El progreso se guarda cada cinco minutos, al cambiar de pestaña y al abrir la
@@ -535,9 +585,10 @@ ciberseguridad de la AD8 tienen banco propio; el de inteligencia artificial
 publica de momento su alcance oficial (anexo II) sin banco.
 
 Cada prueba de razonamiento y el field-MCQ tienen: pestaña de teoría
-(Markdown), banco de práctica sin cronometrar con corrección explicada
-opción por opción (y filtro banco real / bonus generado por IA cuando
-aplica), simulacro cronometrado con preguntas aleatorias del banco real,
+(Markdown), banco de práctica con corrección explicada opción por opción
+—con contador al ritmo de examen, filtro por estado y fecha de cada
+respuesta, y filtro banco real / bonus generado por IA cuando aplica—,
+simulacro cronometrado con preguntas aleatorias del banco real,
 resultados y revisión, e historial de intentos. El EUFTE tiene editor
 cronometrado por prompt, con revelado del esquema de respuesta modelo y
 checklist de autoevaluación al terminar, más historial de redacciones

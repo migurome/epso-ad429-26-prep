@@ -40,7 +40,7 @@ function local(y: number, m: number, d: number, h = 12, min = 0): Date {
   return new Date(y, m - 1, d, h, min)
 }
 
-const EMPTY: CalendarInput = { tests: [], essays: [], dayLog: {}, weeklyGoalHours: 5 }
+const EMPTY: CalendarInput = { tests: [], essays: [], practice: [], dayLog: {}, weeklyGoalHours: 5 }
 
 describe('semanas', () => {
   it('empiezan en lunes', () => {
@@ -318,5 +318,67 @@ describe('utilidades de fecha', () => {
     // Último domingo de octubre: en España se atrasa el reloj. Sumar un día
     // con aritmética de milisegundos daría el mismo día otra vez.
     expect(dayKey(addDays(local(2026, 10, 25), 1))).toBe('2026-10-26')
+  })
+})
+
+describe('las preguntas sueltas del día', () => {
+  const suelta = (at: string, seconds?: number) => ({ optionId: 'A', at, ...(seconds ? { seconds } : {}) })
+
+  /** El resumen del día de `when` dentro de su mes. */
+  function summaryOf(when: Date, input: CalendarInput) {
+    return buildMonth(when.getFullYear(), when.getMonth(), input)
+      .flatMap((w) => w.days)
+      .find((d) => d.key === dayKey(when))!
+  }
+
+  it('caen todas en un solo apunte por día', () => {
+    // Una línea por pregunta llenaría la ficha del día con cuarenta iguales y
+    // taparía el test que de verdad se hizo esa tarde.
+    const events = toEvents([], [], [
+      suelta(local(2026, 9, 24, 10).toISOString()),
+      suelta(local(2026, 9, 24, 18).toISOString()),
+      suelta(local(2026, 9, 25, 9).toISOString()),
+    ])
+    const practice = events.filter((e) => e.kind === 'practice')
+    expect(practice).toHaveLength(2)
+    expect(practice[0].detail.es).toBe('2 contestadas')
+    expect(practice[1].detail.es).toBe('1 contestada')
+  })
+
+  it('no aportan tiempo al día', () => {
+    // El día vale el mayor entre el uso registrado y el de las pruebas, nunca
+    // la suma: contestar sueltas ocurre DENTRO del tiempo de uso. Sumarlo aquí
+    // inflaría la semana el día que alguien deje una pregunta abierta y se
+    // vaya a comer.
+    const day = local(2026, 9, 24, 10)
+    const events = toEvents([], [], [suelta(day.toISOString(), 300), suelta(day.toISOString(), 300)])
+    expect(events.every((e) => e.seconds === 0)).toBe(true)
+
+    const summary = summaryOf(day, {
+      ...EMPTY,
+      practice: [suelta(day.toISOString(), 300)],
+      dayLog: { [dayKey(day)]: 1200 },
+      now: day,
+    })
+    expect(summary.seconds).toBe(1200)
+  })
+
+  it('una respuesta sin fecha no se coloca en ningún día', () => {
+    // Las de antes de que esto se guardara llegan así. Ponerlas hoy sería
+    // inventarse una tarde de estudio que nadie tuvo.
+    expect(toEvents([], [], [suelta('')]).filter((e) => e.kind === 'practice')).toHaveLength(0)
+    expect(toEvents([], [], [suelta('el martes')]).filter((e) => e.kind === 'practice')).toHaveLength(0)
+  })
+
+  it('el día las enseña junto al resto de la actividad', () => {
+    const day = local(2026, 9, 24, 10)
+    const summary = summaryOf(day, {
+      ...EMPTY,
+      tests: [test_(day.toISOString(), 1800)],
+      practice: [suelta(day.toISOString())],
+      now: day,
+    })
+    expect(summary.events.map((e) => e.kind)).toContain('practice')
+    expect(summary.events).toHaveLength(2)
   })
 })

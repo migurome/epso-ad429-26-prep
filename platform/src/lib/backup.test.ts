@@ -77,17 +77,20 @@ function fileFrom(patch: Partial<Snapshot>): Snapshot {
 
 beforeEach(blank)
 
+/** Una respuesta suelta con la forma de ahora: opción, cuándo y cuánto costó. */
+const respuesta = { optionId: 'a', at: '2026-01-02T18:00:00.000Z', seconds: 64 }
+
 describe('el fichero', () => {
   it('recoge todo lo que el candidato no puede reconstruir de memoria', () => {
     useProgressStore.setState({ testAttempts: [test('t1', '2026-01-02')], essayAttempts: [] })
-    usePracticeStore.setState({ answers: { q1: 'a' }, orderSeed: { banco: 7 } })
+    usePracticeStore.setState({ answers: { q1: respuesta }, orderSeed: { banco: 7 } })
     useStudyStore.setState({ dayLog: { '2026-01-02': 900 } })
     useCompetitionStore.setState({ competition: 'ad7' })
 
     const snapshot = createSnapshot()
 
     expect(snapshot.testAttempts).toHaveLength(1)
-    expect(snapshot.practiceAnswers).toEqual({ q1: 'a' })
+    expect(snapshot.practiceAnswers).toEqual({ q1: respuesta })
     expect(snapshot.practiceOrder).toEqual({ banco: 7 })
     expect(snapshot.dayLog).toEqual({ '2026-01-02': 900 })
     expect(snapshot.competition).toBe('ad7')
@@ -108,7 +111,7 @@ describe('el fichero', () => {
     const snapshot = fileFrom({
       testAttempts: [test('t1', '2026-01-01'), test('t2', '2026-01-02')],
       dayLog: { '2026-01-01': 60 },
-      practiceAnswers: { q1: 'a', q2: 'b', q3: 'c' },
+      practiceAnswers: { q1: respuesta, q2: respuesta, q3: respuesta },
     })
     expect(describeSnapshot(snapshot)).toEqual({ tests: 2, essays: 0, days: 1, practice: 3 })
   })
@@ -167,21 +170,24 @@ describe('combinar dos dispositivos', () => {
   it('ante la misma pregunta respondida distinto, manda este dispositivo', () => {
     // Reescribir en silencio una respuesta que está en pantalla desconcierta
     // más que dejar fuera la del fichero.
-    expect(mergeAnswers({ q1: 'aqui' }, { q1: 'alli', q2: 'nueva' })).toEqual({
-      q1: 'aqui',
-      q2: 'nueva',
+    const aqui = { optionId: 'aqui', at: '2026-01-02T18:00:00.000Z' }
+    const alli = { optionId: 'alli', at: '2026-01-01T09:00:00.000Z' }
+    const nueva = { optionId: 'nueva', at: '2026-01-01T09:05:00.000Z' }
+    expect(mergeAnswers({ q1: aqui }, { q1: alli, q2: nueva })).toEqual({
+      q1: aqui,
+      q2: nueva,
     })
   })
 
   it('suma el trabajo de los dos y dice qué ha entrado', () => {
     useProgressStore.setState({ testAttempts: [test('pc', '2026-01-03')], essayAttempts: [] })
-    usePracticeStore.setState({ answers: { q1: 'a' }, orderSeed: {} })
+    usePracticeStore.setState({ answers: { q1: respuesta }, orderSeed: {} })
     useStudyStore.setState({ dayLog: { '2026-01-03': 600 } })
 
     const added = applySnapshot(
       fileFrom({
         testAttempts: [test('movil', '2026-01-01')],
-        practiceAnswers: { q1: 'a', q2: 'b' },
+        practiceAnswers: { q1: respuesta, q2: { optionId: 'b', at: '2026-01-01T10:00:00.000Z' } },
         dayLog: { '2026-01-01': 300 },
       }),
       'merge',
@@ -222,7 +228,7 @@ describe('combinar dos dispositivos', () => {
     const file = fileFrom({
       testAttempts: [test('t1', '2026-01-01')],
       dayLog: { '2026-01-01': 900 },
-      practiceAnswers: { q1: 'a' },
+      practiceAnswers: { q1: respuesta },
     })
     blank()
 
@@ -291,7 +297,7 @@ describe('el texto del fichero', () => {
         },
       ],
     })
-    usePracticeStore.setState({ answers: { q1: 'a' }, orderSeed: { banco: 42 } })
+    usePracticeStore.setState({ answers: { q1: respuesta }, orderSeed: { banco: 42 } })
     useStudyStore.setState({
       profile: { ...DEFAULT_PROFILE, displayName: 'Miguel', targetExamDate: '2026-06-01' },
       settings: { ...DEFAULT_SETTINGS, weeklyGoalHours: 8 },
@@ -342,16 +348,40 @@ describe('un fichero con basura dentro', () => {
     if (result.ok) expect(result.snapshot.dayLog).toEqual({ bueno: 600 })
   })
 
-  it('descarta las respuestas que no son texto', () => {
+  it('una respuesta de un fichero viejo entra, y sin fecha inventada', () => {
+    // Los ficheros de formato 1 traían el id de la opción a secas. Son el
+    // trabajo de alguien: se aceptan. Lo que no se hace es ponerles una fecha
+    // de hoy, que le haría al calendario contar como de esta tarde el estudio
+    // de hace un mes.
+    const result = readSnapshot(
+      JSON.stringify({ app: 'epso-prep', format: 1, practiceAnswers: { q1: 'a' } }),
+    )
+    expect(result.ok).toBe(true)
+    if (result.ok) expect(result.snapshot.practiceAnswers).toEqual({ q1: { optionId: 'a', at: '' } })
+  })
+
+  it('descarta lo que no es una respuesta', () => {
     const result = readSnapshot(
       JSON.stringify({
         app: 'epso-prep',
         format: SNAPSHOT_FORMAT,
-        practiceAnswers: { q1: 'a', q2: 7, q3: { raro: true } },
+        practiceAnswers: {
+          q1: respuesta,
+          q2: 7,
+          q3: { raro: true },
+          q4: { optionId: 'b', at: 5, seconds: 'mucho', done: 'sí' },
+        },
       }),
     )
     expect(result.ok).toBe(true)
-    if (result.ok) expect(result.snapshot.practiceAnswers).toEqual({ q1: 'a' })
+    if (result.ok) {
+      expect(result.snapshot.practiceAnswers).toEqual({
+        q1: respuesta,
+        // Lo que no vale de cada campo cae; la opción, que es lo que hay que
+        // salvar, se queda.
+        q4: { optionId: 'b', at: '' },
+      })
+    }
   })
 
   it('una convocatoria que no existe cae en la de por defecto', () => {
@@ -389,7 +419,7 @@ describe('cargar sobre un dispositivo vacío', () => {
         { id: 'e1', promptId: 'p1', startedAt: '2026-01-03', text: 'algo', timeSpentSeconds: 90 },
       ],
       dayLog: { '2026-01-01': 600, '2026-01-02': 900 },
-      practiceAnswers: { q1: 'a', q2: 'b' },
+      practiceAnswers: { q1: respuesta, q2: respuesta },
     })
 
     expect(applySnapshot(file, 'merge')).toEqual({ tests: 2, essays: 1, days: 2, practice: 2 })

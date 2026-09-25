@@ -2,7 +2,7 @@ import type { CompetitionId } from '../data/competition'
 import type { EssayAttempt, TestAttempt } from '../types/content'
 import { useCompetitionStore } from './competitionStore'
 import { useLocaleStore, type Locale } from './localeStore'
-import { usePracticeStore } from './practiceStore'
+import { usePracticeStore, type PracticeAnswer } from './practiceStore'
 import { useProgressStore } from './progressStore'
 import type { DayLog } from './studyCalendar'
 import {
@@ -29,8 +29,13 @@ import { useTestLocaleStore } from './testLocaleStore'
 // arrastrarla sólo confundiría.
 
 /** Versión del formato del fichero. Sube cuando un fichero nuevo deje de ser
- * legible por una versión anterior de la plataforma. */
-export const SNAPSHOT_FORMAT = 1
+ * legible por una versión anterior de la plataforma.
+ *
+ * Subió a 2 al guardar de cada respuesta suelta cuándo se contestó y si ya se
+ * dio por repasada. Una versión anterior lee ese campo esperando cadenas, y no
+ * fallaría: descartaría en silencio todas las respuestas de práctica. Por eso
+ * este número existe — para que se niegue a abrirlo en vez de vaciarlo. */
+export const SNAPSHOT_FORMAT = 2
 
 /** Marca del fichero, para no tragarse un JSON cualquiera. */
 const SNAPSHOT_APP = 'epso-prep'
@@ -45,7 +50,7 @@ export interface Snapshot {
   dayLog: DayLog
   testAttempts: TestAttempt[]
   essayAttempts: EssayAttempt[]
-  practiceAnswers: Record<string, string>
+  practiceAnswers: Record<string, PracticeAnswer>
   practiceOrder: Record<string, number>
   competition: CompetitionId
   uiLocale: Locale
@@ -142,7 +147,7 @@ function normalise(raw: Record<string, unknown>): Snapshot {
     dayLog: numberMap(raw.dayLog),
     testAttempts: asArray<TestAttempt>(raw.testAttempts),
     essayAttempts: asArray<EssayAttempt>(raw.essayAttempts),
-    practiceAnswers: stringMap(raw.practiceAnswers),
+    practiceAnswers: answerMap(raw.practiceAnswers),
     practiceOrder: numberMap(raw.practiceOrder),
     competition: raw.competition === 'ad7' || raw.competition === 'ad8' ? raw.competition : 'ad8',
     uiLocale: asLocale(raw.uiLocale),
@@ -193,9 +198,9 @@ export function mergeDayLog(local: DayLog, incoming: DayLog): DayLog {
  * una respuesta que está en pantalla es peor que dejar fuera la del fichero.
  */
 export function mergeAnswers(
-  local: Record<string, string>,
-  incoming: Record<string, string>,
-): Record<string, string> {
+  local: Record<string, PracticeAnswer>,
+  incoming: Record<string, PracticeAnswer>,
+): Record<string, PracticeAnswer> {
   return { ...incoming, ...local }
 }
 
@@ -283,11 +288,30 @@ function numberMap(value: unknown): Record<string, number> {
   return out
 }
 
-function stringMap(value: unknown): Record<string, string> {
+/**
+ * Las respuestas de práctica de un fichero, vengan en la forma que vengan.
+ *
+ * Un fichero de formato 1 las trae como el id de la opción a secas. Se aceptan
+ * igual: son el trabajo de alguien, y descartarlas por la forma sería tirarlo.
+ * Entran sin fecha, que es la verdad —nadie apuntó cuándo fue—, y sin fecha el
+ * calendario no las cuenta en ningún día en vez de inventarles uno.
+ */
+function answerMap(value: unknown): Record<string, PracticeAnswer> {
   if (!isRecord(value)) return {}
-  const out: Record<string, string> = {}
+  const out: Record<string, PracticeAnswer> = {}
   for (const [key, raw] of Object.entries(value)) {
-    if (typeof raw === 'string') out[key] = raw
+    if (typeof raw === 'string') {
+      out[key] = { optionId: raw, at: '' }
+    } else if (isRecord(raw) && typeof raw.optionId === 'string') {
+      out[key] = {
+        optionId: raw.optionId,
+        at: typeof raw.at === 'string' ? raw.at : '',
+        ...(typeof raw.seconds === 'number' && Number.isFinite(raw.seconds)
+          ? { seconds: raw.seconds }
+          : {}),
+        ...(raw.done === true ? { done: true } : {}),
+      }
+    }
   }
   return out
 }

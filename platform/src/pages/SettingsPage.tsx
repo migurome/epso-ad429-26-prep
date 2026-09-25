@@ -3,6 +3,7 @@ import { Check, RotateCcw, Trash2, Undo2 } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { SyncCard } from '../components/SyncCard'
 import { useProgressStore } from '../lib/progressStore'
+import { usePracticeStore } from '../lib/practiceStore'
 import { useStudyStore } from '../lib/studyStore'
 import { useCompetitionStore } from '../lib/competitionStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
@@ -23,6 +24,8 @@ export function SettingsPage() {
   const profile = useStudyStore((s) => s.profile)
   const settings = useStudyStore((s) => s.settings)
   const dayLog = useStudyStore((s) => s.dayLog)
+  const answers = usePracticeStore((s) => s.answers)
+  const practice = useMemo(() => Object.values(answers), [answers])
   const updateProfile = useStudyStore((s) => s.updateProfile)
   const updateSettings = useStudyStore((s) => s.updateSettings)
   const resetSettings = useStudyStore((s) => s.resetSettings)
@@ -75,8 +78,8 @@ export function SettingsPage() {
   // La previsión sigue al borrador: enseña lo que el objetivo pasaría a ser,
   // que es justamente lo que hay que ver antes de confirmar.
   const input: CalendarInput = useMemo(
-    () => ({ tests, essays, dayLog, weeklyGoalHours: draftSettings.weeklyGoalHours }),
-    [tests, essays, dayLog, draftSettings.weeklyGoalHours],
+    () => ({ tests, essays, practice, dayLog, weeklyGoalHours: draftSettings.weeklyGoalHours }),
+    [tests, essays, practice, dayLog, draftSettings.weeklyGoalHours],
   )
   const week = useMemo(() => currentWeek(input), [input])
 

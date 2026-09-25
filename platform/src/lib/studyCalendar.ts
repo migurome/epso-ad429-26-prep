@@ -13,6 +13,8 @@
 //      que sumarlos lo contaría dos veces. Se toma el mayor de los dos.
 import type { EssayAttempt, TestAttempt } from '../types/content'
 import type { Localized } from './localeStore'
+import type { PracticeAnswer } from './practiceStore'
+import { answeredOn } from './practiceView'
 import {
   COMPETITIONS,
   COMPETITION_ORDER,
@@ -23,7 +25,7 @@ import {
 
 export interface StudyEvent {
   id: string
-  kind: 'test' | 'essay'
+  kind: 'test' | 'essay' | 'practice'
   /** Momento en que se cerró la actividad, en ISO. */
   at: string
   seconds: number
@@ -137,7 +139,55 @@ function attemptAt(attempt: { startedAt: string; finishedAt?: string }): string 
   return attempt.finishedAt ?? attempt.startedAt
 }
 
-export function toEvents(tests: TestAttempt[], essays: EssayAttempt[]): StudyEvent[] {
+/**
+ * Las preguntas sueltas de cada día, en un solo apunte por día.
+ *
+ * Una por pregunta llenaría la ficha del día con cuarenta líneas iguales y
+ * taparía el test que de verdad se hizo esa tarde. Lo que el candidato quiere
+ * saber de un vistazo es cuántas cayeron, no cuál fue cada una.
+ *
+ * **No aportan tiempo, y es a propósito.** El día vale el mayor entre el uso
+ * registrado y el de las pruebas, nunca la suma, porque una prueba ocurre
+ * *dentro* del tiempo de uso; contestar preguntas sueltas también. Sumar aquí
+ * los segundos del contador inflaría la semana el día que alguien deje una
+ * pregunta abierta y se vaya a comer, y el objetivo semanal dejaría de decir la
+ * verdad justo donde más se mira.
+ */
+function practiceEvents(answers: PracticeAnswer[]): StudyEvent[] {
+  const byDay = new Map<string, { count: number; last: string }>()
+  for (const answer of answers) {
+    const when = answeredOn(answer)
+    // Sin fecha no se sitúa en ningún día. Las respuestas de antes de que esto
+    // se guardara llegan así, y colocarlas hoy sería inventarse una tarde.
+    if (!when) continue
+    const key = dayKey(when)
+    const seen = byDay.get(key)
+    if (seen) {
+      seen.count += 1
+      if (answer.at > seen.last) seen.last = answer.at
+    } else {
+      byDay.set(key, { count: 1, last: answer.at })
+    }
+  }
+
+  return [...byDay.entries()].map(([key, { count, last }]) => ({
+    id: `practice:${key}`,
+    kind: 'practice' as const,
+    at: last,
+    seconds: 0,
+    label: { es: 'Preguntas sueltas', en: 'Loose questions' },
+    detail: {
+      es: count === 1 ? '1 contestada' : `${count} contestadas`,
+      en: count === 1 ? '1 answered' : `${count} answered`,
+    },
+  }))
+}
+
+export function toEvents(
+  tests: TestAttempt[],
+  essays: EssayAttempt[],
+  practice: PracticeAnswer[] = [],
+): StudyEvent[] {
   const fromTests = tests.map((a): StudyEvent => {
     const correct = a.results.filter((r) => r.correct).length
     const max = maxScoreFor(a)
@@ -168,7 +218,9 @@ export function toEvents(tests: TestAttempt[], essays: EssayAttempt[]): StudyEve
     }
   })
 
-  return [...fromTests, ...fromEssays].sort((a, b) => a.at.localeCompare(b.at))
+  return [...fromTests, ...fromEssays, ...practiceEvents(practice)].sort((a, b) =>
+    a.at.localeCompare(b.at),
+  )
 }
 
 export function groupEventsByDay(events: StudyEvent[]): Map<string, StudyEvent[]> {
@@ -185,6 +237,9 @@ export function groupEventsByDay(events: StudyEvent[]): Map<string, StudyEvent[]
 export interface CalendarInput {
   tests: TestAttempt[]
   essays: EssayAttempt[]
+  /** Lo contestado en los bancos de práctica, para que el trabajo suelto
+   * cuente. Sin esto, una tarde entera de preguntas dejaba el día en blanco. */
+  practice: PracticeAnswer[]
   dayLog: DayLog
   weeklyGoalHours: number
   /** Inyectable para que las pruebas no dependan del reloj. */
@@ -219,7 +274,7 @@ function buildDay(
  * meses vecinos que hagan falta para cerrar la primera y la última. */
 export function buildMonth(year: number, month: number, input: CalendarInput): WeekSummary[] {
   const now = input.now ?? new Date()
-  const byDay = groupEventsByDay(toEvents(input.tests, input.essays))
+  const byDay = groupEventsByDay(toEvents(input.tests, input.essays, input.practice))
   const goalSeconds = Math.max(0, input.weeklyGoalHours) * 3600
 
   const first = new Date(year, month, 1)
@@ -252,7 +307,7 @@ export function buildMonth(year: number, month: number, input: CalendarInput): W
 export function currentWeek(input: CalendarInput): WeekSummary {
   const now = input.now ?? new Date()
   const start = startOfWeek(now)
-  const byDay = groupEventsByDay(toEvents(input.tests, input.essays))
+  const byDay = groupEventsByDay(toEvents(input.tests, input.essays, input.practice))
   const goalSeconds = Math.max(0, input.weeklyGoalHours) * 3600
   const days = Array.from({ length: 7 }, (_, i) =>
     buildDay(addDays(start, i), byDay, input.dayLog, now.getMonth(), now),
@@ -277,7 +332,7 @@ export function currentWeek(input: CalendarInput): WeekSummary {
  */
 export function completedWeekStreak(input: CalendarInput): number {
   const now = input.now ?? new Date()
-  const byDay = groupEventsByDay(toEvents(input.tests, input.essays))
+  const byDay = groupEventsByDay(toEvents(input.tests, input.essays, input.practice))
   const goalSeconds = Math.max(0, input.weeklyGoalHours) * 3600
   if (goalSeconds <= 0) return 0
 

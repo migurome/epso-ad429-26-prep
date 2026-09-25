@@ -95,8 +95,8 @@ MUTATIONS = [
     (
         "el banco de práctica ignora el filtro de procedencia",
         "src/components/PracticeBank.tsx",
-        "    return ordered.filter((q) => sourceOf(q.tags) === sourceFilter)",
-        "    return ordered",
+        "          (sourceFilter === 'all' || sourceOf(q.tags) === sourceFilter) &&",
+        "          true &&",
         "src/components/PracticeBank.test.tsx",
     ),
     (
@@ -179,14 +179,14 @@ MUTATIONS = [
     (
         "el enunciado se repite dentro de la tarjeta al desplegar",
         "src/components/PracticeBank.tsx",
-        "                    hidePrompt={!isAbstract}",
-        "                    hidePrompt={false}",
+        "            hidePrompt={question.skill !== 'abstract'}",
+        "            hidePrompt={false}",
         "src/components/PracticeBank.test.tsx",
     ),
     (
         "una pregunta fallada se marca como acertada",
         "src/components/PracticeBank.tsx",
-        "  return question.options.find((o) => o.id === answer)?.isCorrect === true",
+        "  return question.options.find((o) => o.id === optionId)?.isCorrect === true",
         "  return true",
         "src/components/PracticeBank.test.tsx",
     ),
@@ -228,8 +228,8 @@ MUTATIONS = [
     (
         "el banco de práctica vuelve a olvidar lo respondido al recargar",
         "src/components/PracticeBank.tsx",
-        "                    onSelect={(optionId) => recordAnswer(q.id, optionId)}",
-        "                    onSelect={() => {}}",
+        "              onAnswer={(optionId, seconds) => recordAnswer(q.id, optionId, seconds)}",
+        "              onAnswer={() => {}}",
         "src/components/PracticeBank.test.tsx",
     ),
     (
@@ -359,8 +359,8 @@ MUTATIONS = [
     (
         "las respuestas aceptan cualquier cosa que traiga el fichero",
         "src/lib/backup.ts",
-        "    if (typeof raw === 'string') out[key] = raw",
-        "    out[key] = raw as string",
+        "    } else if (isRecord(raw) && typeof raw.optionId === 'string') {",
+        "    } else if (isRecord(raw)) {",
         "src/lib/backup.test.ts",
     ),
     (
@@ -1084,6 +1084,91 @@ MUTATIONS = [
         "      }\n",
         "      const read = { ok: true, email } as const\n",
         "src/components/LoginForm.test.tsx",
+    ),
+    # ── La lista de práctica: filtros, contador y fecha ───────────────────
+    (
+        "responder saca la pregunta de delante antes de leer la explicación",
+        "src/lib/practiceView.ts",
+        "      return answer == null || answer.done !== true",
+        "      return answer == null",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "el contador se para en cero y esconde cuánto se pasó",
+        "src/lib/practiceView.ts",
+        "  return { seconds: Math.abs(left), over: left < 0 }",
+        "  return { seconds: Math.max(0, left), over: false }",
+        "src/lib/practiceView.test.ts",
+    ),
+    (
+        "una fecha ilegible se pinta igual",
+        "src/lib/practiceView.ts",
+        "  return Number.isNaN(when.getTime()) ? null : when",
+        "  return when",
+        "src/lib/practiceView.test.ts",
+    ),
+    (
+        "las preguntas sueltas suman tiempo al día e inflan la semana",
+        "src/lib/studyCalendar.ts",
+        "    seconds: 0,",
+        "    seconds: 60,",
+        "src/lib/studyCalendar.test.ts",
+    ),
+    (
+        "el día dice que se contestó una cuando fueron varias",
+        "src/lib/studyCalendar.ts",
+        "      seen.count += 1",
+        "      seen.count = 1",
+        "src/lib/studyCalendar.test.ts",
+    ),
+    (
+        "la respuesta se guarda sin la hora y el calendario no la ve",
+        "src/lib/practiceStore.ts",
+        "            [questionId]: { optionId, at: new Date().toISOString(), seconds },",
+        "            [questionId]: { optionId, at: '', seconds },",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "darla por repasada no queda guardado",
+        "src/lib/practiceStore.ts",
+        "          return { answers: { ...s.answers, [questionId]: { ...current, done: true } } }",
+        "          return s",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "al convertir lo viejo se le inventa la fecha de hoy",
+        "src/lib/practiceStore.ts",
+        "          if (typeof value === 'string') answers[id] = { optionId: value, at: '' }",
+        "          if (typeof value === 'string')\n            answers[id] = { optionId: value, at: new Date().toISOString() }",
+        "src/lib/stores.test.ts",
+    ),
+    (
+        "la fila entera vuelve a plegarse, y subrayar cierra la pregunta",
+        "src/components/PracticeBank.tsx",
+        '      <div className="flex w-full items-start gap-3 px-4 py-3 text-left">',
+        '      <div onClick={onToggle} className="flex w-full items-start gap-3 px-4 py-3 text-left">',
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "el contador sigue corriendo con la pregunta ya respondida",
+        "src/components/PracticeBank.tsx",
+        "  const running = isOpen && answer == null",
+        "  const running = isOpen",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "no se ofrece dar la pregunta por repasada",
+        "src/components/PracticeBank.tsx",
+        "          {answer != null && answer.done !== true && (",
+        "          {false && (",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "el filtro por estado no filtra nada",
+        "src/components/PracticeBank.tsx",
+        "          showsUnder(stateFilter, answers[q.id]),",
+        "          true,",
+        "src/components/PracticeBank.test.tsx",
     ),
 ]
 

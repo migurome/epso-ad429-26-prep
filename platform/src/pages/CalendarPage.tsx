@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
-import { ChevronLeft, ChevronRight, Flame, PenLine, Target, Timer } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Flame, ListChecks, PenLine, Target, Timer } from 'lucide-react'
 import clsx from 'clsx'
 import { PageHeader } from '../components/PageHeader'
 import { useProgressStore } from '../lib/progressStore'
+import { usePracticeStore } from '../lib/practiceStore'
 import { useStudyStore } from '../lib/studyStore'
 import { useLocaleStore, pick, type Locale } from '../lib/localeStore'
 import { useT } from '../lib/useT'
@@ -26,6 +27,10 @@ export function CalendarPage() {
   const locale = useLocaleStore((s) => s.locale)
   const tests = useProgressStore((s) => s.testAttempts)
   const essays = useProgressStore((s) => s.essayAttempts)
+  const answers = usePracticeStore((s) => s.answers)
+  // Las respuestas sueltas entran como valores: al calendario le da igual de
+  // qué pregunta era cada una, sólo cuándo se contestó.
+  const practice = useMemo(() => Object.values(answers), [answers])
   const dayLog = useStudyStore((s) => s.dayLog)
   const weeklyGoalHours = useStudyStore((s) => s.settings.weeklyGoalHours)
 
@@ -34,8 +39,8 @@ export function CalendarPage() {
   const [selectedKey, setSelectedKey] = useState<string>(() => dayKey(today))
 
   const input: CalendarInput = useMemo(
-    () => ({ tests, essays, dayLog, weeklyGoalHours, now: today }),
-    [tests, essays, dayLog, weeklyGoalHours, today],
+    () => ({ tests, essays, practice, dayLog, weeklyGoalHours, now: today }),
+    [tests, essays, practice, dayLog, weeklyGoalHours, today],
   )
 
   const weeks = useMemo(
@@ -339,14 +344,23 @@ function DayDetail({ day, locale }: { day: DaySummary | null; locale: Locale }) 
           {day.events.map((event) => (
             <li key={event.id} className="flex gap-3">
               <span className="mt-0.5 shrink-0 text-slate-400">
-                {event.kind === 'essay' ? <PenLine size={15} /> : <Timer size={15} />}
+                {event.kind === 'essay' ? (
+                  <PenLine size={15} />
+                ) : event.kind === 'practice' ? (
+                  <ListChecks size={15} />
+                ) : (
+                  <Timer size={15} />
+                )}
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-medium text-slate-800">{pick(locale, event.label)}</p>
                 <p className="text-xs text-slate-500">
                   {pick(locale, event.detail)}
                   {event.score && ` · ${event.score.value}/${event.score.max}`}
-                  {` · ${formatDuration(event.seconds, locale)}`}
+                  {/* Las preguntas sueltas no aportan tiempo al día —ocurren
+                      dentro del uso ya registrado—, así que no se les pinta un
+                      «0 min» que parecería una avería. */}
+                  {event.seconds > 0 && ` · ${formatDuration(event.seconds, locale)}`}
                 </p>
               </div>
             </li>

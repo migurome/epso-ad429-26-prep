@@ -2,8 +2,8 @@
 // es el filtro de procedencia: el banco real son preguntas de examen y el bonus
 // son generadas, y mezclarlas sin decirlo daría al candidato una idea falsa de
 // cuánto material oficial ha trabajado.
-import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { PracticeBank } from './PracticeBank'
 import { usePracticeStore } from '../lib/practiceStore'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
@@ -13,6 +13,22 @@ import type { Question } from '../types/content'
 const es = (key: keyof typeof DICT) => DICT[key].es
 const clickButton = (name: string | RegExp) =>
   fireEvent.click(screen.getByRole('button', { name }))
+
+/** La fila de la pregunta cuyo enunciado coincide. */
+const rowOf = (prompt: RegExp) => screen.getByText(prompt).closest('li') as HTMLElement
+
+/**
+ * Abre o pliega una pregunta.
+ *
+ * Por la flecha y sólo por la flecha: pulsar en el enunciado dejó de plegar
+ * nada a propósito, para poder subrayar el texto sin que la pregunta se cierre
+ * debajo del ratón.
+ */
+function toggle(prompt: RegExp) {
+  const row = rowOf(prompt)
+  const abrir = within(row).queryByRole('button', { name: es('practice_expand') })
+  fireEvent.click(abrir ?? within(row).getByRole('button', { name: es('practice_collapse') }))
+}
 
 function question(id: string, tags?: string[]): Question {
   return {
@@ -88,22 +104,22 @@ describe('acordeón', () => {
 
   it('al abrir una pregunta se ven sus opciones', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     expect(screen.getByText('Opción A')).toBeTruthy()
   })
 
   it('abrir otra cierra la anterior, para no perder el sitio', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
-    clickButton(/Enunciado de real2/)
+    toggle(/Enunciado de real1/)
+    toggle(/Enunciado de real2/)
     // Sólo un juego de opciones visible a la vez.
     expect(screen.getAllByText('Opción A')).toHaveLength(1)
   })
 
   it('volver a pulsar la cierra', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     expect(screen.queryByText('Opción A')).toBeNull()
   })
 })
@@ -111,17 +127,17 @@ describe('acordeón', () => {
 describe('corrección', () => {
   it('responder revela la explicación', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
     expect(screen.getByText(/Porque sí/)).toBeTruthy()
   })
 
   it('la respuesta dada sobrevive a cerrar y volver a abrir la pregunta', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    clickButton(/Enunciado de real1/)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     // Si se perdiera, el candidato repetiría preguntas ya trabajadas sin saberlo.
     expect(screen.getByText(/Porque sí/)).toBeTruthy()
   })
@@ -146,7 +162,7 @@ describe('cabecera', () => {
 
   it('al desplegar no repite el enunciado: sólo aparecen las respuestas', () => {
     render(<PracticeBank questions={[LONG]} bankId="test" />)
-    clickButton(new RegExp(TAIL))
+    toggle(new RegExp(TAIL))
     expect(screen.getAllByText(new RegExp(TAIL))).toHaveLength(1)
     expect(screen.getByText('Opción A')).toBeTruthy()
   })
@@ -164,7 +180,7 @@ describe('cabecera', () => {
     }
     render(<PracticeBank questions={[abstract]} bankId="test" />)
     expect(screen.getByText(/La regla está en el relleno/)).toBeTruthy()
-    clickButton(/La regla está en el relleno/)
+    toggle(/La regla está en el relleno/)
     // La secuencia sigue estando, dentro de la tarjeta.
     expect(document.body.textContent).toContain('▲')
   })
@@ -181,30 +197,30 @@ describe('marca de pregunta ya evaluada', () => {
 
   it('acertar la marca como acertada', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
     expect(screen.getByText(es('answered_correct'))).toBeTruthy()
   })
 
   it('fallar la marca como fallada', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción B/)
     expect(screen.getByText(es('answered_wrong'))).toBeTruthy()
   })
 
   it('la marca sobrevive al plegar, que es cuando hace falta', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     expect(screen.queryByText('Opción A')).toBeNull()
     expect(screen.getByText(es('answered_correct'))).toBeTruthy()
   })
 
   it('sólo marca la pregunta respondida, no sus vecinas', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
     expect(screen.getAllByText(es('answered_correct'))).toHaveLength(1)
   })
@@ -216,7 +232,7 @@ describe('lo respondido sobrevive a la recarga', () => {
   // candidato no tenía forma de saber cuáles había trabajado ya.
   it('una respuesta dada sigue ahí al volver a montar la página', () => {
     const { unmount } = render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
     unmount()
 
@@ -227,17 +243,20 @@ describe('lo respondido sobrevive a la recarga', () => {
 
   it('cuenta cuántas van respondidas sobre el total del banco', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    clickButton(/Enunciado de real2/)
+    toggle(/Enunciado de real2/)
     clickButton(/Opción B/)
     expect(screen.getByText(es('practice_answered').replace('{done}', '2').replace('{total}', '3'))).toBeTruthy()
   })
 })
 
 describe('reactivar', () => {
+  // Las filas de la lista, en el orden en que se pintan. Antes esto buscaba
+  // `[aria-expanded]`, que vivía en la fila entera; ahora vive en la flecha,
+  // que es lo único que pliega, y su texto está vacío.
   const shownOrder = () =>
-    Array.from(document.querySelectorAll('[aria-expanded]')).map(
+    Array.from(document.querySelectorAll('li')).map(
       (el) => (el.textContent ?? '').match(/Enunciado de (\S+)/)?.[1] ?? '?',
     )
   const many = Array.from({ length: 8 }, (_, i) => question(`q${i}`))
@@ -250,9 +269,9 @@ describe('reactivar', () => {
 
   it('reactivar una pregunta la devuelve a sin responder', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    clickButton(/Enunciado de real1/) // plegar
+    toggle(/Enunciado de real1/) // plegar
     clickButton(es('practice_reactivate_one'))
     expect(screen.queryByText(es('answered_correct'))).toBeNull()
     expect(usePracticeStore.getState().answers.real1).toBeUndefined()
@@ -260,9 +279,9 @@ describe('reactivar', () => {
 
   it('reactivar una mientras quedan otras respondidas NO baraja', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    clickButton(/Enunciado de real2/)
+    toggle(/Enunciado de real2/)
     clickButton(/Opción A/)
     fireEvent.click(screen.getAllByRole('button', { name: es('practice_reactivate_one') })[0])
     // Barajar a media vuelta movería de sitio las que aún quedan por hacer.
@@ -271,7 +290,7 @@ describe('reactivar', () => {
 
   it('reactivar la última que quedaba baraja el orden', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
     fireEvent.click(screen.getAllByRole('button', { name: es('practice_reactivate_one') })[0])
     expect(usePracticeStore.getState().orderSeed.test).toBeGreaterThan(0)
@@ -281,9 +300,9 @@ describe('reactivar', () => {
   it('reactivar todas las borra de golpe y baraja', () => {
     render(<PracticeBank questions={many} bankId="test" />)
     const before = shownOrder()
-    clickButton(/Enunciado de q0/)
+    toggle(/Enunciado de q0/)
     clickButton(/Opción A/)
-    clickButton(/Enunciado de q1/)
+    toggle(/Enunciado de q1/)
     clickButton(/Opción B/)
 
     clickButton(es('practice_reactivate_all'))
@@ -295,12 +314,15 @@ describe('reactivar', () => {
     // Los ids de pregunta son únicos en todo el contenido y comparten un solo
     // mapa: si el borrado no se ciñese a este banco, se llevaría por delante el
     // trabajo hecho en los demás.
-    usePracticeStore.setState({ answers: { otroBanco: 'A' }, orderSeed: {} })
+    usePracticeStore.setState({
+      answers: { otroBanco: { optionId: 'A', at: '2026-09-24T10:00:00.000Z' } },
+      orderSeed: {},
+    })
     render(<PracticeBank questions={MIXED} bankId="test" />)
-    clickButton(/Enunciado de real1/)
+    toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
     clickButton(es('practice_reactivate_all'))
-    expect(usePracticeStore.getState().answers.otroBanco).toBe('A')
+    expect(usePracticeStore.getState().answers.otroBanco.optionId).toBe('A')
   })
 
   it('el orden barajado se mantiene entre montajes', () => {
@@ -344,5 +366,135 @@ describe('con figuras generadas por el motor', () => {
     render(<PracticeBank questions={BANK} bankId="test" />)
     clickButton(es('filter_engine_bank'))
     expect(screen.getByText(count(2))).toBeTruthy()
+  })
+})
+
+describe('pulsar en el enunciado', () => {
+  it('no pliega la pregunta: el texto se puede subrayar', () => {
+    // Era lo que pasaba antes, y en razonamiento verbal señalar con el dedo es
+    // parte de leer: arrastrar el ratón sobre una palabra terminaba en un clic
+    // y cerraba la pregunta debajo.
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    fireEvent.click(screen.getByText(/Enunciado de real1/))
+    expect(screen.queryByText(/Opción A/)).toBeNull()
+
+    toggle(/Enunciado de real1/)
+    expect(screen.getByText(/Opción A/)).toBeTruthy()
+  })
+})
+
+describe('filtro por estado', () => {
+  const pendientes = () => clickButton(new RegExp(`^${es('practice_filter_pending')}`))
+  const respondidas = () => clickButton(new RegExp(`^${es('practice_filter_answered')}`))
+
+  it('responder NO la saca de pendientes: la explicación acaba de aparecer', () => {
+    // Es la petición entera de este filtro. Si al marcar la opción la fila se
+    // esfuma, la lista le cierra la puerta justo a quien acaba de fallar.
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    pendientes()
+    toggle(/Enunciado de real1/)
+    clickButton(/Opción A/)
+
+    expect(screen.getByText(/Enunciado de real1/)).toBeTruthy()
+    expect(screen.getByRole('button', { name: es('practice_done') })).toBeTruthy()
+  })
+
+  it('darla por hecha la pliega y la saca de pendientes', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    pendientes()
+    toggle(/Enunciado de real1/)
+    clickButton(/Opción A/)
+    clickButton(es('practice_done'))
+
+    expect(screen.queryByText(/Enunciado de real1/)).toBeNull()
+    expect(usePracticeStore.getState().answers.real1.done).toBe(true)
+  })
+
+  it('«respondidas» enseña las contestadas, hechas o no', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    clickButton(/Opción A/)
+    respondidas()
+
+    expect(screen.getByText(/Enunciado de real1/)).toBeTruthy()
+    expect(screen.queryByText(/Enunciado de real2/)).toBeNull()
+  })
+
+  it('sin ninguna bajo el filtro, lo dice en vez de dejar el hueco', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    respondidas()
+    expect(screen.getByText(es('practice_none_under_filter'))).toBeTruthy()
+  })
+})
+
+describe('cuándo se contestó', () => {
+  it('la fila lleva la fecha', () => {
+    const at = new Date(2026, 8, 24, 18, 30).toISOString()
+    usePracticeStore.setState({ answers: { real1: { optionId: 'A', at } }, orderSeed: {} })
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+
+    const dia = new Date(at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
+    expect(screen.getByText(es('practice_answered_on').replace('{date}', dia))).toBeTruthy()
+  })
+
+  it('lo respondido antes de que esto se guardara no enseña ninguna', () => {
+    // Llegan con la fecha vacía. Inventarles una sería mentir, y encima al
+    // calendario, que es donde se nota.
+    usePracticeStore.setState({ answers: { real1: { optionId: 'A', at: '' } }, orderSeed: {} })
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    expect(screen.queryByText(/Contestada el/)).toBeNull()
+  })
+})
+
+describe('el contador del ritmo de examen', () => {
+  beforeEach(() => vi.useFakeTimers())
+  afterEach(() => vi.useRealTimers())
+
+  const avanzar = (ms: number) => act(() => void vi.advanceTimersByTime(ms))
+
+  it('sólo corre en la pregunta abierta y sin responder', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    expect(screen.queryByText('1:40')).toBeNull()
+
+    toggle(/Enunciado de real1/)
+    expect(screen.getByText('1:40')).toBeTruthy()
+    avanzar(28_000)
+    expect(screen.getByText('1:12')).toBeTruthy()
+  })
+
+  it('pasarse del ritmo no cierra nada: enseña cuánto', () => {
+    // El ritmo es una referencia, no una guillotina. Lo que más dice de una
+    // pregunta difícil es justo el tiempo que costó de más.
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    avanzar(108_000)
+
+    expect(screen.getByText('−0:08')).toBeTruthy()
+    expect(screen.getByText(/Opción A/)).toBeTruthy()
+  })
+
+  it('al responder se para, y lo que costó queda guardado', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    avanzar(28_000)
+    clickButton(/Opción A/)
+
+    const guardada = usePracticeStore.getState().answers.real1
+    expect(guardada.seconds).toBe(28)
+    expect(screen.queryByText('1:12')).toBeNull()
+    // Y con su hora: es lo único que permite al calendario saber en qué día
+    // cayó este trabajo. Sin fecha, la tarde entera desaparece de la rejilla.
+    expect(Number.isNaN(new Date(guardada.at).getTime())).toBe(false)
+  })
+
+  it('abrir la siguiente no hereda el tiempo de la anterior', () => {
+    // Con un solo contador arriba lo heredaba, y la segunda pregunta nacía ya
+    // pasada de tiempo sin que nadie hubiera tardado nada.
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    avanzar(60_000)
+    toggle(/Enunciado de real2/)
+
+    expect(screen.getByText('1:40')).toBeTruthy()
   })
 })

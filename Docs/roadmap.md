@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
 | `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
 | `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
 | `1.6` | Un botón de guardar en la cabecera, al lado del perfil, que dice cuánto hace que se guardó por última vez. Estaba enterrado en Ajustes. |
@@ -168,6 +169,41 @@ Tres cosas que el trabajo pidió y el plan no:
   el idioma del navegador y una regla más floja que la nuestra —acepta `a@b`,
   sin punto—. El aviso lo da ahora la web, traducido, y así además se prueba.
 
+### El banco de práctica y el calendario — **hecho** (`1.9`)
+
+Otra vez fuera del plan, y otra vez por lo mismo: se pidió después de usar lo
+anterior. La lista de práctica funcionaba como una lista de lectura, y el
+calendario no veía nada de lo que allí se hacía.
+
+- **Contador al ritmo de examen**, 100 s por pregunta, que corre al abrirla y
+  para al responder. No se detiene en cero: sigue en rojo y en negativo.
+- **Sólo la flecha pliega.** La fila entera era un botón, y subrayar una palabra
+  del enunciado cerraba la pregunta debajo del ratón.
+- **Fecha de cada respuesta**, que es lo que permite todo lo demás.
+- **Filtro por estado**: todas, pendientes, respondidas.
+- **Responder ya no cierra la pregunta.** Sigue contando como pendiente hasta
+  que el candidato pulsa «Hecha». «Respondida» y «repasada» pasan a ser dos
+  estados distintos, porque entre marcar la opción y entender el porqué hay un
+  paso, y es donde está el aprendizaje.
+- **El calendario cuenta el trabajo suelto**, un apunte por día.
+
+Tres cosas que el trabajo pidió y el plan no:
+
+- **Cambió el formato del fichero de copia, de 1 a 2.** Guardar cuándo se
+  contestó cada pregunta obligaba a ello, y ese número existe justo para esto:
+  una versión anterior leería el campo esperando cadenas y descartaría en
+  silencio **todas** las respuestas de práctica. Con el número subido se niega a
+  abrirlo en vez de vaciarlo.
+- **Lo ya respondido se conserva sin fecha.** La conversión corre una sola vez
+  sobre lo que había guardado. Ponerle la de hoy habría contado como de esta
+  tarde el estudio de semanas enteras, así que entra en blanco y no sale en la
+  rejilla. Es lo honrado, y se nota: el calendario arranca vacío de sueltas.
+- **Cinco mutaciones antiguas se quedaron apuntando a código reescrito.** El
+  guion no encontró qué romper, avisó con `?` y las contó como supervivientes
+  —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
+  equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
+  nada se quejara.
+
 ### Fase 4 — Roadmap e historial dentro de la web — **siguiente**
 
 La página `/roadmap` que enseña este documento, generada por
@@ -211,6 +247,10 @@ volverán a aparecer cada vez que se pida algo parecido.
   ese campo sigue en el perfil local y en el fichero de estado porque quitarlo
   cambia el formato del `snapshot`, y eso pide una migración. Mientras tanto,
   pide un dato que no se usa en ninguna parte.
+- **Las respuestas de práctica anteriores a la `1.9` no tienen fecha.** Se
+  conservan y se ven marcadas, pero el calendario no puede colocarlas en ningún
+  día, así que el trabajo suelto de antes no aparece en la rejilla. No hay forma
+  de arreglarlo: ese dato no se guardó nunca.
 - **La cola se puede llenar desde fuera.** Cualquiera puede insertar
   solicitudes: una por correo y con forma válida, pero sin límite de ritmo, y
   ponerlo pide un servidor. No dan acceso a nada y se quitan con un clic; si
