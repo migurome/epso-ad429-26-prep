@@ -12,15 +12,12 @@ import { persist } from 'zustand/middleware'
  * Una respuesta suelta.
  *
  * Antes esto era sólo el id de la opción elegida, y esa cadena a secas no podía
- * contestar tres preguntas que sí importan: cuándo se contestó —lo que permite
- * que el calendario cuente el trabajo suelto—, cuánto se tardó, y si el
- * candidato ya ha dado la pregunta por repasada.
+ * contestar dos preguntas que sí importan: cuándo se contestó —lo que permite
+ * que el calendario cuente el trabajo suelto— y cuánto se tardó.
  *
- * `done` es deliberadamente distinto de «respondida». Entre contestar y
- * entender la explicación hay un paso, y es donde está el aprendizaje: si al
- * marcar la opción la pregunta se plegara y desapareciera de la lista de
- * pendientes, la explicación se cerraría en las narices de quien más la
- * necesita —el que ha fallado—. Se cierra cuando lo diga el candidato.
+ * Hubo un tercer campo, `done`, para separar «contestada» de «repasada». Duró
+ * un día: en la mano resultó ser un clic de más en cada pregunta para decir lo
+ * que ya decía el hecho de haberla contestado. Contestar es cerrar.
  */
 export interface PracticeAnswer {
   optionId: string
@@ -29,8 +26,6 @@ export interface PracticeAnswer {
   at: string
   /** Segundos que llevó, si el contador corría. */
   seconds?: number
-  /** Repasada y cerrada por quien la contestó. */
-  done?: boolean
 }
 
 export interface PracticeBankRef {
@@ -48,9 +43,6 @@ interface PracticeState {
   /** id de banco → semilla de orden. Cero es el orden del documento. */
   orderSeed: Record<string, number>
   answer: (questionId: string, optionId: string, seconds?: number) => void
-  /** La da por repasada. Sobre una sin responder no hace nada: no se puede
-   * cerrar lo que no se ha abierto. */
-  complete: (questionId: string) => void
   /** Devuelve una pregunta al estado sin responder. Si con eso el banco se
    * queda sin ninguna respondida, se baraja: empezar otra vuelta en el mismo
    * orden convierte el repaso en un ejercicio de memoria posicional. */
@@ -76,13 +68,6 @@ export const usePracticeStore = create<PracticeState>()(
             [questionId]: { optionId, at: new Date().toISOString(), seconds },
           },
         })),
-
-      complete: (questionId) =>
-        set((s) => {
-          const current = s.answers[questionId]
-          if (!current) return s
-          return { answers: { ...s.answers, [questionId]: { ...current, done: true } } }
-        }),
 
       reactivate: (questionId, bank) =>
         set((s) => {

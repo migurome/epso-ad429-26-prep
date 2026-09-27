@@ -198,6 +198,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
 | `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
 | `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
 | `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
@@ -463,12 +464,18 @@ una destreza, con su corrección explicada opción por opción. Lo que cambió e
 
 Cuatro decisiones, y ninguna es cosmética:
 
-- **Responder no cierra nada.** La explicación aparece justo al marcar la
-  opción, y le hace falta sobre todo a quien acaba de fallar; plegar ahí la
-  pregunta sería cerrarle la puerta en el momento exacto en que se aprende. La
-  pregunta se queda abierta y sigue contando como pendiente hasta que el
-  candidato pulsa **Hecha**. Por eso «respondida» y «repasada» son dos estados
-  distintos y no uno.
+- **Contestar es cerrar.** La pregunta se pliega sola al marcar la opción y
+  queda resumida en su primera línea, con su número. Hubo un estado intermedio
+  —contestada pero sin «repasar», con un botón **Hecha** para cerrarla— que
+  duró exactamente un día: la idea era que la explicación no se cerrara en las
+  narices de quien acaba de fallar, y en la mano resultó ser un clic por
+  pregunta para decir lo que ya decía haberla contestado. El precio, asumido: la
+  explicación ya no aparece sola, hay que volver a abrir la pregunta. A cambio,
+  la lista se vacía según se avanza en vez de acumular trabajo hecho.
+- **La línea única es sólo para la fila plegada.** Abierta vuelve el enunciado
+  entero, y no es un detalle estético: en todo lo que no es razonamiento
+  abstracto la tarjeta **no** repite el enunciado —lo lleva la cabecera—, así
+  que recortarlo también ahí dejaría la pregunta sin texto en ninguna parte.
 - **Sólo la flecha pliega.** Antes la fila entera era un botón, con un efecto
   que nadie buscó: arrastrar el ratón para subrayar una palabra del enunciado
   terminaba en un clic y cerraba la pregunta debajo. En razonamiento verbal

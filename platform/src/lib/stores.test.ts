@@ -219,7 +219,7 @@ describe('practiceStore — respuestas de una versión anterior', () => {
   })
 
   it('no toca lo que ya está en la forma de ahora', () => {
-    const respuesta = { optionId: 'A', at: '2026-09-24T10:00:00.000Z', seconds: 64, done: true }
+    const respuesta = { optionId: 'A', at: '2026-09-24T10:00:00.000Z', seconds: 64 }
     const migrated = migrate({ answers: { q1: respuesta }, orderSeed: {} }, 1) as Stored
     expect(migrated.answers.q1).toEqual(respuesta)
   })

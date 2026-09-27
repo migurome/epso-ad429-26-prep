@@ -22,10 +22,12 @@ export type PracticeFilter = 'all' | 'answered' | 'pending'
 /**
  * Si una pregunta se enseña bajo un filtro.
  *
- * La regla que no es obvia: **una respondida y todavía sin dar por repasada
- * sigue contando como pendiente**. Sin eso, marcar la opción la haría
- * desaparecer de la lista en el mismo instante en que aparece su explicación, y
- * la explicación le hace falta justo a quien acaba de fallar.
+ * Pendiente es, sin más, no haberla contestado. Durante un día hubo un estado
+ * intermedio —contestada pero no «repasada»— para que la explicación no se
+ * cerrara sola; se quitó porque en la mano era un clic de más por pregunta
+ * para decir lo que ya decía haberla contestado. Quien quiera releer la
+ * explicación vuelve a abrirla, que es un clic también, pero sólo cuando hace
+ * falta.
  */
 export function showsUnder(filter: PracticeFilter, answer: PracticeAnswer | undefined): boolean {
   switch (filter) {
@@ -34,13 +36,12 @@ export function showsUnder(filter: PracticeFilter, answer: PracticeAnswer | unde
     case 'answered':
       return answer != null
     case 'pending':
-      return answer == null || answer.done !== true
+      return answer == null
   }
 }
 
 export interface PracticeCounts {
   answered: number
-  /** Sin responder, más las respondidas que siguen abiertas. */
   pending: number
   total: number
 }
@@ -76,6 +77,37 @@ export function formatPace(elapsedSeconds: number): string {
   const minutes = Math.floor(seconds / 60)
   const rest = String(seconds % 60).padStart(2, '0')
   return `${over ? '−' : ''}${minutes}:${rest}`
+}
+
+/**
+ * La primera línea del enunciado, para la fila ya contestada.
+ *
+ * Una pregunta sin responder enseña el enunciado entero: hay que leerlo para
+ * decidir si es la que se quiere abrir. Una ya contestada, no —el trabajo está
+ * hecho—, y dejar ahí los diez renglones de un texto de razonamiento verbal
+ * convierte la lista en un muro por el que hay que bajar mucho para encontrar
+ * lo que falta.
+ *
+ * Sale texto llano y no Markdown: en una sola línea, una tabla o una negrita no
+ * se ven, sólo estorban. El recorte visual lo hace el CSS, que sabe el ancho;
+ * aquí sólo se aplana.
+ */
+export function firstLine(markdown: string): string {
+  const line = markdown
+    .split('\n')
+    .map((l) => l.trim())
+    .find((l) => l !== '' && l !== '---')
+  if (!line) return ''
+  return line
+    // Los marcadores de Markdown que se leerían como ruido: almohadillas de
+    // título, viñetas, comillas de cita, asteriscos, guiones bajos y acentos
+    // graves de código.
+    .replace(/^#{1,6}\s*/, '')
+    .replace(/^[-*+]\s+/, '')
+    .replace(/^>\s*/, '')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
 /**

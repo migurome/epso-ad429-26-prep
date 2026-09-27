@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
 | `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
 | `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
 | `1.7` | Perfil de administrador: la cola de solicitudes, dar y quitar acceso, borrar el progreso o la cuenta de alguien, y bajar y restaurar el progreso de un usuario concreto. El fichero manual sale de Ajustes y pasa ahí. |
@@ -203,6 +204,35 @@ Tres cosas que el trabajo pidió y el plan no:
   —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
   equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
   nada se quejara.
+
+### Contestar es cerrar — **hecho** (`1.10`)
+
+Corrección de la `1.9` al día siguiente de usarla. El paso de marcar una
+pregunta como «hecha» se quitó entero: la idea era que la explicación no se
+cerrara en las narices de quien acaba de fallar, y en la mano resultó ser un
+clic por pregunta para decir lo que ya decía haberla contestado.
+
+Ahora contestar pliega la pregunta y la deja resumida en su primera línea, con
+su número. El estado `done` desaparece del modelo, del fichero de copia y del
+filtro, que vuelve a ser lo que parece: pendiente es no haberla contestado.
+
+- **El precio, asumido y anotado:** la explicación ya no aparece sola. Hay que
+  volver a abrir la pregunta para leerla. A cambio la lista se vacía según se
+  avanza, en vez de acumular delante el trabajo ya hecho.
+- **La línea única es sólo para la fila plegada.** Abierta vuelve el enunciado
+  entero: fuera de razonamiento abstracto la tarjeta no lo repite, así que
+  recortarlo también ahí dejaría la pregunta sin texto en ninguna parte. Un
+  test lo vigila, porque es un fallo que no se ve hasta que se reabre una.
+- **Se destapó una trampa en la prueba de mutación.** Los patrones de varias
+  líneas se escriben con LF, pero en Windows git deja los ficheros con CRLF al
+  hacer checkout: en cuanto alguien clone el repositorio dejarían de encontrar
+  nada, y el aviso sería un «?» que se lee como superviviente en vez de como lo
+  que es —una comprobación que no llegó a correr—. El guion ahora reintenta con
+  CRLF antes de rendirse.
+
+No hace falta migración: `done` simplemente deja de leerse. El formato del
+fichero de copia se queda en 2, porque quitar un campo no rompe a nadie —ni
+hacia atrás ni hacia delante—.
 
 ### Fase 4 — Roadmap e historial dentro de la web — **siguiente**
 

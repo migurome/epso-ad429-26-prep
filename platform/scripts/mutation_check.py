@@ -228,8 +228,8 @@ MUTATIONS = [
     (
         "el banco de práctica vuelve a olvidar lo respondido al recargar",
         "src/components/PracticeBank.tsx",
-        "              onAnswer={(optionId, seconds) => recordAnswer(q.id, optionId, seconds)}",
-        "              onAnswer={() => {}}",
+        "                recordAnswer(q.id, optionId, seconds)",
+        "                // MUTADO",
         "src/components/PracticeBank.test.tsx",
     ),
     (
@@ -1087,11 +1087,11 @@ MUTATIONS = [
     ),
     # ── La lista de práctica: filtros, contador y fecha ───────────────────
     (
-        "responder saca la pregunta de delante antes de leer la explicación",
+        "lo pendiente y lo contestado se solapan",
         "src/lib/practiceView.ts",
-        "      return answer == null || answer.done !== true",
         "      return answer == null",
-        "src/components/PracticeBank.test.tsx",
+        "      return true",
+        "src/lib/practiceView.test.ts",
     ),
     (
         "el contador se para en cero y esconde cuánto se pasó",
@@ -1129,13 +1129,6 @@ MUTATIONS = [
         "src/components/PracticeBank.test.tsx",
     ),
     (
-        "darla por repasada no queda guardado",
-        "src/lib/practiceStore.ts",
-        "          return { answers: { ...s.answers, [questionId]: { ...current, done: true } } }",
-        "          return s",
-        "src/components/PracticeBank.test.tsx",
-    ),
-    (
         "al convertir lo viejo se le inventa la fecha de hoy",
         "src/lib/practiceStore.ts",
         "          if (typeof value === 'string') answers[id] = { optionId: value, at: '' }",
@@ -1157,10 +1150,24 @@ MUTATIONS = [
         "src/components/PracticeBank.test.tsx",
     ),
     (
-        "no se ofrece dar la pregunta por repasada",
+        "contestar deja la pregunta abierta y la lista se llena de trabajo hecho",
         "src/components/PracticeBank.tsx",
-        "          {answer != null && answer.done !== true && (",
-        "          {false && (",
+        "                setExpandedId(null)",
+        "                // MUTADO",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "la fila contestada sigue enseñando el enunciado entero",
+        "src/components/PracticeBank.tsx",
+        "  const compact = answer != null && !isOpen",
+        "  const compact = false",
+        "src/components/PracticeBank.test.tsx",
+    ),
+    (
+        "la fila abierta se queda en una línea y el enunciado no está en ninguna parte",
+        "src/components/PracticeBank.tsx",
+        "  const compact = answer != null && !isOpen",
+        "  const compact = answer != null",
         "src/components/PracticeBank.test.tsx",
     ),
     (
@@ -1189,6 +1196,14 @@ def main() -> int:
     for name, rel, old, new, spec in MUTATIONS:
         path = ROOT / rel
         original = path.read_text(encoding="utf-8", newline="")
+        # Los patrones se escriben con LF, pero en Windows git deja los
+        # archivos con CRLF al hacer checkout. Sin esto, un patrón de varias
+        # líneas deja de encontrar nada en cuanto alguien clona el repositorio
+        # —y el aviso sería un "?" que se lee como una mutación superviviente,
+        # no como lo que es: una comprobación que no llegó a ejecutarse.
+        if "\n" in old and old not in original:
+            old = old.replace("\n", "\r\n")
+            new = new.replace("\n", "\r\n")
         if old not in original:
             print(f"  ?  {name}\n     (no se encontró el código a mutar en {rel})")
             survivors.append(name)

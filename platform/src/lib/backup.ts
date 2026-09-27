@@ -309,7 +309,6 @@ function answerMap(value: unknown): Record<string, PracticeAnswer> {
         ...(typeof raw.seconds === 'number' && Number.isFinite(raw.seconds)
           ? { seconds: raw.seconds }
           : {}),
-        ...(raw.done === true ? { done: true } : {}),
       }
     }
   }

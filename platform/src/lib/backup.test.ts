@@ -369,7 +369,7 @@ describe('un fichero con basura dentro', () => {
           q1: respuesta,
           q2: 7,
           q3: { raro: true },
-          q4: { optionId: 'b', at: 5, seconds: 'mucho', done: 'sí' },
+          q4: { optionId: 'b', at: 5, seconds: 'mucho' },
         },
       }),
     )

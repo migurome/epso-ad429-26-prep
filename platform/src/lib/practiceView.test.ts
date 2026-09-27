@@ -5,7 +5,15 @@
 // el que acaba de fallar; si la fila se esfuma al marcar la opción, la lista le
 // cierra la puerta justo ahí.
 import { describe, it, expect } from 'vitest'
-import { answeredOn, countsFor, formatPace, paceOf, showsUnder, PACE_SECONDS } from './practiceView'
+import {
+  answeredOn,
+  countsFor,
+  firstLine,
+  formatPace,
+  paceOf,
+  showsUnder,
+  PACE_SECONDS,
+} from './practiceView'
 import type { PracticeAnswer } from './practiceStore'
 
 const answer = (over: Partial<PracticeAnswer> = {}): PracticeAnswer => ({
@@ -17,29 +25,27 @@ const answer = (over: Partial<PracticeAnswer> = {}): PracticeAnswer => ({
 describe('qué se enseña bajo cada filtro', () => {
   it('«todas» no esconde nada', () => {
     expect(showsUnder('all', undefined)).toBe(true)
-    expect(showsUnder('all', answer({ done: true }))).toBe(true)
+    expect(showsUnder('all', answer())).toBe(true)
   })
 
-  it('«respondidas» son las que tienen respuesta, repasada o no', () => {
+  it('«respondidas» son las que tienen respuesta', () => {
     expect(showsUnder('answered', undefined)).toBe(false)
     expect(showsUnder('answered', answer())).toBe(true)
-    expect(showsUnder('answered', answer({ done: true }))).toBe(true)
   })
 
-  it('una respondida sigue pendiente hasta darla por repasada', () => {
+  it('pendiente es, sin más, no haberla contestado', () => {
+    // Hubo un estado intermedio —contestada pero sin «repasar»— que duró un
+    // día: en la mano era un clic por pregunta para decir lo que ya decía
+    // haberla contestado.
     expect(showsUnder('pending', undefined)).toBe(true)
-    expect(showsUnder('pending', answer())).toBe(true)
-    expect(showsUnder('pending', answer({ done: true }))).toBe(false)
+    expect(showsUnder('pending', answer())).toBe(false)
   })
 })
 
 describe('las cuentas de la cabecera', () => {
-  it('separa respondidas de pendientes, y la recién contestada está en las dos', () => {
-    const counts = countsFor(['q1', 'q2', 'q3'], {
-      q1: answer({ done: true }),
-      q2: answer(),
-    })
-    expect(counts).toEqual({ answered: 2, pending: 2, total: 3 })
+  it('lo contestado y lo que falta, sin solaparse', () => {
+    const counts = countsFor(['q1', 'q2', 'q3'], { q1: answer(), q2: answer() })
+    expect(counts).toEqual({ answered: 2, pending: 1, total: 3 })
   })
 
   it('un banco recién abierto está entero pendiente', () => {
@@ -88,5 +94,32 @@ describe('cuándo se contestó', () => {
 
   it('una fecha ilegible tampoco se pinta', () => {
     expect(answeredOn(answer({ at: 'el martes' }))).toBeNull()
+  })
+})
+
+describe('la primera línea de una pregunta ya contestada', () => {
+  it('se queda con la primera línea con texto', () => {
+    expect(firstLine('\n\nPrimera línea\n\nSegunda línea')).toBe('Primera línea')
+  })
+
+  it('quita los marcadores de Markdown, que en una línea sólo estorban', () => {
+    expect(firstLine('## Un título')).toBe('Un título')
+    expect(firstLine('- Una viñeta')).toBe('Una viñeta')
+    expect(firstLine('> Una cita')).toBe('Una cita')
+    expect(firstLine('Con **negrita** y `código`')).toBe('Con negrita y código')
+  })
+
+  it('aplana los espacios de sobra', () => {
+    expect(firstLine('  Dos    espacios  ')).toBe('Dos espacios')
+  })
+
+  it('un párrafo largo sale entero: el recorte lo hace el CSS, que sabe el ancho', () => {
+    const largo = 'El texto afirma que la Comisión ' + 'adoptó la propuesta '.repeat(8)
+    expect(firstLine(largo)).toBe(largo.trim())
+  })
+
+  it('un enunciado vacío no revienta la fila', () => {
+    expect(firstLine('')).toBe('')
+    expect(firstLine('\n\n---\n')).toBe('')
   })
 })

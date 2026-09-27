@@ -202,11 +202,6 @@ export const DICT = {
     es: 'Ritmo de examen: {n} s por pregunta. Pasarse no cierra nada.',
     en: 'Exam pace: {n} s per question. Going over closes nothing.',
   },
-  practice_done: { es: 'Hecha', en: 'Done' },
-  practice_done_hint: {
-    es: 'Darla por repasada: se pliega y sale de pendientes.',
-    en: 'Mark it reviewed: it collapses and leaves the pending list.',
-  },
 
   // TimedTest
   no_questions_available: {

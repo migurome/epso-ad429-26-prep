@@ -11,6 +11,7 @@ import {
   PACE_SECONDS,
   answeredOn,
   countsFor,
+  firstLine,
   formatPace,
   paceOf,
   showsUnder,
@@ -66,7 +67,6 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
   // y no hubiera forma de saber qué se había trabajado ya.
   const answers = usePracticeStore((s) => s.answers)
   const recordAnswer = usePracticeStore((s) => s.answer)
-  const complete = usePracticeStore((s) => s.complete)
   const reactivate = usePracticeStore((s) => s.reactivate)
   const reactivateAll = usePracticeStore((s) => s.reactivateAll)
   const seed = usePracticeStore((s) => s.orderSeed[bankId] ?? 0)
@@ -179,11 +179,11 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
               isOpen={expandedId === q.id}
               testLocale={testLocale}
               onToggle={() => setExpandedId(expandedId === q.id ? null : q.id)}
-              onAnswer={(optionId, seconds) => recordAnswer(q.id, optionId, seconds)}
-              onDone={() => {
-                complete(q.id)
-                // Se pliega sola: darla por repasada es cerrarla, y dejarla
-                // abierta obligaría a un segundo clic para lo mismo.
+              onAnswer={(optionId, seconds) => {
+                recordAnswer(q.id, optionId, seconds)
+                // Contestar es cerrar. Hubo un botón «Hecha» entre las dos
+                // cosas y duró un día: era un clic por pregunta para decir lo
+                // que ya decía haber contestado.
                 setExpandedId(null)
               }}
               onReactivate={() => reactivate(q.id, bank)}
@@ -203,7 +203,6 @@ interface RowProps {
   testLocale: Locale
   onToggle: () => void
   onAnswer: (optionId: string, seconds: number) => void
-  onDone: () => void
   onReactivate: () => void
 }
 
@@ -227,7 +226,6 @@ function PracticeRow({
   testLocale,
   onToggle,
   onAnswer,
-  onDone,
   onReactivate,
 }: RowProps) {
   const t = useT()
@@ -235,6 +233,7 @@ function PracticeRow({
   const running = isOpen && answer == null
   const elapsed = useStopwatch(running)
 
+  const compact = answer != null && !isOpen
   const verdict = verdictOf(question, answer?.optionId)
   const when = answeredOn(answer)
   const intl = locale === 'es' ? 'es-ES' : 'en-GB'
@@ -262,7 +261,19 @@ function PracticeRow({
         </span>
 
         <div className="min-w-0 flex-1">
-          <Markdown className="text-sm">{headerPrompt(question, pick(testLocale, question.prompt))}</Markdown>
+          {/* Contestada y plegada, basta una línea: el trabajo está hecho y
+              diez renglones de un texto de verbal convierten la lista en un
+              muro. Abierta vuelve el enunciado entero, y no es un capricho —en
+              todo lo que no es abstracto la tarjeta NO lo repite, así que si
+              aquí se recortara, al reabrirla el texto no estaría en ninguna
+              parte. */}
+          {compact ? (
+            <p className="truncate text-sm text-slate-500">
+              {firstLine(pick(testLocale, question.prompt))}
+            </p>
+          ) : (
+            <Markdown className="text-sm">{headerPrompt(question, pick(testLocale, question.prompt))}</Markdown>
+          )}
           {when && (
             <p className="mt-1 text-[11px] text-slate-400" title={when.toLocaleString(intl)}>
               {t('practice_answered_on', {
@@ -334,24 +345,6 @@ function PracticeRow({
             onSelect={(optionId) => onAnswer(optionId, elapsed)}
             hidePrompt={question.skill !== 'abstract'}
           />
-
-          {/* Responder no cierra nada. La explicación aparece en ese momento y
-              le hace falta justo a quien acaba de fallar; plegar la pregunta
-              ahí sería cerrarle la puerta. Cierra el candidato, cuando ha
-              terminado de leer. */}
-          {answer != null && answer.done !== true && (
-            <div className="mt-4 flex justify-end border-t border-slate-100 pt-3">
-              <button
-                type="button"
-                onClick={onDone}
-                title={t('practice_done_hint')}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-800 transition-colors hover:border-emerald-500"
-              >
-                <Check size={14} />
-                {t('practice_done')}
-              </button>
-            </div>
-          )}
         </div>
       )}
     </li>

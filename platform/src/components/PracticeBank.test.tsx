@@ -125,10 +125,16 @@ describe('acordeón', () => {
 })
 
 describe('corrección', () => {
-  it('responder revela la explicación', () => {
+  it('responder pliega la pregunta, y la explicación espera dentro', () => {
+    // Contestar es cerrar. La explicación no se pierde —está al reabrirla—,
+    // pero deja de aparecer sola: es el precio de que la lista se vacíe al
+    // avanzar en vez de acumular preguntas ya trabajadas abiertas.
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
+    expect(screen.queryByText(/Porque sí/)).toBeNull()
+
+    toggle(/Enunciado de real1/)
     expect(screen.getByText(/Porque sí/)).toBeTruthy()
   })
 
@@ -136,7 +142,7 @@ describe('corrección', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    toggle(/Enunciado de real1/)
+    // Responder ya la pliega; basta con volver a abrirla.
     toggle(/Enunciado de real1/)
     // Si se perdiera, el candidato repetiría preguntas ya trabajadas sin saberlo.
     expect(screen.getByText(/Porque sí/)).toBeTruthy()
@@ -213,7 +219,6 @@ describe('marca de pregunta ya evaluada', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    toggle(/Enunciado de real1/)
     expect(screen.queryByText('Opción A')).toBeNull()
     expect(screen.getByText(es('answered_correct'))).toBeTruthy()
   })
@@ -387,30 +392,16 @@ describe('filtro por estado', () => {
   const pendientes = () => clickButton(new RegExp(`^${es('practice_filter_pending')}`))
   const respondidas = () => clickButton(new RegExp(`^${es('practice_filter_answered')}`))
 
-  it('responder NO la saca de pendientes: la explicación acaba de aparecer', () => {
-    // Es la petición entera de este filtro. Si al marcar la opción la fila se
-    // esfuma, la lista le cierra la puerta justo a quien acaba de fallar.
+  it('responder la saca de pendientes: contestar es cerrar', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     pendientes()
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-
-    expect(screen.getByText(/Enunciado de real1/)).toBeTruthy()
-    expect(screen.getByRole('button', { name: es('practice_done') })).toBeTruthy()
-  })
-
-  it('darla por hecha la pliega y la saca de pendientes', () => {
-    render(<PracticeBank questions={MIXED} bankId="test" />)
-    pendientes()
-    toggle(/Enunciado de real1/)
-    clickButton(/Opción A/)
-    clickButton(es('practice_done'))
 
     expect(screen.queryByText(/Enunciado de real1/)).toBeNull()
-    expect(usePracticeStore.getState().answers.real1.done).toBe(true)
   })
 
-  it('«respondidas» enseña las contestadas, hechas o no', () => {
+  it('«respondidas» enseña las contestadas', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
@@ -487,6 +478,20 @@ describe('el contador del ritmo de examen', () => {
     expect(Number.isNaN(new Date(guardada.at).getTime())).toBe(false)
   })
 
+  it('reabrir una ya contestada no arranca el contador', () => {
+    // Desde que contestar pliega la pregunta, éste es el único momento en que
+    // se puede ver una respondida y abierta a la vez. Sin este test la guarda
+    // «y sin responder» no la vigilaba nadie: una mutación lo demostró.
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    clickButton(/Opción A/)
+    toggle(/Enunciado de real1/)
+
+    expect(screen.queryByText('1:40')).toBeNull()
+    avanzar(3000)
+    expect(screen.queryByText('1:37')).toBeNull()
+  })
+
   it('abrir la siguiente no hereda el tiempo de la anterior', () => {
     // Con un solo contador arriba lo heredaba, y la segunda pregunta nacía ya
     // pasada de tiempo sin que nadie hubiera tardado nada.
@@ -496,5 +501,44 @@ describe('el contador del ritmo de examen', () => {
     toggle(/Enunciado de real2/)
 
     expect(screen.getByText('1:40')).toBeTruthy()
+  })
+})
+
+describe('la fila de una pregunta ya contestada', () => {
+  const LARGA: Question = {
+    ...question('larga'),
+    prompt: {
+      es: 'El primer párrafo del texto.\n\nUn segundo párrafo que no debería verse plegada.',
+      en: 'First paragraph.\n\nA second one.',
+    },
+  }
+
+  it('plegada se queda en una línea, y conserva su número', () => {
+    render(<PracticeBank questions={[LARGA]} bankId="test" />)
+    toggle(/El primer párrafo/)
+    clickButton(/Opción A/)
+
+    const fila = rowOf(/El primer párrafo/)
+    expect(within(fila).getByText('El primer párrafo del texto.')).toBeTruthy()
+    expect(screen.queryByText(/Un segundo párrafo/)).toBeNull()
+    // El número se queda: es por donde se sigue el sitio en la lista.
+    expect(within(fila).getByText('1')).toBeTruthy()
+  })
+
+  it('al reabrirla vuelve el enunciado entero', () => {
+    // No es un adorno: en todo lo que no es abstracto la tarjeta NO repite el
+    // enunciado, así que si la cabecera siguiera recortada el texto no estaría
+    // en ninguna parte y la pregunta sería irrepasable.
+    render(<PracticeBank questions={[LARGA]} bankId="test" />)
+    toggle(/El primer párrafo/)
+    clickButton(/Opción A/)
+    toggle(/El primer párrafo/)
+
+    expect(screen.getByText(/Un segundo párrafo/)).toBeTruthy()
+  })
+
+  it('sin responder se sigue viendo entera', () => {
+    render(<PracticeBank questions={[LARGA]} bankId="test" />)
+    expect(screen.getByText(/Un segundo párrafo/)).toBeTruthy()
   })
 })
