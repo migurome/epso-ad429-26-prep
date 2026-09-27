@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
 | `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
 | `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
 | `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
@@ -205,6 +206,35 @@ Tres cosas que el trabajo pidió y el plan no:
   —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
   equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
   nada se quejara.
+
+### Los gráficos del razonamiento numérico — **en marcha** (`1.12`)
+
+Veinticuatro enunciados del libro real traen su dato en un gráfico, y la
+transcripción los dejó como tabla. Con eso esas preguntas son más fáciles que en
+el examen: una tabla da el número, un gráfico obliga a leerlo de la cuadrícula,
+y esa lectura es parte de lo que se mide.
+
+Los datos no se escriben dos veces: la tabla del documento sigue siendo la única
+fuente y lleva encima una directiva —un comentario de HTML— que dice cómo
+dibujarla. Se parsea al pintar, como la notación de figuras abstractas, y así el
+gráfico sale en el idioma del enunciado sin duplicar nada.
+
+**Hecho:** los siete de barras. **Falta:** apiladas, 100% apiladas, líneas y
+sectores.
+
+Tres cosas que el trabajo pidió y el plan no:
+
+- **Los números se leen según el idioma.** Seis mil trescientos es `6,300` en el
+  documento inglés y `6.300` en el español; con una sola regla uno de los dos
+  vale `6,3`. Una barra mil veces más baja en una pregunta cuya respuesta es ese
+  número, y el gráfico sale dibujado igual: el fallo no se ve.
+- **Ni tooltip ni cifras sobre las barras**, al revés de lo que pide cualquier
+  guía de gráficos. Aquí el valor exacto es la respuesta, y enseñarlo al pasar
+  el ratón convierte la pregunta en leer una etiqueta. La tabla debajo cubre la
+  accesibilidad, que es de lo que esa norma se ocupa.
+- **La pregunta 95 no se puede dibujar** y se queda sin gráfico. El libro tiene
+  cinco sectores por dos bandas, y sólo se transcribieron los dos valores que la
+  explicación usaba: las otras ocho barras habría que inventarlas.
 
 ### Se cierra al abrir la siguiente — **hecho** (`1.11`)
 

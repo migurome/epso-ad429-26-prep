@@ -1,6 +1,7 @@
 import { Check, X } from 'lucide-react'
 import clsx from 'clsx'
 import { Markdown } from './Markdown'
+import { PromptWithChart } from './QuestionChart'
 import { AbstractPromptView } from './AbstractPromptView'
 import { FigurePanelView } from './FigurePanelView'
 import { ScannedFigure } from './ScannedFigure'
@@ -138,9 +139,9 @@ export function QuestionCard({
           <AbstractPromptView prompt={prompt} large={large} forceText={!drawFigures} />
         </div>
       ) : (
-        <Markdown className={clsx('mb-4', large && '[&_p]:text-2xl [&_p]:leading-snug [&_p]:tracking-wide')}>
+        <PromptWithChart className={clsx('mb-4', large && '[&_p]:text-2xl [&_p]:leading-snug [&_p]:tracking-wide')}>
           {prompt}
-        </Markdown>
+        </PromptWithChart>
       )}
       {scanned && (
         <ScannedFigure

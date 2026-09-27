@@ -1177,6 +1177,49 @@ MUTATIONS = [
         "          true,",
         "src/components/PracticeBank.test.tsx",
     ),
+    # ── Los gráficos del razonamiento numérico ────────────────────────────
+    (
+        "los números se leen igual en los dos idiomas, y los miles pasan a decimales",
+        "src/lib/questionChart.ts",
+        "    locale === 'es'",
+        "    false",
+        "src/lib/questionChart.test.ts",
+    ),
+    (
+        "el eje acaba en el valor mayor y la cuadrícula deja de ser legible",
+        "src/lib/questionChart.ts",
+        "  const max = Math.ceil(top / step) * step",
+        "  const max = top",
+        "src/lib/questionChart.test.ts",
+    ),
+    (
+        "en las apiladas el tope es la barra más alta y la pila se sale",
+        "src/lib/questionChart.ts",
+        "  if (spec.kind === 'stacked') {",
+        "  if (false) {",
+        "src/lib/questionChart.test.ts",
+    ),
+    (
+        "un tipo de gráfico desconocido se intenta dibujar igual",
+        "src/lib/questionChart.ts",
+        "  if (!kind) return null",
+        "  // MUTADO",
+        "src/lib/questionChart.test.ts",
+    ),
+    (
+        "un hueco de la tabla se dibuja como una barra",
+        "src/components/QuestionChart.tsx",
+        "              if (value === null) return null",
+        "              if (false) return null",
+        "src/components/QuestionChart.test.tsx",
+    ),
+    (
+        "la tabla desaparece y sólo queda el gráfico",
+        "src/components/QuestionChart.tsx",
+        "      <Markdown>{parsed.after}</Markdown>",
+        "      {null}",
+        "src/components/QuestionChart.test.tsx",
+    ),
 ]
 
 

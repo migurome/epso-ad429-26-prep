@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Check, ChevronDown, RotateCcw, X } from 'lucide-react'
 import clsx from 'clsx'
 import { QuestionCard } from './QuestionCard'
-import { Markdown } from './Markdown'
+import { PromptWithChart } from './QuestionChart'
 import { TestLocaleSelector } from './TestLocaleSelector'
 import { extractPromptFigures } from '../lib/abstractFigure'
 import { pick, useLocaleStore, type Locale } from '../lib/localeStore'
@@ -269,7 +269,9 @@ function PracticeRow({
               {firstLine(pick(testLocale, question.prompt))}
             </p>
           ) : (
-            <Markdown className="text-sm">{headerPrompt(question, pick(testLocale, question.prompt))}</Markdown>
+            <PromptWithChart className="text-sm">
+              {headerPrompt(question, pick(testLocale, question.prompt))}
+            </PromptWithChart>
           )}
           {when && (
             <p className="mt-1 text-[11px] text-slate-400" title={when.toLocaleString(intl)}>

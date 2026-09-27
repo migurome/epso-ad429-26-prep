@@ -198,6 +198,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
 | `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
 | `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
 | `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
@@ -503,6 +504,66 @@ entre el uso registrado y el de las pruebas, nunca la suma, porque contestar
 ocurre *dentro* del tiempo de uso. Sumar aquí los segundos del contador inflaría
 la semana el día que alguien deje una pregunta abierta y se vaya a comer, y el
 objetivo semanal dejaría de decir la verdad justo donde más se mira.
+
+## Los gráficos del razonamiento numérico
+
+En el libro real, veinticuatro enunciados no traen una tabla: traen un gráfico
+del que hay que **leer** los valores. La transcripción los convirtió en tablas,
+y con eso esas preguntas quedaron más fáciles que en el examen — una tabla te da
+el número; un gráfico te obliga a estimarlo contra la cuadrícula, que es parte
+de lo que EPSO mide.
+
+| Pieza | Papel |
+| --- | --- |
+| `questionChart.ts` | Lee la directiva y la tabla, y calcula la escala. Puro, probado entero |
+| `components/QuestionChart.tsx` | El SVG, y el enunciado partido por donde va el gráfico |
+
+Los datos **no se escriben dos veces**. La tabla del documento sigue siendo la
+única fuente; encima lleva una directiva —un comentario de HTML, invisible al
+leer el documento— que dice cómo dibujarla:
+
+```markdown
+<!-- chart: bar x="Año" unit="toneladas" -->
+
+| Año | Bacalao | Merluza |
+| --- | --- | --- |
+| 2008 | ~500 | ~1.250 |
+```
+
+Se parsea al pintar y no en `build_content.py`, por lo mismo que la notación de
+figuras abstractas: así se lee el enunciado del idioma activo y los rótulos
+salen traducidos sin duplicar nada.
+
+Cuatro decisiones que no son cosméticas:
+
+- **No hay tooltip ni cifras sobre las barras.** En cualquier panel de datos
+  serían obligatorios; aquí regalan la respuesta. Por la misma razón la
+  cuadrícula está más marcada de lo que se estilaría: es el instrumento de
+  medida, no un adorno de fondo.
+- **La tabla se queda debajo, siempre visible.** Es la vía accesible —nadie lee
+  un SVG de barras con un lector de pantalla— y el respaldo documentado para que
+  unos colores claros sobre fondo claro no dejen a nadie fuera. La paleta está
+  validada contra daltonismo; el aviso de contraste que deja se cubre
+  exactamente así.
+- **Los números se leen según el idioma del enunciado.** Seis mil trescientos se
+  escribe `6,300` en el documento inglés y `6.300` en el español. Con una sola
+  regla, uno de los dos vale `6,3`: una barra mil veces más baja en una pregunta
+  cuya respuesta es ese número. Es el fallo que no se ve —el gráfico sale
+  dibujado, sólo que mintiendo—, y por eso tiene su propio test.
+- **Ante la duda, no se dibuja.** Sin directiva, con un tipo desconocido, sin
+  tabla debajo o sin un solo número, la pregunta se queda con su tabla y ya
+  está. Un gráfico inventado a medias en una pregunta de examen es peor que no
+  tener gráfico: se contesta lo que se ve.
+
+El eje empieza siempre en cero y acaba en un número redondo. Un eje recortado
+exagera las diferencias, y las diferencias son justo lo que se pregunta: media
+barra contra una entera tiene que significar la mitad.
+
+**Lo que queda por hacer:** de los veinticuatro, siete están dibujados —los de
+barras—. Faltan las apiladas, las 100% apiladas, las de líneas y los sectores.
+Y hay uno, el 95, que **no se puede dibujar**: el libro tiene cinco sectores por
+dos bandas y sólo se transcribieron los dos valores que la explicación usaba;
+las otras ocho barras habría que inventarlas.
 
 ## Sincronización entre dispositivos
 
