@@ -18,7 +18,7 @@ import { EuftePage } from './pages/EuftePage'
 import { TestDayPage } from './pages/TestDayPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { useLocaleStore } from './lib/localeStore'
-import { useCompetitionStore } from './lib/competitionStore'
+import { useStudyStore } from './lib/studyStore'
 
 // Sin esto, cada test dejaba montado su árbol y los siguientes convivían con
 // los anteriores en el mismo documento: dos páginas de ámbito montadas a la vez
@@ -97,8 +97,9 @@ describe('pages render without crashing', () => {
     await waitForRealContent(container)
   })
 
-  // Los ámbitos de la AD8: se llega a ellos por la misma ruta, y abrirlos
-  // cambia la convocatoria activa (cada ámbito pertenece a una sola).
+  // Los ámbitos de la AD8: se llega a ellos por la misma ruta, y abrirlos los
+  // elige (cada ámbito pertenece a una sola convocatoria, así que con él viene
+  // la oposición entera).
   it.each(['artificial-intelligence', 'cybersecurity'])('field mcq: %s (AD8)', async (fieldId) => {
     const { container } = await renderSuspended(
       <MemoryRouter initialEntries={[`/campo/${fieldId}`]}>
@@ -108,7 +109,7 @@ describe('pages render without crashing', () => {
       </MemoryRouter>,
     )
     await waitForRealContent(container)
-    await waitFor(() => expect(useCompetitionStore.getState().competition).toBe('ad8'))
+    await waitFor(() => expect(useStudyStore.getState().profile.field).toBe(fieldId))
   })
 
   it('eufte', async () => {

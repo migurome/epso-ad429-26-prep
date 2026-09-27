@@ -1,5 +1,5 @@
-import { use, useEffect, useRef } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { use, useEffect } from 'react'
+import { Navigate, useParams } from 'react-router-dom'
 import { BookOpen, ClipboardList } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { Tabs } from '../components/Tabs'
@@ -9,11 +9,10 @@ import { Markdown } from '../components/Markdown'
 import { PracticeBank } from '../components/PracticeBank'
 import { TimedTest } from '../components/TimedTest'
 import { AttemptHistory } from '../components/AttemptHistory'
-import { COMPETITIONS, COMPETITION_ORDER, FIELD_MCQ_FORMAT } from '../data/competition'
-import { useCompetition, useCompetitionStore } from '../lib/competitionStore'
+import { ALL_FIELDS, competitionOf, FIELD_MCQ_FORMAT } from '../data/competition'
 import { loadFieldContent } from '../data/contentLoader'
 import { useProgressStore } from '../lib/progressStore'
-import { usePreferredField } from '../lib/studyStore'
+import { useStudyStore } from '../lib/studyStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
 import type { Field } from '../types/content'
@@ -22,36 +21,22 @@ export function FieldMcqPage() {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
   const { fieldId } = useParams<{ fieldId: string }>()
-  const navigate = useNavigate()
-  const competition = useCompetition()
-  const setCompetition = useCompetitionStore((s) => s.setCompetition)
-  const preferredField = usePreferredField()
+  const updateProfile = useStudyStore((s) => s.updateProfile)
 
-  // El ámbito de la URL manda sobre la convocatoria activa: cada ámbito
-  // pertenece a una sola, así que llegar por enlace directo a uno de la otra
-  // cambia de convocatoria en vez de rebotar a una lista donde ese ámbito ni
-  // siquiera aparece.
-  const owner = COMPETITION_ORDER.map((key) => COMPETITIONS[key]).find((c) =>
-    c.fields.some((f) => f.id === fieldId),
-  )
-  const field = owner?.fields.find((f) => f.id === fieldId)
+  const field = ALL_FIELDS.find((f) => f.id === fieldId)
+  const owner = field ? competitionOf(field.id) : undefined
 
   const testAttempts = useProgressStore((s) => s.testAttempts)
 
-  // ...pero si es el candidato quien cambia de convocatoria en el selector
-  // estando en un ámbito de la otra, manda el selector: se le lleva al ámbito
-  // que tenga elegido en la nueva. Sin distinguir quién ha cambiado qué, el
-  // efecto devolvía la convocatoria a la del ámbito de la URL en el mismo
-  // render, y el selector no servía para nada dentro de toda esta fase.
-  const lastCompetition = useRef(competition.key)
+  // Abrir un ámbito es elegirlo. Es la barra lateral quien lleva aquí y allí
+  // la lista de ámbitos ES el selector, así que no tendría sentido que la
+  // plataforma siguiera dando por bueno el anterior: los plazos de la portada
+  // y el color de la interfaz se quedarían en la otra convocatoria mientras se
+  // estudia ésta. Vale también para un enlace directo, que es la misma
+  // intención escrita de otra forma.
   useEffect(() => {
-    if (!owner) return
-    const switchedByHand = lastCompetition.current !== competition.key
-    lastCompetition.current = competition.key
-    if (owner.key === competition.key) return
-    if (switchedByHand) navigate(`/campo/${preferredField}`, { replace: true })
-    else setCompetition(owner.key)
-  }, [owner, competition.key, preferredField, navigate, setCompetition])
+    if (field) updateProfile({ field: field.id })
+  }, [field, updateProfile])
 
   if (!field || !owner) return <Navigate to="/campo" replace />
 
@@ -61,12 +46,13 @@ export function FieldMcqPage() {
 
   return (
     <div>
+      {/* La convocatoria va en el antetítulo porque ya no hay pestaña que la
+          diga: el ámbito es lo que se elige, y ésta es la oposición a la que
+          pertenece. */}
       <PageHeader
-        eyebrow={t('nav_field_mcq')}
+        eyebrow={`${t('nav_field_mcq')} · ${owner.id}`}
         title={pick(locale, field.label)}
-        description={`${field.posts} ${locale === 'es' ? 'plazas en la lista de reserva para este campo.' : 'posts on the reserve list for this field.'}${
-          field.id === owner.userField ? ` ${t('your_field_chosen_suffix')}` : ''
-        }`}
+        description={`${field.posts} ${locale === 'es' ? 'plazas en la lista de reserva para este campo.' : 'posts on the reserve list for this field.'}`}
       />
       <FormatBadges format={FIELD_MCQ_FORMAT} />
 

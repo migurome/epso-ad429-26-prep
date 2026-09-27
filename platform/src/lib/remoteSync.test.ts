@@ -11,7 +11,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { SNAPSHOT_FORMAT, createSnapshot, snapshotText, type Snapshot } from './backup'
 import { fingerprint, syncOnce, type RemoteBackend, type SyncState } from './remoteSync'
-import { useCompetitionStore } from './competitionStore'
 import { useLocaleStore } from './localeStore'
 import { usePracticeStore } from './practiceStore'
 import { useProgressStore } from './progressStore'
@@ -32,7 +31,6 @@ function blank() {
   })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
   usePracticeStore.setState({ answers: {}, orderSeed: {} })
-  useCompetitionStore.setState({ competition: 'ad8' })
   useLocaleStore.setState({ locale: 'es' })
   useTestLocaleStore.setState({ locale: 'es' })
 }
@@ -52,7 +50,6 @@ function fileFrom(extra: Partial<Snapshot> = {}): Snapshot {
     essayAttempts: [],
     practiceAnswers: {},
     practiceOrder: {},
-    competition: 'ad8',
     uiLocale: 'es',
     testLocale: 'es',
     ...extra,
@@ -174,15 +171,17 @@ describe('cuando el otro dispositivo ha subido algo', () => {
   })
 
   it('no toca los ajustes ni el idioma de este dispositivo', async () => {
-    // Bajar el progreso no es pedir que cambie la convocatoria que se está
+    // Bajar el progreso no es pedir que cambie el ámbito que se está
     // preparando ni el idioma de la interfaz.
-    useCompetitionStore.setState({ competition: 'ad7' })
+    useStudyStore.setState({ profile: { ...DEFAULT_PROFILE, field: 'data-science' } })
     useLocaleStore.setState({ locale: 'en' })
-    const cloud = fakeCloud(fileFrom({ competition: 'ad8', uiLocale: 'es' }))
+    const cloud = fakeCloud(
+      fileFrom({ profile: { ...DEFAULT_PROFILE, field: 'cybersecurity' }, uiLocale: 'es' }),
+    )
 
     await syncOnce(cloud.backend, {})
 
-    expect(useCompetitionStore.getState().competition).toBe('ad7')
+    expect(useStudyStore.getState().profile.field).toBe('data-science')
     expect(useLocaleStore.getState().locale).toBe('en')
   })
 })

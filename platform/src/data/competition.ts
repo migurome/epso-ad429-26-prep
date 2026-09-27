@@ -107,6 +107,29 @@ export const COMPETITIONS: Record<CompetitionId, CompetitionInfo> = {
 
 export const COMPETITION_ORDER: CompetitionId[] = ['ad7', 'ad8']
 
+/** Todos los ámbitos convocados, de las dos convocatorias, en el orden en que
+ * se listan. Es lo que se ofrece para elegir: el candidato elige su campo, no
+ * su convocatoria. */
+export const ALL_FIELDS: Array<FieldInfo & { competition: CompetitionId }> =
+  COMPETITION_ORDER.flatMap((key) =>
+    COMPETITIONS[key].fields.map((f) => ({ ...f, competition: key })),
+  )
+
+/** La convocatoria a la que pertenece un ámbito.
+ *
+ * Aquí está la inversión que hace que no haga falta un selector de
+ * convocatoria: cada ámbito está convocado por una sola (lo comprueba la
+ * verificación, 'competition:fields'), así que elegir ámbito ya elige
+ * convocatoria — y con ella los plazos, las plazas y el color de la interfaz.
+ * Un ámbito desconocido devuelve la primera, para que un enlace viejo o unos
+ * datos guardados a medias no dejen la aplicación sin convocatoria. */
+export function competitionOf(field: Field): CompetitionInfo {
+  const owner = COMPETITION_ORDER.map((key) => COMPETITIONS[key]).find((c) =>
+    c.fields.some((f) => f.id === field),
+  )
+  return owner ?? COMPETITIONS[COMPETITION_ORDER[0]]
+}
+
 /** Hora límite de todos los plazos de EPSO. Es la misma en las dos
  * convocatorias y no aparece en las fechas ISO, así que se muestra aparte. */
 export const DEADLINE_TIME: Localized = {

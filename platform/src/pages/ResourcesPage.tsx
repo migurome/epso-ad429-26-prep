@@ -1,6 +1,7 @@
 import { ExternalLink } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
-import { useCompetition } from '../lib/competitionStore'
+import { useCompetition } from '../lib/studyStore'
+import { COMPETITIONS } from '../data/competition'
 import { REFERENCE_LINKS } from '../data/content'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
@@ -19,9 +20,12 @@ export function ResourcesPage() {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
   const competition = useCompetition()
-  const grouped = groupByCategory(
-    REFERENCE_LINKS.filter((l) => l.competition == null || l.competition === competition.key),
-  )
+  // Sin filtrar por convocatoria. Antes se escondían los enlaces de la otra
+  // —once de treinta y tres—, y había que cambiar de convocatoria entera para
+  // llegar a ellos. Pero las pruebas de razonamiento y la redacción son las
+  // mismas en las dos, así que casi todo ese material sirve igual; lo poco que
+  // es específico se marca con su convocatoria y el candidato decide.
+  const grouped = groupByCategory(REFERENCE_LINKS)
 
   return (
     <div>
@@ -83,6 +87,11 @@ export function ResourcesPage() {
                     />
                     <span>
                       <span className="font-medium text-slate-800">{link.title}</span>
+                      {link.competition && (
+                        <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 align-middle text-[11px] font-semibold tabular-nums text-slate-500">
+                          {COMPETITIONS[link.competition].grade}
+                        </span>
+                      )}
                       {link.notes && (
                         <span className="mt-0.5 block text-xs text-slate-500">
                           {link.notes}

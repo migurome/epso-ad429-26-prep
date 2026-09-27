@@ -13,11 +13,10 @@ import { usePracticeStore, type PracticeAnswer } from './practiceStore'
 import {
   DEFAULT_PROFILE,
   DEFAULT_SETTINGS,
-  preferredFieldFor,
+  knownField,
   useStudyStore,
   type CandidateProfile,
 } from './studyStore'
-import { useCompetitionStore } from './competitionStore'
 import { useLocaleStore } from './localeStore'
 import { useTestLocaleStore } from './testLocaleStore'
 import { COMPETITIONS } from '../data/competition'
@@ -146,12 +145,12 @@ describe('studyStore — ajustes y perfil', () => {
     expect(useStudyStore.getState().dayLog['2026-09-09']).toBe(60)
   })
 
-  it('updateProfile fusiona y conserva el ámbito elegido en la otra convocatoria', () => {
-    useStudyStore.getState().updateProfile({ preferredFields: { ad7: 'data-science' } })
+  it('updateProfile fusiona y conserva el ámbito elegido', () => {
+    useStudyStore.getState().updateProfile({ field: 'data-science' })
     useStudyStore.getState().updateProfile({ displayName: 'Miguel' })
     const profile = useStudyStore.getState().profile
     expect(profile.displayName).toBe('Miguel')
-    expect(profile.preferredFields.ad7).toBe('data-science')
+    expect(profile.field).toBe('data-science')
   })
 
   it('el objetivo semanal por defecto es el del enunciado', () => {
@@ -173,7 +172,7 @@ describe('studyStore — rehidratación de datos antiguos', () => {
 
     expect(merged.profile.displayName).toBe('Miguel')
     expect(merged.profile.email).toBe('')
-    expect(merged.profile.preferredFields).toEqual({})
+    expect(merged.profile.field).toBe(DEFAULT_PROFILE.field)
     expect(merged.settings).toEqual(DEFAULT_SETTINGS)
     expect(merged.dayLog).toEqual({ '2026-09-01': 600 })
   })
@@ -230,29 +229,71 @@ describe('practiceStore — respuestas de una versión anterior', () => {
   })
 })
 
-describe('ámbito preferido', () => {
-  it('usa el elegido cuando pertenece a la convocatoria', () => {
-    const profile = { ...DEFAULT_PROFILE, preferredFields: { ad7: 'clouds-networks' as const } }
-    expect(preferredFieldFor(profile, COMPETITIONS.ad7)).toBe('clouds-networks')
+describe('ámbito elegido', () => {
+  it('acepta un ámbito de cualquiera de las dos convocatorias', () => {
+    expect(knownField('clouds-networks')).toBe('clouds-networks')
+    expect(knownField('cybersecurity')).toBe('cybersecurity')
   })
 
-  it('ignora un ámbito que no está convocado en esa convocatoria', () => {
-    // 'cybersecurity' es de la AD8: si quedó guardado bajo ad7 por un cambio
-    // de datos, hay que caer al ámbito de la convocatoria y no a uno inexistente.
-    const profile = { ...DEFAULT_PROFILE, preferredFields: { ad7: 'cybersecurity' as const } }
-    expect(preferredFieldFor(profile, COMPETITIONS.ad7)).toBe(COMPETITIONS.ad7.userField)
+  it('rechaza lo que no es un ámbito convocado', () => {
+    // Un ámbito retirado, una clave a medio migrar o un dato corrupto: ninguno
+    // vale, y quedarse con él dejaría la plataforma sin convocatoria.
+    expect(knownField('quantum-computing')).toBeNull()
+    expect(knownField(undefined)).toBeNull()
+    expect(knownField('')).toBeNull()
   })
 
-  it('sin elección, usa el ámbito de la convocatoria', () => {
-    expect(preferredFieldFor(DEFAULT_PROFILE, COMPETITIONS.ad8)).toBe(COMPETITIONS.ad8.userField)
+  it('el ámbito por defecto está convocado', () => {
+    expect(knownField(DEFAULT_PROFILE.field)).toBe(DEFAULT_PROFILE.field)
+  })
+})
+
+describe('studyStore — migración del ámbito por convocatoria', () => {
+  const migrateStudy = useStudyStore.persist.getOptions().migrate!
+
+  it('recupera el ámbito de la convocatoria que estuviera activa', () => {
+    localStorage.setItem('epso-prep-competition', JSON.stringify({ state: { competition: 'ad7' } }))
+    const out = migrateStudy(
+      { profile: { displayName: 'Miguel', preferredFields: { ad7: 'clouds-networks', ad8: 'cybersecurity' } } },
+      1,
+    ) as { profile: CandidateProfile & { preferredFields?: unknown } }
+    expect(out.profile.field).toBe('clouds-networks')
+    expect(out.profile.displayName).toBe('Miguel')
+    expect(out.profile.preferredFields).toBeUndefined()
+    // Los dos ámbitos a los que llegaba antes siguen en el menú: eran sitios
+    // donde ya estaba estudiando, y quitárselos al actualizar sería una
+    // pérdida silenciosa.
+    expect(out.profile.activeFields).toEqual(['clouds-networks', 'cybersecurity'])
+  })
+
+  it('sin selector guardado, se queda en la convocatoria abierta', () => {
+    localStorage.removeItem('epso-prep-competition')
+    const out = migrateStudy({ profile: { preferredFields: { ad8: 'cybersecurity' } } }, 1) as {
+      profile: CandidateProfile
+    }
+    expect(out.profile.field).toBe('cybersecurity')
+  })
+
+  it('sin nada dado de alta, se cae a los ámbitos de fábrica', () => {
+    localStorage.removeItem('epso-prep-competition')
+    const out = migrateStudy({ profile: {} }, 1) as { profile: CandidateProfile }
+    expect(out.profile.activeFields).toEqual(DEFAULT_PROFILE.activeFields)
+  })
+
+  it('sin nada elegido, usa el ámbito de la convocatoria activa', () => {
+    localStorage.setItem('epso-prep-competition', JSON.stringify({ state: { competition: 'ad7' } }))
+    const out = migrateStudy({ profile: {} }, 1) as { profile: CandidateProfile }
+    expect(out.profile.field).toBe(COMPETITIONS.ad7.userField)
+  })
+
+  it('sobrevive a un almacenamiento vacío, a medias o corrupto', () => {
+    localStorage.setItem('epso-prep-competition', 'no es json')
+    expect(() => migrateStudy(undefined, 1)).not.toThrow()
+    expect(() => migrateStudy({}, 1)).not.toThrow()
   })
 })
 
 describe('stores de preferencias', () => {
-  it('la convocatoria por defecto es la que sigue abierta', () => {
-    expect(useCompetitionStore.getState().competition).toBe('ad8')
-  })
-
   it('el idioma de la interfaz y el del examen son independientes', () => {
     useLocaleStore.getState().setLocale('en')
     useTestLocaleStore.getState().setLocale('es')
@@ -265,7 +306,6 @@ describe('stores de preferencias', () => {
     const names = [
       useProgressStore.persist.getOptions().name,
       useStudyStore.persist.getOptions().name,
-      useCompetitionStore.persist.getOptions().name,
       useLocaleStore.persist.getOptions().name,
       useTestLocaleStore.persist.getOptions().name,
     ]

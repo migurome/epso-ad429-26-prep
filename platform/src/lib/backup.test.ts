@@ -18,7 +18,6 @@ import {
   snapshotText,
   type Snapshot,
 } from './backup'
-import { useCompetitionStore } from './competitionStore'
 import { useLocaleStore } from './localeStore'
 import { usePracticeStore } from './practiceStore'
 import { useProgressStore } from './progressStore'
@@ -46,7 +45,6 @@ function blank() {
   })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
   usePracticeStore.setState({ answers: {}, orderSeed: {} })
-  useCompetitionStore.setState({ competition: 'ad8' })
   useLocaleStore.setState({ locale: 'es' })
   useTestLocaleStore.setState({ locale: 'es' })
 }
@@ -66,7 +64,6 @@ const EMPTY_FILE: Snapshot = {
   essayAttempts: [],
   practiceAnswers: {},
   practiceOrder: {},
-  competition: 'ad8',
   uiLocale: 'es',
   testLocale: 'es',
 }
@@ -84,8 +81,10 @@ describe('el fichero', () => {
   it('recoge todo lo que el candidato no puede reconstruir de memoria', () => {
     useProgressStore.setState({ testAttempts: [test('t1', '2026-01-02')], essayAttempts: [] })
     usePracticeStore.setState({ answers: { q1: respuesta }, orderSeed: { banco: 7 } })
-    useStudyStore.setState({ dayLog: { '2026-01-02': 900 } })
-    useCompetitionStore.setState({ competition: 'ad7' })
+    useStudyStore.setState({
+      dayLog: { '2026-01-02': 900 },
+      profile: { ...DEFAULT_PROFILE, field: 'data-science' },
+    })
 
     const snapshot = createSnapshot()
 
@@ -93,7 +92,7 @@ describe('el fichero', () => {
     expect(snapshot.practiceAnswers).toEqual({ q1: respuesta })
     expect(snapshot.practiceOrder).toEqual({ banco: 7 })
     expect(snapshot.dayLog).toEqual({ '2026-01-02': 900 })
-    expect(snapshot.competition).toBe('ad7')
+    expect(snapshot.profile.field).toBe('data-science')
   })
 
   it('se vuelve a leer tal cual salió', () => {
@@ -199,19 +198,19 @@ describe('combinar dos dispositivos', () => {
   })
 
   it('no toca los ajustes de este dispositivo', () => {
-    // El candidato está recuperando su trabajo, no pidiendo que le cambien la
-    // convocatoria ni el idioma bajo los pies.
+    // El candidato está recuperando su trabajo, no pidiendo que le cambien el
+    // ámbito ni el idioma bajo los pies.
     useStudyStore.setState({ settings: { ...DEFAULT_SETTINGS, weeklyGoalHours: 12 } })
     applySnapshot(
       fileFrom({
         settings: { ...DEFAULT_SETTINGS, weeklyGoalHours: 3 },
-        competition: 'ad7',
+        profile: { ...DEFAULT_PROFILE, field: 'data-science' },
         uiLocale: 'en',
       }),
       'merge',
     )
     expect(useStudyStore.getState().settings.weeklyGoalHours).toBe(12)
-    expect(useCompetitionStore.getState().competition).toBe('ad8')
+    expect(useStudyStore.getState().profile.field).toBe(DEFAULT_PROFILE.field)
     expect(useLocaleStore.getState().locale).toBe('es')
   })
 
@@ -259,18 +258,18 @@ describe('reemplazar', () => {
     expect(useStudyStore.getState().dayLog).toEqual({ '2026-01-01': 300 })
   })
 
-  it('sí trae los ajustes, la convocatoria y los idiomas', () => {
+  it('sí trae los ajustes, el ámbito y los idiomas', () => {
     applySnapshot(
       fileFrom({
         settings: { ...DEFAULT_SETTINGS, weeklyGoalHours: 9 },
-        competition: 'ad7',
+        profile: { ...DEFAULT_PROFILE, field: 'data-science' },
         uiLocale: 'en',
         testLocale: 'en',
       }),
       'replace',
     )
     expect(useStudyStore.getState().settings.weeklyGoalHours).toBe(9)
-    expect(useCompetitionStore.getState().competition).toBe('ad7')
+    expect(useStudyStore.getState().profile.field).toBe('data-science')
     expect(useLocaleStore.getState().locale).toBe('en')
     expect(useTestLocaleStore.getState().locale).toBe('en')
   })
@@ -303,7 +302,6 @@ describe('el texto del fichero', () => {
       settings: { ...DEFAULT_SETTINGS, weeklyGoalHours: 8 },
       dayLog: { '2026-01-01': 1200 },
     })
-    useCompetitionStore.setState({ competition: 'ad7' })
     useTestLocaleStore.setState({ locale: 'en' })
 
     const original = createSnapshot()
@@ -384,12 +382,28 @@ describe('un fichero con basura dentro', () => {
     }
   })
 
-  it('una convocatoria que no existe cae en la de por defecto', () => {
+  it('un ámbito que no existe cae en el de por defecto', () => {
     const result = readSnapshot(
-      JSON.stringify({ app: 'epso-prep', format: SNAPSHOT_FORMAT, competition: 'ad99' }),
+      JSON.stringify({ app: 'epso-prep', format: SNAPSHOT_FORMAT, profile: { field: 'ad99' } }),
     )
     expect(result.ok).toBe(true)
-    if (result.ok) expect(result.snapshot.competition).toBe('ad8')
+    if (result.ok) expect(result.snapshot.profile.field).toBe(DEFAULT_PROFILE.field)
+  })
+
+  // Copias de antes del formato 3: el ámbito venía en un mapa por convocatoria
+  // y un `competition` aparte decía cuál valía. Restaurar una de ésas tiene que
+  // devolver el ámbito que el candidato estuviera usando, no el otro.
+  it('una copia antigua recupera el ámbito de la convocatoria que tuviera activa', () => {
+    const result = readSnapshot(
+      JSON.stringify({
+        app: 'epso-prep',
+        format: 2,
+        competition: 'ad7',
+        profile: { preferredFields: { ad7: 'clouds-networks', ad8: 'cybersecurity' } },
+      }),
+    )
+    expect(result.ok).toBe(true)
+    if (result.ok) expect(result.snapshot.profile.field).toBe('clouds-networks')
   })
 
   it('un idioma que no existe cae en español', () => {

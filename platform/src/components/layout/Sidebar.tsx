@@ -10,12 +10,13 @@ import {
   Link2,
   Megaphone,
   ChevronRight,
+  Circle,
+  CircleDot,
   X,
 } from 'lucide-react'
-import { CompetitionSelector } from '../CompetitionSelector'
-import { useCompetition } from '../../lib/competitionStore'
-import { useLocaleStore } from '../../lib/localeStore'
-import { usePreferredField } from '../../lib/studyStore'
+import { ALL_FIELDS } from '../../data/competition'
+import { useLocaleStore, pick } from '../../lib/localeStore'
+import { useActiveFields, useCompetition, useField, useStudyStore } from '../../lib/studyStore'
 import { hasCourse } from '../../data/contentLoader'
 import { useT } from '../../lib/useT'
 
@@ -29,16 +30,35 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const locale = useLocaleStore((s) => s.locale)
   const setLocale = useLocaleStore((s) => s.setLocale)
   const competition = useCompetition()
-  const field = usePreferredField()
+  const field = useField()
+  const activeFields = useActiveFields()
+  const updateProfile = useStudyStore((s) => s.updateProfile)
   const location = useLocation()
 
-  // La formación no es una fase de la oposición: es material de apoyo del test
-  // de ámbito, así que cuelga de él en vez de competir a su altura. Existe hoy
-  // sólo para ciberseguridad; con cualquier otro ámbito, Field-Related MCQ no
-  // tiene nada dentro y se comporta como un enlace normal, sin desplegable.
-  const fieldChildren = hasCourse(field)
-    ? [{ to: '/formacion', label: t('nav_course'), icon: GraduationCap }]
-    : []
+  // Los ámbitos dados de alta, de las dos convocatorias y sin separarlos: el
+  // candidato se presenta por un campo, no por una oposición, y el resto del
+  // examen es idéntico en ambas. Cuáles salen aquí se decide en Ajustes.
+  // Elegir aquí es elegir de verdad —cambia el ámbito guardado, y con él los
+  // plazos y el color—, así que la lista marca cuál es el suyo con el punto
+  // relleno, no sólo con el resaltado de la ruta activa.
+  //
+  // La formación cuelga de aquí, debajo de los ámbitos: no es una fase de la
+  // oposición sino material de apoyo del test de ámbito. Existe hoy sólo para
+  // ciberseguridad.
+  const fieldChildren = [
+    ...activeFields.map((id) => {
+      const info = ALL_FIELDS.find((f) => f.id === id)!
+      return {
+        to: `/campo/${id}`,
+        label: pick(locale, info.label),
+        icon: id === field ? CircleDot : Circle,
+        onSelect: () => updateProfile({ field: id }),
+      }
+    }),
+    ...(hasCourse(field)
+      ? [{ to: '/formacion', label: t('nav_course'), icon: GraduationCap, onSelect: undefined }]
+      : []),
+  ]
   const inFieldSection =
     location.pathname.startsWith('/campo') || location.pathname.startsWith('/formacion')
   const [fieldOpen, setFieldOpen] = useState(inFieldSection)
@@ -83,7 +103,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         <div className="flex items-start justify-between gap-2 border-b border-slate-200 px-5 py-5">
           <div className="min-w-0 flex-1">
-            <CompetitionSelector className="mb-2" />
             <p className="truncate text-xs font-semibold uppercase tracking-wide text-accent">
               {competition.id}
             </p>
@@ -143,7 +162,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     <NavLink
                       key={child.to}
                       to={child.to}
-                      onClick={onClose}
+                      onClick={() => {
+                        child.onSelect?.()
+                        onClose()
+                      }}
                       className={({ isActive }) =>
                         clsx(
                           'flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-sm transition-colors',

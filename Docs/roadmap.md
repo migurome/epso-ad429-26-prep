@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
 | `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
 | `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
 | `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
@@ -206,6 +207,48 @@ Tres cosas que el trabajo pidió y el plan no:
   —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
   equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
   nada se quejara.
+
+### El ámbito manda, y la convocatoria sale de él — **hecho** (`2.0`)
+
+Había un selector AD7/AD8 arriba de la barra lateral, y no tenía sentido: las
+dos convocatorias comparten literalmente el examen —mismo razonamiento, misma
+redacción, mismos minutos—, y lo único que cambia es el ámbito. El selector
+pedía elegir la oposición para poder elegir el campo, cuando cada campo
+pertenece a una sola oposición y ya la determina.
+
+Así que se le dio la vuelta: **se elige ámbito y la convocatoria se deduce**
+(`competitionOf`). Con ella vienen los plazos, las plazas, el régimen
+lingüístico y el color de la interfaz, sin que nadie tenga que saber que existen
+dos convocatorias.
+
+Lo que eso arrastró, que era más de lo que parecía:
+
+- **El ámbito se guardaba por convocatoria** —un mapa `{ad7, ad8}` más un
+  almacén aparte que decía cuál valía—. Ahora es uno solo. La migración lee el
+  selector viejo del `localStorage` para recuperar el que el candidato
+  estuviera usando: quedarse con el otro le habría cambiado de oposición sin
+  avisar.
+- **Los recursos escondían once de treinta y tres enlaces**, los de la otra
+  convocatoria, y para verlos había que cambiar de oposición entera. Ahora
+  salen todos, y los específicos llevan su grado al lado.
+- **El formato de copia sube a 3**: el `competition` sale del fichero. Una copia
+  anterior se sigue restaurando, y recupera el ámbito de la convocatoria que
+  tuviera activa.
+
+### Alta de ámbitos en Ajustes — **hecho** (`2.0`)
+
+Sin selector de convocatoria, la pregunta pasó a ser cuáles de los seis ámbitos
+convocados salen en el menú. La respuesta no podía ser «los seis»: nadie se
+prepara seis, y sería llenar la navegación de material que no se va a examinar.
+Tampoco podía quedarse fija en el código, porque entonces sumar uno nuevo sería
+un cambio de código.
+
+Se dan de alta en Ajustes, con una casilla por ámbito. De fábrica vienen los dos
+por los que se presenta el candidato de esta plataforma, uno por convocatoria.
+El ámbito que se esté usando no se puede dar de baja —sería quitar del menú la
+página abierta— y el que se abra por enlace directo entra en la lista aunque no
+estuviera dado de alta, para que la navegación nunca deje de contener lo que se
+está mirando.
 
 ### Los gráficos del razonamiento numérico — **en marcha** (`1.12`)
 

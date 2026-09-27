@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
+import clsx from 'clsx'
 import { Check, RotateCcw, Trash2, Undo2 } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 import { SyncCard } from '../components/SyncCard'
 import { useProgressStore } from '../lib/progressStore'
 import { usePracticeStore } from '../lib/practiceStore'
-import { useStudyStore } from '../lib/studyStore'
-import { useCompetitionStore } from '../lib/competitionStore'
+import { activeFieldsOf, useStudyStore } from '../lib/studyStore'
 import { useLocaleStore, pick } from '../lib/localeStore'
 import { useT } from '../lib/useT'
-import { COMPETITIONS, COMPETITION_ORDER } from '../data/competition'
+import { ALL_FIELDS, COMPETITIONS, competitionOf } from '../data/competition'
 import { currentWeek, formatDuration, type CalendarInput } from '../lib/studyCalendar'
 import type { Field } from '../types/content'
 
@@ -33,12 +33,14 @@ export function SettingsPage() {
 
   const tests = useProgressStore((s) => s.testAttempts)
   const essays = useProgressStore((s) => s.essayAttempts)
-  const activeCompetition = useCompetitionStore((s) => s.competition)
 
   // Los campos editan un borrador, no el almacén. Antes cada pulsación se
   // guardaba sola y sin decir nada: no había forma de saber si un cambio había
   // entrado, ni de deshacerlo antes de que contara.
   const [draftProfile, setDraftProfile] = useState(profile)
+  // Sobre el BORRADOR, no sobre lo guardado: la lista tiene que reaccionar a
+  // lo que se está marcando, antes de guardar.
+  const activeFields = activeFieldsOf(draftProfile)
   const [draftSettings, setDraftSettings] = useState(settings)
   const [justSaved, setJustSaved] = useState(false)
 
@@ -126,40 +128,82 @@ export function SettingsPage() {
           <p className="mt-4 text-xs text-slate-400">{t('settings_local_note')}</p>
         </Card>
 
-        {/* ── Ámbito por convocatoria ───────────────────────────────────── */}
-        <Card title={t('settings_fields')} description={t('settings_fields_description')}>
-          <div className="space-y-4">
-            {COMPETITION_ORDER.map((key) => {
-              const competition = COMPETITIONS[key]
-              const value = draftProfile.preferredFields[key] ?? competition.userField
-              return (
-                <FormField
-                  key={key}
-                  label={`${competition.id} — ${pick(locale, competition.title)}`}
-                  hint={key === activeCompetition ? t('settings_active_competition') : undefined}
-                >
-                  <select
-                    value={value}
-                    onChange={(e) =>
-                      editProfile({
-                        preferredFields: {
-                          ...draftProfile.preferredFields,
-                          [key]: e.target.value as Field,
-                        },
-                      })
-                    }
-                    className={inputClass}
-                  >
-                    {competition.fields.map((f) => (
-                      <option key={f.id} value={f.id}>
-                        {pick(locale, f.label)} ({f.posts})
-                      </option>
-                    ))}
-                  </select>
-                </FormField>
-              )
+        {/* ── Ámbito ────────────────────────────────────────────────────── */}
+        <Card title={t('settings_field')} description={t('settings_field_description')}>
+          <FormField
+            label={t('settings_field_label')}
+            hint={t('settings_field_competition', {
+              notice: competitionOf(draftProfile.field).id,
+              title: pick(locale, competitionOf(draftProfile.field).title),
             })}
-          </div>
+          >
+            <select
+              value={draftProfile.field}
+              onChange={(e) => editProfile({ field: e.target.value as Field })}
+              className={inputClass}
+            >
+              {activeFields.map((id) => {
+                const f = ALL_FIELDS.find((x) => x.id === id)!
+                return (
+                  <option key={id} value={id}>
+                    {COMPETITIONS[f.competition].grade} — {pick(locale, f.label)} ({f.posts})
+                  </option>
+                )
+              })}
+            </select>
+          </FormField>
+
+          {/* Alta de ámbitos. La plataforma cubre los seis convocados, pero
+              nadie se prepara seis: aquí se decide cuáles salen en el menú,
+              bajo Field-Related MCQ. El que se esté usando no se puede dar de
+              baja — sería quitar del menú la página abierta. */}
+          <fieldset className="mt-6 border-t border-slate-200 pt-5">
+            <legend className="sr-only">{t('settings_active_fields')}</legend>
+            <p className="text-sm font-medium text-slate-700">{t('settings_active_fields')}</p>
+            <p className="mt-1 text-xs text-slate-500">{t('settings_active_fields_hint')}</p>
+            <ul className="mt-3 space-y-2">
+              {ALL_FIELDS.map((f) => {
+                const on = activeFields.includes(f.id)
+                const locked = f.id === draftProfile.field
+                return (
+                  <li key={f.id}>
+                    <label
+                      className={clsx(
+                        'flex items-start gap-3 rounded-lg border px-3 py-2 text-sm',
+                        on ? 'border-accent/40 bg-accent/5' : 'border-slate-200',
+                        locked ? 'cursor-not-allowed' : 'cursor-pointer hover:border-slate-300',
+                      )}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={on}
+                        disabled={locked}
+                        onChange={(e) =>
+                          editProfile({
+                            activeFields: e.target.checked
+                              ? [...activeFields, f.id]
+                              : activeFields.filter((id) => id !== f.id),
+                          })
+                        }
+                        className="mt-0.5 h-4 w-4 accent-[var(--color-accent)]"
+                      />
+                      <span className="min-w-0">
+                        <span className="font-medium text-slate-800">{pick(locale, f.label)}</span>
+                        <span className="ml-2 text-xs tabular-nums text-slate-400">
+                          {COMPETITIONS[f.competition].grade} · {f.posts}
+                        </span>
+                        {locked && (
+                          <span className="mt-0.5 block text-xs text-slate-500">
+                            {t('settings_active_fields_current')}
+                          </span>
+                        )}
+                      </span>
+                    </label>
+                  </li>
+                )
+              })}
+            </ul>
+          </fieldset>
         </Card>
 
         {/* ── Objetivo semanal ──────────────────────────────────────────── */}

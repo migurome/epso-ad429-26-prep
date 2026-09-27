@@ -14,7 +14,6 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { CoursePage } from './CoursePage'
 import { CourseModulePage } from './CourseModulePage'
-import { useCompetitionStore } from '../lib/competitionStore'
 import { useLocaleStore } from '../lib/localeStore'
 import { useProgressStore } from '../lib/progressStore'
 import { usePracticeStore } from '../lib/practiceStore'
@@ -29,12 +28,11 @@ import type { Field } from '../types/content'
 const es = (key: keyof typeof DICT) => DICT[key].es
 const FALLBACK = 'cargando-curso'
 
-/** El curso existe para ciberseguridad, que es de la AD8. Elegir el ámbito por
- * el perfil (y no tocando la convocatoria) es como lo hace la aplicación. */
-function chooseField(field: Field, competition: 'ad7' | 'ad8') {
-  useCompetitionStore.setState({ competition })
+/** El curso existe para ciberseguridad. El ámbito se elige en el perfil, que
+ * es de donde sale también la convocatoria: así lo hace la aplicación. */
+function chooseField(field: Field) {
   useStudyStore.setState({
-    profile: { ...DEFAULT_PROFILE, preferredFields: { [competition]: field } },
+    profile: { ...DEFAULT_PROFILE, field },
     settings: { ...DEFAULT_SETTINGS },
     dayLog: {},
   })
@@ -70,7 +68,7 @@ beforeEach(() => {
   useTestLocaleStore.setState({ locale: 'es' })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
   usePracticeStore.setState({ answers: {}, orderSeed: {} })
-  chooseField('cybersecurity', 'ad8')
+  chooseField('cybersecurity')
 })
 
 afterEach(cleanup)
@@ -85,7 +83,7 @@ describe('la portada del curso se ciñe al ámbito elegido', () => {
   it('con otro ámbito dice que el curso no es para el suyo', async () => {
     // Enseñarle un temario de ciberseguridad a quien se presenta por ciencia de
     // datos es material que no le toca compitiendo por su atención.
-    chooseField('data-science', 'ad7')
+    chooseField('data-science')
     await mount(null)
     expect(screen.getByText(es('course_empty_title'))).toBeTruthy()
     expect(screen.getByText(es('course_other_field'))).toBeTruthy()
@@ -94,7 +92,7 @@ describe('la portada del curso se ciñe al ámbito elegido', () => {
   it('con otro ámbito no llega a pedir el bloque de contenido', async () => {
     // La guarda va FUERA del componente que carga: si estuviera dentro, se
     // descargarían cientos de kilobytes para no enseñarlos.
-    chooseField('ict-infrastructure', 'ad7')
+    chooseField('ict-infrastructure')
     const { container } = await mount(null)
     expect(container.textContent).not.toContain(FALLBACK)
     expect(container.querySelector('ol')).toBeNull()
@@ -174,7 +172,7 @@ describe('la página de un módulo', () => {
   })
 
   it('con un ámbito sin curso devuelve a la portada, que es donde se explica', async () => {
-    chooseField('data-science', 'ad7')
+    chooseField('data-science')
     await mount(null, '/formacion/1')
     expect(screen.getByText(es('course_other_field'))).toBeTruthy()
   })

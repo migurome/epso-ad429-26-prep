@@ -166,15 +166,43 @@ en EN, por ejemplo, para practicar en Lengua 2).
 - Para añadir una clave nueva: añadirla a `DICT` en `dictionary.ts` con
   ambos idiomas y consumirla vía `t('clave')` (hook `useT`).
 
+## El ámbito, y la convocatoria que sale de él
+
+La plataforma cubre dos convocatorias a la vez, la AD7 de perfiles TIC y la AD8
+de IA y ciberseguridad, y **no hay selector de convocatoria**. Lo hubo, y
+sobraba: las dos comparten el examen entero salvo el test de ámbito, así que
+pedir primero la oposición para poder elegir el campo era un paso de más.
+
+Se elige **ámbito**, y `competitionOf()` deduce la convocatoria — cada campo
+pertenece a una sola, y la verificación lo comprueba (`competition:fields`).
+Con la convocatoria vienen sus plazos, sus plazas, su régimen lingüístico y el
+color de la interfaz: azul EU para la AD7, granate para la AD8.
+
+El ámbito se elige en dos sitios, y son el mismo dato:
+
+- **En el menú**, bajo Field-Related MCQ. La lista enseña los ámbitos **dados
+  de alta**, de las dos convocatorias y sin separarlos, con el punto relleno en
+  el que se está usando. Pulsar uno lo elige de verdad.
+- **En Ajustes**, donde además se decide *cuáles* salen en esa lista. La
+  plataforma cubre los seis ámbitos convocados; de fábrica vienen dados de alta
+  los dos por los que se presenta el candidato. Es aquí donde se suma uno nuevo
+  sin tocar código.
+
+Dos reglas que evitan callejones sin salida: el ámbito por el que uno se
+presenta no se puede dar de baja, y el que se abra por enlace directo entra en
+la lista aunque no estuviera dado de alta — un menú que no contenga la página
+abierta no tiene de dónde volver.
+
 ## Modelo de la prueba (referencia)
 
 Según la convocatoria (a verificar contra `../Referencias.txt`, que se está
 completando con las fuentes oficiales):
 
 1. **Razonamiento** (fase eliminatoria): verbal, numérico y abstracto.
-2. **Field-Related MCQ** (clasificatoria): preguntas del campo elegido
-   (ICT Infrastructure / ICT Project Management / Clouds & Networks / Data
-   Science), en la segunda lengua del candidato.
+2. **Field-Related MCQ** (clasificatoria): preguntas del campo elegido, en la
+   segunda lengua del candidato. AD7: ICT Infrastructure, ICT Project
+   Management, Clouds & Networks, Data Science. AD8: Artificial Intelligence,
+   Cybersecurity.
 3. **EUFTE**: redacción/ensayo de razonamiento sobre asuntos de la UE a partir
    de documentación proporcionada.
 
@@ -198,6 +226,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
 | `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
 | `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
 | `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |

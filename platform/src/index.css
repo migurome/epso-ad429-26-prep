@@ -11,7 +11,8 @@
   --color-eu-gold: #ffcc00;
 }
 
-/* Convocatoria activa (ver src/lib/competitionStore.ts). El atributo lo pone
+/* Convocatoria del ámbito elegido (ver competitionOf en
+   src/data/competition.ts: no se elige aparte). El atributo lo pone
    Layout sobre <html>, y con él basta para teñir toda la interfaz: cada clase
    de Tailwind construida sobre estos tokens (`text-accent`, `bg-accent`,
    `border-accent`…) lee la variable, así que no hay que tocar ni un componente.

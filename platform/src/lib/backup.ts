@@ -1,6 +1,5 @@
-import type { CompetitionId } from '../data/competition'
+import { COMPETITIONS } from '../data/competition'
 import type { EssayAttempt, TestAttempt } from '../types/content'
-import { useCompetitionStore } from './competitionStore'
 import { useLocaleStore, type Locale } from './localeStore'
 import { usePracticeStore, type PracticeAnswer } from './practiceStore'
 import { useProgressStore } from './progressStore'
@@ -8,6 +7,7 @@ import type { DayLog } from './studyCalendar'
 import {
   DEFAULT_PROFILE,
   DEFAULT_SETTINGS,
+  knownField,
   useStudyStore,
   type CandidateProfile,
   type StudySettings,
@@ -35,7 +35,7 @@ import { useTestLocaleStore } from './testLocaleStore'
  * dio por repasada. Una versión anterior lee ese campo esperando cadenas, y no
  * fallaría: descartaría en silencio todas las respuestas de práctica. Por eso
  * este número existe — para que se niegue a abrirlo en vez de vaciarlo. */
-export const SNAPSHOT_FORMAT = 2
+export const SNAPSHOT_FORMAT = 3
 
 /** Marca del fichero, para no tragarse un JSON cualquiera. */
 const SNAPSHOT_APP = 'epso-prep'
@@ -52,7 +52,6 @@ export interface Snapshot {
   essayAttempts: EssayAttempt[]
   practiceAnswers: Record<string, PracticeAnswer>
   practiceOrder: Record<string, number>
-  competition: CompetitionId
   uiLocale: Locale
   testLocale: Locale
 }
@@ -91,7 +90,6 @@ export function createSnapshot(): Snapshot {
     essayAttempts: progress.essayAttempts,
     practiceAnswers: practice.answers,
     practiceOrder: practice.orderSeed,
-    competition: useCompetitionStore.getState().competition,
     uiLocale: useLocaleStore.getState().locale,
     testLocale: useTestLocaleStore.getState().locale,
   }
@@ -142,14 +140,13 @@ function normalise(raw: Record<string, unknown>): Snapshot {
     format: raw.format as number,
     exportedAt: typeof raw.exportedAt === 'string' ? raw.exportedAt : '',
     appVersion: typeof raw.appVersion === 'string' ? raw.appVersion : '',
-    profile: { ...DEFAULT_PROFILE, ...(isRecord(raw.profile) ? raw.profile : {}) },
+    profile: profileFrom(raw),
     settings: { ...DEFAULT_SETTINGS, ...(isRecord(raw.settings) ? raw.settings : {}) },
     dayLog: numberMap(raw.dayLog),
     testAttempts: asArray<TestAttempt>(raw.testAttempts),
     essayAttempts: asArray<EssayAttempt>(raw.essayAttempts),
     practiceAnswers: answerMap(raw.practiceAnswers),
     practiceOrder: numberMap(raw.practiceOrder),
-    competition: raw.competition === 'ad7' || raw.competition === 'ad8' ? raw.competition : 'ad8',
     uiLocale: asLocale(raw.uiLocale),
     testLocale: asLocale(raw.testLocale),
   }
@@ -226,7 +223,6 @@ export function applySnapshot(snapshot: Snapshot, mode: ImportMode): SnapshotSum
       answers: snapshot.practiceAnswers,
       orderSeed: snapshot.practiceOrder,
     })
-    useCompetitionStore.setState({ competition: snapshot.competition })
     useLocaleStore.setState({ locale: snapshot.uiLocale })
     useTestLocaleStore.setState({ locale: snapshot.testLocale })
     return describeSnapshot(snapshot)
@@ -265,6 +261,27 @@ export function snapshotFilename(when: Date = new Date()): string {
 
 export function snapshotText(snapshot: Snapshot): string {
   return JSON.stringify(snapshot, null, 2)
+}
+
+/** El perfil de una copia, venga del formato que venga.
+ *
+ * Hasta el formato 2 el ámbito se guardaba por convocatoria —un mapa
+ * `preferredFields` más un `competition` aparte que decía cuál de los dos
+ * valía—. Al restaurar una copia de entonces se recupera el de la
+ * convocatoria que estuviera activa: quedarse con el otro cambiaría de
+ * oposición a quien sólo quería recuperar su progreso. */
+function profileFrom(raw: Record<string, unknown>): CandidateProfile {
+  const saved = isRecord(raw.profile) ? raw.profile : {}
+  const direct = knownField(saved.field)
+  if (direct) return { ...DEFAULT_PROFILE, ...saved, field: direct }
+
+  const byCompetition = isRecord(saved.preferredFields) ? saved.preferredFields : {}
+  const active = raw.competition === 'ad7' ? 'ad7' : 'ad8'
+  const legacy =
+    knownField(byCompetition[active]) ??
+    knownField(byCompetition[active === 'ad7' ? 'ad8' : 'ad7'])
+  const { preferredFields: _dropped, ...rest } = saved
+  return { ...DEFAULT_PROFILE, ...rest, field: legacy ?? COMPETITIONS[active].userField }
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

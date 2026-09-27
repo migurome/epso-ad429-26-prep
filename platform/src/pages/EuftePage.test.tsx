@@ -12,7 +12,6 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { EuftePage } from './EuftePage'
 import { loadEufteContent } from '../data/contentLoader'
-import { useCompetitionStore } from '../lib/competitionStore'
 import { useLocaleStore } from '../lib/localeStore'
 import { useProgressStore } from '../lib/progressStore'
 import { useTestLocaleStore } from '../lib/testLocaleStore'
@@ -62,7 +61,6 @@ function promptHeaders(container: HTMLElement): HTMLButtonElement[] {
 beforeEach(() => {
   useLocaleStore.setState({ locale: 'es' })
   useTestLocaleStore.setState({ locale: 'es' })
-  useCompetitionStore.setState({ competition: 'ad7' })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
 })
 

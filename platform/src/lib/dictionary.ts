@@ -14,7 +14,6 @@ export const DICT = {
   nav_resources: { es: 'Recursos', en: 'Resources' },
   nav_progress: { es: 'Progreso', en: 'Progress' },
   sidebar_footer: { es: '{posts} plazas · {fields} ámbitos', en: '{posts} posts · {fields} fields' },
-  competition_selector_label: { es: 'Convocatoria', en: 'Competition' },
   open_menu: { es: 'Abrir menú', en: 'Open menu' },
   user_menu_label: { es: 'Tu cuenta', en: 'Your account' },
   user_menu_anonymous: { es: 'Candidato', en: 'Candidate' },
@@ -110,7 +109,6 @@ export const DICT = {
     en: 'Official scope of the field. The question bank is still pending.',
   },
   your_field_suffix: { es: 'tu campo', en: 'your field' },
-  your_field_chosen_suffix: { es: 'Campo de especialización elegido.', en: 'Chosen specialisation field.' },
 
   // Tabs comunes (Razonamiento / Field MCQ / EUFTE)
   tab_theory: { es: 'Teoría', en: 'Theory' },
@@ -419,12 +417,25 @@ export const DICT = {
     es: 'Estos datos se guardan únicamente en este navegador. No se envían a ningún sitio ni salen de tu equipo.',
     en: 'These details are stored in this browser only. Nothing is sent anywhere or leaves your machine.',
   },
-  settings_fields: { es: 'Ámbito por convocatoria', en: 'Field per competition' },
-  settings_fields_description: {
-    es: 'El ámbito por el que te presentas en cada una. Se destaca en las listas y decide qué banco se abre por defecto.',
-    en: 'The field you are applying for in each one. It is highlighted in the lists and decides which bank opens by default.',
+  settings_field: { es: 'Ámbito', en: 'Field' },
+  settings_field_description: {
+    es: 'El campo por el que te presentas. De él sale la convocatoria: sus plazos, sus plazas y el color de la interfaz. También se puede cambiar desde la barra lateral.',
+    en: 'The field you are applying for. The competition follows from it: its deadlines, its posts and the colour of the interface. You can also change it from the sidebar.',
   },
-  settings_active_competition: { es: 'Convocatoria activa ahora mismo', en: 'Currently active competition' },
+  settings_field_label: { es: 'Campo de especialización', en: 'Specialisation field' },
+  settings_field_competition: {
+    es: 'Convocatoria {notice} — {title}',
+    en: 'Competition {notice} — {title}',
+  },
+  settings_active_fields: { es: 'Ámbitos dados de alta', en: 'Registered fields' },
+  settings_active_fields_hint: {
+    es: 'Los que aparecen en el menú, bajo Field-Related MCQ. La plataforma cubre los seis ámbitos convocados; marca los que vayas a preparar.',
+    en: 'The ones listed in the menu, under Field-Related MCQ. The platform covers all six fields in the competitions; tick the ones you are going to prepare.',
+  },
+  settings_active_fields_current: {
+    es: 'Es el ámbito por el que te presentas: no se puede dar de baja.',
+    en: 'This is the field you are applying for: it cannot be removed.',
+  },
   settings_goal: { es: 'Objetivo semanal', en: 'Weekly goal' },
   settings_goal_description: {
     es: 'Horas de estudio que hay que alcanzar para dar una semana por cumplida en el calendario.',

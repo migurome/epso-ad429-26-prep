@@ -1,8 +1,13 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Field } from '../types/content'
-import { COMPETITIONS, type CompetitionId } from '../data/competition'
-import { useCompetitionStore } from './competitionStore'
+import {
+  ALL_FIELDS,
+  COMPETITIONS,
+  competitionOf,
+  type CompetitionId,
+  type CompetitionInfo,
+} from '../data/competition'
 import { dayKey, type DayLog } from './studyCalendar'
 
 // Ajustes del candidato y registro de uso de la plataforma.
@@ -19,10 +24,15 @@ import { dayKey, type DayLog } from './studyCalendar'
 export interface CandidateProfile {
   displayName: string
   email: string
-  /** Ámbito elegido en cada convocatoria. Sobrescribe el `userField` que trae
-   * COMPETITIONS, para que el candidato pueda cambiar de perfil sin tocar el
-   * código. */
-  preferredFields: Partial<Record<CompetitionId, Field>>
+  /** El ámbito por el que se presenta el candidato. Uno solo, de cualquiera de
+   * las dos convocatorias: de él salen la convocatoria, sus plazos y el color
+   * de la interfaz (ver competitionOf). */
+  field: Field
+  /** Los ámbitos dados de alta: los que aparecen en el menú, bajo
+   * Field-Related MCQ. La plataforma cubre seis, pero un candidato no se
+   * prepara seis: se dan de alta los que interesan y el menú enseña ésos. El
+   * ámbito activo cuenta siempre como dado de alta, esté o no en la lista. */
+  activeFields: Field[]
   /** Fecha prevista de examen, en ISO 'YYYY-MM-DD'. Vacía si no se sabe. */
   targetExamDate: string
 }
@@ -48,7 +58,11 @@ export const DEFAULT_SETTINGS: StudySettings = {
 export const DEFAULT_PROFILE: CandidateProfile = {
   displayName: '',
   email: '',
-  preferredFields: {},
+  field: 'cybersecurity',
+  // Los dos ámbitos por los que se presenta el candidato de esta plataforma,
+  // uno por convocatoria. Dar de alta los seis de entrada sería llenar el menú
+  // de material que nadie va a examinar.
+  activeFields: ['data-science', 'cybersecurity'],
   targetExamDate: '',
 }
 
@@ -96,7 +110,36 @@ export const useStudyStore = create<StudyState>()(
     }),
     {
       name: 'epso-prep-study',
-      version: 1,
+      version: 2,
+      // v2: el ámbito dejó de guardarse por convocatoria. Había un mapa
+      // { ad7: ..., ad8: ... } y un selector aparte que decía cuál valía; ahora
+      // hay un solo ámbito y la convocatoria se deduce de él. Se recupera el
+      // que el candidato estuviera viendo —el de la convocatoria que tenía
+      // activa—, no el primero del mapa: quedarse con el otro le cambiaría de
+      // oposición sin avisar.
+      migrate: (persisted, from) => {
+        const saved = (persisted ?? {}) as Record<string, unknown>
+        if (from >= 2) return saved
+        const profile = (saved.profile ?? {}) as Record<string, unknown>
+        const byCompetition = (profile.preferredFields ?? {}) as Record<string, string>
+        const active = lastActiveCompetition()
+        const chosen = byCompetition[active] ?? byCompetition[active === 'ad7' ? 'ad8' : 'ad7']
+        const { preferredFields: _dropped, ...rest } = profile
+        // Lo que estuviera elegido en cada convocatoria queda dado de alta:
+        // eran los ámbitos a los que el candidato llegaba antes, y perderlos
+        // del menú al actualizar sería quitarle sitios donde ya estudiaba.
+        const registered = Object.values(byCompetition)
+          .map(knownField)
+          .filter((f): f is Field => f !== null)
+        return {
+          ...saved,
+          profile: {
+            ...rest,
+            field: knownField(chosen) ?? defaultFieldOf(active),
+            activeFields: registered.length > 0 ? registered : DEFAULT_PROFILE.activeFields,
+          },
+        }
+      },
       // Los ajustes ganan campos con el tiempo; sin esta mezcla, un usuario
       // con datos guardados de una versión anterior se quedaría con `undefined`
       // en los campos nuevos y la interfaz mostraría huecos.
@@ -114,22 +157,65 @@ export const useStudyStore = create<StudyState>()(
   ),
 )
 
-/** El ámbito por el que se presenta el candidato en una convocatoria: lo que
- * haya elegido en los ajustes y, si no ha elegido nada, el de la convocatoria. */
-export function preferredFieldFor(
-  profile: CandidateProfile,
-  competition: { key: CompetitionId; userField: Field; fields: { id: Field }[] },
-): Field {
-  const chosen = profile.preferredFields[competition.key]
-  if (chosen && competition.fields.some((f) => f.id === chosen)) return chosen
-  return competition.userField
+/** El ámbito guardado, si sigue estando convocado. Cualquier otra cosa —un
+ * ámbito retirado, un dato corrupto, un `undefined`— no vale. */
+export function knownField(value: unknown): Field | null {
+  return ALL_FIELDS.some((f) => f.id === value) ? (value as Field) : null
 }
 
-/** El ámbito elegido en la convocatoria activa. Field-Related MCQ y Formación
- * se ciñen a él: enseñar los demás ámbitos era material que el candidato no va
- * a examinar, compitiendo por su atención con el que sí. */
-export function usePreferredField(): Field {
-  const key = useCompetitionStore((s) => s.competition)
-  const profile = useStudyStore((s) => s.profile)
-  return preferredFieldFor(profile, COMPETITIONS[key])
+/** El ámbito por defecto de una convocatoria, para cuando no hay nada
+ * elegido. */
+function defaultFieldOf(competition: CompetitionId): Field {
+  return COMPETITIONS[competition].userField
+}
+
+/** La convocatoria que estaba activa antes de que desapareciera el selector.
+ * Vivía en su propio almacén persistido; se lee una sola vez, al migrar, y
+ * después ese almacén ya no le importa a nadie. */
+function lastActiveCompetition(): CompetitionId {
+  try {
+    const raw = globalThis.localStorage?.getItem('epso-prep-competition')
+    if (!raw) return 'ad8'
+    const parsed = JSON.parse(raw) as { state?: { competition?: string } }
+    return parsed.state?.competition === 'ad7' ? 'ad7' : 'ad8'
+  } catch {
+    // Almacenamiento bloqueado o JSON roto: no es motivo para no arrancar.
+    return 'ad8'
+  }
+}
+
+/** El ámbito por el que se presenta el candidato. */
+export function useField(): Field {
+  return knownField(useStudyStore((s) => s.profile.field)) ?? DEFAULT_PROFILE.field
+}
+
+/** Los ámbitos dados de alta, en el orden en que se convocan y sin repetidos.
+ *
+ * El ámbito activo entra siempre, aunque no se haya dado de alta: se llega a
+ * un ámbito también por enlace directo, y un menú que no contuviera la página
+ * abierta no tendría de dónde volver. Si no queda ninguno —lista vaciada a
+ * mano, datos corruptos—, se cae a los de fábrica en vez de a un menú vacío. */
+export function activeFieldsOf(profile: CandidateProfile): Field[] {
+  const chosen = knownField(profile.field) ?? DEFAULT_PROFILE.field
+  const saved = (profile.activeFields ?? [])
+    .map(knownField)
+    .filter((f): f is Field => f !== null)
+  const wanted = new Set(saved.length > 0 ? saved : DEFAULT_PROFILE.activeFields)
+  wanted.add(chosen)
+  return ALL_FIELDS.filter((f) => wanted.has(f.id)).map((f) => f.id)
+}
+
+export function useActiveFields(): Field[] {
+  return activeFieldsOf(useStudyStore((s) => s.profile))
+}
+
+/** Alias histórico de useField. Field-Related MCQ y Formación se ciñen a él:
+ * enseñar los demás ámbitos era material que el candidato no va a examinar,
+ * compitiendo por su atención con el que sí. */
+export const usePreferredField = useField
+
+/** Los datos de la convocatoria a la que pertenece el ámbito elegido: sus
+ * plazos, sus plazas y su color. No se elige aparte — se deduce. */
+export function useCompetition(): CompetitionInfo {
+  return competitionOf(useField())
 }

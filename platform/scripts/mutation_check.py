@@ -191,11 +191,11 @@ MUTATIONS = [
         "src/components/PracticeBank.test.tsx",
     ),
     (
-        "la fase de ámbito ignora el ámbito elegido y vuelve al de la convocatoria",
+        "un ámbito que no está convocado se acepta igual",
         "src/lib/studyStore.ts",
-        "  if (chosen && competition.fields.some((f) => f.id === chosen)) return chosen",
-        "  if (false) return chosen",
-        "src/App.routes.test.tsx",
+        "  return ALL_FIELDS.some((f) => f.id === value) ? (value as Field) : null",
+        "  return value as Field",
+        "src/lib/stores.test.ts",
     ),
     (
         "la formación enseña su temario sea cual sea el ámbito elegido",
@@ -207,8 +207,8 @@ MUTATIONS = [
     (
         "la navegación enlaza la formación aunque el ámbito no tenga curso",
         "src/components/layout/Sidebar.tsx",
-        "  const fieldChildren = hasCourse(field)",
-        "  const fieldChildren = true",
+        "    ...(hasCourse(field)",
+        "    ...(true",
         "src/App.routes.test.tsx",
     ),
     (
@@ -275,10 +275,10 @@ MUTATIONS = [
         "src/pages/SettingsPage.test.tsx",
     ),
     (
-        "el selector de convocatoria vuelve a quedarse muerto en el test de ámbito",
+        "abrir un ámbito ya no lo elige, y los plazos se quedan en la otra convocatoria",
         "src/pages/FieldMcqPage.tsx",
-        "    const switchedByHand = lastCompetition.current !== competition.key",
-        "    const switchedByHand = false",
+        "    if (field) updateProfile({ field: field.id })",
+        "    if (false) updateProfile({ field: field.id })",
         "src/App.routes.test.tsx",
     ),
     (
@@ -1219,6 +1219,56 @@ MUTATIONS = [
         "      <Markdown>{parsed.after}</Markdown>",
         "      {null}",
         "src/components/QuestionChart.test.tsx",
+    ),
+    # ── El ámbito manda, y la convocatoria sale de él (v2.0) ──────────────
+    (
+        "el menú enseña los seis ámbitos, den de alta los que den de alta",
+        "src/components/layout/Sidebar.tsx",
+        "    ...activeFields.map((id) => {",
+        "    ...ALL_FIELDS.map((f) => f.id).map((id) => {",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "el ámbito abierto desaparece del menú si no estaba dado de alta",
+        "src/lib/studyStore.ts",
+        "  wanted.add(chosen)",
+        "  void chosen",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "se puede dar de baja el ámbito por el que uno se presenta",
+        "src/pages/SettingsPage.tsx",
+        "                        disabled={locked}",
+        "                        disabled={false}",
+        "src/pages/SettingsPage.test.tsx",
+    ),
+    (
+        "los recursos vuelven a esconder los de la otra convocatoria",
+        "src/pages/ResourcesPage.tsx",
+        "  const grouped = groupByCategory(REFERENCE_LINKS)",
+        "  const grouped = groupByCategory(REFERENCE_LINKS.filter((l) => l.competition == null))",
+        "src/App.routes.test.tsx",
+    ),
+    (
+        "una copia antigua recupera el ámbito de la convocatoria equivocada",
+        "src/lib/backup.ts",
+        "  const active = raw.competition === 'ad7' ? 'ad7' : 'ad8'",
+        "  const active = 'ad8'",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "al actualizar se pierden del menú los ámbitos que ya se usaban",
+        "src/lib/studyStore.ts",
+        "            activeFields: registered.length > 0 ? registered : DEFAULT_PROFILE.activeFields,",
+        "            activeFields: DEFAULT_PROFILE.activeFields,",
+        "src/lib/stores.test.ts",
+    ),
+    (
+        "al actualizar, el ámbito guardado sale de la convocatoria que no se estaba usando",
+        "src/lib/studyStore.ts",
+        "        const active = lastActiveCompetition()",
+        "        const active = 'ad8' as CompetitionId",
+        "src/lib/stores.test.ts",
     ),
 ]
 

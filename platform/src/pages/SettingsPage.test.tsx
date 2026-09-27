@@ -17,6 +17,7 @@ import { useProgressStore } from '../lib/progressStore'
 import { usePracticeStore } from '../lib/practiceStore'
 import { useLocaleStore } from '../lib/localeStore'
 import { DICT } from '../lib/dictionary'
+import { ALL_FIELDS } from '../data/competition'
 
 const es = (key: keyof typeof DICT) => DICT[key].es
 const clickButton = (name: string | RegExp) =>
@@ -100,5 +101,57 @@ describe('confirmación de cambios', () => {
     fireEvent.change(nameField(), { target: { value: 'Miguel R.' } })
     expect(screen.getByText(es('settings_unsaved'))).toBeTruthy()
     expect(screen.queryByText(es('settings_saved'))).toBeNull()
+  })
+})
+
+describe('alta de ámbitos', () => {
+  // La plataforma cubre los seis ámbitos convocados, pero el menú sólo enseña
+  // los que se den de alta aquí. Es lo que sustituyó al selector AD7/AD8: sin
+  // esta pantalla no habría forma de sumar un ámbito nuevo sin tocar código.
+  // El nombre accesible lleva detrás el grado y las plazas, y alguna etiqueta
+  // trae paréntesis —"Inteligencia artificial (IA)"—, así que se compara por
+  // contenido y no con una expresión regular construida al vuelo.
+  const checkbox = (label: string) =>
+    screen.getByRole('checkbox', {
+      name: (accessible: string) => accessible.includes(label),
+    }) as HTMLInputElement
+
+  it('los seis ámbitos convocados se pueden dar de alta', () => {
+    render(<SettingsPage />)
+    for (const f of ALL_FIELDS) {
+      expect(checkbox(f.label.es), `${f.id} no se puede dar de alta`).toBeTruthy()
+    }
+  })
+
+  it('de fábrica vienen dados de alta los dos por los que se presenta', () => {
+    render(<SettingsPage />)
+    expect(checkbox('Ciencia de datos').checked).toBe(true)
+    expect(checkbox('Ciberseguridad').checked).toBe(true)
+    expect(checkbox('Nubes y redes').checked).toBe(false)
+  })
+
+  it('dar de alta uno nuevo no cuenta hasta confirmar', () => {
+    render(<SettingsPage />)
+    fireEvent.click(checkbox('Nubes y redes'))
+    expect(screen.getByText(es('settings_unsaved'))).toBeTruthy()
+    expect(useStudyStore.getState().profile.activeFields).not.toContain('clouds-networks')
+
+    clickButton(new RegExp(es('settings_save')))
+    expect(useStudyStore.getState().profile.activeFields).toContain('clouds-networks')
+  })
+
+  it('el ámbito por el que te presentas no se puede dar de baja', () => {
+    // Sería quitar del menú la página que se está usando, y dejar la
+    // convocatoria activa sin ningún ámbito del que colgar.
+    render(<SettingsPage />)
+    expect(checkbox('Ciberseguridad').disabled).toBe(true)
+    expect(checkbox('Ciencia de datos').disabled).toBe(false)
+  })
+
+  it('dar de baja el resto se guarda', () => {
+    render(<SettingsPage />)
+    fireEvent.click(checkbox('Ciencia de datos'))
+    clickButton(new RegExp(es('settings_save')))
+    expect(useStudyStore.getState().profile.activeFields).toEqual(['cybersecurity'])
   })
 })
