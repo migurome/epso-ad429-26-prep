@@ -22,14 +22,23 @@ export type PracticeFilter = 'all' | 'answered' | 'pending'
 /**
  * Si una pregunta se enseña bajo un filtro.
  *
- * Pendiente es, sin más, no haberla contestado. Durante un día hubo un estado
- * intermedio —contestada pero no «repasada»— para que la explicación no se
- * cerrara sola; se quitó porque en la mano era un clic de más por pregunta
- * para decir lo que ya decía haberla contestado. Quien quiera releer la
- * explicación vuelve a abrirla, que es un clic también, pero sólo cuando hace
- * falta.
+ * Pendiente es, sin más, no haberla contestado. Hubo un estado intermedio
+ * —contestada pero no «repasada»— que duró un día: era un clic por pregunta
+ * para decir lo que ya decía haberla contestado.
+ *
+ * Y una regla que no es del filtro sino de la cortesía: **lo que se está
+ * mirando no se esconde**. Con la lista en «pendientes», contestar deja de
+ * cumplir el filtro en el mismo instante en que aparece la explicación; sin
+ * esta guarda la fila se desvanecería debajo de los ojos de quien acaba de
+ * fallar, que es justo quien tiene algo que leer ahí. Se va cuando se abra
+ * otra, no antes.
  */
-export function showsUnder(filter: PracticeFilter, answer: PracticeAnswer | undefined): boolean {
+export function showsUnder(
+  filter: PracticeFilter,
+  answer: PracticeAnswer | undefined,
+  isOpen = false,
+): boolean {
+  if (isOpen) return true
   switch (filter) {
     case 'all':
       return true

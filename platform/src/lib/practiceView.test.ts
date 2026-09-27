@@ -33,6 +33,14 @@ describe('qué se enseña bajo cada filtro', () => {
     expect(showsUnder('answered', answer())).toBe(true)
   })
 
+  it('lo que se está mirando no se esconde, lo diga el filtro o no', () => {
+    // Contestar deja de cumplir «pendiente» en el mismo instante en que
+    // aparece la explicación. Sin esto la fila se desvanece debajo de los ojos
+    // de quien acaba de fallar; con esto se va al abrir la siguiente.
+    expect(showsUnder('pending', answer(), true)).toBe(true)
+    expect(showsUnder('answered', undefined, true)).toBe(true)
+  })
+
   it('pendiente es, sin más, no haberla contestado', () => {
     // Hubo un estado intermedio —contestada pero sin «repasar»— que duró un
     // día: en la mano era un clic por pregunta para decir lo que ya decía

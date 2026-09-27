@@ -125,16 +125,13 @@ describe('acordeón', () => {
 })
 
 describe('corrección', () => {
-  it('responder pliega la pregunta, y la explicación espera dentro', () => {
-    // Contestar es cerrar. La explicación no se pierde —está al reabrirla—,
-    // pero deja de aparecer sola: es el precio de que la lista se vacíe al
-    // avanzar en vez de acumular preguntas ya trabajadas abiertas.
+  it('responder revela la explicación ahí mismo', () => {
+    // Y la pregunta se queda abierta: se cierra al abrir la siguiente, no al
+    // contestar. Lo contrario cerraba la explicación en las narices de quien
+    // acababa de fallar, que es quien tiene algo que leer ahí.
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    expect(screen.queryByText(/Porque sí/)).toBeNull()
-
-    toggle(/Enunciado de real1/)
     expect(screen.getByText(/Porque sí/)).toBeTruthy()
   })
 
@@ -142,7 +139,7 @@ describe('corrección', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    // Responder ya la pliega; basta con volver a abrirla.
+    toggle(/Enunciado de real1/)
     toggle(/Enunciado de real1/)
     // Si se perdiera, el candidato repetiría preguntas ya trabajadas sin saberlo.
     expect(screen.getByText(/Porque sí/)).toBeTruthy()
@@ -219,6 +216,7 @@ describe('marca de pregunta ya evaluada', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
+    toggle(/Enunciado de real1/)
     expect(screen.queryByText('Opción A')).toBeNull()
     expect(screen.getByText(es('answered_correct'))).toBeTruthy()
   })
@@ -392,11 +390,25 @@ describe('filtro por estado', () => {
   const pendientes = () => clickButton(new RegExp(`^${es('practice_filter_pending')}`))
   const respondidas = () => clickButton(new RegExp(`^${es('practice_filter_answered')}`))
 
-  it('responder la saca de pendientes: contestar es cerrar', () => {
+  it('responder no la quita de delante mientras se está mirando', () => {
+    // Deja de cumplir el filtro en el mismo instante en que aparece su
+    // explicación. Sin la guarda, la fila se desvanecería debajo de los ojos
+    // de quien acaba de fallar.
     render(<PracticeBank questions={MIXED} bankId="test" />)
     pendientes()
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
+
+    expect(screen.getByText(/Enunciado de real1/)).toBeTruthy()
+    expect(screen.getByText(/Porque sí/)).toBeTruthy()
+  })
+
+  it('y se va en cuanto se abre la siguiente', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    pendientes()
+    toggle(/Enunciado de real1/)
+    clickButton(/Opción A/)
+    toggle(/Enunciado de real2/)
 
     expect(screen.queryByText(/Enunciado de real1/)).toBeNull()
   })
@@ -485,7 +497,8 @@ describe('el contador del ritmo de examen', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
     clickButton(/Opción A/)
-    toggle(/Enunciado de real1/)
+    toggle(/Enunciado de real1/) // plegar
+    toggle(/Enunciado de real1/) // y volver a abrir
 
     expect(screen.queryByText('1:40')).toBeNull()
     avanzar(3000)
@@ -517,6 +530,7 @@ describe('la fila de una pregunta ya contestada', () => {
     render(<PracticeBank questions={[LARGA]} bankId="test" />)
     toggle(/El primer párrafo/)
     clickButton(/Opción A/)
+    toggle(/El primer párrafo/)
 
     const fila = rowOf(/El primer párrafo/)
     expect(within(fila).getByText('El primer párrafo del texto.')).toBeTruthy()
@@ -532,7 +546,8 @@ describe('la fila de una pregunta ya contestada', () => {
     render(<PracticeBank questions={[LARGA]} bankId="test" />)
     toggle(/El primer párrafo/)
     clickButton(/Opción A/)
-    toggle(/El primer párrafo/)
+    toggle(/El primer párrafo/) // plegar
+    toggle(/El primer párrafo/) // y volver a abrir
 
     expect(screen.getByText(/Un segundo párrafo/)).toBeTruthy()
   })

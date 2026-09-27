@@ -228,8 +228,8 @@ MUTATIONS = [
     (
         "el banco de práctica vuelve a olvidar lo respondido al recargar",
         "src/components/PracticeBank.tsx",
-        "                recordAnswer(q.id, optionId, seconds)",
-        "                // MUTADO",
+        "              onAnswer={(optionId, seconds) => recordAnswer(q.id, optionId, seconds)}",
+        "              onAnswer={() => {}}",
         "src/components/PracticeBank.test.tsx",
     ),
     (
@@ -1150,10 +1150,10 @@ MUTATIONS = [
         "src/components/PracticeBank.test.tsx",
     ),
     (
-        "contestar deja la pregunta abierta y la lista se llena de trabajo hecho",
-        "src/components/PracticeBank.tsx",
-        "                setExpandedId(null)",
-        "                // MUTADO",
+        "la pregunta abierta se desvanece al contestarla",
+        "src/lib/practiceView.ts",
+        "  if (isOpen) return true",
+        "  // MUTADO",
         "src/components/PracticeBank.test.tsx",
     ),
     (
@@ -1173,7 +1173,7 @@ MUTATIONS = [
     (
         "el filtro por estado no filtra nada",
         "src/components/PracticeBank.tsx",
-        "          showsUnder(stateFilter, answers[q.id]),",
+        "          showsUnder(stateFilter, answers[q.id], q.id === expandedId),",
         "          true,",
         "src/components/PracticeBank.test.tsx",
     ),
@@ -1189,8 +1189,53 @@ def run(spec: str) -> bool:
     return result.returncode == 0
 
 
+def find_in(original: str, old: str, new: str):
+    """El patrón tal como encaja en el archivo, o (None, None) si no encaja.
+
+    Los patrones se escriben con LF, pero en Windows git deja los archivos con
+    CRLF al hacer checkout. Sin este reintento, un patrón de varias líneas deja
+    de encontrar nada en cuanto alguien clona el repositorio —y el aviso sería
+    un "?" que se lee como una mutación superviviente, no como lo que es: una
+    comprobación que no llegó a ejecutarse.
+    """
+    if old in original:
+        return old, new
+    if "\n" in old:
+        crlf_old, crlf_new = old.replace("\n", "\r\n"), new.replace("\n", "\r\n")
+        if crlf_old in original:
+            return crlf_old, crlf_new
+    return None, None
+
+
+def check_only() -> int:
+    """Comprueba que cada patrón encuentra su código. Un segundo, no siete minutos.
+
+    Existe porque el modo de fallo más caro de este guion no es una mutación que
+    sobreviva, sino una que ya no encuentra qué romper: se anuncia igual que una
+    superviviente y sólo se descubre al terminar la pasada entera. Al reescribir
+    código, esto dice en el acto qué entradas hay que reapuntar.
+    """
+    perdidas = []
+    for name, rel, old, new, _spec in MUTATIONS:
+        original = (ROOT / rel).read_text(encoding="utf-8", newline="")
+        if find_in(original, old, new)[0] is None:
+            perdidas.append((name, rel))
+
+    for name, rel in perdidas:
+        print(f"  ?  {name}\n     (no se encontró el código a mutar en {rel})")
+    total = len(MUTATIONS)
+    if perdidas:
+        print(f"\n{len(perdidas)} de {total} mutaciones apuntan a código que ya no existe.")
+        return 1
+    print(f"\nLas {total} mutaciones encuentran su código.")
+    return 0
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    # Sin tocar nada: sólo dice si cada patrón sigue encontrando su código.
+    if "--check" in sys.argv:
+        return check_only()
     survivors = []
 
     for name, rel, old, new, spec in MUTATIONS:

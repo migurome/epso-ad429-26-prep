@@ -89,9 +89,9 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
       ordered.filter(
         (q) =>
           (sourceFilter === 'all' || sourceOf(q.tags) === sourceFilter) &&
-          showsUnder(stateFilter, answers[q.id]),
+          showsUnder(stateFilter, answers[q.id], q.id === expandedId),
       ),
-    [ordered, sourceFilter, stateFilter, answers],
+    [ordered, sourceFilter, stateFilter, answers, expandedId],
   )
 
   const counts = useMemo(() => countsFor(bank.questionIds, answers), [bank.questionIds, answers])
@@ -179,13 +179,10 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
               isOpen={expandedId === q.id}
               testLocale={testLocale}
               onToggle={() => setExpandedId(expandedId === q.id ? null : q.id)}
-              onAnswer={(optionId, seconds) => {
-                recordAnswer(q.id, optionId, seconds)
-                // Contestar es cerrar. Hubo un botón «Hecha» entre las dos
-                // cosas y duró un día: era un clic por pregunta para decir lo
-                // que ya decía haber contestado.
-                setExpandedId(null)
-              }}
+              // Contestar no pliega nada: la explicación aparece ahí y se
+              // queda. La pregunta se cierra al abrir la siguiente, que es lo
+              // que ya hacía el acordeón, y entonces se resume en una línea.
+              onAnswer={(optionId, seconds) => recordAnswer(q.id, optionId, seconds)}
               onReactivate={() => reactivate(q.id, bank)}
             />
           ))}

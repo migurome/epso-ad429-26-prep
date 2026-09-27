@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
 | `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
 | `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
 | `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
@@ -204,6 +205,24 @@ Tres cosas que el trabajo pidió y el plan no:
   —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
   equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
   nada se quejara.
+
+### Se cierra al abrir la siguiente — **hecho** (`1.11`)
+
+Tercer intento sobre lo mismo, y el que se queda. La `1.10` plegaba la pregunta
+en el acto al contestarla, y eso cerraba la explicación justo cuando aparece —en
+las narices de quien acaba de fallar, que es quien tiene algo que leer ahí—.
+
+Ahora se cierra al abrir la siguiente, que es lo que ya hacía el acordeón por su
+cuenta: el arreglo fue **quitar** el plegado automático, no añadir nada.
+
+- **El filtro nunca esconde lo que se está mirando.** Con la lista en
+  «pendientes», contestar deja de cumplir el filtro en el mismo instante en que
+  aparece la explicación, y la fila se desvanecía bajo los ojos. Es una guarda
+  de tres palabras en `showsUnder`, y es lo único que hubo que añadir.
+- **Un comprobador previo para la prueba de mutación** (`--check`). Hoy se
+  descubrió tres veces que un patrón apuntaba a código reescrito, y siempre al
+  final de una pasada de siete minutos, disfrazado de superviviente. Ahora eso
+  cuesta un segundo y se dice antes de empezar.
 
 ### Contestar es cerrar — **hecho** (`1.10`)
 

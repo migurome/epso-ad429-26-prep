@@ -198,6 +198,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
 | `1.10` | Contestar una pregunta la cierra, y la deja resumida en una línea. Fuera el paso de marcarla como hecha: era un clic por pregunta para decir lo que ya decía haberla contestado. |
 | `1.9` | El banco de práctica se parece al examen: contador de 100 s por pregunta, filtro por estado, la fecha de cada respuesta y un paso explícito para darla por repasada. El calendario cuenta las preguntas sueltas. |
 | `1.8` | Pedir acceso deja de crear una cuenta: se manda el correo y nada más, y la contraseña la elige cada uno cuando el administrador le da el visto bueno. |
@@ -464,14 +465,18 @@ una destreza, con su corrección explicada opción por opción. Lo que cambió e
 
 Cuatro decisiones, y ninguna es cosmética:
 
-- **Contestar es cerrar.** La pregunta se pliega sola al marcar la opción y
-  queda resumida en su primera línea, con su número. Hubo un estado intermedio
-  —contestada pero sin «repasar», con un botón **Hecha** para cerrarla— que
-  duró exactamente un día: la idea era que la explicación no se cerrara en las
-  narices de quien acaba de fallar, y en la mano resultó ser un clic por
-  pregunta para decir lo que ya decía haberla contestado. El precio, asumido: la
-  explicación ya no aparece sola, hay que volver a abrir la pregunta. A cambio,
-  la lista se vacía según se avanza en vez de acumular trabajo hecho.
+- **Una pregunta se cierra al abrir la siguiente, no al contestarla.** Al
+  responder, la explicación aparece y la pregunta se queda ahí; se pliega
+  cuando el candidato abre otra, y entonces queda resumida en su primera línea
+  con su número. Hubo dos intentos antes: un botón **Hecha** para cerrarla a
+  mano —un clic por pregunta para decir lo que ya decía haberla contestado— y
+  plegarla en el acto al responder, que cerraba la explicación en las narices
+  de quien acababa de fallar. Lo que queda no necesita ningún clic de más y no
+  esconde nada: cerrar la anterior ya lo hacía el acordeón.
+- **El filtro nunca esconde la pregunta que se está mirando.** Con la lista en
+  «pendientes», contestar deja de cumplir el filtro en el mismo instante en que
+  aparece la explicación; sin esta guarda la fila se desvanecería bajo los ojos
+  de quien tiene algo que leer ahí. Se va al abrir la siguiente, no antes.
 - **La línea única es sólo para la fila plegada.** Abierta vuelve el enunciado
   entero, y no es un detalle estético: en todo lo que no es razonamiento
   abstracto la tarjeta **no** repite el enunciado —lo lleva la cabecera—, así
