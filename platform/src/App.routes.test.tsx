@@ -3,8 +3,8 @@
 //
 // smoke.test.tsx monta cada página por separado con un <MemoryRouter>, lo que
 // deja fuera todo lo que la envuelve: el Layout, su <Suspense>, la barra
-// lateral, la lista de ámbitos y el atributo data-competition del que
-// cuelga el color de toda la interfaz. Un fallo en cualquiera de esas piezas
+// lateral, la lista de ámbitos y la referencia de la convocatoria que se
+// deduce de ellos. Un fallo en cualquiera de esas piezas
 // deja la web en blanco sin que ninguna prueba de página lo note.
 //
 // Aquí se monta <App /> tal cual, se navega por el hash igual que el
@@ -155,15 +155,18 @@ describe.each(['es', 'en'] as const)('rutas en %s', (locale) => {
 describe('el ámbito elegido decide la convocatoria', () => {
   // Ya no hay selector de convocatoria: se elige campo y la oposición viene
   // detrás, con sus plazos, sus plazas y su color.
-  it.each(COMPETITION_ORDER)('el ámbito de la %s tiñe <html> y trae su referencia', async (key) => {
+  it.each(COMPETITION_ORDER)('el ámbito de la %s trae su referencia oficial', async (key) => {
     useStudyStore.setState({
       profile: { ...DEFAULT_PROFILE, field: COMPETITIONS[key].userField },
     })
     const { container } = await visit('/')
     await waitForContent(container, 'es')
 
-    expect(document.documentElement.dataset.competition).toBe(key)
     expect(container.textContent).toContain(COMPETITIONS[key].id)
+    // Y la de la otra no está por ninguna parte: leer los plazos equivocados
+    // es el error caro de toda esta parte.
+    const otra = key === 'ad7' ? 'ad8' : 'ad7'
+    expect(container.textContent).not.toContain(COMPETITIONS[otra].id)
   })
 
   // Abrir un ámbito es elegirlo: si no, se seguirían leyendo las plazas y los
@@ -180,7 +183,7 @@ describe('el ámbito elegido decide la convocatoria', () => {
       await waitForContent(container, 'es')
 
       await waitFor(() => expect(useStudyStore.getState().profile.field).toBe(fieldId))
-      expect(document.documentElement.dataset.competition).toBe(expected)
+      expect(container.textContent).toContain(COMPETITIONS[expected].id)
     },
   )
 })
@@ -438,7 +441,7 @@ describe('se pasa de un ámbito al de la otra convocatoria sin salir de la fase'
     })
     await waitFor(() => expect(window.location.hash).toBe('#/campo/data-science'))
     await waitFor(() => expect(useStudyStore.getState().profile.field).toBe('data-science'))
-    expect(document.documentElement.dataset.competition).toBe('ad7')
+    expect(container.textContent).toContain(COMPETITIONS.ad7.id)
   })
 })
 

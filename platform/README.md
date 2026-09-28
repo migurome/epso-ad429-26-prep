@@ -175,8 +175,11 @@ pedir primero la oposición para poder elegir el campo era un paso de más.
 
 Se elige **ámbito**, y `competitionOf()` deduce la convocatoria — cada campo
 pertenece a una sola, y la verificación lo comprueba (`competition:fields`).
-Con la convocatoria vienen sus plazos, sus plazas, su régimen lingüístico y el
-color de la interfaz: azul EU para la AD7, granate para la AD8.
+Con la convocatoria vienen sus plazos, sus plazas y su régimen lingüístico. No
+el color: la interfaz es azul UE siempre. Hubo un acento granate para la AD8,
+de cuando la convocatoria se elegía a mano y equivocarse era fácil; ahora sale
+del ámbito y su referencia está escrita en la cabecera y en el antetítulo de la
+fase, así que teñir la pantalla entera repetía un dato ya dicho.
 
 El ámbito se elige en dos sitios, y son el mismo dato:
 
@@ -226,6 +229,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.0.1` | La interfaz es azul UE siempre: fuera el acento granate de la AD8. La convocatoria ya no se elige, así que no hacía falta gritarla con el color. |
 | `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
 | `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
 | `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |

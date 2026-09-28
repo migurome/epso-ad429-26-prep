@@ -5,7 +5,6 @@ import { Sidebar } from './Sidebar'
 import { SyncButton } from './SyncButton'
 import { UserMenu } from './UserMenu'
 import { LoadingFallback } from '../LoadingFallback'
-import { useCompetition } from '../../lib/studyStore'
 import { useStudyTracker } from '../../lib/useStudyTracker'
 import { startAutoSync } from '../../lib/syncEngine'
 import { useT } from '../../lib/useT'
@@ -13,7 +12,6 @@ import { useT } from '../../lib/useT'
 export function Layout() {
   const t = useT()
   const location = useLocation()
-  const competition = useCompetition()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   // Cuenta el tiempo de uso de la plataforma, que es lo que alimenta el
@@ -24,15 +22,6 @@ export function Layout() {
   // La sincronización con Drive: una pasada al entrar y otra cada cinco
   // minutos. Va aquí, y sólo aquí, para que haya un único reloj por pestaña.
   useEffect(() => startAutoSync(), [])
-
-  // El color de acento de toda la interfaz cuelga de este atributo (ver
-  // src/index.css): azul para la AD7, rojo para la AD8. Va en <html> y no en un
-  // contenedor para que también alcance a lo que se pinta fuera del árbol. La
-  // convocatoria ya no se elige: sale del ámbito elegido, así que el color
-  // cambia solo al cambiar de campo.
-  useEffect(() => {
-    document.documentElement.dataset.competition = competition.key
-  }, [competition.key])
 
   // Cierra el menú móvil automáticamente al cambiar de ruta (p.ej. tras
   // navegar por un enlace), para no dejar el overlay abierto por accidente.

@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.0.1` | La interfaz es azul UE siempre: fuera el acento granate de la AD8. La convocatoria ya no se elige, así que no hacía falta gritarla con el color. |
 | `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
 | `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
 | `1.11` | La pregunta contestada se cierra al abrir la siguiente, no al contestarla: la explicación vuelve a aparecer sola, y el filtro nunca esconde lo que se está mirando. |
@@ -228,6 +229,12 @@ Lo que eso arrastró, que era más de lo que parecía:
   selector viejo del `localStorage` para recuperar el que el candidato
   estuviera usando: quedarse con el otro le habría cambiado de oposición sin
   avisar.
+- **Fuera el acento granate de la AD8.** Existía para que no hubiera duda de
+  qué convocatoria se estaba leyendo, cuando se elegía a mano y equivocarse
+  salía caro. Deducida del ámbito y con su referencia escrita en dos sitios de
+  la pantalla, teñir la interfaz entera era repetirlo a gritos — y obligaba a
+  mantener dos acentos que contrastaran igual de bien sobre blanco. Todo azul
+  UE. El atributo `data-competition` desaparece con él: no hacía otra cosa.
 - **Los recursos escondían once de treinta y tres enlaces**, los de la otra
   convocatoria, y para verlos había que cambiar de oposición entera. Ahora
   salen todos, y los específicos llevan su grado al lado.
