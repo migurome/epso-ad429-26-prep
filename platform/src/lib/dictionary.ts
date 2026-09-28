@@ -427,6 +427,29 @@ export const DICT = {
     es: 'Convocatoria {notice} — {title}',
     en: 'Competition {notice} — {title}',
   },
+  nav_application: { es: 'Candidaturas', en: 'Applications' },
+  application_title: { es: 'Candidaturas', en: 'Applications' },
+  application_description: {
+    es: 'La redacción libre de la inscripción: los cuatro textos que lee el tribunal. Se escriben aquí, con la cuenta de caracteres delante, y se copian al formulario de EPSO.',
+    en: 'The free-text part of the application: the four passages the selection board reads. You write them here, with the character count in front of you, and copy them into the EPSO form.',
+  },
+  application_board_note: {
+    es: 'EPSO avisa de que estas respuestas las lee el tribunal y pueden usarse en fases posteriores del proceso. Hasta 2 000 caracteres por apartado, espacios y caracteres especiales incluidos.',
+    en: 'EPSO warns that these answers are read by the selection board and may be used in later stages of the procedure. Up to 2,000 characters per section, spaces and special characters included.',
+  },
+  application_counter: { es: '{used} / {limit} caracteres', en: '{used} / {limit} characters' },
+  application_over: { es: 'Te pasas por {over}.', en: '{over} over the limit.' },
+  application_near: { es: 'Quedan {left}.', en: '{left} left.' },
+  application_copy: { es: 'Copiar', en: 'Copy' },
+  application_copied: { es: 'Copiado', en: 'Copied' },
+  application_ready: {
+    es: '{ready} de {total} apartados escritos y dentro de límite.',
+    en: '{ready} of {total} sections written and within the limit.',
+  },
+  application_local_note: {
+    es: 'Este texto se guarda en tu navegador y viaja con tu progreso. No está en el repositorio, que es público.',
+    en: 'This text is stored in your browser and travels with your progress. It is not in the repository, which is public.',
+  },
   settings_active_fields: { es: 'Ámbitos dados de alta', en: 'Registered fields' },
   settings_active_fields_hint: {
     es: 'Los que aparecen en el menú, bajo Field-Related MCQ. La plataforma cubre los seis ámbitos convocados; marca los que vayas a preparar.',

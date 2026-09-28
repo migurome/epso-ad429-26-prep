@@ -1,5 +1,6 @@
 import { COMPETITIONS } from '../data/competition'
 import type { EssayAttempt, TestAttempt } from '../types/content'
+import { useApplicationStore, normaliseTexts, type ApplicationTexts } from './applicationStore'
 import { useLocaleStore, type Locale } from './localeStore'
 import { usePracticeStore, type PracticeAnswer } from './practiceStore'
 import { useProgressStore } from './progressStore'
@@ -35,7 +36,7 @@ import { useTestLocaleStore } from './testLocaleStore'
  * dio por repasada. Una versión anterior lee ese campo esperando cadenas, y no
  * fallaría: descartaría en silencio todas las respuestas de práctica. Por eso
  * este número existe — para que se niegue a abrirlo en vez de vaciarlo. */
-export const SNAPSHOT_FORMAT = 3
+export const SNAPSHOT_FORMAT = 4
 
 /** Marca del fichero, para no tragarse un JSON cualquiera. */
 const SNAPSHOT_APP = 'epso-prep'
@@ -52,6 +53,10 @@ export interface Snapshot {
   essayAttempts: EssayAttempt[]
   practiceAnswers: Record<string, PracticeAnswer>
   practiceOrder: Record<string, number>
+  /** La redacción libre de la inscripción. Va en la copia porque es lo único
+   * de la plataforma que no se puede volver a generar: el progreso se vuelve
+   * a hacer estudiando, un texto escrito a mano no. */
+  application: ApplicationTexts
   uiLocale: Locale
   testLocale: Locale
 }
@@ -90,6 +95,7 @@ export function createSnapshot(): Snapshot {
     essayAttempts: progress.essayAttempts,
     practiceAnswers: practice.answers,
     practiceOrder: practice.orderSeed,
+    application: useApplicationStore.getState().texts,
     uiLocale: useLocaleStore.getState().locale,
     testLocale: useTestLocaleStore.getState().locale,
   }
@@ -147,6 +153,7 @@ function normalise(raw: Record<string, unknown>): Snapshot {
     essayAttempts: asArray<EssayAttempt>(raw.essayAttempts),
     practiceAnswers: answerMap(raw.practiceAnswers),
     practiceOrder: numberMap(raw.practiceOrder),
+    application: normaliseTexts(raw.application),
     uiLocale: asLocale(raw.uiLocale),
     testLocale: asLocale(raw.testLocale),
   }
@@ -223,6 +230,7 @@ export function applySnapshot(snapshot: Snapshot, mode: ImportMode): SnapshotSum
       answers: snapshot.practiceAnswers,
       orderSeed: snapshot.practiceOrder,
     })
+    useApplicationStore.setState({ texts: snapshot.application })
     useLocaleStore.setState({ locale: snapshot.uiLocale })
     useTestLocaleStore.setState({ locale: snapshot.testLocale })
     return describeSnapshot(snapshot)
@@ -240,10 +248,16 @@ export function applySnapshot(snapshot: Snapshot, mode: ImportMode): SnapshotSum
   // pies del candidato le haría perder por dónde iba. Sólo se adoptan las
   // semillas de los bancos que aquí no tienen ninguna.
   const orderSeed = { ...snapshot.practiceOrder, ...practice.orderSeed }
+  // La redacción, igual: sólo se adoptan los apartados que aquí están en
+  // blanco. Fusionar es traerse lo que falta, y pisar un texto escrito a mano
+  // con el de otro dispositivo sería la única pérdida de esta plataforma que
+  // no se puede deshacer estudiando.
+  const application = mergeTexts(useApplicationStore.getState().texts, snapshot.application)
 
   useStudyStore.setState({ dayLog })
   useProgressStore.setState({ testAttempts, essayAttempts })
   usePracticeStore.setState({ answers, orderSeed })
+  useApplicationStore.setState({ texts: application })
 
   return {
     tests: testAttempts.length - progress.testAttempts.length,
@@ -282,6 +296,16 @@ function profileFrom(raw: Record<string, unknown>): CandidateProfile {
     knownField(byCompetition[active === 'ad7' ? 'ad8' : 'ad7'])
   const { preferredFields: _dropped, ...rest } = saved
   return { ...DEFAULT_PROFILE, ...rest, field: legacy ?? COMPETITIONS[active].userField }
+}
+
+/** Fusión de la redacción libre: gana siempre lo escrito aquí, y lo de fuera
+ * sólo rellena los apartados en blanco. */
+function mergeTexts(local: ApplicationTexts, incoming: ApplicationTexts): ApplicationTexts {
+  const out = { ...local }
+  for (const key of Object.keys(incoming) as (keyof ApplicationTexts)[]) {
+    if (out[key].trim() === '') out[key] = incoming[key]
+  }
+  return out
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

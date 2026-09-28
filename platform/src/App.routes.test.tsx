@@ -39,6 +39,7 @@ const ROUTES = [
   '/formacion/12',
   '/eufte',
   '/dia-del-examen',
+  '/candidaturas',
   '/recursos',
   '/tablon',
   '/progreso',

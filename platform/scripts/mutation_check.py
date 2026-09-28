@@ -1220,6 +1220,42 @@ MUTATIONS = [
         "      {null}",
         "src/components/QuestionChart.test.tsx",
     ),
+    # ── La redacción libre de la inscripción (v2.1) ───────────────────────
+    (
+        "el contador deja pasar un apartado que el formulario va a recortar",
+        "src/lib/application.ts",
+        "  if (text.length > CHAR_LIMIT) return 'over'",
+        "  if (false) return 'over'",
+        "src/lib/application.test.ts",
+    ),
+    (
+        "el aviso de que queda poco salta sólo al haberse pasado ya",
+        "src/lib/application.ts",
+        "  if (text.length >= NEAR_LIMIT) return 'near'",
+        "  if (false) return 'near'",
+        "src/lib/application.test.ts",
+    ),
+    (
+        "un apartado pasado de largo cuenta como listo para copiar",
+        "src/lib/application.ts",
+        "  return SECTIONS.filter((s) => stateOf(texts[s.id]) === 'ok' || stateOf(texts[s.id]) === 'near')",
+        "  return SECTIONS.filter((s) => stateOf(texts[s.id]) !== 'empty')",
+        "src/lib/application.test.ts",
+    ),
+    (
+        "fusionar pisa la redacción escrita a mano con la del otro dispositivo",
+        "src/lib/backup.ts",
+        "    if (out[key].trim() === '') out[key] = incoming[key]",
+        "    out[key] = incoming[key]",
+        "src/lib/backup.test.ts",
+    ),
+    (
+        "copiar un apartado se lleva el texto de otro",
+        "src/components/ApplicationEditor.tsx",
+        "      await navigator.clipboard.writeText(text)",
+        "      await navigator.clipboard.writeText('')",
+        "src/components/ApplicationEditor.test.tsx",
+    ),
     # ── El ámbito manda, y la convocatoria sale de él (v2.0) ──────────────
     (
         "el menú enseña los seis ámbitos, den de alta los que den de alta",

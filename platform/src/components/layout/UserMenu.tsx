@@ -1,7 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
-import { BarChart3, CalendarDays, LogOut, Settings, ShieldCheck, ShieldUser, User, Video } from 'lucide-react'
+import {
+  BarChart3,
+  CalendarDays,
+  FileText,
+  LogOut,
+  Settings,
+  ShieldCheck,
+  ShieldUser,
+  User,
+  Video,
+} from 'lucide-react'
 import { signOut } from '../../lib/accountEngine'
 import { useAccountStore } from '../../lib/accountStore'
 import { isAdmin } from '../../lib/account'
@@ -9,7 +19,8 @@ import { useStudyStore } from '../../lib/studyStore'
 import { useT } from '../../lib/useT'
 
 // La sección de usuario: lo que es del candidato y no de la oposición. Su
-// progreso, su calendario, cómo será su día de examen, y los ajustes. Vivían
+// progreso, su calendario, cómo será su día de examen, la redacción libre de
+// su inscripción, y los ajustes. Vivían
 // mezclados con las fases en la barra lateral, donde competían por atención con
 // el material de estudio, que es lo que se abre todos los días.
 
@@ -40,6 +51,7 @@ export function UserMenu() {
       { to: '/progreso', label: t('nav_progress'), icon: BarChart3 },
       { to: '/calendario', label: t('nav_calendar'), icon: CalendarDays },
       { to: '/dia-del-examen', label: t('nav_test_day'), icon: Video },
+      { to: '/candidaturas', label: t('nav_application'), icon: FileText },
     ],
     [{ to: '/ajustes', label: t('nav_settings'), icon: Settings }],
     // La verificación y la administración son del administrador. Esconderlas

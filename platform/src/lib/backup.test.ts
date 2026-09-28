@@ -18,6 +18,7 @@ import {
   snapshotText,
   type Snapshot,
 } from './backup'
+import { EMPTY_TEXTS, useApplicationStore } from './applicationStore'
 import { useLocaleStore } from './localeStore'
 import { usePracticeStore } from './practiceStore'
 import { useProgressStore } from './progressStore'
@@ -45,6 +46,7 @@ function blank() {
   })
   useProgressStore.setState({ testAttempts: [], essayAttempts: [] })
   usePracticeStore.setState({ answers: {}, orderSeed: {} })
+  useApplicationStore.setState({ texts: { ...EMPTY_TEXTS } })
   useLocaleStore.setState({ locale: 'es' })
   useTestLocaleStore.setState({ locale: 'es' })
 }
@@ -64,6 +66,7 @@ const EMPTY_FILE: Snapshot = {
   essayAttempts: [],
   practiceAnswers: {},
   practiceOrder: {},
+  application: EMPTY_TEXTS,
   uiLocale: 'es',
   testLocale: 'es',
 }
@@ -469,5 +472,44 @@ describe('cargar sobre un dispositivo vacío', () => {
     )
     expect(added.essays).toBe(1)
     expect(useProgressStore.getState().essayAttempts.map((e) => e.id)).toEqual(['alli', 'aqui'])
+  })
+})
+
+describe('la redacción libre de la inscripción', () => {
+  // Es lo único de la plataforma que no se puede volver a generar: el
+  // progreso se rehace estudiando, un texto escrito a mano no.
+  const escrito = { ...EMPTY_TEXTS, experience: 'Lo mío', interest: 'Porque sí' }
+
+  it('sale en la copia', () => {
+    useApplicationStore.setState({ texts: escrito })
+    expect(createSnapshot().application).toEqual(escrito)
+  })
+
+  it('restaurar del todo la trae entera', () => {
+    applySnapshot(fileFrom({ application: escrito }), 'replace')
+    expect(useApplicationStore.getState().texts).toEqual(escrito)
+  })
+
+  it('fusionar sólo rellena los apartados en blanco, nunca pisa lo escrito', () => {
+    useApplicationStore.setState({
+      texts: { ...EMPTY_TEXTS, experience: 'Mi versión, la buena' },
+    })
+    applySnapshot(
+      fileFrom({
+        application: { ...EMPTY_TEXTS, experience: 'La del otro equipo', contribution: 'Esto sí' },
+      }),
+      'merge',
+    )
+    const texts = useApplicationStore.getState().texts
+    expect(texts.experience).toBe('Mi versión, la buena')
+    expect(texts.contribution).toBe('Esto sí')
+  })
+
+  it('una copia sin redacción no deja los apartados en undefined', () => {
+    const result = readSnapshot(
+      JSON.stringify({ app: 'epso-prep', format: SNAPSHOT_FORMAT }),
+    )
+    expect(result.ok).toBe(true)
+    if (result.ok) expect(result.snapshot.application).toEqual(EMPTY_TEXTS)
   })
 })

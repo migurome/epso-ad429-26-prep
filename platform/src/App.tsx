@@ -8,6 +8,7 @@ import { FieldMcqOverview } from './pages/FieldMcqOverview'
 import { FieldMcqPage } from './pages/FieldMcqPage'
 import { EuftePage } from './pages/EuftePage'
 import { TestDayPage } from './pages/TestDayPage'
+import { ApplicationPage } from './pages/ApplicationPage'
 import { ResourcesPage } from './pages/ResourcesPage'
 import { BoardPage } from './pages/BoardPage'
 import { ProgressPage } from './pages/ProgressPage'
@@ -64,6 +65,7 @@ function App() {
           <Route path="/formacion/:moduleId" element={<CourseModulePage />} />
           <Route path="/eufte" element={<EuftePage />} />
           <Route path="/dia-del-examen" element={<TestDayPage />} />
+          <Route path="/candidaturas" element={<ApplicationPage />} />
           <Route path="/recursos" element={<ResourcesPage />} />
           <Route path="/tablon" element={<BoardPage />} />
           <Route path="/progreso" element={<ProgressPage />} />

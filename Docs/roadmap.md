@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.1` | Candidaturas: los cuatro textos de la redacción libre de la inscripción, con la cuenta de caracteres contra el límite de 2 000 de EPSO y un botón para copiar cada uno al formulario. |
 | `2.0.1` | La interfaz es azul UE siempre: fuera el acento granate de la AD8. La convocatoria ya no se elige, así que no hacía falta gritarla con el color. |
 | `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
 | `1.12` | Las preguntas de razonamiento numérico cuyo dato es un gráfico vuelven a tener el gráfico, no sólo su transcripción a tabla: leer el valor de la cuadrícula es parte de lo que se examina. |
@@ -208,6 +209,36 @@ Tres cosas que el trabajo pidió y el plan no:
   —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
   equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
   nada se quejara.
+
+### Candidaturas — **hecho** (`2.1`)
+
+La inscripción de EPSO pide cuatro redacciones libres —experiencia, interés,
+contribución a la UE y puntos fuertes—, las lee el tribunal y pueden usarse en
+fases posteriores. Hasta ahora se escribían en el formulario o en un documento
+suelto, y se copiaban de una convocatoria a la siguiente a mano.
+
+Ahora viven en la plataforma, en el menú de usuario. Cuatro cuadros, uno por
+apartado, con el enunciado de EPSO encima y un botón para copiar cada uno al
+formulario.
+
+Lo que de verdad aporta es **el contador**. El límite son 2 000 caracteres por
+apartado, espacios incluidos, y el formulario de EPSO no avisa al pasarse:
+recorta. Así que el aviso tiene que estar de este lado, contar exactamente lo
+mismo que cuenta el formulario —nada de recortar ni normalizar— y avisar cien
+caracteres antes de llegar, no al chocar. Un apartado pasado de largo no cuenta
+como listo, aunque parezca escrito.
+
+**Dónde se guarda, y por qué ahí.** Este repositorio es público, y los textos
+son la carta de motivación de una persona con su nombre en el historial de
+commits. Publicarlos tendría dos costes reales: describen por dentro el sistema
+del empleador, y otro candidato podría encontrarlos y reutilizarlos, lo que
+salpicaría a las dos candidaturas. Así que no entran en el repositorio ni en el
+paquete: se guardan en el navegador y viajan en la copia de seguridad, que va
+por cuenta y detrás del cerrojo.
+
+El formato de copia sube a 4. Al fusionar dos dispositivos la redacción **nunca
+se pisa**: sólo se rellenan los apartados que aquí están en blanco. Es lo único
+de la plataforma que no se puede rehacer estudiando.
 
 ### El ámbito manda, y la convocatoria sale de él — **hecho** (`2.0`)
 
