@@ -160,6 +160,8 @@ export function parsePromptChart(
 export interface Scale {
   /** El tope del eje, siempre un número redondo y >= al mayor valor. */
   max: number
+  /** El suelo del eje. Cero en las barras; en las líneas puede no serlo. */
+  min?: number
   /** Distancia entre líneas de la cuadrícula. */
   step: number
   /** Los valores donde va una línea, de 0 al tope. */
@@ -180,7 +182,7 @@ export interface Scale {
  */
 export function niceScale(maxValue: number, wanted = 5): Scale {
   const top = Math.max(maxValue, 0)
-  if (top === 0) return { max: 1, step: 1, ticks: [0, 1] }
+  if (top === 0) return { max: 1, min: 0, step: 1, ticks: [0, 1] }
 
   const rough = top / Math.max(1, wanted)
   const magnitude = 10 ** Math.floor(Math.log10(rough))
@@ -191,12 +193,17 @@ export function niceScale(maxValue: number, wanted = 5): Scale {
   // Se construyen multiplicando y no acumulando: sumar 2,5 diez veces deja
   // 24,999999999999996 y una etiqueta con catorce decimales.
   for (let i = 0; i * step <= max + step / 1000; i += 1) ticks.push(i * step)
-  return { max, step, ticks }
+  return { max, min: 0, step, ticks }
 }
 
 /** El mayor valor de un gráfico, para escalarlo. Los huecos no cuentan. */
 export function peakOf(spec: ChartSpec): number {
   const all = spec.series.flatMap((s) => s.values.filter((v): v is number => v !== null))
+  // Una apilada al 100 % llega al 100 por definición, sumen lo que sumen sus
+  // celdas: las del libro vienen redondeadas y alguna columna suma 99 o 101.
+  // Escalar al mayor dejaría la más alta tocando el techo y las demás cortas,
+  // y la gracia de este gráfico es justamente que todas midan lo mismo.
+  if (spec.kind === 'stacked100') return 100
   if (spec.kind === 'stacked') {
     // Apiladas: lo que tiene que caber es la suma de cada columna.
     return Math.max(
@@ -207,4 +214,81 @@ export function peakOf(spec: ChartSpec): number {
     )
   }
   return all.length === 0 ? 0 : Math.max(...all)
+}
+
+/** Un tramo de una columna apilada, en unidades del eje. */
+export interface Segment {
+  label: string
+  /** Índice de la serie, para que conserve su color aunque falten tramos. */
+  series: number
+  from: number
+  to: number
+}
+
+/**
+ * Los tramos de una columna apilada, de abajo arriba.
+ *
+ * En la variante al 100 % cada columna se reparte sobre SU PROPIA suma y no
+ * sobre 100. Las tablas del libro vienen redondeadas y no siempre cuadran —los
+ * ámbitos de la 109 suman 101—; repartir sobre 100 dejaría columnas que no
+ * llegan al techo o que se salen, y en un gráfico cuya única promesa es que
+ * todas las columnas miden igual, eso es justo lo que no puede pasar.
+ *
+ * Un hueco no ocupa sitio: no es un cero, es un dato que no está.
+ */
+export function stackedSegments(spec: ChartSpec, point: number): Segment[] {
+  const values = spec.series.map((s) => s.values[point])
+  const total = values.reduce<number>((sum, v) => sum + (v != null && v > 0 ? v : 0), 0)
+  if (total <= 0) return []
+  const scale = spec.kind === 'stacked100' ? 100 / total : 1
+
+  const out: Segment[] = []
+  let from = 0
+  values.forEach((value, i) => {
+    if (value == null || value <= 0) return
+    const to = from + value * scale
+    out.push({ label: spec.series[i].label, series: i, from, to })
+    from = to
+  })
+  return out
+}
+
+/** El menor valor de un gráfico. Los huecos no cuentan. */
+export function floorOf(spec: ChartSpec): number {
+  const all = spec.series.flatMap((s) => s.values.filter((v): v is number => v !== null))
+  return all.length === 0 ? 0 : Math.min(...all)
+}
+
+/**
+ * La escala de un gráfico de LÍNEAS, que no empieza en cero.
+ *
+ * Es la única excepción a la regla de arriba, y tiene motivo. En una barra la
+ * longitud ES la magnitud: recortar el eje hace que media barra parezca la
+ * mitad sin serlo. En una línea lo que informa es la POSICIÓN y, sobre todo,
+ * la pendiente. La pregunta 89 va de 21.000 a 24.000 accidentes: con el eje
+ * desde cero esos cinco puntos caen sobre la misma raya y la variación —que
+ * es lo que se pregunta— deja de poder leerse.
+ *
+ * Aun así no se recorta a lo bruto: el suelo y el techo caen en múltiplos del
+ * paso, para que las líneas de la cuadrícula sigan siendo números legibles, y
+ * se deja un paso de aire a cada lado para que ningún punto quede pegado al
+ * borde. Si los datos ya rozan el cero, se usa el cero.
+ */
+export function niceRange(minValue: number, maxValue: number, wanted = 5): Scale {
+  const span = maxValue - minValue
+  if (span <= 0) return niceScale(maxValue)
+
+  const rough = span / Math.max(1, wanted)
+  const magnitude = 10 ** Math.floor(Math.log10(rough))
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * magnitude).find((s) => s >= rough) ?? 10 * magnitude
+
+  let min = Math.floor(minValue / step) * step
+  const max = Math.ceil(maxValue / step) * step
+  // Un suelo positivo pero pequeño comparado con el paso significa que los
+  // datos llegan casi al cero: entonces el cero es el sitio honrado.
+  if (min > 0 && min < step) min = 0
+
+  const ticks: number[] = []
+  for (let i = 0; min + i * step <= max + step / 1000; i += 1) ticks.push(min + i * step)
+  return { max, min, step, ticks }
 }

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Check, ChevronDown, RotateCcw, X } from 'lucide-react'
+import { Check, ChevronDown, Pause, Play, RotateCcw, TimerReset, X } from 'lucide-react'
 import clsx from 'clsx'
 import { QuestionCard } from './QuestionCard'
 import { PromptWithChart } from './QuestionChart'
@@ -8,11 +8,12 @@ import { extractPromptFigures } from '../lib/abstractFigure'
 import { pick, useLocaleStore, type Locale } from '../lib/localeStore'
 import { usePracticeStore, type PracticeAnswer, type PracticeBankRef } from '../lib/practiceStore'
 import {
-  PACE_SECONDS,
+  DEFAULT_PACE_SECONDS,
   answeredOn,
   countsFor,
   firstLine,
   formatPace,
+  paceFor,
   paceOf,
   showsUnder,
   type PracticeFilter,
@@ -30,6 +31,10 @@ interface PracticeBankProps {
   /** Identifica el banco para guardar aparte su orden. Ámbito, destreza o
    * módulo del curso: lo que distinga a este banco de los demás. */
   bankId: string
+  /** El formato de la prueba de la que sale este banco, para el ritmo del
+   * reloj. Sin él se usa el de referencia: los bancos del curso de fundamentos
+   * no cuelgan de ninguna prueba oficial. */
+  format?: { questions: number; minutes: number }
 }
 
 // El enunciado de la cabecera. Va entero: cortarlo a mitad de frase obligaba a
@@ -58,9 +63,10 @@ const FILTERS: { value: PracticeFilter; key: DictKey }[] = [
   { value: 'answered', key: 'practice_filter_answered' },
 ]
 
-export function PracticeBank({ questions, bankId }: PracticeBankProps) {
+export function PracticeBank({ questions, bankId, format }: PracticeBankProps) {
   const t = useT()
   const testLocale = useTestLocaleStore((s) => s.locale)
+  const paceSeconds = format ? paceFor(format) : DEFAULT_PACE_SECONDS
 
   // Las respuestas se guardan en el navegador. Antes vivían en el estado del
   // componente: bastaba recargar para que todo volviera a aparecer sin marcar
@@ -178,6 +184,7 @@ export function PracticeBank({ questions, bankId }: PracticeBankProps) {
               answer={answers[q.id]}
               isOpen={expandedId === q.id}
               testLocale={testLocale}
+              paceSeconds={paceSeconds}
               onToggle={() => setExpandedId(expandedId === q.id ? null : q.id)}
               // Contestar no pliega nada: la explicación aparece ahí y se
               // queda. La pregunta se cierra al abrir la siguiente, que es lo
@@ -198,8 +205,12 @@ interface RowProps {
   answer: PracticeAnswer | undefined
   isOpen: boolean
   testLocale: Locale
+  /** El ritmo de esta prueba, en segundos por pregunta. */
+  paceSeconds: number
   onToggle: () => void
-  onAnswer: (optionId: string, seconds: number) => void
+  /** `seconds` va sin definir cuando el reloj no llegó a correr: un cero sería
+   * decir que se contestó al instante, que es un dato falso. */
+  onAnswer: (optionId: string, seconds: number | undefined) => void
   onReactivate: () => void
 }
 
@@ -221,20 +232,25 @@ function PracticeRow({
   answer,
   isOpen,
   testLocale,
+  paceSeconds,
   onToggle,
   onAnswer,
   onReactivate,
 }: RowProps) {
   const t = useT()
   const locale = useLocaleStore((s) => s.locale)
-  const running = isOpen && answer == null
-  const elapsed = useStopwatch(running)
+  // El reloj lo maneja quien estudia: no arranca solo al abrir la pregunta.
+  // Abrir una para ojearla, o volver a leer la explicación de algo ya
+  // contestado, no es tiempo de examen, y contarlo inflaba el número hasta
+  // dejarlo sin uso.
+  const clock = useStopwatch()
+  const showClock = isOpen && answer == null
 
   const compact = answer != null && !isOpen
   const verdict = verdictOf(question, answer?.optionId)
   const when = answeredOn(answer)
   const intl = locale === 'es' ? 'es-ES' : 'en-GB'
-  const pace = paceOf(elapsed)
+  const pace = paceOf(clock.seconds, paceSeconds)
 
   return (
     <li
@@ -282,16 +298,52 @@ function PracticeRow({
           )}
         </div>
 
-        {running && (
-          <span
-            title={t('practice_pace_hint', { n: PACE_SECONDS })}
-            className={clsx(
-              'mt-0.5 shrink-0 text-xs font-medium tabular-nums',
-              pace.over ? 'text-red-600' : 'text-slate-400',
-            )}
-          >
-            {formatPace(elapsed)}
-          </span>
+        {showClock && (
+          <div className="mt-0.5 flex shrink-0 items-center gap-1">
+            {/* El propio contador es el botón de marcha y parada: es el sitio
+                donde ya está mirando quien quiere pararlo, y así no hace falta
+                un control aparte que compita con él por el espacio. */}
+            <button
+              type="button"
+              onClick={clock.toggle}
+              aria-pressed={clock.running}
+              title={t(clock.running ? 'practice_clock_stop' : 'practice_clock_start')}
+              className={clsx(
+                'flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-medium tabular-nums transition-colors',
+                clock.running ? 'hover:bg-slate-100' : 'hover:bg-slate-100',
+                pace.over ? 'text-red-600' : clock.running ? 'text-slate-600' : 'text-slate-400',
+              )}
+            >
+              {clock.running ? (
+                <Pause size={12} aria-hidden="true" />
+              ) : (
+                <Play size={12} aria-hidden="true" />
+              )}
+              {formatPace(clock.seconds, paceSeconds)}
+              {/* El nombre accesible del botón sería sólo «1:40» —el texto gana
+                  al title—, y eso no dice que pulsarlo arranque o pare nada.
+                  Con este añadido oculto se oyen las dos cosas: el tiempo y lo
+                  que hace pulsarlo. */}
+              <span className="sr-only">
+                {t(clock.running ? 'practice_clock_stop' : 'practice_clock_start')}
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={clock.reset}
+              disabled={clock.seconds === 0 && !clock.running}
+              title={t('practice_clock_reset')}
+              className={clsx(
+                'rounded-md p-1 transition-colors',
+                clock.seconds === 0 && !clock.running
+                  ? 'cursor-not-allowed text-slate-200'
+                  : 'text-slate-400 hover:bg-slate-100 hover:text-slate-600',
+              )}
+            >
+              <TimerReset size={13} aria-hidden="true" />
+              <span className="sr-only">{t('practice_clock_reset')}</span>
+            </button>
+          </div>
         )}
 
         {verdict === true && (
@@ -341,7 +393,7 @@ function PracticeRow({
             question={question}
             selectedOptionId={answer?.optionId ?? null}
             revealed={answer != null}
-            onSelect={(optionId) => onAnswer(optionId, elapsed)}
+            onSelect={(optionId) => onAnswer(optionId, clock.seconds || undefined)}
             hidePrompt={question.skill !== 'abstract'}
           />
         </div>

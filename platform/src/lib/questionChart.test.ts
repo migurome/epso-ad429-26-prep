@@ -5,7 +5,15 @@
 // siendo correcto. Un gráfico inventado a medias en una pregunta de examen es
 // peor que no tener gráfico.
 import { describe, it, expect } from 'vitest'
-import { cellValue, niceScale, parsePromptChart, peakOf } from './questionChart'
+import {
+  cellValue,
+  floorOf,
+  niceRange,
+  niceScale,
+  parsePromptChart,
+  peakOf,
+  stackedSegments,
+} from './questionChart'
 
 const TABLA = [
   '<!-- chart: bar x="Año" unit="toneladas" -->',
@@ -149,5 +157,109 @@ describe('los números según el idioma del enunciado', () => {
       '| Crovaka | ≈ 7.900 |',
     ].join('\n')
     expect(parsePromptChart(esDoc, 'es')!.spec.series[0].values).toEqual([6300, 7900])
+  })
+})
+
+describe('la escala de las líneas no empieza en cero', () => {
+  // La 89 va de 21.000 a 24.000 accidentes. Con el eje desde cero los cinco
+  // puntos caen sobre la misma raya y la variación —que es lo que se
+  // pregunta— deja de poder leerse.
+  it('encuadra el rango en vez de aplastarlo contra el cero', () => {
+    const scale = niceRange(21000, 24000)
+    expect(scale.min).toBeLessThanOrEqual(21000)
+    expect(scale.max).toBeGreaterThanOrEqual(24000)
+    expect(scale.min).toBeGreaterThan(0)
+  })
+
+  it('las líneas de la cuadrícula siguen cayendo en números legibles', () => {
+    const scale = niceRange(21000, 24000)
+    for (const tick of scale.ticks) expect(tick % scale.step).toBe(0)
+  })
+
+  it('si los datos ya rozan el cero, el suelo es el cero', () => {
+    // Recortar aquí no ganaría nada y mentiría sobre lo cerca que está del
+    // cero el valor más bajo.
+    expect(niceRange(0.4, 5).min).toBe(0)
+  })
+
+  it('una serie plana no se queda sin escala', () => {
+    const scale = niceRange(7, 7)
+    expect(scale.ticks.length).toBeGreaterThan(1)
+    expect(scale.max).toBeGreaterThanOrEqual(7)
+  })
+})
+
+describe('el suelo de un gráfico', () => {
+  const spec = (values: (number | null)[]) => ({
+    kind: 'line' as const,
+    category: 'Año',
+    points: values.map((_, i) => String(i)),
+    series: [{ label: 'A', values }],
+    approx: false,
+  })
+
+  it('es el menor valor, y los huecos no cuentan', () => {
+    expect(floorOf(spec([5, null, 2, 9]))).toBe(2)
+  })
+
+  it('sin ningún dato es cero, no infinito', () => {
+    expect(floorOf(spec([null, null]))).toBe(0)
+  })
+})
+
+describe('los tramos de una columna apilada', () => {
+  const spec = (kind: 'stacked' | 'stacked100', values: number[][]) => ({
+    kind,
+    category: 'País',
+    points: ['A'],
+    series: values.map((v, i) => ({ label: `s${i}`, values: v })),
+    approx: false,
+  })
+
+  it('apila de abajo arriba en el orden de las columnas', () => {
+    const segs = stackedSegments(spec('stacked', [[10], [20], [30]]), 0)
+    expect(segs.map((s) => [s.from, s.to])).toEqual([
+      [0, 10],
+      [10, 30],
+      [30, 60],
+    ])
+  })
+
+  it('al 100 % reparte sobre la suma real, no sobre cien', () => {
+    // Los grupos de la 109 suman 101 y los del libro redondean: repartir sobre
+    // 100 dejaría columnas que no llegan al techo o que se salen, y la única
+    // promesa de este gráfico es que todas midan igual.
+    const segs = stackedSegments(spec('stacked100', [[42], [44], [11], [4]]), 0)
+    expect(segs[segs.length - 1].to).toBeCloseTo(100, 6)
+  })
+
+  it('una columna corta al 100 % también llega al techo', () => {
+    const segs = stackedSegments(spec('stacked100', [[30], [30]]), 0)
+    expect(segs[segs.length - 1].to).toBeCloseTo(100, 6)
+  })
+
+  it('un hueco o un cero no ocupa sitio ni se lleva un color', () => {
+    const segs = stackedSegments(spec('stacked', [[10], [0], [30]]), 0)
+    expect(segs.map((s) => s.label)).toEqual(['s0', 's2'])
+    // Y el que sigue conserva SU color: el índice de serie no se recoloca.
+    expect(segs[1].series).toBe(2)
+  })
+
+  it('una columna sin nada no se dibuja', () => {
+    expect(stackedSegments(spec('stacked', [[0], [0]]), 0)).toEqual([])
+  })
+})
+
+describe('el tope de una apilada al 100 %', () => {
+  it('es cien, sume lo que sume la tabla', () => {
+    expect(
+      peakOf({
+        kind: 'stacked100',
+        category: 'País',
+        points: ['A'],
+        series: [{ label: 'x', values: [42] }, { label: 'y', values: [59] }],
+        approx: false,
+      }),
+    ).toBe(100)
   })
 })

@@ -88,7 +88,11 @@ export function FieldMcqPage() {
                   }
                 />
               ) : (
-                <PracticeBank questions={questions} bankId={`field:${fieldTyped}`} />
+                <PracticeBank
+                  questions={questions}
+                  bankId={`field:${fieldTyped}`}
+                  format={FIELD_MCQ_FORMAT}
+                />
               ),
           },
           {

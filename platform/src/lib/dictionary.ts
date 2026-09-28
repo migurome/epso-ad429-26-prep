@@ -200,6 +200,9 @@ export const DICT = {
     es: 'Ritmo de examen: {n} s por pregunta. Pasarse no cierra nada.',
     en: 'Exam pace: {n} s per question. Going over closes nothing.',
   },
+  practice_clock_start: { es: 'Arrancar el reloj', en: 'Start the clock' },
+  practice_clock_stop: { es: 'Parar el reloj', en: 'Stop the clock' },
+  practice_clock_reset: { es: 'Poner el reloj a cero', en: 'Reset the clock' },
 
   // TimedTest
   no_questions_available: {

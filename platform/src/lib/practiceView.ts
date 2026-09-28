@@ -8,14 +8,25 @@ import type { PracticeAnswer } from './practiceStore'
 // haga desaparecer la pregunta de delante.
 
 /**
- * El ritmo de examen, en segundos por pregunta.
+ * El ritmo de examen de un banco, en segundos por pregunta.
  *
- * Cien y no ciento cinco —que es lo que sale de las 20 preguntas en 35 minutos
- * del verbal— porque es el número con el que se entrena: redondo, igual en
- * todos los bancos, y un pelo más apretado que el examen, que es como conviene
- * entrenar. No es un límite: pasarse no cierra nada.
+ * Sale de su propia prueba y no de un número redondo igual para todos, que es
+ * lo que había: cien segundos valían para el verbal —20 preguntas en 35
+ * minutos— y mentían en todo lo demás. El numérico da 10 preguntas en 20
+ * minutos, o sea el doble de tiempo por pregunta; el abstracto, 10 en 10
+ * minutos, casi la mitad. Entrenar el numérico con el reloj del verbal es
+ * entrenar contra un examen que no existe.
+ *
+ * No es un límite: pasarse no cierra nada.
  */
-export const PACE_SECONDS = 100
+export function paceFor(format: { questions: number; minutes: number }): number {
+  if (format.questions <= 0) return DEFAULT_PACE_SECONDS
+  return Math.round((format.minutes * 60) / format.questions)
+}
+
+/** Para un banco que no cuelga de ninguna prueba oficial —los del curso de
+ * fundamentos—, donde no hay formato del que sacar el ritmo. */
+export const DEFAULT_PACE_SECONDS = 100
 
 export type PracticeFilter = 'all' | 'answered' | 'pending'
 
@@ -75,14 +86,20 @@ export function countsFor(
  * `over` no es `seconds < 0`: los segundos salen ya en positivo para poder
  * pintarlos sin más, y quien pregunta si va tarde pregunta eso, no el signo.
  */
-export function paceOf(elapsedSeconds: number): { seconds: number; over: boolean } {
-  const left = PACE_SECONDS - Math.max(0, Math.floor(elapsedSeconds))
+export function paceOf(
+  elapsedSeconds: number,
+  paceSeconds: number = DEFAULT_PACE_SECONDS,
+): { seconds: number; over: boolean } {
+  const left = paceSeconds - Math.max(0, Math.floor(elapsedSeconds))
   return { seconds: Math.abs(left), over: left < 0 }
 }
 
 /** `m:ss`, con el menos delante cuando se ha pasado del ritmo. */
-export function formatPace(elapsedSeconds: number): string {
-  const { seconds, over } = paceOf(elapsedSeconds)
+export function formatPace(
+  elapsedSeconds: number,
+  paceSeconds: number = DEFAULT_PACE_SECONDS,
+): string {
+  const { seconds, over } = paceOf(elapsedSeconds, paceSeconds)
   const minutes = Math.floor(seconds / 60)
   const rest = String(seconds % 60).padStart(2, '0')
   return `${over ? '−' : ''}${minutes}:${rest}`

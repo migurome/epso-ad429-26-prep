@@ -455,14 +455,48 @@ describe('el contador del ritmo de examen', () => {
 
   const avanzar = (ms: number) => act(() => void vi.advanceTimersByTime(ms))
 
-  it('sólo corre en la pregunta abierta y sin responder', () => {
+  const arrancar = () => clickButton(new RegExp(es('practice_clock_start')))
+  const parar = () => clickButton(new RegExp(es('practice_clock_stop')))
+  const aCero = () => clickButton(new RegExp(es('practice_clock_reset')))
+
+  it('aparece con la pregunta abierta, pero parado', () => {
+    // Abrir una pregunta para ojearla no es empezar a examinarse. Antes
+    // arrancaba solo y contaba como tiempo de examen leer la explicación de
+    // algo ya resuelto, o levantarse con la pestaña abierta.
     render(<PracticeBank questions={MIXED} bankId="test" />)
     expect(screen.queryByText('1:40')).toBeNull()
 
     toggle(/Enunciado de real1/)
     expect(screen.getByText('1:40')).toBeTruthy()
     avanzar(28_000)
+    expect(screen.getByText('1:40')).toBeTruthy()
+  })
+
+  it('el propio contador lo arranca y lo para', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+
+    arrancar()
+    avanzar(28_000)
     expect(screen.getByText('1:12')).toBeTruthy()
+
+    parar()
+    avanzar(60_000)
+    expect(screen.getByText('1:12')).toBeTruthy()
+  })
+
+  it('ponerlo a cero lo devuelve al ritmo entero', () => {
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    arrancar()
+    avanzar(28_000)
+
+    aCero()
+    expect(screen.getByText('1:40')).toBeTruthy()
+    // Y tras el reinicio vuelve a contar desde cero, no desde lo de antes.
+    arrancar()
+    avanzar(3_000)
+    expect(screen.getByText('1:37')).toBeTruthy()
   })
 
   it('pasarse del ritmo no cierra nada: enseña cuánto', () => {
@@ -470,6 +504,7 @@ describe('el contador del ritmo de examen', () => {
     // pregunta difícil es justo el tiempo que costó de más.
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
+    arrancar()
     avanzar(108_000)
 
     expect(screen.getByText('−0:08')).toBeTruthy()
@@ -479,6 +514,7 @@ describe('el contador del ritmo de examen', () => {
   it('al responder se para, y lo que costó queda guardado', () => {
     render(<PracticeBank questions={MIXED} bankId="test" />)
     toggle(/Enunciado de real1/)
+    arrancar()
     avanzar(28_000)
     clickButton(/Opción A/)
 
@@ -488,6 +524,24 @@ describe('el contador del ritmo de examen', () => {
     // Y con su hora: es lo único que permite al calendario saber en qué día
     // cayó este trabajo. Sin fecha, la tarde entera desaparece de la rejilla.
     expect(Number.isNaN(new Date(guardada.at).getTime())).toBe(false)
+  })
+
+  it('sin arrancar el reloj no se guarda un tiempo falso', () => {
+    // Cero segundos diría que se contestó al instante. Lo que pasó es que no
+    // se midió, y eso se dice no guardando nada.
+    render(<PracticeBank questions={MIXED} bankId="test" />)
+    toggle(/Enunciado de real1/)
+    avanzar(28_000)
+    clickButton(/Opción A/)
+
+    expect(usePracticeStore.getState().answers.real1.seconds).toBeUndefined()
+  })
+
+  it('el ritmo sale del formato de la prueba, no de un número fijo', () => {
+    // 10 preguntas en 20 minutos son dos minutos por pregunta.
+    render(<PracticeBank questions={MIXED} bankId="test" format={{ questions: 10, minutes: 20 }} />)
+    toggle(/Enunciado de real1/)
+    expect(screen.getByText('2:00')).toBeTruthy()
   })
 
   it('reabrir una ya contestada no arranca el contador', () => {

@@ -10,6 +10,7 @@ Acordado el 18/09/2026.
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.2` | Las 24 preguntas del banco numérico que enseñan un gráfico ya lo enseñan: líneas, sectores y apiladas, con los datos leídos del libro original. El reloj de práctica lo arranca y lo para el candidato, y su ritmo sale del formato de cada prueba. |
 | `2.1` | Candidaturas: los cuatro textos de la redacción libre de la inscripción, con la cuenta de caracteres contra el límite de 2 000 de EPSO y un botón para copiar cada uno al formulario. |
 | `2.0.1` | La interfaz es azul UE siempre: fuera el acento granate de la AD8. La convocatoria ya no se elige, así que no hacía falta gritarla con el color. |
 | `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
@@ -209,6 +210,76 @@ Tres cosas que el trabajo pidió y el plan no:
   —que es lo correcto: no pudo comprobarlas—. Se reapuntaron una a una al código
   equivalente en vez de borrarlas, que habría sido perder la cobertura sin que
   nada se quejara.
+
+### Los 24 gráficos, con los datos del libro — **hecho** (`2.2`)
+
+Veinticuatro enunciados del banco numérico enseñan un gráfico. Siete se
+dibujaron en la `1.12`; los diecisiete restantes no se podían dibujar, y nueve
+de ellos **no por falta de código sino por falta de datos**: la transcripción
+sólo recogió los dos o tres valores que citaba la explicación del libro y
+describía el resto en prosa, dentro de un paréntesis. Dibujarlos habría exigido
+inventar entre diez y catorce números por gráfico, en preguntas cuya respuesta
+sale precisamente de leerlos.
+
+Así que se fue al original: `Docs/numerical.pdf`, el manual de ORSEU del que se
+transcribió el banco. Son 118 hojas escaneadas, sin capa de texto y con la
+orientación alternando, así que no se puede buscar: hay que mirarlas. Se
+montaron dos utilidades de usar y tirar —una hoja de contactos para localizar
+preguntas de una lectura, y un medidor que recorre cada barra apilada y detecta
+dónde cambia el gris de verdad— y se leyeron las nueve.
+
+**Medir en vez de mirar no fue una manía: cazó dos errores.**
+
+- En la **72** la frontera parecía estar en el 90 % y está en el 80. Con la
+  lectura a ojo, «familias con 2 hijos» daba 30 % y la respuesta del libro era
+  imposible; con la medida da 20 % y sale exacta.
+- En la **58** la transcripción decía «Industria ≈ 70 %, Servicios ≈ 10 %» para
+  Zogland. Con esos números la respuesta da 14.626.800, que **no es ninguna de
+  las cinco opciones**. Los valores reales son 72 % y 11 %, y entonces sale
+  14.870.580, la opción d). El `≈` escondía un error.
+
+Cada tabla se contrastó contra la respuesta correcta del propio libro, que es
+el único árbitro disponible: si los números leídos no reproducen la opción
+marcada, están mal. Las nueve la reproducen.
+
+Dos decisiones de dibujo que no son de estilo:
+
+- **El eje de las líneas no empieza en cero.** En una barra la longitud ES la
+  magnitud y recortar el eje miente; en una línea informan la posición y la
+  pendiente. La 89 va de 21.000 a 24.000 accidentes: desde cero, los cinco
+  puntos caen sobre la misma raya y la variación —que es lo que se pregunta—
+  deja de poder leerse.
+- **En los sectores sí se escribe el valor**, al revés que en las barras. En el
+  libro las tartas llevan su porcentaje impreso, y estimar a ojo un ángulo no
+  es una destreza que el examen mida; callarlo inventaría una dificultad que la
+  prueba real no tiene.
+
+Y una nota sobre exactitud: donde la respuesta del libro no fija un número
+—los tres países de la 58 que la pregunta no usa— el valor es lectura de la
+cuadrícula y va marcado con `~`, como el resto del banco.
+
+### El reloj lo maneja quien estudia — **hecho** (`2.2`)
+
+Arrancaba solo al abrir la pregunta y no había forma de pararlo. Eso contaba
+como tiempo de examen abrir una pregunta para ojearla, releer la explicación de
+algo ya resuelto o levantarse con la pestaña abierta: el número salía siempre
+inflado y por tanto no servía para nada.
+
+Ahora el propio contador es el botón de marcha y parada —es donde ya está
+mirando quien quiere pararlo— y al lado hay uno de puesta a cero. Pausar SUMA:
+si reanudar empezara de cero, la pausa sería un borrado encubierto y nadie se
+atrevería a usarla. Y si el reloj no llegó a correr no se guarda un cero, que
+diría que se contestó al instante: se guarda que no se midió.
+
+El ritmo de partida sale del formato de cada prueba y no de un número redondo
+igual para todas. Cien segundos valían para el verbal —20 preguntas en 35
+minutos— y mentían en lo demás: el numérico son 10 en 20 minutos, el doble por
+pregunta; el abstracto, 10 en 10, casi la mitad. Entrenar el numérico con el
+reloj del verbal es entrenar contra un examen que no existe.
+
+Un test cazó aquí un fallo real: poner a cero un reloj **en marcha** hacía que
+la limpieza del efecto volviera a sumar los segundos recién borrados, y el
+contador saltaba de 0 a 25 al rearrancarlo.
 
 ### Candidaturas — **hecho** (`2.1`)
 

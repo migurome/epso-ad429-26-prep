@@ -12,7 +12,8 @@ import {
   formatPace,
   paceOf,
   showsUnder,
-  PACE_SECONDS,
+  DEFAULT_PACE_SECONDS,
+  paceFor,
 } from './practiceView'
 import type { PracticeAnswer } from './practiceStore'
 
@@ -65,10 +66,37 @@ describe('las cuentas de la cabecera', () => {
   })
 })
 
+describe('el ritmo sale de cada prueba', () => {
+  // Cien segundos por pregunta valían para el verbal y mentían en todo lo
+  // demás. Entrenar el numérico con el reloj del verbal es entrenar contra un
+  // examen que no existe.
+  it('verbal: 20 preguntas en 35 minutos', () => {
+    expect(paceFor({ questions: 20, minutes: 35 })).toBe(105)
+  })
+
+  it('numérico: 10 en 20 minutos, el doble de tiempo por pregunta', () => {
+    expect(paceFor({ questions: 10, minutes: 20 })).toBe(120)
+  })
+
+  it('abstracto: 10 en 10 minutos, la mitad', () => {
+    expect(paceFor({ questions: 10, minutes: 10 })).toBe(60)
+  })
+
+  it('ámbito: 30 en 40 minutos', () => {
+    expect(paceFor({ questions: 30, minutes: 40 })).toBe(80)
+  })
+
+  it('una prueba sin preguntas no divide entre cero', () => {
+    expect(paceFor({ questions: 0, minutes: 40 })).toBe(DEFAULT_PACE_SECONDS)
+  })
+})
+
 describe('el contador', () => {
-  it('arranca en el ritmo entero', () => {
+  it('arranca en el ritmo entero de su prueba', () => {
     expect(formatPace(0)).toBe('1:40')
-    expect(PACE_SECONDS).toBe(100)
+    expect(DEFAULT_PACE_SECONDS).toBe(100)
+    expect(formatPace(0, 120)).toBe('2:00')
+    expect(formatPace(0, 60)).toBe('1:00')
   })
 
   it('descuenta mientras queda tiempo', () => {

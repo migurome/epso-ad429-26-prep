@@ -229,6 +229,7 @@ subir el número en `package.json` es parte del cambio, no un trámite posterior
 
 | Versión | Qué entró |
 | --- | --- |
+| `2.2` | Las 24 preguntas del banco numérico que enseñan un gráfico ya lo enseñan: líneas, sectores y apiladas, con los datos leídos del libro original. El reloj de práctica lo arranca y lo para el candidato, y su ritmo sale del formato de cada prueba. |
 | `2.1` | Candidaturas: los cuatro textos de la redacción libre de la inscripción, con la cuenta de caracteres contra el límite de 2 000 de EPSO y un botón para copiar cada uno al formulario. |
 | `2.0.1` | La interfaz es azul UE siempre: fuera el acento granate de la AD8. La convocatoria ya no se elige, así que no hacía falta gritarla con el color. |
 | `2.0` | Fuera la pestaña AD7/AD8. Se elige ámbito —de cualquiera de las dos convocatorias, en el menú o en Ajustes— y la oposición viene detrás con sus plazos y su color. Los recursos dejan de esconder la mitad de los enlaces. |
@@ -540,6 +541,23 @@ la semana el día que alguien deje una pregunta abierta y se vaya a comer, y el
 objetivo semanal dejaría de decir la verdad justo donde más se mira.
 
 ## Los gráficos del razonamiento numérico
+
+Veinticuatro enunciados del banco numérico enseñan un gráfico, y los
+veinticuatro lo enseñan ya: barras, barras agrupadas, líneas, sectores y
+apiladas al 100 %. Los datos no se escriben dos veces —la tabla del documento
+sigue siendo la única fuente y lleva encima una directiva que dice cómo
+dibujarla— y se parsean al pintar, así que el gráfico sale en el idioma del
+enunciado.
+
+Nueve de ellos llegaron sin datos: la transcripción recogió sólo los valores
+que citaba la explicación y describía el resto en prosa. Se leyeron del manual
+original (`Docs/numerical.pdf`, fuera del repositorio por derechos de autor)
+midiendo el tono de cada banda en el escaneo, y **cada tabla se contrastó
+contra la respuesta correcta del libro**: si los números leídos no reproducen
+la opción marcada, están mal. Las nueve la reproducen; el proceso cazó dos
+errores de la transcripción anterior. El detalle está en `Docs/roadmap.md`.
+
+
 
 En el libro real, veinticuatro enunciados no traen una tabla: traen un gráfico
 del que hay que **leer** los valores. La transcripción los convirtió en tablas,
